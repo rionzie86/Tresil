@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Archivio di Tresil</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+:root {
+  --bg-deepest:#0a0c0f; --bg-dark:#0f1318; --bg-panel:#131820; --bg-card:#171e28;
+  --border:rgba(100,140,200,0.12); --border-bright:rgba(100,140,200,0.28);
+  --gold:#c9a84c; --gold-dim:#8a6e2f; --gold-glow:rgba(201,168,76,0.15);
+  --text-primary:#e8e0d0; --text-secondary:#9a9080; --text-muted:#5a5448;
+  --accent-red:#c45a5a; --accent-green:#5ab48f;
+  --font-display:'Cinzel',serif; --font-body:'Crimson Pro',Georgia,serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:var(--bg-deepest); color:var(--text-primary); font-family:var(--font-body); font-size:15px; }
+
+.app { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+.page-title {
+  font-family:var(--font-display); font-size:20px; color:var(--gold); letter-spacing:.08em;
+  text-transform:uppercase; margin-bottom:.25rem;
+}
+.page-sub { font-size:13px; color:var(--text-muted); font-style:italic; margin-bottom:2rem; }
+
+.back-link {
+  display:inline-block; margin-bottom:1.5rem;
+  font-family:var(--font-display); font-size:10px; letter-spacing:.12em;
+  color:var(--text-muted); text-decoration:none; text-transform:uppercase;
+  padding:5px 12px; border:1px solid var(--border); border-radius:2px;
+  transition:.2s ease;
+}
+.back-link:hover { color:var(--gold); border-color:var(--gold-dim); background:var(--gold-glow); }
+
+/* LOGIN */
+.login-box {
+  background:var(--bg-panel); border:1px solid var(--border-bright);
+  border-radius:4px; padding:2rem; max-width:380px; margin:4rem auto;
+}
+.login-title { font-family:var(--font-display); font-size:14px; letter-spacing:.1em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:1.5rem; }
+.login-box label { font-size:11px; letter-spacing:.1em; color:var(--text-muted); text-transform:uppercase; font-family:var(--font-display); display:block; margin-bottom:6px; }
+.login-box input[type=password] {
+  width:100%; padding:9px 12px; background:var(--bg-card); border:1px solid var(--border-bright);
+  border-radius:3px; color:var(--text-primary); font-family:var(--font-body); font-size:15px;
+  margin-bottom:1rem;
+}
+.login-box input:focus { outline:none; border-color:var(--gold-dim); }
+.login-err { color:var(--accent-red); font-size:12px; margin-bottom:.75rem; display:none; }
+
+/* TABS */
+.tabs { display:flex; gap:1px; border-bottom:1px solid var(--border); margin-bottom:1.5rem; }
+.tab-btn {
+  padding:8px 16px; background:none; border:none; border-bottom:2px solid transparent;
+  color:var(--text-muted); font-family:var(--font-display); font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; cursor:pointer; margin-bottom:-1px; transition:.2s ease;
+}
+.tab-btn.active { color:var(--gold); border-bottom-color:var(--gold); }
+.tab-btn:hover:not(.active) { color:var(--text-secondary); }
+
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* FORM */
+.form-group { margin-bottom:1.25rem; }
+.form-label { font-size:11px; letter-spacing:.1em; color:var(--text-muted); text-transform:uppercase; font-family:var(--font-display); display:block; margin-bottom:6px; }
+.form-input, .form-textarea, .form-select {
+  width:100%; padding:9px 12px; background:var(--bg-card); border:1px solid var(--border);
+  border-radius:3px; color:var(--text-primary); font-family:var(--font-body); font-size:14px;
+  transition:.2s ease;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { outline:none; border-color:var(--gold-dim); }
+.form-textarea { resize:vertical; min-height:100px; line-height:1.6; }
+.form-select { background-color:var(--bg-card); }
+.form-select option { background:var(--bg-panel); }
+
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+/* BUTTONS */
+.btn {
+  padding:7px 18px; border-radius:2px; font-family:var(--font-display); font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:.2s ease;
+}
+.btn-primary { background:none; border:1px solid var(--gold-dim); color:var(--gold); }
+.btn-primary:hover { background:var(--gold-glow); }
+.btn-danger { background:none; border:1px solid #8a3030; color:var(--accent-red); }
+.btn-danger:hover { background:rgba(196,90,90,0.1); }
+.btn-sm { padding:4px 10px; font-size:9px; }
+
+.btn-row { display:flex; gap:8px; align-items:center; margin-top:1rem; }
+
+/* ITEMS LIST */
+.item-list { margin-top:1rem; }
+.item-row {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 12px; background:var(--bg-card); border:1px solid var(--border);
+  border-radius:3px; margin-bottom:6px; font-size:13px;
+  transition:border-color .2s ease;
+}
+.item-row:hover { border-color:var(--border-bright); }
+.item-label { color:var(--text-primary); font-family:var(--font-display); font-size:12px; letter-spacing:.03em; }
+.item-sub { color:var(--text-muted); font-size:11px; font-style:italic; }
+.item-actions { display:flex; gap:6px; }
+
+/* CARD section */
+.admin-card { background:var(--bg-panel); border:1px solid var(--border); border-radius:4px; padding:1.25rem 1.5rem; margin-bottom:1.25rem; }
+.admin-card-title { font-family:var(--font-display); font-size:11px; letter-spacing:.12em; color:var(--gold); text-transform:uppercase; margin-bottom:1rem; padding-bottom:.5rem; border-bottom:1px solid var(--border); }
+
+.msg-success { color:var(--accent-green); font-size:12px; font-style:italic; display:none; }
+.msg-error { color:var(--accent-red); font-size:12px; font-style:italic; display:none; }
+
+.divider { border:none; border-top:1px solid var(--border); margin:1.5rem 0; }
+
+::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:var(--bg-deepest); } ::-webkit-scrollbar-thumb { background:var(--border-bright); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-title">◑ Accesso DM</div>
+    <label>Password</label>
+    <input type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="login-err" id="login-err">Password errata.</div>
+    <button class="btn btn-primary" style="width:100%" onclick="doLogin()">Entra</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel" style="display:none">
+  <div class="app">
+    <a href="index.html" class="back-link">← Torna all'archivio</a>
+    <div class="page-title">Pannello Admin</div>
+    <div class="page-sub">Gestione contenuti — Archivio di Tresil</div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('personaggi',this)">Personaggi</button>
+      <button class="tab-btn" onclick="showTab('sessioni',this)">Sessioni</button>
+      <button class="tab-btn" onclick="showTab('lore',this)">Lore Segreta</button>
+      <button class="tab-btn" onclick="showTab('ambientazione',this)">Ambientazione</button>
+      <button class="tab-btn" onclick="showTab('glossario',this)">Glossario</button>
+      <button class="tab-btn" onclick="showTab('thread',this)">Thread</button>
+      <button class="tab-btn" onclick="showTab('export',this)">Esporta</button>
+    </div>
+
+    <!-- PERSONAGGI -->
+    <div class="tab-panel active" id="tab-personaggi">
+      <div class="admin-card">
+        <div class="admin-card-title">Modifica personaggio esistente</div>
+        <div class="form-group">
+          <label class="form-label">Seleziona personaggio</label>
+          <select class="form-select" id="pg-select" onchange="loadPg()">
+            <option value="">— scegli —</option>
+          </select>
+        </div>
+        <div id="pg-form" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nome</label>
+              <input class="form-input" id="pg-nome">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Giocatore / Tipo</label>
+              <input class="form-input" id="pg-giocatore">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tag (separati da virgola)</label>
+            <input class="form-input" id="pg-tag">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descrizione</label>
+            <textarea class="form-textarea" id="pg-desc" style="min-height:130px"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Note</label>
+            <textarea class="form-textarea" id="pg-note"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">⚠ Solo DM — Lore segreta</label>
+            <textarea class="form-textarea" id="pg-segreto" style="border-color:rgba(143,68,68,0.4)"></textarea>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="savePg()">Salva modifiche</button>
+            <span class="msg-success" id="pg-ok">Salvato.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-title">Aggiungi nuovo personaggio</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">ID (senza spazi)</label><input class="form-input" id="new-pg-id" placeholder="es: verlek"></div>
+          <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="new-pg-nome"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Giocatore</label><input class="form-input" id="new-pg-giocatore"></div>
+          <div class="form-group">
+            <label class="form-label">Tipo</label>
+            <select class="form-select" id="new-pg-tipo">
+              <option value="pg">PG</option>
+              <option value="png">PNG</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Colore (hex)</label><input class="form-input" id="new-pg-colore" placeholder="#888780"></div>
+          <div class="form-group"><label class="form-label">Iniziali avatar</label><input class="form-input" id="new-pg-iniziali" placeholder="es: VT"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Descrizione</label><textarea class="form-textarea" id="new-pg-desc"></textarea></div>
+        <div class="form-group"><label class="form-label">Lore segreta (solo DM)</label><textarea class="form-textarea" id="new-pg-segreto" style="border-color:rgba(143,68,68,0.4)"></textarea></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addPg()">Aggiungi personaggio</button>
+          <span class="msg-success" id="new-pg-ok">Aggiunto.</span>
+          <span class="msg-error" id="new-pg-err">ID già esistente o mancante.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSIONI -->
+    <div class="tab-panel" id="tab-sessioni">
+      <div class="admin-card">
+        <div class="admin-card-title">Aggiungi nuova sessione</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">ID</label><input class="form-input" id="new-s-id" placeholder="es: s-5-6"></div>
+          <div class="form-group"><label class="form-label">Data in-world</label><input class="form-input" id="new-s-data" placeholder="es: 5 del 6° mese"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Luogo</label><input class="form-input" id="new-s-luogo"></div>
+          <div class="form-group"><label class="form-label">Titolo</label><input class="form-input" id="new-s-titolo"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Tag (separati da virgola)</label><input class="form-input" id="new-s-tag"></div>
+        <div class="form-group"><label class="form-label">Riassunto (puoi usare \n per andare a capo)</label><textarea class="form-textarea" id="new-s-riassunto" style="min-height:200px"></textarea></div>
+        <div class="form-group">
+          <label class="form-label">È l'ultima sessione?</label>
+          <select class="form-select" id="new-s-nuova"><option value="true">Sì</option><option value="false">No</option></select>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addSessione()">Aggiungi sessione</button>
+          <span class="msg-success" id="new-s-ok">Aggiunta — ricorda di marcare la precedente come non-nuova.</span>
+          <span class="msg-error" id="new-s-err">ID mancante o già usato.</span>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-title">Sessioni esistenti</div>
+        <div id="sessioni-list"></div>
+      </div>
+    </div>
+
+    <!-- LORE -->
+    <div class="tab-panel" id="tab-lore">
+      <div class="admin-card">
+        <div class="admin-card-title">Modifica voce di lore</div>
+        <div class="form-group">
+          <label class="form-label">Seleziona voce</label>
+          <select class="form-select" id="lore-select" onchange="loadLore()">
+            <option value="">— scegli —</option>
+          </select>
+        </div>
+        <div id="lore-form" style="display:none">
+          <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="lore-nome"></div>
+          <div class="form-group"><label class="form-label">Testo</label><textarea class="form-textarea" id="lore-testo" style="min-height:200px"></textarea></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="saveLore()">Salva</button>
+            <span class="msg-success" id="lore-ok">Salvato.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-title">Aggiungi nuova voce di lore</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">ID</label><input class="form-input" id="new-l-id"></div>
+          <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="new-l-nome"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Colore (hex)</label><input class="form-input" id="new-l-colore" placeholder="#c45a5a"></div>
+        <div class="form-group"><label class="form-label">Testo</label><textarea class="form-textarea" id="new-l-testo" style="min-height:150px"></textarea></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addLore()">Aggiungi</button>
+          <span class="msg-success" id="new-l-ok">Aggiunta.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMBIENTAZIONE -->
+    <div class="tab-panel" id="tab-ambientazione">
+      <div class="admin-card">
+        <div class="admin-card-title">Modifica luogo</div>
+        <div class="form-group">
+          <label class="form-label">Seleziona luogo</label>
+          <select class="form-select" id="amb-select" onchange="loadAmb()">
+            <option value="">— scegli —</option>
+          </select>
+        </div>
+        <div id="amb-form" style="display:none">
+          <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="amb-nome"></div>
+          <div class="form-group"><label class="form-label">Tag (separati da virgola)</label><input class="form-input" id="amb-tag"></div>
+          <div class="form-group"><label class="form-label">Testo</label><textarea class="form-textarea" id="amb-testo" style="min-height:150px"></textarea></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="saveAmb()">Salva</button>
+            <span class="msg-success" id="amb-ok">Salvato.</span>
+          </div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-title">Aggiungi nuovo luogo</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">ID</label><input class="form-input" id="new-a-id"></div>
+          <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="new-a-nome"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Tag (separati da virgola)</label><input class="form-input" id="new-a-tag"></div>
+        <div class="form-group"><label class="form-label">Testo</label><textarea class="form-textarea" id="new-a-testo" style="min-height:120px"></textarea></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addAmb()">Aggiungi</button>
+          <span class="msg-success" id="new-a-ok">Aggiunto.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOSSARIO -->
+    <div class="tab-panel" id="tab-glossario">
+      <div class="admin-card">
+        <div class="admin-card-title">Voci del glossario (link automatici)</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;font-style:italic">I termini qui sotto diventano automaticamente link cliccabili nel testo di tutta la webapp.</p>
+        <div id="glossario-list"></div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-title">Aggiungi termine</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Termine (come appare nel testo)</label><input class="form-input" id="new-g-termine"></div>
+          <div class="form-group"><label class="form-label">Label nella scheda</label><input class="form-input" id="new-g-label"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Sezione di destinazione</label>
+            <select class="form-select" id="new-g-sezione">
+              <option value="personaggi">Personaggi</option>
+              <option value="lore">Lore Segreta</option>
+              <option value="ambientazione">Ambientazione</option>
+              <option value="fazioni">Fazioni</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">ID voce di destinazione</label><input class="form-input" id="new-g-voce" placeholder="es: fatati-natura"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addGloss()">Aggiungi termine</button>
+          <span class="msg-success" id="new-g-ok">Aggiunto.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- THREAD -->
+    <div class="tab-panel" id="tab-thread">
+      <div class="admin-card">
+        <div class="admin-card-title">Thread urgenti</div>
+        <div id="thread-urgenti-list"></div>
+        <hr class="divider">
+        <div class="form-group"><label class="form-label">Aggiungi thread urgente</label><input class="form-input" id="new-tu"></div>
+        <div class="btn-row"><button class="btn btn-primary btn-sm" onclick="addThread('urgenti','new-tu','tu-ok')">Aggiungi</button><span class="msg-success" id="tu-ok">Aggiunto.</span></div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-title">Thread Han</div>
+        <div id="thread-han-list"></div>
+        <hr class="divider">
+        <div class="form-group"><label class="form-label">Aggiungi thread Han</label><input class="form-input" id="new-th"></div>
+        <div class="btn-row"><button class="btn btn-primary btn-sm" onclick="addThread('han','new-th','th-ok')">Aggiungi</button><span class="msg-success" id="th-ok">Aggiunto.</span></div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-title">Thread lore</div>
+        <div id="thread-lore-list"></div>
+        <hr class="divider">
+        <div class="form-group"><label class="form-label">Aggiungi thread lore</label><input class="form-input" id="new-tl"></div>
+        <div class="btn-row"><button class="btn btn-primary btn-sm" onclick="addThread('lore','new-tl','tl-ok')">Aggiungi</button><span class="msg-success" id="tl-ok">Aggiunto.</span></div>
+      </div>
+    </div>
+
+    <!-- EXPORT -->
+    <div class="tab-panel" id="tab-export">
+      <div class="admin-card">
+        <div class="admin-card-title">Esporta dati</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:1rem;line-height:1.7">Scarica un file <code style="background:var(--bg-card);padding:2px 6px;border-radius:2px;font-family:monospace;font-size:12px">data.js</code> aggiornato con tutte le modifiche fatte da questo pannello. Sostituisci il file nella cartella <code style="background:var(--bg-card);padding:2px 6px;border-radius:2px;font-family:monospace;font-size:12px">tresil-wiki/</code> per applicarle.</p>
+        <button class="btn btn-primary" onclick="exportData()">Scarica data.js aggiornato</button>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-title">Reset modifiche locali</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:1rem;line-height:1.7">Elimina tutte le modifiche salvate nel browser e torna ai dati originali di <code style="background:var(--bg-card);padding:2px 6px;border-radius:2px;font-family:monospace;font-size:12px">data.js</code>. Operazione irreversibile.</p>
+        <button class="btn btn-danger" onclick="resetAdmin()">Reset modifiche locali</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+// ── PASSWORD ────────────────────────────────────────────────
+const ADMIN_PW = 'tresil2025';
+let adminData = null;
+
+function doLogin() {
+  const val = document.getElementById('pw-input').value;
+  if (val === ADMIN_PW) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+  }
+}
+
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+// ── INIT ADMIN DATA ─────────────────────────────────────────
+function initAdmin() {
+  const saved = localStorage.getItem('tresil_admin_data');
+  adminData = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(TRESIL_DATA));
+  populateSelects();
+  renderLists();
+}
+
+function saveAdminData() {
+  localStorage.setItem('tresil_admin_data', JSON.stringify(adminData));
+}
+
+function flash(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 2500);
+}
+
+// ── TABS ────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── POPOLA SELECTS ──────────────────────────────────────────
+function populateSelects() {
+  const all = [...adminData.personaggi.pg, ...adminData.personaggi.png];
+  const pgSel = document.getElementById('pg-select');
+  pgSel.innerHTML = '<option value="">— scegli —</option>';
+  all.forEach(p => { pgSel.innerHTML += `<option value="${p.id}">${p.nome}</option>`; });
+
+  const loreSel = document.getElementById('lore-select');
+  loreSel.innerHTML = '<option value="">— scegli —</option>';
+  adminData.lore.forEach(l => { loreSel.innerHTML += `<option value="${l.id}">${l.nome}</option>`; });
+
+  const ambSel = document.getElementById('amb-select');
+  ambSel.innerHTML = '<option value="">— scegli —</option>';
+  adminData.ambientazione.forEach(a => { ambSel.innerHTML += `<option value="${a.id}">${a.nome}</option>`; });
+}
+
+// ── PERSONAGGI ──────────────────────────────────────────────
+function loadPg() {
+  const id = document.getElementById('pg-select').value;
+  if (!id) { document.getElementById('pg-form').style.display = 'none'; return; }
+  const all = [...adminData.personaggi.pg, ...adminData.personaggi.png];
+  const p = all.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('pg-nome').value = p.nome || '';
+  document.getElementById('pg-giocatore').value = p.giocatore || '';
+  document.getElementById('pg-tag').value = (p.tag || []).join(', ');
+  document.getElementById('pg-desc').value = p.descrizione || '';
+  document.getElementById('pg-note').value = p.note || '';
+  document.getElementById('pg-segreto').value = p.segreto || '';
+  document.getElementById('pg-form').style.display = 'block';
+}
+
+function savePg() {
+  const id = document.getElementById('pg-select').value;
+  const all = [...adminData.personaggi.pg, ...adminData.personaggi.png];
+  const p = all.find(x => x.id === id);
+  if (!p) return;
+  p.nome = document.getElementById('pg-nome').value;
+  p.giocatore = document.getElementById('pg-giocatore').value;
+  p.tag = document.getElementById('pg-tag').value.split(',').map(t => t.trim()).filter(Boolean);
+  p.descrizione = document.getElementById('pg-desc').value;
+  p.note = document.getElementById('pg-note').value;
+  p.segreto = document.getElementById('pg-segreto').value;
+  saveAdminData();
+  flash('pg-ok');
+}
+
+function addPg() {
+  const id = document.getElementById('new-pg-id').value.trim();
+  if (!id) { flash('new-pg-err'); return; }
+  const all = [...adminData.personaggi.pg, ...adminData.personaggi.png];
+  if (all.find(p => p.id === id)) { flash('new-pg-err'); return; }
+  const tipo = document.getElementById('new-pg-tipo').value;
+  const np = {
+    id, tipo,
+    nome: document.getElementById('new-pg-nome').value,
+    giocatore: document.getElementById('new-pg-giocatore').value,
+    colore: document.getElementById('new-pg-colore').value || '#888780',
+    iniziali: document.getElementById('new-pg-iniziali').value || id.substring(0,2).toUpperCase(),
+    tag: [],
+    descrizione: document.getElementById('new-pg-desc').value,
+    segreto: document.getElementById('new-pg-segreto').value,
+    note: ''
+  };
+  if (tipo === 'pg') adminData.personaggi.pg.push(np);
+  else adminData.personaggi.png.push(np);
+  saveAdminData();
+  populateSelects();
+  flash('new-pg-ok');
+}
+
+// ── SESSIONI ────────────────────────────────────────────────
+function renderLists() {
+  renderSessioniList();
+  renderThreadLists();
+  renderGlossarioList();
+}
+
+function renderSessioniList() {
+  const c = document.getElementById('sessioni-list');
+  c.innerHTML = '';
+  adminData.sessioni.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <div>
+        <div class="item-label">${s.titolo}</div>
+        <div class="item-sub">${s.data} · ${s.luogo}</div>
+      </div>
+      <div class="item-actions">
+        <button class="btn btn-primary btn-sm" onclick="toggleNuova(${i})">
+          ${s.nuova ? '★ Ultima' : '☆ Non ultima'}
+        </button>
+      </div>
+    `;
+    c.appendChild(row);
+  });
+}
+
+function toggleNuova(i) {
+  adminData.sessioni[i].nuova = !adminData.sessioni[i].nuova;
+  saveAdminData();
+  renderSessioniList();
+}
+
+function addSessione() {
+  const id = document.getElementById('new-s-id').value.trim();
+  if (!id || adminData.sessioni.find(s => s.id === id)) { flash('new-s-err'); return; }
+  const ns = {
+    id,
+    data: document.getElementById('new-s-data').value,
+    luogo: document.getElementById('new-s-luogo').value,
+    titolo: document.getElementById('new-s-titolo').value,
+    nuova: document.getElementById('new-s-nuova').value === 'true',
+    tag: document.getElementById('new-s-tag').value.split(',').map(t => t.trim()).filter(Boolean),
+    riassunto: document.getElementById('new-s-riassunto').value
+  };
+  adminData.sessioni.unshift(ns);
+  saveAdminData();
+  renderSessioniList();
+  flash('new-s-ok');
+}
+
+// ── LORE ────────────────────────────────────────────────────
+function loadLore() {
+  const id = document.getElementById('lore-select').value;
+  if (!id) { document.getElementById('lore-form').style.display = 'none'; return; }
+  const l = adminData.lore.find(x => x.id === id);
+  if (!l) return;
+  document.getElementById('lore-nome').value = l.nome || '';
+  document.getElementById('lore-testo').value = l.testo || '';
+  document.getElementById('lore-form').style.display = 'block';
+}
+
+function saveLore() {
+  const id = document.getElementById('lore-select').value;
+  const l = adminData.lore.find(x => x.id === id);
+  if (!l) return;
+  l.nome = document.getElementById('lore-nome').value;
+  l.testo = document.getElementById('lore-testo').value;
+  saveAdminData();
+  flash('lore-ok');
+}
+
+function addLore() {
+  const id = document.getElementById('new-l-id').value.trim();
+  if (!id) return;
+  adminData.lore.push({
+    id,
+    nome: document.getElementById('new-l-nome').value,
+    colore: document.getElementById('new-l-colore').value || '#c45a5a',
+    testo: document.getElementById('new-l-testo').value
+  });
+  saveAdminData();
+  populateSelects();
+  flash('new-l-ok');
+}
+
+// ── AMBIENTAZIONE ───────────────────────────────────────────
+function loadAmb() {
+  const id = document.getElementById('amb-select').value;
+  if (!id) { document.getElementById('amb-form').style.display = 'none'; return; }
+  const a = adminData.ambientazione.find(x => x.id === id);
+  if (!a) return;
+  document.getElementById('amb-nome').value = a.nome || '';
+  document.getElementById('amb-tag').value = (a.tag || []).join(', ');
+  document.getElementById('amb-testo').value = a.testo || '';
+  document.getElementById('amb-form').style.display = 'block';
+}
+
+function saveAmb() {
+  const id = document.getElementById('amb-select').value;
+  const a = adminData.ambientazione.find(x => x.id === id);
+  if (!a) return;
+  a.nome = document.getElementById('amb-nome').value;
+  a.tag = document.getElementById('amb-tag').value.split(',').map(t=>t.trim()).filter(Boolean);
+  a.testo = document.getElementById('amb-testo').value;
+  saveAdminData();
+  flash('amb-ok');
+}
+
+function addAmb() {
+  const id = document.getElementById('new-a-id').value.trim();
+  if (!id) return;
+  adminData.ambientazione.push({
+    id,
+    nome: document.getElementById('new-a-nome').value,
+    tag: document.getElementById('new-a-tag').value.split(',').map(t=>t.trim()).filter(Boolean),
+    testo: document.getElementById('new-a-testo').value
+  });
+  saveAdminData();
+  populateSelects();
+  flash('new-a-ok');
+}
+
+// ── GLOSSARIO ───────────────────────────────────────────────
+function renderGlossarioList() {
+  const c = document.getElementById('glossario-list');
+  c.innerHTML = '';
+  Object.entries(adminData.glossario).forEach(([term, entry]) => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <div>
+        <div class="item-label">${term}</div>
+        <div class="item-sub">→ ${entry.sezione} / ${entry.voce}</div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeGloss('${term}')">Rimuovi</button>
+    `;
+    c.appendChild(row);
+  });
+}
+
+function addGloss() {
+  const termine = document.getElementById('new-g-termine').value.trim();
+  if (!termine) return;
+  adminData.glossario[termine] = {
+    sezione: document.getElementById('new-g-sezione').value,
+    voce: document.getElementById('new-g-voce').value,
+    label: document.getElementById('new-g-label').value
+  };
+  saveAdminData();
+  renderGlossarioList();
+  flash('new-g-ok');
+}
+
+function removeGloss(term) {
+  delete adminData.glossario[term];
+  saveAdminData();
+  renderGlossarioList();
+}
+
+// ── THREAD ──────────────────────────────────────────────────
+function renderThreadLists() {
+  ['urgenti','han','lore'].forEach(tipo => {
+    const c = document.getElementById('thread-' + tipo + '-list');
+    c.innerHTML = '';
+    (adminData.thread[tipo] || []).forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-label" style="font-family:var(--font-body);font-size:13px">${item}</div>
+        <button class="btn btn-danger btn-sm" onclick="removeThread('${tipo}',${i})">✕</button>
+      `;
+      c.appendChild(row);
+    });
+  });
+}
+
+function addThread(tipo, inputId, okId) {
+  const val = document.getElementById(inputId).value.trim();
+  if (!val) return;
+  if (!adminData.thread[tipo]) adminData.thread[tipo] = [];
+  adminData.thread[tipo].push(val);
+  document.getElementById(inputId).value = '';
+  saveAdminData();
+  renderThreadLists();
+  flash(okId);
+}
+
+function removeThread(tipo, i) {
+  adminData.thread[tipo].splice(i, 1);
+  saveAdminData();
+  renderThreadLists();
+}
+
+// ── EXPORT ──────────────────────────────────────────────────
+function exportData() {
+  const str = 'const TRESIL_DATA = ' + JSON.stringify(adminData, null, 2) + ';';
+  const blob = new Blob([str], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'data.js';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAdmin() {
+  if (confirm('Sei sicuro? Tutte le modifiche locali verranno eliminate.')) {
+    localStorage.removeItem('tresil_admin_data');
+    adminData = JSON.parse(JSON.stringify(TRESIL_DATA));
+    populateSelects();
+    renderLists();
+    alert('Reset completato.');
+  }
+}
+</script>
+</body>
+</html>
