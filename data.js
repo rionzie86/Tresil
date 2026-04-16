@@ -702,6 +702,7 @@ const TRESIL_DATA = {
       { id: "sussurratori",   nome: "Sussurratori d'Opale",testo: "Veggenti e medium. Figure: Ena Sildra. Luna nuova, spirali di sabbia." }
     ],
     banda: {
+      soloMaster: true,
       nome: "Banda di Ravok — Fossolento",
       testo: "12 membri nella ex conceria balene. Fanatici (5): Durs il Grigio, Maret Occhi-Rossi, Tork e Benn, Sera la Senza-Nome, Jorad il Predicatore. Opportunisti (6): Vekko, Lina Storta, Orn il Tranquillo, Deva e Polik, Mila la Silenziosa. Artigiano (1): Gedrun il Fabbro — produce i collari, bersaglio prioritario."
     },
