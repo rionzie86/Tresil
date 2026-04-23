@@ -271,68 +271,12 @@ textarea:focus{outline:none;border-color:var(--gold-d);}
 /* ── DIVIDER ── */
 hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border-b);border-radius:3px;}
-
-/* ── MOBILE TOPBAR ── */
-.mob-topbar{display:none;position:fixed;top:0;left:0;right:0;height:52px;background:var(--bg-panel);border-bottom:1px solid var(--border);z-index:100;align-items:center;padding:0 1rem;gap:.75rem;}
-.mob-hamburger{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:6px;flex-shrink:0;}
-.mob-hamburger span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px;transition:var(--tr);}
-.mob-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.mob-hamburger.open span:nth-child(2){opacity:0;}
-.mob-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mob-title{font-family:var(--font-d);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.mob-dm-btn{background:none;border:1px solid var(--border);border-radius:3px;padding:5px 10px;font-family:var(--font-d);font-size:9px;letter-spacing:.1em;color:var(--t3);cursor:pointer;text-transform:uppercase;white-space:nowrap;transition:var(--tr);}
-.mob-dm-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-g);}
-.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:150;}
-.mob-overlay.open{display:block;}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .mob-topbar{display:flex;}
-  .sidebar{
-    position:fixed;top:0;left:0;bottom:0;
-    width:280px;z-index:200;
-    transform:translateX(-100%);
-    transition:transform .25s ease;
-    overflow-y:auto;
-  }
-  .sidebar.mob-open{transform:translateX(0);}
-  .app{flex-direction:column;height:auto;min-height:100vh;overflow:visible;}
-  .main{padding:1.25rem 1rem;padding-top:68px;overflow-y:visible;}
-  .sec-title{font-size:18px;}
-  .stat-grid{grid-template-columns:repeat(2,1fr);}
-  .eco-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .eco-salari table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .eco-cat-tabs{flex-wrap:wrap;gap:.3rem;}
-  .eco-cat-tab{font-size:12px;padding:4px 9px;}
-  .amb-tabs{flex-wrap:wrap;gap:.3rem;}
-  .obj-grid{grid-template-columns:1fr;}
-  .map-viewer{height:55vh;}
-  .map-pin:hover .map-tooltip{opacity:0;}
-  .map-pin.tapped .map-tooltip{opacity:1;}
-  .map-pin-dot{width:18px;height:18px;}
-  .modal-box{max-width:95%;max-height:85vh;padding:1.1rem 1.25rem;}
-  .thread-row{flex-wrap:wrap;gap:.3rem;}
-  .sb-foot{padding:.75rem 1rem;}
-  .admin-link{display:none;}
-}
-@media (max-width: 400px) {
-  .main{padding:1rem .75rem;padding-top:65px;}
-  .stat-grid{grid-template-columns:1fr;}
-}
 </style>
 </head>
 <body>
 
 <div class="app">
-  <div class="mob-topbar">
-    <button class="mob-hamburger" id="mob-hamburger" onclick="toggleMobMenu()">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="mob-title" id="mob-title">Archivio di Tresil</div>
-    <button class="mob-dm-btn" id="mob-dm-btn" onclick="toggleDM()">DM</button>
-  </div>
-  <div class="mob-overlay" id="mob-overlay" onclick="closeMobMenu()"></div>
-  <nav class="sidebar" id="sidebar">
+  <nav class="sidebar">
     <div class="sb-head">
       <div class="sb-title">Archivio di Tresil</div>
       <div class="sb-sub">Campagna D&D</div>
@@ -437,10 +381,8 @@ function updateDMUI() {
   const toggle = document.getElementById('dm-toggle');
   const dot = document.getElementById('dm-dot');
   const lbl = document.getElementById('dm-label');
-  const mobBtn = document.getElementById('mob-dm-btn');
   toggle.classList.toggle('active', isMaster);
   lbl.textContent = isMaster ? 'DM attivo' : 'Modalità DM';
-  if (mobBtn) mobBtn.classList.toggle('active', isMaster);
 
   // Mostra/nascondi elementi DM
   document.querySelectorAll('.dm-only').forEach(el => {
@@ -455,21 +397,6 @@ function updateDMUI() {
   buildThread();
   buildOggetti();
   buildPersonaggi();
-}
-
-// ── MENU MOBILE ────────────────────────────────────
-function toggleMobMenu() {
-  const sb = document.getElementById('sidebar');
-  const hb = document.getElementById('mob-hamburger');
-  const ov = document.getElementById('mob-overlay');
-  const open = sb.classList.toggle('mob-open');
-  hb.classList.toggle('open', open);
-  ov.classList.toggle('open', open);
-}
-function closeMobMenu() {
-  document.getElementById('sidebar').classList.remove('mob-open');
-  document.getElementById('mob-hamburger').classList.remove('open');
-  document.getElementById('mob-overlay').classList.remove('open');
 }
 
 // ── NAVIGAZIONE ────────────────────────────────────
@@ -491,11 +418,11 @@ function showSection(id) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('section-' + id)?.classList.add('active');
   document.querySelector(`[data-section="${id}"]`)?.classList.add('active');
-  const btn = document.querySelector(`[data-section="${id}"]`);
-  if (btn) { const t = document.getElementById('mob-title'); if (t) t.textContent = btn.textContent.trim(); }
-  closeMobMenu();
-  if (window.innerWidth <= 768) window.scrollTo(0, 0);
-  if (id === 'mappe' && !mappeBuilt) { mappeBuilt = true; buildMappe(); }
+  // Lazy load mappa solo al primo click
+  if (id === 'mappe' && !mappeBuilt) {
+    mappeBuilt = true;
+    buildMappe();
+  }
 }
 
 // ── LINKIFY ────────────────────────────────────────
@@ -751,8 +678,9 @@ function buildAmbientazione() {
     panel.className = 'amb-panel' + (i === 0 ? ' active' : '');
     panel.id = 'amb-' + t.key;
     (TRESIL_DATA.ambientazione[t.key] || []).forEach(a => {
+      if (a.soloMaster && !isMaster) return;
       const d = document.createElement('div');
-      d.className = 'card';
+      d.className = 'card' + (a.soloMaster ? ' dm-only secret' : '');
       d.id = 'amb-item-' + a.id;
       d.innerHTML = `<div class="card-title">${a.nome}</div>${tagsHTML(a.tag)}<div class="card-body" style="margin-top:.6rem">${linkify(a.testo)}</div>`;
       panel.appendChild(d);
@@ -767,7 +695,7 @@ function buildAmbientazione() {
 // ── FAZIONI ────────────────────────────────────────
 function buildFazioni() {
   const c = document.getElementById('section-fazioni');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Fazioni & Gilde</div><div class="sec-sub">Attori politici, commerciali e criminali</div></div>`;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Fazioni, Gilde & Leggi</div><div class="sec-sub">Attori politici, commerciali, criminali e ordinamento della città</div></div>`;
 
   const mkAcc = (items) => {
     const wrap = document.createElement('div');
@@ -784,6 +712,18 @@ function buildFazioni() {
     });
     return wrap;
   };
+
+  // Governo
+  if (TRESIL_DATA.fazioni.governo) {
+    const gov = TRESIL_DATA.fazioni.governo;
+    c.appendChild(card('◈ ' + gov.titolo, gov.testo));
+  }
+
+  // Leggi
+  if (TRESIL_DATA.fazioni.leggi) {
+    const leg = TRESIL_DATA.fazioni.leggi;
+    c.appendChild(card('⚖ ' + leg.titolo, leg.testo));
+  }
 
   const uff = document.createElement('div');
   uff.className = 'card';
