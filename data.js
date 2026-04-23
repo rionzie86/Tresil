@@ -7,8 +7,8 @@ const TRESIL_DATA = {
   meta: {
     titolo: "Archivio di Tresil",
     sottotitolo: "Campagna D&D — Archivio del Dungeon Master",
-    dataAttuale: "33 del 4° mese",
-    prossimaDestinazione: "Conceria di Fossolento"
+    dataAttuale: "34 del 4° mese",
+    prossimaDestinazione: "Conceria di Fossolento — infiltrazione notturna"
   },
 
   mappe: {
@@ -108,6 +108,11 @@ const TRESIL_DATA = {
     "Verlek":                    { sezione: "personaggi",    voce: "verlek",           label: "Verlek Tre Occhi" },
     "Axelions":                  { sezione: "personaggi",    voce: "axelions",         label: "Axelions" },
     "Balsan":                    { sezione: "personaggi",    voce: "balsan",           label: "Balsan" },
+    "Tobin Hurrell":             { sezione: "personaggi",    voce: "tobin-hurrell",    label: "Tobin Hurrell" },
+    "Serca":                     { sezione: "personaggi",    voce: "serca",            label: "Serca" },
+    "Eldran Vossi":              { sezione: "personaggi",    voce: "eldran-vossi",     label: "Eldran Vossi" },
+    "Lina Storta":               { sezione: "personaggi",    voce: "lina-storta",      label: "Lina Storta" },
+    "Jorad":                     { sezione: "personaggi",    voce: "jorad",            label: "Jorad" },
     "Kareen":                    { sezione: "personaggi",    voce: "kareen",           label: "Kareen Vella" },
     "Kareen Vella":              { sezione: "personaggi",    voce: "kareen",           label: "Kareen Vella" },
     "Rock":                      { sezione: "personaggi",    voce: "rock",             label: "Rock" },
@@ -141,7 +146,7 @@ const TRESIL_DATA = {
         descrizione: "Altezza ~1,68 m. Ha ricevuto il coltellino d'osso da Verlek Tre Occhi (valore affettivo). Ha detto al gruppo di non entrare nei suoi sogni.",
         loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie.",
         loreMaster: "L'ordine di Naru implanta un incubo rituale nei discepoli: attraverso questo incubo i maestri trasmettono i poteri. Naru è stato impiantato per errore a 8 anni. Il rituale cancella tutti i ricordi precedenti. Naru non sa che i ricordi sono stati cancellati — per lui non c'è un 'prima'.\n\nCrede di non sognare perché non ricorda il suo unico sogno ricorrente: lago di latte, coste di pietra nera, tentacoli che cercano di ghermirlo. Larimar ha vissuto questo sogno dall'interno nella prima sessione, riportandone una cicatrice reale.\n\nLo spirito del bosco di Ruder lo ha chiamato 'abominio' percependone la natura anomala.",
-        note: "Conflitto irrisolto con Osiris dopo il litigio in locanda a Poz Profondo."
+        note: "Telepatia in sviluppo: canale con Larimar (bidirezionale, richiede concentrazione), canale con Han (persistente e passivo — come 'ridotto a icona', rimane attivo senza concentrazione). Con estranei percepisce solo emozioni di superficie. Non riesce a raggiungere Musashi. Conflitto irrisolto con Osiris dopo il litigio a Poz Profondo."
       },
       {
         id: "osiris", nome: "Osiris", giocatore: "Giulia", tipo: "pg",
@@ -157,7 +162,7 @@ const TRESIL_DATA = {
         colore: "#BA7517", iniziali: "H",
         tag: ["Discendente Primo Olmo", "Umanizzazione rapida", "Piante sì — animali no"],
         descrizione: "Ex mezzo bambino mezzo uccello. Ora simile a un adolescente allampanato con naso aquilino, piume residue, buco nel petto allargato. Trovato originariamente nella fontana con collare inciso 'Han', senza memoria.",
-        loreGiocatori: "Discendente del Primo Olmo. Umanizzazione in corso: piume quasi tutte scomparse, becco caduto. Ha perso il legame con gli animali. Conserva il potere sulle piante. Ora abbastanza umano da viaggiare senza attirare attenzione. Prima volta che sogna dopo la liberazione dal bosco.",
+        loreGiocatori: "Discendente del Primo Olmo. Umanizzazione in corso: piume quasi tutte scomparse, becco caduto. Ha perso il legame con gli animali. Conserva il potere sulle piante. Ora abbastanza umano da viaggiare senza attirare attenzione. Sogna per la prima volta dopo la liberazione dal bosco.\n\nLontano dalla terra ferma non riesce a mangiare né bere — vomita ripetutamente. Il contatto con la terra lo ristabilizza. Si è rivelato involontariamente vegano: tollera solo alimenti vegetali.\n\nNaru ha stabilito con lui una connessione telepatica persistente e bidirezionale — rimane attiva passivamente come 'ridotto a icona' senza richiedere concentrazione.\n\nNome falso in copertura a Fossolento: Delforio.",
         loreMaster: "Bolla onirica con striature dorate anomale ('occhio di tigre'). Nel sogno appare il Viandante dei Sogni — futuro mentore di Larimar.\n\nHa vomitato vermi neri e marroni senza memoria dell'evento.\n\nIl gatto di Verlek lo ha graffiato in modo anomalo — gli animali percepiscono qualcosa di strano in lui.",
         note: "Ha abbracciato Osiris spontaneamente singhiozzando — primo contatto fisico diretto autonomo. Forte imbarazzo dopo il primo utilizzo del bagno."
       }
@@ -272,6 +277,69 @@ const TRESIL_DATA = {
         descrizione: "Capo della Rosa d'Ombra.",
         loreGiocatori: "Ha ucciso Rosco perché aveva provato a prendere qualcosa di M.",
         loreMaster: "", note: ""
+      },
+      {
+        id: "tobin-hurrell", nome: "Tobin Hurrell", tipo: "png",
+        colore: "#888780", iniziali: "TH",
+        tag: ["Guardia portuale", "Fossolento"],
+        descrizione: "Soldato semplice, guardia portuale di Fossolento. Elmo e mezza armatura, spada alla cintura. Burocratico ma non ostile, sbrigativo.",
+        loreGiocatori: "Ha registrato l'arrivo del gruppo e riscosso la tassa di sbarco. Ha suggerito la foresteria di Serca. Ha glissato due volte sulla conceria — attività sospette tollerate per ragioni economiche.",
+        loreMaster: "Ha guardato verso sud quando menzionata la conceria. Ha ricevuto uno scrigno da Rugan quartiermastro dell'Aurora del Mare firmando ricevuta — contenuto ignoto.",
+        note: ""
+      },
+      {
+        id: "serca", nome: "Serca", tipo: "png",
+        colore: "#888780", iniziali: "SC",
+        tag: ["Locandiera", "Fossolento", "Ex marinaia"],
+        descrizione: "Locandiera del 'Il Nodo' a Fossolento. Anziana, corporatura robusta, uncino al posto di un braccio. Ex donna di mare. Carattere diretto, volgare e sarcastico ma con ironia bonaria. Pelo lungo tre dita sul mento.",
+        loreGiocatori: "Gestisce la foresteria 'Il Nodo'. Tollera gli stranieri della conceria per ragioni economiche ma non li ama. Ha accolto il gruppo con sarcasmo — chiama Osiris 'capitano' con ironia.",
+        loreMaster: "",
+        note: "Ottima fonte di informazioni sul villaggio — ascolta tutto senza fare domande."
+      },
+      {
+        id: "eldran-vossi", nome: "Eldran Vossi", tipo: "png",
+        colore: "#888780", iniziali: "BB",
+        tag: ["Capovillaggio", "Fossolento"],
+        descrizione: "Capovillaggio di Fossolento. Uomo affabile e goloso, dente d'oro luccicante. Tono ottimista e promozionale riguardo al villaggio. Si è avvicinato spontaneamente al gruppo durante il pranzo.",
+        loreGiocatori: "Ha fornito una mappa del villaggio. Ha rivelato la scogliera inclinata con scalinate sotto la conceria — usata storicamente per l'alaggio delle balene, possibile via d'accesso. Ha un appuntamento con il gruppo per una mappa più dettagliata.",
+        loreMaster: "Atteggiamento laissez-faire verso la compagnia nella conceria: 'fintanto che non infrangono la legge' con sorriso e dente d'oro. Ha ricevuto denaro dalla conceria. Il suo cognome 'Vossi' potrebbe avere un legame con Nerik Voss — da verificare.",
+        note: ""
+      },
+      {
+        id: "lina-storta", nome: "Lina Storta", tipo: "png",
+        colore: "#D85A30", iniziali: "LS",
+        tag: ["Mercenaria", "Conceria", "Potenziale alleata"],
+        descrizione: "Mercenaria, figura di riferimento della conceria. Staziona sul tetto con arco e freccia incoccata ma non tesa durante il giorno. Capace di gestire i mercenari più violenti.",
+        loreGiocatori: "Ha respinto il gruppo all'ingresso della conceria. Ha avvertito spontaneamente Osiris che i gestori sono persone pericolose — momento inaspettato di umanità.",
+        loreMaster: "Potenziale alleata insoddisfatta. Il suo avvertimento suggerisce dissidenza interna o almeno una coscienza. Da avvicinare con cautela.",
+        note: ""
+      },
+      {
+        id: "jorad", nome: "Jorad", tipo: "png",
+        colore: "#D85A30", iniziali: "J",
+        tag: ["Intermediario", "Conceria", "Fossolento"],
+        descrizione: "Figura che fa da tramite tra gli stranieri della conceria e il loro capo. Non incontrato direttamente dal gruppo.",
+        loreGiocatori: "È l'unico punto di contatto degli stranieri con il loro capo. Il capo delle guardie locali lo ha minacciato esplicitamente accusandolo di contrabbando.",
+        loreMaster: "",
+        note: ""
+      },
+      {
+        id: "gemelli-conceria", nome: "Gli Stranieri della Conceria", tipo: "png",
+        colore: "#D85A30", iniziali: "SC",
+        tag: ["Mercenari", "Conceria", "Sospetti"],
+        descrizione: "Tre stranieri frequentano la locanda: due gemelli (piccola spada, armatura leggera di cuoio) e una ragazza portavoce. Un quarto individuo con cicatrici visibili (mignolo mancante, pezzo di naso mancante, cicatrice sulla testa semi-rasata) rimane a dormire alla conceria e non frequenta la locanda.",
+        loreGiocatori: "Non conoscono il loro capo — parlano solo con Jorad come intermediario. Due di loro si allontanano dalla locanda in serata. Uno dei gemelli sembra poco autonomo nelle decisioni.",
+        loreMaster: "Osiris ipotizza che uno dei gemelli possa essere Ravok, il fatato mutaforma — da verificare con cautela.",
+        note: ""
+      },
+      {
+        id: "pellin-fossolento", nome: "Pellin", tipo: "png",
+        colore: "#5ab48f", iniziali: "P",
+        tag: ["Ragazzino", "Informatore", "Fossolento"],
+        descrizione: "Ragazzino del villaggio di Fossolento. Parla sottovoce lontano dagli adulti, disposto a condividere informazioni in cambio di monete.",
+        loreGiocatori: "Ha udito rumori notturni provenire dai vecchi attracchi delle baleniere. Ha visto una cassa gettata in mare. Ha assistito a una discussione tra le guardie e Jorad della conceria, con minacce esplicite.",
+        loreMaster: "",
+        note: "Da non confondere con Pellin di Fossolento menzionato nei PNG del villaggio nel data originale."
       }
     ]
   },
@@ -584,30 +652,74 @@ const TRESIL_DATA = {
     {
       id: "s-15", data: "30 del 4° mese", luogo: "Poz Profondo → Aurora del Mare → Fossolento",
       titolo: "Da Poz Profondo a Fossolento",
-      nuova: true,
+      nuova: false,
       eventiChiave: [
-        "30 del 4° — Arrivo a Poz Profondo, incontro con Verlek Tre Occhi in locanda, invito a colazione",
-        "Litigio emotivo: Osiris si sente abbandonata dalla notte nel bosco",
+        "30 del 4° — Arrivo a Poz Profondo, colazione con Verlek Tre Occhi, coltellino d'osso intagliato a Naru",
+        "Litigio emotivo: Osiris si sente abbandonata per la vicenda di Han nel bosco",
         "Han abbraccia Osiris singhiozzando — primo contatto fisico diretto autonomo",
         "Larimar veglia nel mondo dei sogni: bolla dorata di Han (striature anomale) e sogno del legame fatato di Osiris",
-        "Colazione da Verlek: informazioni sulla conceria di Fossolento, coltellino d'osso intagliato a Naru",
-        "Han fa crescere un fiore — conferma: piante ok, animali perso",
+        "Colazione da Verlek: informazioni sulla conceria di Fossolento",
+        "Han fa crescere un fiore — conferma: piante ok, legame con animali perso",
         "Osiris identifica la conceria come probabile covo di Ravok",
         "Vendita di 4 cavalli a Rorac (+2 am +5 ap), imbarco sull'Aurora del Mare",
         "Han usa il bagno per la prima volta — forte imbarazzo",
-        "Naru sviluppa telepatia in tre fasi durante la traversata",
-        "Prima comunicazione telepatica bidirezionale involontaria tra Naru e Larimar",
-        "33 del 4° — Fossolento avvistata all'orizzonte"
+        "Han lontano dalla terra inizia a stare male: non riesce a mangiare né bere, vomita ripetutamente",
+        "Naru sviluppa telepatia in tre fasi durante la traversata: percepisce presenza, poi pensieri, poi comunicazione",
+        "Prima comunicazione telepatica bidirezionale involontaria tra Naru e Larimar — lei lo sente come voce vicina",
+        "33 del 4° — Fossolento avvistata all'orizzonte",
+        "Nomi falsi adottati: Osiris → Sirio/Syrio Han, Naru → Uran, Larimar → Almira"
       ],
       economia: [
         { desc: "Vendita 4 cavalli a Rorac", importo: "+2 am +5 ap", tipo: "entrata" }
       ],
       oggetti: [
-        { nome: "Coltellino d'osso", note: "Regalo di Verlek a Naru. Valore affettivo.", acquisito: true }
+        { nome: "Coltellino d'osso", note: "Regalo di Verlek Tre Occhi a Naru. Valore affettivo.", acquisito: true }
       ],
       approfondimenti: [],
-      tag: ["Poz Profondo", "Verlek", "Litigio Osiris", "Han sogna", "Telepatia Naru–Larimar", "Conceria identificata", "Aurora del Mare"],
-      riassunto: "30 del 4°: Poz Profondo, Verlek, litigio emotivo, Han abbraccia Osiris, imbarco. 3 giorni di traversata. 33 del 4°: Fossolento in vista. Naru sviluppa la telepatia."
+      tag: ["Poz Profondo", "Verlek", "Litigio Osiris", "Han mal di mare", "Telepatia Naru–Larimar", "Conceria identificata", "Aurora del Mare", "Nomi falsi"],
+      riassunto: "Colazione con Verlek. Litigio emotivo. Han abbraccia Osiris. Larimar veglia sui sogni. Imbarco sull'Aurora del Mare. Han si ammala gravemente lontano dalla terra. Naru sviluppa la telepatia: prima comunicazione con Larimar. Fossolento in vista. Il gruppo adotta nomi falsi."
+    },
+
+    // ── S16 · 33–34 del 4° mese ────────────────────────────────
+    {
+      id: "s-16", data: "33 del 4° mese", luogo: "Fossolento — porto, locanda, conceria",
+      titolo: "Arrivo a Fossolento — Intrighi e sopralluogo",
+      nuova: true,
+      eventiChiave: [
+        "Sbarco a Fossolento: tassa doganale pagata (1 bg + 2 bm a testa) al soldato Tobin Hurrell",
+        "Copertura regge: delegazione di una compagnia navale di Ferramarchi con base a Perugia",
+        "Hurrell glissa due volte sulla conceria — attività sospette tollerate per ragioni economiche",
+        "Han scende dalla scialuppa a carponi, bacia il suolo, si allontana nel bosco e si riprende a contatto con la terra",
+        "Han si rivela involontariamente vegano: tollera solo alimenti vegetali",
+        "Il gruppo si insedia alla foresteria 'Il Nodo' gestita da Serca — ex marinaia con uncino al braccio",
+        "Osservati tre stranieri alla locanda: due gemelli, una ragazza portavoce, uno con cicatrici — probabilmente della conceria",
+        "Gli stranieri non conoscono il loro capo e parlano solo con Jorad come intermediario",
+        "⭐ Naru verifica la telepatia durante la cena: Larimar lo sente chiaramente — canale confermato",
+        "⭐ Telepatia di Naru: richiede legame preesistente — con estranei percepisce solo emozioni di superficie",
+        "Passeggiata notturna nel bosco: Han si rinvigorisce accarezzando alberi, ma qualcosa nel bosco non risponde più",
+        "⭐ Naru tenta di contattare Musashi in meditazione: nessuna risposta — il ciondolo non è un canale",
+        "⭐ Larimar veglia tutta la notte nel mondo dei sogni: ~230 bolle nel villaggio, nessun fatato visibile",
+        "⭐ Naru stabilisce connessione telepatica persistente e bidirezionale con Han — rimane attiva passivamente come 'ridotto a icona'",
+        "Pellin (ragazzino del villaggio) rivela rumori notturni agli attracchi delle baleniere e una cassa gettata in mare",
+        "Lina Storta (mercenaria sul tetto della conceria) respinge il gruppo ma avverte spontaneamente: i gestori sono pericolosi",
+        "⭐ Il gruppo discute in Shizenka del legame Nerek Voss → Rosco → M tramite collare e specchio",
+        "Incontro con Eldran Vossi (capovillaggio): fornisce mappa del villaggio con scogliera e scalinate",
+        "⭐ Bossi rivela: sotto la conceria esiste una scogliera inclinata con scalinate — possibile via d'accesso notturno",
+        "⭐ Piano operativo: sopralluogo onirico di Larimar nella conceria + infiltrazione fisica dalla scogliera di notte",
+        "⭐ Il gruppo ipotizza che uno dei gemelli possa essere Ravok — da verificare",
+        "⭐ Larimar ricorda a Naru che anche Han è stato chiamato 'abominio' — potrebbe essere semi-fatato",
+        "Discussione filosofica: i fatati nascono da atti di volontà; Ravok potrebbe non aver capito cosa fosse Larimar"
+      ],
+      economia: [
+        { desc: "Tassa di sbarco (4 persone)", importo: "-4 bg -8 bm", tipo: "uscita" },
+        { desc: "Monete a Pellin per informazioni", importo: "-piccolo importo", tipo: "uscita" }
+      ],
+      oggetti: [
+        { nome: "Mappa di Fossolento", note: "Fornita da Eldran Vossi. Vecchia ma accurata — segnala scogliera inclinata e scalinate sotto la conceria.", acquisito: true }
+      ],
+      approfondimenti: [],
+      tag: ["Fossolento", "Telepatia Naru–Han", "Lina Storta", "Eldran Vossi", "Scogliera", "Piano notturno", "Gemelli sospetti", "Jorad", "Nessun fatato", "Veglia Larimar"],
+      riassunto: "Sbarco a Fossolento. Han si riprende a contatto con la terra. Copertura regge con Hurrell. Insediamento alla locanda di Serca. Tre stranieri sospetti osservati alla locanda (un quarto con cicatrici dorme alla conceria). Telepatia di Naru confermata e ampliata: canale persistente con Han. Larimar veglia senza trovare fatati. Bossi fornisce mappa con accesso dalla scogliera. Piano operativo: sopralluogo onirico + infiltrazione notturna dalla scogliera."
     }
 
   ],
@@ -832,29 +944,38 @@ const TRESIL_DATA = {
 
   thread: {
     urgenti: [
-      { id: "t1",  testo: "Cosa trovano a Fossolento? La conceria è il covo di Ravok?",              soloMaster: false, risolto: false },
+      { id: "t1",  testo: "Piano notturno: sopralluogo onirico di Larimar nella conceria + infiltrazione dalla scogliera",              soloMaster: false, risolto: false },
       { id: "t2",  testo: "Il conflitto Osiris–Naru irrisolto — come evolverà?",                     soloMaster: false, risolto: false },
       { id: "t3",  testo: "Larimar userà l'informazione sul sogno di Osiris (legame fatato)?",        soloMaster: true,  risolto: false },
-      { id: "t4",  testo: "La telepatia Naru–Larimar diventerà intenzionale? Osiris lo scoprirà?",   soloMaster: false, risolto: false },
-      { id: "t5",  testo: "Chi sono i contatti locali di Ravok a Fossolento?",                       soloMaster: true,  risolto: false }
+      { id: "t4",  testo: "Uno dei gemelli è Ravok? Come verificarlo senza esporsi?",                 soloMaster: false, risolto: false },
+      { id: "t5",  testo: "Chi sono i contatti locali di Ravok a Fossolento? Chi è Jorad?",           soloMaster: true,  risolto: false },
+      { id: "t6",  testo: "Lina Storta può essere corrotta o convinta a collaborare?",                soloMaster: false, risolto: false },
+      { id: "t7",  testo: "Cosa conteneva la cassa gettata in mare agli attracchi delle baleniere?",  soloMaster: true,  risolto: false },
+      { id: "t8",  testo: "Eldran Vossi è davvero ingenuo o è coinvolto? Legame con Nerek Voss?",            soloMaster: true,  risolto: false }
     ],
     han: [
-      { id: "t6",  testo: "Perché il legame con gli animali si è interrotto ma quello con le piante no?", soloMaster: false, risolto: false },
-      { id: "t7",  testo: "Perché ha vomitato vermi senza memoria?",                                      soloMaster: false, risolto: false },
-      { id: "t8",  testo: "Il buco nel petto allargato — conseguenze fisiche e magiche?",                 soloMaster: false, risolto: false },
-      { id: "t9",  testo: "L'umanizzazione è reversibile?",                                              soloMaster: false, risolto: false },
-      { id: "t10", testo: "La bolla dorata di Han — interferenza esterna o natura speciale?",            soloMaster: true,  risolto: false }
+      { id: "t9",  testo: "Han è diventato vegano involontario — è permanente? È legato alla perdita della componente fatata?", soloMaster: false, risolto: false },
+      { id: "t10", testo: "Han non riesce a mangiare né bere in mare — è una condizione fatata o qualcos'altro?",               soloMaster: false, risolto: false },
+      { id: "t11", testo: "Qualcosa nel bosco di Fossolento non risponde più a Han — cosa è cambiato?",                         soloMaster: false, risolto: false },
+      { id: "t12", testo: "Il buco nel petto allargato — conseguenze fisiche e magiche?",                                       soloMaster: false, risolto: false },
+      { id: "t13", testo: "L'umanizzazione è reversibile?",                                                                     soloMaster: false, risolto: false },
+      { id: "t14", testo: "La bolla dorata di Han — interferenza esterna o natura speciale? I fatati che la osservavano chi erano?", soloMaster: true, risolto: false }
     ],
     lore: [
-      { id: "t11", testo: "Dove è la madre di Larimar? (promessa Axelions)",                        soloMaster: false, risolto: false },
-      { id: "t12", testo: "Chi è il Viandante dei Sogni? Quando incontrerà Larimar?",               soloMaster: true,  risolto: false },
-      { id: "t13", testo: "Cosa sa Naru di sé che non ha condiviso?",                               soloMaster: true,  risolto: false },
-      { id: "t14", testo: "Larimar può influenzare attivamente i sogni altrui?",                    soloMaster: false, risolto: false },
-      { id: "t15", testo: "Elia Varnis: cosa ha perso nella spedizione a nord di Ichikita? Tornerà rilevante?", soloMaster: true, risolto: false },
-      { id: "t16", testo: "Yome Musashi e le prove di Naru — quando torna?",                        soloMaster: false, risolto: false },
-      { id: "t17", testo: "Cosa sa ancora Torvin Rask?",                                            soloMaster: false, risolto: false },
-      { id: "t18", testo: "Connessione Ainari / laboratorio Axelions?",                             soloMaster: true,  risolto: false },
-      { id: "t19", testo: "Perché Osiris è più difficile da percepire telepaticamente per Naru?",   soloMaster: true,  risolto: false }
+      { id: "t15", testo: "Dove è la madre di Larimar? (promessa Axelions)",                        soloMaster: false, risolto: false },
+      { id: "t16", testo: "Chi è il Viandante dei Sogni? Quando incontrerà Larimar?",               soloMaster: true,  risolto: false },
+      { id: "t17", testo: "Cosa sa Naru di sé che non ha condiviso?",                               soloMaster: true,  risolto: false },
+      { id: "t18", testo: "La telepatia Naru–Han è ora persistente — come si evolverà? Osiris lo scoprirà?", soloMaster: false, risolto: false },
+      { id: "t19", testo: "Naru non percepisce Musashi — è troppo distante o il legame si è interrotto?", soloMaster: true, risolto: false },
+      { id: "t20", testo: "Perché non piove a Tresil da quando il gruppo è arrivato? È naturale o soprannaturale?", soloMaster: true, risolto: false },
+      { id: "t21", testo: "Nessun fatato nel mondo dei sogni di Fossolento — coincidenza o segnale?", soloMaster: true, risolto: false },
+      { id: "t22", testo: "Ravok era davvero ignaro della vera natura di Larimar quando la aveva col collare?", soloMaster: true, risolto: false },
+      { id: "t23", testo: "Il cagnolino di Arla — descritto con dettaglio insolito dal DM. Rilevanza futura?", soloMaster: true, risolto: false },
+      { id: "t24", testo: "Elia Varnis: cosa ha perso nella spedizione a nord di Ichikita? Tornerà rilevante?", soloMaster: true, risolto: false },
+      { id: "t25", testo: "Yome Musashi e le prove di Naru — quando torna?",                        soloMaster: false, risolto: false },
+      { id: "t26", testo: "Cosa sa ancora Torvin Rask?",                                            soloMaster: false, risolto: false },
+      { id: "t27", testo: "Connessione Ainari / laboratorio Axelions?",                             soloMaster: true,  risolto: false },
+      { id: "t28", testo: "Perché Osiris è più difficile da percepire telepaticamente per Naru?",   soloMaster: true,  risolto: false }
     ],
     risolti: []
   },
