@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archivio di Tresil</title>
+<title>Archivio — Kaelvaran</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 :root {
@@ -11,7 +11,6 @@
   --bg-panel: #111520;
   --bg-card:  #161d28;
   --bg-hover: #1a2333;
-  --bg-act:   #1d2d44;
   --border:   rgba(90,130,190,0.13);
   --border-b: rgba(90,130,190,0.28);
   --gold:     #c9a84c;
@@ -20,1314 +19,161 @@
   --t1:       #e8e0d0;
   --t2:       #9a9080;
   --t3:       #5a5448;
-  --red:      #c45a5a;
-  --green:    #5ab48f;
-  --blue:     #5a8fd4;
-  --purple:   #8f72d4;
-  --amber:    #c4954a;
   --font-d:   'Cinzel', serif;
   --font-b:   'Crimson Pro', Georgia, serif;
-  --sw:       242px;
   --tr:       .18s ease;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:16px;line-height:1.7;}
+html,body{min-height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:16px;line-height:1.7;}
+
+/* ── SFONDO ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(90,130,190,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+}
 
 /* ── LAYOUT ── */
-.app{display:flex;height:100vh;overflow:hidden;}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:4rem 2rem 5rem;}
 
-/* ── SIDEBAR ── */
-.sidebar{width:var(--sw);flex-shrink:0;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
-.sb-head{padding:1.25rem 1.25rem .75rem;border-bottom:1px solid var(--border);}
-.sb-title{font-family:var(--font-d);font-size:12px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:3px;}
-.sb-sub{font-size:11px;color:var(--t3);font-style:italic;}
-.sb-date{margin-top:6px;font-size:11px;color:var(--t2);font-style:italic;}
+/* ── HEADER ── */
+.site-head{text-align:center;margin-bottom:4rem;}
+.site-ornament{font-size:11px;letter-spacing:.45em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;justify-content:center;}
+.site-ornament::before,.site-ornament::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--t3));}
+.site-ornament::after{background:linear-gradient(90deg,var(--t3),transparent);}
+.site-title{font-family:var(--font-d);font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:.08em;color:var(--t1);margin-bottom:.5rem;}
+.site-title span{color:var(--gold);}
+.site-sub{font-size:15px;color:var(--t3);font-style:italic;letter-spacing:.02em;}
 
-.nav-section{padding:.5rem 0;border-bottom:1px solid var(--border);}
-.nav-lbl{font-size:9px;letter-spacing:.2em;color:var(--t3);text-transform:uppercase;padding:0 1.25rem .3rem;font-family:var(--font-d);}
-.nav-btn{display:flex;align-items:center;gap:9px;width:100%;padding:7px 1.25rem;background:none;border:none;color:var(--t2);font-family:var(--font-b);font-size:14px;cursor:pointer;text-align:left;transition:var(--tr);position:relative;}
-.nav-btn:hover{color:var(--t1);background:var(--bg-hover);}
-.nav-btn.active{color:var(--gold);background:var(--bg-act);}
-.nav-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);}
-.nav-btn.dm-hidden{display:none;}
-.nav-ico{font-size:11px;width:14px;text-align:center;color:var(--t3);flex-shrink:0;}
-.nav-btn.active .nav-ico{color:var(--gold);}
+/* ── DIVISORE ── */
+.divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem;}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-label{font-family:var(--font-d);font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase;white-space:nowrap;}
 
-.sb-foot{margin-top:auto;padding:.75rem 1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px;}
-.dm-toggle{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:3px;background:none;cursor:pointer;font-family:var(--font-d);font-size:9px;letter-spacing:.1em;color:var(--t3);text-transform:uppercase;transition:var(--tr);width:100%;}
-.dm-toggle:hover{border-color:var(--gold-d);color:var(--gold);}
-.dm-toggle.active{border-color:var(--gold);color:var(--gold);background:var(--gold-g);}
-.dm-dot{width:7px;height:7px;border-radius:50%;background:var(--t3);transition:var(--tr);}
-.dm-toggle.active .dm-dot{background:var(--gold);}
-.admin-link{display:block;text-align:center;padding:6px;font-family:var(--font-d);font-size:9px;letter-spacing:.12em;color:var(--t3);text-decoration:none;border:1px solid var(--border);border-radius:3px;transition:var(--tr);text-transform:uppercase;}
-.admin-link:hover{color:var(--gold);border-color:var(--gold-d);background:var(--gold-g);}
+/* ── CAMPAGNA PRINCIPALE ── */
+.main-campaign{
+  display:block;text-decoration:none;
+  background:var(--bg-card);border:1px solid var(--border-b);border-radius:6px;
+  padding:1.75rem 2rem;margin-bottom:2rem;
+  position:relative;overflow:hidden;
+  transition:border-color .2s, background .2s, transform .15s;
+}
+.main-campaign:hover{border-color:var(--gold-d);background:var(--bg-hover);transform:translateY(-2px);}
+.main-campaign::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.mc-label{font-size:9px;letter-spacing:.2em;color:var(--gold-d);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.5rem;}
+.mc-title{font-family:var(--font-d);font-size:22px;font-weight:600;letter-spacing:.05em;color:var(--t1);margin-bottom:.4rem;}
+.mc-sub{font-size:14px;color:var(--t2);font-style:italic;margin-bottom:1.25rem;}
+.mc-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
+.mc-btn{
+  padding:7px 18px;border-radius:3px;font-family:var(--font-d);font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  border:1px solid;transition:var(--tr);cursor:pointer;
+}
+.mc-btn.players{border-color:var(--border-b);color:var(--t2);}
+.mc-btn.players:hover{border-color:var(--gold-d);color:var(--gold);background:var(--gold-g);}
+.mc-btn.dm{border-color:var(--gold-d);color:var(--gold);background:var(--gold-g);}
+.mc-btn.dm:hover{background:rgba(201,168,76,0.22);}
 
-/* ── MAIN ── */
-.main{flex:1;overflow-y:auto;padding:2rem 2.5rem;background:var(--bg);}
-.section{display:none;}
-.section.active{display:block;}
+/* ── GRID ONE SHOT ── */
+.oneshot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
 
-/* ── HEADER SEZIONE ── */
-.sec-head{margin-bottom:1.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);position:relative;}
-.sec-head::after{content:'';position:absolute;bottom:-1px;left:0;width:50px;height:1px;background:var(--gold);}
-.sec-title{font-family:var(--font-d);font-size:21px;font-weight:600;color:var(--t1);letter-spacing:.04em;margin-bottom:3px;}
-.sec-sub{font-size:13px;color:var(--t3);font-style:italic;}
+.oneshot-card{
+  display:block;text-decoration:none;
+  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
+  padding:1.4rem 1.6rem;
+  position:relative;overflow:hidden;
+  transition:border-color .2s,background .2s,transform .15s;
+}
+.oneshot-card:hover{border-color:var(--border-b);background:var(--bg-hover);transform:translateY(-2px);}
+.oneshot-card::after{
+  content:'→';position:absolute;bottom:1.2rem;right:1.4rem;
+  font-family:var(--font-d);font-size:13px;color:var(--t3);
+  transition:color .2s,transform .2s;
+}
+.oneshot-card:hover::after{color:var(--gold);transform:translateX(3px);}
+.oc-tag{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.5rem;}
+.oc-title{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:.04em;color:var(--t1);margin-bottom:.35rem;}
+.oc-sub{font-size:13px;color:var(--t2);font-style:italic;line-height:1.5;}
+.oc-meta{margin-top:.9rem;display:flex;gap:.5rem;flex-wrap:wrap;}
+.oc-pill{font-size:9px;padding:2px 8px;border-radius:2px;border:1px solid var(--border);color:var(--t3);font-family:var(--font-d);letter-spacing:.04em;}
 
-/* ── CARD ── */
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.4rem;margin-bottom:.9rem;transition:border-color var(--tr);}
-.card:hover{border-color:var(--border-b);}
-.card.secret{border-left:2px solid #8f4444;background:rgba(143,68,68,.07);}
-.card.shared{border-left:2px solid var(--blue);background:rgba(90,143,212,.07);}
-.card.new-s{border-left:2px solid var(--green);}
-.card-title{font-family:var(--font-d);font-size:12px;font-weight:600;letter-spacing:.09em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
-.card-body{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
+/* card "prossimamente" */
+.oneshot-card.coming{opacity:.45;cursor:default;pointer-events:none;}
+.oneshot-card.coming:hover{transform:none;}
 
-/* ── STAT GRID ── */
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem;}
-.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:.9rem;}
-.stat-lbl{font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:5px;}
-.stat-val{font-family:var(--font-d);font-size:15px;color:var(--t1);}
-
-/* ── TAGS ── */
-.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
-.tag{font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid var(--border);color:var(--t3);font-family:var(--font-d);letter-spacing:.04em;}
-.tag.dm-only{border-color:#8f4444;color:#c47070;}
-.tag.new{border-color:var(--green);color:var(--green);}
-.tag.shared{border-color:var(--blue);color:var(--blue);}
-
-/* ── PERSONAGGIO ── */
-.pg-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:1rem;overflow:hidden;transition:border-color var(--tr);}
-.pg-card:hover{border-color:var(--border-b);}
-.pg-head{display:flex;align-items:center;gap:12px;padding:1rem 1.4rem;cursor:pointer;background:var(--bg-panel);border-bottom:1px solid var(--border);}
-.pg-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:14px;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.08);}
-.pg-name{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--t1);letter-spacing:.04em;}
-.pg-player{font-size:11px;color:var(--t3);font-style:italic;}
-.pg-arr{font-size:10px;color:var(--t3);margin-left:auto;transition:transform var(--tr);}
-.pg-card.open .pg-arr{transform:rotate(90deg);}
-.pg-body{display:none;padding:1rem 1.4rem;}
-.pg-card.open .pg-body{display:block;}
-.pg-sec-lbl{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin:1rem 0 .3rem;padding-top:.75rem;border-top:1px solid var(--border);}
-.pg-sec-lbl:first-child{margin-top:0;border-top:none;padding-top:0;}
-.pg-text{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
-.callout-m{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#b07070;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
-.callout-s{background:rgba(90,143,212,.07);border-left:2px solid var(--blue);padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#7a9ec4;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
-.pg-group-lbl{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;margin:1.5rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);}
-
-/* ── SESSIONE ── */
-.sess-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:.9rem;overflow:hidden;transition:border-color var(--tr);}
-.sess-card.new-s{border-left:2px solid var(--green);}
-.sess-card:hover{border-color:var(--border-b);}
-.sess-head{display:flex;align-items:center;gap:10px;padding:.9rem 1.4rem;cursor:pointer;background:var(--bg-panel);}
-.sess-date{font-family:var(--font-d);font-size:9px;letter-spacing:.14em;color:var(--gold-d);text-transform:uppercase;white-space:nowrap;}
-.sess-title{flex:1;font-size:14px;color:var(--t1);font-family:var(--font-d);letter-spacing:.02em;}
-.sess-arr{font-size:10px;color:var(--t3);transition:transform var(--tr);}
-.sess-card.open .sess-arr{transform:rotate(90deg);}
-.sess-body{display:none;padding:1rem 1.4rem;border-top:1px solid var(--border);}
-.sess-card.open .sess-body{display:block;}
-.sess-text{font-size:14px;color:var(--t2);line-height:1.75;}
-.ev-list{margin:.5rem 0;padding:0;list-style:none;}
-.ev-list li{font-size:13px;color:var(--t2);padding:3px 0;padding-left:14px;position:relative;}
-.ev-list li::before{content:'›';position:absolute;left:0;color:var(--gold-d);}
-
-/* TAG POPUP */
-.popup-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
-.ptag{font-size:10px;padding:3px 10px;border-radius:2px;cursor:pointer;font-family:var(--font-d);letter-spacing:.04em;border:1px solid;transition:var(--tr);}
-.ptag.economia{border-color:#c4954a;color:#c4954a;}
-.ptag.economia:hover{background:rgba(196,149,74,.12);}
-.ptag.oggetto{border-color:var(--blue);color:var(--blue);}
-.ptag.oggetto:hover{background:rgba(90,143,212,.12);}
-.ptag.approfondimento{border-color:var(--purple);color:var(--purple);}
-.ptag.approfondimento:hover{background:rgba(143,114,212,.12);}
-
-/* ── ACCORDION ── */
-.acc-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;border-top:1px solid var(--border);cursor:pointer;padding:9px 0;color:var(--t1);font-family:var(--font-b);font-size:14px;text-align:left;transition:color var(--tr);}
-.acc-btn:first-child{border-top:none;}
-.acc-btn:hover{color:var(--gold);}
-.acc-arr{font-size:9px;color:var(--t3);transition:transform var(--tr);}
-.acc-btn.open .acc-arr{transform:rotate(90deg);}
-.acc-body{display:none;padding:5px 0 10px 10px;font-size:13px;color:var(--t2);line-height:1.7;border-left:1px solid var(--border);margin-left:3px;}
-.acc-body.open{display:block;}
-
-/* ── OGGETTI ── */
-.obj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem;}
-.obj-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1rem 1.2rem;transition:border-color var(--tr);}
-.obj-card:hover{border-color:var(--border-b);}
-.obj-card.master{border-left:2px solid #8f4444;}
-.obj-name{font-family:var(--font-d);font-size:12px;letter-spacing:.06em;color:var(--gold);margin-bottom:4px;}
-.obj-meta{font-size:11px;color:var(--t3);margin-bottom:8px;font-style:italic;}
-.obj-desc{font-size:13px;color:var(--t2);line-height:1.65;white-space:pre-line;}
-.obj-master{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.5rem .75rem;margin-top:.6rem;font-size:12px;color:#b07070;line-height:1.6;white-space:pre-line;border-radius:0 3px 3px 0;}
-
-/* ── LORE ── */
-.lore-cat-title{font-family:var(--font-d);font-size:10px;letter-spacing:.2em;color:var(--t3);text-transform:uppercase;margin:1.5rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid var(--border);}
-.lore-cat-title:first-child{margin-top:0;}
-.lore-card{background:var(--bg-card);border:1px solid var(--border);border-left-width:3px;border-radius:0 4px 4px 0;padding:1rem 1.4rem;margin-bottom:.9rem;}
-.lore-title{font-family:var(--font-d);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.65rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.lore-body{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
-.shared-pill{font-size:8px;letter-spacing:.1em;padding:2px 6px;border:1px solid var(--blue);color:var(--blue);border-radius:2px;font-family:var(--font-d);text-transform:uppercase;}
-
-/* ── AMBIENTAZIONE TAB ── */
-.amb-tabs{display:flex;gap:1px;border-bottom:1px solid var(--border);margin-bottom:1.25rem;flex-wrap:wrap;}
-.amb-tab{padding:6px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--t3);font-family:var(--font-d);font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;margin-bottom:-1px;transition:var(--tr);}
-.amb-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
-.amb-tab:hover:not(.active){color:var(--t2);}
-.amb-panel{display:none;}
-.amb-panel.active{display:block;}
-
-/* ── THREAD ── */
-.thread-grp{margin-bottom:1.4rem;}
-.thread-grp-title{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;margin-bottom:.4rem;padding-bottom:.35rem;border-bottom:1px solid var(--border);}
-.thread-row{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid rgba(90,130,190,.05);font-size:14px;color:var(--t2);}
-.thread-row:last-child{border-bottom:none;}
-.thread-row.resolved{opacity:.4;text-decoration:line-through;}
-.thread-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:8px;}
-.resolve-btn{margin-left:auto;flex-shrink:0;background:none;border:1px solid var(--border);border-radius:2px;color:var(--t3);font-size:9px;padding:2px 7px;cursor:pointer;font-family:var(--font-d);letter-spacing:.05em;transition:var(--tr);}
-.resolve-btn:hover{border-color:var(--green);color:var(--green);}
-.resolved-grp-title{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:6px;padding:.5rem 0;border-top:1px solid var(--border);margin-top:1rem;}
-.resolved-list{display:none;}
-.resolved-list.open{display:block;}
-
-/* ── NOTE ── */
-textarea{width:100%;background:var(--bg-panel);border:1px solid var(--border);border-radius:3px;padding:9px 11px;font-family:var(--font-b);font-size:14px;color:var(--t1);resize:vertical;min-height:100px;transition:border-color var(--tr);line-height:1.6;}
-textarea:focus{outline:none;border-color:var(--gold-d);}
-.save-btn{margin-top:7px;padding:6px 16px;background:none;border:1px solid var(--gold-d);color:var(--gold);font-family:var(--font-d);font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:var(--tr);}
-.save-btn:hover{background:var(--gold-g);}
-.note-saved{font-size:11px;color:var(--green);margin-top:4px;display:none;font-style:italic;}
-
-/* ── MODAL ── */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;align-items:center;justify-content:center;}
-.modal-ov.open{display:flex;}
-.modal-box{background:var(--bg-panel);border:1px solid var(--border-b);border-radius:4px;padding:1.4rem 1.75rem;max-width:520px;width:92%;max-height:72vh;overflow-y:auto;position:relative;}
-.modal-title{font-family:var(--font-d);font-size:13px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;padding-bottom:.65rem;border-bottom:1px solid var(--border);}
-.modal-body{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
-.modal-close{position:absolute;top:.9rem;right:.9rem;background:none;border:none;color:var(--t3);cursor:pointer;font-size:17px;line-height:1;transition:color var(--tr);}
-.modal-close:hover{color:var(--t1);}
-.modal-goto{display:inline-block;margin-top:.9rem;padding:5px 13px;border:1px solid var(--gold-d);color:var(--gold);background:none;font-family:var(--font-d);font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:var(--tr);}
-.modal-goto:hover{background:var(--gold-g);}
-
-/* ── MODAL PASSWORD ── */
-.pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
-.pw-overlay.open{display:flex;}
-.pw-box{background:var(--bg-panel);border:1px solid var(--border-b);border-radius:4px;padding:1.75rem;max-width:340px;width:92%;text-align:center;}
-.pw-title{font-family:var(--font-d);font-size:13px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem;}
-.pw-input{width:100%;padding:9px 12px;background:var(--bg-card);border:1px solid var(--border-b);border-radius:3px;color:var(--t1);font-family:var(--font-b);font-size:15px;margin-bottom:.75rem;text-align:center;letter-spacing:.15em;}
-.pw-input:focus{outline:none;border-color:var(--gold-d);}
-.pw-btn{padding:8px 24px;background:none;border:1px solid var(--gold-d);color:var(--gold);font-family:var(--font-d);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:var(--tr);width:100%;}
-.pw-btn:hover{background:var(--gold-g);}
-.pw-err{font-size:12px;color:var(--red);margin-top:.5rem;display:none;font-style:italic;}
-
-/* ── ECONOMIA ── */
-.eco-valute{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;margin-bottom:1.5rem;}
-.eco-valuta{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:.75rem 1rem;}
-.eco-val-sigla{font-family:var(--font-d);font-size:16px;color:var(--gold);font-weight:600;}
-.eco-val-nome{font-size:12px;color:var(--t2);margin:.2rem 0;}
-.eco-val-note{font-size:11px;color:var(--t3);font-style:italic;}
-.eco-converter{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1rem 1.4rem;margin-bottom:1.5rem;}
-.eco-conv-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem;}
-.eco-conv-input{background:var(--bg);border:1px solid var(--border-b);border-radius:3px;padding:6px 10px;color:var(--t1);font-family:var(--font-b);font-size:14px;width:100px;outline:none;}
-.eco-conv-input:focus{border-color:var(--gold-d);}
-.eco-conv-select{background:var(--bg);border:1px solid var(--border-b);border-radius:3px;padding:6px 8px;color:var(--t1);font-family:var(--font-b);font-size:14px;outline:none;cursor:pointer;}
-.eco-conv-result{font-size:13px;color:var(--t2);line-height:1.8;}
-.eco-conv-result span{color:var(--gold);font-family:var(--font-d);font-size:12px;}
-.eco-salari{margin-bottom:1.5rem;}
-.eco-salari table{width:100%;border-collapse:collapse;font-size:13px;}
-.eco-salari th{font-family:var(--font-d);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);padding:.5rem .75rem;text-align:left;border-bottom:1px solid var(--border);}
-.eco-salari td{padding:.5rem .75rem;border-bottom:1px solid var(--border);color:var(--t2);vertical-align:top;}
-.eco-salari tr:last-child td{border-bottom:none;}
-.eco-salari td:first-child{color:var(--t1);}
-.eco-salari td.mono{font-family:var(--font-d);font-size:11px;color:var(--amber);white-space:nowrap;}
-.eco-cat-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
-.eco-cat-tab{padding:5px 12px;background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);font-family:var(--font-b);font-size:13px;cursor:pointer;transition:var(--tr);}
-.eco-cat-tab:hover{color:var(--t1);border-color:var(--border-b);}
-.eco-cat-tab.active{color:var(--gold);border-color:var(--gold-d);background:var(--gold-g);}
-.eco-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-.eco-table th{font-family:var(--font-d);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);background:var(--bg-panel);}
-.eco-table td{padding:.55rem 1rem;border-bottom:1px solid var(--border);color:var(--t2);vertical-align:top;}
-.eco-table tr:last-child td{border-bottom:none;}
-.eco-table tr:hover td{background:var(--bg-hover);}
-.eco-table td:first-child{color:var(--t1);}
-.eco-table td.costo{font-family:var(--font-d);font-size:11px;color:var(--amber);white-space:nowrap;}
-.eco-table td.note-col{font-size:11px;color:var(--t3);font-style:italic;}
-.eco-search{width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:3px;padding:7px 12px;color:var(--t1);font-family:var(--font-b);font-size:13px;outline:none;margin-bottom:1rem;transition:border-color var(--tr);}
-.eco-search:focus{border-color:var(--gold-d);}
-.eco-search::placeholder{color:var(--t3);}
-
-/* ── LINK ── */
-.wlink{color:#8ab4e8;cursor:pointer;text-decoration:none;border-bottom:1px dotted rgba(138,180,232,.35);transition:color var(--tr),border-color var(--tr);}
-.wlink:hover{color:var(--gold);border-bottom-color:var(--gold-d);}
-
-/* ── PIN MAPPA ── */
-.map-pin-layer{position:absolute;top:0;left:0;pointer-events:none;transform-origin:0 0;}
-.map-pin{position:absolute;pointer-events:all;transform:translate(-50%,-100%);cursor:pointer;display:flex;flex-direction:column;align-items:center;}
-.map-pin-dot{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,0.8);box-shadow:0 2px 6px rgba(0,0,0,0.6);transition:transform .15s;}
-.map-pin:hover .map-pin-dot{transform:scale(1.4);}
-.map-pin-needle{width:2px;height:7px;background:rgba(255,255,255,0.5);margin:0 auto;}
-.map-tooltip{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:var(--bg-panel);border:1px solid var(--border-b);border-radius:3px;padding:6px 10px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s;z-index:20;min-width:140px;}
-.map-pin:hover .map-tooltip{opacity:1;}
-.map-tooltip-name{font-family:var(--font-d);font-size:10px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;}
-.map-tooltip-desc{font-size:11px;color:var(--t2);margin-top:2px;white-space:normal;max-width:200px;}
-.map-tooltip-hint{font-size:10px;color:var(--t3);font-style:italic;margin-top:3px;}
-
-/* ── DIVIDER ── */
-hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border-b);border-radius:3px;}
+/* ── FOOTER ── */
+.site-foot{text-align:center;margin-top:4rem;font-size:11px;color:var(--t3);font-style:italic;letter-spacing:.04em;}
 
 /* ── MOBILE ── */
-.mob-bar{display:none;}
-.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;}
-.mob-overlay.open{display:block;}
-
-@media(max-width:680px){
-  .app{flex-direction:column;}
-  .mob-bar{
-    display:flex;align-items:center;justify-content:space-between;
-    background:var(--bg-panel);border-bottom:1px solid var(--border);
-    padding:.6rem 1rem;flex-shrink:0;z-index:100;position:sticky;top:0;
-  }
-  .mob-bar-title{font-family:var(--font-d);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
-  .mob-ham{background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);
-    width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:5px;cursor:pointer;padding:0;transition:border-color var(--tr),color var(--tr);}
-  .mob-ham:hover{border-color:var(--gold-d);color:var(--gold);}
-  .mob-ham span{display:block;width:16px;height:1.5px;background:currentColor;border-radius:1px;transition:transform .2s,opacity .2s;}
-  /* X quando aperto */
-  .mob-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-  .mob-ham.open span:nth-child(2){opacity:0;}
-  .mob-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-
-  .sidebar{
-    position:fixed;top:0;left:0;bottom:0;z-index:100;
-    transform:translateX(-100%);transition:transform .22s ease;
-    width:min(var(--sw), 88vw);
-  }
-  .sidebar.open{transform:translateX(0);}
-  .main{padding:1.25rem 1rem;}
+@media(max-width:600px){
+  .wrap{padding:2.5rem 1rem 3rem;}
+  .mc-actions{flex-direction:column;}
+  .mc-btn{text-align:center;}
 }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="mob-overlay" id="mob-overlay" onclick="closeSidebar()"></div>
-<div class="mob-bar">
-  <span class="mob-bar-title">Archivio di Tresil</span>
-  <button class="mob-ham" id="mob-ham" onclick="toggleSidebar()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
+  <header class="site-head">
+    <div class="site-ornament">Archivio</div>
+    <h1 class="site-title">Il Mondo di <span>Kaelvaran</span></h1>
+    <p class="site-sub">Seleziona la campagna a cui accedere</p>
+  </header>
 
-<div class="app">
-  <nav class="sidebar" id="sidebar">
-    <div class="sb-head">
-      <div class="sb-title">Archivio di Tresil</div>
-      <div class="sb-sub">Campagna D&D</div>
-      <div class="sb-date" id="sb-date"></div>
-    </div>
-    <div class="nav-section" id="nav-cont"></div>
-    <div class="sb-foot">
-      <button class="dm-toggle" id="dm-toggle" onclick="toggleDM()">
-        <div class="dm-dot" id="dm-dot"></div>
-        <span id="dm-label">Modalità DM</span>
-      </button>
-      <a href="admin.html" class="admin-link">⚙ Pannello Admin</a>
-    </div>
-  </nav>
-  <main class="main" id="main">
-    <div id="section-panoramica"    class="section"></div>
-    <div id="section-personaggi"    class="section"></div>
-    <div id="section-sessioni"      class="section"></div>
-    <div id="section-ambientazione" class="section"></div>
-    <div id="section-fazioni"       class="section"></div>
-    <div id="section-oggetti"       class="section"></div>
-    <div id="section-economia"      class="section"></div>
-    <div id="section-mappe" class="section">
-      <div class="sec-head"><div class="sec-title">Mappe</div><div class="sec-sub">Caricamento in corso…</div></div>
-    </div>
-    <div id="section-lore"          class="section"></div>
-    <div id="section-thread"        class="section"></div>
-    <div id="section-note"          class="section"></div>
-  </main>
-</div>
-
-<!-- MODAL CONTENUTO -->
-<div class="modal-ov" id="modal" onclick="closeModalOv(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-title" id="modal-title"></div>
-    <div class="modal-body"  id="modal-body"></div>
-    <button class="modal-goto" id="modal-goto-btn" onclick="modalGoto()">Vai alla scheda →</button>
+  <!-- CAMPAGNA PRINCIPALE -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Campagna principale</div>
+    <div class="divider-line"></div>
   </div>
-</div>
 
-<!-- MODAL POPUP SESSIONE -->
-<div class="modal-ov" id="modal-sess" onclick="closeModalOv(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('modal-sess').classList.remove('open')">✕</button>
-    <div class="modal-title" id="ms-title"></div>
-    <div class="modal-body"  id="ms-body"></div>
+  <div class="main-campaign">
+    <div class="mc-label">In corso</div>
+    <div class="mc-title">Tresil</div>
+    <div class="mc-sub">La campagna principale — città di Tresil e dintorni</div>
+    <div class="mc-actions">
+      <a href="tresil.html" class="mc-btn players">▷ Vista Giocatori</a>
+      <a href="tresil.html?dm=1" class="mc-btn dm">◑ Vista DM</a>
+    </div>
   </div>
-</div>
 
-<!-- MODAL PASSWORD DM -->
-<div class="pw-overlay" id="pw-overlay">
-  <div class="pw-box">
-    <div class="pw-title">◑ Accesso Modalità DM</div>
-    <input type="password" class="pw-input" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
-    <button class="pw-btn" onclick="checkPW()">Sblocca</button>
-    <div class="pw-err" id="pw-err">Password errata.</div>
+  <!-- ONE SHOT -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">One Shot</div>
+    <div class="divider-line"></div>
   </div>
-</div>
 
-<script src="data.js"></script>
-<script>
-// ── STATO ──────────────────────────────────────────
-const ADMIN_PW = 'tresil2025';
-let isMaster = false;
-let modalGotoTarget = null;
-let mappeBuilt = false;
+  <div class="oneshot-grid">
 
-// ── INIT ───────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('sb-date').textContent = 'Data: ' + TRESIL_DATA.meta.dataAttuale;
-  buildNav();
-  buildAllSections();
-  showSection('panoramica');
-});
-
-// ── MODALITÀ DM ────────────────────────────────────
-function toggleDM() {
-  if (isMaster) {
-    isMaster = false;
-    updateDMUI();
-  } else {
-    document.getElementById('pw-input').value = '';
-    document.getElementById('pw-err').style.display = 'none';
-    document.getElementById('pw-overlay').classList.add('open');
-    setTimeout(() => document.getElementById('pw-input').focus(), 100);
-  }
-}
-
-function checkPW() {
-  const val = document.getElementById('pw-input').value;
-  if (val === ADMIN_PW) {
-    isMaster = true;
-    document.getElementById('pw-overlay').classList.remove('open');
-    updateDMUI();
-  } else {
-    document.getElementById('pw-err').style.display = 'block';
-  }
-}
-
-function updateDMUI() {
-  const toggle = document.getElementById('dm-toggle');
-  const dot = document.getElementById('dm-dot');
-  const lbl = document.getElementById('dm-label');
-  toggle.classList.toggle('active', isMaster);
-  lbl.textContent = isMaster ? 'DM attivo' : 'Modalità DM';
-
-  // Mostra/nascondi elementi DM
-  document.querySelectorAll('.dm-only').forEach(el => {
-    el.style.display = isMaster ? '' : 'none';
-  });
-  document.querySelectorAll('.dm-hidden').forEach(el => {
-    el.style.display = isMaster ? '' : 'none';
-  });
-  // Ricostruisci sezioni dinamiche che dipendono da isMaster
-  buildPanoramica();
-  buildLore();
-  buildThread();
-  buildOggetti();
-  buildPersonaggi();
-}
-
-// ── MOBILE SIDEBAR ─────────────────────────────────
-function openSidebar() {
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('mob-overlay').classList.add('open');
-  document.getElementById('mob-ham').classList.add('open');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('mob-overlay').classList.remove('open');
-  document.getElementById('mob-ham').classList.remove('open');
-}
-function toggleSidebar() {
-  const sb = document.getElementById('sidebar');
-  if (sb.classList.contains('open')) closeSidebar(); else openSidebar();
-}
-
-// ── NAVIGAZIONE ────────────────────────────────────
-function buildNav() {
-  const c = document.getElementById('nav-cont');
-  TRESIL_DATA.sezioni.forEach(s => {
-    const btn = document.createElement('button');
-    btn.className = 'nav-btn' + (s.id === 'lore' ? ' dm-only' : '');
-    if (s.id === 'lore') btn.style.display = 'none';
-    btn.dataset.section = s.id;
-    btn.innerHTML = `<span class="nav-ico">${s.icona}</span>${s.label}`;
-    btn.onclick = () => showSection(s.id);
-    c.appendChild(btn);
-  });
-}
-
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('section-' + id)?.classList.add('active');
-  document.querySelector(`[data-section="${id}"]`)?.classList.add('active');
-  // Lazy load mappa solo al primo click
-  if (id === 'mappe' && !mappeBuilt) {
-    mappeBuilt = true;
-    buildMappe();
-  }
-  // Chiudi sidebar su mobile dopo la navigazione
-  if (window.innerWidth <= 680) closeSidebar();
-}
-
-// ── LINKIFY ────────────────────────────────────────
-function linkify(text) {
-  if (!text) return '';
-  let r = text;
-  const sorted = Object.keys(TRESIL_DATA.glossario).sort((a,b) => b.length - a.length);
-  sorted.forEach(term => {
-    const entry = TRESIL_DATA.glossario[term];
-    if (entry.soloMaster && !isMaster) return;
-    const rx = new RegExp(`\\b(${term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})\\b`, 'g');
-    r = r.replace(rx, `<span class="wlink" onclick="openGlossModal('${term}')" title="${entry.label}">$1</span>`);
-  });
-  return r;
-}
-
-function openGlossModal(term) {
-  const entry = TRESIL_DATA.glossario[term];
-  if (!entry) return;
-  if (entry.soloMaster && !isMaster) return;
-  let titolo = entry.label, corpo = '';
-  const { sezione, voce } = entry;
-
-  if (sezione === 'lore') {
-    for (const cat of Object.values(TRESIL_DATA.lore)) {
-      const item = cat.find?.(l => l.id === voce);
-      if (item) { titolo = item.nome; corpo = item.testo; break; }
-    }
-  } else if (sezione === 'ambientazione') {
-    for (const cat of Object.values(TRESIL_DATA.ambientazione)) {
-      const item = cat.find?.(a => a.id === voce);
-      if (item) { titolo = item.nome; corpo = item.testo; break; }
-    }
-  } else if (sezione === 'personaggi') {
-    const all = [...TRESIL_DATA.personaggi.pg, ...TRESIL_DATA.personaggi.png];
-    const p = all.find(x => x.id === voce);
-    if (p) { titolo = p.nome; corpo = p.descrizione; }
-  } else if (sezione === 'fazioni') {
-    const all = [...TRESIL_DATA.fazioni.ufficiali, ...TRESIL_DATA.fazioni.criminali];
-    const f = all.find(x => x.id === voce);
-    if (f) { titolo = f.nome; corpo = f.testo; }
-  } else if (sezione === 'oggetti') {
-    const all = [...TRESIL_DATA.oggetti.notiAiGiocatori, ...TRESIL_DATA.oggetti.soloMaster];
-    const o = all.find(x => x.id === voce);
-    if (o) { titolo = o.nome; corpo = o.descrizione; }
-  }
-
-  document.getElementById('modal-title').textContent = titolo;
-  document.getElementById('modal-body').innerHTML = linkify(corpo);
-  modalGotoTarget = sezione;
-  document.getElementById('modal').classList.add('open');
-}
-
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
-function closeModalOv(e) { if (e.target.classList.contains('modal-ov')) e.target.classList.remove('open'); }
-function modalGoto() {
-  if (modalGotoTarget) { closeModal(); showSection(modalGotoTarget); }
-}
-
-// ── HELPERS ────────────────────────────────────────
-function card(title, body, extra='') {
-  const d = document.createElement('div');
-  d.className = 'card ' + extra;
-  if (title) d.innerHTML = `<div class="card-title">${title}</div>`;
-  const b = document.createElement('div');
-  b.className = 'card-body';
-  b.innerHTML = linkify(body);
-  d.appendChild(b);
-  return d;
-}
-
-function tagsHTML(arr, cls='') {
-  if (!arr?.length) return '';
-  return `<div class="tags">${arr.map(t => `<span class="tag ${cls}">${t}</span>`).join('')}</div>`;
-}
-
-// ── PANORAMICA ─────────────────────────────────────
-function buildPanoramica() {
-  const c = document.getElementById('section-panoramica');
-  const m = TRESIL_DATA.meta;
-  c.innerHTML = `
-    <div class="sec-head"><div class="sec-title">Panoramica</div><div class="sec-sub">Stato attuale della campagna</div></div>
-    <div class="stat-grid">
-      <div class="stat-card"><div class="stat-lbl">Data in-world</div><div class="stat-val">${m.dataAttuale}</div></div>
-      <div class="stat-card"><div class="stat-lbl">Personaggi</div><div class="stat-val">3 PG + 1 PNG</div></div>
-      <div class="stat-card"><div class="stat-lbl">Destinazione</div><div class="stat-val">${m.prossimaDestinazione}</div></div>
-    </div>`;
-
-  const filoGiocatori = `Tresil è minacciata dall'interno da un'entità che si fa chiamare M — un essere coperto da stracci d'ombra incontrato nel mondo dei sogni, che si è presentato come futuro padrone di Han e a cui erano indirizzate istruzioni intercettate dopo gli attacchi coordinati alla città. M usa i fatati come strumenti di controllo tramite collari d'argento abbinati a bracciali: chi porta il bracciale comanda il fatato incollato. Le origini e gli scopi di M restano ignoti.
-
-Qualcuno di nome Ravok — una figura dalla fisionomia mutevole già emersa fin dai primi rapimenti di fatati a Tresil — sembra essere coinvolto nella produzione di questi strumenti. La vecchia conceria per balene di Fossolento, venduta di recente a individui loschi, è il probabile covo da cui operano.
-
-Il mondo dei sogni si è rivelato un piano reale e pericoloso: Larimar vi cammina ogni notte, si nutre delle emozioni dei sognatori, e può osservare le bolle oniriche dei compagni. Da quel piano ha salvato Han dalle grinfie di M, ha visto cose che non avrebbe dovuto vedere — tra cui il sogno di Osiris, in cui questa immagina Larimar chiederle un legame fatato — e ha scoperto che morire nel sogno significa morire nella realtà.
-
-I fatati non sono creature semplici: sono emanazioni di sogni ed emozioni umane, legate a regole antiche che Larimar ha appreso divorando uno di loro. Han, discendente del Primo Olmo, sta diventando progressivamente più umano dopo essere stato usato come ponte verso il mondo dei sogni condiviso da uno spirito del bosco. Ha perso il legame con gli animali ma conserva quello con le piante, sogna per la prima volta, e la sua bolla onirica ha un colore anomalo — striature dorate che nessuna bolla normale dovrebbe avere.
-
-Naru nel frattempo sviluppa qualcosa di nuovo: la capacità di percepire i pensieri di chi gli sta vicino, ancora involontaria e fuori controllo. L'ultima notte sulla nave ha pensato una frase e Larimar ha risposto — senza che nessuno dei due avesse inteso comunicare.`;
-
-  const filoMaster = `M — carnemista mezzo umano mezzo fatato — vuole dominare Tresil attraverso il controllo invisibile di individui chiave. Sistema: collare d'argento (ichnusite) sul fatato + bracciale abbinato sull'umano. Massimo 9 fatati prima che la sua identità si sfalda. Prima apparizione nel mondo dei sogni con Larimar, presentandosi come futuro padrone di Han.
-
-Ravok — fatato mutaforma, primo legato a M — impersona il serial killer giustiziato 15 anni fa per diffondere odio verso i fatati, reclutare fanatici e rifornire M di materiale. Opera dalla conceria di Fossolento con una banda di 12 tra fanatici e opportunisti. Gedrun il Fabbro produce i collari con ichnusite nel seminterrato — è il bersaglio chiave.
-
-Il mondo dei sogni è un piano fisico accessibile a Larimar ogni notte. Larimar ha visto: il sogno ricorrente di Naru (lago di latte, tentacoli — eco dell'incubo impiantato dal suo ordine), il sogno di Osiris (legame fatato con Larimar, traumi del fratello), la bolla dorata anomala di Han con il Viandante dei Sogni — futuro mentore di Larimar.
-
-Naru è stato impiantato con un incubo rituale per errore a 8 anni. Non ricorda nulla di prima. Crede di non sognare. La sua telepatia involontaria è già bidirezionale con Larimar. Osiris è insolitamente difficile da leggere — motivo da definire. Naru sa della sua telepatia, Larimar, Osiris e Han non lo sanno.
-
-Han discende dal Primo Olmo. La sua umanizzazione accelera. La bolla dorata contiene il Viandante dei Sogni. Ha vomitato vermi senza memoria. Il buco nel petto si è allargato. Gli animali lo temono. Le piante lo seguono ancora.`;
-
-  const statoGiocatori = `Il gruppo è in arrivo a Fossolento. Han è sempre più simile a un essere umano — ha perso quasi tutte le piume, il becco, il legame con gli animali, ma conserva il potere sulle piante e sta iniziando a sognare. Osiris ha un conflitto irrisolto con Naru dopo il litigio a Poz Profondo, in cui si è sentita abbandonata durante la notte nel bosco di Ruder. I sogni di Osiris rivelano un desiderio inconscio che lei non ammetterebbe mai: vuole che Larimar le chieda un legame fatato.`;
-
-  const statoMaster = `Il gruppo è in arrivo a Fossolento. Han si umanizza rapidamente — cause e conseguenze del buco nel petto ancora da esplorare. Naru sa della sua telepatia, gli altri no — Larimar è la più leggibile, Osiris la più difficile (perché?). Larimar conosce il sogno di Osiris sul legame fatato ma non l'ha ancora usato. Il conflitto Osiris–Naru è irrisolto. Larimar ha visto il vero aspetto di sé stessa nei sogni di Han ma non sa di averlo.`;
-
-  c.appendChild(card('Filo narrativo', isMaster ? filoMaster : filoGiocatori));
-  c.appendChild(card('Stato attuale', isMaster ? statoMaster : statoGiocatori));
-}
-
-// ── PERSONAGGI ─────────────────────────────────────
-function buildPersonaggi() {
-  const c = document.getElementById('section-personaggi');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Personaggi</div><div class="sec-sub">PG e PNG principali</div></div>`;
-
-  const allPg = TRESIL_DATA.personaggi.pg;
-  const allPng = TRESIL_DATA.personaggi.png.filter(p => !p.soloMaster || isMaster);
-
-  const mkGroup = (arr, label) => {
-    if (!arr.length) return;
-    const lbl = document.createElement('div');
-    lbl.className = 'pg-group-lbl';
-    lbl.textContent = label;
-    c.appendChild(lbl);
-    arr.forEach(p => c.appendChild(buildPgCard(p)));
-  };
-
-  mkGroup(allPg, 'Protagonisti');
-  mkGroup(allPng, 'PNG chiave');
-}
-
-function buildPgCard(p) {
-  const wrap = document.createElement('div');
-  wrap.className = 'pg-card';
-  const hasMaster = p.loreMaster && p.loreMaster.trim();
-  const hasLoreG = p.loreGiocatori && p.loreGiocatori.trim();
-
-  wrap.innerHTML = `
-    <div class="pg-head" onclick="this.parentElement.classList.toggle('open')">
-      <div class="pg-av" style="background:${p.colore}22;color:${p.colore};border-color:${p.colore}44">${p.iniziali}</div>
-      <div>
-        <div class="pg-name">${p.nome}</div>
-        <div class="pg-player">${p.giocatore || p.tipo.toUpperCase()}</div>
+    <a href="torre.html" class="oneshot-card">
+      <div class="oc-tag">One Shot</div>
+      <div class="oc-title">La Torre della Follia</div>
+      <div class="oc-sub">Un'ascesa nei meandri di una torre dimenticata, dove la realtà si piega.</div>
+      <div class="oc-meta">
+        <span class="oc-pill">Capitoli: 3</span>
+        <span class="oc-pill">Avventura</span>
       </div>
-      <span class="pg-arr">▶</span>
+    </a>
+
+    <div class="oneshot-card coming">
+      <div class="oc-tag">Prossimamente</div>
+      <div class="oc-title">— In sviluppo —</div>
+      <div class="oc-sub">La prossima one shot verrà aggiunta qui.</div>
     </div>
-    <div class="pg-body">
-      ${p.tag ? tagsHTML(p.tag) : ''}
-      <div class="pg-sec-lbl">Descrizione</div>
-      <div class="pg-text">${linkify(p.descrizione)}</div>
-      ${hasLoreG ? `<div class="pg-sec-lbl">Lore</div><div class="pg-text">${linkify(p.loreGiocatori)}</div>` : ''}
-      ${p.note ? `<div class="pg-sec-lbl">Note</div><div class="pg-text">${linkify(p.note)}</div>` : ''}
-      ${hasMaster && isMaster ? `<div class="pg-sec-lbl" style="color:#c47070">⚠ Solo Master</div><div class="callout-m">${linkify(p.loreMaster)}</div>` : ''}
-      ${p.condiviso && isMaster ? `<div class="pg-sec-lbl" style="color:var(--blue)">Noto ai giocatori</div><div class="callout-s">${linkify(p.condiviso)}</div>` : ''}
-    </div>`;
-  return wrap;
-}
 
-// ── SESSIONI ───────────────────────────────────────
-function buildSessioni() {
-  const c = document.getElementById('section-sessioni');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Sessioni</div><div class="sec-sub">Cronologia — dalla più recente</div></div>`;
+  </div>
 
-  TRESIL_DATA.sessioni.forEach((s, idx) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'sess-card' + (s.nuova ? ' new-s' : '');
+  <footer class="site-foot">
+    Archivio di Kaelvaran · Uso interno
+  </footer>
 
-    const evHTML = s.eventiChiave?.length
-      ? `<div style="margin-top:.75rem"><div class="pg-sec-lbl">Eventi chiave</div><ul class="ev-list">${s.eventiChiave.map(e => `<li>${linkify(e)}</li>`).join('')}</ul></div>` : '';
-
-    // Tag popup
-    const econTag = s.economia?.length
-      ? `<span class="ptag economia" onclick="openSessPopup('economia',${idx})">💰 Economia (${s.economia.length})</span>` : '';
-    const oggTag = s.oggetti?.length
-      ? `<span class="ptag oggetto" onclick="openSessPopup('oggetti',${idx})">🎒 Oggetti (${s.oggetti.length})</span>` : '';
-    const appTag = s.approfondimenti?.length
-      ? `<span class="ptag approfondimento" onclick="openSessPopup('approfondimenti',${idx})">📖 Approfondimenti (${s.approfondimenti.length})</span>` : '';
-    const popupTagsHTML = (econTag || oggTag || appTag)
-      ? `<div class="popup-tags">${econTag}${oggTag}${appTag}</div>` : '';
-
-    wrap.innerHTML = `
-      <div class="sess-head" onclick="this.parentElement.classList.toggle('open')">
-        <div class="sess-date">${s.data}</div>
-        <div class="sess-title">${s.titolo}${s.nuova ? ' <span class="tag new" style="margin-left:6px">Ultima</span>' : ''}</div>
-        <span class="sess-arr">▶</span>
-      </div>
-      <div class="sess-body">
-        <div style="font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.75rem">${s.luogo}</div>
-        <div class="sess-text">${linkify(s.riassunto)}</div>
-        ${evHTML}
-        ${s.tag ? tagsHTML(s.tag) : ''}
-        ${popupTagsHTML}
-      </div>`;
-    c.appendChild(wrap);
-  });
-  // Apri la prima
-  c.querySelector('.sess-card')?.classList.add('open');
-}
-
-function openSessPopup(tipo, idx) {
-  const s = TRESIL_DATA.sessioni[idx];
-  let title = '', body = '';
-  if (tipo === 'economia') {
-    title = '💰 Economia — ' + s.titolo;
-    body = s.economia.map(e => `${e.desc}\n${e.importo} (${e.tipo})`).join('\n\n') || 'Nessuna transazione registrata.';
-  } else if (tipo === 'oggetti') {
-    title = '🎒 Oggetti — ' + s.titolo;
-    body = s.oggetti.map(o => `${o.acquisito ? '[ACQUISITO]' : '[PERSO/DISTRUTTO]'} ${o.nome}\n${o.note}`).join('\n\n');
-  } else if (tipo === 'approfondimenti') {
-    title = '📖 Approfondimenti — ' + s.titolo;
-    body = s.approfondimenti.map(a => `${a.titolo}\n${a.testo}`).join('\n\n') || 'Nessun approfondimento disponibile.';
-  }
-  document.getElementById('ms-title').textContent = title;
-  document.getElementById('ms-body').innerHTML = linkify(body);
-  document.getElementById('modal-sess').classList.add('open');
-}
-
-// ── AMBIENTAZIONE ──────────────────────────────────
-function buildAmbientazione() {
-  const c = document.getElementById('section-ambientazione');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">Kaelvaran e i suoi luoghi</div></div>`;
-
-  const tabs = [
-    { key: 'kaelvaran',      label: 'Kaelvaran' },
-    { key: 'isolaDiTresil',  label: 'Isola di Tresil' },
-    { key: 'mareERotte',     label: 'Mare & Rotte' },
-    { key: 'altriContinenti',label: 'Oltre l\'Atollo' }
-  ];
-
-  const tabBar = document.createElement('div');
-  tabBar.className = 'amb-tabs';
-  const panels = document.createElement('div');
-
-  tabs.forEach((t, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'amb-tab' + (i === 0 ? ' active' : '');
-    btn.textContent = t.label;
-    btn.onclick = () => {
-      tabBar.querySelectorAll('.amb-tab').forEach(b => b.classList.remove('active'));
-      panels.querySelectorAll('.amb-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('amb-' + t.key).classList.add('active');
-    };
-    tabBar.appendChild(btn);
-
-    const panel = document.createElement('div');
-    panel.className = 'amb-panel' + (i === 0 ? ' active' : '');
-    panel.id = 'amb-' + t.key;
-    (TRESIL_DATA.ambientazione[t.key] || []).forEach(a => {
-      if (a.soloMaster && !isMaster) return;
-      const d = document.createElement('div');
-      d.className = 'card' + (a.soloMaster ? ' dm-only secret' : '');
-      d.id = 'amb-item-' + a.id;
-      d.innerHTML = `<div class="card-title">${a.nome}</div>${tagsHTML(a.tag)}<div class="card-body" style="margin-top:.6rem">${linkify(a.testo)}</div>`;
-      panel.appendChild(d);
-    });
-    panels.appendChild(panel);
-  });
-
-  c.appendChild(tabBar);
-  c.appendChild(panels);
-}
-
-// ── FAZIONI ────────────────────────────────────────
-function buildFazioni() {
-  const c = document.getElementById('section-fazioni');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Fazioni, Gilde & Leggi</div><div class="sec-sub">Attori politici, commerciali, criminali e ordinamento della città</div></div>`;
-
-  const mkAcc = (items) => {
-    const wrap = document.createElement('div');
-    items.forEach(f => {
-      const btn = document.createElement('button');
-      btn.className = 'acc-btn';
-      btn.innerHTML = `<span>${f.nome}</span><span class="acc-arr">▶</span>`;
-      btn.onclick = () => { btn.classList.toggle('open'); btn.nextElementSibling.classList.toggle('open'); };
-      const body = document.createElement('div');
-      body.className = 'acc-body';
-      body.innerHTML = linkify(f.testo);
-      wrap.appendChild(btn);
-      wrap.appendChild(body);
-    });
-    return wrap;
-  };
-
-  // Governo
-  if (TRESIL_DATA.fazioni.governo) {
-    const gov = TRESIL_DATA.fazioni.governo;
-    c.appendChild(card('◈ ' + gov.titolo, gov.testo));
-  }
-
-  // Leggi
-  if (TRESIL_DATA.fazioni.leggi) {
-    const leg = TRESIL_DATA.fazioni.leggi;
-    c.appendChild(card('⚖ ' + leg.titolo, leg.testo));
-  }
-
-  const uff = document.createElement('div');
-  uff.className = 'card';
-  uff.innerHTML = '<div class="card-title">◈ Gilde ufficiali</div>';
-  uff.appendChild(mkAcc(TRESIL_DATA.fazioni.ufficiali));
-  c.appendChild(uff);
-
-  const crim = document.createElement('div');
-  crim.className = 'card';
-  crim.innerHTML = '<div class="card-title">◆ Organizzazioni criminali</div>';
-  crim.appendChild(mkAcc(TRESIL_DATA.fazioni.criminali));
-  c.appendChild(crim);
-
-  if (TRESIL_DATA.fazioni.banda && (!TRESIL_DATA.fazioni.banda.soloMaster || isMaster)) {
-    c.appendChild(card('◉ ' + TRESIL_DATA.fazioni.banda.nome, TRESIL_DATA.fazioni.banda.testo, 'secret'));
-  }
-
-  const tav = document.createElement('div');
-  tav.className = 'card';
-  tav.innerHTML = '<div class="card-title">◇ Taverne principali</div>';
-  const tGrid = document.createElement('div');
-  tGrid.style.cssText = 'display:flex;flex-wrap:wrap;gap:7px;margin-top:7px;';
-  TRESIL_DATA.fazioni.taverne.forEach(t => {
-    const b = document.createElement('div');
-    b.style.cssText = 'background:var(--bg-panel);border:1px solid var(--border);border-radius:3px;padding:6px 11px;font-size:13px;color:var(--t2);min-width:180px;';
-    b.innerHTML = `<div style="font-family:var(--font-d);font-size:11px;color:var(--t1);margin-bottom:3px">${t.nome}</div>${t.desc}`;
-    tGrid.appendChild(b);
-  });
-  tav.appendChild(tGrid);
-  c.appendChild(tav);
-}
-
-// ── OGGETTI ────────────────────────────────────────
-function buildOggetti() {
-  const c = document.getElementById('section-oggetti');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Oggetti</div><div class="sec-sub">Oggetti rilevanti della campagna</div></div>`;
-
-  const mkGrid = (items, master) => {
-    const g = document.createElement('div');
-    g.className = 'obj-grid';
-    items.forEach(o => {
-      const d = document.createElement('div');
-      d.className = 'obj-card' + (master ? ' master' : '');
-      d.id = 'obj-' + o.id;
-      d.innerHTML = `
-        <div class="obj-name">${o.nome}</div>
-        ${o.possessore ? `<div class="obj-meta">${o.possessore}${o.stato ? ' · ' + o.stato : ''}</div>` : ''}
-        ${o.tag ? tagsHTML(o.tag) : ''}
-        <div class="obj-desc" style="margin-top:8px">${linkify(o.descrizione)}</div>
-        ${o.loreMaster && isMaster ? `<div class="obj-master">${linkify(o.loreMaster)}</div>` : ''}
-      `;
-      g.appendChild(d);
-    });
-    return g;
-  };
-
-  const lbl1 = document.createElement('div');
-  lbl1.className = 'pg-group-lbl';
-  lbl1.textContent = 'Noti ai giocatori';
-  c.appendChild(lbl1);
-  c.appendChild(mkGrid(TRESIL_DATA.oggetti.notiAiGiocatori, false));
-
-  if (isMaster) {
-    const lbl2 = document.createElement('div');
-    lbl2.className = 'pg-group-lbl';
-    lbl2.style.color = '#c47070';
-    lbl2.textContent = '⚠ Solo Master';
-    c.appendChild(lbl2);
-    c.appendChild(mkGrid(TRESIL_DATA.oggetti.soloMaster, true));
-  }
-}
-
-// ── MAPPE ──────────────────────────────────────────
-function buildMappe() {
-  const c = document.getElementById('section-mappe');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Mappe</div><div class="sec-sub">Zoom e pan — rotella del mouse o pizzico per zoomare, trascina per muovere</div></div>`;
-
-  const mappe = [
-    { id: 'mappa-tresil',  label: 'Città di Tresil', file: 'maps/Tresil.jpg',  pins: (TRESIL_DATA.mappe?.tresil || []) },
-    { id: 'mappa-regione', label: 'Regione',          file: 'maps/Regione.jpg', pins: [] }
-  ];
-
-  // Tab bar
-  const tabBar = document.createElement('div');
-  tabBar.className = 'amb-tabs';
-  tabBar.style.marginBottom = '1rem';
-
-  const canvasWrap = document.createElement('div');
-  canvasWrap.style.cssText = 'position:relative;';
-
-  mappe.forEach((m, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'amb-tab' + (i === 0 ? ' active' : '');
-    btn.textContent = m.label;
-    btn.onclick = () => {
-      tabBar.querySelectorAll('.amb-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      canvasWrap.querySelectorAll('.map-viewer').forEach(v => v.style.display = 'none');
-      document.getElementById(m.id).style.display = 'block';
-    };
-    tabBar.appendChild(btn);
-
-    const viewer = buildMapViewer(m.id, m.file, m.pins || []);
-    viewer.style.display = i === 0 ? 'block' : 'none';
-    canvasWrap.appendChild(viewer);
-  });
-
-  c.appendChild(tabBar);
-  c.appendChild(canvasWrap);
-}
-
-function buildMapViewer(id, src, pins) {
-  const wrap = document.createElement('div');
-  wrap.id = id;
-  wrap.className = 'map-viewer';
-  wrap.style.cssText = `
-    width:100%;height:70vh;overflow:hidden;position:relative;
-    background:var(--bg-card);border:1px solid var(--border);border-radius:4px;
-    cursor:grab;user-select:none;
-  `;
-
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = id;
-  img.style.cssText = 'position:absolute;top:0;left:0;transform-origin:0 0;max-width:none;transition:none;';
-  img.draggable = false;
-
-  // Layer pin — si muove con l'immagine
-  const pinLayer = document.createElement('div');
-  pinLayer.className = 'map-pin-layer';
-
-  // Controlli zoom
-  const controls = document.createElement('div');
-  controls.style.cssText = `position:absolute;bottom:12px;right:12px;z-index:10;display:flex;flex-direction:column;gap:4px;`;
-  const btnStyle = `width:32px;height:32px;background:var(--bg-panel);border:1px solid var(--border-b);color:var(--gold);font-size:18px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);transition:background .15s;line-height:1;`;
-  const btnZI = document.createElement('button'); btnZI.innerHTML = '+'; btnZI.title = 'Zoom in'; btnZI.style.cssText = btnStyle;
-  const btnZO = document.createElement('button'); btnZO.innerHTML = '−'; btnZO.title = 'Zoom out'; btnZO.style.cssText = btnStyle;
-  const btnR  = document.createElement('button'); btnR.innerHTML  = '⌂'; btnR.title  = 'Reset';    btnR.style.cssText  = btnStyle; btnR.style.fontSize = '14px';
-  controls.appendChild(btnZI); controls.appendChild(btnZO); controls.appendChild(btnR);
-
-  wrap.appendChild(img);
-  wrap.appendChild(pinLayer);
-  wrap.appendChild(controls);
-
-  let scale = 1, ox = 0, oy = 0;
-  let dragging = false, lastX = 0, lastY = 0, didDrag = false;
-  const MIN = 0.3, MAX = 8;
-
-  function applyTransform() {
-    const t = `translate(${ox}px,${oy}px) scale(${scale})`;
-    img.style.transform = t;
-    pinLayer.style.transform = t;
-  }
-
-  function buildPins(iw, ih) {
-    pinLayer.style.width  = iw + 'px';
-    pinLayer.style.height = ih + 'px';
-    pinLayer.innerHTML = '';
-    if (!pins || !pins.length) return;
-    pins.forEach(p => {
-      const pin = document.createElement('div');
-      pin.className = 'map-pin';
-      pin.style.left = p.x + '%';
-      pin.style.top  = p.y + '%';
-      pin.innerHTML = `
-        <div class="map-tooltip">
-          <div class="map-tooltip-name">${p.nome}</div>
-          <div class="map-tooltip-desc">${p.tooltip}</div>
-          ${p.sezione ? '<div class="map-tooltip-hint">Clicca per aprire →</div>' : ''}
-        </div>
-        <div class="map-pin-dot" style="background:${p.colore||'var(--gold)'}"></div>
-        <div class="map-pin-needle"></div>`;
-      pin.addEventListener('click', e => {
-        if (didDrag) return;
-        e.stopPropagation();
-        if (!p.sezione) return;
-        showSection(p.sezione);
-        if (p.ancora) {
-          setTimeout(() => {
-            const el = document.getElementById(p.ancora);
-            if (!el) return;
-            const pg = el.classList.contains('pg-card') ? el : el.closest?.('.pg-card');
-            if (pg && !pg.classList.contains('open')) pg.classList.add('open');
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            el.style.transition = 'box-shadow .3s';
-            el.style.boxShadow = '0 0 0 2px var(--gold)';
-            setTimeout(() => el.style.boxShadow = '', 1800);
-          }, 150);
-        }
-      });
-      pinLayer.appendChild(pin);
-    });
-  }
-
-  function fitToContainer() {
-    const doFit = () => {
-      const ww = wrap.offsetWidth, wh = wrap.offsetHeight;
-      const iw = img.naturalWidth,  ih = img.naturalHeight;
-      scale = Math.min(ww / iw, wh / ih, 1);
-      ox = (ww - iw * scale) / 2;
-      oy = (wh - ih * scale) / 2;
-      applyTransform();
-      buildPins(iw, ih);
-    };
-    if (img.complete && img.naturalWidth) doFit();
-    else img.onload = doFit;
-  }
-
-  fitToContainer();
-
-  // Zoom rotella
-  wrap.addEventListener('wheel', e => {
-    e.preventDefault();
-    const rect = wrap.getBoundingClientRect();
-    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    const delta = e.deltaY < 0 ? 1.15 : 0.87;
-    const ns = Math.min(MAX, Math.max(MIN, scale * delta));
-    ox = mx - (mx - ox) * (ns / scale);
-    oy = my - (my - oy) * (ns / scale);
-    scale = ns; applyTransform();
-  }, { passive: false });
-
-  // Pan mouse
-  wrap.addEventListener('mousedown', e => { dragging = true; didDrag = false; lastX = e.clientX; lastY = e.clientY; wrap.style.cursor = 'grabbing'; });
-  window.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    const dx = e.clientX - lastX, dy = e.clientY - lastY;
-    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
-    ox += dx; oy += dy; lastX = e.clientX; lastY = e.clientY; applyTransform();
-  });
-  window.addEventListener('mouseup', () => { dragging = false; wrap.style.cursor = 'grab'; setTimeout(() => didDrag = false, 50); });
-
-  // Pan touch
-  let lastTX = 0, lastTY = 0, lastDist = 0;
-  wrap.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) { lastTX = e.touches[0].clientX; lastTY = e.touches[0].clientY; }
-    if (e.touches.length === 2) lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-  }, { passive: true });
-  wrap.addEventListener('touchmove', e => {
-    e.preventDefault();
-    if (e.touches.length === 1) {
-      ox += e.touches[0].clientX - lastTX; oy += e.touches[0].clientY - lastTY;
-      lastTX = e.touches[0].clientX; lastTY = e.touches[0].clientY; applyTransform();
-    }
-    if (e.touches.length === 2) {
-      const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-      const ns = Math.min(MAX, Math.max(MIN, scale * (dist / lastDist)));
-      const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - wrap.getBoundingClientRect().left;
-      const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - wrap.getBoundingClientRect().top;
-      ox = mx - (mx - ox) * (ns / scale); oy = my - (my - oy) * (ns / scale);
-      scale = ns; lastDist = dist; applyTransform();
-    }
-  }, { passive: false });
-
-  btnZI.onclick = () => { scale = Math.min(MAX, scale * 1.3); applyTransform(); };
-  btnZO.onclick = () => { scale = Math.max(MIN, scale * 0.77); applyTransform(); };
-  btnR.onclick  = () => fitToContainer();
-
-  return wrap;
-}
-
-// ── LORE SEGRETA ───────────────────────────────────
-function buildLore() {
-  const c = document.getElementById('section-lore');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Lore Segreta</div><div class="sec-sub">Solo per il Dungeon Master</div></div>`;
-  if (!isMaster) {
-    c.innerHTML += `<div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
-    return;
-  }
-
-  const cats = [
-    { key: 'antagonisti',    label: 'Antagonisti' },
-    { key: 'cosmologia',     label: 'Cosmologia' },
-    { key: 'personaggi',     label: 'Personaggi' },
-    { key: 'oggettiMateriali',label: 'Oggetti & Materiali' },
-    { key: 'connessioni',    label: 'Connessioni & Misteri' }
-  ];
-
-  cats.forEach(cat => {
-    const items = TRESIL_DATA.lore[cat.key] || [];
-    if (!items.length) return;
-    const title = document.createElement('div');
-    title.className = 'lore-cat-title';
-    title.textContent = cat.label;
-    c.appendChild(title);
-    items.forEach(l => {
-      const d = document.createElement('div');
-      d.className = 'lore-card';
-      d.id = 'lore-' + l.id;
-      d.style.borderLeftColor = l.colore || '#8f4444';
-      d.innerHTML = `
-        <div class="lore-title" style="color:${l.colore || 'var(--gold)'}">
-          ${l.nome}
-          ${l.condiviso ? '<span class="shared-pill">Noto ai giocatori</span>' : ''}
-        </div>
-        <div class="lore-body">${linkify(l.testo)}</div>`;
-      c.appendChild(d);
-    });
-  });
-}
-
-// ── THREAD ─────────────────────────────────────────
-function buildThread() {
-  const c = document.getElementById('section-thread');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Thread Aperti</div><div class="sec-sub">Domande e fili narrativi da riprendere</div></div>`;
-
-  const saved = JSON.parse(localStorage.getItem('tresil_thread_risolti') || '[]');
-  const t = TRESIL_DATA.thread;
-
-  const gruppi = [
-    { key: 'urgenti', label: 'Urgenti — prossime sessioni', color: '#c45a5a' },
-    { key: 'han',     label: 'Han — trasformazione',        color: '#BA7517' },
-    { key: 'lore',    label: 'Lore e cosmologia',           color: '#7F77DD' }
-  ];
-
-  gruppi.forEach(g => {
-    const items = (t[g.key] || []).filter(item => {
-      if (item.soloMaster && !isMaster) return false;
-      return true;
-    });
-    if (!items.length) return;
-
-    const grp = document.createElement('div');
-    grp.className = 'thread-grp';
-    grp.innerHTML = `<div class="thread-grp-title">${g.label}</div>`;
-
-    items.forEach(item => {
-      const risolto = saved.includes(item.id);
-      const row = document.createElement('div');
-      row.className = 'thread-row' + (risolto ? ' resolved' : '');
-      row.id = 'thread-' + item.id;
-      row.innerHTML = `
-        <span class="thread-dot" style="background:${g.color}"></span>
-        <span>${item.testo}</span>
-        <button class="resolve-btn" onclick="resolveThread('${item.id}',this)">${risolto ? '↩ Riapri' : '✓ Risolto'}</button>`;
-      grp.appendChild(row);
-    });
-    c.appendChild(grp);
-  });
-
-  // Thread risolti (archivio collassabile)
-  if (saved.length > 0) {
-    const allItems = [...(t.urgenti||[]), ...(t.han||[]), ...(t.lore||[]), ...(t.risolti||[])];
-    const risoltiItems = allItems.filter(i => saved.includes(i.id));
-    if (risoltiItems.length) {
-      const rTitle = document.createElement('div');
-      rTitle.className = 'resolved-grp-title';
-      rTitle.innerHTML = `<span>▶</span> <span>Archivio risolti (${risoltiItems.length})</span>`;
-      const rList = document.createElement('div');
-      rList.className = 'resolved-list';
-      rTitle.onclick = () => { rList.classList.toggle('open'); rTitle.querySelector('span').textContent = rList.classList.contains('open') ? '▼' : '▶'; };
-      risoltiItems.forEach(item => {
-        const row = document.createElement('div');
-        row.className = 'thread-row resolved';
-        row.innerHTML = `<span class="thread-dot" style="background:var(--t3)"></span><span>${item.testo}</span><button class="resolve-btn" onclick="resolveThread('${item.id}',this)">↩ Riapri</button>`;
-        rList.appendChild(row);
-      });
-      c.appendChild(rTitle);
-      c.appendChild(rList);
-    }
-  }
-
-  // Passi suggeriti
-  const passi = document.createElement('div');
-  passi.className = 'card';
-  passi.innerHTML = '<div class="card-title">Prossimi passi narrativi</div>';
-  const br = document.createElement('div');
-  br.className = 'tags';
-  br.style.marginTop = '6px';
-  const passiList = ['Arrivo a Fossolento','Trovare Ravok e fermarlo','Intuire gli scopi di M','Madre di Larimar','Viandante dei Sogni e Larimar','Yome Musashi e Naru'];
-  passiList.forEach(p => { const sp = document.createElement('span'); sp.className = 'tag'; sp.textContent = p; br.appendChild(sp); });
-  passi.appendChild(br);
-  c.appendChild(passi);
-}
-
-function resolveThread(id, btn) {
-  const saved = JSON.parse(localStorage.getItem('tresil_thread_risolti') || '[]');
-  const idx = saved.indexOf(id);
-  if (idx === -1) saved.push(id);
-  else saved.splice(idx, 1);
-  localStorage.setItem('tresil_thread_risolti', JSON.stringify(saved));
-  buildThread();
-}
-
-// ── NOTE ───────────────────────────────────────────
-function buildNote() {
-  const c = document.getElementById('section-note');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Note DM</div><div class="sec-sub">Spazio di pianificazione personale</div></div>`;
-  const note_ = [
-    { id: 'nota-prossima', label: 'Note sessione successiva', ph: 'Cosa succede a Fossolento? Conceria, trappole, contatti...' },
-    { id: 'nota-idee',     label: 'Idee narrative future',    ph: 'Archi narrativi, colpi di scena, sviluppi...' },
-    { id: 'nota-dm',       label: 'Note libere',              ph: 'Qualunque cosa vuoi tenere a mente...' }
-  ];
-  note_.forEach(n => {
-    const d = document.createElement('div');
-    d.className = 'card';
-    d.innerHTML = `
-      <div class="card-title">${n.label}</div>
-      <textarea id="${n.id}" placeholder="${n.ph}"></textarea>
-      <button class="save-btn" onclick="saveNote('${n.id}','sv-${n.id}')">Salva nota</button>
-      <div class="note-saved" id="sv-${n.id}">Salvato.</div>`;
-    c.appendChild(d);
-    // Carica valore salvato subito dopo aver inserito l'elemento nel DOM
-    const sv = localStorage.getItem('tresil_' + n.id);
-    if (sv) { const el = document.getElementById(n.id); if (el) el.value = sv; }
-  });
-}
-
-function saveNote(id, svId) {
-  localStorage.setItem('tresil_' + id, document.getElementById(id)?.value || '');
-  const m = document.getElementById(svId);
-  if (m) { m.style.display = 'block'; setTimeout(() => m.style.display = 'none', 2500); }
-}
-
-// ── ECONOMIA ───────────────────────────────────────
-function buildEconomia() {
-  const c = document.getElementById('section-economia');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Sistema monetario di Kaelvaran — prezzi e riferimenti</div></div>`;
-  const eco = TRESIL_DATA.economia;
-
-  // ── Sistema valute
-  const valTitle = document.createElement('div'); valTitle.className = 'pg-group-lbl'; valTitle.textContent = 'Sistema monetario';
-  c.appendChild(valTitle);
-  const valGrid = document.createElement('div'); valGrid.className = 'eco-valute';
-  eco.valute.forEach(v => {
-    const d = document.createElement('div'); d.className = 'eco-valuta';
-    d.innerHTML = `<div class="eco-val-sigla">${v.sigla.toUpperCase()}</div><div class="eco-val-nome">${v.nome}</div><div class="eco-val-note">${v.note}</div>`;
-    valGrid.appendChild(d);
-  });
-  c.appendChild(valGrid);
-
-  // ── Convertitore
-  const convTitle = document.createElement('div'); convTitle.className = 'pg-group-lbl'; convTitle.textContent = 'Convertitore rapido';
-  c.appendChild(convTitle);
-  const conv = document.createElement('div'); conv.className = 'eco-converter';
-  const convRow = document.createElement('div'); convRow.className = 'eco-conv-row';
-  const inp = document.createElement('input'); inp.className = 'eco-conv-input'; inp.type = 'number'; inp.value = '1'; inp.min = '0';
-  const sel = document.createElement('select'); sel.className = 'eco-conv-select';
-  eco.valute.forEach(v => { const o = document.createElement('option'); o.value = v.valore; o.textContent = v.sigla.toUpperCase() + ' — ' + v.nome; sel.appendChild(o); });
-  const result = document.createElement('div'); result.className = 'eco-conv-result';
-  function updateConv() {
-    const val = parseFloat(inp.value) || 0;
-    const base = val * parseFloat(sel.value);
-    const lines = eco.valute.map(v => {
-      const q = base / v.valore;
-      if (q < 0.01) return null;
-      const disp = q >= 1 ? (Number.isInteger(q) ? q : q.toFixed(2)) : q.toFixed(4);
-      return `<span>${v.sigla.toUpperCase()}</span> ${disp} ${v.nome}`;
-    }).filter(Boolean);
-    result.innerHTML = lines.join(' &nbsp;·&nbsp; ');
-  }
-  inp.oninput = updateConv; sel.onchange = updateConv;
-  convRow.appendChild(inp); convRow.appendChild(sel);
-  conv.appendChild(convRow); conv.appendChild(result);
-  c.appendChild(conv);
-  updateConv();
-
-  // ── Salari di riferimento
-  const salTitle = document.createElement('div'); salTitle.className = 'pg-group-lbl'; salTitle.textContent = 'Salari di riferimento';
-  c.appendChild(salTitle);
-  const salWrap = document.createElement('div'); salWrap.className = 'eco-salari';
-  salWrap.innerHTML = `<table><thead><tr><th>Ruolo</th><th>Al giorno</th><th>Al mese</th><th>Note</th></tr></thead><tbody>${
-    eco.salari.map(s => `<tr><td>${s.ruolo}</td><td class="mono">${s.giorno}</td><td class="mono">${s.mese}</td><td>${s.note}</td></tr>`).join('')
-  }</tbody></table>`;
-  c.appendChild(salWrap);
-
-  // ── Tabelle prezzi per categoria
-  const prezziTitle = document.createElement('div'); prezziTitle.className = 'pg-group-lbl'; prezziTitle.textContent = 'Listino prezzi';
-  c.appendChild(prezziTitle);
-
-  // Barra di ricerca
-  const searchInput = document.createElement('input');
-  searchInput.className = 'eco-search'; searchInput.type = 'text';
-  searchInput.placeholder = '🔍 Cerca un oggetto o servizio…';
-  c.appendChild(searchInput);
-
-  // Tab categorie
-  const tabBar = document.createElement('div'); tabBar.className = 'eco-cat-tabs';
-  const tableWrap = document.createElement('div');
-
-  let activeTab = 'tutti';
-
-  function renderTable(filtro) {
-    tableWrap.innerHTML = '';
-    const q = searchInput.value.toLowerCase().trim();
-    let vociMostrate = 0;
-
-    eco.categorie.forEach(cat => {
-      if (filtro !== 'tutti' && cat.id !== filtro) return;
-      const vociFiltrate = cat.voci.filter(v =>
-        !q || v.nome.toLowerCase().includes(q) || v.note.toLowerCase().includes(q) || v.costo.toLowerCase().includes(q)
-      );
-      if (!vociFiltrate.length) return;
-      vociMostrate += vociFiltrate.length;
-      const tbl = document.createElement('div'); tbl.style.marginBottom = '1.2rem';
-      if (filtro === 'tutti') {
-        const lbl = document.createElement('div');
-        lbl.style.cssText = 'font-family:var(--font-d);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:.4rem;';
-        lbl.textContent = cat.icona + ' ' + cat.nome;
-        tbl.appendChild(lbl);
-      }
-      tbl.innerHTML += `<table class="eco-table"><thead><tr><th>Oggetto / Servizio</th><th>Costo</th><th>Note</th></tr></thead><tbody>${
-        vociFiltrate.map(v => `<tr><td>${v.nome}</td><td class="costo">${v.costo}</td><td class="note-col">${v.note}</td></tr>`).join('')
-      }</tbody></table>`;
-      tableWrap.appendChild(tbl);
-    });
-
-    if (!vociMostrate) {
-      tableWrap.innerHTML = `<div class="search-empty">Nessun risultato per "<em>${q}</em>"</div>`;
-    }
-  }
-
-  // Costruisci tab
-  const tuttiBtn = document.createElement('button');
-  tuttiBtn.className = 'eco-cat-tab active'; tuttiBtn.textContent = '🗂 Tutte';
-  tuttiBtn.onclick = () => { activeTab = 'tutti'; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); tuttiBtn.classList.add('active'); renderTable('tutti'); };
-  tabBar.appendChild(tuttiBtn);
-
-  eco.categorie.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'eco-cat-tab'; btn.textContent = cat.icona + ' ' + cat.nome;
-    btn.onclick = () => { activeTab = cat.id; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTable(cat.id); };
-    tabBar.appendChild(btn);
-  });
-
-  searchInput.oninput = () => renderTable(activeTab);
-
-  c.appendChild(tabBar);
-  renderTable('tutti');
-  c.appendChild(tableWrap);
-}
-
-// ── BUILD ALL ──────────────────────────────────────
-function buildAllSections() {
-  buildPanoramica();
-  buildPersonaggi();
-  buildSessioni();
-  buildAmbientazione();
-  buildFazioni();
-  buildOggetti();
-  buildEconomia();
-  buildLore();
-  buildThread();
-  buildNote();
-  // buildMappe() è lazy — si carica solo al primo click sulla sezione
-}
-</script>
+</div>
 </body>
 </html>
