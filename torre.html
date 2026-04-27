@@ -353,7 +353,7 @@ function updateDMUI() {
   toggle.classList.toggle('active', isMaster);
   document.getElementById('dm-label').textContent = isMaster ? 'DM attivo' : 'Modalità DM';
   document.querySelectorAll('.dm-only').forEach(el => {
-    el.style.display = isMaster ? '' : 'none';
+    el.style.display = isMaster ? 'flex' : 'none';
   });
   // Ridisegna sezioni che dipendono da isMaster
   buildSviluppo();
