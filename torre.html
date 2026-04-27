@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Torre della Follia</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+:root {
+  --bg:       #0a0c0f;
+  --bg-panel: #111520;
+  --bg-card:  #161d28;
+  --bg-hover: #1a2333;
+  --bg-act:   #1d2d44;
+  --border:   rgba(90,130,190,0.13);
+  --border-b: rgba(90,130,190,0.28);
+  --gold:     #c9a84c;
+  --gold-d:   #8a6e2f;
+  --gold-g:   rgba(201,168,76,0.12);
+  --t1:       #e8e0d0;
+  --t2:       #9a9080;
+  --t3:       #5a5448;
+  --red:      #c45a5a;
+  --green:    #5ab48f;
+  --blue:     #5a8fd4;
+  --purple:   #8f72d4;
+  --amber:    #c4954a;
+  --font-d:   'Cinzel', serif;
+  --font-b:   'Crimson Pro', Georgia, serif;
+  --sw:       242px;
+  --tr:       .18s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:16px;line-height:1.7;}
+
+/* ── LAYOUT ── */
+.app{display:flex;height:100vh;overflow:hidden;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sw);flex-shrink:0;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
+.sb-head{padding:1.25rem 1.25rem .75rem;border-bottom:1px solid var(--border);}
+.sb-back{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-d);font-size:9px;letter-spacing:.12em;color:var(--t3);text-transform:uppercase;text-decoration:none;margin-bottom:.75rem;transition:color var(--tr);}
+.sb-back:hover{color:var(--gold);}
+.sb-title{font-family:var(--font-d);font-size:12px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:3px;}
+.sb-sub{font-size:11px;color:var(--t3);font-style:italic;}
+.nav-section{padding:.5rem 0;border-bottom:1px solid var(--border);}
+.nav-lbl{font-size:9px;letter-spacing:.2em;color:var(--t3);text-transform:uppercase;padding:0 1.25rem .3rem;font-family:var(--font-d);}
+.nav-btn{display:flex;align-items:center;gap:9px;width:100%;padding:7px 1.25rem;background:none;border:none;color:var(--t2);font-family:var(--font-b);font-size:14px;cursor:pointer;text-align:left;transition:var(--tr);position:relative;}
+.nav-btn:hover{color:var(--t1);background:var(--bg-hover);}
+.nav-btn.active{color:var(--gold);background:var(--bg-act);}
+.nav-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);}
+.nav-btn.dm-only{display:none;}
+.nav-ico{font-size:11px;width:14px;text-align:center;color:var(--t3);flex-shrink:0;}
+.nav-btn.active .nav-ico{color:var(--gold);}
+.sb-foot{margin-top:auto;padding:.75rem 1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px;}
+.dm-toggle{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:3px;background:none;cursor:pointer;font-family:var(--font-d);font-size:9px;letter-spacing:.1em;color:var(--t3);text-transform:uppercase;transition:var(--tr);width:100%;}
+.dm-toggle:hover{border-color:var(--gold-d);color:var(--gold);}
+.dm-toggle.active{border-color:var(--gold);color:var(--gold);background:var(--gold-g);}
+.dm-dot{width:7px;height:7px;border-radius:50%;background:var(--t3);transition:var(--tr);}
+.dm-toggle.active .dm-dot{background:var(--gold);}
+
+/* ── MAIN ── */
+.main{flex:1;overflow-y:auto;padding:2rem 2.5rem;background:var(--bg);}
+.section{display:none;}
+.section.active{display:block;}
+
+/* ── HEADER SEZIONE ── */
+.sec-head{margin-bottom:1.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);position:relative;}
+.sec-head::after{content:'';position:absolute;bottom:-1px;left:0;width:50px;height:1px;background:var(--gold);}
+.sec-title{font-family:var(--font-d);font-size:21px;font-weight:600;color:var(--t1);letter-spacing:.04em;margin-bottom:3px;}
+.sec-sub{font-size:13px;color:var(--t3);font-style:italic;}
+
+/* ── CARD ── */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.4rem;margin-bottom:.9rem;transition:border-color var(--tr);}
+.card:hover{border-color:var(--border-b);}
+.card-title{font-family:var(--font-d);font-size:12px;font-weight:600;letter-spacing:.09em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem;}
+.card-body{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
+
+/* ── TAGS ── */
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.tag{font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid var(--border);color:var(--t3);font-family:var(--font-d);letter-spacing:.04em;}
+
+/* ── STAT GRID ── */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem;}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:.9rem;}
+.stat-lbl{font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:5px;}
+.stat-val{font-family:var(--font-d);font-size:15px;color:var(--t1);}
+
+/* ── GROUP LABEL ── */
+.group-lbl{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;margin:1.5rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);}
+
+/* ── AMBIENTAZIONE TAB ── */
+.amb-tabs{display:flex;gap:1px;border-bottom:1px solid var(--border);margin-bottom:1.25rem;flex-wrap:wrap;}
+.amb-tab{padding:6px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--t3);font-family:var(--font-d);font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;margin-bottom:-1px;transition:var(--tr);}
+.amb-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.amb-tab:hover:not(.active){color:var(--t2);}
+.amb-panel{display:none;}
+.amb-panel.active{display:block;}
+
+/* ── ECONOMIA ── */
+.eco-valute{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;margin-bottom:1.5rem;}
+.eco-valuta{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:.75rem 1rem;}
+.eco-val-sigla{font-family:var(--font-d);font-size:16px;color:var(--gold);font-weight:600;}
+.eco-val-nome{font-size:12px;color:var(--t2);margin:.2rem 0;}
+.eco-val-note{font-size:11px;color:var(--t3);font-style:italic;}
+.eco-converter{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1rem 1.4rem;margin-bottom:1.5rem;}
+.eco-conv-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.eco-conv-input{background:var(--bg);border:1px solid var(--border-b);border-radius:3px;padding:6px 10px;color:var(--t1);font-family:var(--font-b);font-size:14px;width:100px;outline:none;}
+.eco-conv-input:focus{border-color:var(--gold-d);}
+.eco-conv-select{background:var(--bg);border:1px solid var(--border-b);border-radius:3px;padding:6px 8px;color:var(--t1);font-family:var(--font-b);font-size:14px;outline:none;cursor:pointer;}
+.eco-conv-result{font-size:13px;color:var(--t2);line-height:1.8;}
+.eco-conv-result span{color:var(--gold);font-family:var(--font-d);font-size:12px;}
+.eco-salari{margin-bottom:1.5rem;}
+.eco-salari table,.eco-table{width:100%;border-collapse:collapse;font-size:13px;}
+.eco-salari th,.eco-table th{font-family:var(--font-d);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);padding:.5rem .75rem;text-align:left;border-bottom:1px solid var(--border);}
+.eco-salari td{padding:.5rem .75rem;border-bottom:1px solid var(--border);color:var(--t2);vertical-align:top;}
+.eco-salari tr:last-child td,.eco-table tr:last-child td{border-bottom:none;}
+.eco-salari td:first-child{color:var(--t1);}
+.eco-salari td.mono{font-family:var(--font-d);font-size:11px;color:var(--amber);white-space:nowrap;}
+.eco-cat-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
+.eco-cat-tab{padding:5px 12px;background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);font-family:var(--font-b);font-size:13px;cursor:pointer;transition:var(--tr);}
+.eco-cat-tab:hover{color:var(--t1);border-color:var(--border-b);}
+.eco-cat-tab.active{color:var(--gold);border-color:var(--gold-d);background:var(--gold-g);}
+.eco-table{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.eco-table th{background:var(--bg-panel);}
+.eco-table td{padding:.55rem 1rem;border-bottom:1px solid var(--border);color:var(--t2);vertical-align:top;}
+.eco-table tr:hover td{background:var(--bg-hover);}
+.eco-table td:first-child{color:var(--t1);}
+.eco-table td.costo{font-family:var(--font-d);font-size:11px;color:var(--amber);white-space:nowrap;}
+.eco-table td.note-col{font-size:11px;color:var(--t3);font-style:italic;}
+
+/* ── MAPPA ── */
+.map-viewer{width:100%;height:65vh;overflow:hidden;position:relative;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;cursor:grab;user-select:none;}
+.map-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem;}
+.map-placeholder-icon{font-size:32px;opacity:.3;}
+.map-placeholder-text{font-family:var(--font-d);font-size:10px;letter-spacing:.15em;color:var(--t3);text-transform:uppercase;}
+
+/* ── SVILUPPO CAPITOLI ── */
+.cap-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:1rem;overflow:hidden;transition:border-color var(--tr);}
+.cap-card:hover{border-color:var(--border-b);}
+.cap-card.completato{border-left:2px solid var(--green);}
+.cap-card.in-corso{border-left:2px solid var(--gold);}
+.cap-card.pianificato{border-left:2px solid var(--t3);}
+
+.cap-head{display:flex;align-items:center;gap:10px;padding:.9rem 1.4rem;cursor:pointer;background:var(--bg-panel);}
+.cap-num{font-family:var(--font-d);font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;white-space:nowrap;}
+.cap-title{flex:1;font-size:14px;color:var(--t1);font-family:var(--font-d);letter-spacing:.02em;}
+.cap-stato{font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid;font-family:var(--font-d);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+.cap-stato.completato{border-color:var(--green);color:var(--green);}
+.cap-stato.in-corso{border-color:var(--gold-d);color:var(--gold);}
+.cap-stato.pianificato{border-color:var(--t3);color:var(--t3);}
+.cap-arr{font-size:10px;color:var(--t3);transition:transform var(--tr);}
+.cap-card.open .cap-arr{transform:rotate(90deg);}
+
+.cap-body{display:none;padding:1.2rem 1.4rem;border-top:1px solid var(--border);}
+.cap-card.open .cap-body{display:block;}
+
+.cap-sec{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin:1rem 0 .35rem;padding-top:.75rem;border-top:1px solid var(--border);}
+.cap-sec:first-child{margin-top:0;border-top:none;padding-top:0;}
+.cap-text{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
+.cap-luogo{font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.75rem;}
+
+.ev-list{margin:.4rem 0;padding:0;list-style:none;}
+.ev-list li{font-size:13px;color:var(--t2);padding:3px 0;padding-left:14px;position:relative;}
+.ev-list li::before{content:'›';position:absolute;left:0;color:var(--gold-d);}
+
+.callout-m{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#b07070;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
+
+/* oggetti nel capitolo */
+.cap-obj-list{margin:.4rem 0;}
+.cap-obj{background:var(--bg-panel);border:1px solid var(--border);border-radius:3px;padding:.5rem .8rem;margin-bottom:.4rem;}
+.cap-obj-name{font-family:var(--font-d);font-size:10px;letter-spacing:.07em;color:var(--gold);margin-bottom:2px;}
+.cap-obj-note{font-size:12px;color:var(--t3);}
+
+/* ── PLAYER SPOTIFY ── */
+.music-section{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border);}
+.music-label{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.6rem;}
+.music-tracks{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.music-track-btn{padding:5px 13px;background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);font-family:var(--font-b);font-size:12px;cursor:pointer;transition:var(--tr);}
+.music-track-btn:hover{border-color:var(--border-b);color:var(--t1);}
+.music-track-btn.active{border-color:#1DB954;color:#1DB954;background:rgba(29,185,84,.08);}
+.spotify-player{border-radius:4px;overflow:hidden;border:1px solid var(--border);}
+.spotify-player iframe{display:block;}
+.music-note{font-size:11px;color:var(--t3);font-style:italic;margin-top:.4rem;}
+
+/* ── MODAL PASSWORD DM ── */
+.pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
+.pw-overlay.open{display:flex;}
+.pw-box{background:var(--bg-panel);border:1px solid var(--border-b);border-radius:4px;padding:1.75rem;max-width:340px;width:92%;text-align:center;}
+.pw-title{font-family:var(--font-d);font-size:13px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem;}
+.pw-input{width:100%;padding:9px 12px;background:var(--bg-card);border:1px solid var(--border-b);border-radius:3px;color:var(--t1);font-family:var(--font-b);font-size:15px;margin-bottom:.75rem;text-align:center;letter-spacing:.15em;outline:none;}
+.pw-input:focus{border-color:var(--gold-d);}
+.pw-btn{padding:8px 24px;background:none;border:1px solid var(--gold-d);color:var(--gold);font-family:var(--font-d);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:var(--tr);width:100%;}
+.pw-btn:hover{background:var(--gold-g);}
+.pw-err{font-size:12px;color:var(--red);margin-top:.5rem;display:none;font-style:italic;}
+
+/* ── MOBILE ── */
+.mob-bar{display:none;}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;}
+.mob-overlay.open{display:block;}
+
+@media(max-width:680px){
+  .app{flex-direction:column;}
+  .mob-bar{display:flex;align-items:center;justify-content:space-between;background:var(--bg-panel);border-bottom:1px solid var(--border);padding:.6rem 1rem;flex-shrink:0;z-index:100;position:sticky;top:0;}
+  .mob-bar-title{font-family:var(--font-d);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+  .mob-ham{background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0;transition:border-color var(--tr),color var(--tr);}
+  .mob-ham:hover{border-color:var(--gold-d);color:var(--gold);}
+  .mob-ham span{display:block;width:16px;height:1.5px;background:currentColor;border-radius:1px;transition:transform .2s,opacity .2s;}
+  .mob-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .mob-ham.open span:nth-child(2){opacity:0;}
+  .mob-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .sidebar{position:fixed;top:0;left:0;bottom:0;z-index:100;transform:translateX(-100%);transition:transform .22s ease;width:min(var(--sw),88vw);}
+  .sidebar.open{transform:translateX(0);}
+  .main{padding:1.25rem 1rem;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border-b);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<div class="mob-overlay" id="mob-overlay" onclick="closeSidebar()"></div>
+<div class="mob-bar">
+  <span class="mob-bar-title">Torre della Follia</span>
+  <button class="mob-ham" id="mob-ham" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="app">
+  <nav class="sidebar" id="sidebar">
+    <div class="sb-head">
+      <a href="home.html" class="sb-back">← Portale</a>
+      <div class="sb-title">Torre della Follia</div>
+      <div class="sb-sub">One Shot — Kaelvaran</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-lbl">Generale</div>
+      <button class="nav-btn active" data-section="panoramica" onclick="showSection('panoramica')">
+        <span class="nav-ico">◎</span>Panoramica
+      </button>
+      <button class="nav-btn" data-section="ambientazione" onclick="showSection('ambientazione')">
+        <span class="nav-ico">⌂</span>Ambientazione
+      </button>
+      <button class="nav-btn" data-section="economia" onclick="showSection('economia')">
+        <span class="nav-ico">◈</span>Economia
+      </button>
+      <button class="nav-btn" data-section="mappe" onclick="showSection('mappe')">
+        <span class="nav-ico">⊞</span>Mappe
+      </button>
+    </div>
+    <div class="nav-section">
+      <div class="nav-lbl">Master</div>
+      <button class="nav-btn dm-only" data-section="sviluppo" onclick="showSection('sviluppo')">
+        <span class="nav-ico">◆</span>Sviluppo
+      </button>
+    </div>
+    <div class="sb-foot">
+      <button class="dm-toggle" id="dm-toggle" onclick="toggleDM()">
+        <div class="dm-dot" id="dm-dot"></div>
+        <span id="dm-label">Modalità DM</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+    <div id="section-panoramica"    class="section active"></div>
+    <div id="section-ambientazione" class="section"></div>
+    <div id="section-economia"      class="section"></div>
+    <div id="section-mappe"         class="section"></div>
+    <div id="section-sviluppo"      class="section"></div>
+  </main>
+</div>
+
+<!-- MODAL PASSWORD DM -->
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <div class="pw-title">◑ Accesso Modalità DM</div>
+    <input type="password" class="pw-input" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
+    <button class="pw-btn" onclick="checkPW()">Sblocca</button>
+    <div class="pw-err" id="pw-err">Password errata.</div>
+  </div>
+</div>
+
+<script src="data_panoramica.js"></script>
+<script src="data_torre.js"></script>
+<script>
+const ADMIN_PW = 'tresil2025';
+let isMaster = false;
+
+// ── INIT ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildPanoramica();
+  buildAmbientazione();
+  buildEconomia();
+  buildMappe();
+  buildSviluppo();
+  showSection('panoramica');
+});
+
+// ── MOBILE SIDEBAR ─────────────────────────────────
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('mob-overlay').classList.add('open');
+  document.getElementById('mob-ham').classList.add('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('mob-overlay').classList.remove('open');
+  document.getElementById('mob-ham').classList.remove('open');
+}
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  if (sb.classList.contains('open')) closeSidebar(); else openSidebar();
+}
+
+// ── NAVIGAZIONE ────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id)?.classList.add('active');
+  document.querySelector(`[data-section="${id}"]`)?.classList.add('active');
+  if (window.innerWidth <= 680) closeSidebar();
+}
+
+// ── MODALITÀ DM ────────────────────────────────────
+function toggleDM() {
+  if (isMaster) {
+    isMaster = false;
+    updateDMUI();
+  } else {
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-err').style.display = 'none';
+    document.getElementById('pw-overlay').classList.add('open');
+    setTimeout(() => document.getElementById('pw-input').focus(), 100);
+  }
+}
+
+function checkPW() {
+  const val = document.getElementById('pw-input').value;
+  if (val === ADMIN_PW) {
+    isMaster = true;
+    document.getElementById('pw-overlay').classList.remove('open');
+    updateDMUI();
+  } else {
+    document.getElementById('pw-err').style.display = 'block';
+  }
+}
+
+function updateDMUI() {
+  const toggle = document.getElementById('dm-toggle');
+  toggle.classList.toggle('active', isMaster);
+  document.getElementById('dm-label').textContent = isMaster ? 'DM attivo' : 'Modalità DM';
+  document.querySelectorAll('.dm-only').forEach(el => {
+    el.style.display = isMaster ? '' : 'none';
+  });
+  // Ridisegna sezioni che dipendono da isMaster
+  buildSviluppo();
+  // Se siamo su sviluppo ma DM disattivato, torna a panoramica
+  if (!isMaster && document.getElementById('section-sviluppo').classList.contains('active')) {
+    showSection('panoramica');
+  }
+}
+
+// ── HELPERS ────────────────────────────────────────
+function card(title, body, extra = '') {
+  const d = document.createElement('div');
+  d.className = 'card ' + extra;
+  if (title) d.innerHTML = `<div class="card-title">${title}</div>`;
+  const b = document.createElement('div');
+  b.className = 'card-body';
+  b.textContent = body;
+  d.appendChild(b);
+  return d;
+}
+
+// ── PANORAMICA ─────────────────────────────────────
+function buildPanoramica() {
+  const c = document.getElementById('section-panoramica');
+  const p = PANORAMICA_DATA;
+  c.innerHTML = `
+    <div class="sec-head">
+      <div class="sec-title">Panoramica</div>
+      <div class="sec-sub">Il mondo di ${p.mondo.nome} — lore condivisa</div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-lbl">Mondo</div><div class="stat-val">${p.mondo.nome}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Tipo</div><div class="stat-val">One Shot</div></div>
+      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${TORRE_DATA.capitoli.length}</div></div>
+    </div>`;
+
+  // Il mondo
+  c.appendChild(card('Il Mondo', p.mondo.descrizione));
+
+  // Fatati
+  c.appendChild(card(p.fatati.titolo, p.fatati.testo));
+
+  // Mondo dei sogni
+  c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
+}
+
+// ── AMBIENTAZIONE ──────────────────────────────────
+function buildAmbientazione() {
+  const c = document.getElementById('section-ambientazione');
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">I luoghi della Torre della Follia</div></div>`;
+
+  TORRE_DATA.ambientazione.forEach(a => {
+    const d = document.createElement('div');
+    d.className = 'card';
+    d.innerHTML = `<div class="card-title">${a.nome}</div>`;
+    if (a.sottotitolo) {
+      const sub = document.createElement('div');
+      sub.style.cssText = 'font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.5rem;';
+      sub.textContent = a.sottotitolo;
+      d.appendChild(sub);
+    }
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.textContent = a.testo;
+    d.appendChild(body);
+    if (a.tag?.length) {
+      const tags = document.createElement('div');
+      tags.className = 'tags';
+      tags.style.marginTop = '8px';
+      a.tag.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
+      d.appendChild(tags);
+    }
+    c.appendChild(d);
+  });
+
+  // Luoghi generali da data_panoramica
+  const lbl = document.createElement('div');
+  lbl.className = 'group-lbl';
+  lbl.textContent = 'Luoghi di Kaelvaran';
+  c.appendChild(lbl);
+
+  PANORAMICA_DATA.luoghi.forEach(l => {
+    const d = document.createElement('div');
+    d.className = 'card';
+    d.innerHTML = `<div class="card-title">${l.nome}</div>`;
+    const sub = document.createElement('div');
+    sub.style.cssText = 'font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.5rem;';
+    sub.textContent = l.sottotitolo;
+    d.appendChild(sub);
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.textContent = l.testo;
+    d.appendChild(body);
+    c.appendChild(d);
+  });
+}
+
+// ── ECONOMIA ───────────────────────────────────────
+function buildEconomia() {
+  const c = document.getElementById('section-economia');
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Sistema monetario — prezzi e riferimenti</div></div>`;
+  const eco = TORRE_DATA.economia;
+
+  // Valute
+  const lbl1 = document.createElement('div'); lbl1.className = 'group-lbl'; lbl1.textContent = 'Sistema monetario';
+  c.appendChild(lbl1);
+  const grid = document.createElement('div'); grid.className = 'eco-valute';
+  eco.valute.forEach(v => {
+    const d = document.createElement('div'); d.className = 'eco-valuta';
+    d.innerHTML = `<div class="eco-val-sigla">${v.sigla.toUpperCase()}</div><div class="eco-val-nome">${v.nome}</div><div class="eco-val-note">${v.note}</div>`;
+    grid.appendChild(d);
+  });
+  c.appendChild(grid);
+
+  // Convertitore
+  const lbl2 = document.createElement('div'); lbl2.className = 'group-lbl'; lbl2.textContent = 'Convertitore rapido';
+  c.appendChild(lbl2);
+  const conv = document.createElement('div'); conv.className = 'eco-converter';
+  const row = document.createElement('div'); row.className = 'eco-conv-row';
+  const inp = document.createElement('input'); inp.className = 'eco-conv-input'; inp.type = 'number'; inp.value = '1'; inp.min = '0';
+  const sel = document.createElement('select'); sel.className = 'eco-conv-select';
+  eco.valute.forEach(v => { const o = document.createElement('option'); o.value = v.valore; o.textContent = v.sigla.toUpperCase() + ' — ' + v.nome; sel.appendChild(o); });
+  const result = document.createElement('div'); result.className = 'eco-conv-result';
+  function updateConv() {
+    const base = (parseFloat(inp.value) || 0) * parseFloat(sel.value);
+    result.innerHTML = eco.valute.map(v => {
+      const q = base / v.valore;
+      if (q < 0.01) return null;
+      const disp = q >= 1 ? (Number.isInteger(q) ? q : q.toFixed(2)) : q.toFixed(4);
+      return `<span>${v.sigla.toUpperCase()}</span> ${disp} ${v.nome}`;
+    }).filter(Boolean).join(' &nbsp;·&nbsp; ');
+  }
+  inp.oninput = updateConv; sel.onchange = updateConv;
+  row.appendChild(inp); row.appendChild(sel);
+  conv.appendChild(row); conv.appendChild(result);
+  c.appendChild(conv);
+  updateConv();
+
+  // Salari
+  const lbl3 = document.createElement('div'); lbl3.className = 'group-lbl'; lbl3.textContent = 'Salari di riferimento';
+  c.appendChild(lbl3);
+  const sal = document.createElement('div'); sal.className = 'eco-salari';
+  sal.innerHTML = `<table><thead><tr><th>Ruolo</th><th>Al giorno</th><th>Al mese</th><th>Note</th></tr></thead><tbody>${
+    eco.salari.map(s => `<tr><td>${s.ruolo}</td><td class="mono">${s.giorno}</td><td class="mono">${s.mese}</td><td>${s.note}</td></tr>`).join('')
+  }</tbody></table>`;
+  c.appendChild(sal);
+
+  // Listino prezzi
+  const lbl4 = document.createElement('div'); lbl4.className = 'group-lbl'; lbl4.textContent = 'Listino prezzi';
+  c.appendChild(lbl4);
+  const tabBar = document.createElement('div'); tabBar.className = 'eco-cat-tabs';
+  const tableWrap = document.createElement('div');
+  let activeTab = 'tutti';
+
+  function renderTable(filtro) {
+    tableWrap.innerHTML = '';
+    eco.categorie.forEach(cat => {
+      if (filtro !== 'tutti' && cat.id !== filtro) return;
+      const tbl = document.createElement('div'); tbl.style.marginBottom = '1.2rem';
+      if (filtro === 'tutti') {
+        const lbl = document.createElement('div');
+        lbl.style.cssText = 'font-family:var(--font-d);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:.4rem;';
+        lbl.textContent = cat.icona + ' ' + cat.nome;
+        tbl.appendChild(lbl);
+      }
+      tbl.innerHTML += `<table class="eco-table"><thead><tr><th>Oggetto / Servizio</th><th>Costo</th><th>Note</th></tr></thead><tbody>${
+        cat.voci.map(v => `<tr><td>${v.nome}</td><td class="costo">${v.costo}</td><td class="note-col">${v.note}</td></tr>`).join('')
+      }</tbody></table>`;
+      tableWrap.appendChild(tbl);
+    });
+  }
+
+  const tuttiBtn = document.createElement('button');
+  tuttiBtn.className = 'eco-cat-tab active'; tuttiBtn.textContent = '🗂 Tutte';
+  tuttiBtn.onclick = () => { activeTab = 'tutti'; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); tuttiBtn.classList.add('active'); renderTable('tutti'); };
+  tabBar.appendChild(tuttiBtn);
+  eco.categorie.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'eco-cat-tab'; btn.textContent = cat.icona + ' ' + cat.nome;
+    btn.onclick = () => { activeTab = cat.id; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTable(cat.id); };
+    tabBar.appendChild(btn);
+  });
+
+  c.appendChild(tabBar);
+  renderTable('tutti');
+  c.appendChild(tableWrap);
+}
+
+// ── MAPPE ──────────────────────────────────────────
+function buildMappe() {
+  const c = document.getElementById('section-mappe');
+  c.innerHTML = `
+    <div class="sec-head"><div class="sec-title">Mappe</div><div class="sec-sub">Pianta della Torre — aggiungere il file maps/torre.jpg</div></div>
+    <div class="map-viewer">
+      <div class="map-placeholder">
+        <div class="map-placeholder-icon">⊞</div>
+        <div class="map-placeholder-text">Mappa da caricare</div>
+        <div style="font-size:12px;color:var(--t3);font-style:italic;margin-top:.25rem;">Aggiungi il file <code style="font-family:monospace;background:var(--bg-card);padding:2px 5px;border-radius:2px;">maps/torre.jpg</code></div>
+      </div>
+    </div>`;
+}
+
+// ── SVILUPPO CAPITOLI (solo DM) ────────────────────
+function buildSviluppo() {
+  const c = document.getElementById('section-sviluppo');
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Sviluppo</div><div class="sec-sub">Capitoli e guida al master</div></div>`;
+
+  if (!isMaster) {
+    c.innerHTML += `<div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
+    return;
+  }
+
+  TORRE_DATA.capitoli.forEach(cap => {
+    const wrap = document.createElement('div');
+    wrap.className = `cap-card ${cap.stato}`;
+
+    const statoLabel = { 'completato': 'Completato', 'in-corso': 'In corso', 'pianificato': 'Pianificato' }[cap.stato] || cap.stato;
+
+    wrap.innerHTML = `
+      <div class="cap-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cap-num">Cap. ${cap.numero}</div>
+        <div class="cap-title">${cap.titolo}</div>
+        <span class="cap-stato ${cap.stato}">${statoLabel}</span>
+        <span class="cap-arr">▶</span>
+      </div>
+      <div class="cap-body">
+        <div class="cap-luogo">📍 ${cap.luogo}</div>
+
+        <div class="cap-sec">Riassunto</div>
+        <div class="cap-text">${cap.riassunto}</div>
+
+        <div class="cap-sec">Eventi chiave</div>
+        <ul class="ev-list">${cap.eventiChiave.map(e => `<li>${e}</li>`).join('')}</ul>
+
+        <div class="cap-sec">Note DM</div>
+        <div class="callout-m">${cap.noteDM}</div>
+
+        ${cap.oggetti?.length ? `
+        <div class="cap-sec">Oggetti</div>
+        <div class="cap-obj-list">${cap.oggetti.map(o => `
+          <div class="cap-obj">
+            <div class="cap-obj-name">${o.nome}</div>
+            <div class="cap-obj-note">${o.note}</div>
+          </div>`).join('')}
+        </div>` : ''}
+
+        ${buildMusicPlayer(cap)}
+      </div>`;
+
+    c.appendChild(wrap);
+  });
+}
+
+// ── PLAYER SPOTIFY ─────────────────────────────────
+function buildMusicPlayer(cap) {
+  if (!cap.musica?.length) return '';
+
+  const tracksHTML = cap.musica.map((m, i) =>
+    `<button class="music-track-btn ${i === 0 ? 'active' : ''}"
+      onclick="switchTrack(this, '${cap.id}', '${m.spotifyUri}', '${m.note}')"
+    >${m.label}</button>`
+  ).join('');
+
+  const firstTrack = cap.musica[0];
+
+  return `
+    <div class="music-section">
+      <div class="music-label">♪ Musica</div>
+      <div class="music-tracks">${tracksHTML}</div>
+      <div class="spotify-player" id="player-${cap.id}">
+        <iframe
+          src="${firstTrack.spotifyUri}?utm_source=generator&theme=0"
+          width="100%" height="80" frameborder="0"
+          allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="music-note" id="note-${cap.id}">${firstTrack.note}</div>
+    </div>`;
+}
+
+function switchTrack(btn, capId, uri, note) {
+  // Aggiorna bottoni
+  btn.closest('.music-tracks').querySelectorAll('.music-track-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Aggiorna player
+  const player = document.getElementById('player-' + capId);
+  player.innerHTML = `<iframe
+    src="${uri}?utm_source=generator&theme=0"
+    width="100%" height="80" frameborder="0"
+    allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>`;
+  // Aggiorna nota
+  document.getElementById('note-' + capId).textContent = note;
+}
+</script>
+</body>
+</html>

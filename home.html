@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivio — Kaelvaran</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+:root {
+  --bg:       #0a0c0f;
+  --bg-panel: #111520;
+  --bg-card:  #161d28;
+  --bg-hover: #1a2333;
+  --border:   rgba(90,130,190,0.13);
+  --border-b: rgba(90,130,190,0.28);
+  --gold:     #c9a84c;
+  --gold-d:   #8a6e2f;
+  --gold-g:   rgba(201,168,76,0.12);
+  --t1:       #e8e0d0;
+  --t2:       #9a9080;
+  --t3:       #5a5448;
+  --font-d:   'Cinzel', serif;
+  --font-b:   'Crimson Pro', Georgia, serif;
+  --tr:       .18s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:16px;line-height:1.7;}
+
+/* ── SFONDO ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(90,130,190,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── LAYOUT ── */
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:4rem 2rem 5rem;}
+
+/* ── HEADER ── */
+.site-head{text-align:center;margin-bottom:4rem;}
+.site-ornament{font-size:11px;letter-spacing:.45em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;justify-content:center;}
+.site-ornament::before,.site-ornament::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--t3));}
+.site-ornament::after{background:linear-gradient(90deg,var(--t3),transparent);}
+.site-title{font-family:var(--font-d);font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:.08em;color:var(--t1);margin-bottom:.5rem;}
+.site-title span{color:var(--gold);}
+.site-sub{font-size:15px;color:var(--t3);font-style:italic;letter-spacing:.02em;}
+
+/* ── DIVISORE ── */
+.divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem;}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-label{font-family:var(--font-d);font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase;white-space:nowrap;}
+
+/* ── CAMPAGNA PRINCIPALE ── */
+.main-campaign{
+  display:block;text-decoration:none;
+  background:var(--bg-card);border:1px solid var(--border-b);border-radius:6px;
+  padding:1.75rem 2rem;margin-bottom:2rem;
+  position:relative;overflow:hidden;
+  transition:border-color .2s, background .2s, transform .15s;
+}
+.main-campaign:hover{border-color:var(--gold-d);background:var(--bg-hover);transform:translateY(-2px);}
+.main-campaign::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.mc-label{font-size:9px;letter-spacing:.2em;color:var(--gold-d);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.5rem;}
+.mc-title{font-family:var(--font-d);font-size:22px;font-weight:600;letter-spacing:.05em;color:var(--t1);margin-bottom:.4rem;}
+.mc-sub{font-size:14px;color:var(--t2);font-style:italic;margin-bottom:1.25rem;}
+.mc-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
+.mc-btn{
+  padding:7px 18px;border-radius:3px;font-family:var(--font-d);font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  border:1px solid;transition:var(--tr);cursor:pointer;
+}
+.mc-btn.players{border-color:var(--border-b);color:var(--t2);}
+.mc-btn.players:hover{border-color:var(--gold-d);color:var(--gold);background:var(--gold-g);}
+.mc-btn.dm{border-color:var(--gold-d);color:var(--gold);background:var(--gold-g);}
+.mc-btn.dm:hover{background:rgba(201,168,76,0.22);}
+
+/* ── GRID ONE SHOT ── */
+.oneshot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+
+.oneshot-card{
+  display:block;text-decoration:none;
+  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
+  padding:1.4rem 1.6rem;
+  position:relative;overflow:hidden;
+  transition:border-color .2s,background .2s,transform .15s;
+}
+.oneshot-card:hover{border-color:var(--border-b);background:var(--bg-hover);transform:translateY(-2px);}
+.oneshot-card::after{
+  content:'→';position:absolute;bottom:1.2rem;right:1.4rem;
+  font-family:var(--font-d);font-size:13px;color:var(--t3);
+  transition:color .2s,transform .2s;
+}
+.oneshot-card:hover::after{color:var(--gold);transform:translateX(3px);}
+.oc-tag{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.5rem;}
+.oc-title{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:.04em;color:var(--t1);margin-bottom:.35rem;}
+.oc-sub{font-size:13px;color:var(--t2);font-style:italic;line-height:1.5;}
+.oc-meta{margin-top:.9rem;display:flex;gap:.5rem;flex-wrap:wrap;}
+.oc-pill{font-size:9px;padding:2px 8px;border-radius:2px;border:1px solid var(--border);color:var(--t3);font-family:var(--font-d);letter-spacing:.04em;}
+
+/* card "prossimamente" */
+.oneshot-card.coming{opacity:.45;cursor:default;pointer-events:none;}
+.oneshot-card.coming:hover{transform:none;}
+
+/* ── FOOTER ── */
+.site-foot{text-align:center;margin-top:4rem;font-size:11px;color:var(--t3);font-style:italic;letter-spacing:.04em;}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .wrap{padding:2.5rem 1rem 3rem;}
+  .mc-actions{flex-direction:column;}
+  .mc-btn{text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-head">
+    <div class="site-ornament">Archivio</div>
+    <h1 class="site-title">Il Mondo di <span>Kaelvaran</span></h1>
+    <p class="site-sub">Seleziona la campagna a cui accedere</p>
+  </header>
+
+  <!-- CAMPAGNA PRINCIPALE -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Campagna principale</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="main-campaign">
+    <div class="mc-label">In corso</div>
+    <div class="mc-title">Tresil</div>
+    <div class="mc-sub">La campagna principale — città di Tresil e dintorni</div>
+    <div class="mc-actions">
+      <a href="index.html" class="mc-btn players">▷ Vista Giocatori</a>
+      <a href="index.html?dm=1" class="mc-btn dm">◑ Vista DM</a>
+    </div>
+  </div>
+
+  <!-- ONE SHOT -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">One Shot</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="oneshot-grid">
+
+    <a href="torre.html" class="oneshot-card">
+      <div class="oc-tag">One Shot</div>
+      <div class="oc-title">La Torre della Follia</div>
+      <div class="oc-sub">Un'ascesa nei meandri di una torre dimenticata, dove la realtà si piega.</div>
+      <div class="oc-meta">
+        <span class="oc-pill">Capitoli: 3</span>
+        <span class="oc-pill">Avventura</span>
+      </div>
+    </a>
+
+    <div class="oneshot-card coming">
+      <div class="oc-tag">Prossimamente</div>
+      <div class="oc-title">— In sviluppo —</div>
+      <div class="oc-sub">La prossima one shot verrà aggiunta qui.</div>
+    </div>
+
+  </div>
+
+  <footer class="site-foot">
+    Archivio di Kaelvaran · Uso interno
+  </footer>
+
+</div>
+</body>
+</html>
