@@ -250,9 +250,9 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
         <span class="nav-ico">⊞</span>Mappe
       </button>
     </div>
-    <div class="nav-section">
+    <div class="nav-section" id="nav-master" style="display:none;">
       <div class="nav-lbl">Master</div>
-      <button class="nav-btn dm-only" data-section="sviluppo" onclick="showSection('sviluppo')">
+      <button class="nav-btn" data-section="sviluppo" onclick="showSection('sviluppo')">
         <span class="nav-ico">◆</span>Sviluppo
       </button>
     </div>
@@ -352,10 +352,8 @@ function updateDMUI() {
   const toggle = document.getElementById('dm-toggle');
   toggle.classList.toggle('active', isMaster);
   document.getElementById('dm-label').textContent = isMaster ? 'DM attivo' : 'Modalità DM';
-  document.querySelectorAll('.dm-only').forEach(el => {
-    el.style.display = isMaster ? 'flex' : 'none';
-  });
-  // Ridisegna sezioni che dipendono da isMaster
+  document.getElementById('nav-master').style.display = isMaster ? 'block' : 'none';
+  // Ridisegna sezione sviluppo che dipende da isMaster
   buildSviluppo();
   // Se siamo su sviluppo ma DM disattivato, torna a panoramica
   if (!isMaster && document.getElementById('section-sviluppo').classList.contains('active')) {
