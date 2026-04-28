@@ -1,5 +1,6 @@
 // data_torre.js — La Torre della Follia
 // One Shot ambientata nel mondo di Kaelvaran
+// Sistema: dado percentuale a discrezione del DM — nessuna meccanica D&D standard
 
 const torreDati = {
   titolo: "La Torre della Follia",
@@ -36,34 +37,35 @@ brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`
 Delira: suo fratello Dimitri è rimasto intrappolato sotto una frana alla cava. 
 Mentre cercava di liberarlo, una bestia lo ha attaccato. Preso dal panico, è fuggito. 
 Durante il ritorno al villaggio ha sentito la bestia seguirlo — si nutriva degli animali del bosco.`,
-          notaDM: `Un personaggio con competenza in Medicina o accesso a magia curativa/divinatoria può fare 
-una prova (CD 12) per accorgersi che qualcosa di più profondo sta consumando Alexei: 
-le ferite, pur recenti, hanno già iniziato a produrre pus. Gli occhi sono giallastri. 
-Qualche dente gli cade mentre parla. Ciocche di capelli restano tra le dita quando si passa 
-la mano sul capo. Non è una normale infezione — è una corruzione accelerata, 
-come se il corpo stesse marcendo a velocità innaturale.`
+          notaDM: `Chi esamina Alexei da vicino — con conoscenze mediche, magiche, o semplicemente 
+con attenzione — nota che qualcosa di più profondo lo sta consumando: le ferite, pur recenti, 
+hanno già iniziato a produrre pus. Gli occhi sono giallastri. Qualche dente gli cade mentre parla. 
+Ciocche di capelli restano tra le dita quando si passa la mano sul capo.
+
+Non è una normale infezione — è una corruzione accelerata, come se il corpo stesse marcendo 
+a velocità innaturale. Il DM decide quanto è evidente in base a quanto i giocatori indagano.`
         },
         {
           titolo: "La Strada verso la Cava",
           tipo: "viaggio",
           testo: `Il sentiero che porta alla cava si addentra nel bosco. 
 È notte o tarda sera. La strada è silenziosa nel modo sbagliato — nessun verso di animali notturni.`,
-          notaDM: `A metà strada i PG affrontano il cinghiale corrotto. In lontananza, 
-durante o dopo il combattimento, chi supera una prova di Percezione (CD 14) intravede 
-una figura umana immobile tra gli alberi che li osserva — poi scompare.`
+          notaDM: `A metà strada i PG affrontano il cinghiale corrotto. In lontananza, durante o dopo 
+lo scontro, chi guarda nel bosco può intravedere una figura umana immobile tra gli alberi che li osserva. 
+Poi scompare. Il DM la mostra solo se qualcuno sta guardando nella direzione giusta.`
         },
         {
-          titolo: "Il Cinghiale Corrotto — Combattimento",
+          titolo: "Il Cinghiale Corrotto — Scontro",
           tipo: "scontro",
           testo: `Più grande di un cinghiale normale. I lembi di carne si staccano dalle ossa 
 mentre si muove. Dal cranio escono mucchi di vermi che cadono sul terreno. 
 Nonostante le condizioni del corpo, è veloce e aggressivo.`,
-          notaDM: `Statistiche: usare il blocco di un Cinghiale (MM) e aumentare i PF del 50%, 
-aggiungere immunità ai danni da veleno. Chi subisce danni dalla carica deve superare 
-un TS su Costituzione (CD 13) o contrarre una versione lieve della corruzione 
-(svantaggio ai TS contro malattia per 24 ore). 
+          notaDM: `Il cinghiale è pericoloso ma abbattibile. Chi viene colpito dalla sua carica 
+rischia di contrarre una forma lieve della stessa corruzione che consuma Alexei — 
+il DM valuta in base alla gravità della ferita e all'approccio del giocatore.
+
 Il cadavere del cinghiale, se esaminato, mostra lo stesso avanzato stadio di degenerazione 
-interna di Alexei — ma concentrato.`
+interna di Alexei — ma concentrato, come se la bestia fosse corrotta da più tempo.`
         },
         {
           titolo: "La Cava — Dimitri",
@@ -73,11 +75,10 @@ Dimitri è ancora lì: il braccio sinistro è schiacciato da un grande masso,
 il corpo ha convulsioni intermittenti nonostante sia cosciente. 
 Quello che resta della mano schiacciata è in stato avanzato di decomposizione.
 La schiena di Dimitri è stata strappata a morsi — ferite profonde, già necrotizzate.`,
-          notaDM: `Dimitri non può essere salvato in modo convenzionale. 
-La corruzione è troppo avanzata. Può ancora parlare in modo frammentato: 
-"È uscita dalla roccia... cantava... Dio, cantava mentre mi mangiava." 
-Dimitri muore entro 1 ora dall'arrivo dei PG, a meno che non vengano usate magie 
-molto potenti (che comunque fermano solo il processo, non lo invertono).
+          notaDM: `Dimitri non può essere salvato. La corruzione è troppo avanzata. 
+Può ancora parlare in modo frammentato: "È uscita dalla roccia... cantava... Dio, cantava mentre mi mangiava." 
+Muore nel corso della scena — il DM sceglie il momento più drammaticamente efficace.
+
 La frana ha aperto un accesso a una grotta preesistente — è da lì che è uscita la creatura.`
         }
       ]
@@ -102,13 +103,17 @@ si fosse addensato.`
           tipo: "oggetto",
           testo: `Nel camino, tra le ceneri, ci sono frammenti di fogli manoscritti bruciati. 
 Non tutti sono completamente distrutti — alcune note musicali, alcuni segni, 
-restano leggibili ai bordi. I PG possono tentare di ricomporre lo spartito 
-mettendo insieme i frammenti superstiti.`,
-          notaDM: `Lo spartito è incompleto e bruciato intenzionalmente (dal Biondo, come spiegato nel diario). 
-Una prova di Storia (CD 15) o Arcano (CD 14) rivela che la notazione è inusuale — 
-non è musica nel senso tradizionale, è più vicina a un sigillo arcano trascritto in forma melodica. 
-Chi ha competenza in strumenti musicali riconosce che alcune sequenze sembrano progettate 
-per essere cantate in coppia. Non è possibile ricostruire lo spartito completo dai soli frammenti.`
+restano leggibili ai bordi.`,
+          notaDM: `Lo spartito è incompleto e bruciato intenzionalmente dal Biondo (come spiegato nel diario). 
+La notazione è inusuale — non è musica nel senso tradizionale, è più vicina a un sigillo arcano 
+trascritto in forma melodica.
+
+Collegamento con Dogti: il ritmo che Dogti batte sul pavimento con il moncherino 
+corrisponde esattamente al tempo della melodia sui frammenti. 
+Mettendo insieme i due elementi, i PG possono riconoscere la canzone — 
+quella che conoscono nella vita reale come Thriller di Michael Jackson. 
+In questo mondo è una canzone popolare Varlmenn: Ralia la cantava a Dogti.
+Il DM svela il collegamento quando sente che i giocatori ci sono vicini.`
         },
         {
           titolo: "Cosa trovano — 2: Il Diario del Biondo",
@@ -155,13 +160,14 @@ Ho dato fuoco allo spartito appena arrivato nella stanza.
 Il Rospo mi rincorre. Non posso fuggire dalla sua torre. 
 Dogti sembra spaventato, rannicch...`,
           notaDM: `Il diario si interrompe a metà parola. I giocatori non sapranno mai come finisce. 
-Il Biondo è il cadavere bloccato alla parete — trattenuto lì da Dogti (o dalla torre stessa) 
-dopo aver bruciato lo spartito. Non è chiaro se sia morto subito o sia rimasto intrappolato vivo.
-Informazioni chiave che i PG ricavano dal diario:
+Il Biondo è il cadavere bloccato alla parete — trattenuto lì dopo aver bruciato lo spartito.
+
+Informazioni chiave che i PG ricavano:
 • Il nome del mago: Fraxximt il Rospo
 • La torre cambia continuamente — non c'è una via diretta al mago
-• Esiste qualcosa chiamato "cuore di Dogti" usato come tramite arcano
-• Lo spartito bruciato dovrebbe indebolire il controllo del Rospo sugli abomini`
+• Esiste il "cuore di Dogti" usato come tramite arcano
+• Lo spartito bruciato indebolisce il controllo del Rospo sugli abomini
+• La canzone va cantata — ed è legata a Dogti in modo profondo`
         },
         {
           titolo: "Cosa trovano — 3: Il Cadavere e la Parete Magica",
@@ -169,14 +175,11 @@ Informazioni chiave che i PG ricavano dal diario:
           testo: `Uno scheletro è bloccato alla parete da tralicci di pietra cresciuti attorno alle ossa — 
 come se la roccia stessa lo avesse trattenuto. Accanto, sul pavimento, c'è il diario.
 
-Il fondo della grotta non è roccia naturale. Chi si avvicina nota che la superficie 
-è innaturalmente liscia e uniforme. Una prova di Arcano (CD 12) conferma: 
-è stata creata magicamente, non è una formazione naturale. 
-È anche sottile — un colpo deciso, o una magia di trasmutazione anche modesta, 
-la frantuma rivelando ciò che c'è dietro.`,
-          notaDM: `Rompere la parete non richiede forza straordinaria né magie potenti — 
-è sottile e fragile, come carta pietrificata. Era stata creata per trattenere qualcuno dentro 
-(il Biondo), non per resistere a chi viene da fuori. 
+Il fondo della grotta non è roccia naturale. La superficie è innaturalmente liscia e uniforme — 
+creata magicamente, non una formazione naturale. È sottile come carta pietrificata: 
+un colpo deciso la frantuma, rivelando ciò che c'è dietro.`,
+          notaDM: `La parete era stata creata per trattenere qualcuno dentro (il Biondo), 
+non per resistere a chi viene da fuori. Non serve forza straordinaria né magie potenti.
 Oltre la parete: l'ingresso alla Torre della Follia.`
         }
       ]
@@ -184,7 +187,7 @@ Oltre la parete: l'ingresso alla Torre della Follia.`
 
     {
       id: "cap3",
-      titolo: "Capitolo 3 — La Torre della Follia",
+      titolo: "Capitolo 3 — La Torre",
       icona: "🗼",
       riassunto: "Oltre la parete magica si apre una struttura impossibile. Scale che non portano da nessuna parte — o forse ovunque. Le prime due stanze mettono alla prova la mente dei personaggi.",
       sezioni: [
@@ -202,7 +205,7 @@ Ogni mezzo giro della torre, su entrambi i lati delle scale, c'è una porta ad a
           notaDM: `La torre segue una logica propria: che i PG salgano o scendano, 
 si ritrovano davanti allo stesso arco di pietra — l'ingresso alla prima stanza. 
 Non si può saltare le stanze. Non si può raggiungere il mago senza attraversarle in sequenza. 
-La struttura della torre è un labirinto narrativo, non geometrico.`
+La struttura è un labirinto narrativo, non geometrico.`
         },
         {
           titolo: "Stanza 1 — Il Ponte e l'Occhio",
@@ -215,14 +218,9 @@ Non si vede l'altra sponda.
 Quando il primo piede tocca il legno del ponte oscillante, qualcosa cambia nel cielo davanti: 
 un immenso occhio si apre nel vuoto. Fissa i personaggi sul ponte.`,
           notaDM: `Solo chi è sul ponte vede l'occhio — chi è rimasto sull'arco non lo percepisce. 
-Chi guarda l'occhio direttamente deve tirare un dado percentuale ogni 1d4 round (CD 30): 
-se fallisce, subisce un effetto di follia breve (tabella a discrezione del DM — 
-confusione, allucinazione, fuga irrefrenabile, 1d4 round). 
-Il ponte regge, ma scricchiola pericolosamente: una prova di Acrobazia (CD 10) 
-per ogni PG che lo attraversa di corsa o in combattimento. 
-Sul lato opposto: nulla di rilevante — una piccola piattaforma di pietra che conduce 
-a un'altra porta, già aperta, che riporta alle scale. L'occhio si chiude una volta 
-che tutti hanno attraversato (o sono tornati indietro).
+Chi guarda l'occhio direttamente rischia di impazzire: il DM tira il dado percentuale 
+a intervalli irregolari per chi fissa lo sguardo. Fallimento: effetto breve a scelta del DM 
+(confusione, allucinazione, fuga irrefrenabile).
 
 Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro. 
 Una palla di stracci rotola e rimbalza giù dalle scale passando tra i loro piedi. 
@@ -234,21 +232,17 @@ Non ci sono bambini visibili.`
           marcatore: "Chiave di volta: rettangolo con lati asimmetrici",
           testo: `L'arco dà accesso a un ambiente vasto. Il pavimento è la zona più secca di una palude — 
 terra screpolata, chiazze di acqua nera stagnante, giunchi secchi. 
-Il resto è un labirinto di specchi alti a perdita d'occhio, 
-disposti in modo apparentemente caotico.
+Il resto è un labirinto di specchi alti a perdita d'occhio, disposti in modo caotico.
 
 Alla prima svolta, i riflessi iniziano a comportarsi in modo strano: 
 gesticolano troppo, si muovono un secondo dopo, sorridono quando il personaggio non sorride. 
 Poi iniziano a uscire dagli specchi.`,
-          notaDM: `I riflessi distorli combattono i PG come versioni alterate di loro stessi: 
-stesse statistiche base, ma con una peculiarità orrifica (a discrezione del DM — 
-più lenti ma più forti, o con un attacco che mima un fallimento passato del personaggio, ecc). 
-Se lo specchio da cui è uscito un riflesso viene distrutto, il riflesso si spezzetta e muore. 
-Gli specchi hanno CA 5 e 5 PF ciascuno.
+          notaDM: `I riflessi combattono i PG come versioni distorte di loro stessi — stesse capacità base, 
+ma con una peculiarità orrifica scelta dal DM per ogni personaggio. 
+Se lo specchio da cui è uscito un riflesso viene distrutto, il riflesso si spezzetta e muore.
 
-Per uscire dal labirinto: i PG devono trovare uno specchio nel quale il loro riflesso 
-si comporta ancora normalmente — e entrarci. Questo li trasporta dall'altra parte del labirinto, 
-all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostano.`
+Per uscire: trovare uno specchio nel quale il proprio riflesso si comporta ancora normalmente 
+ed entrarci. I riflessi sani si spostano — non è immediato trovarli.`
         }
       ]
     },
@@ -263,35 +257,38 @@ all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostan
           titolo: "Stanza 3 — Il Corridoio delle Spade",
           tipo: "stanza",
           marcatore: "Chiave di volta: spada",
-          testo: `Un corridoio enorme. Dal soffitto e dalle pareti pendono spade gigantesche montate su meccanismi — sbattono sul pavimento a intervalli irregolari, sollevando schegge di pietra e un rimbombo che risuona nell'intera stanza.
+          testo: `Un corridoio enorme. Dal soffitto e dalle pareti pendono spade gigantesche montate su meccanismi — 
+sbattono sul pavimento a intervalli irregolari, sollevando schegge di pietra e un rimbombo 
+che risuona nell'intera stanza.
 
-Ogni volta che una spada colpisce il suolo, cinque scheletri trattenuti da cavi di metallo scattano in avanti. I cavi muovono le loro giunture come se fossero mossi da fili invisibili — un movimento irregolare, a scatti, come vermi. Tra un colpo e l'altro ricadono inerti.`,
-          notaDM: `I meccanismi delle spade seguono un ritmo irregolare: ogni round, tirare 1d4.
-• 1-2: nessuna spada cade in questo momento
-• 3: 1d3 spade cadono — chi si trova sotto deve superare un TS su Destrezza (CD 13) o subire 2d6 danni taglienti
-• 4: caduta massiva — tutte le spade, TS CD 16, 3d8 danni taglienti
+Ogni volta che una spada colpisce il suolo, cinque scheletri trattenuti da cavi di metallo 
+scattano in avanti. I cavi muovono le loro giunture come se fossero mossi da fili invisibili — 
+un movimento irregolare, a scatti, come vermi. Tra un colpo e l'altro ricadono inerti.`,
+          notaDM: `Il ritmo delle spade è irregolare — il DM decide quando cadono per massimizzare la tensione. 
+Gli scheletri sono attivi solo mentre le lame sono a terra: hanno un momento di azione, 
+poi i cavi li ritraggono quando le lame si rialzano.
 
-Gli scheletri si attivano SOLO quando una spada colpisce:
-• Hanno 1 round di azione mentre le lame sono a terra
-• Se le lame si rialzano durante il loro turno, vengono richiamate dai cavi e inerti di nuovo
-• Statistiche: Scheletro standard (MM), ma con svantaggio ai tiri per colpire se i cavi sono tesi
-
-Strategia: i PG possono sabotare i meccanismi (Congegni CD 15, o distruggere i cavi — CA 12, 8 PF ciascuno) per bloccare le spade in posizione sollevata o abbassata. Se bloccate in basso, il corridoio è ostruito ma gli scheletri sono permanentemente attivi.`
+I PG possono cercare di sabotare i meccanismi — il DM valuta l'approccio e tira il dado percentuale. 
+Sabotare le lame in posizione abbassata blocca il corridoio ma rende gli scheletri permanentemente attivi. 
+Sabotarle in posizione sollevata blocca gli scheletri ma le lame restano una minaccia passiva.`
         },
         {
           titolo: "Transizione — I Bambini Bagnati",
           tipo: "scena",
           testo: `Tornando sulle scale tra la terza e la quarta stanza, i PG li trovano finalmente.
 
-Cinque o sei bambini di età diverse, fermi sulla soglia. Sono completamente bagnati — i vestiti incollati alla pelle, i capelli appiccicati al viso, pozze d'acqua ai loro piedi. Non parlano. Non si muovono. Fissano il gruppo con occhi aperti e vuoti.
+Cinque o sei bambini di età diverse, fermi sulla soglia. Sono completamente bagnati — 
+i vestiti incollati alla pelle, i capelli appiccicati al viso, pozze d'acqua ai loro piedi. 
+Non parlano. Non si muovono. Fissano il gruppo con occhi aperti e vuoti.
 
-Non reagiscono se avvicinati. Non rispondono alle domande. Se qualcuno tende la mano, un bambino abbassa lentamente lo sguardo su di essa — e poi torna a fissare dritto davanti.
+Non reagiscono se avvicinati. Non rispondono alle domande. Se qualcuno tende la mano, 
+un bambino abbassa lentamente lo sguardo su di essa — e poi torna a fissare dritto davanti.
 
 Sulla soglia della quarta stanza: una testa di coniglio incisa nella chiave di volta.`,
-          notaDM: `I bambini non sono una minaccia diretta e non possono essere danneggiati o interagiti in modo significativo. Sono un'immagine — una presenza. Non spiegare chi sono o cosa significano. Lasciate che pesino sul gruppo.
+          notaDM: `I bambini non sono una minaccia e non possono essere interagiti in modo significativo. 
+Sono un'immagine — una presenza. Non spiegare chi sono o cosa significano.
 
-Se qualcuno usa magie di rilevamento su di loro: nessuna aura magica. Nessuna aura di non-morto. Nessuna aura di vita. Non sono nulla che si possa classificare.
-
+Se qualcuno usa magie di rilevamento: nessuna risposta. Non sono nulla che si possa classificare.
 Quando i PG entrano nella quarta stanza, i bambini non li seguono — e non sono più lì al ritorno.`
         }
       ]
@@ -299,7 +296,7 @@ Quando i PG entrano nella quarta stanza, i bambini non li seguono — e non sono
 
     {
       id: "cap5",
-      titolo: "Capitolo 5 — La Donna Coniglio e l'Acqua Trasparente",
+      titolo: "Capitolo 5 — La Donna Coniglio",
       icona: "🐇",
       riassunto: "Una passerella su un'acqua impossibile, corpi di bambini sospesi nel nulla, e una creatura che divide il gruppo contro se stesso. L'uscita è nascosta sotto la superficie.",
       sezioni: [
@@ -307,31 +304,27 @@ Quando i PG entrano nella quarta stanza, i bambini non li seguono — e non sono
           titolo: "Stanza 4 — La Donna Coniglio",
           tipo: "stanza",
           marcatore: "Chiave di volta: testa di coniglio",
-          testo: `Una passerella di pietra si affaccia su uno spazio aperto. Ai lati dell'acqua — se acqua è — decine di corpi di bambini galleggiano a pelo di superficie, immobili, gli occhi aperti verso l'alto. L'acqua è perfettamente trasparente, quasi invisibile: i corpi sembrano sospesi nel nulla.
+          testo: `Una passerella di pietra si affaccia su uno spazio aperto. Ai lati, decine di corpi 
+di bambini galleggiano a pelo di superficie, immobili, gli occhi aperti verso l'alto. 
+L'acqua è perfettamente trasparente, quasi invisibile: i corpi sembrano sospesi nel nulla.
 
-In fondo alla passerella una scalinata di pietra sale verso il nulla — non c'è uscita visibile in cima. Seduta sui gradini c'è lei: la Donna Coniglio. Testa e orecchie di un coniglio bianco su un corpo umano. Aspetta. Sorride.
+In fondo alla passerella una scalinata di pietra sale verso il nulla — non c'è uscita visibile in cima. 
+Seduta sui gradini c'è lei: la Donna Coniglio. Testa e orecchie di un coniglio bianco su un corpo umano. 
+Aspetta. Sorride. Parla con voce dolce. Vuole che restino.`,
+          notaDM: `La Donna Coniglio usa il fascino per dividere il gruppo. Il DM tira il dado percentuale 
+per ogni PG che la guarda negli occhi — chi fallisce cade in una devozione ossessiva irrazionale: 
+considera la Donna Coniglio come l'essere più importante nella stanza, obbedisce ai suoi ordini, 
+si interpone fisicamente se il gruppo la minaccia, può attaccare i compagni se lei lo chiede 
+(ma qualcosa in lui resiste — il DM può far sì che esiti o agisca con riluttanza visibile).
 
-Parla con voce dolce. Vuole che restino.`,
-          notaDM: `La Donna Coniglio usa il fascino per dividere il gruppo.
+Il fascino si rompe se il personaggio viene ferito da un alleato, 
+o se la Donna Coniglio è gravemente ferita.
 
-MECCANICA DEL FASCINO:
-Ogni round può bersagliare un PG con uno sguardo (azione bonus). Il bersaglio deve superare un TS su Saggezza CD 16 o essere Affascinato per 1 ora.
+La Donna Coniglio non entra nell'acqua — questo è il suo limite assoluto.
 
-EFFETTO DEL FASCINO — Devozione Ossessiva:
-Il personaggio affascinato considera la Donna Coniglio come l'essere più importante nella stanza. Non la attacca. Se il gruppo la minaccia, si interpone fisicamente. Obbedisce ai suoi ordini senza ragionare. Può attaccare i compagni se la Donna Coniglio lo chiede, con svantaggio (qualcosa in lui resiste).
-
-Il fascino si rompe se il personaggio subisce danni da un alleato, o se la Donna Coniglio viene ferita gravemente (sotto la metà dei PF).
-
-STATISTICHE SUGGERITE:
-CA 14 | PF 78 | Velocità 9m
-Attacchi: Artigli +6 (2d6+3 taglienti) | Morso +6 (1d8+3 perforanti + veleno, TS Cos CD 14 o Avvelenato)
-Immunità: Charmed, Frightened
-Azioni leggendarie: 2 per round (Sguardo, Artigli, Balzo 6m)
-
-L'USCITA:
-È nascosta sotto la scalinata di pietra, raggiungibile solo tuffandosi nell'acqua e nuotando in immersione. Chi si immerge lo vede chiaramente — una porta di pietra sul fondo, orizzontale, che si apre verso l'interno.
-I corpi dei bambini non reagiscono a chi nuota tra loro.
-La Donna Coniglio non entra nell'acqua.`
+L'USCITA: nascosta sotto la scalinata di pietra, raggiungibile solo tuffandosi e nuotando in immersione. 
+Chi si immerge la vede chiaramente — una porta di pietra sul fondo. 
+I corpi dei bambini non reagiscono a chi nuota tra loro.`
         }
       ]
     },
@@ -346,70 +339,137 @@ La Donna Coniglio non entra nell'acqua.`
           titolo: "Stanza 5 — Il Globo di Metallo",
           tipo: "stanza",
           marcatore: "Chiave di volta: globo con cerchio e linee geometriche",
-          testo: `Una stanza senza pareti percepibili — il buio si estende in ogni direzione senza limiti visibili. Al centro, un'unica fonte di luce illumina per un raggio di circa 20 metri un piccolo globo di metallo sospeso nell'aria.
+          testo: `Una stanza senza pareti percepibili — il buio si estende in ogni direzione senza limiti visibili. 
+Al centro, un'unica fonte di luce illumina per un raggio di circa 20 metri un piccolo globo 
+di metallo sospeso nell'aria.
 
-Attorno al globo, a pochi millimetri dalla superficie, fluttuano diverse piccole lamine di metallo con incisioni geometriche. Se le si osserva con attenzione, si capisce: vanno ricomposte sul globo, come un tangram tridimensionale.
+Attorno al globo, a pochi millimetri dalla superficie, fluttuano diverse piccole lamine di metallo 
+con incisioni geometriche. Vanno ricomposte sul globo come un tangram tridimensionale.
 
 La luce comincia lentamente ad affievolirsi nel momento in cui i PG entrano.`,
-          notaDM: `MECCANICA DEL TANGRAM:
-Suddividere il puzzle in fasi. Ogni fase richiede una prova:
-• Fase 1 — Osservare le lamine: Indagare CD 12 per capire il principio di composizione
-• Fase 2 — Prime lamine: Destrezza (Acrobazia o mano ferma) CD 13
-• Fase 3 — Lamine centrali: CD 15 (le lamine si respingono leggermente)
-• Fase 4 — Lamina finale: CD 17 (la luce è quasi spenta)
+          notaDM: `Il DM gestisce il puzzle come una serie di momenti narrativi, tirando il dado percentuale 
+per ogni fase significativa. Il ritmo con cui la luce cala è a discrezione — 
+va usato per creare tensione, non per punire.
 
-Ogni fallimento non blocca il puzzle ma consuma tempo — la luce cala più rapidamente.
-Se la luce si spegne completamente prima che il puzzle sia risolto: buio totale. I PG devono finire alla cieca (CD aumentate di 4, e ogni fallimento infligge 1d4 danni da schegge).
-
-RICOMPENSA:
-Se il globo viene completato, si compatta in una sfera liscia raccoglibile. È una riserva di energia magica pura — equivalente a recuperare tutti gli slot incantesimo spesi, o a fornire vantaggio a tutti i TS magici per il resto della sessione (DM sceglie il bilanciamento). 
+Se il globo viene completato: si compatta in una sfera liscia raccoglibile. 
+È una riserva densa di energia magica — il DM decide come si traduce in gioco.
 
 Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`
         },
         {
           titolo: "L'Arena — Il Gonogol",
           tipo: "scontro",
-          testo: `Un colosseo scavato nella roccia viva, aperto in alto verso un buco nel soffitto — come il cratere di un vulcano spento. La folla è invisibile ma la si sente: migliaia di voci che urlano, esultano, scandiscono un nome.
+          testo: `Un colosseo scavato nella roccia viva, aperto in alto verso un buco nel soffitto — 
+come il cratere di un vulcano spento. La folla è invisibile ma la si sente: 
+migliaia di voci che urlano, esultano, scandiscono un nome.
 
 Gonogol. Gonogol. Gonogol.
 
-Le trombe suonano. Dal buio emerge la viverna: enorme, le ali chiuse e incatenate al corpo da catene spesse come un braccio d'uomo. Il collare di ferro che stringe il collo è ancorato al pavimento da quattro catene. Si agita, ruggisce, sbatte le ali inutilmente.
-
-La folla impazzisce.`,
+Le trombe suonano. Dal buio emerge la viverna: enorme, le ali chiuse e incatenate al corpo 
+da catene spesse come un braccio d'uomo. Il collare di ferro che stringe il collo è ancorato 
+al pavimento. Si agita, ruggisce, sbatte le ali inutilmente. La folla impazzisce.`,
           notaDM: `Il Gonogol NON è il vero nemico — è un prigioniero. Questa distinzione è centrale.
 
 OBIETTIVO: liberare la cinghia del collare, non uccidere la viverna.
-La cinghia è un meccanismo di cuoio rinforzato sul retro del collare. Per raggiungerla bisogna avvicinarsi alla viverna — il che richiede di sopravvivere ai suoi attacchi.
+La cinghia è un meccanismo di cuoio rinforzato sul retro del collare. 
+La viverna sputa acido denso e colloso che rimane sulla pelle e continua a bruciare. 
+Graffia, morde, può balzare di decine di metri nonostante le catene.
 
-LA VIVERNA:
-Usare il blocco Viverna del MM con queste modifiche:
-• Non può volare (ali incatenate) — perde l'attacco in picchiata
-• Veleno sostituito con acido: il morso e la coda infliggono danni acidi invece di veleno. L'acido è denso e colloso — rimane sulla pelle/armatura infliggendo 1d6 danni acidi all'inizio del turno del bersaglio per 1d4 round
-• Può balzare fino a 15 metri come azione di movimento
-
-LIBERARE IL COLLARE:
-Avvicinarsi: richiede un'azione e una prova di Acrobazia CD 13 per evitare i colpi
-Aprire la cinghia: Destrezza (Attrezzi da Ladro) CD 15, o Forza CD 18 per strappare la cinghia
-La viverna percepisce l'intenzione — se un PG la libera, smette di attaccarlo quel round.
+Il DM tira il dado per chi cerca di avvicinarsi e per chi tenta di aprire la cinghia.
+La viverna percepisce l'intenzione di chi vuole liberarla — smette di attaccarlo in quel momento.
 
 QUANDO È LIBERA:
-La catena cade. Il Gonogol si alza sulle zampe posteriori, apre le ali — enormi, bellissime — e si lancia verso il buco in cima all'arena. La folla ammutolisce di colpo. Silenzio totale.
-Poi la folla scompare. L'arena si svuota. Al centro del pavimento dove era ancorata la catena: una botola aperta verso il livello finale.`
+La catena cade. Il Gonogol apre le ali — enormi, bellissime — e si lancia verso il buco in cima. 
+La folla ammutolisce. Silenzio totale. Poi scompare.
+Al centro del pavimento: una botola aperta verso il livello finale.`
         }
       ]
     },
 
     {
       id: "cap7",
-      titolo: "Capitolo 7 — Fraxximt il Rospo [Da costruire]",
-      icona: "⚠️",
-      riassunto: "La resa dei conti con il mago pazzo. Da sviluppare.",
+      titolo: "Capitolo 7 — Fraxximt il Rospo",
+      icona: "💀",
+      riassunto: "La stanza del trono. Lo scheletro del Rospo. Il cuore pulsante di Dogti. Una goccia di sangue può rimettere tutto in moto — o distruggerlo per sempre.",
       sezioni: [
         {
-          titolo: "Resa dei conti e reward finale",
-          tipo: "placeholder",
-          testo: "Questo capitolo verrà costruito nella prossima sessione di sviluppo.",
-          notaDM: "Struttura prevista: le stanze del mago, la resa dei conti con Fraxximt il Rospo, il cuore di Dogti, e il reward finale per i PG."
+          titolo: "La Stanza del Trono",
+          tipo: "scena",
+          testo: `Una stanza ampia, senza ornamenti, fredda. Al centro: un trono fatto di ossa saldate 
+tra loro da meccanismi di ottone arrugginito. Su di esso, riverso, lo scheletro di Fraxximt il Rospo.
+
+Le vesti sono ancora intatte — elaborate, scure, cucite con fili metallici. 
+Le mani ossute stringono al petto un'ampolla di vetro decorata con spine d'ottone lucido. 
+All'interno dell'ampolla, visibile attraverso il vetro, giace un cuore. Pulsa.
+
+Il cuore di Dogti.`,
+          notaDM: `La stanza è silenziosa. Nessuna minaccia immediata visibile. 
+Il DM lascia respirare la scena — questo è il momento in cui i giocatori decidono cosa fare.
+
+Se i PG hanno il globo di metallo: appena entra nella stanza, 
+le dita dello scheletro si contraggono leggermente. Se avvicinano il globo, 
+lo scheletro si agita — come se lo riconoscesse e lo volesse. 
+I PG capiscono che il globo ha valore qui.`
+        },
+        {
+          titolo: "Recuperare il Cuore",
+          tipo: "scena",
+          testo: `L'ampolla è stretta tra le dita ossute del Rospo. Staccarla richiede forza 
+o delicatezza — o entrambe. Le spine d'ottone sono aguzze.`,
+          notaDM: `Il rischio centrale: se durante il recupero un PG si ferisce e una goccia di sangue 
+cade sul corpo del Rospo, lo scheletro si risveglia.
+
+Il DM tira il dado percentuale per ogni tentativo di recupero — chi usa delicatezza e pazienza 
+ha più margine, chi strappa con forza rischia di scheggiarsi la mano sulle spine d'ottone.`
+        },
+        {
+          titolo: "Il Rospo si Risveglia",
+          tipo: "scontro",
+          testo: `Fraxximt si alza dal trono. Le ossa scricchiolano. I meccanismi di ottone sul trono 
+si sfilano e si riattaccano al suo corpo come esoscheletro. 
+Non ha corde vocali — non può parlare, non può cantare, non può lanciare grandi incantesimi. 
+Emette solo un sibilo rauco e continuo. Si muove verso il sangue.`,
+          notaDM: `Il Rospo senza voce è pericoloso ma limitato — non controlla pienamente gli abomini.
+
+SE I PG USANO LA CANZONE:
+Cantano Thriller — quella vera, quella che conoscono. Serve almeno un cantante 
+e uno che tenga il ritmo. Con il cuore di Dogti in mano, Dogti risponde — 
+arriva dalla grotta o emerge dalla torre, attratto dalla melodia.
+
+Con la canzone e il cuore i PG possono:
+• Ordinare a Dogti di attaccare il Rospo direttamente
+• Ordinare a Dogti di radunare gli abomini della torre e usarli contro il Rospo
+• Usare Dogti come scudo o distrazione
+
+SE IL ROSPO VEDE IL GLOBO:
+Diventa ossessivo — smette temporaneamente di inseguire i PG e cerca di afferrare la sfera. 
+Usabile come distrazione.
+
+SE I PG RIDANNO IL CUORE A DOGTI:
+Dogti lo ingoia. Si immobilizza un momento — poi si raddrizza. 
+Qualcosa cambia nel suo sguardo vuoto. Attacca il Rospo di propria iniziativa, 
+senza bisogno della canzone. È il suo modo di chiudere i conti.
+
+COME MUORE IL ROSPO:
+Fisicamente, tramite Dogti, o sgretolato se privato contemporaneamente del cuore e del globo. 
+Il DM sceglie l'epilogo più soddisfacente in base a come si è svolta la scena.`
+        },
+        {
+          titolo: "Epilogo — Il Ritorno al Villaggio",
+          tipo: "scena",
+          testo: `Con la morte del Rospo, la torre non crolla — resta lì, immobile, silenziosa. 
+Ma le stanze non cambiano più. Le creature al suo interno si spengono una a una.
+
+La strada verso il villaggio è lunga. 
+Ma i fuochi della locanda si vedono da lontano — e dentro si sente già la musica.`,
+          notaDM: `Il ritorno è una scena libera — il DM lascia che i giocatori raccontino. 
+Cosa dicono ai nativi del villaggio? Cosa omettono? Chi credono loro?
+
+Alexei è ancora vivo — peggio di prima, ma vivo. 
+Se i PG hanno il cuore di Dogti, possono scegliere cosa farne. 
+Se Dogti è ancora in piedi, è fuori dalla torre — libero per la prima volta da quando Ralia lo incatenò.
+
+Non c'è una risposta giusta. La one shot finisce qui.`
         }
       ]
     }
@@ -421,43 +481,43 @@ Poi la folla scompare. L'arena si svuota. Al centro del pavimento dove era ancor
       nome: "Alexei",
       ruolo: "Cavatore del villaggio — sopravvissuto",
       descrizione: "Ferite da graffio, polvere, delirante. Occhi gialli, denti che cadono, capelli a ciocche. Portatore involontario della corruzione di Dogti.",
-      segreto: "Non sa di essere già condannato. La corruzione è irreversibile senza magia divina di alto livello."
+      segreto: "Non sa di essere già condannato. La corruzione è irreversibile — il DM decide se esiste una via d'uscita in base alle scelte dei PG durante la sessione."
     },
     {
       nome: "Dimitri",
       ruolo: "Fratello di Alexei — morente alla cava",
       descrizione: "Braccio schiacciato dal masso. Schiena strappata a morsi. Convulsioni. Può ancora parlare frammenti di senso.",
-      segreto: "Muore entro un'ora dall'arrivo dei PG. Ultima cosa che dice: 'Cantava. Mentre mi mangiava, cantava.'"
+      segreto: "Muore nel corso della scena. Ultima cosa che dice: 'Cantava. Mentre mi mangiava, cantava.' Il DM sceglie il momento più efficace."
     },
     {
       nome: "Dogti",
       ruolo: "Abominio — creazione di Ralia",
       descrizione: "Corpo umano in stadio avanzato di decomposizione, petto squarciato e vuoto. Si muove. Batte il moncherino dell'indice sinistro sul pavimento ritmicamente. Sembra aspettare che qualcuno gli dica qualcosa.",
-      segreto: "Dogti non è completamente sotto il controllo di Fraxximt — il Biondo lo aveva notato. Il cuore di Dogti è il tramite arcano usato dal Rospo. Se i PG trovassero un modo per comunicare con lui, potrebbe diventare un alleato inatteso."
+      segreto: "Dogti non è sotto pieno controllo del Rospo. Il ritmo che batte è il tempo di Thriller — la canzone di Ralia. Se i PG gli ridanno il cuore, attacca il Rospo di propria iniziativa. Se liberato alla fine, è libero per la prima volta da quando Ralia lo incatenò."
     },
     {
       nome: "Il Biondo",
       ruolo: "Agente misterioso — cadavere nella grotta",
       descrizione: "Scheletro bloccato alla parete da tralicci di pietra. Lascia un diario. Stava inseguendo Fraxximt per conto di qualcuno (non specificato nel diario).",
-      segreto: "Chi lo ha mandato? Perché? Non viene chiarito in questa one shot — può essere un gancio per campagne future."
+      segreto: "Chi lo ha mandato? Perché? Non viene chiarito in questa one shot — gancio aperto per campagne future."
     },
     {
       nome: "Fraxximt il Rospo",
       ruolo: "Antagonista — mago pazzo, creatore della Torre",
-      descrizione: "Non compare fisicamente nelle prime stanze. La sua presenza si sente nella struttura stessa della torre. Non crea incantesimi: li ruba e li corrompe.",
-      segreto: "Debolezza principale: senza lo spartito completo e il cuore di Dogti nelle vicinanze, il suo controllo sugli abomini è instabile. I PG hanno già bruciato lo spartito (il Biondo lo ha fatto per loro). Resta il cuore."
+      descrizione: "Scheletro riverso sul trono d'ossa. Vesti elaborate, meccanismi di ottone. Stringe al petto l'ampolla con il cuore di Dogti. Non crea incantesimi: li ruba e li corrompe.",
+      segreto: "Senza corde vocali non può cantare né lanciare grandi incantesimi. Si rigenera bevendo sangue. Diventa ossessivo alla vista del globo. Muore se privato di cuore e globo contemporaneamente, o se Dogti lo attacca in autonomia."
     },
     {
       nome: "La Donna Coniglio",
       ruolo: "Creatura della Torre — guardiana della Stanza 4",
       descrizione: "Testa e orecchie di coniglio bianco su corpo umano. Siede sui gradini della scalinata. Parla con voce dolce. Sorride. Aspetta.",
-      segreto: "Non entra nell'acqua. Il fascino che usa crea devozione ossessiva irrazionale — il bersaglio obbedisce ai suoi ordini e difende la creatura contro il gruppo. Il fascino si rompe se il PG subisce danni da un alleato o se la Donna Coniglio viene portata sotto metà PF. L'uscita dalla stanza è nascosta sott'acqua, sotto la scalinata."
+      segreto: "Non entra nell'acqua — limite assoluto. Il fascino crea devozione ossessiva irrazionale. Si rompe se il PG viene ferito da un alleato o se la creatura è gravemente ferita. L'uscita è sott'acqua, sotto la scalinata."
     },
     {
       nome: "Il Gonogol",
       ruolo: "Creatura dell'Arena — viverna prigioniera",
       descrizione: "Una viverna enorme, incatenata al pavimento dell'arena. Ali bloccate, collare di ferro. Sputa acido denso e colloso. La folla invisibile scandisce il suo nome.",
-      segreto: "Non è un nemico — è un prigioniero. L'obiettivo è liberare la cinghia del collare, non ucciderlo. Se liberato, vola via e lascia aperta la botola verso il livello finale. La viverna percepisce l'intenzione di chi vuole liberarla e smette di attaccarlo."
+      segreto: "Non è un nemico — è un prigioniero. Percepisce l'intenzione di chi vuole liberarla e smette di attaccarlo. Quando è libera, vola via e lascia aperta la botola verso il livello finale."
     }
   ],
 
@@ -469,56 +529,29 @@ Poi la folla scompare. L'arena si svuota. Al centro del pavimento dove era ancor
     },
     {
       nome: "Frammenti dello Spartito",
-      descrizione: "Fogli manoscritti parzialmente bruciati trovati nel camino. Non ricostruibili completamente. La notazione è arcana, progettata per essere cantata in coppia.",
-      importanza: "Media — lore, non utilizzabile direttamente"
+      descrizione: "Fogli manoscritti parzialmente bruciati trovati nel camino. La notazione è arcana. Il ritmo corrisponde a quello che Dogti batte sul pavimento — e alla canzone che i giocatori conoscono come Thriller di Michael Jackson, canzone popolare Varlmenn cantata da Ralia.",
+      importanza: "Alta — chiave per evocare Dogti nella scena finale"
     },
     {
       nome: "Il Cuore di Dogti",
-      descrizione: "Non ancora trovato dai PG. È in possesso di Fraxximt. Tramite arcano usato per creare e controllare gli abomini.",
-      importanza: "Alta — obiettivo chiave per indebolire il Rospo"
+      descrizione: "Ampolla di vetro con spine d'ottone lucido. All'interno un cuore che pulsa ancora. Tramite arcano usato da Fraxximt per controllare gli abomini. Restituito a Dogti, lo libera dal controllo del Rospo.",
+      importanza: "Alta — oggetto chiave della scena finale"
+    },
+    {
+      nome: "Il Globo di Metallo",
+      descrizione: "Sfera compatta raccoglibile dopo la risoluzione del tangram. Riserva densa di energia magica. Il Rospo la riconosce e ne diventa ossessivo alla sua vista — usabile come distrazione.",
+      importanza: "Alta — risorsa e leva narrativa nella scena finale"
     }
   ],
 
   musica: [
-    {
-      capitolo: "cap1",
-      descrizione: "Locanda festosa",
-      spotify: ""
-    },
-    {
-      capitolo: "cap1b",
-      descrizione: "Bosco / Cinghiale corrotto",
-      spotify: ""
-    },
-    {
-      capitolo: "cap2",
-      descrizione: "Grotta di Ralia e Dogti",
-      spotify: ""
-    },
-    {
-      capitolo: "cap3",
-      descrizione: "La Torre",
-      spotify: ""
-    },
-    {
-      capitolo: "cap4",
-      descrizione: "Sala delle Spade / Bambini Bagnati",
-      spotify: ""
-    },
-    {
-      capitolo: "cap5",
-      descrizione: "La Donna Coniglio",
-      spotify: ""
-    },
-    {
-      capitolo: "cap6",
-      descrizione: "Il Globo / L'Arena",
-      spotify: ""
-    },
-    {
-      capitolo: "cap7",
-      descrizione: "Fraxximt il Rospo — resa dei conti",
-      spotify: ""
-    }
+    { capitolo: "cap1",  descrizione: "Locanda festosa", spotify: "" },
+    { capitolo: "cap1b", descrizione: "Bosco / Cinghiale corrotto", spotify: "" },
+    { capitolo: "cap2",  descrizione: "Grotta di Ralia e Dogti", spotify: "" },
+    { capitolo: "cap3",  descrizione: "La Torre — ingresso", spotify: "" },
+    { capitolo: "cap4",  descrizione: "Sala delle Spade / Bambini Bagnati", spotify: "" },
+    { capitolo: "cap5",  descrizione: "La Donna Coniglio", spotify: "" },
+    { capitolo: "cap6",  descrizione: "Il Globo / L'Arena del Gonogol", spotify: "" },
+    { capitolo: "cap7",  descrizione: "Fraxximt il Rospo — resa dei conti", spotify: "" }
   ]
 };
