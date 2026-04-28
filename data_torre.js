@@ -255,15 +255,161 @@ all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostan
 
     {
       id: "cap4",
-      titolo: "Capitolo 4 — [In costruzione]",
-      icona: "⚠️",
-      riassunto: "Altre stanze della Torre della Follia. Da sviluppare.",
+      titolo: "Capitolo 4 — La Sala delle Spade e i Bambini Bagnati",
+      icona: "⚔️",
+      riassunto: "Un corridoio di lame meccaniche e scheletri mossi come marionette. Tra la terza e la quarta stanza, i bambini appaiono finalmente — immobili, bagnati, in silenzio.",
       sezioni: [
         {
-          titolo: "Prossime stanze",
+          titolo: "Stanza 3 — Il Corridoio delle Spade",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: spada",
+          testo: `Un corridoio enorme. Dal soffitto e dalle pareti pendono spade gigantesche montate su meccanismi — sbattono sul pavimento a intervalli irregolari, sollevando schegge di pietra e un rimbombo che risuona nell'intera stanza.
+
+Ogni volta che una spada colpisce il suolo, cinque scheletri trattenuti da cavi di metallo scattano in avanti. I cavi muovono le loro giunture come se fossero mossi da fili invisibili — un movimento irregolare, a scatti, come vermi. Tra un colpo e l'altro ricadono inerti.`,
+          notaDM: `I meccanismi delle spade seguono un ritmo irregolare: ogni round, tirare 1d4.
+• 1-2: nessuna spada cade in questo momento
+• 3: 1d3 spade cadono — chi si trova sotto deve superare un TS su Destrezza (CD 13) o subire 2d6 danni taglienti
+• 4: caduta massiva — tutte le spade, TS CD 16, 3d8 danni taglienti
+
+Gli scheletri si attivano SOLO quando una spada colpisce:
+• Hanno 1 round di azione mentre le lame sono a terra
+• Se le lame si rialzano durante il loro turno, vengono richiamate dai cavi e inerti di nuovo
+• Statistiche: Scheletro standard (MM), ma con svantaggio ai tiri per colpire se i cavi sono tesi
+
+Strategia: i PG possono sabotare i meccanismi (Congegni CD 15, o distruggere i cavi — CA 12, 8 PF ciascuno) per bloccare le spade in posizione sollevata o abbassata. Se bloccate in basso, il corridoio è ostruito ma gli scheletri sono permanentemente attivi.`
+        },
+        {
+          titolo: "Transizione — I Bambini Bagnati",
+          tipo: "scena",
+          testo: `Tornando sulle scale tra la terza e la quarta stanza, i PG li trovano finalmente.
+
+Cinque o sei bambini di età diverse, fermi sulla soglia. Sono completamente bagnati — i vestiti incollati alla pelle, i capelli appiccicati al viso, pozze d'acqua ai loro piedi. Non parlano. Non si muovono. Fissano il gruppo con occhi aperti e vuoti.
+
+Non reagiscono se avvicinati. Non rispondono alle domande. Se qualcuno tende la mano, un bambino abbassa lentamente lo sguardo su di essa — e poi torna a fissare dritto davanti.
+
+Sulla soglia della quarta stanza: una testa di coniglio incisa nella chiave di volta.`,
+          notaDM: `I bambini non sono una minaccia diretta e non possono essere danneggiati o interagiti in modo significativo. Sono un'immagine — una presenza. Non spiegare chi sono o cosa significano. Lasciate che pesino sul gruppo.
+
+Se qualcuno usa magie di rilevamento su di loro: nessuna aura magica. Nessuna aura di non-morto. Nessuna aura di vita. Non sono nulla che si possa classificare.
+
+Quando i PG entrano nella quarta stanza, i bambini non li seguono — e non sono più lì al ritorno.`
+        }
+      ]
+    },
+
+    {
+      id: "cap5",
+      titolo: "Capitolo 5 — La Donna Coniglio e l'Acqua Trasparente",
+      icona: "🐇",
+      riassunto: "Una passerella su un'acqua impossibile, corpi di bambini sospesi nel nulla, e una creatura che divide il gruppo contro se stesso. L'uscita è nascosta sotto la superficie.",
+      sezioni: [
+        {
+          titolo: "Stanza 4 — La Donna Coniglio",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: testa di coniglio",
+          testo: `Una passerella di pietra si affaccia su uno spazio aperto. Ai lati dell'acqua — se acqua è — decine di corpi di bambini galleggiano a pelo di superficie, immobili, gli occhi aperti verso l'alto. L'acqua è perfettamente trasparente, quasi invisibile: i corpi sembrano sospesi nel nulla.
+
+In fondo alla passerella una scalinata di pietra sale verso il nulla — non c'è uscita visibile in cima. Seduta sui gradini c'è lei: la Donna Coniglio. Testa e orecchie di un coniglio bianco su un corpo umano. Aspetta. Sorride.
+
+Parla con voce dolce. Vuole che restino.`,
+          notaDM: `La Donna Coniglio usa il fascino per dividere il gruppo.
+
+MECCANICA DEL FASCINO:
+Ogni round può bersagliare un PG con uno sguardo (azione bonus). Il bersaglio deve superare un TS su Saggezza CD 16 o essere Affascinato per 1 ora.
+
+EFFETTO DEL FASCINO — Devozione Ossessiva:
+Il personaggio affascinato considera la Donna Coniglio come l'essere più importante nella stanza. Non la attacca. Se il gruppo la minaccia, si interpone fisicamente. Obbedisce ai suoi ordini senza ragionare. Può attaccare i compagni se la Donna Coniglio lo chiede, con svantaggio (qualcosa in lui resiste).
+
+Il fascino si rompe se il personaggio subisce danni da un alleato, o se la Donna Coniglio viene ferita gravemente (sotto la metà dei PF).
+
+STATISTICHE SUGGERITE:
+CA 14 | PF 78 | Velocità 9m
+Attacchi: Artigli +6 (2d6+3 taglienti) | Morso +6 (1d8+3 perforanti + veleno, TS Cos CD 14 o Avvelenato)
+Immunità: Charmed, Frightened
+Azioni leggendarie: 2 per round (Sguardo, Artigli, Balzo 6m)
+
+L'USCITA:
+È nascosta sotto la scalinata di pietra, raggiungibile solo tuffandosi nell'acqua e nuotando in immersione. Chi si immerge lo vede chiaramente — una porta di pietra sul fondo, orizzontale, che si apre verso l'interno.
+I corpi dei bambini non reagiscono a chi nuota tra loro.
+La Donna Coniglio non entra nell'acqua.`
+        }
+      ]
+    },
+
+    {
+      id: "cap6",
+      titolo: "Capitolo 6 — Il Globo e il Gonogol",
+      icona: "🌐",
+      riassunto: "Un tangram nel buio cosmico. Poi l'arena, la folla invisibile, e una viverna incatenata che vuole solo volare via.",
+      sezioni: [
+        {
+          titolo: "Stanza 5 — Il Globo di Metallo",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: globo con cerchio e linee geometriche",
+          testo: `Una stanza senza pareti percepibili — il buio si estende in ogni direzione senza limiti visibili. Al centro, un'unica fonte di luce illumina per un raggio di circa 20 metri un piccolo globo di metallo sospeso nell'aria.
+
+Attorno al globo, a pochi millimetri dalla superficie, fluttuano diverse piccole lamine di metallo con incisioni geometriche. Se le si osserva con attenzione, si capisce: vanno ricomposte sul globo, come un tangram tridimensionale.
+
+La luce comincia lentamente ad affievolirsi nel momento in cui i PG entrano.`,
+          notaDM: `MECCANICA DEL TANGRAM:
+Suddividere il puzzle in fasi. Ogni fase richiede una prova:
+• Fase 1 — Osservare le lamine: Indagare CD 12 per capire il principio di composizione
+• Fase 2 — Prime lamine: Destrezza (Acrobazia o mano ferma) CD 13
+• Fase 3 — Lamine centrali: CD 15 (le lamine si respingono leggermente)
+• Fase 4 — Lamina finale: CD 17 (la luce è quasi spenta)
+
+Ogni fallimento non blocca il puzzle ma consuma tempo — la luce cala più rapidamente.
+Se la luce si spegne completamente prima che il puzzle sia risolto: buio totale. I PG devono finire alla cieca (CD aumentate di 4, e ogni fallimento infligge 1d4 danni da schegge).
+
+RICOMPENSA:
+Se il globo viene completato, si compatta in una sfera liscia raccoglibile. È una riserva di energia magica pura — equivalente a recuperare tutti gli slot incantesimo spesi, o a fornire vantaggio a tutti i TS magici per il resto della sessione (DM sceglie il bilanciamento). 
+
+Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`
+        },
+        {
+          titolo: "L'Arena — Il Gonogol",
+          tipo: "scontro",
+          testo: `Un colosseo scavato nella roccia viva, aperto in alto verso un buco nel soffitto — come il cratere di un vulcano spento. La folla è invisibile ma la si sente: migliaia di voci che urlano, esultano, scandiscono un nome.
+
+Gonogol. Gonogol. Gonogol.
+
+Le trombe suonano. Dal buio emerge la viverna: enorme, le ali chiuse e incatenate al corpo da catene spesse come un braccio d'uomo. Il collare di ferro che stringe il collo è ancorato al pavimento da quattro catene. Si agita, ruggisce, sbatte le ali inutilmente.
+
+La folla impazzisce.`,
+          notaDM: `Il Gonogol NON è il vero nemico — è un prigioniero. Questa distinzione è centrale.
+
+OBIETTIVO: liberare la cinghia del collare, non uccidere la viverna.
+La cinghia è un meccanismo di cuoio rinforzato sul retro del collare. Per raggiungerla bisogna avvicinarsi alla viverna — il che richiede di sopravvivere ai suoi attacchi.
+
+LA VIVERNA:
+Usare il blocco Viverna del MM con queste modifiche:
+• Non può volare (ali incatenate) — perde l'attacco in picchiata
+• Veleno sostituito con acido: il morso e la coda infliggono danni acidi invece di veleno. L'acido è denso e colloso — rimane sulla pelle/armatura infliggendo 1d6 danni acidi all'inizio del turno del bersaglio per 1d4 round
+• Può balzare fino a 15 metri come azione di movimento
+
+LIBERARE IL COLLARE:
+Avvicinarsi: richiede un'azione e una prova di Acrobazia CD 13 per evitare i colpi
+Aprire la cinghia: Destrezza (Attrezzi da Ladro) CD 15, o Forza CD 18 per strappare la cinghia
+La viverna percepisce l'intenzione — se un PG la libera, smette di attaccarlo quel round.
+
+QUANDO È LIBERA:
+La catena cade. Il Gonogol si alza sulle zampe posteriori, apre le ali — enormi, bellissime — e si lancia verso il buco in cima all'arena. La folla ammutolisce di colpo. Silenzio totale.
+Poi la folla scompare. L'arena si svuota. Al centro del pavimento dove era ancorata la catena: una botola aperta verso il livello finale.`
+        }
+      ]
+    },
+
+    {
+      id: "cap7",
+      titolo: "Capitolo 7 — Fraxximt il Rospo [Da costruire]",
+      icona: "⚠️",
+      riassunto: "La resa dei conti con il mago pazzo. Da sviluppare.",
+      sezioni: [
+        {
+          titolo: "Resa dei conti e reward finale",
           tipo: "placeholder",
           testo: "Questo capitolo verrà costruito nella prossima sessione di sviluppo.",
-          notaDM: "Struttura prevista: altre 2–3 stanze con prove di diverso tipo, poi la resa dei conti con Fraxximt il Rospo e il reward finale."
+          notaDM: "Struttura prevista: le stanze del mago, la resa dei conti con Fraxximt il Rospo, il cuore di Dogti, e il reward finale per i PG."
         }
       ]
     }
@@ -300,6 +446,18 @@ all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostan
       ruolo: "Antagonista — mago pazzo, creatore della Torre",
       descrizione: "Non compare fisicamente nelle prime stanze. La sua presenza si sente nella struttura stessa della torre. Non crea incantesimi: li ruba e li corrompe.",
       segreto: "Debolezza principale: senza lo spartito completo e il cuore di Dogti nelle vicinanze, il suo controllo sugli abomini è instabile. I PG hanno già bruciato lo spartito (il Biondo lo ha fatto per loro). Resta il cuore."
+    },
+    {
+      nome: "La Donna Coniglio",
+      ruolo: "Creatura della Torre — guardiana della Stanza 4",
+      descrizione: "Testa e orecchie di coniglio bianco su corpo umano. Siede sui gradini della scalinata. Parla con voce dolce. Sorride. Aspetta.",
+      segreto: "Non entra nell'acqua. Il fascino che usa crea devozione ossessiva irrazionale — il bersaglio obbedisce ai suoi ordini e difende la creatura contro il gruppo. Il fascino si rompe se il PG subisce danni da un alleato o se la Donna Coniglio viene portata sotto metà PF. L'uscita dalla stanza è nascosta sott'acqua, sotto la scalinata."
+    },
+    {
+      nome: "Il Gonogol",
+      ruolo: "Creatura dell'Arena — viverna prigioniera",
+      descrizione: "Una viverna enorme, incatenata al pavimento dell'arena. Ali bloccate, collare di ferro. Sputa acido denso e colloso. La folla invisibile scandisce il suo nome.",
+      segreto: "Non è un nemico — è un prigioniero. L'obiettivo è liberare la cinghia del collare, non ucciderlo. Se liberato, vola via e lascia aperta la botola verso il livello finale. La viverna percepisce l'intenzione di chi vuole liberarla e smette di attaccarlo."
     }
   ],
 
@@ -340,6 +498,26 @@ all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostan
     {
       capitolo: "cap3",
       descrizione: "La Torre",
+      spotify: ""
+    },
+    {
+      capitolo: "cap4",
+      descrizione: "Sala delle Spade / Bambini Bagnati",
+      spotify: ""
+    },
+    {
+      capitolo: "cap5",
+      descrizione: "La Donna Coniglio",
+      spotify: ""
+    },
+    {
+      capitolo: "cap6",
+      descrizione: "Il Globo / L'Arena",
+      spotify: ""
+    },
+    {
+      capitolo: "cap7",
+      descrizione: "Fraxximt il Rospo — resa dei conti",
       spotify: ""
     }
   ]
