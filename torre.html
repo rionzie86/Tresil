@@ -385,7 +385,7 @@ function buildPanoramica() {
     <div class="stat-grid">
       <div class="stat-card"><div class="stat-lbl">Mondo</div><div class="stat-val">${p.mondo.nome}</div></div>
       <div class="stat-card"><div class="stat-lbl">Tipo</div><div class="stat-val">One Shot</div></div>
-      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${TORRE_DATA.capitoli.length}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${torreDati.capitoli.length}</div></div>
     </div>`;
 
   // Il mondo
@@ -401,31 +401,18 @@ function buildPanoramica() {
 // ── AMBIENTAZIONE ──────────────────────────────────
 function buildAmbientazione() {
   const c = document.getElementById('section-ambientazione');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">I luoghi della Torre della Follia</div></div>`;
+  const td = torreDati;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">${td.titolo} — ${td.ambientazione}</div></div>`;
 
-  TORRE_DATA.ambientazione.forEach(a => {
-    const d = document.createElement('div');
-    d.className = 'card';
-    d.innerHTML = `<div class="card-title">${a.nome}</div>`;
-    if (a.sottotitolo) {
-      const sub = document.createElement('div');
-      sub.style.cssText = 'font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.5rem;';
-      sub.textContent = a.sottotitolo;
-      d.appendChild(sub);
-    }
-    const body = document.createElement('div');
-    body.className = 'card-body';
-    body.textContent = a.testo;
-    d.appendChild(body);
-    if (a.tag?.length) {
-      const tags = document.createElement('div');
-      tags.className = 'tags';
-      tags.style.marginTop = '8px';
-      a.tag.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
-      d.appendChild(tags);
-    }
-    c.appendChild(d);
-  });
+  // Scheda generale one shot
+  const info = document.createElement('div');
+  info.className = 'card';
+  info.innerHTML = `<div class="card-title">${td.titolo}</div>
+    <div class="card-body">${td.sottotitolo}<br><br>
+    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">TONO</strong><br>${td.tono}<br><br>
+    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">ANTAGONISTA</strong><br>${td.antagonista}
+    </div>`;
+  c.appendChild(info);
 
   // Luoghi generali da data_panoramica
   const lbl = document.createElement('div');
@@ -453,7 +440,9 @@ function buildAmbientazione() {
 function buildEconomia() {
   const c = document.getElementById('section-economia');
   c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Sistema monetario — prezzi e riferimenti</div></div>`;
-  const eco = TORRE_DATA.economia;
+  // economia: se non esiste in torreDati, usa fallback vuoto
+  const eco = (typeof torreDati !== 'undefined' && torreDati.economia) ? torreDati.economia : { valute: [], salari: [], categorie: [] };
+  if (!eco.valute?.length) { c.innerHTML += `<div class="card"><div class="card-body" style="color:var(--t3);font-style:italic;">Economia non ancora configurata per questa one shot.</div></div>`; return; }
 
   // Valute
   const lbl1 = document.createElement('div'); lbl1.className = 'group-lbl'; lbl1.textContent = 'Sistema monetario';
@@ -564,44 +553,110 @@ function buildSviluppo() {
     return;
   }
 
-  TORRE_DATA.capitoli.forEach(cap => {
-    const wrap = document.createElement('div');
-    wrap.className = `cap-card ${cap.stato}`;
+  // Lore segreta
+  if (torreDati.loreSegreta) {
+    const loreBox = document.createElement('div');
+    loreBox.className = 'callout-m';
+    loreBox.style.marginBottom = '1.25rem';
+    loreBox.innerHTML = `<strong style="font-family:var(--font-d);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.4rem;">⚠ Lore riservata DM</strong>${torreDati.loreSegreta}`;
+    c.appendChild(loreBox);
+  }
 
-    const statoLabel = { 'completato': 'Completato', 'in-corso': 'In corso', 'pianificato': 'Pianificato' }[cap.stato] || cap.stato;
+  // Capitoli
+  torreDati.capitoli.forEach(cap => {
+    const isPlaceholder = cap.sezioni?.some(s => s.tipo === 'placeholder');
+    const statoClass = isPlaceholder ? 'pianificato' : 'in-corso';
+
+    const wrap = document.createElement('div');
+    wrap.className = `cap-card ${statoClass}`;
+
+    // Costruisci il corpo delle sezioni
+    let sezioniHTML = '';
+    if (cap.sezioni) {
+      cap.sezioni.forEach(sez => {
+        const tipoLabel = { scena:'Scena', png:'PNG', viaggio:'Viaggio', scontro:'Scontro', oggetto:'Oggetto', documento:'Documento', stanza:'Stanza', placeholder:'In costruzione' }[sez.tipo] || sez.tipo;
+        const tipoColor = { scena:'var(--blue)', png:'var(--purple)', scontro:'var(--red)', stanza:'var(--gold)', documento:'var(--amber)', oggetto:'var(--green)', viaggio:'var(--t2)', placeholder:'var(--t3)' }[sez.tipo] || 'var(--t3)';
+
+        sezioniHTML += `<div style="margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">`;
+        sezioniHTML += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:.4rem;">
+          <span style="font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid ${tipoColor};color:${tipoColor};font-family:var(--font-d);letter-spacing:.06em;text-transform:uppercase;">${tipoLabel}</span>
+          <div class="cap-sec" style="margin:0;border:none;padding:0;">${sez.titolo}</div>
+        </div>`;
+
+        if (sez.marcatore) {
+          sezioniHTML += `<div style="font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.4rem;">🔑 ${sez.marcatore}</div>`;
+        }
+
+        sezioniHTML += `<div class="cap-text">${sez.testo}</div>`;
+
+        if (sez.documentoCompleto) {
+          sezioniHTML += `<div style="margin-top:.75rem;">
+            <div style="font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.4rem;">📜 Leggere ai giocatori</div>
+            <div style="background:rgba(90,180,143,.05);border:1px solid rgba(90,180,143,.15);border-radius:3px;padding:.75rem 1rem;font-size:13px;color:var(--t2);line-height:1.8;white-space:pre-line;font-style:italic;">${sez.documentoCompleto}</div>
+          </div>`;
+        }
+
+        if (sez.notaDM) {
+          sezioniHTML += `<div style="margin-top:.6rem;"><div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div><div class="callout-m">${sez.notaDM}</div></div>`;
+        }
+
+        sezioniHTML += `</div>`;
+      });
+    }
+
+    // Musica del capitolo (da torreDati.musica)
+    const musicaCapitolo = torreDati.musica?.filter(m => m.capitolo === cap.id || m.capitolo === cap.id + 'b');
+    let musicaHTML = '';
+    if (musicaCapitolo?.length) {
+      musicaHTML = buildMusicPlayer({ id: cap.id, musica: musicaCapitolo.filter(m => m.spotify).map(m => ({ label: m.descrizione, spotifyUri: m.spotify, note: m.descrizione })) });
+    }
 
     wrap.innerHTML = `
       <div class="cap-head" onclick="this.parentElement.classList.toggle('open')">
-        <div class="cap-num">Cap. ${cap.numero}</div>
+        <div class="cap-num">${cap.icona || '◆'}</div>
         <div class="cap-title">${cap.titolo}</div>
-        <span class="cap-stato ${cap.stato}">${statoLabel}</span>
+        <span class="cap-stato ${statoClass}">${isPlaceholder ? 'Da costruire' : 'Pronto'}</span>
         <span class="cap-arr">▶</span>
       </div>
       <div class="cap-body">
-        <div class="cap-luogo">📍 ${cap.luogo}</div>
-
-        <div class="cap-sec">Riassunto</div>
-        <div class="cap-text">${cap.riassunto}</div>
-
-        <div class="cap-sec">Eventi chiave</div>
-        <ul class="ev-list">${cap.eventiChiave.map(e => `<li>${e}</li>`).join('')}</ul>
-
-        <div class="cap-sec">Note DM</div>
-        <div class="callout-m">${cap.noteDM}</div>
-
-        ${cap.oggetti?.length ? `
-        <div class="cap-sec">Oggetti</div>
-        <div class="cap-obj-list">${cap.oggetti.map(o => `
-          <div class="cap-obj">
-            <div class="cap-obj-name">${o.nome}</div>
-            <div class="cap-obj-note">${o.note}</div>
-          </div>`).join('')}
-        </div>` : ''}
-
-        ${buildMusicPlayer(cap)}
+        <div class="cap-luogo" style="margin-bottom:.75rem;font-style:italic;color:var(--t3);font-size:12px;">${cap.riassunto}</div>
+        ${sezioniHTML}
+        ${musicaHTML}
       </div>`;
 
     c.appendChild(wrap);
+  });
+
+  // PNG e Oggetti
+  const pngLbl = document.createElement('div'); pngLbl.className = 'group-lbl'; pngLbl.textContent = 'PNG — Personaggi non giocanti';
+  c.appendChild(pngLbl);
+
+  torreDati.png.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'cap-card in-corso';
+    d.innerHTML = `
+      <div class="cap-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cap-num">👤</div>
+        <div class="cap-title">${p.nome}</div>
+        <span class="cap-stato in-corso" style="font-size:9px;padding:2px 7px;">${p.ruolo.split('—')[0].trim()}</span>
+        <span class="cap-arr">▶</span>
+      </div>
+      <div class="cap-body">
+        <div class="cap-text" style="margin-bottom:.75rem;">${p.descrizione}</div>
+        <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Segreto DM</div>
+        <div class="callout-m">${p.segreto}</div>
+      </div>`;
+    c.appendChild(d);
+  });
+
+  const objLbl = document.createElement('div'); objLbl.className = 'group-lbl'; objLbl.textContent = 'Oggetti chiave';
+  c.appendChild(objLbl);
+
+  torreDati.oggetti.forEach(o => {
+    const d = document.createElement('div');
+    d.className = 'card';
+    d.innerHTML = `<div class="card-title">${o.nome} <span style="font-size:9px;color:var(--t3);font-weight:normal;font-family:var(--font-b);">— ${o.importanza}</span></div><div class="card-body">${o.descrizione}</div>`;
+    c.appendChild(d);
   });
 }
 

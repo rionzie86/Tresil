@@ -1,216 +1,346 @@
-// ============================================================
 // data_torre.js — La Torre della Follia
-// ============================================================
+// One Shot ambientata nel mondo di Kaelvaran
 
-const TORRE_DATA = {
+const torreDati = {
+  titolo: "La Torre della Follia",
+  sottotitolo: "Una one shot per 3–5 avventurieri",
+  ambientazione: "Isola di Mushara (antico nome Solnaro di Tresil) — entroterra montuoso a nord",
+  tono: "Horror cosmico, degenerazione, meraviglia distorta",
+  antagonista: "Fraxximt il Rospo — mago pazzo, ladro di incantesimi, creatore di abomini",
+  loreSegreta: `Fraxximt ha trovato la grotta di Ralia e Dogti durante gli scavi della sua torre. 
+Si è appropriato della canzone dei due innamorati e del cuore di Dogti come tramite arcano 
+per creare i suoi abomini personali. Il Biondo è riuscito a sottrargli lo spartito, ma non il cuore. 
+Fraxximt ha difficoltà nel controllare Dogti. La torre cambia continuamente: non esiste una 
+via diretta alle stanze del mago.`,
 
-  meta: {
-    titolo: "La Torre della Follia",
-    sottotitolo: "One Shot — Kaelvaran",
-    tipo: "One Shot",
-    stato: "In sviluppo"
-  },
+  capitoli: [
 
-  // ── AMBIENTAZIONE ──────────────────────────────────
-  ambientazione: [
     {
-      id: "la-torre",
-      nome: "La Torre",
-      testo: `La torre sorge su un promontorio isolato, visibile da miglia di distanza. Nessuno ricorda chi l'abbia costruita né quando. Gli abitanti dei villaggi vicini la chiamano semplicemente "la Torre" — come se fosse sempre esistita, come se non ci fosse bisogno di un nome più specifico.
+      id: "cap1",
+      titolo: "Capitolo 1 — Il Villaggio e la Bestia",
+      icona: "🍺",
+      riassunto: "I personaggi arrivano in un villaggio isolato e vengono coinvolti in una serata festosa. L'arrivo di Alexei, un cavatore ferito e delirante, rompe l'allegria e dà il via all'indagine.",
+      sezioni: [
+        {
+          titolo: "La Locanda — Arrivo",
+          tipo: "scena",
+          testo: `L'atmosfera esterna è tetra: cielo basso, bosco fitto, aria che sa di terra umida. 
+Ma appena i personaggi varcano la soglia della locanda, la realtà sembra cambiare: fuochi alti, musica, 
+risa, bevute. I nativi sono festosi e genuinamente ospitali — coinvolgono i PG in giochi, balli, 
+brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`
+        },
+        {
+          titolo: "Alexei — Il Cavatore",
+          tipo: "png",
+          testo: `Arriva trafelato, sporco di polvere, con ferite da graffio sul braccio e sul collo. 
+Delira: suo fratello Dimitri è rimasto intrappolato sotto una frana alla cava. 
+Mentre cercava di liberarlo, una bestia lo ha attaccato. Preso dal panico, è fuggito. 
+Durante il ritorno al villaggio ha sentito la bestia seguirlo — si nutriva degli animali del bosco.`,
+          notaDM: `Un personaggio con competenza in Medicina o accesso a magia curativa/divinatoria può fare 
+una prova (CD 12) per accorgersi che qualcosa di più profondo sta consumando Alexei: 
+le ferite, pur recenti, hanno già iniziato a produrre pus. Gli occhi sono giallastri. 
+Qualche dente gli cade mentre parla. Ciocche di capelli restano tra le dita quando si passa 
+la mano sul capo. Non è una normale infezione — è una corruzione accelerata, 
+come se il corpo stesse marcendo a velocità innaturale.`
+        },
+        {
+          titolo: "La Strada verso la Cava",
+          tipo: "viaggio",
+          testo: `Il sentiero che porta alla cava si addentra nel bosco. 
+È notte o tarda sera. La strada è silenziosa nel modo sbagliato — nessun verso di animali notturni.`,
+          notaDM: `A metà strada i PG affrontano il cinghiale corrotto. In lontananza, 
+durante o dopo il combattimento, chi supera una prova di Percezione (CD 14) intravede 
+una figura umana immobile tra gli alberi che li osserva — poi scompare.`
+        },
+        {
+          titolo: "Il Cinghiale Corrotto — Combattimento",
+          tipo: "scontro",
+          testo: `Più grande di un cinghiale normale. I lembi di carne si staccano dalle ossa 
+mentre si muove. Dal cranio escono mucchi di vermi che cadono sul terreno. 
+Nonostante le condizioni del corpo, è veloce e aggressivo.`,
+          notaDM: `Statistiche: usare il blocco di un Cinghiale (MM) e aumentare i PF del 50%, 
+aggiungere immunità ai danni da veleno. Chi subisce danni dalla carica deve superare 
+un TS su Costituzione (CD 13) o contrarre una versione lieve della corruzione 
+(svantaggio ai TS contro malattia per 24 ore). 
+Il cadavere del cinghiale, se esaminato, mostra lo stesso avanzato stadio di degenerazione 
+interna di Alexei — ma concentrato.`
+        },
+        {
+          titolo: "La Cava — Dimitri",
+          tipo: "scena",
+          testo: `La frana ha parzialmente ostruito l'ingresso alla cava. 
+Dimitri è ancora lì: il braccio sinistro è schiacciato da un grande masso, 
+il corpo ha convulsioni intermittenti nonostante sia cosciente. 
+Quello che resta della mano schiacciata è in stato avanzato di decomposizione.
+La schiena di Dimitri è stata strappata a morsi — ferite profonde, già necrotizzate.`,
+          notaDM: `Dimitri non può essere salvato in modo convenzionale. 
+La corruzione è troppo avanzata. Può ancora parlare in modo frammentato: 
+"È uscita dalla roccia... cantava... Dio, cantava mentre mi mangiava." 
+Dimitri muore entro 1 ora dall'arrivo dei PG, a meno che non vengano usate magie 
+molto potenti (che comunque fermano solo il processo, non lo invertono).
+La frana ha aperto un accesso a una grotta preesistente — è da lì che è uscita la creatura.`
+        }
+      ]
+    },
 
-L'esterno è di pietra grigia scura, levigata dal vento del mare. Le finestre, dove esistono, sono strette e irregolari. La porta d'ingresso non ha serratura — si apre sempre, per chiunque si avvicini abbastanza.
+    {
+      id: "cap2",
+      titolo: "Capitolo 2 — La Grotta di Ralia e Dogti",
+      icona: "🕯️",
+      riassunto: "Oltre la frana si apre una grotta antica, abitata in passato. Tre elementi chiave raccontano una storia d'amore diventata abominio — e aprono la via verso la Torre.",
+      sezioni: [
+        {
+          titolo: "La Grotta — Descrizione",
+          tipo: "scena",
+          testo: `Non è una caverna selvaggia. Qualcuno ha vissuto qui: stuoie logore per dormire, 
+un camino scavato nella roccia con tracce di cenere recente, un cucinotto arrangiato, 
+una credenza di legno marcio. L'aria è ferma e pesante, come se il tempo qui dentro 
+si fosse addensato.`
+        },
+        {
+          titolo: "Cosa trovano — 1: Lo Spartito nel Camino",
+          tipo: "oggetto",
+          testo: `Nel camino, tra le ceneri, ci sono frammenti di fogli manoscritti bruciati. 
+Non tutti sono completamente distrutti — alcune note musicali, alcuni segni, 
+restano leggibili ai bordi. I PG possono tentare di ricomporre lo spartito 
+mettendo insieme i frammenti superstiti.`,
+          notaDM: `Lo spartito è incompleto e bruciato intenzionalmente (dal Biondo, come spiegato nel diario). 
+Una prova di Storia (CD 15) o Arcano (CD 14) rivela che la notazione è inusuale — 
+non è musica nel senso tradizionale, è più vicina a un sigillo arcano trascritto in forma melodica. 
+Chi ha competenza in strumenti musicali riconosce che alcune sequenze sembrano progettate 
+per essere cantate in coppia. Non è possibile ricostruire lo spartito completo dai soli frammenti.`
+        },
+        {
+          titolo: "Cosa trovano — 2: Il Diario del Biondo",
+          tipo: "documento",
+          testo: `Sul pavimento, accanto al cadavere bloccato alla parete, c'è un diario. 
+La copertina è di cuoio scuro, le pagine ingiallite. L'ultima è macchiata di sangue.`,
+          documentoCompleto: `[DIARIO DEL BIONDO — da leggere ai giocatori]
 
-All'interno, la torre è più grande di quanto sembri dall'esterno. I piani si moltiplicano. Le scale non sempre portano dove ci si aspetta. Alcuni corridoi si ripetono. Alcune stanze cambiano.`,
-      tag: ["Dungeon", "Magia", "Mistero"]
+Dopo 3 mesi di incessanti ed estenuanti ricerche sono finalmente riuscito a rintracciare 
+Fraxximt il Rospo nelle profondità di una montagna a nord dell'isola Mushara 
+(nome antico che i Solnari davano a Tresil).
+
+Dopo che il mago pazzo è scappato dalle grinfie degli inquisitori Brahmani, 
+è stato molto difficile ritrovare le sue tracce.
+
+Giusto in tempo. Fraxximt sta creando una serie di abomini per riempire la sua infinita 
+torre della follia. Non capisco come abbia raggiunto il potere di creare un luogo come questo. 
+Cambia continuamente e non c'è una via per arrivare direttamente nelle stanze del mago pazzo.
+
+Ora comprendo che il Rospo non crea incantesimi: li ruba e li corrompe. 
+Ho trovato una camera nascosta, antecedente la torre. Dentro di essa due corpi (Ralia e Dogti), 
+uno decomposto da tempo (Ralia) l'altro orrendamente deturpato dal marciume, 
+con il petto squarciato e vuoto. Mi è venuto un colpo quando l'uomo marcio ha iniziato a muoversi. 
+Alla fine era innocuo — con l'orecchio teso sembrava aspettare che qualcuno dicesse qualcosa, 
+e con il moncherino dell'indice sinistro continuava a battere ritmicamente sul pavimento della grotta.
+
+Dai vari scritti sparsi per la camera ho scoperto la macabra storia di Ralia e del suo amato Dogti. 
+Ella era una aspirante sacerdotessa di Virxiante la Rigeneratrice 
+(una dei tanti fatati adorati dai villici nel sud di Lugdunum nel continente Varlmenn). 
+Quando il suo amato perì in guerra ella scappò con la sua salma e lo riportò indietro dalla morte, 
+dando vita ad un abominio. Dogti scappò e iniziò a infettare tutti gli insediamenti vicini. 
+Fu così che Ralia lo incatenò con la loro canzone — e ballando lo costrinse a tornare 
+nella grotta dove si trovano ancora oggi.
+
+Ho capito! Il Rospo deve aver trovato questa grotta durante gli scavi per la sua torre 
+e, appropriatosi della canzone dei due innamorati e del cuore di Dogti come tramite arcano, 
+ha creato i suoi abomini personali.
+
+Sono riuscito a sottrargli lo spartito della canzone — ma non il cuore. 
+Ho bruciato gli appunti di Ralia e lo spartito del Rospo. Sembra che per lui sia necessario 
+avere entrambi nelle vicinanze per creare e controllare gli abomini, 
+e in ogni caso sembra avere difficoltà nel controllare Dogti. 
+Ho dato fuoco allo spartito appena arrivato nella stanza. 
+Il Rospo mi rincorre. Non posso fuggire dalla sua torre. 
+Dogti sembra spaventato, rannicch...`,
+          notaDM: `Il diario si interrompe a metà parola. I giocatori non sapranno mai come finisce. 
+Il Biondo è il cadavere bloccato alla parete — trattenuto lì da Dogti (o dalla torre stessa) 
+dopo aver bruciato lo spartito. Non è chiaro se sia morto subito o sia rimasto intrappolato vivo.
+Informazioni chiave che i PG ricavano dal diario:
+• Il nome del mago: Fraxximt il Rospo
+• La torre cambia continuamente — non c'è una via diretta al mago
+• Esiste qualcosa chiamato "cuore di Dogti" usato come tramite arcano
+• Lo spartito bruciato dovrebbe indebolire il controllo del Rospo sugli abomini`
+        },
+        {
+          titolo: "Cosa trovano — 3: Il Cadavere e la Parete Magica",
+          tipo: "scena",
+          testo: `Uno scheletro è bloccato alla parete da tralicci di pietra cresciuti attorno alle ossa — 
+come se la roccia stessa lo avesse trattenuto. Accanto, sul pavimento, c'è il diario.
+
+Il fondo della grotta non è roccia naturale. Chi si avvicina nota che la superficie 
+è innaturalmente liscia e uniforme. Una prova di Arcano (CD 12) conferma: 
+è stata creata magicamente, non è una formazione naturale. 
+È anche sottile — un colpo deciso, o una magia di trasmutazione anche modesta, 
+la frantuma rivelando ciò che c'è dietro.`,
+          notaDM: `Rompere la parete non richiede forza straordinaria né magie potenti — 
+è sottile e fragile, come carta pietrificata. Era stata creata per trattenere qualcuno dentro 
+(il Biondo), non per resistere a chi viene da fuori. 
+Oltre la parete: l'ingresso alla Torre della Follia.`
+        }
+      ]
+    },
+
+    {
+      id: "cap3",
+      titolo: "Capitolo 3 — La Torre della Follia",
+      icona: "🗼",
+      riassunto: "Oltre la parete magica si apre una struttura impossibile. Scale che non portano da nessuna parte — o forse ovunque. Le prime due stanze mettono alla prova la mente dei personaggi.",
+      sezioni: [
+        {
+          titolo: "L'Atrio della Torre",
+          tipo: "scena",
+          testo: `Un'unica stanza circolare di 70 metri di raggio. 
+Al centro si aprono scale che salgono e scendono — entrambe si perdono fuori dalla vista. 
+Verso l'alto: una luce lattiginosa, come il cielo prima di un temporale, 
+con una sensazione di giudizio imminente che stringe il petto. 
+Verso il basso: buio totale, come guardare in un abisso infinito — 
+ma con la certezza che qualcosa laggiù stia guardando te.
+
+Ogni mezzo giro della torre, su entrambi i lati delle scale, c'è una porta ad arco di pietra.`,
+          notaDM: `La torre segue una logica propria: che i PG salgano o scendano, 
+si ritrovano davanti allo stesso arco di pietra — l'ingresso alla prima stanza. 
+Non si può saltare le stanze. Non si può raggiungere il mago senza attraversarle in sequenza. 
+La struttura della torre è un labirinto narrativo, non geometrico.`
+        },
+        {
+          titolo: "Stanza 1 — Il Ponte e l'Occhio",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: grande occhio stilizzato",
+          testo: `Oltre l'arco: buio assoluto e il bordo di un crepaccio. 
+Davanti ai personaggi si estende un ponte di corde e legno marcio. 
+Non si vede l'altra sponda.
+
+Quando il primo piede tocca il legno del ponte oscillante, qualcosa cambia nel cielo davanti: 
+un immenso occhio si apre nel vuoto. Fissa i personaggi sul ponte.`,
+          notaDM: `Solo chi è sul ponte vede l'occhio — chi è rimasto sull'arco non lo percepisce. 
+Chi guarda l'occhio direttamente deve tirare un dado percentuale ogni 1d4 round (CD 30): 
+se fallisce, subisce un effetto di follia breve (tabella a discrezione del DM — 
+confusione, allucinazione, fuga irrefrenabile, 1d4 round). 
+Il ponte regge, ma scricchiola pericolosamente: una prova di Acrobazia (CD 10) 
+per ogni PG che lo attraversa di corsa o in combattimento. 
+Sul lato opposto: nulla di rilevante — una piccola piattaforma di pietra che conduce 
+a un'altra porta, già aperta, che riporta alle scale. L'occhio si chiude una volta 
+che tutti hanno attraversato (o sono tornati indietro).
+
+Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro. 
+Una palla di stracci rotola e rimbalza giù dalle scale passando tra i loro piedi. 
+Non ci sono bambini visibili.`
+        },
+        {
+          titolo: "Stanza 2 — Il Labirinto di Specchi",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: rettangolo con lati asimmetrici",
+          testo: `L'arco dà accesso a un ambiente vasto. Il pavimento è la zona più secca di una palude — 
+terra screpolata, chiazze di acqua nera stagnante, giunchi secchi. 
+Il resto è un labirinto di specchi alti a perdita d'occhio, 
+disposti in modo apparentemente caotico.
+
+Alla prima svolta, i riflessi iniziano a comportarsi in modo strano: 
+gesticolano troppo, si muovono un secondo dopo, sorridono quando il personaggio non sorride. 
+Poi iniziano a uscire dagli specchi.`,
+          notaDM: `I riflessi distorli combattono i PG come versioni alterate di loro stessi: 
+stesse statistiche base, ma con una peculiarità orrifica (a discrezione del DM — 
+più lenti ma più forti, o con un attacco che mima un fallimento passato del personaggio, ecc). 
+Se lo specchio da cui è uscito un riflesso viene distrutto, il riflesso si spezzetta e muore. 
+Gli specchi hanno CA 5 e 5 PF ciascuno.
+
+Per uscire dal labirinto: i PG devono trovare uno specchio nel quale il loro riflesso 
+si comporta ancora normalmente — e entrarci. Questo li trasporta dall'altra parte del labirinto, 
+all'uscita. Non è immediato trovarlo: i riflessi "sani" sono pochi e si spostano.`
+        }
+      ]
+    },
+
+    {
+      id: "cap4",
+      titolo: "Capitolo 4 — [In costruzione]",
+      icona: "⚠️",
+      riassunto: "Altre stanze della Torre della Follia. Da sviluppare.",
+      sezioni: [
+        {
+          titolo: "Prossime stanze",
+          tipo: "placeholder",
+          testo: "Questo capitolo verrà costruito nella prossima sessione di sviluppo.",
+          notaDM: "Struttura prevista: altre 2–3 stanze con prove di diverso tipo, poi la resa dei conti con Fraxximt il Rospo e il reward finale."
+        }
+      ]
+    }
+
+  ],
+
+  png: [
+    {
+      nome: "Alexei",
+      ruolo: "Cavatore del villaggio — sopravvissuto",
+      descrizione: "Ferite da graffio, polvere, delirante. Occhi gialli, denti che cadono, capelli a ciocche. Portatore involontario della corruzione di Dogti.",
+      segreto: "Non sa di essere già condannato. La corruzione è irreversibile senza magia divina di alto livello."
     },
     {
-      id: "il-promontorio",
-      nome: "Il Promontorio",
-      testo: `Il promontorio su cui sorge la torre è una lingua di roccia che si protende sul mare. La vegetazione è rada — qualche arbusto spinoso, erba secca, licheni. Il vento è costante e porta con sé il sale e, a volte, qualcosa di più difficile da nominare.
-
-Il sentiero che porta alla torre è stretto e sconnesso. Ci vogliono circa quaranta minuti di cammino dal villaggio più vicino. Il promontorio non ha mai avuto un nome ufficiale, ma i locali lo chiamano "il Dente".`,
-      tag: ["Esterno", "Accesso"]
+      nome: "Dimitri",
+      ruolo: "Fratello di Alexei — morente alla cava",
+      descrizione: "Braccio schiacciato dal masso. Schiena strappata a morsi. Convulsioni. Può ancora parlare frammenti di senso.",
+      segreto: "Muore entro un'ora dall'arrivo dei PG. Ultima cosa che dice: 'Cantava. Mentre mi mangiava, cantava.'"
     },
     {
-      id: "villaggio-radice",
-      nome: "Radice",
-      testo: `Il villaggio di Radice è l'insediamento più vicino alla torre — un centinaio di abitanti, per lo più pescatori e contadini. I radichesi non parlano volentieri della torre. Ci sono stati episodi nel passato. Non amano ricordarli.
-
-Hanno però una regola non scritta: non si va alla torre da soli. Non si va di notte. E se qualcuno entra e non torna entro tre giorni, non lo si va a cercare.`,
-      tag: ["Villaggio", "Punto di partenza"]
+      nome: "Dogti",
+      ruolo: "Abominio — creazione di Ralia",
+      descrizione: "Corpo umano in stadio avanzato di decomposizione, petto squarciato e vuoto. Si muove. Batte il moncherino dell'indice sinistro sul pavimento ritmicamente. Sembra aspettare che qualcuno gli dica qualcosa.",
+      segreto: "Dogti non è completamente sotto il controllo di Fraxximt — il Biondo lo aveva notato. Il cuore di Dogti è il tramite arcano usato dal Rospo. Se i PG trovassero un modo per comunicare con lui, potrebbe diventare un alleato inatteso."
+    },
+    {
+      nome: "Il Biondo",
+      ruolo: "Agente misterioso — cadavere nella grotta",
+      descrizione: "Scheletro bloccato alla parete da tralicci di pietra. Lascia un diario. Stava inseguendo Fraxximt per conto di qualcuno (non specificato nel diario).",
+      segreto: "Chi lo ha mandato? Perché? Non viene chiarito in questa one shot — può essere un gancio per campagne future."
+    },
+    {
+      nome: "Fraxximt il Rospo",
+      ruolo: "Antagonista — mago pazzo, creatore della Torre",
+      descrizione: "Non compare fisicamente nelle prime stanze. La sua presenza si sente nella struttura stessa della torre. Non crea incantesimi: li ruba e li corrompe.",
+      segreto: "Debolezza principale: senza lo spartito completo e il cuore di Dogti nelle vicinanze, il suo controllo sugli abomini è instabile. I PG hanno già bruciato lo spartito (il Biondo lo ha fatto per loro). Resta il cuore."
     }
   ],
 
-  // ── ECONOMIA ───────────────────────────────────────
-  economia: {
-    valute: [
-      { sigla: "mo", nome: "Moneta d'Oro",    valore: 100, note: "Raramente usata al di fuori delle città" },
-      { sigla: "ma", nome: "Moneta d'Argento", valore: 10,  note: "Valuta comune" },
-      { sigla: "mr", nome: "Moneta di Rame",   valore: 1,   note: "Per piccole transazioni" }
-    ],
-    salari: [
-      { ruolo: "Contadino / pescatore", giorno: "2 ma",  mese: "6 mo",   note: "Media stagionale" },
-      { ruolo: "Artigiano",             giorno: "5 ma",  mese: "15 mo",  note: "Varia per mestiere" },
-      { ruolo: "Guardia cittadina",     giorno: "8 ma",  mese: "24 mo",  note: "Più vitto e alloggio" },
-      { ruolo: "Mercenario",            giorno: "1 mo",  mese: "30 mo",  note: "Dipende dal rischio" },
-    ],
-    categorie: [
-      {
-        id: "vitto",
-        nome: "Vitto & Alloggio",
-        icona: "🍞",
-        voci: [
-          { nome: "Pasto semplice",          costo: "3 mr",  note: "Pane, formaggio, brodo" },
-          { nome: "Pasto completo",           costo: "1 ma",  note: "Locanda di villaggio" },
-          { nome: "Notte in locanda",         costo: "5 ma",  note: "Camera condivisa" },
-          { nome: "Notte in locanda (privata)",costo: "2 mo", note: "Camera singola" },
-        ]
-      },
-      {
-        id: "equipaggiamento",
-        nome: "Equipaggiamento",
-        icona: "⚔",
-        voci: [
-          { nome: "Torcia",          costo: "1 mr",  note: "Dura circa 1 ora" },
-          { nome: "Corda (15m)",     costo: "5 ma",  note: "Canapa resistente" },
-          { nome: "Rampino",         costo: "2 mo",  note: "Con gancio in ferro" },
-          { nome: "Spada corta",     costo: "10 mo", note: "Qualità standard" },
-          { nome: "Armatura di cuoio",costo:"25 mo", note: "Leggera, discreta" },
-        ]
-      }
-    ]
-  },
-
-  // ── MAPPE ──────────────────────────────────────────
-  mappe: {
-    torre: [
-      { id: "pin-ingresso",    nome: "Ingresso",          x: 50, y: 88, tooltip: "La porta che si apre da sola",       colore: "#c9a84c" },
-      { id: "pin-piano1",      nome: "Primo Piano",       x: 50, y: 68, tooltip: "Il salone dei ritratti",             colore: "#5a8fd4" },
-      { id: "pin-piano2",      nome: "Secondo Piano",     x: 50, y: 50, tooltip: "La biblioteca — i libri cambiano",   colore: "#8f72d4" },
-      { id: "pin-piano3",      nome: "Terzo Piano",       x: 50, y: 32, tooltip: "Le stanze dei sogni",                colore: "#c45a5a" },
-      { id: "pin-sommita",     nome: "La Sommità",        x: 50, y: 12, tooltip: "Ciò che aspetta in cima",            colore: "#c9a84c" },
-    ]
-  },
-
-  // ── SVILUPPO CAPITOLI (solo DM) ────────────────────
-  capitoli: [
+  oggetti: [
     {
-      id: "cap-1",
-      numero: 1,
-      titolo: "La Porta Aperta",
-      stato: "completato",
-      luogo: "Ingresso e Primo Piano",
-      musica: [
-        {
-          label: "Atmosfera — Arrivo",
-          spotifyUri: "https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUIOKE",
-          note: "Brano ambient per l'ingresso nella torre"
-        },
-        {
-          label: "Tensione — Il Salone",
-          spotifyUri: "https://open.spotify.com/embed/track/0wwPcA6wtMf6HUMpIRdeP7",
-          note: "Per quando esplorano il salone dei ritratti"
-        }
-      ],
-      riassunto: `I personaggi raggiungono il promontorio del Dente dopo essere stati ingaggiati dal sindaco di Radice per investigare la scomparsa di due giovani del villaggio, spariti tre giorni fa dopo aver scommesso di trascorrere una notte nella torre.
-
-La porta si apre da sola al loro avvicinarsi. All'interno trovano il salone dei ritratti: decine di quadri che raffigurano persone diverse, alcune in abiti di secoli fa. I ritratti guardano tutti verso lo stesso punto della stanza — un camino spento, in cui qualcuno ha lasciato un paio di scarpe.`,
-      eventiChiave: [
-        "La porta si apre senza che nessuno la tocchi",
-        "Il salone è più grande dell'esterno della torre lascerebbe supporre",
-        "I ritratti si muovono — di poco, appena fuori dall'angolo visivo",
-        "Le scarpe appartengono a uno dei due ragazzi scomparsi",
-        "Le scale portano al secondo piano, ma anche in basso — verso qualcosa che non dovrebbe esserci"
-      ],
-      noteDM: `I ritratti sono il primo segnale che la torre "registra" chi la visita. Ogni ritratto è una persona che è entrata. I PG vedranno i propri ritratti comparire nel corso dell'avventura — prima sfocati, poi sempre più definiti.
-
-Le scarpe sono una traccia voluta. Il ragazzo le ha lasciate consapevolmente — aveva capito che togliersi le scarpe lo rendeva "più silenzioso" per qualcosa che sentiva muoversi sopra di lui. Questa intuizione era giusta.
-
-Non affrettare le scale verso il basso — lascia che i giocatori decidano. Il piano sotterraneo è il capitolo 3.`,
-      oggetti: [
-        { nome: "Le scarpe di Fen",    note: "Appartengono a Fen, 16 anni, uno dei due ragazzi scomparsi. Dentro c'è un biglietto piegato: 'non fare rumore'" },
-        { nome: "Ritratto sfocato",    note: "Un quadro con una sagoma indefinita — il colore della capigliatura assomiglia a uno dei PG" }
-      ]
+      nome: "Diario del Biondo",
+      descrizione: "Diario in cuoio scuro, pagine ingiallite. Si interrompe a metà frase. Contiene informazioni su Fraxximt, la torre, Ralia e Dogti.",
+      importanza: "Alta — lore fondamentale"
     },
-
     {
-      id: "cap-2",
-      numero: 2,
-      titolo: "La Biblioteca Mutevole",
-      stato: "in corso",
-      luogo: "Secondo Piano",
-      musica: [
-        {
-          label: "Esplorazione — Biblioteca",
-          spotifyUri: "https://open.spotify.com/embed/track/2WfaOiMkCvy7F5fcp2zZ8L",
-          note: "Musica per l'esplorazione tranquilla"
-        },
-        {
-          label: "Scoperta — I libri cambiano",
-          spotifyUri: "https://open.spotify.com/embed/track/5S0VP7cCuEWMFpMSoYZiJf",
-          note: "Quando i giocatori si accorgono del fenomeno"
-        }
-      ],
-      riassunto: `Il secondo piano è interamente occupato da una biblioteca. Gli scaffali arrivano al soffitto — che è troppo alto. I libri sono reali, sfogliabili, scritti in lingue diverse. Ma se si torna a cercarne uno già visto, non è più al suo posto. A volte i titoli cambiano. A volte il contenuto.
-
-In un angolo della biblioteca c'è una scrivania con un diario aperto. L'inchiostro è fresco. Le ultime pagine sono scritte dalla mano dell'altra ragazza scomparsa — Mira, 14 anni — e descrivono quello che ha visto nei giorni passati nella torre.`,
-      eventiChiave: [
-        "I libri si riorganizzano — i PG lo capiscono solo al secondo giro",
-        "Il diario di Mira: sopravvive nascondendosi e annotando schemi",
-        "Un libro si apre da solo su una mappa della torre — ma la mappa è sbagliata",
-        "Qualcosa si muove tra gli scaffali. Non è ostile. Non ancora.",
-        "Mira è ancora viva — il diario è di oggi"
-      ],
-      noteDM: `La biblioteca risponde alle domande — ma in modo obliquo. Se un PG cerca un libro su un argomento specifico con intenzione, lo trova. Il contenuto però è sempre leggermente sbagliato: date errate, nomi alterati, conclusioni invertite. La torre non mente, ma distorce.
-
-La creatura tra gli scaffali è una forma di fatato — nato dall'ossessione di un vecchio studioso che ha trascorso anni nella torre. Non è aggressivo, ma è territoriale. Può diventare un alleato se trattato con rispetto.
-
-Il diario di Mira è fondamentale: contiene la chiave per capire come "leggere" la torre. Non darglielo troppo in fretta — lascia che lo scoprano un pezzo alla volta.`,
-      oggetti: [
-        { nome: "Diario di Mira",       note: "24 pagine scritte negli ultimi 3 giorni. Contiene osservazioni sui pattern della torre, schizzi delle stanze, un sistema di simboli inventato da Mira per orientarsi" },
-        { nome: "La mappa sbagliata",   note: "Una mappa della torre trovata in un libro. È accurata per il 70% — il 30% rimanente descrive stanze che non esistono, o stanze che esistono ma al posto sbagliato" },
-        { nome: "Il libro che risponde", note: "Un volume rilegato in cuoio grigio. Se vi si scrive una domanda nell'ultima pagina, una risposta appare entro un'ora. Ma è sempre parziale." }
-      ]
+      nome: "Frammenti dello Spartito",
+      descrizione: "Fogli manoscritti parzialmente bruciati trovati nel camino. Non ricostruibili completamente. La notazione è arcana, progettata per essere cantata in coppia.",
+      importanza: "Media — lore, non utilizzabile direttamente"
     },
-
     {
-      id: "cap-3",
-      numero: 3,
-      titolo: "Le Stanze dei Sogni",
-      stato: "pianificato",
-      luogo: "Terzo Piano e Sommità",
-      musica: [
-        {
-          label: "Il Terzo Piano",
-          spotifyUri: "https://open.spotify.com/embed/track/6NPVjNh8Jhru9xjaMr1g8z",
-          note: "Atmosfera onirica e disorientante"
-        },
-        {
-          label: "La Sommità — Confronto finale",
-          spotifyUri: "https://open.spotify.com/embed/track/0e7X7yCkB1vel9Y2KKQE1w",
-          note: "Per il momento culminante"
-        }
-      ],
-      riassunto: `Il terzo piano è fatto di stanze che non obbediscono alla fisica. Alcune sono più piccole dell'ingresso ma contengono foreste. Alcune hanno più porte di quante ne abbiano pareti. In una delle stanze, Fen dorme — non riesce a svegliarsi, non dal giorno in cui è entrato.
+      nome: "Il Cuore di Dogti",
+      descrizione: "Non ancora trovato dai PG. È in possesso di Fraxximt. Tramite arcano usato per creare e controllare gli abomini.",
+      importanza: "Alta — obiettivo chiave per indebolire il Rospo"
+    }
+  ],
 
-Mira è al terzo piano. È sveglia, lucida, spaventata, ma funzionale. Ha trovato il modo di muoversi tra le stanze usando il sistema di simboli del suo diario. Ha capito che la torre non è vuota — c'è qualcosa in cima che la abita. Qualcosa che non è ostile, ma che non capisce del tutto cosa siano gli esseri umani.`,
-      eventiChiave: [
-        "Fen è in un sonno che assomiglia al mondo dei sogni — qualcuno lo tiene lì",
-        "Mira guida i PG attraverso le stanze usando i suoi simboli",
-        "La sommità: un'entità che colleziona memorie. Non sa di fare del male.",
-        "Per liberare Fen bisogna negoziare — non combattere",
-        "La torre, dopo la risoluzione, comincia lentamente a cambiare"
-      ],
-      noteDM: `L'entità alla sommità è il punto centrale dell'avventura. Non è un villain — è una cosa antica che ha imparato a esistere assorbendo le esperienze di chi entra nella torre. Tiene Fen nel mondo dei sogni perché il suo sogno era particolarmente ricco — non per crudeltà, ma per curiosità.
-
-La risoluzione ideale non è uno scontro. I PG devono capire cosa vuole l'entità (connessione, comprensione, storie) e offrirglielo in cambio di Fen. Se attaccano, la torre diventa ostile — non impossibile da superare, ma molto più pericolosa.
-
-Finale aperto: la torre rimane. L'entità rimane. Il rapporto tra l'entità e Radice potrebbe diventare qualcosa di diverso in futuro.`,
-      oggetti: [
-        { nome: "Il sistema di simboli di Mira", note: "Una chiave pratica per navigare il terzo piano. Funziona finché Mira è sveglia e concentrata." },
-        { nome: "Frammento di memoria",          note: "L'entità può offrire ai PG un frammento — un ricordo di qualcuno che è entrato prima di loro. Potrebbe contenere informazioni utili per la campagna principale." }
-      ]
+  musica: [
+    {
+      capitolo: "cap1",
+      descrizione: "Locanda festosa",
+      spotify: ""
+    },
+    {
+      capitolo: "cap1b",
+      descrizione: "Bosco / Cinghiale corrotto",
+      spotify: ""
+    },
+    {
+      capitolo: "cap2",
+      descrizione: "Grotta di Ralia e Dogti",
+      spotify: ""
+    },
+    {
+      capitolo: "cap3",
+      descrizione: "La Torre",
+      spotify: ""
     }
   ]
-
 };
