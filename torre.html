@@ -290,10 +290,18 @@ const ADMIN_PW = 'tresil2025';
 let isMaster = false;
 
 // ── INIT ───────────────────────────────────────────
+function isDMSaved() {
+  try { return localStorage.getItem('torre_dm') === 'true'; } catch(e) {}
+  try { return sessionStorage.getItem('torre_dm') === 'true'; } catch(e) {}
+  return false;
+}
+function saveDM(val) {
+  try { if (val) localStorage.setItem('torre_dm','true'); else localStorage.removeItem('torre_dm'); } catch(e) {}
+  try { if (val) sessionStorage.setItem('torre_dm','true'); else sessionStorage.removeItem('torre_dm'); } catch(e) {}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('torre_dm') === 'true') {
-    isMaster = true;
-  }
+  if (isDMSaved()) isMaster = true;
   buildPanoramica();
   buildAmbientazione();
   buildEconomia();
@@ -332,7 +340,7 @@ function showSection(id) {
 function toggleDM() {
   if (isMaster) {
     isMaster = false;
-    localStorage.removeItem('torre_dm');
+    saveDM(false);
     updateDMUI();
   } else {
     document.getElementById('pw-input').value = '';
@@ -346,7 +354,7 @@ function checkPW() {
   const val = document.getElementById('pw-input').value;
   if (val === ADMIN_PW) {
     isMaster = true;
-    localStorage.setItem('torre_dm', 'true');
+    saveDM(true);
     document.getElementById('pw-overlay').classList.remove('open');
     updateDMUI();
   } else {
@@ -383,6 +391,7 @@ function card(title, body, extra = '') {
 function buildPanoramica() {
   const c = document.getElementById('section-panoramica');
   const p = PANORAMICA_DATA;
+  const td = torreDati;
   c.innerHTML = `
     <div class="sec-head">
       <div class="sec-title">Panoramica</div>
@@ -391,47 +400,28 @@ function buildPanoramica() {
     <div class="stat-grid">
       <div class="stat-card"><div class="stat-lbl">Mondo</div><div class="stat-val">${p.mondo.nome}</div></div>
       <div class="stat-card"><div class="stat-lbl">Tipo</div><div class="stat-val">One Shot</div></div>
-      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${TORRE_DATA.capitoli.length}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${td.capitoli.length}</div></div>
     </div>`;
-
-  // Il mondo
   c.appendChild(card('Il Mondo', p.mondo.descrizione));
-
-  // Fatati
   c.appendChild(card(p.fatati.titolo, p.fatati.testo));
-
-  // Mondo dei sogni
   c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
 }
 
 // ── AMBIENTAZIONE ──────────────────────────────────
 function buildAmbientazione() {
   const c = document.getElementById('section-ambientazione');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">I luoghi della Torre della Follia</div></div>`;
+  const td = torreDati;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">${td.titolo} — ${td.ambientazione}</div></div>`;
 
-  TORRE_DATA.ambientazione.forEach(a => {
-    const d = document.createElement('div');
-    d.className = 'card';
-    d.innerHTML = `<div class="card-title">${a.nome}</div>`;
-    if (a.sottotitolo) {
-      const sub = document.createElement('div');
-      sub.style.cssText = 'font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.5rem;';
-      sub.textContent = a.sottotitolo;
-      d.appendChild(sub);
-    }
-    const body = document.createElement('div');
-    body.className = 'card-body';
-    body.textContent = a.testo;
-    d.appendChild(body);
-    if (a.tag?.length) {
-      const tags = document.createElement('div');
-      tags.className = 'tags';
-      tags.style.marginTop = '8px';
-      a.tag.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
-      d.appendChild(tags);
-    }
-    c.appendChild(d);
-  });
+  // Scheda generale one shot
+  const info = document.createElement('div');
+  info.className = 'card';
+  info.innerHTML = `<div class="card-title">${td.titolo}</div>
+    <div class="card-body">${td.sottotitolo}<br><br>
+    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">TONO</strong><br>${td.tono}<br><br>
+    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">ANTAGONISTA</strong><br>${td.antagonista}
+    </div>`;
+  c.appendChild(info);
 
   // Luoghi generali da data_panoramica
   const lbl = document.createElement('div');
@@ -459,91 +449,8 @@ function buildAmbientazione() {
 function buildEconomia() {
   const c = document.getElementById('section-economia');
   c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Sistema monetario — prezzi e riferimenti</div></div>`;
-  const eco = TORRE_DATA.economia;
-
-  // Valute
-  const lbl1 = document.createElement('div'); lbl1.className = 'group-lbl'; lbl1.textContent = 'Sistema monetario';
-  c.appendChild(lbl1);
-  const grid = document.createElement('div'); grid.className = 'eco-valute';
-  eco.valute.forEach(v => {
-    const d = document.createElement('div'); d.className = 'eco-valuta';
-    d.innerHTML = `<div class="eco-val-sigla">${v.sigla.toUpperCase()}</div><div class="eco-val-nome">${v.nome}</div><div class="eco-val-note">${v.note}</div>`;
-    grid.appendChild(d);
-  });
-  c.appendChild(grid);
-
-  // Convertitore
-  const lbl2 = document.createElement('div'); lbl2.className = 'group-lbl'; lbl2.textContent = 'Convertitore rapido';
-  c.appendChild(lbl2);
-  const conv = document.createElement('div'); conv.className = 'eco-converter';
-  const row = document.createElement('div'); row.className = 'eco-conv-row';
-  const inp = document.createElement('input'); inp.className = 'eco-conv-input'; inp.type = 'number'; inp.value = '1'; inp.min = '0';
-  const sel = document.createElement('select'); sel.className = 'eco-conv-select';
-  eco.valute.forEach(v => { const o = document.createElement('option'); o.value = v.valore; o.textContent = v.sigla.toUpperCase() + ' — ' + v.nome; sel.appendChild(o); });
-  const result = document.createElement('div'); result.className = 'eco-conv-result';
-  function updateConv() {
-    const base = (parseFloat(inp.value) || 0) * parseFloat(sel.value);
-    result.innerHTML = eco.valute.map(v => {
-      const q = base / v.valore;
-      if (q < 0.01) return null;
-      const disp = q >= 1 ? (Number.isInteger(q) ? q : q.toFixed(2)) : q.toFixed(4);
-      return `<span>${v.sigla.toUpperCase()}</span> ${disp} ${v.nome}`;
-    }).filter(Boolean).join(' &nbsp;·&nbsp; ');
-  }
-  inp.oninput = updateConv; sel.onchange = updateConv;
-  row.appendChild(inp); row.appendChild(sel);
-  conv.appendChild(row); conv.appendChild(result);
-  c.appendChild(conv);
-  updateConv();
-
-  // Salari
-  const lbl3 = document.createElement('div'); lbl3.className = 'group-lbl'; lbl3.textContent = 'Salari di riferimento';
-  c.appendChild(lbl3);
-  const sal = document.createElement('div'); sal.className = 'eco-salari';
-  sal.innerHTML = `<table><thead><tr><th>Ruolo</th><th>Al giorno</th><th>Al mese</th><th>Note</th></tr></thead><tbody>${
-    eco.salari.map(s => `<tr><td>${s.ruolo}</td><td class="mono">${s.giorno}</td><td class="mono">${s.mese}</td><td>${s.note}</td></tr>`).join('')
-  }</tbody></table>`;
-  c.appendChild(sal);
-
-  // Listino prezzi
-  const lbl4 = document.createElement('div'); lbl4.className = 'group-lbl'; lbl4.textContent = 'Listino prezzi';
-  c.appendChild(lbl4);
-  const tabBar = document.createElement('div'); tabBar.className = 'eco-cat-tabs';
-  const tableWrap = document.createElement('div');
-  let activeTab = 'tutti';
-
-  function renderTable(filtro) {
-    tableWrap.innerHTML = '';
-    eco.categorie.forEach(cat => {
-      if (filtro !== 'tutti' && cat.id !== filtro) return;
-      const tbl = document.createElement('div'); tbl.style.marginBottom = '1.2rem';
-      if (filtro === 'tutti') {
-        const lbl = document.createElement('div');
-        lbl.style.cssText = 'font-family:var(--font-d);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:.4rem;';
-        lbl.textContent = cat.icona + ' ' + cat.nome;
-        tbl.appendChild(lbl);
-      }
-      tbl.innerHTML += `<table class="eco-table"><thead><tr><th>Oggetto / Servizio</th><th>Costo</th><th>Note</th></tr></thead><tbody>${
-        cat.voci.map(v => `<tr><td>${v.nome}</td><td class="costo">${v.costo}</td><td class="note-col">${v.note}</td></tr>`).join('')
-      }</tbody></table>`;
-      tableWrap.appendChild(tbl);
-    });
-  }
-
-  const tuttiBtn = document.createElement('button');
-  tuttiBtn.className = 'eco-cat-tab active'; tuttiBtn.textContent = '🗂 Tutte';
-  tuttiBtn.onclick = () => { activeTab = 'tutti'; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); tuttiBtn.classList.add('active'); renderTable('tutti'); };
-  tabBar.appendChild(tuttiBtn);
-  eco.categorie.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'eco-cat-tab'; btn.textContent = cat.icona + ' ' + cat.nome;
-    btn.onclick = () => { activeTab = cat.id; tabBar.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTable(cat.id); };
-    tabBar.appendChild(btn);
-  });
-
-  c.appendChild(tabBar);
-  renderTable('tutti');
-  c.appendChild(tableWrap);
+  // torreDati non ha sezione economia per questa one shot
+  c.innerHTML += `<div class="card"><div class="card-body" style="color:var(--t3);font-style:italic;">Sezione economia non configurata per questa one shot.</div></div>`;
 }
 
 // ── MAPPE ──────────────────────────────────────────
@@ -570,90 +477,145 @@ function buildSviluppo() {
     return;
   }
 
-  TORRE_DATA.capitoli.forEach(cap => {
-    const wrap = document.createElement('div');
-    wrap.className = `cap-card ${cap.stato}`;
+  // Lore segreta
+  if (torreDati.loreSegreta) {
+    const loreBox = document.createElement('div');
+    loreBox.className = 'callout-m';
+    loreBox.style.marginBottom = '1.25rem';
+    loreBox.innerHTML = `<strong style="font-family:var(--font-d);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.4rem;">⚠ Lore riservata DM</strong>${torreDati.loreSegreta}`;
+    c.appendChild(loreBox);
+  }
 
-    const statoLabel = { 'completato': 'Completato', 'in-corso': 'In corso', 'pianificato': 'Pianificato' }[cap.stato] || cap.stato;
+  // Capitoli
+  torreDati.capitoli.forEach(cap => {
+    const isPlaceholder = cap.sezioni?.some(s => s.tipo === 'placeholder');
+    const statoClass = isPlaceholder ? 'pianificato' : 'in-corso';
+
+    const wrap = document.createElement('div');
+    wrap.className = `cap-card ${statoClass}`;
+
+    let sezioniHTML = '';
+    if (cap.sezioni) {
+      cap.sezioni.forEach(sez => {
+        const tipoColor = {
+          scena:'var(--blue)', png:'var(--purple)', scontro:'var(--red)',
+          stanza:'var(--gold)', documento:'var(--amber)', oggetto:'var(--green)',
+          viaggio:'var(--t2)', placeholder:'var(--t3)'
+        }[sez.tipo] || 'var(--t3)';
+        const tipoLabel = {
+          scena:'Scena', png:'PNG', viaggio:'Viaggio', scontro:'Scontro',
+          oggetto:'Oggetto', documento:'Documento', stanza:'Stanza', placeholder:'In costruzione'
+        }[sez.tipo] || sez.tipo;
+
+        sezioniHTML += `<div style="margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">`;
+        sezioniHTML += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:.4rem;">
+          <span style="font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid ${tipoColor};color:${tipoColor};font-family:var(--font-d);letter-spacing:.06em;text-transform:uppercase;">${tipoLabel}</span>
+          <div class="cap-sec" style="margin:0;border:none;padding:0;">${sez.titolo}</div>
+        </div>`;
+        if (sez.marcatore) {
+          sezioniHTML += `<div style="font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.4rem;">🔑 ${sez.marcatore}</div>`;
+        }
+        sezioniHTML += `<div class="cap-text">${sez.testo}</div>`;
+        if (sez.documentoCompleto) {
+          sezioniHTML += `<div style="margin-top:.75rem;">
+            <div style="font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.4rem;">📜 Leggere ai giocatori</div>
+            <div style="background:rgba(90,180,143,.05);border:1px solid rgba(90,180,143,.15);border-radius:3px;padding:.75rem 1rem;font-size:13px;color:var(--t2);line-height:1.8;white-space:pre-line;font-style:italic;">${sez.documentoCompleto}</div>
+          </div>`;
+        }
+        if (sez.notaDM) {
+          sezioniHTML += `<div style="margin-top:.6rem;">
+            <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
+            <div class="callout-m">${sez.notaDM}</div>
+          </div>`;
+        }
+        sezioniHTML += `</div>`;
+      });
+    }
+
+    // Musica del capitolo
+    const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id && m.spotify);
+    const musicaHTML = musicaCapitolo.length ? buildMusicPlayer(cap.id, musicaCapitolo) : '';
 
     wrap.innerHTML = `
       <div class="cap-head" onclick="this.parentElement.classList.toggle('open')">
-        <div class="cap-num">Cap. ${cap.numero}</div>
+        <div class="cap-num">${cap.icona || '◆'}</div>
         <div class="cap-title">${cap.titolo}</div>
-        <span class="cap-stato ${cap.stato}">${statoLabel}</span>
+        <span class="cap-stato ${statoClass}">${isPlaceholder ? 'Da costruire' : 'Pronto'}</span>
         <span class="cap-arr">▶</span>
       </div>
       <div class="cap-body">
-        <div class="cap-luogo">📍 ${cap.luogo}</div>
-
-        <div class="cap-sec">Riassunto</div>
-        <div class="cap-text">${cap.riassunto}</div>
-
-        <div class="cap-sec">Eventi chiave</div>
-        <ul class="ev-list">${cap.eventiChiave.map(e => `<li>${e}</li>`).join('')}</ul>
-
-        <div class="cap-sec">Note DM</div>
-        <div class="callout-m">${cap.noteDM}</div>
-
-        ${cap.oggetti?.length ? `
-        <div class="cap-sec">Oggetti</div>
-        <div class="cap-obj-list">${cap.oggetti.map(o => `
-          <div class="cap-obj">
-            <div class="cap-obj-name">${o.nome}</div>
-            <div class="cap-obj-note">${o.note}</div>
-          </div>`).join('')}
-        </div>` : ''}
-
-        ${buildMusicPlayer(cap)}
+        <div class="cap-luogo" style="margin-bottom:.75rem;font-style:italic;color:var(--t3);font-size:12px;">${cap.riassunto}</div>
+        ${sezioniHTML}
+        ${musicaHTML}
       </div>`;
-
     c.appendChild(wrap);
+  });
+
+  // PNG
+  const pngLbl = document.createElement('div'); pngLbl.className = 'group-lbl'; pngLbl.textContent = 'PNG — Personaggi non giocanti';
+  c.appendChild(pngLbl);
+  torreDati.png.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'cap-card in-corso';
+    d.innerHTML = `
+      <div class="cap-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cap-num">👤</div>
+        <div class="cap-title">${p.nome}</div>
+        <span class="cap-stato in-corso" style="font-size:9px;padding:2px 7px;">${p.ruolo.split('—')[0].trim()}</span>
+        <span class="cap-arr">▶</span>
+      </div>
+      <div class="cap-body">
+        <div class="cap-text" style="margin-bottom:.75rem;">${p.descrizione}</div>
+        <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Segreto DM</div>
+        <div class="callout-m">${p.segreto}</div>
+      </div>`;
+    c.appendChild(d);
+  });
+
+  // Oggetti
+  const objLbl = document.createElement('div'); objLbl.className = 'group-lbl'; objLbl.textContent = 'Oggetti chiave';
+  c.appendChild(objLbl);
+  torreDati.oggetti.forEach(o => {
+    const d = document.createElement('div');
+    d.className = 'card';
+    d.innerHTML = `<div class="card-title">${o.nome} <span style="font-size:9px;color:var(--t3);font-weight:normal;font-family:var(--font-b);">— ${o.importanza}</span></div><div class="card-body">${o.descrizione}</div>`;
+    c.appendChild(d);
   });
 }
 
 // ── PLAYER SPOTIFY ─────────────────────────────────
-function buildMusicPlayer(cap) {
-  if (!cap.musica?.length) return '';
-
-  const tracksHTML = cap.musica.map((m, i) =>
+function buildMusicPlayer(capId, tracce) {
+  if (!tracce || !tracce.length) return '';
+  const tracksHTML = tracce.map((m, i) =>
     `<button class="music-track-btn ${i === 0 ? 'active' : ''}"
-      onclick="switchTrack(this, '${cap.id}', '${m.spotifyUri}', '${m.note}')"
-    >${m.label}</button>`
+      onclick="switchTrack(this, '${capId}', '${m.spotify}', '${m.descrizione}')"
+    >${m.descrizione}</button>`
   ).join('');
-
-  const firstTrack = cap.musica[0];
-
   return `
     <div class="music-section">
       <div class="music-label">♪ Musica</div>
       <div class="music-tracks">${tracksHTML}</div>
-      <div class="spotify-player" id="player-${cap.id}">
-        <iframe
-          src="${firstTrack.spotifyUri}?utm_source=generator&theme=0"
+      <div class="spotify-player" id="player-${capId}">
+        <iframe src="${tracce[0].spotify}?utm_source=generator&theme=0"
           width="100%" height="80" frameborder="0"
           allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
+          loading="lazy"></iframe>
       </div>
-      <div class="music-note" id="note-${cap.id}">${firstTrack.note}</div>
+      <div class="music-note" id="note-${capId}">${tracce[0].descrizione}</div>
     </div>`;
 }
 
 function switchTrack(btn, capId, uri, note) {
-  // Aggiorna bottoni
   btn.closest('.music-tracks').querySelectorAll('.music-track-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  // Aggiorna player
-  const player = document.getElementById('player-' + capId);
-  player.innerHTML = `<iframe
+  document.getElementById('player-' + capId).innerHTML = `<iframe
     src="${uri}?utm_source=generator&theme=0"
     width="100%" height="80" frameborder="0"
     allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-  </iframe>`;
-  // Aggiorna nota
+    loading="lazy"></iframe>`;
   document.getElementById('note-' + capId).textContent = note;
 }
+
 </script>
 </body>
 </html>
