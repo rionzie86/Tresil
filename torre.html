@@ -651,11 +651,15 @@ function buildSviluppo() {
 // ── PUZZLE GLOBO ───────────────────────────────────
 function openPuzzle() {
   const modal = document.getElementById('puzzle-modal');
-  const iframe = document.getElementById('puzzle-iframe');
-  // Carica il puzzle in vista DM (con overlay soluzione disponibile)
-  if (!iframe.src || iframe.src === window.location.href) {
-    iframe.src = 'tangram_puzzle.html?dm=1';
-  }
+  // Rimuovo e ricreo l'iframe ogni volta — bypass totale della cache
+  const old = document.getElementById('puzzle-iframe');
+  if (old) old.remove();
+  const iframe = document.createElement('iframe');
+  iframe.id = 'puzzle-iframe';
+  iframe.title = 'Puzzle Globo';
+  iframe.style.cssText = 'flex:1;border:none;width:100%;display:block;';
+  iframe.src = 'tangram_puzzle.html?dm=1&v=' + Date.now();
+  modal.appendChild(iframe);
   modal.classList.add('open');
 }
 function closePuzzle() {
