@@ -17,9 +17,9 @@
   --gold:     #c9a84c;
   --gold-d:   #8a6e2f;
   --gold-g:   rgba(201,168,76,0.12);
-  --t1:       #e8e0d0;
-  --t2:       #9a9080;
-  --t3:       #5a5448;
+  --t1:       #f0e8d8;
+  --t2:       #b8aa98;
+  --t3:       #7a6e62;
   --red:      #c45a5a;
   --green:    #5ab48f;
   --blue:     #5a8fd4;
@@ -31,7 +31,7 @@
   --tr:       .18s ease;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:16px;line-height:1.7;}
+html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:17.6px;line-height:1.7;}
 
 /* ── LAYOUT ── */
 .app{display:flex;height:100vh;overflow:hidden;}
@@ -155,10 +155,10 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .cap-body{display:none;padding:1.2rem 1.4rem;border-top:1px solid var(--border);}
 .cap-card.open .cap-body{display:block;}
 
-.cap-sec{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin:1rem 0 .35rem;padding-top:.75rem;border-top:1px solid var(--border);}
+.cap-sec{font-size:10px;letter-spacing:.18em;color:var(--t2);text-transform:uppercase;font-family:var(--font-d);margin:1rem 0 .35rem;padding-top:.75rem;border-top:1px solid var(--border);}
 .cap-sec:first-child{margin-top:0;border-top:none;padding-top:0;}
-.cap-text{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
-.cap-luogo{font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.75rem;}
+.cap-text{font-size:15.4px;color:var(--t1);line-height:1.75;white-space:pre-line;}
+.cap-luogo{font-size:12px;color:var(--t2);font-style:italic;margin-bottom:.75rem;}
 
 .ev-list{margin:.4rem 0;padding:0;list-style:none;}
 .ev-list li{font-size:13px;color:var(--t2);padding:3px 0;padding-left:14px;position:relative;}
@@ -174,66 +174,29 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 
 /* ── MUSIC CARD ── */
 .music-card {
-  margin-top: 1rem;
-  padding: .85rem 1rem;
+  margin-top: 0;
+  margin-bottom: .75rem;
+  padding: .7rem .9rem;
   background: rgba(29,185,84,.05);
-  border: 1px solid rgba(29,185,84,.18);
+  border: 1px solid rgba(29,185,84,.2);
   border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: .9rem;
+  gap: .75rem;
 }
-.music-card-ico {
-  font-size: 22px;
-  flex-shrink: 0;
-  opacity: .7;
-}
+.music-card-ico { font-size: 16px; flex-shrink: 0; opacity: .6; }
 .music-card-info { flex: 1; min-width: 0; }
 .music-card-scene {
-  font-size: 9px;
-  letter-spacing: .16em;
-  color: rgba(29,185,84,.7);
-  text-transform: uppercase;
-  font-family: var(--font-d);
-  margin-bottom: 2px;
+  font-size: 9px; letter-spacing: .16em;
+  color: rgba(29,185,84,.75); text-transform: uppercase;
+  font-family: var(--font-d); margin-bottom: 2px;
 }
 .music-card-title {
-  font-family: var(--font-d);
-  font-size: 13px;
-  color: var(--t1);
-  letter-spacing: .02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: var(--font-d); font-size: 12.5px; color: var(--t1);
+  letter-spacing: .02em; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
 }
-.music-card-artist {
-  font-size: 11px;
-  color: var(--t3);
-  font-style: italic;
-  margin-top: 1px;
-}
-.music-card-btn {
-  flex-shrink: 0;
-  padding: 5px 12px;
-  border-radius: 3px;
-  border: 1px solid rgba(29,185,84,.4);
-  background: none;
-  color: rgba(29,185,84,.9);
-  font-family: var(--font-d);
-  font-size: 9px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: var(--tr);
-}
-.music-card-btn:hover {
-  background: rgba(29,185,84,.12);
-  border-color: rgba(29,185,84,.7);
-}
+.music-card-artist { font-size: 11.5px; color: var(--t2); font-style: italic; margin-top: 1px; }
 
 /* ── MODAL PASSWORD DM ── */
 .pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
@@ -350,9 +313,6 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
       <button class="nav-btn" data-section="sviluppo" onclick="showSection('sviluppo')">
         <span class="nav-ico">◆</span>Sviluppo
       </button>
-      <button class="nav-btn" data-section="musica" onclick="showSection('musica')">
-        <span class="nav-ico">♪</span>Musica
-      </button>
     </div>
     <div class="sb-foot">
       <button class="dm-toggle" id="dm-toggle" onclick="toggleDM()">
@@ -368,7 +328,6 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div id="section-economia"      class="section"></div>
     <div id="section-mappe"         class="section"></div>
     <div id="section-sviluppo"      class="section"></div>
-    <div id="section-musica"        class="section"></div>
   </main>
 </div>
 
@@ -415,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
   buildEconomia();
   buildMappe();
   buildSviluppo();
-  buildMusica();
   showSection('panoramica');
   if (isMaster) updateDMUI();
 });
@@ -647,8 +605,14 @@ function buildSviluppo() {
     }
 
     // Musica del capitolo
-    const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id && m.spotify);
-    const musicaHTML = musicaCapitolo.length ? buildMusicPlayer(cap.id, musicaCapitolo) : '';
+    // Musica: leggo dal campo diretto del capitolo, oppure dall'array musica come fallback
+    let musicaHTML = '';
+    if (cap.musica) {
+      musicaHTML = buildMusicPlayer(cap.id, [cap.musica]);
+    } else {
+      const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id);
+      if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
+    }
 
     // Pulsante puzzle — solo cap6, solo DM
     const puzzleBtnHTML = cap.id === 'cap6'
@@ -665,10 +629,10 @@ function buildSviluppo() {
         <span class="cap-arr">▶</span>
       </div>
       <div class="cap-body">
-        <div class="cap-luogo" style="margin-bottom:.75rem;font-style:italic;color:var(--t3);font-size:12px;">${cap.riassunto}</div>
+        ${musicaHTML}
+        <div class="cap-luogo" style="margin-top:${musicaHTML ? '.75rem' : '0'};margin-bottom:.75rem;font-style:italic;color:var(--t2);font-size:13px;">${cap.riassunto}</div>
         ${sezioniHTML}
         ${puzzleBtnHTML}
-        ${musicaHTML}
       </div>`;
     c.appendChild(wrap);
   });
@@ -723,54 +687,22 @@ function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
 // ── REGIA MUSICALE ─────────────────────────────────
-function buildMusica() {
-  const c = document.getElementById('section-musica');
-  c.innerHTML = '';
-
-  const head = document.createElement('div');
-  head.className = 'sec-head';
-  head.innerHTML = `<div class="sec-title">♪ Regia Musicale</div>
-    <div class="sec-sub">Tutti i brani in ordine di scena — apri Spotify e cerca il titolo</div>`;
-  c.appendChild(head);
-
-  (torreDati.musica || []).forEach(m => {
-    if (!m.spotify) return;
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '.75rem';
-    card.innerHTML = `
-      <div class="music-card" style="margin-top:0;">
-        <div class="music-card-ico">♪</div>
-        <div class="music-card-info">
-          <div class="music-card-scene">${m.descrizione}</div>
-          <div class="music-card-title">${m.titolo}</div>
-          <div class="music-card-artist">${m.artista || ''}</div>
-        </div>
-        <a class="music-card-btn" href="${m.spotify}" target="_blank" rel="noopener">
-          ↗ Spotify
-        </a>
-      </div>`;
-    c.appendChild(card);
-  });
-}
+function buildMusica() {} // sezione rimossa
 
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
-    <div class="music-card" style="margin-top:.75rem;">
+    <div class="music-card">
       <div class="music-card-ico">♪</div>
       <div class="music-card-info">
         <div class="music-card-scene">${m.descrizione}</div>
         <div class="music-card-title">${m.titolo}</div>
         <div class="music-card-artist">${m.artista || ''}</div>
       </div>
-      <a class="music-card-btn" href="${m.spotify}" target="_blank" rel="noopener">
-        ↗ Spotify
-      </a>
     </div>`).join('');
 }
 
-function switchTrack() {} // non più usata, mantenuta per compatibilità
+function switchTrack() {}
 
 </script>
 </body>
