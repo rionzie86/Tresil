@@ -174,28 +174,66 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 
 /* ── MUSIC CARD ── */
 .music-card {
-  margin-top: .9rem;
-  padding: .7rem .9rem;
-  background: rgba(29,185,84,.04);
-  border: 1px solid rgba(29,185,84,.15);
+  margin-top: 1rem;
+  padding: .85rem 1rem;
+  background: rgba(29,185,84,.05);
+  border: 1px solid rgba(29,185,84,.18);
   border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: .9rem;
 }
-.music-card-ico { font-size: 16px; flex-shrink: 0; opacity: .5; }
+.music-card-ico {
+  font-size: 22px;
+  flex-shrink: 0;
+  opacity: .7;
+}
 .music-card-info { flex: 1; min-width: 0; }
 .music-card-scene {
-  font-size: 9px; letter-spacing: .16em;
-  color: rgba(29,185,84,.6); text-transform: uppercase;
-  font-family: var(--font-d); margin-bottom: 2px;
+  font-size: 9px;
+  letter-spacing: .16em;
+  color: rgba(29,185,84,.7);
+  text-transform: uppercase;
+  font-family: var(--font-d);
+  margin-bottom: 2px;
 }
 .music-card-title {
-  font-family: var(--font-d); font-size: 12px; color: var(--t1);
-  letter-spacing: .02em; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis;
+  font-family: var(--font-d);
+  font-size: 13px;
+  color: var(--t1);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.music-card-artist { font-size: 11px; color: var(--t3); font-style: italic; margin-top: 1px; }
+.music-card-artist {
+  font-size: 11px;
+  color: var(--t3);
+  font-style: italic;
+  margin-top: 1px;
+}
+.music-card-btn {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(29,185,84,.4);
+  background: none;
+  color: rgba(29,185,84,.9);
+  font-family: var(--font-d);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--tr);
+}
+.music-card-btn:hover {
+  background: rgba(29,185,84,.12);
+  border-color: rgba(29,185,84,.7);
+}
 
 /* ── MODAL PASSWORD DM ── */
 .pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
@@ -312,6 +350,9 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
       <button class="nav-btn" data-section="sviluppo" onclick="showSection('sviluppo')">
         <span class="nav-ico">◆</span>Sviluppo
       </button>
+      <button class="nav-btn" data-section="musica" onclick="showSection('musica')">
+        <span class="nav-ico">♪</span>Musica
+      </button>
     </div>
     <div class="sb-foot">
       <button class="dm-toggle" id="dm-toggle" onclick="toggleDM()">
@@ -327,6 +368,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div id="section-economia"      class="section"></div>
     <div id="section-mappe"         class="section"></div>
     <div id="section-sviluppo"      class="section"></div>
+    <div id="section-musica"        class="section"></div>
   </main>
 </div>
 
@@ -373,6 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildEconomia();
   buildMappe();
   buildSviluppo();
+  buildMusica();
   showSection('panoramica');
   if (isMaster) updateDMUI();
 });
@@ -680,22 +723,54 @@ function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
 // ── REGIA MUSICALE ─────────────────────────────────
-function buildMusica() {} // sezione rimossa
+function buildMusica() {
+  const c = document.getElementById('section-musica');
+  c.innerHTML = '';
+
+  const head = document.createElement('div');
+  head.className = 'sec-head';
+  head.innerHTML = `<div class="sec-title">♪ Regia Musicale</div>
+    <div class="sec-sub">Tutti i brani in ordine di scena — apri Spotify e cerca il titolo</div>`;
+  c.appendChild(head);
+
+  (torreDati.musica || []).forEach(m => {
+    if (!m.spotify) return;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '.75rem';
+    card.innerHTML = `
+      <div class="music-card" style="margin-top:0;">
+        <div class="music-card-ico">♪</div>
+        <div class="music-card-info">
+          <div class="music-card-scene">${m.descrizione}</div>
+          <div class="music-card-title">${m.titolo}</div>
+          <div class="music-card-artist">${m.artista || ''}</div>
+        </div>
+        <a class="music-card-btn" href="${m.spotify}" target="_blank" rel="noopener">
+          ↗ Spotify
+        </a>
+      </div>`;
+    c.appendChild(card);
+  });
+}
 
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
-    <div class="music-card">
+    <div class="music-card" style="margin-top:.75rem;">
       <div class="music-card-ico">♪</div>
       <div class="music-card-info">
         <div class="music-card-scene">${m.descrizione}</div>
         <div class="music-card-title">${m.titolo}</div>
         <div class="music-card-artist">${m.artista || ''}</div>
       </div>
+      <a class="music-card-btn" href="${m.spotify}" target="_blank" rel="noopener">
+        ↗ Spotify
+      </a>
     </div>`).join('');
 }
 
-function switchTrack() {}
+function switchTrack() {} // non più usata, mantenuta per compatibilità
 
 </script>
 </body>
