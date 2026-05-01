@@ -172,16 +172,30 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .cap-obj-name{font-family:var(--font-d);font-size:10px;letter-spacing:.07em;color:var(--gold);margin-bottom:2px;}
 .cap-obj-note{font-size:12px;color:var(--t3);}
 
-/* ── PLAYER SPOTIFY ── */
-.music-section{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border);}
-.music-label{font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.6rem;}
-.music-tracks{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;}
-.music-track-btn{padding:5px 13px;background:none;border:1px solid var(--border);border-radius:3px;color:var(--t2);font-family:var(--font-b);font-size:12px;cursor:pointer;transition:var(--tr);}
-.music-track-btn:hover{border-color:var(--border-b);color:var(--t1);}
-.music-track-btn.active{border-color:#1DB954;color:#1DB954;background:rgba(29,185,84,.08);}
-.spotify-player{border-radius:4px;overflow:hidden;border:1px solid var(--border);}
-.spotify-player iframe{display:block;}
-.music-note{font-size:11px;color:var(--t3);font-style:italic;margin-top:.4rem;}
+/* ── MUSIC CARD ── */
+.music-card {
+  margin-top: .9rem;
+  padding: .7rem .9rem;
+  background: rgba(29,185,84,.04);
+  border: 1px solid rgba(29,185,84,.15);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.music-card-ico { font-size: 16px; flex-shrink: 0; opacity: .5; }
+.music-card-info { flex: 1; min-width: 0; }
+.music-card-scene {
+  font-size: 9px; letter-spacing: .16em;
+  color: rgba(29,185,84,.6); text-transform: uppercase;
+  font-family: var(--font-d); margin-bottom: 2px;
+}
+.music-card-title {
+  font-family: var(--font-d); font-size: 12px; color: var(--t1);
+  letter-spacing: .02em; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.music-card-artist { font-size: 11px; color: var(--t3); font-style: italic; margin-top: 1px; }
 
 /* ── MODAL PASSWORD DM ── */
 .pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
@@ -298,9 +312,6 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
       <button class="nav-btn" data-section="sviluppo" onclick="showSection('sviluppo')">
         <span class="nav-ico">◆</span>Sviluppo
       </button>
-      <button class="nav-btn" data-section="musica" onclick="showSection('musica')">
-        <span class="nav-ico">♪</span>Musica
-      </button>
     </div>
     <div class="sb-foot">
       <button class="dm-toggle" id="dm-toggle" onclick="toggleDM()">
@@ -316,7 +327,6 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div id="section-economia"      class="section"></div>
     <div id="section-mappe"         class="section"></div>
     <div id="section-sviluppo"      class="section"></div>
-    <div id="section-musica"        class="section"></div>
   </main>
 </div>
 
@@ -363,7 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
   buildEconomia();
   buildMappe();
   buildSviluppo();
-  buildMusica();
   showSection('panoramica');
   if (isMaster) updateDMUI();
 });
@@ -671,82 +680,22 @@ function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
 // ── REGIA MUSICALE ─────────────────────────────────
-function buildMusica() {
-  const c = document.getElementById('section-musica');
-  c.innerHTML = '';
-
-  // Header
-  const head = document.createElement('div');
-  head.className = 'sec-head';
-  head.innerHTML = `<div class="sec-title">♪ Regia Musicale</div>
-    <div class="sec-sub">Tutti i brani della one shot — in ordine di scena</div>`;
-  c.appendChild(head);
-
-  // Nota
-  const nota = document.createElement('div');
-  nota.style.cssText = 'font-size:13px;color:var(--t3);font-style:italic;margin-bottom:1.5rem;';
-  nota.textContent = 'Usa i player per avviare la musica giusta al momento giusto. I brani sono in loop automatico.';
-  c.appendChild(nota);
-
-  // Un card per ogni brano
-  (torreDati.musica || []).forEach(m => {
-    if (!m.spotify) return;
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '1rem';
-    const trackId = m.spotify.split('/track/')[1];
-    card.innerHTML = `
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap;">
-        <div>
-          <div class="card-title">${m.titolo || m.descrizione}</div>
-          <div style="font-size:12px;color:var(--t3);font-style:italic;">${m.descrizione}</div>
-        </div>
-        <span style="font-size:9px;padding:2px 8px;border-radius:2px;border:1px solid var(--border);color:var(--t3);font-family:var(--font-d);letter-spacing:.06em;white-space:nowrap;">${m.capitolo}</span>
-      </div>
-      <div class="spotify-player">
-        <iframe src="${m.spotify}?utm_source=generator&theme=0"
-          width="100%" height="80" frameborder="0"
-          allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"></iframe>
-      </div>`;
-    c.appendChild(card);
-  });
-}
+function buildMusica() {} // sezione rimossa
 
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
-  const tracksHTML = tracce.map((m, i) => {
-    const label = m.titolo || m.descrizione;
-    const note = m.titolo ? `${m.titolo} · ${m.descrizione}` : m.descrizione;
-    return `<button class="music-track-btn ${i === 0 ? 'active' : ''}"
-      onclick="switchTrack(this, '${capId}', '${m.spotify}', '${note.replace(/'/g,"&#39;")}')"
-    >${label}</button>`;
-  }).join('');
-  const firstNote = tracce[0].titolo ? `${tracce[0].titolo} · ${tracce[0].descrizione}` : tracce[0].descrizione;
-  return `
-    <div class="music-section">
-      <div class="music-label">♪ Musica</div>
-      <div class="music-tracks">${tracksHTML}</div>
-      <div class="spotify-player" id="player-${capId}">
-        <iframe src="${tracce[0].spotify}?utm_source=generator&theme=0"
-          width="100%" height="80" frameborder="0"
-          allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"></iframe>
+  return tracce.map(m => `
+    <div class="music-card">
+      <div class="music-card-ico">♪</div>
+      <div class="music-card-info">
+        <div class="music-card-scene">${m.descrizione}</div>
+        <div class="music-card-title">${m.titolo}</div>
+        <div class="music-card-artist">${m.artista || ''}</div>
       </div>
-      <div class="music-note" id="note-${capId}">${firstNote}</div>
-    </div>`;
+    </div>`).join('');
 }
 
-function switchTrack(btn, capId, uri, note) {
-  btn.closest('.music-tracks').querySelectorAll('.music-track-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('player-' + capId).innerHTML = `<iframe
-    src="${uri}?utm_source=generator&theme=0"
-    width="100%" height="80" frameborder="0"
-    allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy"></iframe>`;
-  document.getElementById('note-' + capId).textContent = note;
-}
+function switchTrack() {}
 
 </script>
 </body>
