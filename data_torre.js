@@ -640,18 +640,5 @@ Non c'è una risposta giusta. La one shot finisce qui.`
     }
   ],
 
-  musica: [
-    { capitolo: "cap0",  descrizione: "Prologo",                              titolo: "Recollection of Wars Long Lost",       artista: "Colm McGuinness",           spotify: "https://open.spotify.com/track/6mGzxaHxmK8hSQJn1AmMPF" },
-    { capitolo: "cap1",  descrizione: "Avvio ambientazione",                  titolo: "Terra Amata",                         artista: "Riccardo Mazza",             spotify: "https://open.spotify.com/track/2J3qWAhzhiKpppKCxZp3oq" },
-    { capitolo: "cap2",  descrizione: "La locanda del fauno zoppo",           titolo: "Fisher's Hornpipe",                   artista: "Traditional / Folk",         spotify: "https://open.spotify.com/track/2xJjervWjXqq2SWshyjlvD" },
-    { capitolo: "cap2a", descrizione: "Arrivo di Alexei",                     titolo: "Goats n' Goblins",                    artista: "Various Artists",            spotify: "https://open.spotify.com/track/4x7JL1yQpfRHxy0aT3fKbD" },
-    { capitolo: "cap3",  descrizione: "Viaggio verso la cava",                titolo: "Voices in the Vaults",                artista: "Position Music",             spotify: "https://open.spotify.com/track/16BAPnNk7gKgTs8CjTGaPl" },
-    { capitolo: "cap3a", descrizione: "Incontro con il cinghiale",            titolo: "Prelude and Action",                  artista: "Immediate Music",            spotify: "https://open.spotify.com/track/1Wpha2DAMwtCqsaefiL1GE" },
-    { capitolo: "cap3b", descrizione: "Incontro con Dogti",                   titolo: "Entity Brain",                        artista: "Cryo Chamber",               spotify: "https://open.spotify.com/track/4n5npFpiVTj1fZ6HNld40y" },
-    { capitolo: "cap4",  descrizione: "La grotta di Ralia e Dogti",           titolo: "White Stone",                         artista: "Atrium Carceri",             spotify: "https://open.spotify.com/track/0fe85sjWtbnvZbNSQ8I6g3" },
-    { capitolo: "cap5",  descrizione: "Ingresso nella torre",                 titolo: "Searching for Answer",                artista: "Kammarheit",                 spotify: "https://open.spotify.com/track/2Scns2THzjcARtdjUfJMUb" },
-    { capitolo: "cap6",  descrizione: "La passerella — Il ponte e l'occhio",  titolo: "A Room Between the Rooms",            artista: "Lustmord",                   spotify: "https://open.spotify.com/track/6aAfkcsiO7rerTy6kHJ6V4" },
-    { capitolo: "cap6a", descrizione: "L'occhio divora la mente",             titolo: "Threnody for the Victims of Hiroshima", artista: "Krzysztof Penderecki",     spotify: "https://open.spotify.com/track/56BfjyZVrW2hxZGEoDptOv" },
-    { capitolo: "cap7",  descrizione: "Il labirinto di specchi",              titolo: "Great Old One",                       artista: "Cryo Chamber Collaboration", spotify: "https://open.spotify.com/track/5Cihovq5uyjm3U4kylx4Kn" }
-  ]
+
 };

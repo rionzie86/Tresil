@@ -353,7 +353,12 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 <script src="data_panoramica.js"></script>
 <script src="data_torre.js"></script>
 <script>
-const ADMIN_PW = 'tresil2025';
+// Password verificata via hash (SHA-256 di 'tresil2025')
+const ADMIN_PW_HASH = 'a2707f0e8ee0857786a38b675213e6862b32d35ef396e43a9c79c1ba1a7bf0c7';
+async function hashPW(pw) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
 let isMaster = false;
 
 // ── INIT ───────────────────────────────────────────
@@ -375,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMappe();
   buildSviluppo();
   showSection('panoramica');
-  if (isMaster) updateDMUI();
+  if (isMaster) updateDMUI(false); // false = non ricostruire sviluppo, già fatto
 });
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -417,9 +422,10 @@ function toggleDM() {
   }
 }
 
-function checkPW() {
+async function checkPW() {
   const val = document.getElementById('pw-input').value;
-  if (val === ADMIN_PW) {
+  const h = await hashPW(val);
+  if (h === ADMIN_PW_HASH) {
     isMaster = true;
     saveDM(true);
     document.getElementById('pw-overlay').classList.remove('open');
@@ -429,7 +435,7 @@ function checkPW() {
   }
 }
 
-function updateDMUI() {
+function updateDMUI(rebuild = true) {
   const toggle = document.getElementById('dm-toggle');
   toggle.classList.toggle('active', isMaster);
   document.getElementById('dm-label').textContent = isMaster ? 'DM attivo' : 'Modalità DM';
@@ -439,8 +445,8 @@ function updateDMUI() {
   if (globoBtn) globoBtn.classList.toggle('dm-visible', isMaster);
   // Se DM disattivato, chiudi il modal puzzle se aperto
   if (!isMaster) closePuzzle();
-  // Ridisegna sezione sviluppo che dipende da isMaster
-  buildSviluppo();
+  // Ridisegna sezione sviluppo solo se necessario
+  if (rebuild) buildSviluppo();
   // Se siamo su sviluppo ma DM disattivato, torna a panoramica
   if (!isMaster && document.getElementById('section-sviluppo').classList.contains('active')) {
     showSection('panoramica');
@@ -604,18 +610,11 @@ function buildSviluppo() {
       });
     }
 
-    // Musica del capitolo
-    // Musica: leggo dal campo diretto del capitolo, oppure dall'array musica come fallback
-    let musicaHTML = '';
-    if (cap.musica) {
-      musicaHTML = buildMusicPlayer(cap.id, [cap.musica]);
-    } else {
-      const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id);
-      if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
-    }
+    // Musica del capitolo — letta dal campo diretto cap.musica
+    const musicaHTML = cap.musica ? buildMusicPlayer(cap.id, [cap.musica]) : '';
 
     // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap6'
+    const puzzleBtnHTML = cap.id === 'cap11'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
          </button>`
@@ -686,9 +685,6 @@ function openPuzzle() {
 function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
-// ── REGIA MUSICALE ─────────────────────────────────
-function buildMusica() {} // sezione rimossa
-
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
@@ -701,8 +697,6 @@ function buildMusicPlayer(capId, tracce) {
       </div>
     </div>`).join('');
 }
-
-function switchTrack() {}
 
 </script>
 </body>
