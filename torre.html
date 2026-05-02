@@ -351,14 +351,10 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 </div>
 
 <script src="data_panoramica.js"></script>
+<script src="data_economia.js"></script>
 <script src="data_torre.js"></script>
 <script>
-// Password verificata via hash (SHA-256 di 'tresil2025')
-const ADMIN_PW_HASH = 'a2707f0e8ee0857786a38b675213e6862b32d35ef396e43a9c79c1ba1a7bf0c7';
-async function hashPW(pw) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
+const ADMIN_PW = 'tresil2025';
 let isMaster = false;
 
 // ── INIT ───────────────────────────────────────────
@@ -380,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMappe();
   buildSviluppo();
   showSection('panoramica');
-  if (isMaster) updateDMUI(false); // false = non ricostruire sviluppo, già fatto
+  if (isMaster) updateDMUI();
 });
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -422,10 +418,9 @@ function toggleDM() {
   }
 }
 
-async function checkPW() {
+function checkPW() {
   const val = document.getElementById('pw-input').value;
-  const h = await hashPW(val);
-  if (h === ADMIN_PW_HASH) {
+  if (val === ADMIN_PW) {
     isMaster = true;
     saveDM(true);
     document.getElementById('pw-overlay').classList.remove('open');
@@ -435,7 +430,7 @@ async function checkPW() {
   }
 }
 
-function updateDMUI(rebuild = true) {
+function updateDMUI() {
   const toggle = document.getElementById('dm-toggle');
   toggle.classList.toggle('active', isMaster);
   document.getElementById('dm-label').textContent = isMaster ? 'DM attivo' : 'Modalità DM';
@@ -445,8 +440,8 @@ function updateDMUI(rebuild = true) {
   if (globoBtn) globoBtn.classList.toggle('dm-visible', isMaster);
   // Se DM disattivato, chiudi il modal puzzle se aperto
   if (!isMaster) closePuzzle();
-  // Ridisegna sezione sviluppo solo se necessario
-  if (rebuild) buildSviluppo();
+  // Ridisegna sezione sviluppo che dipende da isMaster
+  buildSviluppo();
   // Se siamo su sviluppo ma DM disattivato, torna a panoramica
   if (!isMaster && document.getElementById('section-sviluppo').classList.contains('active')) {
     showSection('panoramica');
@@ -507,7 +502,7 @@ function buildAmbientazione() {
   lbl.textContent = 'Luoghi di Kaelvaran';
   c.appendChild(lbl);
 
-  PANORAMICA_DATA.luoghi.forEach(l => {
+  PANORAMICA_DATA.luoghi.filter(l => l.id === 'tresil').forEach(l => {
     const d = document.createElement('div');
     d.className = 'card';
     d.innerHTML = `<div class="card-title">${l.nome}</div>`;
@@ -526,10 +521,76 @@ function buildAmbientazione() {
 // ── ECONOMIA ───────────────────────────────────────
 function buildEconomia() {
   const c = document.getElementById('section-economia');
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Sistema monetario — prezzi e riferimenti</div></div>`;
-  // torreDati non ha sezione economia per questa one shot
-  c.innerHTML += `<div class="card"><div class="card-body" style="color:var(--t3);font-style:italic;">Sezione economia non configurata per questa one shot.</div></div>`;
+  const eco = TRESIL_ECO;
+  c.innerHTML = '';
+
+  c.innerHTML = `<div class="sec-head">
+    <div class="sec-title">Economia</div>
+    <div class="sec-sub">Sistema monetario dell'isola di Tresil — riferimento visuale</div>
+  </div>`;
+
+  // Valute
+  const valuteLbl = document.createElement('div');
+  valuteLbl.className = 'group-lbl'; valuteLbl.textContent = 'Valute';
+  c.appendChild(valuteLbl);
+  const valGrid = document.createElement('div');
+  valGrid.className = 'eco-valute';
+  eco.valute.forEach(v => {
+    const d = document.createElement('div'); d.className = 'eco-valuta';
+    d.innerHTML = `<div class="eco-val-sigla">${v.sigla}</div><div class="eco-val-nome">${v.nome}</div><div class="eco-val-note">${v.note}</div>`;
+    valGrid.appendChild(d);
+  });
+  c.appendChild(valGrid);
+
+  // Salari
+  const salLbl = document.createElement('div');
+  salLbl.className = 'group-lbl'; salLbl.textContent = 'Salari di riferimento';
+  c.appendChild(salLbl);
+  const salT = document.createElement('table'); salT.className = 'eco-salari';
+  salT.innerHTML = '<thead><tr><th>Ruolo</th><th>Al giorno</th><th>Al mese</th><th>Note</th></tr></thead>';
+  const stb = document.createElement('tbody');
+  eco.salari.forEach(s => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${s.ruolo}</td><td class="mono">${s.giorno}</td><td class="mono">${s.mese}</td><td>${s.note}</td>`;
+    stb.appendChild(tr);
+  });
+  salT.appendChild(stb); c.appendChild(salT);
+
+  // Prezzi per categoria
+  const prezLbl = document.createElement('div');
+  prezLbl.className = 'group-lbl'; prezLbl.style.marginTop = '1.5rem';
+  prezLbl.textContent = 'Prezzi e merci'; c.appendChild(prezLbl);
+
+  const tabWrap = document.createElement('div'); tabWrap.className = 'eco-cat-tabs';
+  const panWrap = document.createElement('div');
+
+  eco.categorie.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'eco-cat-tab' + (i === 0 ? ' active' : '');
+    btn.textContent = cat.icona + ' ' + cat.nome;
+    btn.onclick = () => {
+      tabWrap.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      panWrap.querySelectorAll('.eco-panel').forEach(p => p.style.display = 'none');
+      document.getElementById('eco-panel-' + cat.id).style.display = 'block';
+    };
+    tabWrap.appendChild(btn);
+    const panel = document.createElement('div');
+    panel.className = 'eco-panel'; panel.id = 'eco-panel-' + cat.id;
+    panel.style.display = i === 0 ? 'block' : 'none';
+    const table = document.createElement('table'); table.className = 'eco-table';
+    table.innerHTML = '<thead><tr><th>Voce</th><th>Costo</th><th>Note</th></tr></thead>';
+    const tb = document.createElement('tbody');
+    cat.voci.forEach(v => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${v.nome}</td><td class="costo">${v.costo}</td><td class="note-col">${v.note}</td>`;
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb); panel.appendChild(table); panWrap.appendChild(panel);
+  });
+  c.appendChild(tabWrap); c.appendChild(panWrap);
 }
+
 
 // ── MAPPE ──────────────────────────────────────────
 function buildMappe() {
@@ -610,11 +671,18 @@ function buildSviluppo() {
       });
     }
 
-    // Musica del capitolo — letta dal campo diretto cap.musica
-    const musicaHTML = cap.musica ? buildMusicPlayer(cap.id, [cap.musica]) : '';
+    // Musica del capitolo
+    // Musica: leggo dal campo diretto del capitolo, oppure dall'array musica come fallback
+    let musicaHTML = '';
+    if (cap.musica) {
+      musicaHTML = buildMusicPlayer(cap.id, [cap.musica]);
+    } else {
+      const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id);
+      if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
+    }
 
     // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap11'
+    const puzzleBtnHTML = cap.id === 'cap6'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
          </button>`
@@ -685,6 +753,9 @@ function openPuzzle() {
 function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
+// ── REGIA MUSICALE ─────────────────────────────────
+function buildMusica() {} // sezione rimossa
+
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
@@ -697,6 +768,8 @@ function buildMusicPlayer(capId, tracce) {
       </div>
     </div>`).join('');
 }
+
+function switchTrack() {}
 
 </script>
 </body>
