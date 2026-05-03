@@ -101,22 +101,21 @@ body::before{
   text-shadow:0 1px 8px rgba(0,0,0,0.8);
 }
 
-/* Mobile: altezza proporzionale così tutti i personaggi sono visibili */
-@media(max-width:600px){
+/* Mobile: immagine intera senza crop */
+@media(max-width:700px){
   .hero-img{
-    height:auto;
-    max-height:none;
     width:100%;
-    object-fit:fill;
-    /* Non croppare su mobile — mostra tutta l'immagine */
+    height:auto;         /* altezza proporzionale — nessun crop */
+    object-fit:unset;    /* disabilita object-fit */
+    object-position:unset;
   }
   .hero-overlay{
     background:linear-gradient(
       to bottom,
       transparent 0%,
-      transparent 55%,
-      rgba(10,12,15,0.65) 72%,
-      rgba(10,12,15,0.92) 85%,
+      transparent 50%,
+      rgba(10,12,15,0.6) 68%,
+      rgba(10,12,15,0.92) 82%,
       var(--bg) 100%
     );
   }
