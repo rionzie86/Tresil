@@ -36,111 +36,50 @@ body::before{
 }
 
 /* ── LAYOUT ── */
-.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 2rem 5rem;overflow:visible;}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 2rem 5rem;}
 
 /* ── HEADER ── */
-/* ── HERO ── */
 .site-head{
   position:relative;
   width:100vw;
   left:50%;
-  right:50%;
   margin-left:-50vw;
-  margin-right:-50vw;
   margin-bottom:3rem;
   overflow:hidden;
-}
-
+  line-height:0;
 }
 .hero-img{
   display:block;
   width:100%;
+  height:clamp(300px,50vw,600px);
   object-fit:cover;
   object-position:center 7%;
-  height:clamp(320px,55vw,620px);
-}
-
-  .hero-img{
-    height:auto !important;
-    object-fit:unset !important;
-    object-position:unset !important;
-  }
-  .hero-overlay{
-    /* Sfumatura meno aggressiva in basso */
-    background:linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 60%,
-      rgba(10,12,15,0.45) 75%,
-      rgba(10,12,15,0.78) 88%,
-      var(--bg) 100%
-    );
-  }
-  /* Testo più in basso */
-  .hero-text{
-    padding:0 1rem 0.6rem;
-  }
-  .site-sub{ font-size:13px; }
-  .site-head{ margin-bottom:1rem; }
-}
-
-  .hero-overlay{
-    background:linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(10,12,15,0.6) 68%,
-      rgba(10,12,15,0.92) 82%,
-      var(--bg) 100%
-    );
-  }
-  .hero-text{ padding:1.5rem 1rem 1.5rem; }
-  .site-sub{ font-size:13px; }
-  .site-head{ margin-bottom:1rem; }
 }
 .hero-overlay{
   position:absolute;
   inset:0;
-  /* Sfumatura: trasparente in alto, opaca verso il basso */
   background:linear-gradient(
     to bottom,
     transparent 0%,
-    transparent 38%,
-    rgba(10,12,15,0.55) 58%,
-    rgba(10,12,15,0.88) 75%,
-    var(--bg) 100%
+    transparent 40%,
+    rgba(10,12,15,0.5) 60%,
+    rgba(10,12,15,0.88) 78%,
+    #0a0c0f 100%
   );
 }
 .hero-text{
   position:absolute;
   bottom:0; left:0; right:0;
-  padding:2.5rem 2rem 2rem;
+  padding:2rem 2rem 1.75rem;
   text-align:center;
+  line-height:1.7;
 }
-.site-ornament{
-  font-size:10px;letter-spacing:.45em;color:rgba(201,168,76,0.6);
-  text-transform:uppercase;font-family:var(--font-d);
-  margin-bottom:.9rem;
-  display:flex;align-items:center;gap:1rem;justify-content:center;
-}
-.site-ornament::before,.site-ornament::after{
-  content:'';flex:1;max-width:80px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.35));
-}
+.site-ornament{font-size:10px;letter-spacing:.45em;color:rgba(201,168,76,0.6);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.9rem;display:flex;align-items:center;gap:1rem;justify-content:center;}
+.site-ornament::before,.site-ornament::after{content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.35));}
 .site-ornament::after{background:linear-gradient(90deg,rgba(201,168,76,0.35),transparent);}
-.site-title{
-  font-family:var(--font-d);
-  font-size:clamp(28px,5vw,52px);
-  font-weight:700;letter-spacing:.08em;
-  color:var(--t1);
-  margin-bottom:.4rem;
-  text-shadow:0 2px 24px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9);
-}
+.site-title{font-family:var(--font-d);font-size:clamp(26px,4.5vw,50px);font-weight:700;letter-spacing:.08em;color:var(--t1);margin-bottom:.4rem;text-shadow:0 2px 20px rgba(0,0,0,.9);}
 .site-title span{color:var(--gold);}
-.site-sub{
-  font-size:15px;color:var(--t2);font-style:italic;letter-spacing:.02em;
-  text-shadow:0 1px 8px rgba(0,0,0,0.8);
-}
+.site-sub{font-size:15px;color:var(--t2);font-style:italic;letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.8);}
 
 /* ── DIVISORE ── */
 .divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem;}
@@ -205,16 +144,12 @@ body::before{
 .site-foot{text-align:center;margin-top:4rem;font-size:11px;color:var(--t3);font-style:italic;letter-spacing:.04em;}
 
 /* ── MOBILE ── */
+@media(max-width:600px){
+  .wrap{padding:0 1rem 3rem;}
   .mc-actions{flex-direction:column;}
   .mc-btn{text-align:center;}
-}
-
-/* ── MOBILE HERO ── */
-@media(max-width:700px){
-  .site-head{
-    overflow:visible;
-    margin-bottom:1rem;
-  }
+  /* Hero mobile */
+  .site-head{margin-bottom:1rem;}
   .hero-img{
     height:auto !important;
     object-fit:unset !important;
@@ -225,20 +160,14 @@ body::before{
       to bottom,
       transparent 0%,
       transparent 62%,
-      rgba(10,12,15,0.40) 76%,
-      rgba(10,12,15,0.75) 89%,
-      var(--bg) 100%
+      rgba(10,12,15,0.38) 76%,
+      rgba(10,12,15,0.72) 89%,
+      #0a0c0f 100%
     );
   }
-  .hero-text{
-    padding:0 1rem 0.5rem;
-  }
-  .site-title{
-    font-size:clamp(22px,7vw,36px);
-  }
-  .site-sub{
-    font-size:13px;
-  }
+  .hero-text{padding:0 1rem 0.5rem;}
+  .site-title{font-size:clamp(20px,7vw,32px);}
+  .site-sub{font-size:13px;}
 }
 </style>
 </head>
@@ -246,7 +175,7 @@ body::before{
 <div class="wrap">
 
   <header class="site-head">
-    <img class="hero-img" src="kaelvaran_hero.png" alt="Il mondo di Kaelvaran — quattro avventurieri in un paesaggio montuoso" />
+    <img class="hero-img" src="kaelvaran_hero.png" alt="Kaelvaran">
     <div class="hero-overlay"></div>
     <div class="hero-text">
       <div class="site-ornament">Archivio</div>
