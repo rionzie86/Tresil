@@ -68,17 +68,22 @@ body::before{
     object-position:unset !important;
   }
   .hero-overlay{
+    /* Sfumatura meno aggressiva in basso */
     background:linear-gradient(
       to bottom,
       transparent 0%,
-      transparent 50%,
-      rgba(10,12,15,0.6) 68%,
-      rgba(10,12,15,0.92) 82%,
+      transparent 60%,
+      rgba(10,12,15,0.45) 75%,
+      rgba(10,12,15,0.78) 88%,
       var(--bg) 100%
     );
   }
-  .hero-text{ padding:1.5rem 1rem 1.5rem; }
+  /* Testo più in basso */
+  .hero-text{
+    padding:0 1rem 0.6rem;
+  }
   .site-sub{ font-size:13px; }
+  .site-head{ margin-bottom:1rem; }
 }
 @media(max-width:700px){
   .hero-img{
@@ -98,6 +103,7 @@ body::before{
   }
   .hero-text{ padding:1.5rem 1rem 1.5rem; }
   .site-sub{ font-size:13px; }
+  .site-head{ margin-bottom:1rem; }
 }
 .hero-overlay{
   position:absolute;
