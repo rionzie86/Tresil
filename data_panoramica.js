@@ -45,9 +45,11 @@ Per questo in molte culture il culto degli antenati e la trascrizione dei nomi s
     sezioni: [
       {
         titolo: "Ithar e le Sei Figlie",
-        testo: `All'origine dei tempi esisteva Ithar, il Primo Dio — entità senza genere e senza fine. Ithar creò sei figlie per plasmare il mondo. Le dee si innamorarono della creazione, la plasmarono con la terra, l'acqua, le stelle, il tempo. Ma Ithar osservò ciò che avevano fatto e lo giudicò imperfetto. Decise di distruggere tutto e ricominciare.
+        testo: `All'origine dei tempi esisteva Ithar, il Primo Dio — entità senza genere e senza fine. Kaelvaran non fu parlato né cantato in esistenza: fu fatto. Ithar plasmò sei figlie con un atto diretto di volontà cosmica — non una parola, non un comando, ma un gesto primordiale che strappò forma dal nulla.
 
-Le Figlie, legate alla loro creazione, si opposero. In un atto ultimo e disperato lo combatterono — e vinsero. Ma la loro vittoria fu anche una fine: il mondo tremò, il cielo si ruppe, e ogni equilibrio venne sconvolto.`
+Le Figlie crearono il mondo nello stesso modo: con le mani, con il corpo, con la forza. Plasmarono la terra, sollevarono le acque, accesero le stelle. La creazione di Kaelvaran è un atto fisico, non verbale — ogni montagna porta l'impronta di un gesto, ogni mare il peso di una decisione.
+
+Ma Ithar osservò ciò che avevano fatto e lo giudicò imperfetto. Decise di distruggere tutto e ricominciare — non con parole, ma con la stessa forza primordiale con cui aveva creato. Le Figlie si opposero. In un atto ultimo e disperato lo combatterono — e vinsero. Ma la loro vittoria fu anche una fine: il mondo tremò, il cielo si ruppe, e ogni equilibrio venne sconvolto.`
       },
       {
         titolo: "Il Collasso e la Frattura",

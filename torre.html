@@ -492,20 +492,16 @@ function buildPanoramica() {
 
   const titolo = (p.mondo && p.mondo.nome) || 'Kaelvaran';
 
-  // Header fisso
   c.innerHTML = `
     <div class="sec-head">
-      <div class="sec-title">Il Mondo di ${titolo}</div>
-      <div class="sec-sub">Panoramica del mondo — lore condivisa con tutte le one shot</div>
+      <div class="sec-title">Panoramica</div>
+      <div class="sec-sub">Il mondo di ${titolo} — lore condivisa con tutte le one shot</div>
     </div>`;
 
-  // Tab bar
+  // Tab bar — due soli tab: Panoramica e Ambientazione
   const tabs = [
-    { id: 'pan-mondo',   label: '🌍 Il Mondo' },
-    { id: 'pan-frattura',label: '⚡ La Frattura' },
-    { id: 'pan-fatati',  label: '✦ I Fatati' },
-    { id: 'pan-stirpi',  label: '◈ Le Stirpi' },
-    { id: 'pan-anello',  label: `⚓ L'Anello` },
+    { id: 'pan-mondo',        label: 'Panoramica' },
+    { id: 'pan-ambientazione', label: 'Ambientazione' },
   ];
 
   const tabBar = document.createElement('div');
@@ -523,7 +519,6 @@ function buildPanoramica() {
       panels[t.id].classList.add('active');
     };
     tabBar.appendChild(btn);
-
     const panel = document.createElement('div');
     panel.className = 'pan-panel' + (i === 0 ? ' active' : '');
     panel.id = t.id;
@@ -533,7 +528,7 @@ function buildPanoramica() {
   c.appendChild(tabBar);
   tabs.forEach(t => c.appendChild(panels[t.id]));
 
-  // ── PANEL: IL MONDO ──
+  // ── TAB: PANORAMICA (il mondo, concetti fondamentali) ──────────
   const pm = panels['pan-mondo'];
   if (p.mondo && p.mondo.citazione) {
     const cit = document.createElement('div');
@@ -544,33 +539,36 @@ function buildPanoramica() {
   if (p.mondo && p.mondo.descrizione) pm.appendChild(card('Il Mondo', p.mondo.descrizione));
   if (p.mondo && p.mondo.concetti) p.mondo.concetti.forEach(con => pm.appendChild(card(con.titolo, con.testo)));
 
-  // ── PANEL: LA FRATTURA ──
-  const pf = panels['pan-frattura'];
+  // ── TAB: AMBIENTAZIONE (Frattura, Fatati, Continenti, Atollo) ──
+  const pa = panels['pan-ambientazione'];
+
+  // La Frattura
   if (p.frattura) {
+    pa.innerHTML += `<div class="divider-lbl">La Frattura</div>`;
     if (p.frattura.citazione) {
       const cit = document.createElement('div');
       cit.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
       cit.innerHTML = `${p.frattura.citazione} <span style="opacity:.7;">— ${p.frattura.citazione_fonte}</span>`;
-      pf.appendChild(cit);
+      pa.appendChild(cit);
     }
-    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => pf.appendChild(card(s.titolo, s.testo)));
+    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => pa.appendChild(card(s.titolo, s.testo)));
   }
 
-  // ── PANEL: I FATATI ──
-  const pfa = panels['pan-fatati'];
+  // I Fatati
   if (p.fatati) {
-    pfa.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
-    if (p.fatati.dettaglio) pfa.appendChild(card('Approfondimento', p.fatati.dettaglio));
+    pa.innerHTML += `<div class="divider-lbl">I Fatati</div>`;
+    pa.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
+    if (p.fatati.dettaglio) pa.appendChild(card('Approfondimento', p.fatati.dettaglio));
   }
-  if (p.mondoDeiSogni) pfa.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
+  if (p.mondoDeiSogni) pa.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
 
-  // ── PANEL: LE STIRPI ──
-  const ps = panels['pan-stirpi'];
+  // I Continenti (stirpi)
   if (p.stirpi && p.stirpi.length) {
+    pa.innerHTML += `<div class="divider-lbl">I Continenti</div>`;
     const nota = document.createElement('div');
     nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
-    nota.textContent = `Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su una stirpe per espanderla.`;
-    ps.appendChild(nota);
+    nota.textContent = `Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.`;
+    pa.appendChild(nota);
 
     p.stirpi.forEach(s => {
       const wrap = document.createElement('div');
@@ -581,7 +579,7 @@ function buildPanoramica() {
       head.className = 'cap-head';
       head.style.borderLeft = '3px solid ' + (s.colore || 'var(--gold)');
       head.innerHTML = `
-        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:16px;">◈</div>
+        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:13px;letter-spacing:.1em;">◈</div>
         <div style="flex:1;">
           <div class="cap-title">${s.nome}</div>
           <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo || ''}</div>
@@ -619,15 +617,13 @@ function buildPanoramica() {
 
       wrap.appendChild(head);
       wrap.appendChild(body);
-      ps.appendChild(wrap);
+      pa.appendChild(wrap);
     });
-  } else {
-    ps.innerHTML = '<div style="color:var(--t3);font-style:italic;font-size:13px;">Le cinque stirpi saranno disponibili aggiornando data_panoramica.js.</div>';
   }
 
-  // ── PANEL: L'ANELLO ──
-  const pa = panels['pan-anello'];
+  // L'Atollo (ex Anello)
   if (p.anello) {
+    pa.innerHTML += `<div class="divider-lbl">L'Atollo</div>`;
     if (p.anello.testo) pa.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
     if (p.anello.luoghi) p.anello.luoghi.forEach(l => pa.appendChild(card(l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
   }
