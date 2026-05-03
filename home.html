@@ -50,8 +50,7 @@ body::before{
   margin-bottom:3rem;
   overflow:hidden;
 }
-@media(max-width:700px){
-  .site-head{ overflow:visible; }
+
 }
 .hero-img{
   display:block;
@@ -60,8 +59,7 @@ body::before{
   object-position:center 7%;
   height:clamp(320px,55vw,620px);
 }
-@media(max-width:700px){
-  .site-head{ overflow:visible; }
+
   .hero-img{
     height:auto !important;
     object-fit:unset !important;
@@ -129,13 +127,7 @@ body::before{
 }
 
 /* Mobile: immagine intera senza crop */
-@media(max-width:700px){
-  .hero-img{
-    width:100%;
-    height:auto;         /* altezza proporzionale — nessun crop */
-    object-fit:unset;    /* disabilita object-fit */
-    object-position:unset;
-  }
+
   .hero-overlay{
     background:linear-gradient(
       to bottom,
@@ -216,10 +208,40 @@ body::before{
 .site-foot{text-align:center;margin-top:4rem;font-size:11px;color:var(--t3);font-style:italic;letter-spacing:.04em;}
 
 /* ── MOBILE ── */
-@media(max-width:600px){
-  .wrap{padding:2.5rem 1rem 3rem;}
   .mc-actions{flex-direction:column;}
   .mc-btn{text-align:center;}
+}
+
+/* ── MOBILE HERO ── */
+@media(max-width:700px){
+  .site-head{
+    overflow:visible;
+    margin-bottom:1rem;
+  }
+  .hero-img{
+    height:auto !important;
+    object-fit:unset !important;
+    object-position:unset !important;
+  }
+  .hero-overlay{
+    background:linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 62%,
+      rgba(10,12,15,0.40) 76%,
+      rgba(10,12,15,0.75) 89%,
+      var(--bg) 100%
+    );
+  }
+  .hero-text{
+    padding:0 1rem 0.5rem;
+  }
+  .site-title{
+    font-size:clamp(22px,7vw,36px);
+  }
+  .site-sub{
+    font-size:13px;
+  }
 }
 </style>
 </head>
