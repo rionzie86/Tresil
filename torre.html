@@ -479,107 +479,124 @@ function buildPanoramica() {
   const td = torreDati;
   c.innerHTML = '';
 
-  // Header con citazione
+  // Header
+  const titolo = (p.mondo && p.mondo.nome) || 'Kaelvaran';
+  const citazione = (p.mondo && p.mondo.citazione) || '';
+  const citFonte = (p.mondo && p.mondo.citazione_fonte) || '';
   c.innerHTML = `
     <div class="sec-head">
-      <div class="sec-title">Il Mondo di ${p.mondo.nome}</div>
-      <div class="sec-sub" style="font-style:italic;opacity:.7;">${p.mondo.citazione} <span style="opacity:.6;">— ${p.mondo.citazione_fonte}</span></div>
+      <div class="sec-title">Il Mondo di ${titolo}</div>
+      ${citazione ? `<div class="sec-sub" style="font-style:italic;opacity:.7;">${citazione} <span style="opacity:.6;">— ${citFonte}</span></div>` : ''}
     </div>
     <div class="stat-grid">
-      <div class="stat-card"><div class="stat-lbl">Mondo</div><div class="stat-val">${p.mondo.nome}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Mondo</div><div class="stat-val">${titolo}</div></div>
       <div class="stat-card"><div class="stat-lbl">Tipo</div><div class="stat-val">One Shot</div></div>
-      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${td.capitoli.length}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Capitoli</div><div class="stat-val">${td.capitoli ? td.capitoli.length : '—'}</div></div>
     </div>`;
 
   // Descrizione mondo
-  c.appendChild(card('Il Mondo', p.mondo.descrizione));
+  if (p.mondo && p.mondo.descrizione) c.appendChild(card('Il Mondo', p.mondo.descrizione));
 
   // Concetti fondamentali
-  if (p.mondo.concetti) {
+  if (p.mondo && p.mondo.concetti) {
     p.mondo.concetti.forEach(con => c.appendChild(card(con.titolo, con.testo)));
   }
 
-  // Divisore La Frattura
-  c.innerHTML += `<div class="divider-lbl">◈ ${p.frattura.titolo}</div>`;
-  const citFr = document.createElement('div');
-  citFr.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
-  citFr.textContent = p.frattura.citazione + ' — ' + p.frattura.citazione_fonte;
-  c.appendChild(citFr);
-  p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
+  // La Frattura
+  if (p.frattura) {
+    c.innerHTML += `<div class="divider-lbl">◈ ${p.frattura.titolo}</div>`;
+    if (p.frattura.citazione) {
+      const citFr = document.createElement('div');
+      citFr.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
+      citFr.textContent = p.frattura.citazione + ' — ' + p.frattura.citazione_fonte;
+      c.appendChild(citFr);
+    }
+    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
+  }
 
   // I Fatati
-  c.innerHTML += `<div class="divider-lbl">◈ ${p.fatati.titolo}</div>`;
-  c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
-  if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
+  if (p.fatati) {
+    c.innerHTML += `<div class="divider-lbl">◈ ${p.fatati.titolo}</div>`;
+    c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
+    if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
+  }
 
-  // Le Cinque Stirpi — accordion espandibile
-  c.innerHTML += `<div class="divider-lbl">◈ Le Cinque Stirpi</div>`;
-  const stirpiNote = document.createElement('div');
-  stirpiNote.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
-  stirpiNote.textContent = 'Dopo la Frattura, l'umanità si è evoluta separatamente su cinque continenti, dando origine a culture profondamente diverse. Clicca su una stirpe per espanderla.';
-  c.appendChild(stirpiNote);
+  // Il Mondo dei Sogni (compatibilità vecchio formato)
+  if (p.mondoDeiSogni) c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
 
-  p.stirpi.forEach(s => {
-    const wrap = document.createElement('div');
-    wrap.className = 'cap-wrap';
-    wrap.style.marginBottom = '.5rem';
+  // Le Cinque Stirpi
+  if (p.stirpi && p.stirpi.length) {
+    c.innerHTML += `<div class="divider-lbl">◈ Le Cinque Stirpi</div>`;
+    const nota = document.createElement('div');
+    nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
+    nota.textContent = 'Dopo la Frattura, l'umanità si è evoluta separatamente su cinque continenti. Clicca su una stirpe per espanderla.';
+    c.appendChild(nota);
 
-    const head = document.createElement('div');
-    head.className = 'cap-head';
-    head.style.cssText = `border-left: 3px solid ${s.colore};`;
-    head.innerHTML = `
-      <div class="cap-num" style="color:${s.colore};font-size:16px;">◈</div>
-      <div style="flex:1;">
-        <div class="cap-title">${s.nome}</div>
-        <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo}</div>
-      </div>
-      <span class="cap-arr">▶</span>`;
-    head.onclick = () => wrap.classList.toggle('open');
+    p.stirpi.forEach(s => {
+      const wrap = document.createElement('div');
+      wrap.className = 'cap-wrap';
+      wrap.style.marginBottom = '.5rem';
 
-    const body = document.createElement('div');
-    body.className = 'cap-body';
+      const head = document.createElement('div');
+      head.className = 'cap-head';
+      head.style.borderLeft = '3px solid ' + (s.colore || 'var(--gold)');
+      head.innerHTML = `
+        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:16px;">◈</div>
+        <div style="flex:1;">
+          <div class="cap-title">${s.nome}</div>
+          <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo || ''}</div>
+        </div>
+        <span class="cap-arr">▶</span>`;
+      head.onclick = () => wrap.classList.toggle('open');
 
-    // Motto
-    const motto = document.createElement('div');
-    motto.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
-    motto.textContent = s.motto;
-    body.appendChild(motto);
+      const body = document.createElement('div');
+      body.className = 'cap-body';
 
-    // Sintesi
-    body.appendChild(card('In sintesi', s.sintesi));
+      if (s.motto) {
+        const motto = document.createElement('div');
+        motto.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
+        motto.textContent = s.motto;
+        body.appendChild(motto);
+      }
 
-    // Sezioni dettaglio
-    const sezioniStirpe = [
-      { k: 'territorio', t: 'Territorio' },
-      { k: 'societa',    t: 'Società' },
-      { k: 'magia',      t: 'Magia' },
-      { k: 'volonta',    t: 'La Volontà' },
-      { k: 'fatati',     t: 'I Fatati' },
-      { k: 'situazione', t: 'Situazione attuale' }
-    ];
-    sezioniStirpe.forEach(({ k, t }) => {
-      if (s[k]) body.appendChild(card(t, s[k]));
+      if (s.sintesi) body.appendChild(card('In sintesi', s.sintesi));
+
+      [
+        { k: 'territorio', t: 'Territorio' },
+        { k: 'societa',    t: 'Società' },
+        { k: 'magia',      t: 'Magia' },
+        { k: 'volonta',    t: 'La Volontà' },
+        { k: 'fatati',     t: 'I Fatati' },
+        { k: 'situazione', t: 'Situazione attuale' },
+        { k: 'sviluppo',   t: 'Approfondimento' }
+      ].forEach(({ k, t }) => {
+        if (s[k]) body.appendChild(card(t, s[k]));
+      });
+
+      if (!s.sviluppo) {
+        const todo = document.createElement('div');
+        todo.style.cssText = 'font-size:12px;color:var(--t3);font-style:italic;padding:.5rem .75rem;border:1px dashed var(--border);border-radius:3px;margin-top:.5rem;';
+        todo.textContent = '— Approfondimento in sviluppo —';
+        body.appendChild(todo);
+      }
+
+      wrap.appendChild(head);
+      wrap.appendChild(body);
+      c.appendChild(wrap);
     });
-
-    if (s.sviluppo) {
-      body.appendChild(card('Approfondimento', s.sviluppo));
-    } else {
-      const todo = document.createElement('div');
-      todo.style.cssText = 'font-size:12px;color:var(--t3);font-style:italic;padding:.5rem .75rem;border:1px dashed var(--border);border-radius:3px;margin-top:.5rem;';
-      todo.textContent = '— Approfondimento in sviluppo —';
-      body.appendChild(todo);
-    }
-
-    wrap.appendChild(head);
-    wrap.appendChild(body);
-    c.appendChild(wrap);
-  });
+  }
 
   // L'Anello Fratturato
-  c.innerHTML += `<div class="divider-lbl">◈ ${p.anello.titolo}</div>`;
-  c.appendChild(card(p.anello.sottotitolo, p.anello.testo));
-  if (p.anello.luoghi) {
-    p.anello.luoghi.forEach(l => c.appendChild(card(l.nome + ' — ' + l.sottotitolo, l.testo)));
+  if (p.anello) {
+    c.innerHTML += `<div class="divider-lbl">◈ ${p.anello.titolo}</div>`;
+    if (p.anello.testo) c.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
+    if (p.anello.luoghi) p.anello.luoghi.forEach(l => c.appendChild(card(l.nome + ' — ' + (l.sottotitolo || ''), l.testo)));
+  }
+
+  // Luoghi (compatibilità vecchio formato)
+  if (p.luoghi && p.luoghi.length) {
+    c.innerHTML += `<div class="divider-lbl">◈ Luoghi</div>`;
+    p.luoghi.forEach(l => c.appendChild(card(l.nome, l.testo)));
   }
 }
 
