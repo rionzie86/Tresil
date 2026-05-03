@@ -303,6 +303,18 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   .sidebar.open{transform:translateX(0);}
   .main{padding:1.25rem 1rem;}
 }
+
+/* ── CAPITOLI ACCORDION (condiviso con panoramica) ── */
+.cap-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:.5rem;}
+.cap-head{display:flex;align-items:center;gap:10px;padding:.9rem 1.4rem;cursor:pointer;background:var(--bg-panel);}
+.cap-title{flex:1;font-size:14px;color:var(--t1);}
+.cap-num{font-family:var(--font-d);font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;}
+.cap-arr{color:var(--t3);transition:transform .18s;font-size:11px;}
+.cap-card.open .cap-arr{transform:rotate(90deg);}
+.cap-body{display:none;padding:1.2rem 1.4rem;border-top:1px solid var(--border);}
+.cap-card.open .cap-body{display:block;}
+.divider-lbl{font-family:var(--font-d);font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase;display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;}
+.divider-lbl::before,.divider-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
 </style>
 </head>
 <body>
@@ -378,6 +390,8 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   </div>
 </div>
 
+<script src="data_panoramica.js"></script>
+<script src="data_economia.js"></script>
 <script src="data.js"></script>
 <script>
 // ── STATO ──────────────────────────────────────────
@@ -706,6 +720,106 @@ function openSessPopup(tipo, idx) {
 }
 
 // ── AMBIENTAZIONE ──────────────────────────────────
+// ── PANORAMICA CONDIVISA (da data_panoramica.js) ───────────────
+function buildAmbientazionePanoramica(c) {
+  const p = PANORAMICA_DATA;
+
+  function divider(txt) {
+    const d = document.createElement('div');
+    d.className = 'divider-lbl';
+    d.textContent = txt;
+    return d;
+  }
+
+  function citEl(testo, fonte) {
+    const d = document.createElement('div');
+    d.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
+    d.innerHTML = testo + (fonte ? ` <span style="opacity:.7;">— ${fonte}</span>` : '');
+    return d;
+  }
+
+  // La Frattura
+  if (p.frattura) {
+    c.appendChild(divider('La Frattura'));
+    if (p.frattura.citazione) c.appendChild(citEl(p.frattura.citazione, p.frattura.citazione_fonte));
+    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
+  }
+
+  // I Fatati
+  if (p.fatati) {
+    c.appendChild(divider('I Fatati'));
+    c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
+    if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
+  }
+  if (p.mondoDeiSogni) c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
+
+  // I Continenti
+  if (p.stirpi && p.stirpi.length) {
+    c.appendChild(divider('I Continenti'));
+    const nota = document.createElement('div');
+    nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
+    nota.textContent = 'Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.';
+    c.appendChild(nota);
+
+    p.stirpi.forEach(s => {
+      const wrap = document.createElement('div');
+      wrap.className = 'cap-card';
+      wrap.style.marginBottom = '.5rem';
+
+      const head = document.createElement('div');
+      head.className = 'cap-head';
+      head.style.borderLeft = '3px solid ' + (s.colore || 'var(--gold)');
+      head.innerHTML = `
+        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:13px;">◈</div>
+        <div style="flex:1;">
+          <div class="cap-title">${s.nome}</div>
+          <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo || ''}</div>
+        </div>
+        <span class="cap-arr">▶</span>`;
+      head.addEventListener('click', () => wrap.classList.toggle('open'));
+
+      const body = document.createElement('div');
+      body.className = 'cap-body';
+
+      if (s.motto) {
+        const m = document.createElement('div');
+        m.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
+        m.textContent = s.motto;
+        body.appendChild(m);
+      }
+      if (s.sintesi) body.appendChild(card('In sintesi', s.sintesi));
+      [
+        { k: 'territorio', t: 'Territorio' },
+        { k: 'societa',    t: 'Società' },
+        { k: 'magia',      t: 'Magia' },
+        { k: 'volonta',    t: 'La Volontà' },
+        { k: 'fatati',     t: 'I Fatati' },
+        { k: 'situazione', t: 'Situazione attuale' },
+        { k: 'sviluppo',   t: 'Approfondimento' }
+      ].forEach(({ k, t }) => {
+        if (s[k]) body.appendChild(card(t, s[k]));
+      });
+      if (!s.sviluppo) {
+        const todo = document.createElement('div');
+        todo.style.cssText = 'font-size:12px;color:var(--t3);font-style:italic;padding:.5rem .75rem;border:1px dashed var(--border);border-radius:3px;margin-top:.5rem;';
+        todo.textContent = '— Approfondimento in sviluppo —';
+        body.appendChild(todo);
+      }
+      wrap.appendChild(head);
+      wrap.appendChild(body);
+      c.appendChild(wrap);
+    });
+  }
+
+  // L'Atollo
+  if (p.anello) {
+    c.appendChild(divider("L'Atollo"));
+    if (p.anello.testo) c.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
+    if (p.anello.luoghi) p.anello.luoghi.forEach(l => c.appendChild(card(
+      l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
+  }
+}
+
 function buildAmbientazione() {
   const c = document.getElementById('section-ambientazione');
   c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">Kaelvaran e i suoi luoghi</div></div>`;
@@ -736,14 +850,20 @@ function buildAmbientazione() {
     const panel = document.createElement('div');
     panel.className = 'amb-panel' + (i === 0 ? ' active' : '');
     panel.id = 'amb-' + t.key;
-    (TRESIL_DATA.ambientazione[t.key] || []).forEach(a => {
-      if (a.soloMaster && !isMaster) return;
-      const d = document.createElement('div');
-      d.className = 'card' + (a.soloMaster ? ' dm-only secret' : '');
-      d.id = 'amb-item-' + a.id;
-      d.innerHTML = `<div class="card-title">${a.nome}</div>${tagsHTML(a.tag)}<div class="card-body" style="margin-top:.6rem">${linkify(a.testo)}</div>`;
-      panel.appendChild(d);
-    });
+
+    // Tab "Oltre l'Atollo": usa PANORAMICA_DATA condivisa
+    if (t.key === 'altriContinenti' && typeof PANORAMICA_DATA !== 'undefined') {
+      buildAmbientazionePanoramica(panel);
+    } else {
+      (TRESIL_DATA.ambientazione[t.key] || []).forEach(a => {
+        if (a.soloMaster && !isMaster) return;
+        const d = document.createElement('div');
+        d.className = 'card' + (a.soloMaster ? ' dm-only secret' : '');
+        d.id = 'amb-item-' + a.id;
+        d.innerHTML = `<div class="card-title">${a.nome}</div>${tagsHTML(a.tag)}<div class="card-body" style="margin-top:.6rem">${linkify(a.testo)}</div>`;
+        panel.appendChild(d);
+      });
+    }
     panels.appendChild(panel);
   });
 

@@ -89,9 +89,7 @@ In ogni foresta può esserci una scheggia d'eternità. In ogni creatura un ricor
 Ogni fatato è legato a un'emozione primaria o a un concetto: la paura, la speranza, la perdita, la gioia. Questa emozione definisce il loro aspetto, le loro capacità e i loro limiti.
 
 I fatati invecchiano lentamente e possono essere legati agli umani tramite rituali antichi — un legame che trasforma entrambi. Non possiedono una Volontà propria: vivono nel riflesso di quella altrui. Alcuni sono guide, altri illusioni, altri ancora predatori.`,
-    dettaglio: `I collari d'argento di ichnusite sono il metodo più noto per controllare un fatato con la forza. Chi porta il bracciale abbinato comanda il fatato incollato. È considerato un atto aberrante dalla maggior parte delle culture di Kaelvaran.
-
-Il mondo dei sogni non è una metafora. È un piano fisico parallelo, accessibile durante il sonno da chiunque abbia la predisposizione — o la sfortuna — giusta. I fatati ne sono le emanazioni più tangibili. Morire nel mondo dei sogni significa morire nella realtà.`
+    dettaglio: `Il mondo dei sogni non è una metafora. È un piano fisico parallelo, accessibile durante il sonno da chiunque abbia la predisposizione — o la sfortuna — giusta. I fatati ne sono le emanazioni più tangibili. Morire nel mondo dei sogni significa morire nella realtà.`
   },
 
   // ── LE CINQUE STIRPI ──────────────────────────────────────────
@@ -110,7 +108,11 @@ Il mondo dei sogni non è una metafora. È un piano fisico parallelo, accessibil
 
 Le Memorie Progettate — biografie costruite intenzionalmente per lasciare un'eco precisa — sono strumenti di autorappresentazione e armi ideologiche. Alcune famiglie vivono la propria vita come un'opera letteraria.`,
       fatati: `I "Popoli Nascosti" abitano ancora i confini tra le stagioni. Raramente si mostrano nella loro forma reale: appaiono come bambini che parlano come vecchi, cervi che cantano nomi dimenticati, ombre tra gli alberi. Alcune casate devono la sopravvivenza a patti con i Nascosti, pagati con prezzi oscuri: un figlio, un giuramento, un silenzio per generazioni.`,
-      situazione: `Nell'epoca del Vero Tradito i Varlmenn non cercano più una memoria condivisa ma una pluralità di racconti. Le Memorie Progettate sono divenute strumenti di autorappresentazione e armi ideologiche. Biblioteche erranti attraversano il continente raccogliendo confessioni, mentre le vecchie casate combattono per preservare l'integrità delle narrazioni canoniche.`,
+      situazione: `Gli antichi equilibri tra i casati sono crollati. Ogni casato trama per il Trono delle Ombre — il ruolo da imperatore di tutto il continente, mai assegnato da quando Kaelvaran è stato spezzato dalla Frattura, ma mai davvero dimenticato.
+
+Le alleanze si stringono e si spezzano nel giro di stagioni. I duelli d'onore sono diventati strumenti politici più che risoluzioni personali. I giuramenti antichi vengono reinterpretati o ignorati secondo convenienza.
+
+Una fazione crescente tra i casati più bellicosi sostiene che la vera supremazia non si conquisti eliminando i rivali interni, ma volgendo lo sguardo verso l'esterno — invadere altri continenti, stabilire colonie, portare l'impronta Varlmenn oltre i propri mari. Altri casati guardano a questa idea con sospetto, temendo che un'espansione esterna indebolisca il fronte interno proprio quando il trono è contendibile.`,
       sviluppo: null  // da sviluppare
     },
     {
@@ -125,7 +127,11 @@ Le Memorie Progettate — biografie costruite intenzionalmente per lasciare un'e
       magia: `La Kokoro-no-Michi — la "via del cuore" — è la filosofia fondante. Ogni gesto, parola e respiro deve riflettere un'intenzione interiore. Il gesto armonioso è segno di verità spirituale. La magia si manifesta nel corpo e negli oggetti solo quando l'anima è limpida.`,
       volonta: `La Volontà Shizenka si manifesta nel corpo e nei gesti. Il Gesto Finale è la concezione contemporanea secondo cui ogni vita si conclude con un unico gesto definitivo che sigilla il cammino. I maestri dell'Ultimo Movimento si preparano per anni a questo momento.`,
       fatati: `Gli spiriti muti delle foreste sono fatati antichi, legati ai luoghi da millenni. Non parlano: comunicano attraverso i suoni della natura. I clan Shizenka li rispettano come antenati spirituali.`,
-      situazione: `La cultura ha attraversato la Crisi del Gesto — un momento storico in cui il significato dei gesti tramandati andò perduto. Oggi vivono l'epoca del Movimento Finale. I maestri più anziani si preparano a compiere le ultime coreografie della loro esistenza. Alcuni movimenti sembrano influenzare la materia stessa.`,
+      situazione: `La cultura ha attraversato la Crisi del Gesto — un momento storico in cui il significato condiviso dei gesti tramandati cominciò a dissolversi. Le interpretazioni si moltiplicarono, i lignaggi si divisero, e ciò che era stato un linguaggio universale è diventato una serie di dialetti in conflitto silenzioso.
+
+I gruppi di monaci sparsi per il continente hanno iniziato a scindersi in credenze distinte: alcuni sostengono che ogni gesto debba essere tramandato immutato, pena la perdita del suo potere; altri credono che il gesto si rinnovi nell'intenzione di chi lo compie, non nella forma. Altri ancora hanno abbandonato i gesti codificati per sviluppare linguaggi corporei del tutto personali.
+
+Queste divisioni hanno cambiato anche il rapporto con le persone comuni. Alcune scuole si sono aperte, portando l'insegnamento nei villaggi. Altre si sono chiuse ancora di più, convinte che il contatto con chi non pratica contamini la purezza del percorso. Tra queste ultime alcune hanno iniziato a guardare ai non-praticanti con un distacco che sconfina nel disprezzo.`,
       sviluppo: null
     },
     {
@@ -140,7 +146,11 @@ Le Memorie Progettate — biografie costruite intenzionalmente per lasciare un'e
       magia: `Non studiano la magia: la costruiscono. I Golem di Difesa, i Golem Poetici, le macchine senzienti sono il loro modo di toccare il divino. I grimori tecnici sono altrettanto sacri dei grimori magici altrove.`,
       volonta: `La Risonanza di Condotta è il principio etico secondo cui ogni azione lascia una traccia tangibile nel mondo, registrabile tramite meccanismi. Le macchine più antiche possono percepire tali tracce e rispondere in base alla coerenza del portatore.`,
       fatati: `I Cuori Dormenti — antichi nuclei magici nelle rovine meccaniche — sono considerati fatati intrappolati nel metallo. Chi li risveglia rischia di liberare qualcosa di imprevedibile.`,
-      situazione: `Dalle rovine emergono nuove interpretazioni della memoria e dell'etica. I Golem Poetici si muovono con volontà incerta. Una frangia nascosta cerca di restaurare l'antico rigore del Ferro Intatto. La Risonanza di Condotta è diventata un campo di battaglia filosofico.`,
+      situazione: `Dalle rovine emergono nuove interpretazioni della memoria e dell'etica. I Golem Poetici si muovono con volontà incerta. Una frangia nascosta cerca di restaurare l'antico rigore del Ferro Intatto. La Risonanza di Condotta è diventata un campo di battaglia filosofico.
+
+In varie parti del continente alcune reliquie si sono parzialmente riattivate. Stanze che erano rimaste sigillate per secoli si sono rivelate, riemerse dalle nebbie del tempo — intere sezioni di città perdute sono tornate accessibili, con strutture intatte, macchine ancora funzionanti e archivi di conoscenza che si credevano distrutti. Nessuno sa con certezza cosa abbia innescato questi risvegli. Alcuni lo collegano all'avvicinarsi dei continenti dopo l'Eco del Sacrificio. Altri credono che qualcosa all'interno delle rovine stesse si sia attivato — o svegliato.
+
+Le fazioni che per prime raggiungono queste città emerse ottengono vantaggi enormi: tecnologie dimenticate, scorte di materiali rari, e soprattutto informazioni su come furono davvero costruiti i grandi colossi.`,
       sviluppo: null
     },
     {
