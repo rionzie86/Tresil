@@ -50,13 +50,54 @@ body::before{
   margin-bottom:3rem;
   overflow:hidden;
 }
+@media(max-width:700px){
+  .site-head{ overflow:visible; }
+}
 .hero-img{
   display:block;
   width:100%;
-  /* Taglia il 7% dall'alto */
   object-fit:cover;
   object-position:center 7%;
   height:clamp(320px,55vw,620px);
+}
+@media(max-width:700px){
+  .site-head{ overflow:visible; }
+  .hero-img{
+    height:auto !important;
+    object-fit:unset !important;
+    object-position:unset !important;
+  }
+  .hero-overlay{
+    background:linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 50%,
+      rgba(10,12,15,0.6) 68%,
+      rgba(10,12,15,0.92) 82%,
+      var(--bg) 100%
+    );
+  }
+  .hero-text{ padding:1.5rem 1rem 1.5rem; }
+  .site-sub{ font-size:13px; }
+}
+@media(max-width:700px){
+  .hero-img{
+    height:auto !important;
+    object-fit:unset !important;
+    object-position:unset !important;
+  }
+  .hero-overlay{
+    background:linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 50%,
+      rgba(10,12,15,0.6) 68%,
+      rgba(10,12,15,0.92) 82%,
+      var(--bg) 100%
+    );
+  }
+  .hero-text{ padding:1.5rem 1rem 1.5rem; }
+  .site-sub{ font-size:13px; }
 }
 .hero-overlay{
   position:absolute;
