@@ -492,83 +492,54 @@ function buildPanoramica() {
 
   const titolo = (p.mondo && p.mondo.nome) || 'Kaelvaran';
 
-  c.innerHTML = `
-    <div class="sec-head">
-      <div class="sec-title">Panoramica</div>
-      <div class="sec-sub">Il mondo di ${titolo} — lore condivisa con tutte le one shot</div>
-    </div>`;
+  c.innerHTML = `<div class="sec-head">
+    <div class="sec-title">Panoramica</div>
+    <div class="sec-sub">Il mondo di ${titolo}</div>
+  </div>`;
 
-  // Tab bar — due soli tab: Panoramica e Ambientazione
-  const tabs = [
-    { id: 'pan-mondo',        label: 'Panoramica' },
-    { id: 'pan-ambientazione', label: 'Ambientazione' },
-  ];
-
-  const tabBar = document.createElement('div');
-  tabBar.className = 'pan-tabs';
-  const panels = {};
-
-  tabs.forEach((t, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'pan-tab' + (i === 0 ? ' active' : '');
-    btn.textContent = t.label;
-    btn.onclick = () => {
-      tabBar.querySelectorAll('.pan-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      Object.values(panels).forEach(p => p.classList.remove('active'));
-      panels[t.id].classList.add('active');
-    };
-    tabBar.appendChild(btn);
-    const panel = document.createElement('div');
-    panel.className = 'pan-panel' + (i === 0 ? ' active' : '');
-    panel.id = t.id;
-    panels[t.id] = panel;
-  });
-
-  c.appendChild(tabBar);
-  tabs.forEach(t => c.appendChild(panels[t.id]));
-
-  // ── TAB: PANORAMICA (il mondo, concetti fondamentali) ──────────
-  const pm = panels['pan-mondo'];
   if (p.mondo && p.mondo.citazione) {
     const cit = document.createElement('div');
     cit.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
     cit.innerHTML = `${p.mondo.citazione} <span style="opacity:.7;">— ${p.mondo.citazione_fonte}</span>`;
-    pm.appendChild(cit);
+    c.appendChild(cit);
   }
-  if (p.mondo && p.mondo.descrizione) pm.appendChild(card('Il Mondo', p.mondo.descrizione));
-  if (p.mondo && p.mondo.concetti) p.mondo.concetti.forEach(con => pm.appendChild(card(con.titolo, con.testo)));
+  if (p.mondo && p.mondo.descrizione) c.appendChild(card('Il Mondo', p.mondo.descrizione));
+  if (p.mondo && p.mondo.concetti) p.mondo.concetti.forEach(con => c.appendChild(card(con.titolo, con.testo)));
+}
 
-  // ── TAB: AMBIENTAZIONE (Frattura, Fatati, Continenti, Atollo) ──
-  const pa = panels['pan-ambientazione'];
+
+function buildAmbientazione() {
+  const c = document.getElementById('section-ambientazione');
+  const p = PANORAMICA_DATA;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">Il mondo di Kaelvaran — storia, culture e luoghi</div></div>`;
 
   // La Frattura
   if (p.frattura) {
-    pa.innerHTML += `<div class="divider-lbl">La Frattura</div>`;
+    c.innerHTML += `<div class="divider-lbl">La Frattura</div>`;
     if (p.frattura.citazione) {
       const cit = document.createElement('div');
       cit.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
       cit.innerHTML = `${p.frattura.citazione} <span style="opacity:.7;">— ${p.frattura.citazione_fonte}</span>`;
-      pa.appendChild(cit);
+      c.appendChild(cit);
     }
-    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => pa.appendChild(card(s.titolo, s.testo)));
+    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
   }
 
   // I Fatati
   if (p.fatati) {
-    pa.innerHTML += `<div class="divider-lbl">I Fatati</div>`;
-    pa.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
-    if (p.fatati.dettaglio) pa.appendChild(card('Approfondimento', p.fatati.dettaglio));
+    c.innerHTML += `<div class="divider-lbl">I Fatati</div>`;
+    c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
+    if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
   }
-  if (p.mondoDeiSogni) pa.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
+  if (p.mondoDeiSogni) c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
 
-  // I Continenti (stirpi)
+  // I Continenti
   if (p.stirpi && p.stirpi.length) {
-    pa.innerHTML += `<div class="divider-lbl">I Continenti</div>`;
+    c.innerHTML += `<div class="divider-lbl">I Continenti</div>`;
     const nota = document.createElement('div');
     nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
     nota.textContent = `Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.`;
-    pa.appendChild(nota);
+    c.appendChild(nota);
 
     p.stirpi.forEach(s => {
       const wrap = document.createElement('div');
@@ -614,60 +585,21 @@ function buildPanoramica() {
         todo.textContent = '— Approfondimento in sviluppo —';
         body.appendChild(todo);
       }
-
       wrap.appendChild(head);
       wrap.appendChild(body);
-      pa.appendChild(wrap);
+      c.appendChild(wrap);
     });
   }
 
-  // L'Atollo (ex Anello)
+  // L'Atollo
   if (p.anello) {
-    pa.innerHTML += `<div class="divider-lbl">L'Atollo</div>`;
-    if (p.anello.testo) pa.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
-    if (p.anello.luoghi) p.anello.luoghi.forEach(l => pa.appendChild(card(l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
+    c.innerHTML += `<div class="divider-lbl">L'Atollo</div>`;
+    if (p.anello.testo) c.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
+    if (p.anello.luoghi) p.anello.luoghi.forEach(l => c.appendChild(card(l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
   }
   if (p.luoghi && p.luoghi.length) {
-    p.luoghi.forEach(l => pa.appendChild(card(l.nome, l.testo)));
+    p.luoghi.forEach(l => c.appendChild(card(l.nome, l.testo)));
   }
-}
-
-
-function buildAmbientazione() {
-  const c = document.getElementById('section-ambientazione');
-  const td = torreDati;
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">${td.titolo} — ${td.ambientazione}</div></div>`;
-
-  // Scheda generale one shot
-  const info = document.createElement('div');
-  info.className = 'card';
-  info.innerHTML = `<div class="card-title">${td.titolo}</div>
-    <div class="card-body">${td.sottotitolo}<br><br>
-    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">TONO</strong><br>${td.tono}<br><br>
-    <strong style="color:var(--t2);font-size:12px;font-family:var(--font-d);letter-spacing:.06em;">ANTAGONISTA</strong><br>${td.antagonista}
-    </div>`;
-  c.appendChild(info);
-
-  // Luoghi generali da data_panoramica
-  const lbl = document.createElement('div');
-  lbl.className = 'group-lbl';
-  lbl.textContent = 'Luoghi di Kaelvaran';
-  c.appendChild(lbl);
-
-  PANORAMICA_DATA.luoghi.filter(l => l.id === 'tresil').forEach(l => {
-    const d = document.createElement('div');
-    d.className = 'card';
-    d.innerHTML = `<div class="card-title">${l.nome}</div>`;
-    const sub = document.createElement('div');
-    sub.style.cssText = 'font-size:11px;color:var(--t3);font-style:italic;margin-bottom:.5rem;';
-    sub.textContent = l.sottotitolo;
-    d.appendChild(sub);
-    const body = document.createElement('div');
-    body.className = 'card-body';
-    body.textContent = l.testo;
-    d.appendChild(body);
-    c.appendChild(d);
-  });
 }
 
 // ── ECONOMIA ───────────────────────────────────────
