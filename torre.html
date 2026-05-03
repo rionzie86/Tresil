@@ -513,21 +513,30 @@ function buildAmbientazione() {
   const p = PANORAMICA_DATA;
   c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">Il mondo di Kaelvaran — storia, culture e luoghi</div></div>`;
 
+  function divider(txt) {
+    const d = document.createElement('div');
+    d.className = 'divider-lbl';
+    d.textContent = txt;
+    return d;
+  }
+
+  function citazione(testo, fonte) {
+    const d = document.createElement('div');
+    d.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
+    d.innerHTML = testo + (fonte ? ` <span style="opacity:.7;">— ${fonte}</span>` : '');
+    return d;
+  }
+
   // La Frattura
   if (p.frattura) {
-    c.innerHTML += `<div class="divider-lbl">La Frattura</div>`;
-    if (p.frattura.citazione) {
-      const cit = document.createElement('div');
-      cit.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
-      cit.innerHTML = `${p.frattura.citazione} <span style="opacity:.7;">— ${p.frattura.citazione_fonte}</span>`;
-      c.appendChild(cit);
-    }
+    c.appendChild(divider('La Frattura'));
+    if (p.frattura.citazione) c.appendChild(citazione(p.frattura.citazione, p.frattura.citazione_fonte));
     if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
   }
 
   // I Fatati
   if (p.fatati) {
-    c.innerHTML += `<div class="divider-lbl">I Fatati</div>`;
+    c.appendChild(divider('I Fatati'));
     c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
     if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
   }
@@ -535,10 +544,10 @@ function buildAmbientazione() {
 
   // I Continenti
   if (p.stirpi && p.stirpi.length) {
-    c.innerHTML += `<div class="divider-lbl">I Continenti</div>`;
+    c.appendChild(divider('I Continenti'));
     const nota = document.createElement('div');
     nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
-    nota.textContent = `Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.`;
+    nota.textContent = 'Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.';
     c.appendChild(nota);
 
     p.stirpi.forEach(s => {
@@ -550,22 +559,22 @@ function buildAmbientazione() {
       head.className = 'cap-head';
       head.style.borderLeft = '3px solid ' + (s.colore || 'var(--gold)');
       head.innerHTML = `
-        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:13px;letter-spacing:.1em;">◈</div>
+        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:13px;">◈</div>
         <div style="flex:1;">
           <div class="cap-title">${s.nome}</div>
           <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo || ''}</div>
         </div>
         <span class="cap-arr">▶</span>`;
-      head.onclick = () => wrap.classList.toggle('open');
+      head.addEventListener('click', () => wrap.classList.toggle('open'));
 
       const body = document.createElement('div');
       body.className = 'cap-body';
 
       if (s.motto) {
-        const motto = document.createElement('div');
-        motto.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
-        motto.textContent = s.motto;
-        body.appendChild(motto);
+        const m = document.createElement('div');
+        m.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
+        m.textContent = s.motto;
+        body.appendChild(m);
       }
       if (s.sintesi) body.appendChild(card('In sintesi', s.sintesi));
       [
@@ -585,6 +594,7 @@ function buildAmbientazione() {
         todo.textContent = '— Approfondimento in sviluppo —';
         body.appendChild(todo);
       }
+
       wrap.appendChild(head);
       wrap.appendChild(body);
       c.appendChild(wrap);
@@ -593,7 +603,7 @@ function buildAmbientazione() {
 
   // L'Atollo
   if (p.anello) {
-    c.innerHTML += `<div class="divider-lbl">L'Atollo</div>`;
+    c.appendChild(divider("L'Atollo"));
     if (p.anello.testo) c.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
     if (p.anello.luoghi) p.anello.luoghi.forEach(l => c.appendChild(card(l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
   }
@@ -601,8 +611,6 @@ function buildAmbientazione() {
     p.luoghi.forEach(l => c.appendChild(card(l.nome, l.testo)));
   }
 }
-
-// ── ECONOMIA ───────────────────────────────────────
 function buildEconomia() {
   const c = document.getElementById('section-economia');
   const eco = TRESIL_ECO;
