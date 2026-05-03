@@ -54,6 +54,7 @@ body::before{
   display:block;
   width:100%;
   object-fit:cover;
+  /* Desktop: taglia 7% dall'alto, centra */
   object-position:center 7%;
   height:clamp(320px,55vw,620px);
 }
@@ -98,6 +99,31 @@ body::before{
 .site-sub{
   font-size:15px;color:var(--t2);font-style:italic;letter-spacing:.02em;
   text-shadow:0 1px 8px rgba(0,0,0,0.8);
+}
+
+/* Mobile: altezza proporzionale così tutti i personaggi sono visibili */
+@media(max-width:600px){
+  .hero-img{
+    height:auto;
+    max-height:none;
+    width:100%;
+    object-fit:fill;
+    /* Non croppare su mobile — mostra tutta l'immagine */
+  }
+  .hero-overlay{
+    background:linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 55%,
+      rgba(10,12,15,0.65) 72%,
+      rgba(10,12,15,0.92) 85%,
+      var(--bg) 100%
+    );
+  }
+  .hero-text{
+    padding:1.5rem 1rem 1.5rem;
+  }
+  .site-sub{ font-size:13px; }
 }
 
 /* ── DIVISORE ── */
@@ -174,7 +200,7 @@ body::before{
 <div class="wrap">
 
   <header class="site-head">
-    <img class="hero-img" src="kaelvaran_hero.jpg" alt="Il mondo di Kaelvaran — quattro avventurieri in un paesaggio montuoso" />
+    <img class="hero-img" src="kaelvaran_hero.png" alt="Il mondo di Kaelvaran — quattro avventurieri in un paesaggio montuoso" />
     <div class="hero-overlay"></div>
     <div class="hero-text">
       <div class="site-ornament">Archivio</div>
