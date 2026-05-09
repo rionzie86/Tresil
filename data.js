@@ -145,64 +145,7 @@ const TRESIL_DATA = {
         tag: ["Volontà = realtà", "Shpada", "'Abominio'", "Telepatia involontaria"],
         descrizione: "Altezza ~1,68 m. Ha ricevuto il coltellino d'osso da Verlek Tre Occhi (valore affettivo). Ha detto al gruppo di non entrare nei suoi sogni.",
         loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie.",
-        loreMaster: "L'ordine di Naru implanta un incubo rituale nei discepoli: attraverso questo incubo i maestri trasmettono i poteri. Naru è stato impiantato per errore a 8 anni. Il rituale cancella tutti i ricordi precedenti. Naru non sa che i ricordi sono stati cancellati — per lui non c'è un 'prima'.\n\nCrede di non sognare perché non ricorda il suo unico sogno ricorrente: lago di latte, coste di pietra nera, tentacoli che cercano di ghermirlo. Larimar ha vissuto questo sogno dall'interno nella prima sessione, riportandone una cicatrice reale.\n\nLo spirito del bosco di Ruder lo ha chiamato 'abominio' percependone la natura anomala.\n\nVOLONTÀ E SHPADA — La capacità di Naru di agire sulla Shpada non deriva dalla sua Volontà personale nel senso di Kaelvaran (che richiederebbe dedizione profonda e coerenza interiore per anni). Deriva dal suo legame ritualistico con l'incubo impiantato dall'Ordine. È il rituale che gli concede l'accesso a quel potere, non la sua maturità interiore. I giocatori non conoscono questa distinzione.\n\n─────────────────────────────
-PROSSIMA SESSIONE — KAEL DORVEN, SECONDO MAESTRO
-
-━━ SCENA 1 — APPARIZIONE ━━
-Naru sente una voce tagliente: "Fermati."
-Una pressione di Volontà — reale, fisica — spinge il corpo di Naru a rispondere al comando. Non è una suggestione: è un ordine che parla direttamente ai muscoli.
-Kael è lì. Non si sa da quanto.
-
-━━ SCENA 2 — KAEL PORTA VIA NARU ━━
-Kael non spiega. Dice solo: "Seguimi." E cammina.
-Durante il tragitto, senza voltarsi:
-"Il mondo tende al caos. Non è una metafora. È un principio fisico. Noi siamo la direzione opposta. Non perché siamo buoni. Ma perché va fatto. A volte bisogna perpetuare il male per garantire l'equilibrio."
-Poi silenzio. Non aggiunge altro. Non risponde a domande.
-
-━━ SCENA 3 — NEL BOSCO ━━
-Kael si guarda attorno. Tira fuori una sfera di cristallo.
-"Qui potrebbe andar bene."
-La fa toccare a Naru.
-Un istante — dagli occhi di Kael escono due tentacoli neri come inchiostro, con contorni viola luminosi. Un istante dopo scompaiono.
-Kael non commenta. Non spiega. Fa come se non fosse successo niente.
-
-━━ SCENA 4 — IN CITTÀ, NEL PASSATO ━━
-Riappaiono di notte. Naru riconosce il vicolo — sono dietro la casa di Balsan.
-Kael indica tre uomini che si muovono furtivi verso la casa. Tutti e tre hanno un tatuaggio sull'avambraccio sinistro, ben visibile. [NOTA DM: il tatuaggio tornerà — non approfondire ora]
-"Ci troviamo nel passato. Quei tre uomini stanno per entrare in quella casa. Uccideranno la figlia di Balsan."
-Dal interno si sentono Balsan e una bambina — risate, una conversazione normale.
-Kael aspetta. Osserva Naru.
-
-→ SE NARU VUOLE AGIRE:
-Kael gli mette una mano sul braccio.
-"Qualunque azione tu compia qui avrà ripercussioni su ciò che è il tuo presente."
-Pausa. Poi si toglie la mano.
-Lo lascia scegliere.
-
-━━ SCENA 5 — COMBATTIMENTO (se Naru agisce) ━━
-[RIASSUNTO — non giocato]
-Naru interviene. Balsan, che stava per essere sorpreso, si unisce allo scontro. Insieme sconfiggono i tre uomini.
-Kael osserva in silenzio dall'ombra. Non interviene.
-Dopo, a freddo:
-"Quell'uomo — il secondo che è entrato — avrebbe ricevuto una promozione nell'organizzazione per cui lavora. Una settimana dopo sarebbe stato arrestato. L'indagine che ne sarebbe seguita avrebbe smontato l'intera organizzazione."
-Pausa.
-"Centinaia di persone sono morte negli anni successivi per quello che hai fatto stasera. Migliaia hanno sofferto."
-
-━━ SCENA 6 — RITORNO NEL BOSCO ━━
-Kael fa toccare nuovamente la sfera a Naru. I tentacoli, un istante. Sono nel bosco.
-
-→ SE NARU NON HA AGITO (ha passato la prova):
-"Hai fatto il taglio necessario."
-Pausa lunga.
-"Avevo detto al consiglio che era meglio ucciderti. Forse mi sbagliavo."
-
-→ SE NARU HA AGITO (ha fallito la prova):
-"Hai fallito."
-"Lo avevo detto al consiglio che sarebbe stato meglio ucciderti subito. Troppo giovane per l'impianto. Troppo inesperto."
-"Il consiglio manderà il prossimo maestro."
-[NOTA DM: "il prossimo maestro" = chi verrà a ucciderlo. Non chiarire ulteriormente.]
-
-Poi Kael ciondola leggermente — come sotto il peso di qualcosa — e sprofonda in una pozza scura che si chiude su di lui. Scompare.",
+        loreMaster: "L'ordine di Naru implanta un incubo rituale nei discepoli: attraverso questo incubo i maestri trasmettono i poteri. Naru e stato impiantato per errore a 8 anni. Il rituale cancella tutti i ricordi precedenti. Naru non sa che i ricordi sono stati cancellati - per lui non c'e un prima.\n\nCrede di non sognare perche non ricorda il suo unico sogno ricorrente: lago di latte, coste di pietra nera, tentacoli che cercano di ghermirlo. Larimar ha vissuto questo sogno dall'interno nella prima sessione, riportandone una cicatrice reale.\n\nLo spirito del bosco di Ruder lo ha chiamato abominio percependone la natura anomala.\n\nVOLONTA E SHPADA - La capacita di Naru di agire sulla Shpada non deriva dalla sua Volonta personale nel senso di Kaelvaran (che richiederebbe dedizione profonda e coerenza interiore per anni). Deriva dal suo legame ritualistico con l'incubo impiantato dall'Ordine. E il rituale che gli concede l'accesso a quel potere, non la sua maturita interiore. I giocatori non conoscono questa distinzione.\n\n-----------------------------\nPROSSIMA SESSIONE - KAEL DORVEN, SECONDO MAESTRO\n\n** SCENA 1 - APPARIZIONE **\nNaru sente una voce tagliente: Fermati.\nUna pressione di Volonta reale, fisica, spinge il corpo di Naru a rispondere al comando. Non e una suggestione: e un ordine che parla direttamente ai muscoli.\nKael e li. Non si sa da quanto.\n\n** SCENA 2 - KAEL PORTA VIA NARU **\nKael non spiega. Dice solo: Seguimi. E cammina.\nDurante il tragitto, senza voltarsi:\nIl mondo tende al caos. Non e una metafora. E un principio fisico. Noi siamo la direzione opposta. Non perche siamo buoni. Ma perche va fatto. A volte bisogna perpetuare il male per garantire l equilibrio.\nPoi silenzio. Non aggiunge altro.\n\n** SCENA 3 - NEL BOSCO **\nKael si guarda attorno. Tira fuori una sfera di cristallo.\nQui potrebbe andar bene.\nLa fa toccare a Naru. Un istante - dagli occhi di Kael escono due tentacoli neri come inchiostro con contorni viola luminosi. Un istante dopo scompaiono. Kael non commenta.\n\n** SCENA 4 - IN CITTA, NEL PASSATO **\nRiappaiono di notte dietro la casa di Balsan. Kael indica tre uomini con tatuaggio sull avambraccio sinistro. [NOTA DM: tatuaggio tornera - non approfondire ora]\nCi troviamo nel passato. Quei tre uomini stanno per entrare in quella casa. Uccideranno la figlia di Balsan.\nSi sentono Balsan e una bambina ridere. Kael aspetta.\nSE NARU VUOLE AGIRE: Kael mette una mano sul braccio. Qualunque azione tu compia qui avra ripercussioni su cio che e il tuo presente. Poi si toglie la mano e lo lascia scegliere.\n\n** SCENA 5 - COMBATTIMENTO (se Naru agisce) **\n[RIASSUNTO - non giocato] Naru interviene. Balsan si unisce allo scontro. Insieme sconfiggono i tre. Kael osserva in silenzio.\nDopo: Quell uomo - il secondo - avrebbe ricevuto una promozione. Una settimana dopo sarebbe stato arrestato. L indagine avrebbe smontato l intera organizzazione.\nCentinaia di persone sono morte negli anni successivi per quello che hai fatto stasera. Migliaia hanno sofferto.\n\n** SCENA 6 - RITORNO NEL BOSCO **\nKael fa toccare nuovamente la sfera. Tornano nel bosco.\n\nSE NARU NON HA AGITO (ha passato):\nHai fatto il taglio necessario. [pausa] Avevo detto al consiglio che era meglio ucciderti. Forse mi sbagliavo.\n\nSE NARU HA AGITO (ha fallito):\nHai fallito. Lo avevo detto al consiglio che sarebbe stato meglio ucciderti subito. Troppo giovane per l impianto. Troppo inesperto. Il consiglio mandera il prossimo maestro.\n[NOTA DM: il prossimo maestro = chi verra a ucciderlo]\n\nPoi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di lui.",
         note: "Telepatia in sviluppo: canale con Larimar (bidirezionale, richiede concentrazione), canale con Han (persistente e passivo — come 'ridotto a icona', rimane attivo senza concentrazione). Con estranei percepisce solo emozioni di superficie. Non riesce a raggiungere Musashi. Conflitto irrisolto con Osiris dopo il litigio a Poz Profondo."
       },
       {
