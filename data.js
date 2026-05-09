@@ -194,13 +194,22 @@ Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di
         note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')"
       },
       {
+        id: "han", nome: "Han", giocatore: "PNG", tipo: "png",
+        colore: "#BA7517", iniziali: "H",
+        tag: ["Discendente Primo Olmo", "Umanizzazione rapida", "Piante sì — animali no"],
+        descrizione: "Ex mezzo bambino mezzo uccello. Ora simile a un adolescente allampanato con naso aquilino, piume residue, buco nel petto allargato. Trovato originariamente nella fontana con collare inciso 'Han', senza memoria.",
+        loreGiocatori: "Discendente del Primo Olmo. Umanizzazione in corso: piume quasi tutte scomparse, becco caduto. Ha perso il legame con gli animali. Conserva il potere sulle piante. Ora abbastanza umano da viaggiare senza attirare attenzione. Sogna per la prima volta dopo la liberazione dal bosco.\n\nLontano dalla terra ferma non riesce a mangiare né bere — vomita ripetutamente. Il contatto con la terra lo ristabilizza. Si è rivelato involontariamente vegano: tollera solo alimenti vegetali.\n\nNaru ha stabilito con lui una connessione telepatica persistente e bidirezionale — rimane attiva passivamente come 'ridotto a icona' senza richiedere concentrazione.\n\nNome falso in copertura a Fossolento: Delforio.",
+        loreMaster: "Bolla onirica con striature dorate anomale ('occhio di tigre'). Nel sogno appare il Viandante dei Sogni — futuro mentore di Larimar.\n\nHa vomitato vermi neri e marroni senza memoria dell'evento.\n\nIl gatto di Verlek lo ha graffiato in modo anomalo — gli animali percepiscono qualcosa di strano in lui.",
+        note: "Ha abbracciato Osiris spontaneamente singhiozzando — primo contatto fisico diretto autonomo. Forte imbarazzo dopo il primo utilizzo del bagno."
+      },
+      {
         id: "osiris", nome: "Osiris", giocatore: "Diana", tipo: "pg",
         colore: "#4A9EC4", iniziali: "O",
         tag: ["Affinità oggetti da lancio", "Centro emotivo", "Moneta della fortuna"],
         descrizione: "Centro emotivo del gruppo. Forte legame con gli oggetti, in particolare armi da lancio. Possiede una moneta della fortuna dalle proprietà ancora sconosciute.",
-        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder",
-        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire",
-        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')"
+        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder.",
+        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire.",
+        note: "Andata a letto senza chiarimento con Naru dopo il litigio. Ha abbracciato Han spontaneamente — lui ha risposto singhiozzando."
       }
     ],
     png: [
