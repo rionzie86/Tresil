@@ -377,7 +377,12 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 <script src="data_economia.js"></script>
 <script src="data_torre.js"></script>
 <script>
-const ADMIN_PW = 'tresil2025';
+// Password verificata via hash SHA-256
+const ADMIN_PW_HASH = 'a2707f0e8ee0857786a38b675213e6862b32d35ef396e43a9c79c1ba1a7bf0c7';
+async function hashPW(pw) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
 let isMaster = false;
 
 // ── INIT ───────────────────────────────────────────
@@ -441,9 +446,10 @@ function toggleDM() {
   }
 }
 
-function checkPW() {
+async function checkPW() {
   const val = document.getElementById('pw-input').value;
-  if (val === ADMIN_PW) {
+  const h = await hashPW(val);
+  if (h === ADMIN_PW_HASH) {
     isMaster = true;
     saveDM(true);
     document.getElementById('pw-overlay').classList.remove('open');
@@ -774,7 +780,7 @@ function buildSviluppo() {
     }
 
     // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap6'
+    const puzzleBtnHTML = cap.id === 'cap11'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
          </button>`
@@ -846,8 +852,6 @@ function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
 // ── REGIA MUSICALE ─────────────────────────────────
-function buildMusica() {} // sezione rimossa
-
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
@@ -861,7 +865,6 @@ function buildMusicPlayer(capId, tracce) {
     </div>`).join('');
 }
 
-function switchTrack() {}
 
 </script>
 </body>
