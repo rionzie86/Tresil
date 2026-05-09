@@ -138,13 +138,13 @@ const TRESIL_DATA = {
         loreGiocatori: "Può camminare liberamente nel mondo dei sogni — per lei è dormire, ma nel reale è inconscia. Le bastano 2 ore a notte. Si nutre di emozioni nel mondo dei sogni: amplifica l'emozione del sognatore, la estrae fisicamente, il sogno fa un rebound verso il polo opposto. Ha acquisito la capacità di sognare (prima non la aveva). Possiede la collana di pietra lunare. Ha dichiarato di non voler usare poteri in pubblico sulla nave.",
         loreMaster: "Il suo vero aspetto — noto ai giocatori ma ignoto a Larimar come personaggio — è quello della creatura gobba verdastra che appare nei sogni di Han: pelle verdastra bianchiccia umida, sopracciglio molto prominente, capelli con chiazze vuote, armata di lancia. Han la percepisce così normalmente. Osiris lo ha intravisto un paio di volte in un riflesso.\n\nHa visto nel sogno di Osiris che questa sogna Larimar chiedere un legame fatato — non l'ha detto a nessuno.\n\nNella sessione del bosco di Ruder ha visto la bolla di Han circondata da fatati che lo osservavano.",
         note: "Prima comunicazione telepatica bidirezionale involontaria con Naru durante la traversata. Larimar è la più leggibile per Naru tra i compagni."
-      },
+      },,
       {
         id: "naru", nome: "Naru", giocatore: "Jacopo", tipo: "pg",
         colore: "#E24B4A", iniziali: "N",
         tag: ["Volontà = realtà", "Shpada", "'Abominio'", "Telepatia involontaria"],
         descrizione: "Altezza ~1,68 m. Ha ricevuto il coltellino d'osso da Verlek Tre Occhi (valore affettivo). Ha detto al gruppo di non entrare nei suoi sogni.",
-        loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie.",
+        loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie",
         loreMaster: `L'ordine di Naru implanta un incubo rituale nei discepoli: attraverso questo incubo i maestri trasmettono i poteri. Naru è stato impiantato per errore a 8 anni. Il rituale cancella tutti i ricordi precedenti. Naru non sa che i ricordi sono stati cancellati — per lui non c'è un prima.
 
 Crede di non sognare perché non ricorda il suo unico sogno ricorrente: lago di latte, coste di pietra nera, tentacoli che cercano di ghermirlo. Larimar ha vissuto questo sogno dall'interno nella prima sessione, riportandone una cicatrice reale.
@@ -191,27 +191,16 @@ SE NARU HA AGITO (ha fallito la prova):
 [NOTA DM: il prossimo maestro = chi verrà a ucciderlo. Non chiarire.]
 
 Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di lui. Scompare.`,
-        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder.",
-        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire.",
-        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')."
-      },
-      {
-        id: "han", nome: "Han", giocatore: "PNG", tipo: "png",
-        colore: "#BA7517", iniziali: "H",
-        tag: ["Discendente Primo Olmo", "Umanizzazione rapida", "Piante sì — animali no"],
-        descrizione: "Ex mezzo bambino mezzo uccello. Ora simile a un adolescente allampanato con naso aquilino, piume residue, buco nel petto allargato. Trovato originariamente nella fontana con collare inciso 'Han', senza memoria.",
-        loreGiocatori: "Discendente del Primo Olmo. Umanizzazione in corso: piume quasi tutte scomparse, becco caduto. Ha perso il legame con gli animali. Conserva il potere sulle piante. Ora abbastanza umano da viaggiare senza attirare attenzione. Sogna per la prima volta dopo la liberazione dal bosco.\n\nLontano dalla terra ferma non riesce a mangiare né bere — vomita ripetutamente. Il contatto con la terra lo ristabilizza. Si è rivelato involontariamente vegano: tollera solo alimenti vegetali.\n\nNaru ha stabilito con lui una connessione telepatica persistente e bidirezionale — rimane attiva passivamente come 'ridotto a icona' senza richiedere concentrazione.\n\nNome falso in copertura a Fossolento: Delforio.",
-        loreMaster: "Bolla onirica con striature dorate anomale ('occhio di tigre'). Nel sogno appare il Viandante dei Sogni — futuro mentore di Larimar.\n\nHa vomitato vermi neri e marroni senza memoria dell'evento.\n\nIl gatto di Verlek lo ha graffiato in modo anomalo — gli animali percepiscono qualcosa di strano in lui.",
-        note: "Ha abbracciato Osiris spontaneamente singhiozzando — primo contatto fisico diretto autonomo. Forte imbarazzo dopo il primo utilizzo del bagno."
+        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')"
       },
       {
         id: "osiris", nome: "Osiris", giocatore: "Diana", tipo: "pg",
         colore: "#4A9EC4", iniziali: "O",
         tag: ["Affinità oggetti da lancio", "Centro emotivo", "Moneta della fortuna"],
         descrizione: "Centro emotivo del gruppo. Forte legame con gli oggetti, in particolare armi da lancio. Possiede una moneta della fortuna dalle proprietà ancora sconosciute.",
-        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder.",
-        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire.",
-        note: "Andata a letto senza chiarimento con Naru dopo il litigio. Ha abbracciato Han spontaneamente — lui ha risposto singhiozzando."
+        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder",
+        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire",
+        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')"
       }
     ],
     png: [
