@@ -138,13 +138,13 @@ const TRESIL_DATA = {
         loreGiocatori: "Può camminare liberamente nel mondo dei sogni — per lei è dormire, ma nel reale è inconscia. Le bastano 2 ore a notte. Si nutre di emozioni nel mondo dei sogni: amplifica l'emozione del sognatore, la estrae fisicamente, il sogno fa un rebound verso il polo opposto. Ha acquisito la capacità di sognare (prima non la aveva). Possiede la collana di pietra lunare. Ha dichiarato di non voler usare poteri in pubblico sulla nave.",
         loreMaster: "Il suo vero aspetto — noto ai giocatori ma ignoto a Larimar come personaggio — è quello della creatura gobba verdastra che appare nei sogni di Han: pelle verdastra bianchiccia umida, sopracciglio molto prominente, capelli con chiazze vuote, armata di lancia. Han la percepisce così normalmente. Osiris lo ha intravisto un paio di volte in un riflesso.\n\nHa visto nel sogno di Osiris che questa sogna Larimar chiedere un legame fatato — non l'ha detto a nessuno.\n\nNella sessione del bosco di Ruder ha visto la bolla di Han circondata da fatati che lo osservavano.",
         note: "Prima comunicazione telepatica bidirezionale involontaria con Naru durante la traversata. Larimar è la più leggibile per Naru tra i compagni."
-      },,
+      },
       {
         id: "naru", nome: "Naru", giocatore: "Jacopo", tipo: "pg",
         colore: "#E24B4A", iniziali: "N",
         tag: ["Volontà = realtà", "Shpada", "'Abominio'", "Telepatia involontaria"],
         descrizione: "Altezza ~1,68 m. Ha ricevuto il coltellino d'osso da Verlek Tre Occhi (valore affettivo). Ha detto al gruppo di non entrare nei suoi sogni.",
-        loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie",
+        loreGiocatori: "La sua volontà plasma la realtà. Possiede Shpada, una katana che muta forma rispondendo alla sua volontà — può richiamarla a distanza, percepirne la presenza, ricoprirsene per poi estrarla dalla propria pelle. Ha scoperto di poter influenzare carne e salute con la volontà. Ha incontrato Yome Musashi (prove). Sta sviluppando capacità telepatiche involontarie.",
         loreMaster: `L'ordine di Naru implanta un incubo rituale nei discepoli: attraverso questo incubo i maestri trasmettono i poteri. Naru è stato impiantato per errore a 8 anni. Il rituale cancella tutti i ricordi precedenti. Naru non sa che i ricordi sono stati cancellati — per lui non c'è un prima.
 
 Crede di non sognare perché non ricorda il suo unico sogno ricorrente: lago di latte, coste di pietra nera, tentacoli che cercano di ghermirlo. Larimar ha vissuto questo sogno dall'interno nella prima sessione, riportandone una cicatrice reale.
@@ -191,7 +191,9 @@ SE NARU HA AGITO (ha fallito la prova):
 [NOTA DM: il prossimo maestro = chi verrà a ucciderlo. Non chiarire.]
 
 Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di lui. Scompare.`,
-        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')"
+        loreGiocatori: "Forte legame con gli oggetti, affinità con armi da lancio. Possiede la moneta della fortuna (proprietà a lei sconosciute). Conflitto irrisolto con Naru dopo la notte nel bosco di Ruder.",
+        loreMaster: "Ha intravisto il vero aspetto di Larimar (creatura verdastra) in un riflesso un paio di volte ma non l'ha detto a nessuno.\n\nSogna inconsciamente Larimar che le chiede un legame fatato. Larimar lo sa, Osiris no.\n\nSogni con traumi: fratello che la rifiuta, senso di abbandono, mostri nel bosco.\n\nÈ la più difficile da percepire telepaticamente per Naru — motivo ancora da definire.",
+        note: "Andata a letto senza chiarimento con Naru dopo il litigio ('La famiglia fa schifo')."
       },
       {
         id: "han", nome: "Han", giocatore: "PNG", tipo: "png",
@@ -765,7 +767,63 @@ Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di
       approfondimenti: [],
       tag: ["Fossolento", "Telepatia Naru–Han", "Lina Storta", "Eldran Vossi", "Scogliera", "Piano notturno", "Gemelli sospetti", "Jorad", "Nessun fatato", "Veglia Larimar"],
       riassunto: "Sbarco a Fossolento. Han si riprende a contatto con la terra. Copertura regge con Hurrell. Insediamento alla locanda di Serca. Tre stranieri sospetti osservati alla locanda (un quarto con cicatrici dorme alla conceria). Telepatia di Naru confermata e ampliata: canale persistente con Han. Larimar veglia senza trovare fatati. Bossi fornisce mappa con accesso dalla scogliera. Piano operativo: sopralluogo onirico + infiltrazione notturna dalla scogliera."
+    },
+
+
+    // ── S17 · 34 del 4° mese ────────────────────────────────────────────
+    {
+      id: "s-17", data: "34 del 4° mese",
+      luogo: "Fossolento — conceria, fucina di Balsan, strada principale",
+      titolo: "La Furia del Bakiala — sangue, fuoco e la seconda prova",
+      nuova: true,
+      eventiChiave: [
+        "Larimar si infiltra scalando la scogliera, Naru e Osiris attendono all'ingresso",
+        "Larimar corrompe la locandiera: 3-4 persone nella conceria, materiali insoliti (alghe, corteccia di cannella)",
+        "Naru stabilisce contatto telepatico con Larimar a circa 30 metri di distanza",
+        "Larimar sente un martelletto lavorare metallo fine — sospetto: stanno forgiando collari",
+        "Osiris si infiltra nella conceria, avvertita telepaticamente da Naru di una guardia vicina",
+        "Osiris spia l'officina: uomo con monocolo forgia collari con martelletto, polverina e braci — reazione azzurro-verdastra",
+        "⭐ Larimar riconosce i collari attraverso la connessione telepatica — sviene per lo shock emotivo",
+        "Osiris scoperta dal complice di Ravok (uomo alto, orecchie a cipolla) — spara mirando al ginocchio",
+        "Osiris fa irruzione nella conceria furiosa, spara a una guardia allo stomaco, prende in ostaggio il fabbro col monocolo",
+        "⭐ Naru intercettato da Kael Dorven mentre è in stato emotivo alterato",
+        "Kael a Naru: 'Il mondo tende al caos. Non è una metafora. A volte bisogna perpetuare il male per garantire l'equilibrio.'",
+        "Larimar vede Naru allontanarsi con Kael, teme controllo mentale, si lancia all'inseguimento",
+        "⭐ Seconda prova di Kael: Naru e Larimar trasportati nel passato — fucina di Balsan",
+        "Tre ladri irrompono nella fucina di Balsan, aggrediscono il fabbro — Balsan accoltellato alla schiena",
+        "Gregory lancia il coltello che uccide Samantha, figlia di Balsan — i PG assistono impotenti",
+        "Gregory fugge passando accanto a Naru e Larimar: tatuaggio a picca rovesciata sull'avambraccio sinistro",
+        "⭐ Kaldoren a Larimar: 'Avevo detto al consiglio che era meglio ucciderti. Magari mi sbagliavo.' — poi svanisce",
+        "Osiris spara a Ravok — entità di fumo nero-bluastro rapisce il complice col bracciale attivo",
+        "⭐ Ravok si trasforma brevemente in omino grigio con collare al collo — è a sua volta controllato",
+        "Osiris lancia ampolla incendiaria su Ravok dandogli fuoco, fugge con Han trascinando una guardia",
+        "Il fabbro con bracciale evoca una creatura — Han sopraffatto e svenuto",
+        "Osiris entra nella fabbriceria in fiamme, uccide il fabbro, distrugge il bracciale nel fuoco — creatura scompare",
+        "⭐ Naru smette di respirare — Larimar entra nel suo mondo dei sogni (lago di latte, doppio di Naru)",
+        "Osiris si prepara a trasferire metà della sua forza vitale nella collana di Pietra di Luna per rianimare Naru",
+        "⭐ Dalla conceria in fiamme emerge il Bakiala — spirito Solnari corrotto con collare — fulmini devastanti sulla folla",
+        "Larimar riconosce il Bakiala dalle leggende Solnari, nota il collare tra le nubi",
+        "Naru taglia un fulmine con la Shpada salvando Osiris e Han",
+        "⭐ Naru attacca il Bakiala — il fulmine finale lo colpisce in pieno: gravemente ustionato, incosciente",
+        "La Shpada svanisce dopo il colpo del fulmine"
+      ],
+      economia: [],
+      oggetti: [
+        { nome: "Shpada", note: "Svanita dopo il colpo del fulmine del Bakiala. Dove si trova?", acquisito: false },
+        { nome: "Mannaia", note: "Trovata da Osiris nella fucina.", acquisito: true },
+        { nome: "Bracciale del fabbro", note: "Tagliato e distrutto nel fuoco da Osiris.", acquisito: false }
+      ],
+      approfondimenti: [
+        "⭐ KAEL DORVEN — La seconda prova: saper riconoscere il taglio necessario. Ha mostrato la morte di Samantha come lezione sul male necessario per l'equilibrio. Possiede poteri mentali e una sfera di cristallo.",
+        "⭐ RAVOK E' CONTROLLATO — Sotto pressione si trasforma in omino grigio con collare. Non è il vertice: qualcuno lo controlla tramite collare, probabilmente M.",
+        "⭐ GREGORY E IL TATUAGGIO — Picca rovesciata sull'avambraccio sinistro. Simbolo di organizzazione sconosciuta. Era in rapporti con Balsan prima della rapina. Thread aperto.",
+        "⭐ BAKIALA — Spirito Solnari corrotto con collare. Larimar ha visto occhi imploranti dietro la maschera — vuole essere liberato. Ha una debolezza mortale legata alla sua essenza.",
+        "⭐ NARU — Ustioni gravi, non respira. Larimar nel suo sogno vede il lago di latte e un doppio di Naru. Osiris pronta al sacrificio con la Pietra di Luna. Cliffhanger."
+      ],
+      tag: ["Kael Dorven", "Seconda prova", "Samantha", "Gregory", "Tatuaggio", "Ravok controllato", "Bakiala", "Shpada svanita", "Naru ustionato", "Pietra di Luna"],
+      riassunto: "Infiltrazione alla conceria, Larimar e poi Osiris. Collari confermati. Naru intercettato da Kael Dorven — seconda prova nel passato: morte di Samantha, Gregory e il tatuaggio. Kaldoren rivela che il consiglio voleva uccidere Larimar. Ravok appare e si rivela controllato. Il fabbro evoca una creatura — Osiris lo uccide. Bakiala emerge dalla conceria in fiamme. Naru lo affronta, viene colpito, la Shpada svanisce."
     }
+
 
   ],
 
@@ -776,7 +834,34 @@ Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di
       {
         id: "kaelvaran", nome: "Kaelvaran — il mondo", tag: ["Mondo"],
         testo: "Il nome del mondo conosciuto. Comprende il Sesto Continente (l'atollo) e altri continenti oltre le acque ancora in parte inesplorati."
+      },      {
+        id: "kael-dorven", nome: "Kael Dorven", tipo: "png",
+        colore: "#7a6e62", iniziali: "KD",
+        tag: ["Ordine", "Maestro di Naru", "Poteri mentali", "Shizenka"],
+        descrizione: "Uomo sulla sessantina, secco, duro. Calvo con capelli radi sulla nuca. Cicatrice sul labbro sopra e sotto. Veste in grigio scuro. Sguardo valutante, parla poco.",
+        loreGiocatori: "Maestro di Naru nell'Ordine. Filosofia: il mondo tende al caos, bisogna sporcarsi le mani per mantenerlo in equilibrio. Ha poteri mentali — può rallentare i movimenti altrui. Possiede una sfera di cristallo con intarsi argentati. Ha portato Naru e Larimar nel passato per la seconda prova: la morte di Samantha, figlia di Balsan. Conosce Yome Musashi ma lo ritiene incompleto.",
+        loreMaster: "Sa del rituale prematuro di Naru e dell'incubo innestato. Aveva votato per uccidere Naru — fu messo in minoranza. Non lo dira mai. Considera Musashi uno smidollato.",
+        soloMaster: false
       },
+      {
+        id: "gregory", nome: "Gregory", tipo: "png",
+        colore: "#c45a5a", iniziali: "GR",
+        tag: ["Ladro", "Assassino", "Tatuaggio a picca"],
+        descrizione: "Uomo che aveva rapporti con Balsan — aveva ricevuto uno sconto su un coltello. Tatuaggio a forma di testa di picca rovesciata sull'avambraccio sinistro.",
+        loreGiocatori: "Assassino di Samantha, figlia di Balsan. Ha ucciso la bambina durante una rapina lanciando un coltello. Ha un tatuaggio a picca rovesciata sul braccio sinistro — simbolo di organizzazione non ancora identificata. E fuggito passando accanto a Naru e Larimar.",
+        loreMaster: "",
+        soloMaster: false
+      },
+      {
+        id: "bakiala", nome: "Bakiala", tipo: "png",
+        colore: "#3a6090", iniziali: "BK",
+        tag: ["Fatato", "Spirito tempesta", "Corrotto", "Solnari", "Collare"],
+        descrizione: "Essere alto 3 metri fatto di nubi temporalesche nere crepitanti. Teschio di alce al posto del volto. Dietro la maschera, due occhi umani imploranti. Indossa un collare.",
+        loreGiocatori: "Spirito della tradizione Solnari — guardiano del sonno degli antichi morti. Non dovrebbe essere aggressivo per natura. Indossa un collare: e controllato contro la sua volonta. Gli occhi dietro la maschera sono imploranti. Ha una debolezza legata alla sua natura. Ha colpito Naru con un fulmine — la Shpada e svanita.",
+        loreMaster: "La debolezza del Bakiala e un elemento mortale legato alla sua essenza specifica. Va liberato, non ucciso.",
+        soloMaster: false
+      },
+
       {
         id: "sesto-continente", nome: "Il Sesto Continente", tag: ["Atollo", "Oceano Centrale"],
         testo: "Un grande atollo che circonda l'Oceano Centrale — distesa d'acqua nel cuore dell'atollo in cui è ancora impossibile navigare. L'atollo è popolato da cinque culture umane: Ferromarchi, Shizenka, Varlmenn, Solnari, Aenari. Le isole erano un tempo separate da faide e guerre navali prima della fondazione di Tresil."
