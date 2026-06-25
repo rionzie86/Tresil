@@ -91,7 +91,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 
 <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
-<div class="timer-display" id="timerDisplay">2:30</div>
+<div class="timer-display" id="timerDisplay">3:00</div>
 <div class="app">
   <header class="hdr">
     <div class="hdr-left">
@@ -280,7 +280,11 @@ function init(){
     const el=document.createElement('div');
     el.className='piece';
     el.style.cssText=`width:${pd.w}px;height:${pd.h}px;z-index:${100+i};position:absolute;background-image:url("${pd.src}");background-size:100% 100%;background-repeat:no-repeat;`;
-
+    // Badge ID per debug
+    const badge=document.createElement('div');
+    badge.style.cssText='position:absolute;top:4px;left:4px;background:rgba(201,168,76,.85);color:#000;font-size:10px;font-weight:bold;padding:1px 5px;border-radius:2px;font-family:monospace;pointer-events:none;z-index:2;';
+    badge.textContent='#'+pd.id;
+    el.appendChild(badge);
     canvasEl.appendChild(el);
 
     const ang=(i/PD.length)*Math.PI*2;
@@ -288,26 +292,30 @@ function init(){
     const px=VIRT_OX+ORIG_W/2+Math.cos(ang)*r-pd.w/2;
     const py=VIRT_OY+ORIG_H/2+Math.sin(ang)*r-pd.h/2;
 
-    const st={el,pd,x:px,y:py,rot:pd.startRot,snapped:false,_hint:false};
+    // Se è il pezzo #3, posizionalo già al suo posto e fissalo
+    let initSnapped = false;
+    let initX = px, initY = py, initRot = pd.startRot;
+    if(pd.id === 3){
+      initX = VIRT_OX + pd.snapX;
+      initY = VIRT_OY + pd.snapY;
+      initRot = 0;
+      initSnapped = true;
+    }
+    const st={el,pd,x:initX,y:initY,rot:initRot,snapped:initSnapped,_hint:false};
+    if(initSnapped){
+      el.classList.add('snapped');
+      el.style.zIndex=50;
+    }
     pieces.push(st); applyT(st);
+    if(initSnapped){
+      snapCount++;
+      document.getElementById('snapCount').textContent=snapCount;
+    }
 
     el.addEventListener('mousedown',e=>onDown(e,st));
     el.addEventListener('touchstart',e=>onDown(e,st),{passive:false});
   });
   resetView();
-  // Pezzo centrale (#3) già fissato come punto di partenza
-  const central = pieces.find(st => st.pd.id === 3);
-  if (central) {
-    central.x = VIRT_OX + central.pd.snapX;
-    central.y = VIRT_OY + central.pd.snapY;
-    central.rot = 0;
-    central.snapped = true;
-    central.el.classList.add('snapped');
-    central.el.style.zIndex = 50;
-    applyT(central);
-    snapCount++;
-    document.getElementById('snapCount').textContent = snapCount;
-  }
 }
 
 function applyT(st){
@@ -395,7 +403,7 @@ function getPoint(e){
 
 
 // ── TIMER ──────────────────────────────────────────
-const TIMER_DURATION = 150; // 2 minuti e 30 secondi
+const TIMER_DURATION = 180; // 3 minuti
 let timerInterval = null;
 let timerRemaining = TIMER_DURATION;
 
