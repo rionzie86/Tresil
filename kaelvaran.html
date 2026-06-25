@@ -2315,9 +2315,18 @@ function nav(id) {
   navItems.forEach(n => n.classList.remove('active'));
   sections.forEach(s => s.classList.remove('visible'));
   const target = document.getElementById('sec-' + id);
-  if (target) { target.classList.add('visible'); document.querySelector('.main').scrollTop = 0; }
+  if (target) {
+    target.classList.add('visible');
+    // scroll to top sia per desktop (main) che mobile (window)
+    document.querySelector('.main').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
   const navItem = document.querySelector('.nav-item[data-section="' + id + '"]');
-  if (navItem) navItem.classList.add('active');
+  if (navItem) {
+    navItem.classList.add('active');
+    // porta la voce attiva in vista nella sidebar
+    navItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
 }
 
 navItems.forEach(item => {
