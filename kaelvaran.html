@@ -167,11 +167,17 @@ a.ilink:hover{color:var(--gold);border-color:var(--gold-dim);}
 .sidebar-overlay.visible{opacity:1;}
 
 @media(max-width:768px){
-  .app{flex-direction:column;}
+  /* L'app non blocca più lo scroll su mobile */
+  .app{
+    flex-direction:column;
+    height:auto;
+    overflow:visible;
+  }
 
   .hamburger{display:flex;}
   .sidebar-overlay{display:block;}
 
+  /* Sidebar come drawer fisso — non influisce sul layout */
   .sidebar{
     position:fixed;
     top:0; left:0;
@@ -186,12 +192,18 @@ a.ilink:hover{color:var(--gold);border-color:var(--gold-dim);}
   }
   .sidebar.open{transform:translateX(0);}
 
+  /* Main: occupa tutto, scorre normalmente */
   .main{
     width:100%;
-    min-height:100vh;
+    height:auto;
+    overflow:visible;
     padding-top:60px;
   }
-  .content-section{padding:24px 18px;}
+
+  /* Quando il menu è aperto blocca solo il body */
+  body.menu-open{overflow:hidden;}
+
+  .content-section{padding:24px 18px;max-width:100%;}
   .mechanic-grid{grid-template-columns:1fr;}
   .section-title{font-size:22px;}
   .content-h2{font-size:14px;}
@@ -2352,13 +2364,13 @@ function openMenu() {
   sidebar.classList.add('open');
   overlay.classList.add('visible');
   hamburger.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('menu-open');
 }
 function closeMenu() {
   sidebar.classList.remove('open');
   overlay.classList.remove('visible');
   hamburger.classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.classList.remove('menu-open');
 }
 
 hamburger.addEventListener('click', () => {
