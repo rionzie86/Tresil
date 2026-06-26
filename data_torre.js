@@ -189,73 +189,173 @@ La frana ha aperto un accesso a una grotta preesistente — è da lì che è usc
       id: "cap4",
       titolo: "Capitolo 4 — La Grotta di Ralia e Dogti",
       icona: "🕯️",
-      riassunto: "Oltre la frana si apre una grotta antica, abitata in passato. Tre elementi chiave raccontano una storia d'amore diventata abominio — e aprono la via verso la Torre.",
+      riassunto: "Oltre le macerie si apre una stanza antica, abitata a lungo. Una storia d'amore diventata abominio — e una via verso la Torre.",
       sezioni: [
         {
-          titolo: "La Grotta — Descrizione",
+          titolo: "Oltre le Macerie",
           tipo: "scena",
-          testo: `Non è una caverna selvaggia. Qualcuno ha vissuto qui: stuoie logore per dormire, 
-un camino scavato nella roccia con tracce di cenere recente, un cucinotto arrangiato, 
-una credenza di legno marcio. L'aria è ferma e pesante, come se il tempo qui dentro 
-si fosse addensato.`
+          testo: `Le macerie cedono sotto i piedi con un rumore sordo. Oltre, il buio è totale — l'aria è ferma, vecchia, come se nessuno l'avesse respirata da molto tempo. Quando gli occhi si abituano, nell'angolo in basso a destra, si intravede l'orlo di un tappeto. Logoro, di un colore che non si riesce più a definire. Qualcuno viveva qui.`
         },
         {
-          titolo: "Lo Spartito nel Camino",
-          tipo: "oggetto",
-          testo: `Nel camino, tra le ceneri, ci sono frammenti di fogli manoscritti bruciati. 
-Non tutti sono completamente distrutti — alcune note musicali, alcuni segni, 
-restano leggibili ai bordi.`,
-          notaDM: `Lo spartito è incompleto e bruciato intenzionalmente dal Biondo. La notazione è inusuale — non è musica nel senso tradizionale, è più vicina a un sigillo arcano trascritto in forma melodica.
+          titolo: "L'Interno della Stanza",
+          tipo: "scena",
+          testo: `La stanza è piccola e bassa. Si vede subito che qualcuno l'ha abitata a lungo — non per scelta, ma per necessità. Due stuoie consumate sul pavimento, disposte a qualche metro di distanza. Un avvallamento nella parete di destra è stato adattato a camino: le pareti annerite dal fumo, sul fondo un cumulo di cenere e frammenti di carta bruciata, vecchi di decenni. Non c'è più nulla di leggibile.
 
-Collegamento con Dogti: il ritmo che Dogti batte sul pavimento con il moncherino corrisponde esattamente al tempo della melodia sui frammenti. Mettendo insieme i due elementi, i PG possono riconoscere la canzone — quella che conoscono nella vita reale come Thriller di Michael Jackson. In questo mondo è una canzone popolare Varlmenn: Ralia la cantava a Dogti.`
+Al centro della stanza, accasciato contro una stalagmite, c'è un corpo. Non è recente — la pelle è secca, tirata sull'osso. La stalagmite gli è entrata nel fianco e fuoriesce dall'altro lato. La posizione suggerisce che non sia caduto: si è seduto lì. Accanto, sul pavimento, c'è il diario.`
         },
         {
           titolo: "Il Diario del Biondo",
           tipo: "documento",
-          testo: `Sul pavimento, accanto al cadavere bloccato alla parete, c'è un diario. 
-La copertina è di cuoio scuro, le pagine ingiallite. L'ultima è macchiata di sangue.`,
-          documentoCompleto: `[DIARIO DEL BIONDO — da leggere ai giocatori]
+          testo: `La copertina è di cuoio scuro, le pagine ingiallite. L'ultima è macchiata di sangue.`,
+          documentoCompleto: `DIARIO DI CAMPO — IL BIONDO
+Ad uso esclusivo del Consiglio Ristretto di Tresil
 
-Dopo 3 mesi di incessanti ed estenuanti ricerche sono finalmente riuscito a rintracciare 
-Fraxximt il Rospo nelle profondità di una montagna a nord dell'isola Mushara 
-(nome antico che i Solnari davano a Tresil).
 
-Dopo che il mago pazzo è scappato dalle grinfie degli inquisitori Brahmani, 
-è stato molto difficile ritrovare le sue tracce.
+[Prima annotazione, data illeggibile]
 
-Giusto in tempo. Fraxximt sta creando una serie di abomini per riempire la sua infinita 
-torre della follia. Non capisco come abbia raggiunto il potere di creare un luogo come questo. 
-Cambia continuamente e non c'è una via per arrivare direttamente nelle stanze del mago pazzo.
+Sono tre mesi che seguo le tracce di Fraxximt. Tre mesi di false piste, testimonianze contraddittorie e notti passate a convincere doganieri e locandieri che le mie domande erano lecite. Il Consiglio mi ha dato carta bianca e poco altro. Non è un uomo facile da trovare, o meglio, lo è stato. Il problema è che quando lo trovi, lui non è mai solo.
 
-Ora comprendo che il Rospo non crea incantesimi: li ruba e li corrompe. 
-Ho trovato una camera nascosta, antecedente la torre. Dentro di essa due corpi (Ralia e Dogti), 
-uno decomposto da tempo (Ralia) l'altro orrendamente deturpato dal marciume, 
-con il petto squarciato e vuoto. Mi è venuto un colpo quando l'uomo marcio ha iniziato a muoversi. 
-Alla fine era innocuo — con l'orecchio teso sembrava aspettare che qualcuno dicesse qualcosa, 
-e con il moncherino dell'indice sinistro continuava a battere ritmicamente sul pavimento della grotta.
+L'artefatto che ha trafugato dalla Guardia delle Sette Memorie è ancora nelle sue mani. Non so cosa pianifichi di farne. So che non è stupido, e questo mi preoccupa più di qualsiasi altra cosa.
 
-Dai vari scritti sparsi per la camera ho scoperto la macabra storia di Ralia e del suo amato Dogti. 
-Ella era una aspirante sacerdotessa di Virxiante la Rigeneratrice 
-(una dei tanti fatati adorati dai villici nel sud di Lugdunum nel continente Varlmenn). 
-Quando il suo amato perì in guerra ella scappò con la sua salma e lo riportò indietro dalla morte, 
-dando vita ad un abominio. Dogti scappò e iniziò a infettare tutti gli insediamenti vicini. 
-Fu così che Ralia lo incatenò con la loro canzone — e ballando lo costrinse a tornare 
-nella grotta dove si trovano ancora oggi.
 
-Ho capito! Il Rospo deve aver trovato questa grotta durante gli scavi per la sua torre 
-e, appropriatosi della canzone dei due innamorati e del cuore di Dogti come tramite arcano, 
-ha creato i suoi abomini personali.
+[Seconda annotazione, Fossolento]
 
-Sono riuscito a sottrargli lo spartito della canzone — ma non il cuore. 
-Ho bruciato gli appunti di Ralia e lo spartito del Rospo. Sembra che per lui sia necessario 
-avere entrambi nelle vicinanze per creare e controllare gli abomini, 
-e in ogni caso sembra avere difficoltà nel controllare Dogti. 
-Ho dato fuoco allo spartito appena arrivato nella stanza. 
-Il Rospo mi rincorre. Non posso fuggire dalla sua torre. 
-Dogti sembra spaventato, rannicch...`,
-          notaDM: `Il diario si interrompe a metà parola. I giocatori non sapranno mai come finisce. Il Biondo è il cadavere bloccato alla parete — trattenuto lì dopo aver bruciato lo spartito.
+Ho iniziato dall'inizio: Fossolento, il villaggio dove è nato. Un posto che sa di sale e pesce essiccato, dove i bambini giocano vicino ai moli e i vecchi siedono fuori dalle porte a guardare il mare. Non il posto da cui ti aspetti esca un mago che ruba artefatti al Consiglio.
 
-Informazioni chiave che i PG ricavano:
+Ho parlato con chi lo ricordava. Era uno studioso, dicevano. Brillante, un poco strano, ma non cattivo. Aveva una moglie e un marito, tutti e tre inseparabili. Poi se n'è andato per studiare, come fanno quelli che hanno cervello e non vogliono sprecarsi a riparare reti da pesca. Nessuno lo ha visto tornare.
+
+Mi chiedo se lo abbiano cercato.
+
+
+[Terza annotazione, Greyhollow, Brennvar Varlhavn]
+
+L'ho quasi preso.
+
+Quasi.
+
+Greyhollow è una città che puzza di carbone e ambizione, il tipo di posto dove un mago in fuga può sparire tra mille facce anonime. Invece lui si è fatto notare. Qualcuno che si fa notare o è disperato o è arrogante. Fraxximt, ho capito, è entrambe le cose.
+
+Ho seguito la pista fino a un archivio privato nel quartiere basso. Era lì che cercava qualcosa, un incantesimo, secondo le voci. Quando ho sfondato la porta era ancora dentro. La colluttazione è stata breve. Lui ha attivato una maledizione che non avevo visto arrivare, e il fuoco ha fatto il resto.
+
+Non su di me. Su di lui.
+
+Mi sono fermato sulla soglia a guardarlo mentre si teneva il viso tra le mani. Le ustioni erano serie. Il tipo di ustioni che non guariscono mai del tutto. Quando ha abbassato le mani e mi ha guardato, ho capito perché da quel giorno tutti avrebbero smesso di chiamarlo Fraxximt.
+
+È scappato prima che potessi bloccarlo. Ha portato con sé quello che cercava: un incantesimo antico, oscuro, con più rischi che benefici. Qualcosa che evoca un'ombra dal mondo dei Dimenticati, nell'Oltrevelo. Non riesco ancora a capire perché lo voglia. Le ombre dei Dimenticati non obbediscono a nessuno. Non ricordano nemmeno se stesse.
+
+Da Greyhollow in poi, lo chiamo il Rospo.
+
+
+[Quarta annotazione, Impero Solnari, luogo non specificato]
+
+Non avrei dovuto seguirlo qui. Le guerre civili hanno reso ogni confine una trappola e ogni volto uno straniero potenzialmente ostile. Ho attraversato tre posti di blocco con documenti che reggono all'esame solo se l'esaminatore non è troppo sveglio.
+
+Il Rospo si muove come se le guerre non lo riguardassero. Forse non lo riguardano davvero, un uomo con il viso bruciato e nessuna bandiera è invisibile in un posto dove tutti guardano il nemico dall'altra parte.
+
+L'ha preso in un tempio abbandonato a due giorni dalla costa. Un amuleto Solnari, antico, pre-Frattura, secondo le mie stime. Plasma la pietra. La modella come argilla, a quanto ne so. Non ho capito subito il perché. Lo sto ancora capendo.
+
+L'ho perso di nuovo prima di riuscire a bloccarlo. Stavo seguendo quella che pensavo fosse una pista solida che lo riportava nel Varlhavn quando è arrivata la missiva del Consiglio.
+
+Il Rospo era stato avvistato a Rombia.
+
+Ho impiegato un momento a ricordare dov'era Rombia. Isola di Mushara. A nord di Tresil.
+
+Sono ripartito quella stessa notte.
+
+
+[Quinta annotazione, Rombia]
+
+Il villaggio puzza ancora. Non di morte, di qualcosa prima della morte. Quell'odore umido e ferroso che si attacca alle pareti e non se ne va più.
+
+L'epidemia ha colpito quattro mesi fa. Chi è rimasto parla poco e tiene gli occhi bassi, come se guardare in faccia le persone fosse diventato pericoloso. Forse lo è.
+
+Ho ricostruito la sequenza con pazienza, un testimone alla volta.
+
+Cinque giorni prima che iniziasse tutto, una ragazza e il suo compagno erano passati dal villaggio. Non si erano fermati, avevano solo comprato qualcosa al mercato, della carne, delle verdure, del pane, e poi erano ripartiti verso nord. La ragazza sembrava stanca ma sana. Il compagno camminava storto, in un modo che non tornava, come se qualcosa nel suo corpo non funzionasse nel verso giusto. Nessuno ci aveva dato peso.
+
+Poi era arrivata l'epidemia. Persone e animali in preda a qualcosa che somigliava alla rabbia, occhi iniettati di sangue, morsi, urla. Una cosa che si trasmetteva al contatto. Non tutti erano caduti, ma abbastanza.
+
+Due mesi dopo l'epidemia era arrivato il Rospo. Lo hanno descritto senza saperlo: viso segnato, occhi attenti, non beveva. Faceva domande sulla ragazza e sul suo compagno. Molte domande. Ma faceva anche domande strane, domande sui sogni degli abitanti durante i giorni dell'epidemia, cosa avevano visto, se si ricordavano qualcosa al risveglio, se i sogni erano cambiati. Nessuno aveva capito perché. Poi aveva pagato il conto ed era partito verso nord, nella stessa direzione della ragazza.
+
+Io sono arrivato altri due mesi dopo. Ho ascoltato, ho preso note, ho ringraziato e sono ripartito.
+
+Il Rospo non stava inseguendo la ragazza in tempo reale. Stava seguendo una traccia di magia che l'epidemia aveva lasciato nell'aria. Cercava qualcosa da rubare, come sempre. Ha trovato qualcosa di peggio.
+
+
+[Sesta annotazione, ai piedi del monte, notte]
+
+Le tracce dell'amuleto Solnari sono ovunque qui. La pietra è stata lavorata, non in modo grezzo, ma con una precisione che fa quasi paura. Qualcuno ha aperto un passaggio dove non doveva esserci nessun passaggio.
+
+Ho forzato l'ingresso. Dentro ho trovato una stanza. Piccola, bassa, abitata a lungo. Due stuoie. Un camino ricavato nella roccia. L'odore di chi ha vissuto qui per mesi senza mai uscire.
+
+E due cadaveri.
+
+Una ragazza, Ralia, ho trovato il nome su alcuni scritti sparsi. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.
+
+Ho capito cosa cercava il Rospo. Non la ragazza. Quello che la ragazza portava con sé.
+
+Sono entrato nella torre.
+
+
+[Settima annotazione, scritta a tratti, l'inchiostro macchia il foglio in punti irregolari]
+
+devo essere rapido. la mano non risponde bene.
+
+la torre è una follia. non c'è altro modo per dirlo. cambia, le stanze si spostano, le scale non portano dove dovrebbero. il Rospo ha aperto un varco con l'incantesimo delle ombre e la torre ne è piena. incubi, ombre dei Dimenticati che non ricordano chi erano ma ricordano come fare del male. li tiene lontani solo la luce dell'occhio, ho tenuto gli occhi aperti finché potevo.
+
+ci sono anche spettri nelle scale. nel piano più basso. non si avvicinano se non ti fermi.
+
+sono arrivato al piano nascosto. oltre il trono del Rospo.
+
+non voglio scrivere quello che ho trovato lì. ma devo. qualcuno deve saperlo.
+
+Eritha. la moglie del Rospo. era lì. quello che il Rospo ha fatto a lei, non so se chiamarlo ancora con un nome umano. l'ha trasformata. una macchina. produce bambini che non sono bambini. e l'altro, il marito, credo, trasformato in un guardiano. gli occhi vuoti. nessuna volontà rimasta dentro.
+
+ho trovato l'artefatto. un'ampolla. spine di ottone attorno al vetro. dentro un cuore. pulsava. più mi avvicinavo all'uscita più batteva forte, come se sentisse qualcosa.
+
+quando sono tornato nella grotta lui mi aspettava.
+
+il ragazzo col petto aperto. si muoveva. non come prima, con intenzione. mi ha strappato l'ampolla. stava per infilarsela nel petto quando uno sperone di roccia è uscito dalla parete.
+
+mi ha attraversato la pancia.
+
+ha attraversato anche lui.
+
+poi la musica. qualcuno fischiettava, labbra screpolate, una nota che non finiva mai. il ragazzo col petto aperto si è bloccato di colpo. completamente fermo. come pietrificato dal suono.
+
+il Rospo è entrato nella stanza. ha strappato l'ampolla dalle mani del ragazzo. ha chiuso tutto, l'ingresso esterno, l'ingresso alla torre. pietra su pietra.
+
+mi ha lasciato qui.
+
+
+[Ultima annotazione, scrittura quasi illeggibile]
+
+il ragazzo col petto aperto ansima accanto a me. ogni tanto mi guarda. non so cosa veda.
+
+poi ha parlato.
+
+si chiama Dogti. o si chiamava. non sono sicuro che lui sappia la differenza.
+
+mi ha detto di Rahlia. che era morto in una guerra che non ricordava più e che era rimasto nell'oscurità finché non aveva sentito il suo canto. che il canto lo aveva riportato, non in vita, ma a qualcosa che le somigliava. che erano scappati insieme perché chiunque si avvicinasse a lui finiva come lui, e lei non voleva che succedesse a nessuno.
+
+si erano nascosti qui. per un tempo che lui non sa misurare.
+
+poi il Rospo li aveva trovati. aveva ucciso Rahlia. gli aveva strappato il cuore dal petto, letteralmente, con le mani, e lo aveva usato come tramite per quello che stava costruendo.
+
+da allora Dogti è qui. senza cuore. senza Rahlia. senza una ragione per muoversi che non sia quella nota fischiettata che a volte arriva da sopra e lo fa smettere di pensare.
+
+mi dispiace, gli ho detto. non so se capisce.
+
+la mano non si muove più bene.
+
+l'artefatto è nella torre. il Rospo ce l'ha. non sono riuscito a portarlo via.
+
+Mi dispiace, Iria amore mio.
+
+— Il Biondo`,
+          notaDM: `Il diario è da riscrivere — lavoro separato. Il Biondo è il cadavere accasciato sulla stalagmite.
+
+Informazioni chiave che i PG ricavano dal diario:
 • Il nome del mago: Fraxximt il Rospo
 • La torre cambia continuamente — non c'è una via diretta al mago
 • Esiste il "cuore di Dogti" usato come tramite arcano
@@ -263,18 +363,13 @@ Informazioni chiave che i PG ricavano:
 • La canzone va cantata — ed è legata a Dogti in modo profondo`
         },
         {
-          titolo: "Il Cadavere e la Parete Magica",
+          titolo: "La Parete di Fondo",
           tipo: "scena",
-          testo: `Uno scheletro è bloccato alla parete da tralicci di pietra cresciuti attorno alle ossa — 
-come se la roccia stessa lo avesse trattenuto. Accanto, sul pavimento, c'è il diario.
-
-Il fondo della grotta non è roccia naturale. La superficie è innaturalmente liscia e uniforme — 
-creata magicamente, non una formazione naturale. È sottile come carta pietrificata: 
-un colpo deciso la frantuma, rivelando ciò che c'è dietro.`,
-          notaDM: `La parete era stata creata per trattenere qualcuno dentro (il Biondo), non per resistere a chi viene da fuori. Non serve forza straordinaria né magie potenti. Oltre la parete: l'ingresso alla Torre della Follia.`
+          testo: `La parete di fondo non è roccia naturale. La superficie è innaturalmente liscia e uniforme — creata magicamente, non una formazione naturale.`,
+          notaDM: `Se la parete d'ingresso era uguale a questa, lo spessore massimo è di 25 cm — un colpo deciso è sufficiente a frantumarla. Non serve forza straordinaria né magie particolari: la parete era pensata per trattenere qualcuno dentro, non per resistere a chi viene da fuori. Oltre la parete: l'ingresso alla Torre della Follia.`
         }
       ],
-      musica: { titolo: "White Stone", artista: "Atrium Carceri", descrizione: "La cava — Dimitri" }
+      musica: { titolo: "White Stone", artista: "Atrium Carceri", descrizione: "La grotta di Ralia e Dogti" }
     },
 
     // ── CAP 5 ──────────────────────────────────────────────────────
