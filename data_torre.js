@@ -353,13 +353,12 @@ l'artefatto è nella torre. il Rospo ce l'ha. non sono riuscito a portarlo via.
 Mi dispiace, Iria amore mio.
 
 — Il Biondo`,
-          notaDM: `Il diario è da riscrivere — lavoro separato. Il Biondo è il cadavere accasciato sulla stalagmite.
+          notaDM: `Il Biondo è il cadavere accasciato sulla stalagmite.
 
 Informazioni chiave che i PG ricavano dal diario:
 • Il nome del mago: Fraxximt il Rospo
 • La torre cambia continuamente — non c'è una via diretta al mago
 • Esiste il "cuore di Dogti" usato come tramite arcano
-• Lo spartito bruciato indebolisce il controllo del Rospo sugli abomini
 • La canzone va cantata — ed è legata a Dogti in modo profondo`
         },
         {
