@@ -321,15 +321,6 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
       <button class="nav-btn active" data-section="panoramica" onclick="showSection('panoramica')">
         <span class="nav-ico">◎</span>Panoramica
       </button>
-      <button class="nav-btn" data-section="ambientazione" onclick="showSection('ambientazione')">
-        <span class="nav-ico">⌂</span>Ambientazione
-      </button>
-      <button class="nav-btn" data-section="economia" onclick="showSection('economia')">
-        <span class="nav-ico">◈</span>Economia
-      </button>
-      <button class="nav-btn" data-section="mappe" onclick="showSection('mappe')">
-        <span class="nav-ico">⊞</span>Mappe
-      </button>
     </div>
     <div class="nav-section" id="nav-master" style="display:none;">
       <div class="nav-lbl">Master</div>
@@ -346,11 +337,8 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   </nav>
 
   <main class="main" id="main">
-    <div id="section-panoramica"    class="section active"></div>
-    <div id="section-ambientazione" class="section"></div>
-    <div id="section-economia"      class="section"></div>
-    <div id="section-mappe"         class="section"></div>
-    <div id="section-sviluppo"      class="section"></div>
+    <div id="section-panoramica" class="section active"></div>
+    <div id="section-sviluppo"   class="section"></div>
   </main>
 </div>
 
@@ -373,16 +361,9 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   <iframe id="puzzle-iframe" src="" title="Puzzle Globo"></iframe>
 </div>
 
-<script src="data_panoramica.js"></script>
-<script src="data_economia.js"></script>
 <script src="data_torre.js"></script>
 <script>
-// Password verificata via hash SHA-256
-const ADMIN_PW_HASH = 'a2707f0e8ee0857786a38b675213e6862b32d35ef396e43a9c79c1ba1a7bf0c7';
-async function hashPW(pw) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
+const ADMIN_PW = 'tresil2025';
 let isMaster = false;
 
 // ── INIT ───────────────────────────────────────────
@@ -399,9 +380,6 @@ function saveDM(val) {
 document.addEventListener('DOMContentLoaded', () => {
   if (isDMSaved()) isMaster = true;
   buildPanoramica();
-  buildAmbientazione();
-  buildEconomia();
-  buildMappe();
   buildSviluppo();
   showSection('panoramica');
   if (isMaster) updateDMUI();
@@ -446,10 +424,9 @@ function toggleDM() {
   }
 }
 
-async function checkPW() {
+function checkPW() {
   const val = document.getElementById('pw-input').value;
-  const h = await hashPW(val);
-  if (h === ADMIN_PW_HASH) {
+  if (val === ADMIN_PW) {
     isMaster = true;
     saveDM(true);
     document.getElementById('pw-overlay').classList.remove('open');
@@ -492,214 +469,17 @@ function card(title, body, extra = '') {
 // ── PANORAMICA ─────────────────────────────────────
 function buildPanoramica() {
   const c = document.getElementById('section-panoramica');
-  const p = PANORAMICA_DATA;
-  const td = torreDati;
-  c.innerHTML = '';
-
-  const titolo = (p.mondo && p.mondo.nome) || 'Kaelvaran';
-
-  c.innerHTML = `<div class="sec-head">
-    <div class="sec-title">Panoramica</div>
-    <div class="sec-sub">Il mondo di ${titolo}</div>
-  </div>`;
-
-  if (p.mondo && p.mondo.citazione) {
-    const cit = document.createElement('div');
-    cit.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
-    cit.innerHTML = `${p.mondo.citazione} <span style="opacity:.7;">— ${p.mondo.citazione_fonte}</span>`;
-    c.appendChild(cit);
-  }
-  if (p.mondo && p.mondo.descrizione) c.appendChild(card('Il Mondo', p.mondo.descrizione));
-  if (p.mondo && p.mondo.concetti) p.mondo.concetti.forEach(con => c.appendChild(card(con.titolo, con.testo)));
-}
-
-
-function buildAmbientazione() {
-  const c = document.getElementById('section-ambientazione');
-  const p = PANORAMICA_DATA;
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Ambientazione</div><div class="sec-sub">Il mondo di Kaelvaran — storia, culture e luoghi</div></div>`;
-
-  function divider(txt) {
-    const d = document.createElement('div');
-    d.className = 'divider-lbl';
-    d.textContent = txt;
-    return d;
-  }
-
-  function citazione(testo, fonte) {
-    const d = document.createElement('div');
-    d.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1.2rem;padding-left:.75rem;border-left:2px solid var(--border);';
-    d.innerHTML = testo + (fonte ? ` <span style="opacity:.7;">— ${fonte}</span>` : '');
-    return d;
-  }
-
-  // La Frattura
-  if (p.frattura) {
-    c.appendChild(divider('La Frattura'));
-    if (p.frattura.citazione) c.appendChild(citazione(p.frattura.citazione, p.frattura.citazione_fonte));
-    if (p.frattura.sezioni) p.frattura.sezioni.forEach(s => c.appendChild(card(s.titolo, s.testo)));
-  }
-
-  // I Fatati
-  if (p.fatati) {
-    c.appendChild(divider('I Fatati'));
-    c.appendChild(card(p.fatati.sottotitolo || p.fatati.titolo, p.fatati.testo));
-    if (p.fatati.dettaglio) c.appendChild(card('Approfondimento', p.fatati.dettaglio));
-  }
-  if (p.mondoDeiSogni) c.appendChild(card(p.mondoDeiSogni.titolo, p.mondoDeiSogni.testo));
-
-  // I Continenti
-  if (p.stirpi && p.stirpi.length) {
-    c.appendChild(divider('I Continenti'));
-    const nota = document.createElement('div');
-    nota.style.cssText = 'font-size:13px;color:var(--t3);margin-bottom:1rem;';
-    nota.textContent = 'Cinque culture nate dalla Frattura, evolute per millenni in isolamento. Clicca su un continente per espanderlo.';
-    c.appendChild(nota);
-
-    p.stirpi.forEach(s => {
-      const wrap = document.createElement('div');
-      wrap.className = 'cap-card';
-      wrap.style.marginBottom = '.5rem';
-
-      const head = document.createElement('div');
-      head.className = 'cap-head';
-      head.style.borderLeft = '3px solid ' + (s.colore || 'var(--gold)');
-      head.innerHTML = `
-        <div class="cap-num" style="color:${s.colore || 'var(--gold)'};font-size:13px;">◈</div>
-        <div style="flex:1;">
-          <div class="cap-title">${s.nome}</div>
-          <div style="font-size:11px;color:var(--t3);font-style:italic;">${s.sottotitolo || ''}</div>
-        </div>
-        <span class="cap-arr">▶</span>`;
-      head.addEventListener('click', () => wrap.classList.toggle('open'));
-
-      const body = document.createElement('div');
-      body.className = 'cap-body';
-
-      if (s.motto) {
-        const m = document.createElement('div');
-        m.style.cssText = 'font-style:italic;color:var(--t3);font-size:14px;margin-bottom:1rem;padding-left:.75rem;border-left:2px solid var(--border);';
-        m.textContent = s.motto;
-        body.appendChild(m);
-      }
-      if (s.sintesi) body.appendChild(card('In sintesi', s.sintesi));
-      [
-        { k: 'territorio', t: 'Territorio' },
-        { k: 'societa',    t: 'Società' },
-        { k: 'magia',      t: 'Magia' },
-        { k: 'volonta',    t: 'La Volontà' },
-        { k: 'fatati',     t: 'I Fatati' },
-        { k: 'situazione', t: 'Situazione attuale' },
-        { k: 'sviluppo',   t: 'Approfondimento' }
-      ].forEach(({ k, t }) => {
-        if (s[k]) body.appendChild(card(t, s[k]));
-      });
-      if (!s.sviluppo) {
-        const todo = document.createElement('div');
-        todo.style.cssText = 'font-size:12px;color:var(--t3);font-style:italic;padding:.5rem .75rem;border:1px dashed var(--border);border-radius:3px;margin-top:.5rem;';
-        todo.textContent = '— Approfondimento in sviluppo —';
-        body.appendChild(todo);
-      }
-
-      wrap.appendChild(head);
-      wrap.appendChild(body);
-      c.appendChild(wrap);
-    });
-  }
-
-  // L'Atollo
-  if (p.anello) {
-    c.appendChild(divider("L'Atollo"));
-    if (p.anello.testo) c.appendChild(card(p.anello.sottotitolo || p.anello.titolo, p.anello.testo));
-    if (p.anello.luoghi) p.anello.luoghi.forEach(l => c.appendChild(card(l.nome + (l.sottotitolo ? ' — ' + l.sottotitolo : ''), l.testo)));
-  }
-  if (p.luoghi && p.luoghi.length) {
-    p.luoghi.forEach(l => c.appendChild(card(l.nome, l.testo)));
-  }
-}
-function buildEconomia() {
-  const c = document.getElementById('section-economia');
-  const eco = TRESIL_ECO;
-  c.innerHTML = '';
-
-  c.innerHTML = `<div class="sec-head">
-    <div class="sec-title">Economia</div>
-    <div class="sec-sub">Sistema monetario dell'isola di Tresil — riferimento visuale</div>
-  </div>`;
-
-  // Valute
-  const valuteLbl = document.createElement('div');
-  valuteLbl.className = 'group-lbl'; valuteLbl.textContent = 'Valute';
-  c.appendChild(valuteLbl);
-  const valGrid = document.createElement('div');
-  valGrid.className = 'eco-valute';
-  eco.valute.forEach(v => {
-    const d = document.createElement('div'); d.className = 'eco-valuta';
-    d.innerHTML = `<div class="eco-val-sigla">${v.sigla}</div><div class="eco-val-nome">${v.nome}</div><div class="eco-val-note">${v.note}</div>`;
-    valGrid.appendChild(d);
-  });
-  c.appendChild(valGrid);
-
-  // Salari
-  const salLbl = document.createElement('div');
-  salLbl.className = 'group-lbl'; salLbl.textContent = 'Salari di riferimento';
-  c.appendChild(salLbl);
-  const salT = document.createElement('table'); salT.className = 'eco-salari';
-  salT.innerHTML = '<thead><tr><th>Ruolo</th><th>Al giorno</th><th>Al mese</th><th>Note</th></tr></thead>';
-  const stb = document.createElement('tbody');
-  eco.salari.forEach(s => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${s.ruolo}</td><td class="mono">${s.giorno}</td><td class="mono">${s.mese}</td><td>${s.note}</td>`;
-    stb.appendChild(tr);
-  });
-  salT.appendChild(stb); c.appendChild(salT);
-
-  // Prezzi per categoria
-  const prezLbl = document.createElement('div');
-  prezLbl.className = 'group-lbl'; prezLbl.style.marginTop = '1.5rem';
-  prezLbl.textContent = 'Prezzi e merci'; c.appendChild(prezLbl);
-
-  const tabWrap = document.createElement('div'); tabWrap.className = 'eco-cat-tabs';
-  const panWrap = document.createElement('div');
-
-  eco.categorie.forEach((cat, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'eco-cat-tab' + (i === 0 ? ' active' : '');
-    btn.textContent = cat.icona + ' ' + cat.nome;
-    btn.onclick = () => {
-      tabWrap.querySelectorAll('.eco-cat-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      panWrap.querySelectorAll('.eco-panel').forEach(p => p.style.display = 'none');
-      document.getElementById('eco-panel-' + cat.id).style.display = 'block';
-    };
-    tabWrap.appendChild(btn);
-    const panel = document.createElement('div');
-    panel.className = 'eco-panel'; panel.id = 'eco-panel-' + cat.id;
-    panel.style.display = i === 0 ? 'block' : 'none';
-    const table = document.createElement('table'); table.className = 'eco-table';
-    table.innerHTML = '<thead><tr><th>Voce</th><th>Costo</th><th>Note</th></tr></thead>';
-    const tb = document.createElement('tbody');
-    cat.voci.forEach(v => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${v.nome}</td><td class="costo">${v.costo}</td><td class="note-col">${v.note}</td>`;
-      tb.appendChild(tr);
-    });
-    table.appendChild(tb); panel.appendChild(table); panWrap.appendChild(panel);
-  });
-  c.appendChild(tabWrap); c.appendChild(panWrap);
-}
-
-
-// ── MAPPE ──────────────────────────────────────────
-function buildMappe() {
-  const c = document.getElementById('section-mappe');
   c.innerHTML = `
-    <div class="sec-head"><div class="sec-title">Mappe</div><div class="sec-sub">Pianta della Torre — aggiungere il file maps/torre.jpg</div></div>
-    <div class="map-viewer">
-      <div class="map-placeholder">
-        <div class="map-placeholder-icon">⊞</div>
-        <div class="map-placeholder-text">Mappa da caricare</div>
-        <div style="font-size:12px;color:var(--t3);font-style:italic;margin-top:.25rem;">Aggiungi il file <code style="font-family:monospace;background:var(--bg-card);padding:2px 5px;border-radius:2px;">maps/torre.jpg</code></div>
+    <div class="sec-head">
+      <div class="sec-title">La Torre della Follia</div>
+      <div class="sec-sub">One Shot — Kaelvaran</div>
+    </div>
+    <div style="max-width:640px;margin:2.5rem auto 0;padding:0 .5rem;">
+      <div style="font-style:italic;font-size:18px;color:var(--t2);line-height:1.9;">
+        <p style="margin-bottom:1.1em;">Due amanti. Un sacrificio. Un potere che non avrebbe dovuto essere toccato.</p>
+        <p style="margin-bottom:1.1em;">Qualcuno lo ha trovato — un uomo che aveva perso tutto e cercava un modo per riavere ciò che il mondo gli aveva sottratto. Con quel potere ha costruito qualcosa di terribile: una torre nascosta nel ventre della montagna, popolata da creature che non sono più ciò che erano e non sono ancora ciò che vorrebbe che fossero.</p>
+        <p style="margin-bottom:1.1em;">Ora qualcosa si è risvegliato. Si diffonde. E la montagna non è più silenziosa.</p>
+        <p style="margin-bottom:0;">Dentro ci sono enigmi che nascondono verità, custodi che non possono scegliere, reliquie di un'epoca che non esiste più. E da qualche parte, tra le pietre e il buio, c'è una storia che aspetta solo che qualcuno abbia il coraggio — o la follia — di ascoltarla fino in fondo.</p>
       </div>
     </div>`;
 }
@@ -780,7 +560,7 @@ function buildSviluppo() {
     }
 
     // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap11'
+    const puzzleBtnHTML = cap.id === 'cap6'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
          </button>`
@@ -852,6 +632,8 @@ function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
 // ── REGIA MUSICALE ─────────────────────────────────
+function buildMusica() {} // sezione rimossa
+
 function buildMusicPlayer(capId, tracce) {
   if (!tracce || !tracce.length) return '';
   return tracce.map(m => `
@@ -865,6 +647,7 @@ function buildMusicPlayer(capId, tracce) {
     </div>`).join('');
 }
 
+function switchTrack() {}
 
 </script>
 </body>
