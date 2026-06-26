@@ -40,6 +40,17 @@ via diretta alle stanze del mago.`,
       riassunto: "Arrivo nel villaggio. L'atmosfera esterna è tetra, ma la locanda è calda e festosa. Un momento di respiro prima della tempesta.",
       sezioni: [
         {
+          titolo: "In aperta campagna — La nebbia",
+          tipo: "scena",
+          testo: `Il sentiero scompare nella nebbia a pochi passi davanti a voi. Gli alberi ai lati sono sagome scure e immobili — il bosco non fa rumore. Nessun uccello, nessun vento, nessun fruscio. Solo l'ovatta umida della nebbia che smorza ogni cosa.
+
+Poi lo sentite.
+
+Una nota. Alta, sottile, quasi al limite di ciò che l'orecchio riesce a cogliere. Non sapete dire da dove venga — sembra arrivare da ogni direzione insieme, o forse da nessuna. C'è qualcosa di sbagliato in quel suono. Non nella nota in sé, ma nel fatto che esista — in questo silenzio, in questa nebbia, in questo posto dove niente dovrebbe fare rumore.
+
+Man mano che avanzate, la nota si fa più nitida. È un violino. Una sola nota tenuta, ostinata, come un respiro che non viene mai esalato. Non si avvicina. Siete voi che vi avvicinate a lei.`
+        },
+        {
           titolo: "La Locanda — Arrivo",
           tipo: "scena",
           testo: `L'atmosfera esterna è tetra: cielo basso, bosco fitto, aria che sa di terra umida. 
@@ -63,6 +74,25 @@ brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`
           tipo: "scena",
           testo: `La Locanda del Fauno Zoppo è il cuore del villaggio. Stasera è piena — gli abitanti festeggiano qualcosa che i PG non capiscono subito. Non importa: vengono trascinati dentro. Bevute, giochi di dadi, canzoni che non conoscono ma al cui ritmo si ritrovano a battere il piede.`,
           notaDM: `Usate questa scena per costruire legami tra i PG e i personaggi del villaggio. Chiunque muoia o soffra dopo ha più peso se i giocatori lo conoscono.`
+        },
+        {
+          titolo: "Personaggi del Villaggio",
+          tipo: "png",
+          testo: `• Sura Vann — Locandiera. Donna robusta sulla cinquantina, voce che sovrasta il rumore della sala. Gestisce tutto con un'efficienza silenziosa e uno sguardo che non si lascia ingannare facilmente.
+
+• Peto — Cameriere. Ragazzo giovane, sempre di corsa, sempre sudato. Ricorda ogni ordine senza scriverlo ma dimentica i nomi delle persone.
+
+• Brask — Cuoco. Uomo enorme, quasi non parla. La sua cucina è off-limits per chiunque. Il cibo che produce è sorprendentemente delicato.
+
+• Lena Drui — Guardia caccia. Donna asciutta, capelli corti, sempre con l'arco a tracolla. Poche parole, nessuno scherzo. Conosce ogni sentiero del bosco — ma dalla cava si tiene alla larga da mesi.
+
+• Orm — Vecchio che ripara i tetti. Ottant'anni portati male, mente acutissima. Sale sui tetti con una sicurezza che mette ansia. Sa tutto quello che succede in paese perché dall'alto vede tutto.
+
+• Tael e Mira Consu — Marito e moglie musicisti. Lui suona il violino, lei canta. Si litigano il ritmo da vent'anni e non si sono mai messi d'accordo. La musica che fanno insieme è bellissima.
+
+• Aldric Poen — Borgomastro. Uomo di mezza età, compito, sempre ben vestito per essere un villaggio. Tiene molto all'ordine e poco alle domande scomode.
+
+• Ysel — Assistente borgomastro. Giovane donna, efficiente, prende nota di tutto. È lei che sa davvero come funziona il villaggio. Il borgomastro lo sa e fa finta di niente.`
         }
       ],
       musica: { titolo: "Fisher's Hornpipe", artista: "Traditional / Folk", descrizione: "La locanda del fauno zoppo" }
@@ -102,7 +132,9 @@ Non è una normale infezione — è una corruzione accelerata, come se il corpo 
           tipo: "viaggio",
           testo: `Il sentiero che porta alla cava si addentra nel bosco. 
 È notte o tarda sera. La strada è silenziosa nel modo sbagliato — nessun verso di animali notturni.`,
-          notaDM: `A metà strada i PG affrontano il cinghiale corrotto. In lontananza, durante o dopo lo scontro, chi guarda nel bosco può intravedere una figura umana immobile tra gli alberi che li osserva. Poi scompare. Il DM la mostra solo se qualcuno sta guardando nella direzione giusta.`
+          notaDM: `A metà strada i PG affrontano il cinghiale corrotto. In lontananza, durante o dopo lo scontro, chi guarda nel bosco può intravedere una figura umana immobile tra gli alberi che li osserva. Poi scompare. Il DM la mostra solo se qualcuno sta guardando nella direzione giusta.
+
+La figura è Dogti. Nella nebbia, per un istante, una sagoma. Umanoide — forse. La testa pende di lato in un modo che fa male a guardare. Prima che qualcuno possa parlare, si muove: un movimento brusco, meccanico, come se il corpo obbedisse a un ordine sbagliato. Poi scompare nella nebbia.`
         }
       ],
       musica: { titolo: "Voices in the Vaults", artista: "Position Music", descrizione: "Viaggio verso la cava" }
