@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mappa del Mondo — Kaelvaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deepest:#0a0c0f; --bg-dark:#0f1318; --bg-panel:#131820; --bg-card:#171e28;
+  --bg-hover:#1c2535; --bg-active:#1e2d42;
+  --border:rgba(100,140,200,0.12); --border-bright:rgba(100,140,200,0.28);
+  --gold:#c9a84c; --gold-dim:#8a6e2f; --gold-glow:rgba(201,168,76,0.12);
+  --text-primary:#e8e0d0; --text-secondary:#9a9080; --text-muted:#5a5448;
+  --accent-blue:#5a8fd4;
+  --font-display:'Cinzel',serif; --font-body:'Crimson Pro',Georgia,serif;
+  --transition:0.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:var(--bg-deepest);color:var(--text-primary);font-family:var(--font-body);font-size:17px;line-height:1.75;}
+.page{max-width:1100px;margin:0 auto;padding:48px 40px 80px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);text-decoration:none;font-family:var(--font-display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px;transition:color var(--transition);}
+.back-link:hover{color:var(--gold);}
+.section-tag{font-family:var(--font-display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px;}
+.section-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:6px;}
+.section-subtitle{font-size:15px;color:var(--text-muted);font-style:italic;margin-bottom:32px;}
+.section-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold-dim),transparent);margin-bottom:32px;}
+.map-container{width:100%;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:32px;background:var(--bg-card);}
+.map-container img{width:100%;height:auto;display:block;}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;}
+.legend-item{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:14px 16px;}
+.legend-name{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.legend-pos{font-size:12px;color:var(--text-muted);font-style:italic;margin-bottom:6px;}
+.legend-desc{font-size:13px;color:var(--text-secondary);line-height:1.55;}
+.prose{margin-top:32px;}
+.prose p{margin-bottom:1.2em;color:var(--text-secondary);font-size:15px;}
+@media(max-width:768px){
+  .page{padding:32px 18px 60px;}
+  .legend{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .legend{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="kaelvaran.html">← Torna al Manuale</a>
+
+  <div class="section-tag">Kaelvaran · Il Mondo Fratturato</div>
+  <h1 class="section-title">Mappa del Mondo</h1>
+  <p class="section-subtitle">I cinque continenti e l'Atollo Centrale — così come appaiono nelle mappe di Tresil</p>
+  <div class="section-divider"></div>
+
+  <div class="map-container">
+    <img src="mappa_mondo.jpg" alt="Mappa del mondo di Kaelvaran — i cinque continenti attorno all'Atollo Centrale">
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-name">Ferrath</div>
+      <div class="legend-pos">Nord-ovest</div>
+      <div class="legend-desc">Terra dei Ferromarchi. Ciminiere, ingranaggi e rovine di una tecnologia più antica di qualsiasi memoria.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">Varlhavn</div>
+      <div class="legend-pos">Nord</div>
+      <div class="legend-desc">Terra dei Varlmenn. Inverni eterni, casate potenti e una memoria che non dimentica nulla — né il bene né il male.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">Shizen-Do</div>
+      <div class="legend-pos">Est</div>
+      <div class="legend-desc">Terra degli Shizenka. Montagne sacre, laghi silenziosi e sessanta regni che governano per consenso.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">Solambar</div>
+      <div class="legend-pos">Sud-ovest</div>
+      <div class="legend-desc">Terra dei Solnari. Il continente più vasto — deserti dorati, città cantanti e un impero che brucia di passione e contraddizioni.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">Aenath</div>
+      <div class="legend-pos">Sud</div>
+      <div class="legend-desc">Terra degli Aenari. Il più piccolo e il più inaccessibile. Le sue città non compaiono sulle mappe straniere.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">Tresil e l'Atollo</div>
+      <div class="legend-pos">Centro</div>
+      <div class="legend-desc">L'arcipelago invalicabile al cuore del mondo. Tresil è l'unica città neutrale — crocevia di culture, commerci e segreti.</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>I cinque continenti erano un'unica terra prima della Frattura. Il mare che li separa non è un oceano naturale: è una cicatrice. Al centro dell'Atollo, dove le correnti temporali rendono impossibile la navigazione, potrebbe trovarsi ciò che rimane delle Sei Figlie — o di Ithar stesso.</p>
+  </div>
+</div>
+</body>
+</html>
