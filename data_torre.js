@@ -425,6 +425,35 @@ Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro.
       musica: { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "Ingresso nella torre" }
     },
 
+    // ── LE SCALE (inframmezzo cap6 → cap7) ─────────────────────────
+    {
+      id: "scale",
+      titolo: "Le Scale",
+      icona: "👣",
+      riassunto: "Tra il ponte e il labirinto. I bambini si manifestano per la prima volta.",
+      sezioni: [
+        {
+          titolo: "Le Scale — Tra la prima e la seconda stanza",
+          tipo: "scena",
+          testo: `Tornando sulle scale, qualcosa cambia.
+
+Prima i suoni: risate acute, brevi, che arrivano da sopra e da sotto contemporaneamente. Poi urla — di bambini, non di dolore, ma di un gioco che non riuscite a capire. I suoni si interrompono all'improvviso, come se qualcuno avesse chiuso una porta.
+
+Poi le vedete.
+
+Sagome. Piccole, della forma di bambini, che compaiono e scompaiono tra una pietra e l'altra delle scale — non si muovono, non camminano, appaiono e spariscono come un'immagine che trema e si rompe su sé stessa. Ogni volta che ricompaiono sono in una posizione diversa, più vicine. Le forme non sono del tutto giuste: alcune hanno le proporzioni sbagliate, arti troppo lunghi o teste troppo grandi; altre hanno qualcosa di rigido nel busto o nelle spalle, come se sotto la pelle ci fosse qualcosa che non dovrebbe esserci.
+
+Una di loro, per un istante, appare a un passo da uno dei personaggi — e una palla di stracci rotola via dai suoi piedi e rimbalza giù per le scale.
+
+Poi spariscono tutte.`,
+          notaDM: `Le sagome non sono una minaccia. Non reagiscono se attaccate — semplicemente non sono lì quando la lama le raggiunge. Non spiegare chi sono o cosa significano.
+
+La palla di stracci rimane. È un oggetto reale — può essere raccolta. Non ha proprietà magiche rilevabili.`
+        }
+      ],
+      musica: { titolo: "Threnody for the Victims of Hiroshima", artista: "Krzysztof Penderecki", descrizione: "Le scale — I bambini" }
+    },
+
     // ── CAP 7 ──────────────────────────────────────────────────────
     {
       id: "cap7",
@@ -455,40 +484,14 @@ Per uscire: trovare uno specchio nel quale il proprio riflesso si comporta ancor
     // ── CAP 8 ──────────────────────────────────────────────────────
     {
       id: "cap8",
-      titolo: "Capitolo 8 — Il Corridoio delle Spade",
-      icona: "⚔️",
-      riassunto: "Un corridoio di lame meccaniche e scheletri mossi come marionette.",
-      sezioni: [
-        {
-          titolo: "Stanza 3 — Il Corridoio delle Spade",
-          tipo: "stanza",
-          marcatore: "Chiave di volta: spada",
-          testo: `Un corridoio enorme. Dal soffitto e dalle pareti pendono spade gigantesche montate su meccanismi — 
-sbattono sul pavimento a intervalli irregolari, sollevando schegge di pietra e un rimbombo 
-che risuona nell'intera stanza.
-
-Ogni volta che una spada colpisce il suolo, cinque scheletri trattenuti da cavi di metallo 
-scattano in avanti. I cavi muovono le loro giunture come se fossero mossi da fili invisibili — 
-un movimento irregolare, a scatti, come vermi. Tra un colpo e l'altro ricadono inerti.`,
-          notaDM: `Il ritmo delle spade è irregolare — il DM decide quando cadono per massimizzare la tensione. Gli scheletri sono attivi solo mentre le lame sono a terra.
-
-I PG possono cercare di sabotare i meccanismi — il DM valuta l'approccio e tira il dado percentuale. Sabotare le lame in posizione abbassata blocca il corridoio ma rende gli scheletri permanentemente attivi. Sabotarle in posizione sollevata blocca gli scheletri ma le lame restano una minaccia passiva.`
-        }
-      ],
-      musica: null
-    },
-
-    // ── CAP 9 ──────────────────────────────────────────────────────
-    {
-      id: "cap9",
-      titolo: "Capitolo 9 — I Bambini Bagnati",
+      titolo: "Capitolo 8 — I Bambini Bagnati",
       icona: "💧",
-      riassunto: "Tra la terza e la quarta stanza. Cinque o sei bambini, fermi, bagnati, in silenzio. Non sono una minaccia. Sono un'immagine.",
+      riassunto: "Tra la seconda e la terza stanza. Cinque o sei bambini, fermi, bagnati, in silenzio. Non sono una minaccia. Sono un'immagine.",
       sezioni: [
         {
           titolo: "I Bambini Bagnati",
           tipo: "scena",
-          testo: `Tornando sulle scale tra la terza e la quarta stanza, i PG li trovano finalmente.
+          testo: `Tornando sulle scale tra la seconda e la terza stanza, i PG li trovano finalmente.
 
 Cinque o sei bambini di età diverse, fermi sulla soglia. Sono completamente bagnati — 
 i vestiti incollati alla pelle, i capelli appiccicati al viso, pozze d'acqua ai loro piedi. 
@@ -497,24 +500,24 @@ Non parlano. Non si muovono. Fissano il gruppo con occhi aperti e vuoti.
 Non reagiscono se avvicinati. Non rispondono alle domande. Se qualcuno tende la mano, 
 un bambino abbassa lentamente lo sguardo su di essa — e poi torna a fissare dritto davanti.
 
-Sulla soglia della quarta stanza: una testa di coniglio incisa nella chiave di volta.`,
+Sulla soglia della terza stanza: una testa di coniglio incisa nella chiave di volta.`,
           notaDM: `I bambini non sono una minaccia e non possono essere interagiti in modo significativo. Sono un'immagine — una presenza. Non spiegare chi sono o cosa significano.
 
-Se qualcuno usa magie di rilevamento: nessuna risposta. Non sono nulla che si possa classificare. Quando i PG entrano nella quarta stanza, i bambini non li seguono — e non sono più lì al ritorno.`
+Se qualcuno usa magie di rilevamento: nessuna risposta. Non sono nulla che si possa classificare. Quando i PG entrano nella terza stanza, i bambini non li seguono — e non sono più lì al ritorno.`
         }
       ],
       musica: null
     },
 
-    // ── CAP 10 ─────────────────────────────────────────────────────
+    // ── CAP 9 ──────────────────────────────────────────────────────
     {
-      id: "cap10",
-      titolo: "Capitolo 10 — La Donna Coniglio",
+      id: "cap9",
+      titolo: "Capitolo 9 — La Donna Coniglio",
       icona: "🐇",
       riassunto: "Una passerella su un'acqua impossibile, corpi di bambini sospesi nel nulla, e una creatura che divide il gruppo contro se stesso.",
       sezioni: [
         {
-          titolo: "Stanza 4 — La Donna Coniglio",
+          titolo: "Stanza 3 — La Donna Coniglio",
           tipo: "stanza",
           marcatore: "Chiave di volta: testa di coniglio",
           testo: `Una passerella di pietra si affaccia su uno spazio aperto. Ai lati, decine di corpi 
@@ -536,10 +539,10 @@ L'USCITA: nascosta sotto la scalinata di pietra, raggiungibile solo tuffandosi e
       musica: null
     },
 
-    // ── CAP 11 ─────────────────────────────────────────────────────
+    // ── CAP 10 ─────────────────────────────────────────────────────
     {
-      id: "cap11",
-      titolo: "Capitolo 11 — Il Globo di Metallo",
+      id: "cap10",
+      titolo: "Capitolo 10 — Il Globo di Metallo",
       icona: "🌐",
       riassunto: "Un tangram nel buio cosmico. La luce cala mentre i PG lavorano. Il globo completato è una riserva di energia magica.",
       sezioni: [
@@ -566,10 +569,10 @@ Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
       musica: null
     },
 
-    // ── CAP 12 ─────────────────────────────────────────────────────
+    // ── CAP 11 ─────────────────────────────────────────────────────
     {
-      id: "cap12",
-      titolo: "Capitolo 12 — L'Arena, il Gonogol",
+      id: "cap11",
+      titolo: "Capitolo 11 — L'Arena, il Gonogol",
       icona: "🐉",
       riassunto: "Il colosseo nella roccia. La folla invisibile. Una viverna incatenata che non è un nemico — è un prigioniero.",
       sezioni: [
@@ -597,10 +600,10 @@ QUANDO È LIBERA: La catena cade. Il Gonogol apre le ali — enormi, bellissime 
       musica: null
     },
 
-    // ── CAP 13 ─────────────────────────────────────────────────────
+    // ── CAP 12 ─────────────────────────────────────────────────────
     {
-      id: "cap13",
-      titolo: "Capitolo 13 — La Stanza del Trono",
+      id: "cap12",
+      titolo: "Capitolo 12 — La Stanza del Trono",
       icona: "💀",
       riassunto: "Lo scheletro del Rospo sul trono d'ossa. Il cuore pulsante di Dogti. Una goccia di sangue può rimettere tutto in moto.",
       sezioni: [
@@ -632,10 +635,10 @@ Il DM tira il dado percentuale per ogni tentativo di recupero — chi usa delica
       musica: null
     },
 
-    // ── CAP 14 ─────────────────────────────────────────────────────
+    // ── CAP 13 ─────────────────────────────────────────────────────
     {
-      id: "cap14",
-      titolo: "Capitolo 14 — Il Rospo si Risveglia",
+      id: "cap13",
+      titolo: "Capitolo 13 — Il Rospo si Risveglia",
       icona: "🦴",
       riassunto: "Fraxximt si alza dal trono. Senza voce, senza incantesimi potenti. Ma si muove verso il sangue.",
       sezioni: [

@@ -559,8 +559,8 @@ function buildSviluppo() {
       if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
     }
 
-    // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap6'
+    // Pulsante puzzle — solo cap10, solo DM
+    const puzzleBtnHTML = cap.id === 'cap10'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
          </button>`
