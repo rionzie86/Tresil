@@ -481,29 +481,28 @@ Per uscire: trovare uno specchio nel quale il proprio riflesso si comporta ancor
       musica: { titolo: "Great Old One", artista: "Cryo Chamber Collaboration", descrizione: "La passerella — Il ponte" }
     },
 
-    // ── CAP 8 ──────────────────────────────────────────────────────
+    // ── CAP 8 — LE SCALE 2 ─────────────────────────────────────────
     {
       id: "cap8",
-      titolo: "Capitolo 8 — I Bambini Bagnati",
-      icona: "💧",
-      riassunto: "Tra la seconda e la terza stanza. Cinque o sei bambini, fermi, bagnati, in silenzio. Non sono una minaccia. Sono un'immagine.",
+      titolo: "Capitolo 8 — Le Scale 2",
+      icona: "👶",
+      riassunto: "I bambini deformi tornano — ma stavolta sono più presenti. Come li trattate cambia tutto.",
       sezioni: [
         {
-          titolo: "I Bambini Bagnati",
+          titolo: "Le Scale 2 — Tra la seconda e la terza stanza",
           tipo: "scena",
-          testo: `Tornando sulle scale tra la seconda e la terza stanza, i PG li trovano finalmente.
+          testo: `Sulle scale tra la seconda e la terza stanza, i bambini ci sono di nuovo.
 
-Cinque o sei bambini di età diverse, fermi sulla soglia. Sono completamente bagnati — 
-i vestiti incollati alla pelle, i capelli appiccicati al viso, pozze d'acqua ai loro piedi. 
-Non parlano. Non si muovono. Fissano il gruppo con occhi aperti e vuoti.
+Stavolta non tremolano, non scompaiono. Sono fermi, in piedi, e hanno più corpo — si vedono i dettagli: i vestiti bagnati e incollati alla pelle, i capelli appiccicati al viso, le deformità che prima erano solo intuibili. Arti troppo lunghi, giunture sbagliate, qualcosa di rigido sotto la pelle del busto. Uno di loro stringe ancora la palla di stracci.
 
-Non reagiscono se avvicinati. Non rispondono alle domande. Se qualcuno tende la mano, 
-un bambino abbassa lentamente lo sguardo su di essa — e poi torna a fissare dritto davanti.
+Vi fissano in silenzio. Aspettano.`,
+          notaDM: `Questa è una scena a bivio — il comportamento dei PG determina quello che succede.
 
-Sulla soglia della terza stanza: una testa di coniglio incisa nella chiave di volta.`,
-          notaDM: `I bambini non sono una minaccia e non possono essere interagiti in modo significativo. Sono un'immagine — una presenza. Non spiegare chi sono o cosa significano.
+SE I PG SI AVVICINANO CON AFFETTO — parlano con voce calma, si inginocchiano, tendono la mano con gentilezza, sorridono — i bambini rispondono lentamente. Prima uno, poi gli altri, si girano e iniziano a camminare su per le scale. Si fermano ogni pochi gradini ad aspettare, come per assicurarsi che il gruppo li stia seguendo. Li portano a un passaggio segreto nella parete — una sezione di pietra che cede al tocco — che conduce direttamente alla stanza della Donna Coniglio, saltando la stanza regolare.
 
-Se qualcuno usa magie di rilevamento: nessuna risposta. Non sono nulla che si possa classificare. Quando i PG entrano nella terza stanza, i bambini non li seguono — e non sono più lì al ritorno.`
+SE I PG IGNORANO I BAMBINI O LI TRATTANO MALE — li spingono, li aggrediscono, li attraversano senza guardarli, parlano di loro come se non ci fossero — i bambini attaccano. Non urlano, non minacciano. Si muovono tutti insieme, in silenzio, con quella stessa andatura a scatti. Sono pericolosi in gruppo.
+
+La palla di stracci non ha un ruolo meccanico — ma offrirla al bambino che la stringe è un gesto d'affetto valido.`
         }
       ],
       musica: null
@@ -514,26 +513,44 @@ Se qualcuno usa magie di rilevamento: nessuna risposta. Non sono nulla che si po
       id: "cap9",
       titolo: "Capitolo 9 — La Donna Coniglio",
       icona: "🐇",
-      riassunto: "Una passerella su un'acqua impossibile, corpi di bambini sospesi nel nulla, e una creatura che divide il gruppo contro se stesso.",
+      riassunto: "Una stanza umida, due specchi d'acqua, e una creatura che un tempo era una donna. Tutto dipende da come siete arrivati fin qui.",
       sezioni: [
         {
           titolo: "Stanza 3 — La Donna Coniglio",
           tipo: "stanza",
           marcatore: "Chiave di volta: testa di coniglio",
-          testo: `Una passerella di pietra si affaccia su uno spazio aperto. Ai lati, decine di corpi 
-di bambini galleggiano a pelo di superficie, immobili, gli occhi aperti verso l'alto. 
-L'acqua è perfettamente trasparente, quasi invisibile: i corpi sembrano sospesi nel nulla.
+          testo: `La stanza è cupa e umida. L'aria sa di pietra bagnata e qualcosa di più organico che è meglio non identificare. Quindici metri di larghezza, venticinque di lunghezza. Da qualche parte, un leggero sciaguattio.
 
-In fondo alla passerella una scalinata di pietra sale verso il nulla — non c'è uscita visibile in cima. 
-Seduta sui gradini c'è lei: la Donna Coniglio. Testa e orecchie di un coniglio bianco su un corpo umano. 
-Aspetta. Sorride. Parla con voce dolce. Vuole che restino.`,
-          notaDM: `La Donna Coniglio usa il fascino per dividere il gruppo. Il DM tira il dado percentuale per ogni PG che la guarda negli occhi — chi fallisce cade in una devozione ossessiva irrazionale.
+L'unica luce proviene dal fondo della stanza — piccoli fasci intermittenti, freddi, che pulsano a intervalli irregolari.
 
-Il fascino si rompe se il personaggio viene ferito da un alleato, o se la Donna Coniglio è gravemente ferita.
+Il pavimento centrale, cinque metri di larghezza, è in blocchi di pietra levigata e umida. Ai lati, due specchi d'acqua scura percorrono tutta la lunghezza della stanza — cinque metri per venticinque ciascuno. L'acqua è ferma. Non si vede il fondo.
 
-La Donna Coniglio non entra nell'acqua — questo è il suo limite assoluto.
+Gli ultimi cinque metri sono occupati da una scalinata in pietra. Adagiata sopra c'è lei.
 
-L'USCITA: nascosta sotto la scalinata di pietra, raggiungibile solo tuffandosi e nuotando in immersione. Chi si immerge la vede chiaramente — una porta di pietra sul fondo. I corpi dei bambini non reagiscono a chi nuota tra loro.`
+È alta almeno tre metri. La testa è quella di un coniglio bianco — orecchie lunghe, occhi laterali, naso che si muove impercettibilmente. Il corpo è umano, o lo era. Il ventre è gonfio e slabbrato, la pelle tesa fino quasi a spezzarsi. Dalla scalinata salgono tubi che si agganciano alla sua carne in più punti — fianchi, ventre, braccia. Dentro i tubi pulsa qualcosa: una luce che si muove dalla base fino a dentro di lei, con lo stesso ritmo intermittente dell'occhio di metallo e vetro che avete attraversato sul ponte.`,
+          notaDM: `LA STANZA
+Nei due specchi d'acqua ai lati nuotano più di trenta bambini deformi — gli stessi che avete incontrato sulle scale, e altri. Sono sott'acqua, immobili, gli occhi aperti verso l'alto. Visibili solo se ci si avvicina al bordo e si guarda giù.
+
+I TUBI
+Trasportano la stessa luce dell'occhio di metallo e vetro — chi lo ha riconosciuto capisce che la donna coniglio è alimentata dallo stesso sistema che alimenta la torre. Se i tubi vengono recisi la donna coniglio si indebolisce gravemente, ma il meccanismo del globo non viene disattivato.
+
+── SE I PG SONO STATI PORTATI DAI BAMBINI ──
+
+La Donna Coniglio sente il gruppo avvicinarsi e si irrigidisce — per un momento crede che sia Fraxximt, tornato per imporle un altro parto. Quando capisce che non è lui, si rilassa lentamente. Parla con voce bassa e affaticata, come chi ha smesso da tempo di urlare.
+
+Racconta:
+• Fraxximt era il suo marito — uno dei tre. A Fossolento erano felici. Quando è partito per studiare non è più tornato come l'avevano conosciuto.
+• Quando l'ha trovata, l'ha trasformata in questo. Il ventre gonfio non è suo — è la torre. Partorisce gli abomini che la popolano. I bambini deformi sono i suoi figli, o quello che ne rimane.
+• Il cuore di Dogti è l'artefatto che tiene in piedi tutto. È custodito nel globo di metallo — un meccanismo a pezzi che va tenuto in posizione manualmente. Se lo si disattiva, la torre collassa. Ma bisogna fare attenzione: il meccanismo si resetta ogni tre minuti, e al reset la stanza piomba nel buio totale e gli incubi sono liberi. Il primo pezzo va tenuto in posizione mentre si posizionano gli altri — non si può mai lasciare il pezzo centrale.
+• Non chiede di essere salvata. Chiede solo che finisca.
+
+── SE I PG SONO ARRIVATI NORMALMENTE (o hanno maltrattato i bambini) ──
+
+La Donna Coniglio non parla. Con un movimento lento si strappa i tubi dalla carne — la luce nei tubi si spegne ad uno ad uno. I bambini sott'acqua iniziano a muoversi.
+
+Attaccano cercando di trascinare i PG nell'acqua e affogarli. La Donna Coniglio può staccarsi dalla scalinata e combattere direttamente — è lenta ma enorme e quasi insensibile al dolore.
+
+Il suo unico limite assoluto: non entra nell'acqua.`
         }
       ],
       musica: null
