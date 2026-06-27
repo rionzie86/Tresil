@@ -538,11 +538,39 @@ Trasportano la stessa luce dell'occhio di metallo e vetro — chi lo ha riconosc
 
 La Donna Coniglio sente il gruppo avvicinarsi e si irrigidisce — per un momento crede che sia Fraxximt, tornato per imporle un altro parto. Quando capisce che non è lui, si rilassa lentamente. Parla con voce bassa e affaticata, come chi ha smesso da tempo di urlare.
 
-Racconta:
-• Fraxximt era il suo marito — uno dei tre. A Fossolento erano felici. Quando è partito per studiare non è più tornato come l'avevano conosciuto.
-• Quando l'ha trovata, l'ha trasformata in questo. Il ventre gonfio non è suo — è la torre. Partorisce gli abomini che la popolano. I bambini deformi sono i suoi figli, o quello che ne rimane.
-• Il cuore di Dogti è l'artefatto che tiene in piedi tutto. È custodito nel globo di metallo — un meccanismo a pezzi che va tenuto in posizione manualmente. Se lo si disattiva, la torre collassa. Ma bisogna fare attenzione: il meccanismo si resetta ogni tre minuti, e al reset la stanza piomba nel buio totale e gli incubi sono liberi. Il primo pezzo va tenuto in posizione mentre si posizionano gli altri — non si può mai lasciare il pezzo centrale.
-• Non chiede di essere salvata. Chiede solo che finisca.
+MONOLOGO — leggere ai giocatori:
+
+"Non urlo più da molto tempo.
+
+Fraxximt era un uomo buono. Forse lo è ancora, da qualche parte dentro quella cosa che cammina con il suo nome. Eravamo una famiglia — lui, io, Dorvek e i nostri due figli.
+
+Quando è partito per studiare lo aspettavamo. Quando è stato arruolato nelle Guardie delle Sette Memorie lo aspettavamo ancora. Era orgoglioso, e noi eravamo orgogliosi per lui.
+
+Poi è tornato a casa in congedo. I bambini erano morti mentre era via — una pestilenza, veloce e sorda come lo sono sempre le pestilenze. Non ha pianto. Non subito. Ha solo smesso di dormire.
+
+Da quel giorno qualcosa si è spezzato dentro di lui in un modo che non si poteva aggiustare. Non accettava che fossero morti. Non nel senso in cui si dice che qualcuno non accetta un lutto — intendo che per lui era un errore della realtà, qualcosa che andava corretto. Ha iniziato a sparire per giorni. Poi per settimane. Quando tornava aveva con sé oggetti che non avrebbe dovuto avere — reliquie, artefatti, cose trafugate da posti che non nominava. Cercava il modo di riportarli indietro.
+
+Lo cercavano. Era pericoloso vederlo. Ma ogni tanto tornava lo stesso, di nascosto, come se non riuscisse a smettere del tutto di essere quello che era stato.
+
+L'ultima volta ci ha pregati di seguirlo. Diceva di aver trovato la soluzione. Che i nostri figli potevano tornare. Io e Dorvek lo abbiamo seguito.
+
+Ci ha portati qui.
+
+Dorvek è diventato il Gonogol — lo avete incontrato, forse, o lo incontrerete. Non c'è più niente di lui dentro quella cosa. Fraxximt gli ha tolto la volontà come si toglie un dente.
+
+A me ha fatto questo. Un ventre che non smette mai di partorire — corpi che lui cercava di rendere abitabili per gli spiriti dei morti che evocava. Voleva riportare i nostri figli. Ma non riusciva a richiamare anime — solo ombre, solo incubi. Quando un corpo non rispondeva come voleva, lo portava nell'acqua.
+
+Ho visto annegare decine di bambini in quella stanza. Li sento ancora.
+
+Sono qui da decenni. Non so più quanti. Il tempo qui dentro non scorre come dovrebbe.
+
+Vi chiedo solo una cosa. Ponete fine a questo sogno corrotto.
+
+Nel globo di metallo c'è il cuore della torre — un meccanismo a pezzi che va tenuto in posizione con le mani. Il primo pezzo non va mai lasciato: ogni tre minuti il meccanismo si resetta, e quando lo fa la luce scompare e le ombre sono libere. Tenete il pezzo centrale in posizione mentre posizionate gli altri. Non mollate mai il centro.
+
+Se ci riuscite, gli toglierete gran parte del suo potere.
+
+È tutto quello che voglio ancora."
 
 ── SE I PG SONO ARRIVATI NORMALMENTE (o hanno maltrattato i bambini) ──
 
