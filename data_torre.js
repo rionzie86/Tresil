@@ -400,43 +400,29 @@ Ogni mezzo giro della torre, su entrambi i lati delle scale, c'è una porta ad a
       id: "cap6",
       titolo: "Capitolo 6 — La Passerella",
       icona: "👁️",
-      riassunto: "Il ponte di corde sul crepaccio. E qualcosa che osserva dall'altra parte del buio.",
+      riassunto: "Un ponte di pietra nel buio assoluto. Le ombre aggrediscono chi si ferma. Un occhio di metallo e vetro che non perdona l'immobilità.",
       sezioni: [
         {
           titolo: "Stanza 1 — Il Ponte e l'Occhio",
           tipo: "stanza",
           marcatore: "Chiave di volta: grande occhio stilizzato",
-          testo: `Oltre l'arco: buio assoluto e il bordo di un crepaccio. 
-Davanti ai personaggi si estende un ponte di corde e legno marcio. 
-Non si vede l'altra sponda.
+          testo: `Oltre l'arco: buio assoluto. Una singola lampada sospesa a mezz'aria illumina debolmente la terrazza su cui vi ritrovate. A cinque metri dall'ingresso inizia un ponte in mattoni e pietra — ben costruito, lineare, scompare nel buio davanti a voi. Guardando i bordi della terrazza e del ponte noterete che pietra e mattoni sono graffiati e sbeccati ovunque, come se mille lame avessero provato per anni a tagliarne gli spigoli.
 
-Quando il primo piede tocca il legno del ponte oscillante, qualcosa cambia nel cielo davanti: 
-un immenso occhio si apre nel vuoto. Fissa i personaggi sul ponte.`,
-          notaDM: `Solo chi è sul ponte vede l'occhio — chi è rimasto sull'arco non lo percepisce. Chi guarda l'occhio direttamente rischia di impazzire: il DM tira il dado percentuale a intervalli irregolari per chi fissa lo sguardo. Fallimento: effetto breve a scelta del DM (confusione, allucinazione, fuga irrefrenabile).
+Chi si avvicina al bordo della terrazza e guarda nel vuoto può intravedere, lontano in fondo al crepaccio, un piccolo bagliore.`,
+          notaDM: `LE OMBRE
+Appena un personaggio mette il piede fuori dal cono di luce della lampada, le ombre si attivano. Si muovono veloci, silenziose, e cercano di trascinare chiunque sia al buio. La luce dell'occhio le distrugge — ma la lampada da sola non basta. Se il personaggio torna nella luce della lampada le ombre si ritirano.
+
+L'OCCHIO
+Appena un personaggio mette il piede sul ponte, un suono metallico scricchiola nell'alto del buio. Piano piano, un gigantesco occhio di metallo e vetro inizia ad aprirsi e a irradiare il ponte di luce. Finché il personaggio cammina senza fermarsi, l'occhio resta aperto — e le ombre restano lontane.
+
+Se il personaggio si ferma, l'occhio inizia lentamente a chiudersi. Se si chiude completamente le ombre emergono dal buio da ogni lato e fanno a pezzi chiunque si trovi sul ponte.
+
+Non c'è modo di combattere l'occhio. Non c'è modo di fermarsi. L'unica via è attraversare.
 
 Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro. Una palla di stracci rotola e rimbalza giù dalle scale passando tra i loro piedi. Non ci sono bambini visibili.`
         }
       ],
       musica: { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "Ingresso nella torre" }
-    },
-
-    // ── CAP 6a ─────────────────────────────────────────────────────
-    {
-      id: "cap6a",
-      titolo: "Capitolo 6a — L'Occhio Divora la Mente",
-      icona: "🌀",
-      riassunto: "Chi guarda l'occhio troppo a lungo paga un prezzo. Dolore acuto, tormento, agitazione.",
-      sezioni: [
-        {
-          titolo: "L'Occhio — Effetti",
-          tipo: "scena",
-          testo: `Chi incontra lo sguardo dell'occhio e fallisce il tiro percentuale sperimenta qualcosa di fisicamente intollerabile — non una visione, non un'allucinazione. Dolore dietro agli occhi, come se qualcosa stesse cercando di uscire dall'interno del cranio.`,
-          notaDM: `Il DM sceglie liberamente tra: confusione temporanea, fuga irrefrenabile verso il bordo del ponte, allucinazione breve (il personaggio vede qualcuno che conosce — morto — in fondo al crepaccio), o incapacità di muoversi per un turno.
-
-L'occhio non si può combattere. Si può solo attraversare il ponte abbastanza in fretta da non fissarlo troppo a lungo.`
-        }
-      ],
-      musica: { titolo: "Threnody for the Victims of Hiroshima", artista: "Krzysztof Penderecki", descrizione: "L'occhio divora la mente" }
     },
 
     // ── CAP 7 ──────────────────────────────────────────────────────
