@@ -587,37 +587,7 @@ Il suo unico limite assoluto: non entra nell'acqua.`
     // ── CAP 10 ─────────────────────────────────────────────────────
     {
       id: "cap10",
-      titolo: "Capitolo 10 — Il Globo di Metallo",
-      icona: "🌐",
-      riassunto: "Un tangram nel buio cosmico. La luce cala mentre i PG lavorano. Il globo completato è una riserva di energia magica.",
-      sezioni: [
-        {
-          titolo: "Stanza 5 — Il Globo di Metallo",
-          tipo: "stanza",
-          marcatore: "Chiave di volta: globo con cerchio e linee geometriche",
-          testo: `Una stanza senza pareti percepibili — il buio si estende in ogni direzione senza limiti visibili. 
-Al centro, un'unica fonte di luce illumina per un raggio di circa 20 metri un piccolo globo 
-di metallo sospeso nell'aria.
-
-Attorno al globo, a pochi millimetri dalla superficie, fluttuano diverse piccole lamine di metallo 
-con incisioni geometriche. Vanno ricomposte sul globo come un tangram tridimensionale.
-
-La luce comincia lentamente ad affievolirsi nel momento in cui i PG entrano.`,
-          notaDM: `Il DM gestisce il puzzle come una serie di momenti narrativi, tirando il dado percentuale per ogni fase significativa. Il ritmo con cui la luce cala è a discrezione — va usato per creare tensione, non per punire.
-
-Se il globo viene completato: si compatta in una sfera liscia raccoglibile. È una riserva densa di energia magica.
-
-Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
-          tangram: true
-        }
-      ],
-      musica: null
-    },
-
-    // ── CAP 11 ─────────────────────────────────────────────────────
-    {
-      id: "cap11",
-      titolo: "Capitolo 11 — L'Arena, il Gonogol",
+      titolo: "Capitolo 10 — L'Arena, il Gonogol",
       icona: "🐉",
       riassunto: "Il colosseo nella roccia. La folla invisibile. Una viverna incatenata che non è un nemico — è un prigioniero.",
       sezioni: [
@@ -640,6 +610,36 @@ OBIETTIVO: liberare la cinghia del collare, non uccidere la viverna. La cinghia 
 Il DM tira il dado per chi cerca di avvicinarsi e per chi tenta di aprire la cinghia. La viverna percepisce l'intenzione di chi vuole liberarla — smette di attaccarlo in quel momento.
 
 QUANDO È LIBERA: La catena cade. Il Gonogol apre le ali — enormi, bellissime — e si lancia verso il buco in cima. La folla ammutolisce. Silenzio totale. Poi scompare. Al centro del pavimento: una botola aperta verso il livello finale.`
+        }
+      ],
+      musica: null
+    },
+
+    // ── CAP 11 ─────────────────────────────────────────────────────
+    {
+      id: "cap11",
+      titolo: "Capitolo 11 — Il Globo di Metallo",
+      icona: "🌐",
+      riassunto: "Un tangram nel buio cosmico. La luce cala mentre i PG lavorano. Il globo completato è una riserva di energia magica.",
+      sezioni: [
+        {
+          titolo: "Stanza 5 — Il Globo di Metallo",
+          tipo: "stanza",
+          marcatore: "Chiave di volta: globo con cerchio e linee geometriche",
+          testo: `Una stanza senza pareti percepibili — il buio si estende in ogni direzione senza limiti visibili. 
+Al centro, un'unica fonte di luce illumina per un raggio di circa 20 metri un piccolo globo 
+di metallo sospeso nell'aria.
+
+Attorno al globo, a pochi millimetri dalla superficie, fluttuano diverse piccole lamine di metallo 
+con incisioni geometriche. Vanno ricomposte sul globo come un tangram tridimensionale.
+
+La luce comincia lentamente ad affievolirsi nel momento in cui i PG entrano.`,
+          notaDM: `Il DM gestisce il puzzle come una serie di momenti narrativi, tirando il dado percentuale per ogni fase significativa. Il ritmo con cui la luce cala è a discrezione — va usato per creare tensione, non per punire.
+
+Se il globo viene completato: si compatta in una sfera liscia raccoglibile. È una riserva densa di energia magica.
+
+Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
+          tangram: true
         }
       ],
       musica: null
