@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scegli un Ruolo — Kaelvaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deepest:#0a0c0f; --bg-dark:#0f1318; --bg-panel:#131820; --bg-card:#171e28;
+  --bg-hover:#1c2535; --bg-active:#1e2d42;
+  --border:rgba(100,140,200,0.12); --border-bright:rgba(100,140,200,0.28);
+  --gold:#c9a84c; --gold-dim:#8a6e2f; --gold-glow:rgba(201,168,76,0.12);
+  --text-primary:#e8e0d0; --text-secondary:#9a9080; --text-muted:#5a5448;
+  --accent-blue:#5a8fd4; --accent-purple:#8f72d4; --accent-amber:#c4954a;
+  --accent-green:#5ab48f; --accent-red:#c45a5a;
+  --font-display:'Cinzel',serif; --font-body:'Crimson Pro',Georgia,serif;
+  --transition:0.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:var(--bg-deepest);color:var(--text-primary);font-family:var(--font-body);font-size:17px;line-height:1.75;}
+.page{max-width:820px;margin:0 auto;padding:48px 40px 80px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);text-decoration:none;font-family:var(--font-display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px;transition:color var(--transition);}
+.back-link:hover{color:var(--gold);}
+.section-tag{font-family:var(--font-display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px;}
+.section-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:6px;}
+.section-subtitle{font-size:15px;color:var(--text-muted);font-style:italic;margin-bottom:32px;}
+.section-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold-dim),transparent);margin-bottom:32px;}
+.prose p{margin-bottom:1.2em;color:var(--text-primary);}
+.prose p:last-child{margin-bottom:0;}
+.prose em{color:var(--gold);font-style:italic;}
+.prose strong{color:var(--text-primary);font-weight:600;}
+.content-h2{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.box{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold-dim);border-radius:4px;padding:20px 24px;margin:24px 0;}
+.box-title{font-family:var(--font-display);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.box p{color:var(--text-secondary);font-size:15px;margin-bottom:.8em;}
+.box p:last-child{margin-bottom:0;}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0;}
+.role-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:24px;}
+.role-icon{font-size:24px;margin-bottom:12px;}
+.role-name{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.role-desc{font-size:14px;color:var(--text-secondary);line-height:1.65;margin-bottom:12px;}
+.role-examples{font-size:12px;color:var(--text-muted);font-style:italic;border-top:1px solid var(--border);padding-top:10px;margin-top:10px;}
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:24px;border-top:1px solid var(--border);}
+.nav-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--bg-card);border:1px solid var(--gold-dim);border-radius:4px;color:var(--gold);font-family:var(--font-display);font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all var(--transition);}
+.nav-btn:hover{background:var(--bg-active);border-color:var(--gold);}
+.nav-btn.disabled{opacity:.3;pointer-events:none;}
+@media(max-width:640px){.page{padding:32px 18px 60px;}.role-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="kaelvaran.html">← Torna al Manuale</a>
+
+  <div class="section-tag">Creare un Personaggio · Passo 1 di 4</div>
+  <h1 class="section-title">Scegli un Ruolo</h1>
+  <p class="section-subtitle">Non una classe meccanica — chi è il tuo personaggio nel mondo</p>
+  <div class="section-divider"></div>
+
+  <div class="prose">
+    <p>Il ruolo non definisce cosa sai fare in termini di statistiche. Definisce chi sei nella vita di tutti i giorni: come ti guadagni da vivere, come ti relazioni con gli altri, come il mondo ti percepisce quando entri in una stanza.</p>
+    <p>Non c'è un elenco chiuso. Qualsiasi ruolo che abbia senso nel mondo di Kaelvaran è valido. Qui sotto trovi i principali come punto di partenza.</p>
+  </div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-icon">✦</div>
+      <div class="role-name">Arcanista</div>
+      <div class="role-desc">Chi ha accesso al soprannaturale — non necessariamente per scelta. Lo studio, la maledizione, il patto o la reliquiia possono tutti aprire porte che sarebbe meglio tenere chiuse.</div>
+      <div class="role-examples">Studioso di magia, portatore di maledizioni, chi ha stretto un patto con un Fatato, cacciatore di reliquie, custode di grimori.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">⚔</div>
+      <div class="role-name">Combattente</div>
+      <div class="role-desc">Chi risolve i problemi con il corpo. Non solo la forza bruta: può essere la precisione del duellante, la disciplina dell'asceta, la brutalità pragmatica di chi ha imparato a sopravvivere.</div>
+      <div class="role-examples">Duellante, tank, monaco asceta, mercenario, combattente sporco, guardia del corpo, gladiatore, soldato veterano.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">✚</div>
+      <div class="role-name">Guaritore</div>
+      <div class="role-desc">Chi si prende cura degli altri — fisicamente, emotivamente, spiritualmente. Il guaritore sa che il corpo e la mente sono la stessa cosa, e che curare richiede di capire cosa ha ferito.</div>
+      <div class="role-examples">Medico di campo, erborista, sacerdote, ostetrica, consigliere spirituale, chi ha perso qualcuno e non vuole che accada di nuovo.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">🔍</div>
+      <div class="role-name">Investigatore</div>
+      <div class="role-desc">Chi trova le cose che non vogliono essere trovate. Può lavorare per conto delle istituzioni o contro di esse. Il suo valore è nell'osservare ciò che gli altri ignorano.</div>
+      <div class="role-examples">Detective, informatore, spia, archivista, cacciatore di taglie, giornalista, ex guardia cittadina.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">♪</div>
+      <div class="role-name">Artista</div>
+      <div class="role-desc">Chi racconta il mondo per far sì che gli altri lo capiscano — o lo vedano in modo diverso. La musica, la parola, il gesto: strumenti di influenza più potenti di quanto sembrino.</div>
+      <div class="role-examples">Musico, giullare, narratore, attore, cantore, poeta, danzatore, burattinaio.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">⚖</div>
+      <div class="role-name">Mercante o Artigiano</div>
+      <div class="role-desc">Chi conosce il valore delle cose — e sa che il valore di un oggetto non è quasi mai il suo prezzo. Il commercio è politica. L'artigianato è identità.</div>
+      <div class="role-examples">Mercante, fabbro, cuoco, sarto, orefice, contrabbandiere, negoziante di reliquie.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-title">Non trovi il tuo ruolo?</div>
+    <p>Questi sono esempi, non limiti. Se hai in mente qualcosa di diverso — un becchino con segreti, un nobile decaduto, un ex schiavo diventato libero — portalo al tavolo. Il ruolo migliore è quello che ti fa venire voglia di giocare.</p>
+  </div>
+
+  <div class="nav-footer">
+    <a class="nav-btn disabled" href="#">← Precedente</a>
+    <a class="nav-btn" href="pg_cultura.html">Passo 2: La Cultura →</a>
+  </div>
+</div>
+</body>
+</html>

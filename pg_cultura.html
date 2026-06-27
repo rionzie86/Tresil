@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scegli una Cultura — Kaelvaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deepest:#0a0c0f; --bg-dark:#0f1318; --bg-panel:#131820; --bg-card:#171e28;
+  --bg-hover:#1c2535; --bg-active:#1e2d42;
+  --border:rgba(100,140,200,0.12); --border-bright:rgba(100,140,200,0.28);
+  --gold:#c9a84c; --gold-dim:#8a6e2f; --gold-glow:rgba(201,168,76,0.12);
+  --text-primary:#e8e0d0; --text-secondary:#9a9080; --text-muted:#5a5448;
+  --accent-blue:#5a8fd4; --accent-purple:#8f72d4; --accent-amber:#c4954a;
+  --accent-green:#5ab48f; --accent-red:#c45a5a;
+  --font-display:'Cinzel',serif; --font-body:'Crimson Pro',Georgia,serif;
+  --transition:0.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:var(--bg-deepest);color:var(--text-primary);font-family:var(--font-body);font-size:17px;line-height:1.75;}
+.page{max-width:820px;margin:0 auto;padding:48px 40px 80px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);text-decoration:none;font-family:var(--font-display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px;transition:color var(--transition);}
+.back-link:hover{color:var(--gold);}
+.section-tag{font-family:var(--font-display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px;}
+.section-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:6px;}
+.section-subtitle{font-size:15px;color:var(--text-muted);font-style:italic;margin-bottom:32px;}
+.section-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold-dim),transparent);margin-bottom:32px;}
+.prose p{margin-bottom:1.2em;color:var(--text-primary);}
+.prose p:last-child{margin-bottom:0;}
+.prose em{color:var(--gold);font-style:italic;}
+.content-h2{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.box{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold-dim);border-radius:4px;padding:20px 24px;margin:24px 0;}
+.box-title{font-family:var(--font-display);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.box p{color:var(--text-secondary);font-size:15px;margin-bottom:.8em;}
+.box p:last-child{margin-bottom:0;}
+.culture-list{display:flex;flex-direction:column;gap:16px;margin:28px 0;}
+.culture-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:24px;border-left:3px solid transparent;}
+.culture-card.ferromarchi{border-left-color:#c4954a;}
+.culture-card.shizenka{border-left-color:#5ab48f;}
+.culture-card.varlmenn{border-left-color:#5a8fd4;}
+.culture-card.solnari{border-left-color:#c45a5a;}
+.culture-card.aenari{border-left-color:#8f72d4;}
+.culture-header{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;}
+.culture-name{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-primary);}
+.culture-tag{font-family:var(--font-display);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+.culture-desc{font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px;}
+.culture-volonta{font-size:13px;color:var(--text-muted);font-style:italic;border-top:1px solid var(--border);padding-top:10px;}
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:24px;border-top:1px solid var(--border);}
+.nav-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--bg-card);border:1px solid var(--gold-dim);border-radius:4px;color:var(--gold);font-family:var(--font-display);font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all var(--transition);}
+.nav-btn:hover{background:var(--bg-active);border-color:var(--gold);}
+.manuale-link{font-family:var(--font-display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-blue);text-decoration:none;border-bottom:1px solid rgba(90,143,212,0.3);transition:color var(--transition);}
+.manuale-link:hover{color:var(--gold);}
+@media(max-width:640px){.page{padding:32px 18px 60px;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="kaelvaran.html">← Torna al Manuale</a>
+
+  <div class="section-tag">Creare un Personaggio · Passo 2 di 4</div>
+  <h1 class="section-title">Scegli una Cultura</h1>
+  <p class="section-subtitle">L'origine plasma chi sei — non ti imprigiona</p>
+  <div class="section-divider"></div>
+
+  <div class="prose">
+    <p>La cultura di appartenenza non è una statistica. È il contesto in cui il tuo personaggio è cresciuto: la lingua, i valori, il modo di rapportarsi alla morte e alla magia. Non devi aderire perfettamente alla tua cultura — anzi, i personaggi più interessanti sono spesso quelli in conflitto con essa.</p>
+    <p>Per approfondire ogni cultura puoi consultare le <a class="manuale-link" href="kaelvaran.html">sezioni dedicate nel Manuale</a>.</p>
+  </div>
+
+  <div class="culture-list">
+    <div class="culture-card ferromarchi">
+      <div class="culture-header">
+        <div class="culture-name">Ferromarchi</div>
+        <div class="culture-tag">Continente di Ferrath</div>
+      </div>
+      <div class="culture-desc">Cresciuti tra rovine meccaniche che non capiscono ancora del tutto, i Ferromarchi hanno costruito una civiltà sull'ingegno e sulla ripetizione. Diffidano della magia per principio filosofico — non per ignoranza, ma perché credono che ciò che non si può misurare non si può controllare. La loro forza è nella coerenza delle azioni nel tempo.</div>
+      <div class="culture-volonta">La Volontà per i Ferromarchi si chiama <em>Risonanza di Condotta</em>: ogni azione lascia una traccia, e le azioni coerenti modificano la realtà attorno a chi le compie.</div>
+    </div>
+
+    <div class="culture-card shizenka">
+      <div class="culture-header">
+        <div class="culture-name">Shizenka</div>
+        <div class="culture-tag">Continente di Shizen-Do</div>
+      </div>
+      <div class="culture-desc">Il silenzio non è assenza di comunicazione: è la forma più alta di essa. Gli Shizenka hanno costruito una civiltà attorno alla presenza totale nel gesto. Ogni azione è una scelta morale. Il loro rapporto con gli spiriti del territorio è antico e rispettoso — non di adorazione, ma di riconoscimento reciproco.</div>
+      <div class="culture-volonta">La Volontà per gli Shizenka si chiama <em>Kokoro-no-Michi</em>, la Via del Cuore Incarnato: un gesto compiuto con piena presenza vale più di mille parole.</div>
+    </div>
+
+    <div class="culture-card varlmenn">
+      <div class="culture-header">
+        <div class="culture-name">Varlmenn</div>
+        <div class="culture-tag">Continente di Varlhavn</div>
+      </div>
+      <div class="culture-desc">In un continente dove gli inverni durano mesi e i segreti circolano come moneta, i Varlmenn hanno imparato che la memoria è potere e la parola è un contratto. Le casate nobiliari intrecciano alleanze e tradimenti da secoli. I morti non vengono lasciati andare facilmente: restano nell'Oltrevelo finché qualcuno li ricorda.</div>
+      <div class="culture-volonta">La Volontà per i Varlmenn si chiama <em>Sigillo dell'Indole</em>: chi onora i propri giuramenti e vive con coerenza imprime se stesso nella realtà circostante.</div>
+    </div>
+
+    <div class="culture-card solnari">
+      <div class="culture-header">
+        <div class="culture-name">Solnari</div>
+        <div class="culture-tag">Continente di Solambar</div>
+      </div>
+      <div class="culture-desc">La magia si canta. Le emozioni non si nascondono: si abitano fino in fondo. I Solnari sono il popolo dell'intensità — amano, odiano e credono con la stessa fiamma. La loro struttura sociale è complessa, la loro arte straordinaria, la loro ipocrisia devastante quanto la loro autenticità.</div>
+      <div class="culture-volonta">La Volontà per i Solnari si chiama <em>Jyot'i Dharmah</em>, la Fiamma che Non Tradisce: si accende quando si vive in accordo con la propria verità più profonda.</div>
+    </div>
+
+    <div class="culture-card aenari">
+      <div class="culture-header">
+        <div class="culture-name">Aenari</div>
+        <div class="culture-tag">Continente di Aenath</div>
+      </div>
+      <div class="culture-desc">Un tempo umani, hanno scelto di non esserlo più — o almeno così credono. La selezione genetica ha eliminato generazioni di emozioni nella ricerca di una perfezione che i loro stessi fondatori non avrebbero riconosciuto. Gli Aenari non hanno una parola per la Volontà. Questo, più di tutto il resto, dice chi sono.</div>
+      <div class="culture-volonta">Un personaggio Aenari è spesso qualcuno che ha iniziato a sentire ciò che non dovrebbe sentire — e non sa ancora cosa farsene.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-title">Provenienza mista o senza radici?</div>
+    <p>Se il tuo personaggio è cresciuto a Tresil, nelle isole dell'Atollo, o ha vissuto tra più culture, non è necessario scegliere una sola appartenenza. Portalo al tavolo e lo definiamo insieme.</p>
+  </div>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="pg_ruolo.html">← Passo 1: Il Ruolo</a>
+    <a class="nav-btn" href="pg_background.html">Passo 3: Il Background →</a>
+  </div>
+</div>
+</body>
+</html>
