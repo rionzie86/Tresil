@@ -431,6 +431,7 @@ Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro.
       titolo: "Capitolo 7 — Il Labirinto di Specchi",
       icona: "🪞",
       riassunto: "Una palude interna. Specchi a perdita d'occhio. I riflessi escono dagli specchi.",
+      immagine: { src: "labirinto_specchi.webp", didascalia: "Schema di riferimento — struttura circolare del labirinto" },
       sezioni: [
         {
           titolo: "Stanza 2 — Il Labirinto di Specchi",
