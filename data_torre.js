@@ -158,13 +158,13 @@ Nonostante le condizioni del corpo, è veloce e aggressivo.`,
 Il cadavere del cinghiale, se esaminato, mostra lo stesso avanzato stadio di degenerazione interna di Alexei — ma concentrato, come se la bestia fosse corrotta da più tempo.`
         }
       ],
-      musica: { titolo: "Prelude and Action", artista: "Immediate Music", descrizione: "Incontro con il cinghiale" }
+      musica: { titolo: "Entity Brain", artista: "Cryo Chamber", descrizione: "Incontro con il cinghiale" }
     },
 
-    // ── CAP 3b ─────────────────────────────────────────────────────
+    // ── CAP 4 ──────────────────────────────────────────────────────
     {
-      id: "cap3b",
-      titolo: "Capitolo 3b — La Cava, Dimitri",
+      id: "cap4",
+      titolo: "Capitolo 4 — La Cava, Dimitri",
       icona: "⛏️",
       riassunto: "La frana, il fratello intrappolato. Una morte che non si può evitare. E sotto la roccia, qualcosa che non doveva esserci.",
       sezioni: [
@@ -181,13 +181,13 @@ La schiena di Dimitri è stata strappata a morsi — ferite profonde, già necro
 La frana ha aperto un accesso a una grotta preesistente — è da lì che è uscita la creatura.`
         }
       ],
-      musica: { titolo: "Entity Brain", artista: "Cryo Chamber", descrizione: "Incontro con Dogti" }
+      musica: { titolo: "Camelot in Flames", artista: "Daniel Pemberton", descrizione: "La cava — Dimitri" }
     },
 
-    // ── CAP 4 ──────────────────────────────────────────────────────
+    // ── CAP 5 ──────────────────────────────────────────────────────
     {
-      id: "cap4",
-      titolo: "Capitolo 4 — La Grotta di Ralia e Dogti",
+      id: "cap5",
+      titolo: "Capitolo 5 — La Grotta di Ralia e Dogti",
       icona: "🕯️",
       riassunto: "Oltre le macerie si apre una stanza antica, abitata a lungo. Una storia d'amore diventata abominio — e una via verso la Torre.",
       sezioni: [
@@ -199,7 +199,7 @@ La frana ha aperto un accesso a una grotta preesistente — è da lì che è usc
         {
           titolo: "L'Interno della Stanza",
           tipo: "scena",
-          testo: `La stanza è piccola e bassa. Si vede subito che qualcuno l'ha abitata a lungo — non per scelta, ma per necessità. Due stuoie consumate sul pavimento, disposte a qualche metro di distanza. Un avvallamento nella parete di destra è stato adattato a camino: le pareti annerite dal fumo, sul fondo un cumulo di cenere e frammenti di carta bruciata, vecchi di decenni. Non c'è più nulla di leggibile.
+          testo: `La stanza è piccola e bassa. Si vede subito che qualcuno l'ha abitata — non per scelta, ma per necessità. Due stuoie consumate sul pavimento, disposte a qualche metro di distanza. Sparse intorno: bende ingiallite arrotolate male, piccole boccette di vetro con dentro residui di medicinali casalinghi, fasci di erbe essiccate appese a chiodi nella roccia, simboli sacri di guarigione incisi a mano su pezzi di legno e pietra. Un avvallamento nella parete di destra è stato adattato a camino: le pareti annerite dal fumo, sul fondo un cumulo di cenere e frammenti di carta bruciata, vecchi di decenni. Non c'è più nulla di leggibile.
 
 Al centro della stanza, accasciato contro una stalagmite, c'è un corpo. Non è recente — la pelle è secca, tirata sull'osso. La stalagmite gli è entrata nel fianco e fuoriesce dall'altro lato. La posizione suggerisce che non sia caduto: si è seduto lì. Accanto, sul pavimento, c'è il diario.`
         },
@@ -371,10 +371,10 @@ Informazioni chiave che i PG ricavano dal diario:
       musica: { titolo: "White Stone", artista: "Atrium Carceri", descrizione: "La grotta di Ralia e Dogti" }
     },
 
-    // ── CAP 5 ──────────────────────────────────────────────────────
+    // ── CAP 6 ──────────────────────────────────────────────────────
     {
-      id: "cap5",
-      titolo: "Capitolo 5 — L'Ingresso nella Torre",
+      id: "cap6",
+      titolo: "Capitolo 6 — L'Ingresso nella Torre",
       icona: "🗼",
       riassunto: "Oltre la parete magica si apre una struttura impossibile. Scale che non portano da nessuna parte — o forse ovunque.",
       sezioni: [
@@ -392,13 +392,13 @@ Ogni mezzo giro della torre, su entrambi i lati delle scale, c'è una porta ad a
           notaDM: `La torre segue una logica propria: che i PG salgano o scendano, si ritrovano davanti allo stesso arco di pietra — l'ingresso alla prima stanza. Non si può saltare le stanze. Non si può raggiungere il mago senza attraversarle in sequenza. La struttura è un labirinto narrativo, non geometrico.`
         }
       ],
-      musica: { titolo: "Searching for Answer", artista: "Kammarheit", descrizione: "La grotta di Ralia e Dogti" }
+      musica: { titolo: "Searching for Answer", artista: "Kammarheit", descrizione: "L'ingresso nella torre" }
     },
 
-    // ── CAP 6 ──────────────────────────────────────────────────────
+    // ── CAP 7 ──────────────────────────────────────────────────────
     {
-      id: "cap6",
-      titolo: "Capitolo 6 — La Passerella",
+      id: "cap7",
+      titolo: "Capitolo 7 — La Passerella",
       icona: "👁️",
       riassunto: "Un ponte di pietra nel buio assoluto. Le ombre aggrediscono chi si ferma. Un occhio di metallo e vetro che non perdona l'immobilità.",
       sezioni: [
@@ -422,10 +422,13 @@ Non c'è modo di combattere l'occhio. Non c'è modo di fermarsi. L'unica via è 
 Al ritorno sulle scale i PG sentono risate di bambini — sopra e sotto di loro. Una palla di stracci rotola e rimbalza giù dalle scale passando tra i loro piedi. Non ci sono bambini visibili.`
         }
       ],
-      musica: { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "Ingresso nella torre" }
+      musica: [
+        { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "La passerella" },
+        { titolo: "Under the Sun", artista: "Pawel Blaszczak", descrizione: "La passerella" }
+      ]
     },
 
-    // ── LE SCALE (inframmezzo cap6 → cap7) ─────────────────────────
+    // ── LE SCALE (inframmezzo cap7 → cap8) ─────────────────────────
     {
       id: "scale",
       titolo: "Le Scale",
@@ -451,13 +454,13 @@ Poi spariscono tutte.`,
 La palla di stracci rimane. È un oggetto reale — può essere raccolta. Non ha proprietà magiche rilevabili.`
         }
       ],
-      musica: { titolo: "Threnody for the Victims of Hiroshima", artista: "Krzysztof Penderecki", descrizione: "Le scale — I bambini" }
+      musica: { titolo: "Eye for Detail", artista: "Jay Varton", descrizione: "Le scale" }
     },
 
-    // ── CAP 7 ──────────────────────────────────────────────────────
+    // ── CAP 8 ──────────────────────────────────────────────────────
     {
-      id: "cap7",
-      titolo: "Capitolo 7 — Il Labirinto di Specchi",
+      id: "cap8",
+      titolo: "Capitolo 8 — Il Labirinto di Specchi",
       icona: "🪞",
       riassunto: "Una palude interna. Specchi a perdita d'occhio. I riflessi escono dagli specchi.",
       immagine: { src: "labirinto_specchi.webp", didascalia: "Schema di riferimento — struttura circolare del labirinto" },
@@ -478,13 +481,16 @@ Poi iniziano a uscire dagli specchi.`,
 Per uscire: trovare uno specchio nel quale il proprio riflesso si comporta ancora normalmente ed entrarci. I riflessi sani si spostano — non è immediato trovarli.`
         }
       ],
-      musica: { titolo: "Great Old One", artista: "Cryo Chamber Collaboration", descrizione: "La passerella — Il ponte" }
+      musica: [
+        { titolo: "Great Old One", artista: "Cryo Chamber Collaboration", descrizione: "Il labirinto di specchi" },
+        { titolo: "Ashes And Ghost", artista: "Akira Yamaoka", descrizione: "Il labirinto di specchi" }
+      ]
     },
 
-    // ── CAP 8 — LE SCALE 2 ─────────────────────────────────────────
+    // ── LE SCALE 2 (inframmezzo, non numerato) ──────────────────────
     {
-      id: "cap8",
-      titolo: "Capitolo 8 — Le Scale 2",
+      id: "scale2",
+      titolo: "Le Scale 2",
       icona: "👶",
       riassunto: "I bambini deformi tornano — ma stavolta sono più presenti. Come li trattate cambia tutto.",
       sezioni: [
