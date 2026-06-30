@@ -222,7 +222,7 @@ L'artefatto che ha trafugato dalla Guardia delle Sette Memorie è ancora nelle s
 
 Ho iniziato dall'inizio: Fossolento, il villaggio dove è nato. Un posto che sa di sale e pesce essiccato, dove i bambini giocano vicino ai moli e i vecchi siedono fuori dalle porte a guardare il mare. Non il posto da cui ti aspetti esca un mago che ruba artefatti al Consiglio.
 
-Ho parlato con chi lo ricordava. Era uno studioso, dicevano. Brillante, un poco strano, ma non cattivo. Aveva una moglie e un marito, tutti e tre inseparabili. Poi se n'è andato per studiare, come fanno quelli che hanno cervello e non vogliono sprecarsi a riparare reti da pesca. Nessuno lo ha visto tornare.
+Ho parlato con chi lo ricordava. Era uno studioso, dicevano. Brillante, un poco strano, ma non cattivo. Aveva una moglie e un marito, tutti e tre inseparabili — Dorvek, un occhio verde e uno scuro, mento squadrato, e una giovane contadina del villaggio. Poi se n'è andato per studiare, come fanno quelli che hanno cervello e non vogliono sprecarsi a riparare reti da pesca. Nessuno lo ha visto tornare.
 
 Mi chiedo se lo abbiano cercato.
 
@@ -511,7 +511,10 @@ SE I PG IGNORANO I BAMBINI O LI TRATTANO MALE — li spingono, li aggrediscono, 
 La palla di stracci non ha un ruolo meccanico — ma offrirla al bambino che la stringe è un gesto d'affetto valido.`
         }
       ],
-      musica: null
+      musica: [
+        { titolo: "Childhood 1", artista: "Atrium Carceri", descrizione: "Le scale 2" },
+        { titolo: "Commandeered", artista: "Jason Graves", descrizione: "Le scale 2 — se i PG si comportano male" }
+      ]
     },
 
     // ── CAP 9 ──────────────────────────────────────────────────────
@@ -562,7 +565,7 @@ L'ultima volta ci ha pregati di seguirlo. Diceva di aver trovato la soluzione. C
 
 Ci ha portati qui.
 
-Dorvek è diventato il Gonogol — lo avete incontrato, forse, o lo incontrerete. Non c'è più niente di lui dentro quella cosa. Fraxximt gli ha tolto la volontà come si toglie un dente.
+Dorvek è diventato il Gonogol — lo avete incontrato, forse, o lo incontrerete. Non c'è più niente di lui dentro quella cosa. Fraxximt gli ha tolto la volontà come si toglie un dente. Se lo vedete — se vedete un occhio verde chiaro e uno scuro, in mezzo a quella cosa che non dovrebbe esistere — quello era mio marito. Il mento squadrato, il naso un po' storto. Era lui. È ancora lui, da qualche parte.
 
 A me ha fatto questo. Un ventre che non smette mai di partorire — corpi che lui cercava di rendere abitabili per gli spiriti dei morti che evocava. Voleva riportare i nostri figli. Ma non riusciva a richiamare anime — solo ombre, solo incubi. Quando un corpo non rispondeva come voleva, lo portava nell'acqua.
 
@@ -587,7 +590,10 @@ Attaccano cercando di trascinare i PG nell'acqua e affogarli. La Donna Coniglio 
 Il suo unico limite assoluto: non entra nell'acqua.`
         }
       ],
-      musica: null
+      musica: [
+        { titolo: "Twilight", artista: "Midnight Syndicate", descrizione: "La donna coniglio" },
+        { titolo: "The Blasted Heath", artista: "Stuart Chatwood", descrizione: "La donna coniglio" }
+      ]
     },
 
     // ── CAP 10 ─────────────────────────────────────────────────────
@@ -595,7 +601,7 @@ Il suo unico limite assoluto: non entra nell'acqua.`
       id: "cap10",
       titolo: "Capitolo 10 — L'Arena, il Gonogol",
       icona: "🐉",
-      riassunto: "Il colosseo nella roccia. La folla invisibile. Una viverna incatenata che non è un nemico — è un prigioniero.",
+      riassunto: "Il colosseo nella roccia. La folla invisibile. Una massa di carne che cambia forma — e che un tempo era Dorvek.",
       sezioni: [
         {
           titolo: "L'Arena — Il Gonogol",
@@ -606,19 +612,73 @@ migliaia di voci che urlano, esultano, scandiscono un nome.
 
 Gonogol. Gonogol. Gonogol.
 
-Le trombe suonano. Dal buio emerge la viverna: enorme, le ali chiuse e incatenate al corpo 
-da catene spesse come un braccio d'uomo. Il collare di ferro che stringe il collo è ancorato 
-al pavimento. Si agita, ruggisce, sbatte le ali inutilmente. La folla impazzisce.`,
-          notaDM: `Il Gonogol NON è il vero nemico — è un prigioniero. Questa distinzione è centrale.
+Le trombe suonano. Dal buio del fondo arena emerge qualcosa che non ha una forma definita — una massa di carne che pulsa, si gonfia, si ritrae. Non cammina: si trascina, si arrotola su se stessa, avanza come se ogni passo richiedesse di reinventare cosa significhi avere delle gambe.
 
-OBIETTIVO: liberare la cinghia del collare, non uccidere la viverna. La cinghia è un meccanismo di cuoio rinforzato sul retro del collare. La viverna sputa acido denso e colloso che rimane sulla pelle e continua a bruciare.
+La folla impazzisce.`,
+          notaDM: `IL GONOGOL È DORVEK. Il marito della Donna Coniglio, trasformato da Fraxximt nella sua guardia personale senza volontà. Questa rivelazione può emergere durante o dopo lo scontro — i PG che hanno ascoltato il monologo della Donna Coniglio o letto il diario del Biondo hanno già l'indizio fisico per riconoscerlo.
 
-Il DM tira il dado per chi cerca di avvicinarsi e per chi tenta di aprire la cinghia. La viverna percepisce l'intenzione di chi vuole liberarla — smette di attaccarlo in quel momento.
+Il Gonogol è quasi invulnerabile nella sua massa informe — i danni si rigenerano quasi istantaneamente, indipendentemente dalla forma assunta in quel momento. L'unica via per fermarlo davvero è colpire il volto di Dorvek quando appare nella massa di carne durante le trasformazioni.
 
-QUANDO È LIBERA: La catena cade. Il Gonogol apre le ali — enormi, bellissime — e si lancia verso il buco in cima. La folla ammutolisce. Silenzio totale. Poi scompare. Al centro del pavimento: una botola aperta verso il livello finale.`
+INDIZIO FISICO DI DORVEK: un occhio verde chiaro, uno marrone scuro quasi nero. Mento squadrato, naso leggermente storto. Anche distorto, mantiene questo contrasto negli occhi.`
+        },
+        {
+          titolo: "Le Sei Forme",
+          tipo: "scontro",
+          testo: `Il Gonogol non ha una forma stabile. Durante lo scontro muta continuamente, passando da una configurazione all'altra senza preavviso.`,
+          notaDM: `Il DM sceglie liberamente l'ordine e il ritmo delle trasformazioni, usandole per scandire le fasi dello scontro.
+
+1. IL QUADRUPEDE DI OSSA ESPOSTE — una creatura simile a un grosso canide, ma le ossa sono fuori, la carne dentro. Si muove a scatti rapidi e imprevedibili.
+
+2. IL TESSITORE — si allunga in qualcosa di simile a un ragno enorme fatto di tendini intrecciati, ognuno dei quali termina in una piccola mano umana che afferra.
+
+3. IL BOCCONE — una massa quasi sferica dominata da una bocca enorme che occupa metà del corpo. Si muove rotolando.
+
+4. LO SCORTICATO ALATO — sviluppa membrane simili ad ali fatte di pelle umana cucita male, vola basso e goffo, lascia cadere gocce di qualcosa che brucia al contatto.
+
+5. IL CORO — il corpo si divide temporaneamente in tre masse più piccole che si muovono in coordinazione, ognuna con una bocca che ripete frammenti delle stesse parole.
+
+6. IL BAMBINO CRESCIUTO — la forma più disturbante: per pochi secondi il Gonogol assume una sagoma quasi umana, delle dimensioni di un bambino di dieci anni ma con le proporzioni di un adulto, e cammina eretto prima di ricollassare nella massa informe.`
+        },
+        {
+          titolo: "Le Quindici Facce",
+          tipo: "scontro",
+          testo: `Durante ogni transizione tra una forma e l'altra, per un istante la massa di carne si apre e mostra volti — decine di espressioni che emergono e scompaiono nella superficie pulsante, come ricordi che affiorano e affondano di nuovo.`,
+          notaDM: `Una di queste quindici facce è quella di Dorvek (#12) — è l'unico bersaglio che infligge danno reale al Gonogol. Appare solo per pochi secondi, in modo imprevedibile, mai durante una forma stabile — solo nelle transizioni.
+
+1. Un bambino che piange senza lacrime
+2. Una donna anziana che sorride troppo
+3. Fraxximt, giovane, prima delle cicatrici
+4. Un bambino che ride
+5. La Donna Coniglio, umana, contadina, spaventata
+6. Un volto senza tratti, solo la forma di un volto
+7. Un bambino che dorme
+8. Un vecchio pescatore di Fossolento
+9. Fraxximt, con il volto bruciato, urlante
+10. Un bambino che chiama un nome che nessuno riconosce
+11. Una donna che canta
+12. DORVEK — un occhio verde chiaro, uno marrone scuro, mento squadrato, naso leggermente storto. BERSAGLIO VALIDO.
+13. Un bambino con gli occhi cuciti
+14. Un volto identico a quello di uno dei personaggi (il DM lo personalizza sul momento)
+15. Il volto della Donna Coniglio nella sua forma attuale — il coniglio
+
+QUANDO VIENE COLPITA LA FACCIA GIUSTA: il Gonogol si contrae in un urlo che suona quasi umano, e per un breve momento tutte le sue forme rallentano. Dopo un numero di colpi alla faccia giusta a discrezione del DM, il Gonogol collassa.`
+        },
+        {
+          titolo: "Il Collasso",
+          tipo: "scena",
+          testo: `La massa di carne si ritrae su se stessa, si svuota, perde volume rapidamente — come qualcosa che finalmente smette di essere costretto a una forma che non gli appartiene.
+
+Per un istante, prima che tutto si dissolva, emerge una forma quasi umana. Fragile, nuda, irriconoscibile se non per gli occhi: uno verde chiaro, uno marrone scuro.
+
+Poi anche quello svanisce. La folla invisibile ammutolisce. Silenzio totale.
+
+Al centro del pavimento dell'arena: una botola aperta verso il livello successivo.`
         }
       ],
-      musica: null
+      musica: [
+        { titolo: "Closing in", artista: "Michel F. April", descrizione: "L'arena — Il Gonogol" },
+        { titolo: "Barma Beigla Te Carma", artista: "Garry Schyman", descrizione: "L'arena — Il Gonogol" }
+      ]
     },
 
     // ── CAP 11 ─────────────────────────────────────────────────────
@@ -648,7 +708,7 @@ Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
           tangram: true
         }
       ],
-      musica: null
+      musica: { titolo: "The Inexorable Advance of Mr Delaney", artista: "Max Richter", descrizione: "Il globo di metallo" }
     },
 
     // ── CAP 12 ─────────────────────────────────────────────────────
