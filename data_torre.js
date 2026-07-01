@@ -346,6 +346,12 @@ da allora Dogti è qui. senza cuore. senza Rahlia. senza una ragione per muovers
 
 mi dispiace, gli ho detto. non so se capisce.
 
+prima che smettesse di parlare, Dogti ha iniziato a fischiettare. piano, con le labbra screpolate. ho riconosciuto la melodia — è una canzone popolare Varlmenn, la conosco. ho trascritto le note qui sotto mentre potevo ancora muovere la mano.
+
+[note musicali trascritte — la melodia di Thriller, in notazione arcana]
+
+sotto le note ha tracciato con un dito nel sangue sul pavimento queste parole: l'amata la cantava per richiamare l'amato.
+
 la mano non si muove più bene.
 
 l'artefatto è nella torre. il Rospo ce l'ha. non sono riuscito a portarlo via.
@@ -359,7 +365,8 @@ Informazioni chiave che i PG ricavano dal diario:
 • Il nome del mago: Fraxximt il Rospo
 • La torre cambia continuamente — non c'è una via diretta al mago
 • Esiste il "cuore di Dogti" usato come tramite arcano
-• La canzone va cantata — ed è legata a Dogti in modo profondo`
+• La canzone va cantata — ed è legata a Dogti in modo profondo. Le note sono trascritte nel diario con l'appunto "l'amata la cantava per richiamare l'amato"
+• Dorvek: un occhio verde e uno scuro, mento squadrato — indizio per riconoscere la faccia vincente nel Gonogol`
         },
         {
           titolo: "La Parete di Fondo",
@@ -704,11 +711,11 @@ La luce comincia lentamente ad affievolirsi nel momento in cui i PG entrano.`,
 
 Se il globo viene completato: si compatta in una sfera liscia raccoglibile. È una riserva densa di energia magica.
 
-Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
+Dopo la raccolta: il pavimento trema e una scala si apre nella parete verso il livello successivo.`,
           tangram: true
         }
       ],
-      musica: { titolo: "The Inexorable Advance of Mr Delaney", artista: "Max Richter", descrizione: "Il globo di metallo" }
+      musica: { titolo: "Impulse", artista: "Hans Zimmer", descrizione: "Il globo di metallo" }
     },
 
     // ── CAP 12 ─────────────────────────────────────────────────────
@@ -716,34 +723,32 @@ Dopo la raccolta: il pavimento cede e i PG cadono nell'arena.`,
       id: "cap12",
       titolo: "Capitolo 12 — La Stanza del Trono",
       icona: "💀",
-      riassunto: "Lo scheletro del Rospo sul trono d'ossa. Il cuore pulsante di Dogti. Una goccia di sangue può rimettere tutto in moto.",
+      riassunto: "Il Rospo dorme sul trono. Il cuore di Dogti pulsa nell'ampolla. E le pareti respirano.",
       sezioni: [
         {
           titolo: "La Stanza del Trono",
           tipo: "scena",
-          testo: `Una stanza ampia, senza ornamenti, fredda. Al centro: un trono fatto di ossa saldate 
-tra loro da meccanismi di ottone arrugginito. Su di esso, riverso, lo scheletro di Fraxximt il Rospo.
+          testo: `Una stanza ampia, senza ornamenti, fredda. Al centro: un trono fatto di ossa saldate tra loro da meccanismi di ottone arrugginito. Su di esso, riverso, Fraxximt il Rospo — vivo, addormentato, il respiro impercettibile.
 
-Le vesti sono ancora intatte — elaborate, scure, cucite con fili metallici. 
-Le mani ossute stringono al petto un'ampolla di vetro decorata con spine d'ottone lucido. 
-All'interno dell'ampolla, visibile attraverso il vetro, giace un cuore. Pulsa.
+Le vesti sono elaborate e scure, cucite con fili metallici che brillano debolmente. Le mani stringono al petto un'ampolla di vetro decorata con spine d'ottone lucido. All'interno dell'ampolla, visibile attraverso il vetro, giace un cuore. Pulsa.
 
-Il cuore di Dogti.`,
-          notaDM: `La stanza è silenziosa. Nessuna minaccia immediata visibile. Il DM lascia respirare la scena — questo è il momento in cui i giocatori decidono cosa fare.
+Le pareti sono coperte di bozzi irregolari — protuberanze che sporgono dalla pietra come tumori. Guardandole meglio si vedono ingranaggi che affiorano dalla superficie, frammenti di cheratina indurita, ciuffi di carne compressa. Qualcosa vive dentro quelle pareti. Per ora dorme anche lui.`,
+          notaDM: `La stanza è silenziosa. Nessuna minaccia immediata. Il DM lascia respirare la scena.
 
-Se i PG hanno il globo di metallo: appena entra nella stanza, le dita dello scheletro si contraggono leggermente. Se avvicinano il globo, lo scheletro si agita — come se lo riconoscesse e lo volesse. I PG capiscono che il globo ha valore qui.`
+I bozzi sulle pareti sono gli ibridi ragno/macchina in stato quiescente — si attiveranno non appena il Rospo verrà colpito per la prima volta al cap13. Inserirli qui come dettaglio visivo prepara i PG senza spiegarli.
+
+Se i PG hanno il globo: appena entra nella stanza, le dita del Rospo si contraggono leggermente. Se avvicinano il globo al corpo, il Rospo si agita — lo riconosce. I PG capiscono che il globo ha valore qui.`
         },
         {
           titolo: "Recuperare il Cuore",
           tipo: "scena",
-          testo: `L'ampolla è stretta tra le dita ossute del Rospo. Staccarla richiede forza 
-o delicatezza — o entrambe. Le spine d'ottone sono aguzze.`,
-          notaDM: `Il rischio centrale: se durante il recupero un PG si ferisce e una goccia di sangue cade sul corpo del Rospo, lo scheletro si risveglia.
+          testo: `L'ampolla è stretta tra le dita del Rospo. Staccarla richiede forza o delicatezza — o entrambe. Le spine d'ottone sono aguzze.`,
+          notaDM: `Il rischio centrale: se durante il recupero un PG si ferisce e una goccia di sangue cade sul corpo del Rospo, lo scheletro si risveglia anticipatamente — si passa direttamente al cap13.
 
-Il DM tira il dado percentuale per ogni tentativo di recupero — chi usa delicatezza e pazienza ha più margine, chi strappa con forza rischia di scheggiarsi la mano sulle spine d'ottone.`
+Il DM tira il dado percentuale per ogni tentativo. Chi usa delicatezza e pazienza ha più margine. Chi strappa con forza rischia di scheggiarsi la mano sulle spine.`
         }
       ],
-      musica: null
+      musica: { titolo: "Children of the Omnissiah", artista: "Guillaume David", descrizione: "La stanza del trono" }
     },
 
     // ── CAP 13 ─────────────────────────────────────────────────────
@@ -751,50 +756,94 @@ Il DM tira il dado percentuale per ogni tentativo di recupero — chi usa delica
       id: "cap13",
       titolo: "Capitolo 13 — Il Rospo si Risveglia",
       icona: "🦴",
-      riassunto: "Fraxximt si alza dal trono. Senza voce, senza incantesimi potenti. Ma si muove verso il sangue.",
+      riassunto: "Fraxximt si alza dal trono. Potente, veloce, spezzato. E ha bisogno di riavere ciò che è suo.",
       sezioni: [
         {
-          titolo: "Il Rospo si Risveglia",
-          tipo: "scontro",
-          testo: `Fraxximt si alza dal trono. Le ossa scricchiolano. I meccanismi di ottone sul trono 
-si sfilano e si riattaccano al suo corpo come esoscheletro. 
-Non ha corde vocali — non può parlare, non può cantare, non può lanciare grandi incantesimi. 
-Emette solo un sibilo rauco e continuo. Si muove verso il sangue.`,
-          notaDM: `Il Rospo senza voce è pericoloso ma limitato — non controlla pienamente gli abomini.
+          titolo: "Il Risveglio",
+          tipo: "scena",
+          testo: `Non c'è un segnale di avvertimento.
 
-SE I PG USANO LA CANZONE:
-Cantano Thriller — quella vera, quella che conoscono. Serve almeno un cantante e uno che tenga il ritmo. Con il cuore di Dogti in mano, Dogti risponde — arriva dalla grotta o emerge dalla torre, attratto dalla melodia.
+Un'esplosione che non si vede — si sente solo nell'addome, come se improvvisamente la gravità fosse raddoppiata. Le ginocchia cedono. L'aria pesa. Tutto pesa.
 
-Con la canzone e il cuore i PG possono:
-• Ordinare a Dogti di attaccare il Rospo direttamente
-• Ordinare a Dogti di radunare gli abomini della torre e usarli contro il Rospo
-• Usare Dogti come scudo o distrazione
+Fraxximt il Rospo si alza dal trono.
 
-SE IL ROSPO VEDE IL GLOBO:
-Diventa ossessivo — smette temporaneamente di inseguire i PG e cerca di afferrare la sfera. Usabile come distrazione.
+Le vesti si raddrizzano da sole. Gli occhi — ciò che resta degli occhi sotto la maschera di carne bruciata che è la sua faccia — si aprono e fissano il gruppo con un'attenzione assoluta. Poi la voce, roca e spezzata come legno bagnato che brucia: "Intrusi? Non ci toglierete mai i nostri figli."
 
-SE I PG RIDANNO IL CUORE A DOGTI:
-Dogti lo ingoia. Si immobilizza un momento — poi si raddrizza. Qualcosa cambia nel suo sguardo vuoto. Attacca il Rospo di propria iniziativa, senza bisogno della canzone. È il suo modo di chiudere i conti.
+Poi attacca.`,
+          notaDM: `IL ROSPO IN COMBATTIMENTO
 
-COME MUORE IL ROSPO:
-Fisicamente, tramite Dogti, o sgretolato se privato contemporaneamente del cuore e del globo. Il DM sceglie l'epilogo più soddisfacente in base a come si è svolta la scena.`
+Il Rospo è potente, veloce e imprevedibile. Levita grazie all'Amuleto del Volo — non vola in senso stretto, ma si sposta in verticale con rapidità sorprendente, rendendo difficile il corpo a corpo classico.
+
+Prima azione: afferra per il collo il PG più vicino.
+Priorità assoluta: se vede qualcuno con l'ampolla o con il globo, abbandona tutto e attacca quello.
+
+PRIMO COLPO RICEVUTO — I RAGNI:
+Non appena il Rospo riceve un colpo significativo, i bozzi sulle pareti si aprono. Decine di ibridi ragno/macchina escono dalla pietra — corpo di ragno, zampe di metallo, cheratina indurita sul dorso. Si fiondano sul Rospo e iniziano a ripararlo in tempo reale. Finché i ragni lavorano, il danno inflitto al Rospo si dimezza.
+
+SE I RAGNI VENGONO UCCISI:
+Il Rospo non reagisce immediatamente. Dopo pochi secondi esegue un rituale veloce — fonde i cadaveri dei ragni in due copie distinte. Una combatte i PG. L'altra si aggancia al Rospo e riprende le riparazioni.
+
+SE IL ROSPO PRENDE IL GLOBO:
+Lo chiude. Ombre emergono dal globo e combattono per lui. Finché il globo rimane chiuso le ombre sono immortali — l'unico modo per fermarle è riaprire il globo o strapparlo al Rospo.
+
+INCANTESIMI E OGGETTI:
+Usa la Pergamena del Fuoco quando messo alle strette — evoca fiamme controllabili che può dirigere come un'arma per qualche decina di secondi.
+Usa l'Anello della Telecinesi per disarmare, spostare i PG, o richiamare il globo o l'ampolla a sé.
+Usa l'Amuleto Solnari per plasmare la pietra — chiudere uscite, creare barriere, intrappolare personaggi sotto roccia.`
+        },
+        {
+          titolo: "Come Sconfiggerlo — Le Risoluzioni",
+          tipo: "scena",
+          testo: `[Sezione riservata DM]`,
+          notaDM: `RISOLUZIONE 1 — LA CANZONE DI DOGTI
+Se i PG cantano la canzone di Ralia (Thriller, la canzone popolare Varlmenn trascritta nel diario del Biondo con l'appunto "l'amata la cantava per richiamare l'amato") con il cuore di Dogti in mano, Dogti risponde. Arriva dalla grotta o emerge dalla torre, attratto dalla melodia. È in grado di sconfiggere il Rospo con la pura violenza — è la sua chiusura dei conti.
+Serve almeno un cantante e qualcuno che tenga il ritmo. Il cuore nell'ampolla batte sempre più veloce man mano che cantano.
+
+RISOLUZIONE 2 — RIDARE IL CUORE A DOGTI
+Se durante o prima dello scontro i PG riescono a far arrivare il cuore a Dogti (che vaga fuori o è presente nella torre), Dogti lo ingoia. Si immobilizza un momento. Poi si raddrizza. Qualcosa cambia nel suo sguardo vuoto. Attacca il Rospo di propria iniziativa, senza bisogno della canzone.
+
+RISOLUZIONE 3 — DESTABILIZZARE IL ROSPO
+Racconti o immagini sul suo passato — i figli morti, Eritha, Dorvek, la vita a Fossolento prima del crollo — lo destabilizzano. Non abbastanza da fermarlo, ma abbastanza da spezzare la sua concentrazione per qualche secondo e aprire una finestra per il colpo finale. Il DM valuta la qualità narrativa del momento e decide l'effetto.
+
+COME MUORE:
+Fisicamente tramite Dogti, o sgretolato se privato contemporaneamente del cuore e del globo. Il DM sceglie l'epilogo più soddisfacente in base a come si è svolta la scena.`
+        },
+        {
+          titolo: "Gli Oggetti del Rospo",
+          tipo: "oggetto",
+          testo: `Fraxximt porta con sé sei oggetti. Ognuno ha un nome, un aspetto e un potere.`,
+          notaDM: `1. L'AMPOLLA DI SPINE
+Ampolla di vetro circondata da spine di ottone. Contiene il cuore pulsante di Dogti — il tramite arcano che tiene in piedi la torre e gli ibridi. Il cuore batte più veloce in presenza di Dogti o quando viene cantata la sua canzone.
+
+2. L'AMULETO DEL VOLO
+Medaglione di pietra nera con incisione di ali stilizzate. Permette al Rospo di spostarsi molto velocemente in levitazione. Non vola — levita, con movimenti rapidi e imprevedibili in verticale.
+
+3. L'ANELLO DELLA TELECINESI
+Anello di ferro brunito con piccolo cristallo incastonato. Permette di spostare oggetti e creature a distanza con la sola concentrazione. Usato per disarmare, spostare i PG o richiamare l'ampolla e il globo a sé.
+
+4. L'AMULETO SOLNARI
+Pendaglio dorato che rappresenta decine di braccia che incastonano una pietra rosso rubino. Trafugato nell'Impero Solnari — permette al Rospo di plasmare la pietra. Usato per chiudere uscite, creare barriere, intrappolare personaggi.
+
+5. LA PERGAMENA DEL FUOCO
+Un rotolo di pergamena tenuto nella manica. Evoca fiamme controllabili dal mago per un breve periodo di tempo. Usa quando messo alle strette. Una sola carica.
+
+6. LA SFERA DELLE OMBRE
+Il globo risolto dai PG nella stanza precedente, se il Rospo ne viene in possesso. Può chiuderla, facendo emergere ombre che combattono per lui. Finché rimane chiusa le ombre sono immortali.`
         },
         {
           titolo: "Epilogo — Il Ritorno al Villaggio",
           tipo: "scena",
-          testo: `Con la morte del Rospo, la torre non crolla — resta lì, immobile, silenziosa. 
-Ma le stanze non cambiano più. Le creature al suo interno si spengono una a una.
+          testo: `Con la morte del Rospo, la torre non crolla — resta lì, immobile, silenziosa. Ma le stanze non cambiano più. Le creature al suo interno si spengono una a una.
 
-La strada verso il villaggio è lunga. 
-Ma i fuochi della locanda si vedono da lontano — e dentro si sente già la musica.`,
+La strada verso il villaggio è lunga. Ma i fuochi della locanda si vedono da lontano — e dentro si sente già la musica.`,
           notaDM: `Il ritorno è una scena libera — il DM lascia che i giocatori raccontino. Cosa dicono ai nativi del villaggio? Cosa omettono? Chi credono loro?
 
-Alexei è ancora vivo — peggio di prima, ma vivo. Se i PG hanno il cuore di Dogti, possono scegliere cosa farne. Se Dogti è ancora in piedi, è fuori dalla torre — libero per la prima volta da quando Ralia lo incatenò.
+Alexei è ancora vivo — peggio di prima, ma vivo. Se i PG hanno il cuore di Dogti, possono scegliere cosa farne. Se Dogti è ancora in piedi, è fuori dalla torre — libero per la prima volta da quando Ralia lo incatenò con la canzone.
 
 Non c'è una risposta giusta. La one shot finisce qui.`
         }
       ],
-      musica: null
+      musica: { titolo: "Overlord", artista: "Guillaume David", descrizione: "Il Rospo si risveglia" }
     }
 
   ],
@@ -832,15 +881,15 @@ Non c'è una risposta giusta. La one shot finisce qui.`
     },
     {
       nome: "La Donna Coniglio",
-      ruolo: "Creatura della Torre — guardiana della Stanza 4",
-      descrizione: "Testa e orecchie di coniglio bianco su corpo umano. Siede sui gradini della scalinata. Parla con voce dolce. Sorride. Aspetta.",
-      segreto: "Non entra nell'acqua — limite assoluto. Il fascino crea devozione ossessiva irrazionale. Si rompe se il PG viene ferito da un alleato o se la creatura è gravemente ferita. L'uscita è sott'acqua, sotto la scalinata."
+      ruolo: "Creatura della Torre — La Donna Coniglio",
+      descrizione: "Testa e orecchie di coniglio bianco su corpo umano alto tre metri. Ventre gonfio e slabbrato, tubi luminosi agganciati alla carne. Siede sulla scalinata in fondo alla stanza. Parla con voce bassa e affaticata.",
+      segreto: "È la moglie di Fraxximt, trasformata in macchina per partorire corpi da usare come contenitori per gli spiriti dei morti. Se i PG sono stati gentili con i bambini, racconta la storia di Fraxximt e spiega come disattivare il globo. Se i PG sono stati crudeli, ordina ai bambini nelle acque di attaccare. Non entra nell'acqua — limite assoluto. Se i tubi vengono recisi si indebolisce gravemente ma il meccanismo della torre non si interrompe."
     },
     {
       nome: "Il Gonogol",
-      ruolo: "Creatura dell'Arena — viverna prigioniera",
-      descrizione: "Una viverna enorme, incatenata al pavimento dell'arena. Ali bloccate, collare di ferro. Sputa acido denso e colloso. La folla invisibile scandisce il suo nome.",
-      segreto: "Non è un nemico — è un prigioniero. Percepisce l'intenzione di chi vuole liberarla e smette di attaccarlo. Quando è libera, vola via e lascia aperta la botola verso il livello finale."
+      ruolo: "Creatura dell'Arena — Dorvek trasformato",
+      descrizione: "Una massa di carne informe che pulsa e muta continuamente. Cambia tra sei forme abominevoli. Nella massa appaiono e scompaiono quindici volti — tra cui quello di Dorvek (un occhio verde chiaro, uno marrone scuro, mento squadrato, naso leggermente storto).",
+      segreto: "È Dorvek — il marito della Donna Coniglio, trasformato da Fraxximt nella sua guardia personale. Non può essere danneggiato normalmente. Il solo bersaglio valido è il suo volto (#12 nella lista) quando appare nelle transizioni tra forme. Quando viene colpito abbastanza volte, collassa e per un istante emerge la forma quasi umana di Dorvek prima di dissolversi."
     }
   ],
 
