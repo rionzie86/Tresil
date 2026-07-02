@@ -1,310 +1,347 @@
 // ══════════════════════════════════════════════════════════════════
 //  LO STUDIO FALLITO — data_studio.js
+//  Versione 2 — aggiornata con lore completa
 // ══════════════════════════════════════════════════════════════════
 
 const studioDati = {
 
-  loreSegreta: `LE CREATURE VERMIFORMI
-Entità provenienti dall'Universo Specchio — un piano di esistenza parallelo al mondo reale, separato da una membrana sottilissima che si manifesta fisicamente come superficie riflettente. Le creature non hanno corpo fisico nel senso tradizionale: sono parassiti che necessitano di un ospite per esistere nel mondo reale. Si attaccano al sistema nervoso dell'ospite attraverso orifizi naturali e ne prendono il controllo gradualmente.
+  // ── LORE SEGRETA DM ───────────────────────────────────────────
+  loreSegreta: `I SUHEK'NAL
+Creature vermiformi originarie di un piano parallelo. In forma libera sono vermi translucidi lunghi pochi centimetri. La loro biologia è progettata per la simbiosi: si attaccano a un ospite volontario, entrano in uno stato di condivisione (Veth'kor) durante il quale una gemma registra ogni informazione del corpo ospite, poi si trasferiscono nella copia perfetta lasciando libero l'originale.
 
-Durante gli esperimenti condotti nello Studio, le creature hanno accidentalmente creato una falla tra l'Universo Specchio e un piano demoniaco. La falla si trova al livello più basso dell'edificio e si espande lentamente verso l'alto. Le creature hanno tentato di contenerla e hanno fallito — ora cercano di fuggire nel mondo reale dei personaggi usando il meccanismo del sacrificio.
+Questo processo — il Veth'nal — è sacro per la loro cultura. Prendere un ospite con la forza è considerato impuro. Lo stanno facendo per necessità: La Fine li sta decimando da 45 anni.
 
-IL MECCANISMO DEL SACRIFICIO
-Per aprire un varco stabile verso il mondo reale, le creature necessitano di un sacrificio volontario o coercitivo. I corpi degli ospiti originali — quelli lasciati in stato sospeso negli specchi — vengono disposti sull'altare finale. L'ultimo personaggio rimasto (non ancora sostituito) è il candidato al sacrificio.
+IL VETH'NAL — IL CULTO DELL'OSPITE PERFETTO
+I Suhek'nal hanno una filosofia evolutiva chiamata Veth'nal (il cammino verso la forma). Credono che la forma vermiforme sia uno stato larvale spirituale — non fisicamente, ma ontologicamente. Solo nell'unione con l'ospite giusto il simbionte raggiunge la sua forma completa. L'ospite perfetto non è il più forte: è quello con cui il simbionte risuona completamente, creando qualcosa di nuovo che non è né l'uno né l'altro.
 
-SE IL SACRIFICIO VIENE EVITATO: il varco si chiude, le creature vermiformi rimangono intrappolate, i corpi negli specchi si risvegliano.
+I tre gradi del Veth'nal:
+• Veth'suu — il primo contatto. Il simbionte osserva l'ospite dal riflesso dello specchio.
+• Veth'kor — la condivisione. Il simbionte percepisce i ricordi, le emozioni, la storia dell'ospite. La gemma inizia a registrare.
+• Veth'nal — la forma completa. La gemma è formata, il trasferimento avviene. Il simbionte vive nella copia perfetta.
 
-IL VILLAIN INNOMINATO
-Proveniente dalla falla demoniaca, non dall'Universo Specchio. Le creature vermiformi lo temono quanto i personaggi. Si muove lento, inesorabile. La sua sola presenza dissolve la realtà circostante. Non può essere danneggiato con mezzi ordinari — solo rallentato o distolto. Il DM decide il momento delle sue apparizioni per massimizzare la tensione. Non va mai mostrato completamente.`,
+Simbionti che usano ospiti forzati sono chiamati Veth'saar — corrotti. La comunità li tollera solo per la crisi attuale.
 
+LA FINE
+Entità entrata dalla falla demoniaca 45 anni fa. Non ha forma definita — è percepita come un'assenza che si muove: dove passa, l'aria diventa stagnante, le superfici perdono colore, i suoni si smorzano. Lentissima. Immortale. Uccide qualsiasi entità viva al contatto. Più vite tocca, più l'influsso del suo piano demoniaco si espande nell'ambiente circostante.
+
+Non si distrae. Non si rallenta. L'unica strategia è tenersi a distanza.
+
+IL LABORATORIO
+Fondato dai Suhek'nal per sviluppare tecnologie di connessione con altri piani. I piani scendono (1 è il più alto, 4 il più profondo). 45 anni fa un esperimento al Piano 4 ha aperto un varco verso un piano demoniaco. La Fine è entrata. Il laboratorio è stato messo in quarantena — tutte le uscite sigillate.
+
+40 anni fa i Suhek'nal hanno replicato l'esperimento al Piano 1 creando un varco verso Kaelvaran per attirare ospiti. Il duplicato Kaelvaran del laboratorio è emerso spontaneamente, adattandosi al mondo: stile fantasy medievale, trappole e creature generate dall'ambiente.
+
+I DUPLICATI
+Ogni varco forzato genera un duplicato dello spazio nel mondo di destinazione, adattato al contesto di quel mondo:
+• Piano 1 duplicato Kaelvaran — aspetto castello medievale, trappole fantasy, creature locali
+• Piano 4 duplicato demoniaco — girone infernale, geometrie impossibili, calore
+
+Gli specchi sono i punti di contatto tra le versioni parallele.
+
+MECCANICA DEGLI SPECCHI
+• Specchi normali: collegano la stessa stanza tra versione Kaelvaran e versione Suhek'nal
+• Specchi speciali (segnalati in mappa): portano direttamente alla Stanza 15 del Piano 2 Suhek'nal (la stanza delle gemme), indipendentemente da dove ci si trova
+
+LA STANZA DELLE GEMME (Stanza 15, Piano 2 Suhek'nal)
+Le gemme in formazione registrano le informazioni degli ospiti. Una per ospite. Quando completa, il Suhek'nal può eseguire il trasferimento nella copia. Le gemme non attirano La Fine finché non sono completamente formate.
+
+IL CRISTALLO TEMPORALE
+Fonte di energia che alimenta il primo varco (verso il piano demoniaco) al Piano 4. Un secondo cristallo alimenta la quarantena. Per la risoluzione standard: spegnere il cristallo dei portali quando La Fine è nel duplicato Kaelvaran — così rimane intrappolata lì. Ma questo non è ideale.
+
+RISOLUZIONE OTTIMALE (da scoprire tramite indizi):
+Il cristallo temporale, se sovraccaricato, implode creando effetti caotici. Se fatto implodere all'interno del varco demoniaco, risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran. Richiede di trovare gli scritti sui cristalli temporali.
+
+VARN SELICK
+Criminale, ex capo di un culto del cannibalismo nei sobborghi di una città. Stava cercando di evocare e soggiogare un incubo della prima era. I PG lo hanno sconfitto due giorni fa ma è fuggito, lasciando tracce che li hanno portati fino alla frana.
+
+Fisicamente: uomo sulla cinquantina, corporatura robusta, capelli grigi rasati ai lati e lunghi in cima sempre legati. Una bruciatura estesa copre il lato sinistro del collo e sale fino alla mandibola. Occhi chiari quasi incolori. Vestiti pratici e scuri. Freddo, intelligente, capace di ispirare devozione cieca.
+
+• VARN ORIGINALE: vaga disorientato tra i piani 1 e 3. Paranoico e pericoloso. Potrebbe attaccare i PG scambiandoli per nemici o allearsi con loro se capisce la situazione.
+• VARN COPIA (Suhek'nal): vaga nel Piano 1 Kaelvaran cercando di nascondersi. Comportamento leggermente diverso — più calmo, più controllato. Chi conosce bene Varn potrebbe notare qualcosa di storto.
+
+Le sue guardie del corpo: una morta al contatto con La Fine, l'altra vittima di una trappola al Piano 1.`,
+
+  // ── PANORAMICA ────────────────────────────────────────────────
+  panoramica: `Qualcuno ha aperto una porta che non avrebbe dovuto aprire.
+
+Lo Studio era un luogo di ricerca — creature che cercavano di capire cosa c'è oltre il confine del loro mondo. Hanno trovato una risposta. La risposta li ha trovati a sua volta.
+
+Ora lo Studio è silenzioso. E voi siete dentro. E la porta attraverso cui siete entrati non porta più fuori.
+
+Ci sono cose qui dentro che non vogliono farvi del male. Ce ne sono altre che non sanno fare altro. E qualcosa — lento, inevitabile, senza nome — vi sta già cercando.`,
+
+  // ── STRUTTURA ─────────────────────────────────────────────────
+  struttura: {
+    piani: [
+      {
+        id: "piano1",
+        nome: "Piano 1",
+        versioni: ["Kaelvaran", "Suhek'nal"],
+        stanze: 19,
+        tema_kaelvaran: "La familiarità distorta. Castello medievale generato spontaneamente. Trappole, enigmi, creature locali. Esplorazione e tensione. La Fine arriva mentre esplorano.",
+        tema_suheknal: "Il laboratorio come era. Uffici, archivi, strumenti di misurazione anni 40/50. Documenti sui Suhek'nal e sul Veth'nal. Prime tracce di cosa è andato storto.",
+        ingresso: "Stanza 1 (in alto a destra della mappa) — accesso da una frana in un burrone. L'apertura è emersa dalla roccia come se fosse sempre stata lì."
+      },
+      {
+        id: "piano2",
+        nome: "Piano 2",
+        versioni: ["Kaelvaran", "Suhek'nal"],
+        stanze: 25,
+        tema_kaelvaran: "La struttura si fa più instabile. Il castello medievale mostra crepe dove il laboratorio originale affiora. Scontri più intensi.",
+        tema_suheknal: "I laboratori attivi. Tavoli di contenimento, strumenti avanzati, la stanza delle gemme (stanza 15). Informazioni sulla falla demoniaca e su La Fine.",
+        stanza_gemme: "Stanza 15 — destinazione di tutti gli specchi speciali. Le gemme in formazione degli ospiti attuali."
+      },
+      {
+        id: "piano3",
+        nome: "Piano 3",
+        versioni: ["Kaelvaran", "Suhek'nal"],
+        stanze: 25,
+        tema_kaelvaran: "Il duplicato si corrode. Elementi demoniaci affiorano nel medievale. Trappole ancora attive, zone dissolte.",
+        tema_suheknal: "La prima linea di difesa. Segni di battaglia contro La Fine. Residui di combattimento, trappole, zone dove la realtà si è dissolta. La Fine è più presente qui."
+      },
+      {
+        id: "piano4",
+        nome: "Piano 4",
+        versioni: ["Kaelvaran-demoniaco", "Suhek'nal"],
+        stanze: 17,
+        tema_kaelvaran: "Il duplicato demoniaco. Girone infernale, geometrie impossibili, calore insopportabile. Il cristallo temporale.",
+        tema_suheknal: "Il laboratorio profondo. L'origine della falla. Il varco demoniaco ancora aperto. La fonte di energia."
+      }
+    ]
+  },
+
+  // ── CAPITOLI (da sviluppare stanza per stanza) ─────────────────
   capitoli: [
 
-    // ── INGRESSO ──────────────────────────────────────────────────
     {
       id: "ingresso",
-      titolo: "Ingresso — La Trappola di Vetro",
-      icona: "🪞",
-      riassunto: "I personaggi attraversano la soglia e rimangono incastrati. Il primo contatto con le creature vermiformi.",
+      titolo: "Ingresso — La Frana",
+      icona: "🪨",
+      riassunto: "Un'apertura nella roccia di un burrone. Non c'era ieri. Le tracce di Varn portano dentro.",
       sezioni: [
         {
-          titolo: "La Soglia",
+          titolo: "L'Accesso",
           tipo: "scena",
-          testo: `L'ingresso non ha nulla di speciale. Una porta, un corridoio, l'aria ferma di un posto che non respira da tempo. Entrate.
+          testo: `Il burrone scende ripido. Le tracce di Varn Selick finiscono qui — impronte nel fango, una striscia di sangue sul bordo della roccia, e poi niente. Solo la frana.
 
-Poi qualcuno prova a tornare indietro.
+Nell'ammasso di roccia e terra c'è un'apertura. Non sembra un crollo — sembra che qualcosa sia emerso dall'interno spingendo verso fuori. I bordi sono lisci, come se la pietra avesse ceduto gradualmente nel tempo.
 
-La porta è ancora lì. Si apre. Ma oltre la soglia non c'è l'esterno — c'è la stessa immagine dell'esterno, come una fotografia. L'aria al di là non si muove. I suoni non passano. Chi prova a varcare la soglia in uscita sente qualcosa di sottile e resistente, come una parete di vetro invisibile che non cede.
+Dall'interno non viene né luce né suono. Solo aria ferma.`,
+          notaDM: `I PG stanno inseguendo Varn Selick — capo di un culto del cannibalismo, sconfitto due giorni fa ma fuggito. Le tracce li hanno portati fino a qui.
 
-Siete dentro. E qualcosa sa che siete dentro.`,
-          notaDM: `La trappola è immediata e non spiegata. Non dare ai giocatori il tempo di razionalizzare — fate che la scoperta avvenga nel momento meno comodo.
+Uno degli indizi che potrebbero trovare nelle vicinanze: il corpo della prima guardia del corpo di Varn, morta qualche metro dentro l'ingresso. Non ha ferite visibili. La pelle ha perso ogni colore, come carta sbiancata. Toccando il corpo: freddo innaturale. Nessuna traccia di cosa l'abbia uccisa.
 
-Il vetro invisibile non può essere rotto con forza fisica ordinaria. Magie di trasporto o teletrasporto non funzionano — qualcosa interferisce. Non è necessario spiegarlo: l'importante è che i giocatori capiscano che l'unica via è avanzare.`
-        },
-        {
-          titolo: "Lo Specchio — Il Primo Contatto",
-          tipo: "scena",
-          testo: `Nel corridoio d'ingresso c'è uno specchio. Incorniciato in metallo scuro, annerito dall'ossidazione. È l'unico oggetto che sembra fuori posto — troppo grande, troppo decorato per un corridoio di servizio.
-
-Chi si avvicina vede il proprio riflesso. Normale. Poi, solo per un istante — così breve che quasi non si è sicuri di averlo visto — qualcosa si muove sulla propria spalla nel riflesso. Non nella realtà. Solo nello specchio.`,
-          notaDM: `Solo il primo personaggio che si avvicina allo specchio vede il movimento. È il momento in cui la creatura si attacca all'ospite — ma questo il giocatore non lo sa ancora.
-
-Non descrivere la creatura. Descrivere solo il movimento: piccolo, rapido, come se qualcosa stesse scivolando dietro la spalla nel riflesso. Se il giocatore chiede cosa fosse, la risposta è: non lo sapete.
-
-Mandare un messaggio privato al giocatore: "Il tuo personaggio sente un brivido alla base del collo. Come se qualcosa di freddo avesse sfiorato la pelle dall'interno."
-
-Questo giocatore sarà il primo a essere sostituito.`
+Questo è il primo segno de La Fine — che i PG non sanno ancora cosa sia.`
         }
       ],
-      musica: { titolo: "Atrium Carceri — Kapitel", artista: "Atrium Carceri", descrizione: "Ingresso — La trappola" }
+      musica: { titolo: "Atrium Carceri — Kapitel", artista: "Atrium Carceri", descrizione: "Ingresso" }
     },
 
-    // ── PIANO 1 ───────────────────────────────────────────────────
     {
-      id: "piano1",
-      titolo: "Piano 1 — L'Archivio dei Sigilli",
-      icona: "📜",
-      riassunto: "Esplorazione, tensione, nessun combattimento. Sigilli, lore, presenze invisibili. Gli indizi trovati qui danno vantaggi nei piani successivi.",
+      id: "piano1_kaelvaran",
+      titolo: "Piano 1 — Versione Kaelvaran",
+      icona: "🏰",
+      riassunto: "Un castello medievale che non dovrebbe esistere. Generato spontaneamente dal varco 40 anni fa. Trappole, enigmi, creature. E uno specchio che mente.",
       sezioni: [
         {
           titolo: "L'Atmosfera",
           tipo: "scena",
-          testo: `Il primo piano è quello che lo Studio era prima che tutto andasse storto. Uffici abbandonati, scaffali di metallo arrugginito pieni di faldoni, lavagne con equazioni che nessuno ha cancellato. L'arredamento è quello di un laboratorio degli anni quaranta — legno scuro, metallo brunito, strumenti di misurazione con quadranti analogici e lancette immobili.
+          testo: `Non è quello che vi aspettavate dall'interno di una frana.
 
-La luce entra da piccole finestre con vetri opachi. È una luce grigia, piatta, che non produce ombre nette. Tutto sembra avere due o tre contorni.
+Corridoi in pietra grigia, torce spente nelle applique di ferro battuto, pavimenti di mattoni disposti in pattern regolari. È un castello — o qualcosa che ha deciso di sembrarlo. La struttura è coerente ma non del tutto giusta: le proporzioni sono leggermente sbagliate, i corridoi finiscono dove non dovrebbero, alcune stanze sembrano più grandi dall'interno di quanto sembrerebbero dall'esterno.
 
-Non c'è nessuno. Ma a volte, alla periferia della visione, qualcosa si sposta.`,
-          notaDM: `Le presenze del primo piano NON attaccano. Sono echi — registrazioni di ciò che è successo, intrappolate nei muri. Il DM può usarle per costruire tensione: un suono di passi che si fermano quando ci si ferma, una porta che si chiude da sola in un corridoio già esplorato, una silhouette oltre un vetro smerigliato che sparisce quando ci si avvicina.
+L'aria è ferma. Non ci sono finestre. Non c'è cielo.`,
+          notaDM: `Il Piano 1 Kaelvaran è un duplicato generato spontaneamente 40 anni fa quando i Suhek'nal hanno aperto il varco verso Kaelvaran. Si è adattato all'estetica del mondo — ha l'aspetto di una struttura medievale fantasy.
 
-Nessuno scontro. La minaccia è psicologica.`
-        },
-        {
-          titolo: "I Sigilli",
-          tipo: "oggetto",
-          testo: `Sui muri, sui pavimenti, incisi nel metallo degli scaffali: simboli ricorrenti. Non sono decorativi — sono funzionali. Qualcuno li ha tracciati con cura ossessiva, poi con fretta crescente, poi con disperazione.
+Trappole, enigmi e creature non sono stati piazzati da nessuno: sono emersi spontaneamente come anticorpi del duplicato. Non hanno una logica narrativa precisa — sono il prodotto di un ambiente che ha assorbito 40 anni di Kaelvaran.
 
-I simboli più recenti sono incompleti.`,
-          notaDM: `I sigilli servivano a contenere le creature vermiformi e a proteggere dall'influenza della falla demoniaca. Alcuni sono ancora attivi — chi li riconosce e li usa correttamente ha vantaggi al Piano 4 (resistenza alle tentazioni demoniache) e al Piano 3 (le trappole non si attivano in presenza di certi sigilli).
+LA FINE appare mentre i PG esplorano — il DM sceglie il momento più efficace. Segnali premonitori: silenzio totale improvviso, torce (se accese) che si spengono progressivamente in una direzione, freddo crescente. La Fine è lenta — basta camminare per non farsi raggiungere. Ma non si ferma mai.
 
-INDIZI DA TROVARE AL PIANO 1:
-• Un diario di uno dei ricercatori che spiega cosa sono le creature vermiformi e il meccanismo degli specchi
-• Una mappa parziale dei piani inferiori con alcune trappole segnate
-• Un sigillo protettivo completo che può essere copiato e usato successivamente
-• Una nota che menziona "il varco al livello più basso" e la data in cui si è aperto
+VARN SELICK COPIA vaga in questo piano cercando di nascondersi. Comportamento leggermente più calmo e controllato dell'originale. Se i PG lo incontrano potrebbe essere il primo momento di disorientamento — non capiscono perché Varn sembra diverso.
 
-Non tutti gli indizi devono essere trovati — dipende da quanto i giocatori esplorano.`
-        },
-        {
-          titolo: "La Prima Sostituzione",
-          tipo: "scena",
-          notaDM: `Al Piano 1, la creatura che si è attaccata al primo personaggio tenta di completare il passaggio. Scegliere il momento giusto — un momento di distrazione del gruppo, quando il personaggio è solo o separato dagli altri per qualche motivo.
-
-MECCANISMO: mandare un messaggio privato al giocatore: "Senti qualcosa muoversi dentro di te. Freddo, sottile, come un filo che scorre. Poi un momento di buio. Quando 'torni', sei ancora tu — ma qualcosa è diverso. Ricordi le ultime ore ma tutto prima è nebbia. Sei un doppelganger. Il tuo obiettivo è portare l'ultimo personaggio rimasto all'altare del piano finale senza farti scoprire."
-
-Il corpo originale appare nello specchio più vicino — visibile solo se qualcuno guarda direttamente nel vetro.
-
-Il doppelganger ha accesso ai ricordi recenti del personaggio originale (ultime 3-4 ore) ma non a quelli precedenti. Questo giustifica perché il giocatore-doppelganger può esplorare genuinamente i piani successivi: non sa cosa c'è sotto.`,
-          testo: `[Sezione riservata DM — vedere note]`
+SPECCHI: alcuni specchi in questo piano portano alla stessa stanza nel Piano 1 Suhek'nal. Alcuni specchi speciali portano direttamente alla Stanza 15 del Piano 2 Suhek'nal (la stanza delle gemme). Il primo Suhek'nal si attacca al primo PG che si guarda in uno specchio — un piccolo movimento sulla propria spalla, visibile solo nel riflesso.`
         }
       ],
-      musica: { titolo: "Lustmord — A Room Between the Rooms", artista: "Lustmord", descrizione: "Piano 1 — L'archivio" }
+      musica: { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "Piano 1 Kaelvaran" }
     },
 
-    // ── PIANO 2 ───────────────────────────────────────────────────
     {
-      id: "piano2",
-      titolo: "Piano 2 — I Laboratori",
-      icona: "⚗️",
-      riassunto: "Scontri fisici. Creature vermiformi in fuga dal villain. Informazioni sugli esperimenti e sulla falla.",
+      id: "piano1_suheknal",
+      titolo: "Piano 1 — Versione Suhek'nal",
+      icona: "🔬",
+      riassunto: "Il laboratorio originale. Uffici abbandonati, archivi, strumenti di ricerca anni 40/50. Le prime tracce di cosa sono i Suhek'nal.",
       sezioni: [
         {
           titolo: "L'Atmosfera",
           tipo: "scena",
-          testo: `I laboratori sono quello che viene dopo quando un posto smette di fingere di essere civile. Tavoli di metallo con cinghie di contenimento, vetri rotti, strumenti che non appartengono agli anni quaranta — troppo avanzati, troppo precisi, costruiti con una tecnologia che non dovrebbe esistere ancora.
+          testo: `Attraverso lo specchio, tutto cambia.
 
-Sui muri ci sono segni di combattimento — non di armi, ma di qualcosa che ha spinto contro le pareti dall'interno. Alcune sezioni del pavimento sono fuse, come se la temperatura fosse salita in modo impossibile in punti precisi.
+Corridoi in linoleum grigio screpolato. Lampade fluorescenti a soffitto — alcune ancora accese, con un ronzio basso e continuo, altre spente o rotte. Scrivanie di legno scuro con sopra strumenti di misurazione analogici, quadranti con lancette ferme, dossier impilati. Cassetti aperti, sedie rovesciate. Qualcuno è andato via in fretta.
 
-La luce qui è artificiale — tubi al neon che sfarfallano in modo aritmico. Alcuni ambienti sono completamente al buio.`,
-          notaDM: `Le creature che i personaggi incontrano al Piano 2 non sono ostili per natura — sono in fuga. Quando il villain si avvicina (il DM può farlo sentire attraverso effetti ambientali: temperatura che cala, superfici riflettenti che si incrinano, un suono basso e costante che cresce) le creature si agitano e possono diventare pericolose per panico.
+L'aria sa di ozono e di qualcosa che non si riesce a identificare.`,
+          notaDM: `Questo è il laboratorio com'era prima dell'incidente — o quasi. 45 anni di abbandono hanno lasciato il segno, ma la struttura tiene.
 
-I combattimenti al Piano 2 dovrebbero sembrare caotico e disperato, non tattico.`
-        },
-        {
-          titolo: "Le Creature del Piano 2",
-          tipo: "scontro",
-          testo: `Non si muovono come animali. Si muovono come qualcosa che ha imparato a muoversi guardando gli altri farlo, e non ha ancora capito del tutto come funziona.
+DOCUMENTI DA TROVARE AL PIANO 1 SUHEK'NAL:
+• Introduzione al Veth'nal — un manuale interno che spiega la filosofia e il processo di simbiosi. Scritto in modo accademico ma con tono quasi religioso.
+• Rapporto di accesso al Piano 4 — descrive l'esperimento che ha aperto la falla. L'ultima riga è: "Contatto stabilito. Natura dell'entità: sconosciuta. Procedura di emergenza attivata."
+• Schizzi anatomici dei Suhek'nal in forma vermiforme — con note sui meccanismi di attacco e condivisione.
 
-Corpi che erano stati qualcuno — ricercatori, tecnici, personale dello Studio — ora abitati da qualcosa che non sa usarli bene. Si piegano negli angoli sbagliati. La testa gira troppo. Le mani toccano le superfici in modo sistematico, come se stessero cercando qualcosa che non trovano.
-
-Non urlano. Producono un suono basso, quasi subsonico, che si sente più nello stomaco che nelle orecchie.`,
-          notaDM: `STILE VISIVO DI RIFERIMENTO: Silent Hill — le infermiere. Movimenti che sembrano sbagliati, bende o materiali che coprono il volto, comportamento quasi meccanico che si rompe improvvisamente in violenza.
-
-Le creature del Piano 2 non sono il pericolo principale — sono sintomi. Il pericolo principale è la cosa che le mette in fuga.
-
-SECONDA SOSTITUZIONE: avviene al Piano 2, quando il gruppo è impegnato in uno scontro o in una situazione di alta tensione. Stesso meccanismo del Piano 1 — messaggio privato al giocatore.`
-        },
-        {
-          titolo: "Gli Esperimenti — Cosa è Successo",
-          tipo: "documento",
-          testo: `Nei laboratori i personaggi trovano prove di quello che è accaduto — diari, registrazioni, appunti.`,
-          notaDM: `INFORMAZIONI CHE I PERSONAGGI POSSONO TROVARE AL PIANO 2:
-
-• Lo Studio era un centro di ricerca sulle intersezioni tra piani di esistenza. I ricercatori avevano individuato l'Universo Specchio e stavano cercando di stabilire un contatto controllato.
-
-• Le creature vermiformi hanno risposto al contatto in modo imprevisto — non come soggetti di studio, ma come parassiti alla ricerca di ospiti. I ricercatori non si sono accorti di essere stati infettati fino a quando era troppo tardi.
-
-• Durante un esperimento, il contenimento ha ceduto e si è aperta una falla verso un piano non identificato — quello che il DM sa essere un piano demoniaco. La falla è al livello più basso.
-
-• Gli ultimi appunti descrivono qualcosa che è entrato dalla falla. I ricercatori lo chiamano "il Visitatore". Non lo descrivono — solo le sue conseguenze.
-
-Queste informazioni preparano i giocatori a capire il Piano 3 e il Piano 4 senza svelare tutto.`
+Questi documenti preparano i PG a capire cosa sta succedendo senza spiegarlo direttamente.`
         }
       ],
-      musica: { titolo: "Penderecki — Threnody for the Victims of Hiroshima", artista: "Krzysztof Penderecki", descrizione: "Piano 2 — I laboratori" }
+      musica: null
     },
 
-    // ── PIANO 3 ───────────────────────────────────────────────────
+    {
+      id: "piano2_kaelvaran",
+      titolo: "Piano 2 — Versione Kaelvaran",
+      icona: "⚔️",
+      riassunto: "Il castello medievale mostra le crepe. Scontri. Zone dove il laboratorio originale affiora attraverso la pietra.",
+      sezioni: [
+        {
+          titolo: "L'Atmosfera",
+          tipo: "scena",
+          testo: `Qualcosa è cambiato al secondo piano.
+
+Le pareti sono ancora di pietra medievale, ma in alcuni punti la superficie si è screpolata rivelando qualcosa di diverso sotto — metallo, linoleum, cavi. Come se due realtà stessero cercando di occupare lo stesso spazio e nessuna delle due stesse vincendo.
+
+Le creature qui sono più aggressive. E gli specchi sono ovunque.`,
+          notaDM: `Il Piano 2 Kaelvaran è dove il duplicato inizia a degradarsi — la sovrapposizione con il laboratorio originale è più visibile.
+
+LA STANZA 15 è raggiungibile dagli specchi speciali di qualsiasi piano. Chi entra dalla stanza 15 si trova nel Piano 2 Suhek'nal — nella stanza delle gemme.`
+        }
+      ],
+      musica: null
+    },
+
+    {
+      id: "stanza_gemme",
+      titolo: "La Stanza delle Gemme (Stanza 15 — Piano 2 Suhek'nal)",
+      icona: "💎",
+      riassunto: "Destinazione di tutti gli specchi speciali. Le gemme in formazione. Il cuore del processo Veth'nal.",
+      sezioni: [
+        {
+          titolo: "La Stanza delle Gemme",
+          tipo: "stanza",
+          testo: `Una stanza circolare, bassa. Scaffali lungo tutte le pareti, dal pavimento al soffitto. Sugli scaffali: gemme. Decine. Alcune sono opache e scure, morte. Altre pulsano debolmente di una luce interna — biancastra, ritmica, come un respiro lento.
+
+Al centro della stanza: un piano di lavoro in metallo con sopra strumenti di precisione e una gemma più grande delle altre, ancora opaca, in un supporto che la tiene inclinata verso uno specchio sul muro.`,
+          notaDM: `Ogni gemma in formazione contiene la copia di un ospite. Le gemme spente sono copie fallite o ospiti morti prima del completamento.
+
+I Suhek'nal che hanno già preso possesso di un PG vogliono portare il proprio ospite in questa stanza per completare il processo. Quando la gemma è completa, il simbionte può eseguire il trasferimento — l'ospite originale viene liberato (ma disorientato e debilitato) e il Suhek'nal continua nel corpo copia.
+
+Se i PG distruggono le gemme in formazione: i Suhek'nal che le stavano formando perdono la possibilità di trasferirsi e rimangono bloccati nell'ospite a tempo indeterminato. Questo può essere usato come leva negoziale.`
+        }
+      ],
+      musica: null
+    },
+
     {
       id: "piano3",
       titolo: "Piano 3 — La Linea di Difesa",
-      icona: "⚔️",
-      riassunto: "Prima linea di difesa organizzata delle creature vermiformi. Combattimenti pesanti, trappole, zone dove la realtà si è dissolta.",
+      icona: "⚠️",
+      riassunto: "I segni di una battaglia perduta. Trappole ancora attive, zone dissolte, La Fine sempre più presente.",
       sezioni: [
         {
-          titolo: "L'Atmosfera",
+          titolo: "Piano 3 Suhek'nal — L'Atmosfera",
           tipo: "scena",
-          testo: `Qui le creature vermiformi hanno combattuto. E perso.
+          testo: `Il laboratorio qui ha smesso di sembrare un laboratorio.
 
-Il pavimento è coperto di residui — non sangue, qualcosa di diverso, una sostanza che assorbe la luce invece di rifletterla. Le pareti mostrano i segni di una battaglia condotta con strumenti che non esistono nel mondo fisico: superfici fuse in pattern geometrici impossibili, sezioni di muro dove la pietra è diventata qualcosa di traslucido, zone dove il pavimento non c'è — non è crollato, è semplicemente assente, e al di sotto c'è qualcosa che non è il piano successivo.
+Le pareti mostrano i segni di qualcosa che ha spinto dall'interno — non esplosioni, qualcosa di più lento e più totale. Sezioni del pavimento hanno cambiato consistenza, diventando traslucide. Alcune stanze non hanno più un confine netto — i bordi si sfumano in qualcosa che non è né dentro né fuori.
 
-Le trappole sono ancora attive. Alcune sono meccaniche — residui della tecnologia dello Studio. Altre sono qualcosa di diverso: zone dove la realtà è stata piegata e non si è raddrizzata.`,
-          notaDM: `Il Piano 3 è il piano più fisicamente pericoloso. Combattimenti, trappole, navigazione difficile.
+I Suhek'nal hanno combattuto qui. Hanno perso.`,
+          notaDM: `Il Piano 3 è il piano più pericoloso fisicamente. Trappole ancora attive (alcuni meccanismi di difesa installati dai Suhek'nal durante la ritirata), zone dove la realtà si è dissolta, e La Fine che vaga con più frequenza.
 
-CHI HA TROVATO LA MAPPA AL PIANO 1 ha alcune trappole segnate — vantaggio significativo.
-CHI HA COPIATO I SIGILLI AL PIANO 1 può disattivare alcune delle trappole magiche.
-
-TERZA E QUARTA SOSTITUZIONE: al Piano 3 avvengono due sostituzioni ravvicinate, sfruttando il caos dei combattimenti. Con 6 giocatori, a questo punto 4 sono doppelganger e 2 sono ancora originali. La tensione al tavolo dovrebbe essere massima — i giocatori non sanno di chi fidarsi.`
-        },
-        {
-          titolo: "Le Zone Dissolte",
-          tipo: "stanza",
-          testo: `Alcune aree del Piano 3 non seguono le regole fisiche normali. Non è magia — è qualcosa che è successo quando la realtà ha ceduto sotto una pressione che non era progettata per sostenere.
-
-In queste zone: le direzioni non corrispondono, il tempo scorre in modo irregolare, i suoni arrivano prima delle loro fonti. Chi ci entra senza preparazione può uscire da una direzione completamente diversa da quella prevista — o non uscire del tutto.`,
-          notaDM: `Le zone dissolte sono ostacoli narrativi, non puzzle meccanici. Il DM può usarle per separare temporaneamente il gruppo, creare momenti di isolamento, o per far apparire il villain in modo inaspettato.
-
-Suggerimento: in una zona dissolta, uno specchio appare dal nulla. Chi si guarda vede il proprio corpo originale nella stanza dello specchio — immobile, vivo, in attesa. Momento di rivelazione potenziale per i doppelganger.`
+DOCUMENTI DA TROVARE AL PIANO 3:
+• Il diario dell'ultimo ricercatore rimasto al Piano 3 — descrive la ritirata progressiva davanti a La Fine e menziona il cristallo temporale al Piano 4.
+• Istruzioni parziali sui cristalli temporali — abbastanza da far intuire la possibilità dell'implosione come soluzione alternativa.`
         }
       ],
       musica: null
     },
 
-    // ── PIANO 4 (PENULTIMO) ────────────────────────────────────────
     {
       id: "piano4",
-      titolo: "Piano 4 — Il Girone della Corruzione",
+      titolo: "Piano 4 — Il Varco",
       icona: "🔥",
-      riassunto: "Lussuria, invidia, gola. Scelte moralmente orrende per proseguire. Il piano demoniaco si manifesta pienamente.",
+      riassunto: "Il duplicato demoniaco. Il cristallo temporale. La Fine è qui. Due risoluzioni possibili.",
       sezioni: [
         {
-          titolo: "L'Atmosfera",
+          titolo: "Piano 4 — L'Atmosfera",
           tipo: "scena",
-          testo: `Non è più lo Studio. O meglio — è ancora lo Studio, ma visto attraverso qualcosa che lo ha corrotto fino all'osso.
+          testo: `Non è più il laboratorio. Non è più il castello medievale.
 
-Le pareti trasudano. L'aria è calda e ha un odore che il cervello rifiuta di classificare. La geometria degli ambienti è sbagliata — le stanze sono troppo grandi, i corridoi troppo stretti, le proporzioni non tornano mai. La luce è rossa e ambrata, come se filtrata attraverso qualcosa di organico.
+È qualcosa che ha assorbito entrambi e li ha digeriti in qualcosa di peggio. Le pareti trasudano. La geometria non funziona — angoli che non tornano, distanze che cambiano mentre ci si avvicina. Una luce rossa e ambrata che non ha sorgente visibile illumina tutto senza creare ombre nette.
 
-Qui i demoni non attaccano subito. Osservano. Offrono.`,
-          notaDM: `Il Piano 4 funziona diversamente dagli altri. Il pericolo non è fisico — è morale. I personaggi vengono messi di fronte a tentazioni e scelte che hanno conseguenze reali nel gioco.
+Al centro di tutto: il varco. Non si vede — si percepisce. Un punto nello spazio intorno al quale la realtà è diventata sottile come carta bagnata.`,
+          notaDM: `IL CRISTALLO TEMPORALE
+Forma sferica, circa 30 cm di diametro. Superfice che sembra liquida ma è solida. Pulsa lentamente con una luce interna che cambia colore. È il cristallo che alimenta il primo varco verso il piano demoniaco.
 
-CHI HA TROVATO I SIGILLI AL PIANO 1 ha resistenza alle tentazioni — il DM può rendere le scelte meno coercitive per questi personaggi.
+Un secondo cristallo, più piccolo, alimenta la quarantena — se distrutto prima del cristallo principale, tutte le uscite si aprono ma La Fine è libera di uscire.
 
-QUINTA SOSTITUZIONE: al Piano 4 avviene l'ultima sostituzione. A questo punto rimane un solo personaggio originale. Tutti gli altri sono doppelganger.`
-        },
-        {
-          titolo: "Le Tre Tentazioni",
-          tipo: "scena",
-          testo: `Il piano è diviso in tre zone, ognuna governata da una corruzione diversa. Non è necessario attraversarle tutte — ma ogni zona offre qualcosa di utile per il piano finale, a un prezzo.`,
-          notaDM: `LUSSURIA — La zona offre informazioni sul meccanismo dell'altare finale e su come interrompere il sacrificio. Il prezzo: un personaggio deve rinunciare a qualcosa di importante per lui — un oggetto, un ricordo, una capacità.
+RISOLUZIONE STANDARD:
+Spegnere il cristallo principale quando La Fine è nel duplicato Kaelvaran — il varco si chiude, La Fine rimane intrappolata lì. Non ideale per Kaelvaran.
 
-INVIDIA — La zona offre la possibilità di vedere cosa stanno facendo i propri compagni in questo momento — incluso se sono doppelganger. Il prezzo: la visione mostra anche qualcosa che il personaggio non vorrebbe sapere di sé stesso. Il DM decide cosa, in base al background del personaggio.
+RISOLUZIONE OTTIMALE (richiede gli scritti sui cristalli):
+Sovraccaricare il cristallo temporale e farlo implodere all'interno del varco demoniaco. Risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran.
 
-GOLA — La zona offre potere fisico immediato — forza, velocità, resistenza. Il prezzo: ogni uso di questo potere accelera la corruzione. Il DM tiene traccia in segreto.
-
-I doppelganger non sono immuni alle tentazioni — le creature che li abitano hanno i loro desideri.`
+COME SOVRACCARICARE IL CRISTALLO:
+Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — durante il processo La Fine potrebbe arrivare.`
         }
       ],
       musica: null
-    },
-
-    // ── PIANO FINALE ──────────────────────────────────────────────
-    {
-      id: "finale",
-      titolo: "Piano Finale — L'Altare",
-      icona: "⛧",
-      riassunto: "I corpi sospesi. La scelta finale. Sacrificio o resistenza.",
-      sezioni: [
-        {
-          titolo: "L'Altare",
-          tipo: "scena",
-          testo: `Una stanza circolare. Il soffitto non si vede — si perde nel buio sopra. Al centro, disposti in cerchio su superfici di pietra inclinata, i corpi. Immobili, vivi, con gli occhi aperti che non vedono.
-
-I vostri compagni. O quello che ne rimane.
-
-Ai bordi della stanza: specchi. Decine. Ogni riflesso mostra qualcosa di leggermente diverso dalla realtà — angoli sbagliati, luci che non corrispondono, dettagli che non tornano.
-
-Al centro del cerchio: uno spazio vuoto. Con il vostro nome inciso nella pietra.`,
-          notaDM: `GESTIONE DELLA SCENA FINALE
-
-A questo punto ci sono due tipi di giocatori al tavolo: i doppelganger (che sanno di esserlo) e l'ultimo originale (che non sa quanti siano i doppelganger).
-
-L'OFFERTA: le creature vermiformi, attraverso i doppelganger, offrono all'ultimo originale la libertà — per sé e per tutti — in cambio del sacrificio volontario. I corpi negli specchi si risvegliano. Le creature sono libere. Fine.
-
-SE L'ORIGINALE RIFIUTA: deve combattere o resistere. I doppelganger cercano di portarlo fisicamente all'altare. Il villain appare — e questa volta non insegue le creature, insegue tutti. Il caos della scena finale crea l'opportunità per l'originale di rompere il meccanismo: distruggere gli specchi, interrompere il cerchio, raggiungere i corpi sospesi e risvegliarli fisicamente.
-
-SE CI RIESCE: i corpi si risvegliano, le creature vermiformi vengono espulse, il varco si chiude. Il villain rimane — ma senza più ostaggi da usare, si ritira.
-
-SE FALLISCE: il sacrificio avviene. Fine alternativa — non necessariamente la peggiore storia da raccontare.`
-        }
-      ],
-      musica: { titolo: "Dead Can Dance — The Ubiquitous Mr Lovegrove", artista: "Dead Can Dance", descrizione: "L'altare — la scelta finale" }
     }
 
   ],
 
+  // ── PNG ────────────────────────────────────────────────────────
   png: [
     {
-      nome: "Il Primo Ricercatore",
-      ruolo: "PNG — Voce del passato",
-      descrizione: "Non è presente fisicamente. È una voce registrata su un cilindro di cera — il formato di registrazione degli anni quaranta. La sua voce appare in diversi punti dello Studio, sempre in momenti significativi.",
-      segreto: "Era il responsabile del progetto. Ha capito cosa stava succedendo prima degli altri e ha tentato di fermare gli esperimenti. Non ci è riuscito. Le sue ultime registrazioni sono al Piano 2 — raccontano cosa è entrato dalla falla."
+      nome: "Varn Selick — Originale",
+      ruolo: "Criminale — vaga tra i piani 1 e 3",
+      descrizione: "Uomo sulla cinquantina, corporatura robusta, capelli grigi rasati ai lati e lunghi in cima sempre legati. Bruciatura estesa sul lato sinistro del collo fino alla mandibola. Occhi chiari quasi incolori. Vestiti pratici e scuri.",
+      segreto: "Disorientato e paranoico. Non capisce cosa gli è successo — sa solo che c'è un suo duplicato in giro. Potrebbe attaccare i PG o cercare di allearsi. Conosce frammenti di informazioni sul dungeon che ha raccolto vagando."
     },
     {
-      nome: "Il Villain Innominato",
+      nome: "Varn Selick — Copia Suhek'nal",
+      ruolo: "Doppelganger — vaga nel Piano 1 Kaelvaran",
+      descrizione: "Identico all'originale fisicamente. Comportamento leggermente diverso — più calmo, più controllato, meno reattivo emotivamente.",
+      segreto: "È la copia creata dal Suhek'nal che ha preso possesso di Varn. Cerca di nascondersi dai PG. Se messo alle strette può rivelare la situazione e offrire informazioni in cambio di protezione."
+    },
+    {
+      nome: "La Fine",
       ruolo: "Antagonista principale — presenza costante",
-      descrizione: "Non viene mai mostrato completamente. I personaggi lo percepiscono attraverso effetti: temperatura che cala bruscamente, superfici riflettenti che si incrinano nel raggio di venti metri, un suono basso che cresce. Le creature vermiformi fuggono dalla sua presenza.",
-      segreto: "Non è un demone nel senso tradizionale. È qualcosa che esisteva prima che il piano demoniaco avesse un nome. La falla non lo ha creato — lo ha liberato. Non ha obiettivi comprensibili agli esseri umani. Uccidere i personaggi non è il suo scopo — è una conseguenza inevitabile della sua presenza. Non può essere fermato, solo evitato."
+      descrizione: "Non ha forma visibile. Si percepisce come un'assenza che si muove: aria stagnante, superfici che perdono colore, suoni che si smorzano. Un freddo crescente che precede il suo arrivo.",
+      segreto: "Immortale. Uccide qualsiasi entità viva al contatto istantaneo. Nulla la rallenta o distrae. Vaga costantemente tra i piani. Non può essere comunicata, fermata o combattuta. L'unica soluzione è la risoluzione ottimale del cristallo temporale."
     }
   ],
 
+  // ── OGGETTI ────────────────────────────────────────────────────
   oggetti: [
     {
-      nome: "Il Diario del Primo Ricercatore",
+      nome: "Il Cristallo Temporale",
+      importanza: "Chiave della risoluzione",
+      descrizione: "Sfera di circa 30 cm, superficie apparentemente liquida. Pulsa con luce che cambia colore. Piano 4. Alimenta il varco demoniaco. Può essere spento normalmente o sovraccaricato per l'implosione ottimale."
+    },
+    {
+      nome: "Il Cristallo della Quarantena",
+      importanza: "Attenzione — non distruggere prima del principale",
+      descrizione: "Cristallo più piccolo, Piano 4. Alimenta il sistema di quarantena che sigilla tutte le uscite. Se distrutto prima del cristallo principale, le uscite si aprono ma La Fine è libera di uscire."
+    },
+    {
+      nome: "Il Manuale del Veth'nal",
       importanza: "Lore fondamentale",
-      descrizione: "Trovato al Piano 1. Racconta la storia dello Studio dall'inizio alla fine. Contiene anche istruzioni parziali per i sigilli protettivi."
+      descrizione: "Piano 1 Suhek'nal. Spiega la filosofia e il processo di simbiosi dei Suhek'nal. Permette ai PG di capire le intenzioni dei simbionti e aprire un canale di comunicazione."
     },
     {
-      nome: "Il Cilindro di Cera",
+      nome: "Gli Scritti sui Cristalli Temporali",
+      importanza: "Chiave risoluzione ottimale",
+      descrizione: "Piano 3. Istruzioni parziali sui cristalli temporali. Contengono abbastanza informazioni per intuire la possibilità dell'implosione come soluzione alternativa."
+    },
+    {
+      nome: "Il Diario dell'Ultimo Ricercatore",
       importanza: "Lore + atmosfera",
-      descrizione: "Registrazioni vocali del Primo Ricercatore. Alcune sono istruzioni, altre sono confessioni. L'ultima registrazione è incomprensibile — non per il contenuto, ma perché la voce non sembra più umana."
-    },
-    {
-      nome: "Il Sigillo Completo",
-      importanza: "Vantaggio tattico",
-      descrizione: "Trovato al Piano 1. Se copiato e usato correttamente dà resistenza alle tentazioni del Piano 4 e disattiva alcune trappole magiche del Piano 3."
-    },
-    {
-      nome: "La Mappa Parziale",
-      importanza: "Vantaggio tattico",
-      descrizione: "Trovata al Piano 1. Segnala alcune trappole del Piano 3 e indica l'esistenza del Piano Finale. Non mostra tutto."
+      descrizione: "Piano 3. Racconta la ritirata progressiva davanti a La Fine. Menziona il cristallo temporale e il varco demoniaco. L'ultima entry si interrompe a metà frase."
     }
   ]
 
