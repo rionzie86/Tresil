@@ -168,6 +168,19 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 
 .callout-m{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#b07070;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
 
+/* ── STANZE (accordion annidato) ── */
+.stanza-list{margin-top:.75rem;}
+.stanza-card{background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:.55rem;overflow:hidden;transition:border-color var(--tr);}
+.stanza-card:hover{border-color:var(--border-b);}
+.stanza-head{display:flex;align-items:center;gap:10px;padding:.6rem .95rem;cursor:pointer;background:var(--bg-panel);}
+.stanza-num{font-family:var(--font-d);font-size:12px;color:var(--gold);font-weight:600;white-space:nowrap;min-width:20px;text-align:center;}
+.stanza-title{flex:1;font-size:13px;color:var(--t1);font-family:var(--font-d);letter-spacing:.02em;}
+.stanza-arr{font-size:9px;color:var(--t3);transition:transform var(--tr);}
+.stanza-card.open .stanza-arr{transform:rotate(90deg);}
+.stanza-body{display:none;padding:1rem 1.1rem;border-top:1px solid var(--border);}
+.stanza-card.open .stanza-body{display:block;}
+.stanza-text{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
+
 /* oggetti nel capitolo */
 .cap-obj-list{margin:.4rem 0;}
 .cap-obj{background:var(--bg-panel);border:1px solid var(--border);border-radius:3px;padding:.5rem .8rem;margin-bottom:.4rem;}
@@ -549,6 +562,30 @@ function buildSviluppo() {
       });
     }
 
+    // Stanze (accordion annidato, una tendina per stanza)
+    let stanzeHTML = '';
+    if (cap.stanze && cap.stanze.length) {
+      stanzeHTML += `<div class="group-lbl" style="margin-top:1.1rem;">Stanze</div><div class="stanza-list">`;
+      cap.stanze.forEach(st => {
+        stanzeHTML += `
+          <div class="stanza-card">
+            <div class="stanza-head" onclick="this.parentElement.classList.toggle('open')">
+              <div class="stanza-num">${st.numero}</div>
+              <div class="stanza-title">${st.titolo}</div>
+              <span class="stanza-arr">▶</span>
+            </div>
+            <div class="stanza-body">
+              <div class="stanza-text">${st.testo}</div>
+              ${st.notaDM ? `<div style="margin-top:.6rem;">
+                <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
+                <div class="callout-m">${st.notaDM}</div>
+              </div>` : ''}
+            </div>
+          </div>`;
+      });
+      stanzeHTML += `</div>`;
+    }
+
     // Musica del capitolo
     // Musica: leggo dal campo diretto del capitolo, oppure dall'array musica come fallback
     let musicaHTML = '';
@@ -578,6 +615,7 @@ function buildSviluppo() {
         <div class="cap-luogo" style="margin-top:${musicaHTML ? '.75rem' : '0'};margin-bottom:.75rem;font-style:italic;color:var(--t2);font-size:13px;">${cap.riassunto}</div>
         ${cap.immagine ? `<div style="margin:.75rem 0 1rem;"><img src="${cap.immagine.src}" alt="${cap.immagine.didascalia}" style="max-width:100%;border-radius:4px;border:1px solid var(--border);display:block;"><div style="font-size:11px;color:var(--t3);font-style:italic;margin-top:.4rem;">${cap.immagine.didascalia}</div></div>` : ''}
         ${sezioniHTML}
+        ${stanzeHTML}
         ${puzzleBtnHTML}
       </div>`;
     c.appendChild(wrap);

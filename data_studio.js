@@ -162,6 +162,174 @@ VARN SELICK COPIA vaga in questo piano cercando di nascondersi. Comportamento le
 SPECCHI: alcuni specchi in questo piano portano alla stessa stanza nel Piano 1 Suhek'nal. Alcuni specchi speciali portano direttamente alla Stanza 15 del Piano 2 Suhek'nal (la stanza delle gemme). Il primo Suhek'nal si attacca al primo PG che si guarda in uno specchio — un piccolo movimento sulla propria spalla, visibile solo nel riflesso.`
         }
       ],
+      stanze: [
+        {
+          numero: 1,
+          titolo: "La Sala d'Arrivo",
+          testo: `Oltre la frana, lo spazio si apre in una sala quadrata di pietra grigia, circa cinque metri per lato. Ciò che dovrebbe essere una finestra su una parete (l'arco è ancora visibile, con tanto di cornice scolpita a motivi floreali) è invece un muro di terra e roccia compattata, come se il giardino che avrebbe dovuto affacciarsi qui si fosse riversato dentro invece che restare fuori. Radici sottili, morte da tempo, pendono immobili dalla terra pressata.
+
+Una singola torcia spenta in un'applique di ferro battuto. Il pavimento in mattoni regolari è interrotto da una crepa che corre da un angolo all'altro, come se l'intera stanza fosse stata posata su qualcosa che non l'ha mai sostenuta davvero.
+
+In un angolo, quello che resta della prima guardia del corpo di Varn. Non è un cadavere nel senso consueto, è un corpo ribaltato. All'esterno, ciò che dovrebbe stare dentro, organi disposti come se qualcuno li avesse posati con cura sopra la pelle. Sotto, le ossa. Più in profondità ancora, i muscoli. E al centro di tutto, raggomitolata come un seme, in un piccolo groviglio interno che non dovrebbe poter esistere in quello spazio, la pelle, con addosso ancora i vestiti.
+
+Non c'è sangue. Non c'è odore. È come se il corpo fosse stato capovolto da qualcosa che non conosce la differenza tra dentro e fuori.
+
+Un varco a sud conduce verso una sala più lunga.`,
+          notaDM: `Primo segno de La Fine, va giocato con calma, non un jump scare ma una scoperta che si carica lentamente man mano che i giocatori realizzano cosa stanno guardando. Nessuna prova imposta a tavolino, lascia che sia la descrizione a fare il lavoro.
+
+Su richiesta di un PG che esamina da vicino: la pelle al centro del groviglio è ancora intatta, senza tagli né lacerazioni, non è stata aperta. È come se l'intero corpo fosse stato srotolato e poi riavvolto al contrario, strato per strato, senza mai romperne la continuità.
+
+La finestra crollata è il primo di diversi punti simili nel piano, vale la pena ripeterlo in altre stanze come motivo ricorrente. Nessuna trappola qui, è la stanza di decompressione, serve a stabilire il tono prima che inizi l'esplorazione vera.`
+        },
+        {
+          numero: 2,
+          titolo: "Il Corridoio dei Frammenti",
+          testo: `Una sala lunga e stretta, quasi un corridoio dilatato più che una stanza vera, circa dieci metri di lunghezza per tre di larghezza. Il pavimento è cosparso di detriti, frammenti di pietra caduti dal soffitto, schegge di legno che un tempo dovevano essere una trave o un mobile, piccoli oggetti indistinguibili sepolti nella polvere. Camminarci dentro produce un rumore secco e continuo sotto gli stivali.
+
+Le pareti mostrano tre finestre crollate in fila, ognuna con la stessa cornice scolpita vista nella sala d'arrivo. La terra che le riempie non è uniforme, in un punto sembra più fresca, come se qualcosa si fosse mosso lì di recente, smuovendo lo strato superficiale.
+
+A nord, una porta chiusa riporta verso la sala d'arrivo. A ovest, un'altra porta si apre su una stanza con al centro una struttura circolare. A sud, oltre un breve tratto di corridoio, una porta conduce verso una sala allungata. A sud est, una breve scalinata scende verso una sala più ampia in lontananza.`,
+          notaDM: `Il punto di terra smossa nella terza finestra crollata è un piccolo indizio ambientale, qualcosa o qualcuno è passato di lì o si è nascosto lì di recente. Puoi usarlo per Varn Selick copia, che potrebbe aver attraversato questa stanza cercando un punto più sicuro, oppure lasciarlo come falso indizio, giusto per costruire tensione.
+
+I detriti sparsi rendono la stanza rumorosa da attraversare in silenzio, eventuale prova di furtività con svantaggio se serve un momento di tensione con creature nei paraggi. Nessuna trappola strutturale qui, ma è un buon punto per un primo incontro con una creatura anticorpo del duplicato, vista la lunghezza della sala e le molteplici vie di fuga da gestire narrativamente.`
+        },
+        {
+          numero: 3,
+          titolo: "La Fontana",
+          testo: `Una sala quadrata di circa sei metri per lato. Al centro, una fontana in pietra, asciutta da tempo, con una vasca poco profonda e una scultura al centro che dovrebbe raffigurare una figura femminile versante acqua da un'anfora. La figura è leggermente sbagliata, come tutto qui, le proporzioni allungate su un lato, il volto girato in una direzione che il resto del corpo non segue. Macchie scure di umidità corrono lungo il bordo della vasca, ma non c'è traccia di acqua vera, solo un residuo secco e biancastro sul fondo.
+
+A est, una porta di legno rinforzato riporta verso il corridoio pieno di detriti. A sud, un'apertura ad arco scende verso una sala più grande.`,
+          notaDM: `La scultura distorta è un buon punto per un piccolo momento di inquietudine gratuita, niente di meccanico, solo un dettaglio che i giocatori più attenti noteranno. Se qualcuno esamina il residuo bianco sul fondo della vasca, è semplicemente calcare, nessun segreto nascosto qui.`
+        },
+        {
+          numero: 4,
+          titolo: "La Sala dello Specchio",
+          testo: `Una stanza rettangolare, forse cinque metri per sette, con il soffitto leggermente più alto delle altre. Contro una parete, tra due nicchie vuote che un tempo dovevano contenere statue, si erge uno specchio a figura intera, incorniciato in metallo scurito, incrinato in un angolo ma ancora perfettamente funzionante. Il resto della stanza è spoglio, solo polvere e qualche mattone smosso sul pavimento.
+
+A nord, oltre un breve passaggio, si risale verso la fontana. A ovest, un ampio varco senza porta si apre sulla sala più grande del piano. A sud, un corridoio stretto scende verso un'altra sala.`,
+          notaDM: `Primo specchio che i giocatori incontreranno, salvo diversa scelta del DM. Chi si guarda dentro vede il proprio riflesso con un ritardo di una frazione di secondo, quasi impercettibile, e un piccolo movimento sulla spalla nel riflesso, che nella realtà non c'è. È qui che il primo Suhek'nal comincia a osservare il proprio futuro ospite. Nessun effetto meccanico immediato, solo il seme piantato.`
+        },
+        {
+          numero: 5,
+          titolo: "La Sala Incrinata",
+          testo: `Una stanza quadrata, cinque metri per lato circa, con una crepa profonda che attraversa tutto il pavimento da un angolo all'altro, abbastanza larga da lasciar intravedere un vuoto sottostante di pochi centimetri. Qualche detrito sparso, nulla di significativo.
+
+A nord, un varco riporta verso la sala dello specchio. A ovest, un corridoio conduce verso una sala di snodo con più uscite. A sud, una breve scalinata scende verso una sala più piccola.`,
+          notaDM: `La crepa nel pavimento può essere semplicemente scenografica, oppure il DM può decidere che nasconde qualcosa sotto, un piccolo vano, un oggetto caduto lì per caso. Nessun pericolo strutturale a meno che non si voglia introdurne uno.`
+        },
+        {
+          numero: 6,
+          titolo: "La Sala Grande",
+          testo: `Il vano più ampio del piano, una sala che doveva essere un salone principale, forse dieci metri per otto. Il soffitto qui è parzialmente crollato in un punto, e macerie di pietra, travi spezzate e calcinacci coprono buona parte del pavimento, costringendo a un percorso tortuoso tra i detriti. Alcune colonne, un tempo probabilmente decorative, sono spezzate a metà altezza.
+
+A nord, un varco stretto sale verso due piccole stanze. A est, un passaggio riporta verso la sala dello specchio. A ovest, un lungo corridoio, quasi un ponte sospeso tra due sezioni della struttura, conduce verso una sala più distante.`,
+          notaDM: `Le macerie rendono il movimento più lento e rumoroso, buon punto per un incontro con una creatura anticorpo o per un piccolo enigma ambientale, ad esempio un percorso tra i detriti che nasconde una lieve instabilità del pavimento in un punto preciso.`
+        },
+        {
+          numero: 7,
+          titolo: "Il Deposito",
+          testo: `Una piccola stanza, forse tre metri per quattro, con scaffalature di legno marcio lungo una parete, ancora cariche di casse e contenitori in gran parte ridotti in polvere. Tra i resti, qualche oggetto ancora riconoscibile, stoviglie di metallo ossidato, un baule di legno chiuso con un lucchetto arrugginito ma non forzato.
+
+A sud, il varco riporta verso la sala grande. A est, un breve passaggio conduce verso una piccola sala ottagonale.`,
+          notaDM: `Il baule chiuso può contenere un piccolo oggetto utile o semplicemente qualche moneta antica, a discrezione del DM, giusto per premiare chi si prende il tempo di cercare tra le macerie.`
+        },
+        {
+          numero: 8,
+          titolo: "La Sala dell'Astrolabio",
+          testo: `Una stanza ottagonale, piccola ma con il soffitto a cupola, forse quattro metri di diametro. Al centro, incassato nel pavimento, un grande disco di metallo inciso con simboli stellari e anelli concentrici, alcuni dei quali ancora mobili se spinti con forza. È un astrolabio, o qualcosa che vorrebbe esserlo, congelato in una posizione che non corrisponde a nessuna configurazione astronomica sensata.
+
+A ovest, il varco riporta verso il deposito.`,
+          notaDM: `L'astrolabio può essere un piccolo enigma opzionale, i giocatori possono provare a ruotare gli anelli per allinearli, senza un vero effetto meccanico a meno che il DM non voglia collegarlo a qualcosa di più ampio in seguito. Per ora è semplicemente un dettaglio inquietante e bello da esplorare, un frammento di scienza vera dei Suhek'nal filtrato attraverso l'estetica fantasy del duplicato.`
+        },
+        {
+          numero: 9,
+          titolo: "Lo Snodo",
+          testo: `Una sala irregolare, più larga che profonda, forse sette metri per cinque, con il pavimento in parte ceduto verso un angolo dove si è formata una lieve pendenza. Qui confluiscono più passaggi, e l'aria è leggermente più fredda che nelle stanze precedenti.
+
+A est, il lungo corridoio riporta verso la sala grande. A nord ovest, un ampio varco conduce verso una sala più vasta. A sud, un corridoio scende verso un'altra stanza.`,
+          notaDM: `Buon punto di snodo narrativo, magari il primo momento in cui i giocatori sentono qualcosa in lontananza, un rumore che non riescono a identificare, un primo accenno a La Fine senza ancora mostrarla.`
+        },
+        {
+          numero: 10,
+          titolo: "Il Crocevia",
+          testo: `Una sala di forma allungata, circa sei metri per quattro, con tre uscite oltre a quella d'ingresso, il che la rende un punto di passaggio quasi obbligato. Le pareti mostrano segni di umidità crescente, più evidenti man mano che ci si avvicina a un lato.
+
+A nord, una breve scalinata sale verso la sala incrinata. A ovest, un corridoio riporta verso lo snodo. A sud, un varco scuro conduce verso una sala quasi sommersa. A sud est, un altro passaggio conduce verso una sala con un altare.`,
+          notaDM: `L'umidità crescente verso sud è un indizio ambientale della sala allagata poco oltre, un piccolo dettaglio che prepara i giocatori prima che la vedano.`
+        },
+        {
+          numero: 11,
+          titolo: "La Sala dell'Altare",
+          testo: `Una stanza di forma irregolare, forse sei metri di lunghezza, dominata da una struttura semicircolare in pietra addossata a una parete, che nella sua forma originale doveva essere un altare, forse dedicato a una qualche piccola divinità domestica o a un culto ancestrale. La forma è però distorta, come piegata su se stessa, gli intagli decorativi che avrebbero dovuto correre in linee ordinate si contorcono invece in pattern che non seguono nessuna logica religiosa riconoscibile. Una sottile pellicola d'acqua scorre lungo la base dell'altare, proveniente da un'infiltrazione nella parete.
+
+A nord ovest, un varco riporta verso il crocevia. A est, un passaggio conduce verso una piccola stanza piena di crepe.`,
+          notaDM: `L'altare distorto è pensato per avere un corrispettivo diverso nella versione Suhek'nal della stessa stanza, da sviluppare quando affronteremo quel lato. Per ora, nella versione Kaelvaran, resta un elemento puramente atmosferico, nessun potere reale, solo il senso che qualcosa di sacro sia stato piegato in una forma sbagliata.`
+        },
+        {
+          numero: 12,
+          titolo: "La Sala Sommersa",
+          testo: `Una piccola stanza, forse tre metri per tre, quasi completamente allagata da un'infiltrazione d'acqua che filtra da una crepa nel soffitto. L'acqua arriva quasi alle ginocchia, scura e torbida, e riflette a malapena la poca luce che filtra dall'esterno. Muffa e alghe scure ricoprono le pareti fin dove arriva l'umidità.
+
+A nord, l'unico varco riporta verso il crocevia.`,
+          notaDM: `Stanza quasi vuota, pensata più per l'atmosfera che per il contenuto, ma il DM può nascondere qualcosa sul fondo dell'acqua, invisibile senza cercare attivamente, magari un piccolo oggetto perso da chi abitava qui prima della frana.`
+        },
+        {
+          numero: 13,
+          titolo: "La Sala delle Crepe",
+          testo: `Una piccola stanza, forse tre metri per quattro, con il pavimento e le pareti attraversate da una fitta rete di crepe, alcune abbastanza larghe da poterci infilare una mano. Da alcune di queste fuoriesce un leggero refolo d'aria più fredda del resto della stanza.
+
+A ovest, l'unico varco riporta verso la sala dell'altare.`,
+          notaDM: `Le crepe più larghe possono nascondere piccoli oggetti per chi cerca con attenzione, o essere semplicemente scenografiche. Il refolo d'aria fredda è un piccolo indizio che da qualche parte, oltre le crepe, c'è uno spazio non mappato, buon gancio se si vuole espandere il piano in futuro.`
+        },
+        {
+          numero: 14,
+          titolo: "La Sala Vuota",
+          testo: `Un ampio salone, forse nove metri per sei, sorprendentemente spoglio rispetto alle altre stanze, quasi come se fosse stato svuotato deliberatamente. Il pavimento mostra i segni di mobili che un tempo dovevano esserci, quattro rettangoli più chiari nella polvere dove qualcosa di pesante è rimasto a lungo prima di sparire.
+
+A est, un lungo corridoio riporta verso lo snodo. A ovest, un ampio varco conduce verso una sala più vasta.`,
+          notaDM: `Buon momento di respiro dopo le sale più dense, oppure il DM può usarla per un incontro con Varn Selick copia, che potrebbe aver scelto proprio questo spazio spoglio per nascondersi, sentendosi meno esposto.`
+        },
+        {
+          numero: 15,
+          titolo: "La Sala Grande Ovest",
+          testo: `Il secondo salone più ampio del piano, forse otto metri per sette, con il soffitto sostenuto da una fila di archi in pietra ancora intatti. Su una parete, un'altra finestra crollata, la più grande vista finora, con radici e terra che occupano quasi metà della superficie della parete.
+
+A est, un varco riporta verso la sala vuota. A nord, un piccolo passaggio conduce verso una stanza minore. A ovest, un ultimo varco conduce verso una stanza isolata.`,
+          notaDM: `La grande finestra crollata qui può essere il momento più forte per far notare ai giocatori questo motivo ricorrente del piano, magari con un breve dialogo tra i personaggi se si vuole enfatizzarlo.`
+        },
+        {
+          numero: 16,
+          titolo: "La Piccola Sala Nord",
+          testo: `Una piccola stanza, forse tre metri per quattro, semplice e priva di elementi particolari, con solo qualche traccia di mobilio marcito contro una parete.
+
+A sud, l'unico varco riporta verso la sala grande ovest.`,
+          notaDM: `Stanza minore, pensata più che altro per dare respiro alla mappa e permettere ai giocatori di sentirsi liberi di esplorare senza che ogni stanza nasconda per forza qualcosa.`
+        },
+        {
+          numero: 17,
+          titolo: "La Sala Isolata",
+          testo: `Una piccola stanza, forse due metri per tre, raggiungibile solo attraverso un breve corridoio stretto. Vuota, silenziosa, con un unico dettaglio fuori posto, un piccolo oggetto personale abbandonato al centro del pavimento, che stona con l'ambiente circostante.
+
+A est, l'unico varco riporta verso la sala grande ovest.`,
+          notaDM: `L'oggetto abbandonato è un gancio narrativo da riempire come si preferisce, magari qualcosa appartenuto a un esploratore precedente, o un piccolo indizio su chi altro potrebbe essere passato di qui prima dei PG.`
+        },
+        {
+          numero: 18,
+          titolo: "Il Passaggio Sud",
+          testo: `Una stanza allungata e stretta, quasi un corridoio più che una sala vera, forse sette metri per tre. Alcuni detriti sparsi lungo il percorso, nulla di significativo.
+
+A nord, una porta riporta verso il corridoio dei detriti. A sud est, un varco conduce verso l'ultima sala del piano.`,
+          notaDM: `Stanza di passaggio, poco altro da segnalare, utile più che altro per allungare il tragitto verso la sala finale e dare un senso di distanza percorsa.`
+        },
+        {
+          numero: 19,
+          titolo: "La Sala Finale",
+          testo: `L'ultima sala del piano, ampia, forse nove metri per sette, con i segni di un utilizzo passato più intenso rispetto alle altre stanze, tracce di quello che poteva essere un focolare in un angolo, ormai freddo da tempo immemore.
+
+A nord ovest, un varco riporta verso il passaggio sud. A nord, una breve scalinata sale direttamente verso la sala d'arrivo, chiudendo il percorso ad anello del piano.`,
+          notaDM: `Questa sala chiude il giro, permettendo ai giocatori di tornare verso l'ingresso senza dover ripercorrere tutto il piano a ritroso. Buon punto per un ultimo incontro prima di eventualmente scendere al piano successivo, se la mappa prevede un accesso da qui, altrimenti resta semplicemente la chiusura naturale dell'esplorazione.`
+        }
+      ],
       musica: { titolo: "A Room Between the Rooms", artista: "Lustmord", descrizione: "Piano 1 Kaelvaran" }
     },
 
