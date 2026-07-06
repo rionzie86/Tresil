@@ -57,7 +57,31 @@ Man mano che avanzate, la nota si fa più nitida. È un violino. Una sola nota t
 Ma appena i personaggi varcano la soglia della locanda, la realtà sembra cambiare: fuochi alti, musica, 
 risa, bevute. I nativi sono festosi e genuinamente ospitali — coinvolgono i PG in giochi, balli, 
 brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`,
-          notaDM: `Rombia è lo stesso villaggio descritto nella quinta annotazione del diario del Biondo (cap.5): quello colpito dall'epidemia pochi giorni dopo il passaggio di Rahlia e Dogti. I PG non lo sanno ancora. Le storie raccontate durante la festa della prima sera (vedi materiale a parte) possono includere proprio quella leggenda — raccontata come voce, superstizione o ricordo di famiglia — così che quando i PG leggeranno il diario al cap.5 il collegamento esploda con più forza.`
+          notaDM: `Rombia è lo stesso villaggio descritto nella quinta annotazione del diario del Biondo (cap.5): quello colpito dall'epidemia pochi giorni dopo il passaggio di Rahlia e Dogti. I PG non lo sanno ancora. Le storie raccontate durante la festa della prima sera (sezione successiva) possono includere proprio quella leggenda — raccontata come voce, superstizione o ricordo di famiglia — così che quando i PG leggeranno il diario al cap.5 il collegamento esploda con più forza.`
+        },
+        {
+          titolo: "Le Storie della Festa",
+          tipo: "leggenda",
+          testo: `Durante la festa, quattro storie del villaggio circolano tra un brindisi e l'altro. Ognuna può essere raccontata da un PNG diverso già presente al cap.2 — usale per far respirare il villaggio prima che tutto cambi.`,
+          notaDM: `**1. "Il Mugnaio e l'Ombra Magra" — raccontata da Orm**
+
+"Vent'anni fa il mulino apparteneva a Bruno Sten, un uomo che pesava il grano con due pesi diversi: uno per vendere, uno per comprare. Una sera d'inverno, chiuso il mulino, trovò seduto sulla sua soglia un tizio magro come un chiodo, vestito di nero anche nel buio più nero. Gli offrì un patto: farina infinita nella madia, per sempre, in cambio della prima cosa che sarebbe uscita di casa sua il mattino dopo. Bruno pensò al gatto, e accettò ridendo. Ma quella notte nacque sua figlia, e fu lei, in braccio alla balia, la prima ad attraversare la soglia all'alba. Bruno urlò, implorò, offrì oro, buoi, il mulino stesso. L'ombra magra scosse la testa e se ne andò senza dire una parola, portandosi via solo il suo sorriso. La bambina crebbe sana e forte. Ma Bruno non sorrise mai più in vita sua, e da quel giorno pesò il grano giusto, fino all'ultimo chicco."
+
+**2. "La Sposa del Guado" — raccontata da Ysel**
+
+"C'era un cavaliere, tempo fa, che amava una lavandaia più della sua stessa spada — cosa che al suo casato non andava affatto giù. La promisero in nozze contro la sua volontà a un vecchio barone di un altro feudo. La notte prima delle nozze lei si gettò nel fiume, al guado dove lui l'aveva baciata la prima volta. Il cavaliere impazzì di dolore, abbandonò lo scudo e vagò per anni nei boschi. Dicono che chi attraversa quel guado di notte, se ha il cuore diviso tra due persone, senta una mano fredda stringergli la caviglia — non per trascinarlo giù, dicono le vecchie, ma per fermarlo un istante e chiedergli, in silenzio, se è sicuro di dove sta andando."
+
+**3. "Il Contadino e i Tre Banditi" — raccontata da Lena Drui**
+
+"Un contadino di nome Ghel tornava dal mercato con un sacco di monete quando tre banditi gli tagliarono la strada nel bosco. Il primo gli puntò un coltello, il secondo una spada, il terzo rise e disse che tanto Ghel era troppo stupido per aver guadagnato niente di buono. Ghel allora giurò sulla Madre delle Messi che il sacco conteneva solo rape marce — ma aggiunse, con aria afflitta, che chiunque lo avesse aperto prima del tramonto sarebbe stato maledetto con la sfortuna di tre generazioni. I banditi, ridendo, lo aprirono comunque all'istante — e trovarono davvero solo rape, perché Ghel aveva nascosto le monete nella suola degli stivali due giorni prima, aspettandosi guai. Se ne andarono delusi e un po' impauriti. Ghel arrivò a casa ridendo così forte che sua moglie pensò fosse ubriaco."
+
+**4. "La Dama delle Erbe" — raccontata da Sura Vann (la locandiera)**
+
+"Passò di qui una donna, anni fa. Bella, dicono chi la vide — di una bellezza stanca, come chi cammina da troppo tempo senza essersi mai davvero fermata. Con lei un uomo, il suo innamorato, che però si muoveva storto, in un modo che non tornava, come se qualcosa dentro il corpo gli si fosse rotto e nessuno l'avesse mai rimesso a posto. Non si fermarono per la notte: solo il tempo di comprare pane, carne, qualche verdura al mercato, con le mani veloci di chi ha fretta di ripartire. Ma prima di andare, la donna guarì tre dei nostri: una febbre che non voleva scendere, una tosse che durava da mesi, una ferita che marciva senza chiudersi mai. Non chiese nulla in cambio, solo un pasto caldo. La benedicemmo con tutto il cuore mentre spariva verso nord, nella foschia.
+
+Cinque giorni dopo arrivò l'epidemia. Occhi che si arrossavano, morsi, urla nella notte, una cosa che passava toccandosi appena la pelle. Chi lei aveva guarito fu il primo a cadere — come se il male, per farsi strada, avesse prima dovuto entrare da qualche parte di aperto. C'è ancora chi dice che non fu colpa sua, che qualcosa doveva già covare in loro, o in lui, l'uomo che camminava storto. Io vi dico solo questo: diffidate di chi vi offre la guarigione senza chiedere nulla in cambio. Il conto, prima o poi, si presenta sempre."
+
+*(Nota DM: solo la quarta storia — "La Dama delle Erbe" — è collegata alla one shot: corrisponde a quanto racconta il diario del Biondo su Rombia (Rahlia e Dogti che passano, l'epidemia cinque giorni dopo). Le altre tre sono semplice folklore da locanda, senza legami con la trama — usale per far respirare il villaggio prima che tutto cambi.)*`
         }
       ],
       musica: { titolo: "Terra Amata", artista: "Riccardo Mazza", descrizione: "Avvio ambientazione" }
