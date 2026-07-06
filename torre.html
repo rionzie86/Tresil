@@ -773,11 +773,25 @@ function buildSviluppo() {
       if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
     }
 
-    // Pulsante puzzle — solo cap6, solo DM
-    const puzzleBtnHTML = cap.id === 'cap6'
+    // Pulsanti puzzle — solo cap11 (Il Globo di Metallo), solo DM
+    const puzzleBtnHTML = cap.id === 'cap11'
       ? `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn" onclick="openPuzzle()">
            <span class="ico">◈</span>Mostra il Puzzle ai Giocatori
+         </button>
+         <button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" id="globo-btn-tab" onclick="openPuzzleNewTab()" style="margin-left:.5rem;">
+           <span class="ico">⧉</span>Apri il Tangram in una Nuova Scheda (versione giocatori)
          </button>`
+      : '';
+
+    // Immagine di riferimento del capitolo (es. cap8 — labirinto di specchi)
+    const immagineHTML = cap.immagine
+      ? `<div class="cap-img-wrap" style="margin:.75rem 0 1rem;position:relative;">
+           <img src="${cap.immagine.src}" alt="${cap.immagine.didascalia}" style="max-width:100%;border-radius:4px;border:1px solid var(--border);display:block;">
+           <button class="img-fs-btn" onclick="openImageFullscreen(this)" title="Schermo intero" aria-label="Mostra immagine a schermo intero">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
+           </button>
+           <div style="font-size:11px;color:var(--t3);font-style:italic;margin-top:.4rem;">${cap.immagine.didascalia}</div>
+         </div>`
       : '';
 
     wrap.innerHTML = `
@@ -790,6 +804,7 @@ function buildSviluppo() {
       <div class="cap-body">
         ${musicaHTML}
         <div class="cap-luogo" style="margin-top:${musicaHTML ? '.75rem' : '0'};margin-bottom:.75rem;font-style:italic;color:var(--t2);font-size:13px;">${cap.riassunto}</div>
+        ${immagineHTML}
         ${sezioniHTML}
         ${puzzleBtnHTML}
       </div>`;
@@ -845,6 +860,10 @@ function openPuzzle() {
 function closePuzzle() {
   document.getElementById('puzzle-modal').classList.remove('open');
 }
+function openPuzzleNewTab() {
+  // Versione senza dm=1: da mostrare direttamente ai giocatori (schermo condiviso o secondo monitor)
+  window.open('tangram_puzzle.html?v=' + Date.now(), '_blank');
+}
 // ── REGIA MUSICALE ─────────────────────────────────
 function buildMusica() {} // sezione rimossa
 
@@ -872,12 +891,25 @@ function switchTrack() {}
 .fs-btn:hover{border-color:var(--gold,#c9a84c);background:var(--bg-hover,#1a2333);}
 .fs-btn svg{width:18px;height:18px;display:block;}
 @media print{.fs-btn{display:none;}}
+
+.img-fs-btn{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;
+  background:rgba(10,12,15,.65);border:1px solid var(--border-b,rgba(90,130,190,0.28));
+  color:var(--gold,#c9a84c);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:.18s ease;}
+.img-fs-btn:hover{border-color:var(--gold,#c9a84c);background:rgba(26,35,51,.85);}
+.img-fs-btn svg{width:15px;height:15px;display:block;}
+.cap-img-wrap img:fullscreen{max-width:none;max-height:100vh;width:auto;height:100%;object-fit:contain;background:#000;}
 </style>
 <button class="fs-btn" id="fs-btn" onclick="toggleFullscreen()" title="Schermo intero" aria-label="Attiva/disattiva schermo intero">
   <svg id="fs-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
   <svg id="fs-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M8 21v-3a2 2 0 0 0-2-2H3M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>
 </button>
 <script>
+function openImageFullscreen(btn){
+  var img = btn.previousElementSibling;
+  if (!img || img.tagName !== 'IMG') return;
+  (img.requestFullscreen || img.webkitRequestFullscreen || img.msRequestFullscreen).call(img).catch(function(){});
+}
 function toggleFullscreen(){
   var d=document, el=d.documentElement;
   var isFs = d.fullscreenElement || d.webkitFullscreenElement || d.msFullscreenElement;

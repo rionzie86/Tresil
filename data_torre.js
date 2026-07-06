@@ -4,10 +4,10 @@
 const torreDati = {
   titolo: "La Torre della Follia",
   sottotitolo: "Una one shot per 3–5 avventurieri",
-  ambientazione: "Isola di Mushara (antico nome Solnaro di Tresil) — entroterra montuoso a nord",
+  ambientazione: "Isola di Mushara (antico nome Solnaro di Tresil) — entroterra montuoso a nord. Il villaggio di partenza è Rombia.",
   tono: "Horror cosmico, degenerazione, meraviglia distorta",
   antagonista: "Fraxximt il Rospo — mago pazzo, ladro di incantesimi, creatore di abomini",
-  loreSegreta: `Fraxximt ha trovato la grotta di Ralia e Dogti durante gli scavi della sua torre. 
+  loreSegreta: `Fraxximt ha trovato la grotta di Rahlia e Dogti durante gli scavi della sua torre. 
 Si è appropriato della canzone dei due innamorati e del cuore di Dogti come tramite arcano 
 per creare i suoi abomini personali. Il Biondo è riuscito a sottrargli lo spartito, ma non il cuore. 
 Fraxximt ha difficoltà nel controllare Dogti. La torre cambia continuamente: non esiste una 
@@ -35,9 +35,9 @@ via diretta alle stanze del mago.`,
     // ── CAP 1 ──────────────────────────────────────────────────────
     {
       id: "cap1",
-      titolo: "Capitolo 1 — Il Villaggio",
+      titolo: "Capitolo 1 — Il Villaggio di Rombia",
       icona: "🏘️",
-      riassunto: "Arrivo nel villaggio. L'atmosfera esterna è tetra, ma la locanda è calda e festosa. Un momento di respiro prima della tempesta.",
+      riassunto: "Arrivo a Rombia. L'atmosfera esterna è tetra, ma la locanda è calda e festosa. Un momento di respiro prima della tempesta.",
       sezioni: [
         {
           titolo: "In aperta campagna — La nebbia",
@@ -56,7 +56,8 @@ Man mano che avanzate, la nota si fa più nitida. È un violino. Una sola nota t
           testo: `L'atmosfera esterna è tetra: cielo basso, bosco fitto, aria che sa di terra umida. 
 Ma appena i personaggi varcano la soglia della locanda, la realtà sembra cambiare: fuochi alti, musica, 
 risa, bevute. I nativi sono festosi e genuinamente ospitali — coinvolgono i PG in giochi, balli, 
-brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`
+brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`,
+          notaDM: `Rombia è lo stesso villaggio descritto nella quinta annotazione del diario del Biondo (cap.5): quello colpito dall'epidemia pochi giorni dopo il passaggio di Rahlia e Dogti. I PG non lo sanno ancora. Le storie raccontate durante la festa della prima sera (vedi materiale a parte) possono includere proprio quella leggenda — raccontata come voce, superstizione o ricordo di famiglia — così che quando i PG leggeranno il diario al cap.5 il collegamento esploda con più forza.`
         }
       ],
       musica: { titolo: "Terra Amata", artista: "Riccardo Mazza", descrizione: "Avvio ambientazione" }
@@ -110,8 +111,10 @@ brindisi. Non c'è minaccia qui. Solo calore umano prima della tempesta.`
           tipo: "png",
           testo: `Arriva trafelato, sporco di polvere, con ferite da graffio sul braccio e sul collo. 
 Delira: suo fratello Dimitri è rimasto intrappolato sotto una frana alla cava. 
-Mentre cercava di liberarlo, una bestia lo ha attaccato. Preso dal panico, è fuggito. 
-Durante il ritorno al villaggio ha sentito la bestia seguirlo — si nutriva degli animali del bosco.`,
+Mentre cercava di liberarlo, qualcosa lo ha aggredito — non sa dire se fosse un uomo o una bestia, 
+si muoveva sbagliato, a scatti, e batteva le dita a un ritmo che non riusciva a togliersi dalla testa. 
+Preso dal panico, è fuggito. Durante il ritorno al villaggio ha sentito la cosa seguirlo nel buio, 
+per un tratto — poi più nulla.`,
           notaDM: `Chi esamina Alexei da vicino nota che qualcosa di più profondo lo sta consumando: le ferite, pur recenti, hanno già iniziato a produrre pus. Gli occhi sono giallastri. Qualche dente gli cade mentre parla. Ciocche di capelli restano tra le dita quando si passa la mano sul capo.
 
 Non è una normale infezione — è una corruzione accelerata, come se il corpo stesse marcendo a velocità innaturale. Il DM decide quanto è evidente in base a quanto i giocatori indagano.`
@@ -145,7 +148,7 @@ La figura è Dogti. Nella nebbia, per un istante, una sagoma. Umanoide — forse
       id: "cap3a",
       titolo: "Capitolo 3a — Il Cinghiale Corrotto",
       icona: "🐗",
-      riassunto: "Scontro con la bestia che ha attaccato Alexei. Corrotta, veloce, in decomposizione mentre combatte.",
+      riassunto: "Un animale del bosco, corrotto dalla stessa presenza che infesta la zona. Non è ciò che ha aggredito Alexei — solo un altro segno che qualcosa, là fuori, sta contaminando ogni cosa vivente.",
       sezioni: [
         {
           titolo: "Il Cinghiale Corrotto — Scontro",
@@ -155,7 +158,9 @@ mentre si muove. Dal cranio escono mucchi di vermi che cadono sul terreno.
 Nonostante le condizioni del corpo, è veloce e aggressivo.`,
           notaDM: `Il cinghiale è pericoloso ma abbattibile. Chi viene colpito dalla sua carica rischia di contrarre una forma lieve della stessa corruzione che consuma Alexei — il DM valuta in base alla gravità della ferita.
 
-Il cadavere del cinghiale, se esaminato, mostra lo stesso avanzato stadio di degenerazione interna di Alexei — ma concentrato, come se la bestia fosse corrotta da più tempo.`
+Il cadavere del cinghiale, se esaminato, mostra lo stesso avanzato stadio di degenerazione interna di Alexei — ma concentrato, come se la bestia fosse corrotta da più tempo.
+
+IMPORTANTE: questo cinghiale non è la creatura che ha aggredito Alexei alla cava — quella era Dogti (vedi cap.3, la sagoma umanoide intravista nel bosco, e cap.4). Il cinghiale è solo un'altra vittima della stessa corruzione diffusa nella zona: un modo per far percepire ai PG che il fenomeno non è isolato a una singola bestia, prima ancora di scoprire cosa lo stia davvero causando.`
         }
       ],
       musica: { titolo: "Entity Brain", artista: "Cryo Chamber", descrizione: "Incontro con il cinghiale" }
@@ -176,7 +181,7 @@ Dimitri è ancora lì: il braccio sinistro è schiacciato da un grande masso,
 il corpo ha convulsioni intermittenti nonostante sia cosciente. 
 Quello che resta della mano schiacciata è in stato avanzato di decomposizione.
 La schiena di Dimitri è stata strappata a morsi — ferite profonde, già necrotizzate.`,
-          notaDM: `Dimitri non può essere salvato. La corruzione è troppo avanzata. Può ancora parlare in modo frammentato: "È uscita dalla roccia... cantava... Dio, cantava mentre mi mangiava." Muore nel corso della scena — il DM sceglie il momento più drammaticamente efficace.
+          notaDM: `Dimitri non può essere salvato. La corruzione è troppo avanzata. Può ancora parlare in modo frammentato: "È uscita dalla roccia... batteva le dita, un ritmo, sempre lo stesso... Dio, lo batteva mentre mi mangiava." Muore nel corso della scena — il DM sceglie il momento più drammaticamente efficace.
 
 La frana ha aperto un accesso a una grotta preesistente — è da lì che è uscita la creatura.`
         }
@@ -187,7 +192,7 @@ La frana ha aperto un accesso a una grotta preesistente — è da lì che è usc
     // ── CAP 5 ──────────────────────────────────────────────────────
     {
       id: "cap5",
-      titolo: "Capitolo 5 — La Grotta di Ralia e Dogti",
+      titolo: "Capitolo 5 — La Grotta di Rahlia e Dogti",
       icona: "🕯️",
       riassunto: "Oltre le macerie si apre una stanza antica, abitata a lungo. Una storia d'amore diventata abominio — e una via verso la Torre.",
       sezioni: [
@@ -290,7 +295,7 @@ Ho forzato l'ingresso. Dentro ho trovato una stanza. Piccola, bassa, abitata a l
 
 E due cadaveri.
 
-Una ragazza, Ralia, ho trovato il nome su alcuni scritti sparsi. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.
+Una ragazza, Rahlia, ho trovato il nome su alcuni scritti sparsi. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.
 
 Ho capito cosa cercava il Rospo. Non la ragazza. Quello che la ragazza portava con sé.
 
@@ -375,7 +380,7 @@ Informazioni chiave che i PG ricavano dal diario:
           notaDM: `Se la parete d'ingresso era uguale a questa, lo spessore massimo è di 25 cm — un colpo deciso è sufficiente a frantumarla. Non serve forza straordinaria né magie particolari: la parete era pensata per trattenere qualcuno dentro, non per resistere a chi viene da fuori. Oltre la parete: l'ingresso alla Torre della Follia.`
         }
       ],
-      musica: { titolo: "White Stone", artista: "Atrium Carceri", descrizione: "La grotta di Ralia e Dogti" }
+      musica: { titolo: "White Stone", artista: "Atrium Carceri", descrizione: "La grotta di Rahlia e Dogti" }
     },
 
     // ── CAP 6 ──────────────────────────────────────────────────────
@@ -796,7 +801,7 @@ Usa l'Amuleto Solnari per plasmare la pietra — chiudere uscite, creare barrier
           tipo: "scena",
           testo: `[Sezione riservata DM]`,
           notaDM: `RISOLUZIONE 1 — LA CANZONE DI DOGTI
-Se i PG cantano la canzone di Ralia (Thriller, la canzone popolare Varlmenn trascritta nel diario del Biondo con l'appunto "l'amata la cantava per richiamare l'amato") con il cuore di Dogti in mano, Dogti risponde. Arriva dalla grotta o emerge dalla torre, attratto dalla melodia. È in grado di sconfiggere il Rospo con la pura violenza — è la sua chiusura dei conti.
+Se i PG cantano la canzone di Rahlia (Thriller, la canzone popolare Varlmenn trascritta nel diario del Biondo con l'appunto "l'amata la cantava per richiamare l'amato") con il cuore di Dogti in mano, Dogti risponde. Arriva dalla grotta o emerge dalla torre, attratto dalla melodia. È in grado di sconfiggere il Rospo con la pura violenza — è la sua chiusura dei conti.
 Serve almeno un cantante e qualcuno che tenga il ritmo. Il cuore nell'ampolla batte sempre più veloce man mano che cantano.
 
 RISOLUZIONE 2 — RIDARE IL CUORE A DOGTI
@@ -838,7 +843,7 @@ Il globo risolto dai PG nella stanza precedente, se il Rospo ne viene in possess
 La strada verso il villaggio è lunga. Ma i fuochi della locanda si vedono da lontano — e dentro si sente già la musica.`,
           notaDM: `Il ritorno è una scena libera — il DM lascia che i giocatori raccontino. Cosa dicono ai nativi del villaggio? Cosa omettono? Chi credono loro?
 
-Alexei è ancora vivo — peggio di prima, ma vivo. Se i PG hanno il cuore di Dogti, possono scegliere cosa farne. Se Dogti è ancora in piedi, è fuori dalla torre — libero per la prima volta da quando Ralia lo incatenò con la canzone.
+Alexei è ancora vivo — peggio di prima, ma vivo. Se i PG hanno il cuore di Dogti, possono scegliere cosa farne. Se Dogti è ancora in piedi, è fuori dalla torre — libero per la prima volta da quando Rahlia lo incatenò con la canzone.
 
 Non c'è una risposta giusta. La one shot finisce qui.`
         }
@@ -859,13 +864,13 @@ Non c'è una risposta giusta. La one shot finisce qui.`
       nome: "Dimitri",
       ruolo: "Fratello di Alexei — morente alla cava",
       descrizione: "Braccio schiacciato dal masso. Schiena strappata a morsi. Convulsioni. Può ancora parlare frammenti di senso.",
-      segreto: "Muore nel corso della scena. Ultima cosa che dice: 'Cantava. Mentre mi mangiava, cantava.' Il DM sceglie il momento più efficace."
+      segreto: "Muore nel corso della scena. Ultima cosa che dice: 'Batteva le dita. Sempre lo stesso ritmo. Mentre mi mangiava.' Il DM sceglie il momento più efficace."
     },
     {
       nome: "Dogti",
-      ruolo: "Abominio — creazione di Ralia",
+      ruolo: "Abominio — creazione di Rahlia",
       descrizione: "Corpo umano in stadio avanzato di decomposizione, petto squarciato e vuoto. Si muove. Batte il moncherino dell'indice sinistro sul pavimento ritmicamente. Sembra aspettare che qualcuno gli dica qualcosa.",
-      segreto: "Dogti non è sotto pieno controllo del Rospo. Il ritmo che batte è il tempo di Thriller — la canzone di Ralia. Se i PG gli ridanno il cuore, attacca il Rospo di propria iniziativa. Se liberato alla fine, è libero per la prima volta da quando Ralia lo incatenò."
+      segreto: "Dogti non è sotto pieno controllo del Rospo. Il ritmo che batte è il tempo di Thriller — la canzone di Rahlia. Se i PG gli ridanno il cuore, attacca il Rospo di propria iniziativa. Se liberato alla fine, è libero per la prima volta da quando Rahlia lo incatenò."
     },
     {
       nome: "Il Biondo",
@@ -877,7 +882,7 @@ Non c'è una risposta giusta. La one shot finisce qui.`
       nome: "Fraxximt il Rospo",
       ruolo: "Antagonista — mago pazzo, creatore della Torre",
       descrizione: "Scheletro riverso sul trono d'ossa. Vesti elaborate, meccanismi di ottone. Stringe al petto l'ampolla con il cuore di Dogti. Non crea incantesimi: li ruba e li corrompe.",
-      segreto: "Senza corde vocali non può cantare né lanciare grandi incantesimi. Si rigenera bevendo sangue. Diventa ossessivo alla vista del globo. Muore se privato di cuore e globo contemporaneamente, o se Dogti lo attacca in autonomia."
+      segreto: "Senza corde vocali non può cantare né lanciare grandi incantesimi. All'epoca del diario del Biondo riusciva ancora a fischiettare la melodia di Rahlia abbastanza bene da bloccare Dogti sul posto — è così che gli ha strappato l'ampolla nella grotta. Da allora anche il fischiettare gli riesce sempre peggio: è per questo che nella torre 'ha difficoltà nel controllare Dogti' (vedi lore segreta). Si rigenera bevendo sangue. Diventa ossessivo alla vista del globo. Muore se privato di cuore e globo contemporaneamente, o se Dogti lo attacca in autonomia."
     },
     {
       nome: "La Donna Coniglio",
@@ -896,12 +901,12 @@ Non c'è una risposta giusta. La one shot finisce qui.`
   oggetti: [
     {
       nome: "Diario del Biondo",
-      descrizione: "Diario in cuoio scuro, pagine ingiallite. Si interrompe a metà frase. Contiene informazioni su Fraxximt, la torre, Ralia e Dogti.",
+      descrizione: "Diario in cuoio scuro, pagine ingiallite. Si interrompe a metà frase. Contiene informazioni su Fraxximt, la torre, Rahlia e Dogti.",
       importanza: "Alta — lore fondamentale"
     },
     {
       nome: "Frammenti dello Spartito",
-      descrizione: "Fogli manoscritti parzialmente bruciati trovati nel camino. La notazione è arcana. Il ritmo corrisponde a quello che Dogti batte sul pavimento — e alla canzone che i giocatori conoscono come Thriller di Michael Jackson, canzone popolare Varlmenn cantata da Ralia.",
+      descrizione: "Fogli manoscritti parzialmente bruciati trovati nel camino. La notazione è arcana. Il ritmo corrisponde a quello che Dogti batte sul pavimento — e alla canzone che i giocatori conoscono come Thriller di Michael Jackson, canzone popolare Varlmenn cantata da Rahlia.",
       importanza: "Alta — chiave per evocare Dogti nella scena finale"
     },
     {
