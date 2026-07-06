@@ -1522,6 +1522,7 @@ a.ilink:active{color:var(--gold);}
   <div class="prose">
     <p>Kaelvaran è un mondo ferito ma ancora vivo — spezzato dalla <a class="ilink" data-target="cosmologia">ribellione divina</a> e ricostruito dalla volontà degli uomini. Non esistono eroi predestinati: ogni personaggio può diventare leggenda, se resta fedele a ciò che è.</p>
     <p>Cinque grandi culture umane si sono evolute in isolamento per millenni. Cinquecento anni fa un evento cosmico — l'<a class="ilink" data-target="cosmologia">Eco del Sacrificio</a> — ha riavvicinato i continenti. Le culture si sono riscoperte. Le guerre sono arrivate. Poi, lentamente, anche gli scambi.</p>
+    <p><a class="ilink" href="mappa_mondo.html">→ Vedi la mappa del mondo</a></p>
   </div>
   <h2 class="content-h2">Come si gioca — Le meccaniche fondamentali</h2>
   <div class="mechanic-grid">
@@ -1577,6 +1578,32 @@ a.ilink:active{color:var(--gold);}
     <div class="culture-row" onclick="nav('aenari')">
       <div class="culture-dot" style="background:#8f72d4"></div>
       <div><div class="culture-name">Aenari →</div><div class="culture-desc">Un tempo umani, hanno scelto di non esserlo più. Rifiutano le emozioni e la magia. Qualcosa, di recente, sta incrinando quella certezza.</div></div>
+    </div>
+  </div>
+  <h2 class="content-h2">Come si crea un personaggio</h2>
+  <div class="prose">
+    <p>Non esistono statistiche, classi o schede da compilare. Il personaggio nasce da chi è, non da cosa può fare. Quattro passi, ognuno con una guida dedicata.</p>
+  </div>
+  <div class="mechanic-grid">
+    <div class="mechanic-card" onclick="window.location='pg_ruolo.html'" style="cursor:pointer;">
+      <div class="mechanic-icon">⚔</div>
+      <div class="mechanic-name">1 — Scegli un Ruolo</div>
+      <div class="mechanic-desc">Non una classe meccanica: chi è il tuo personaggio nel mondo. Arcanista, combattente, guaritore, investigatore, musico, mercante — qualsiasi cosa abbia senso in Kaelvaran.</div>
+    </div>
+    <div class="mechanic-card" onclick="window.location='pg_cultura.html'" style="cursor:pointer;">
+      <div class="mechanic-icon">◈</div>
+      <div class="mechanic-name">2 — Scegli una Cultura</div>
+      <div class="mechanic-desc">L'origine plasma i valori, il rapporto con la magia e con la morte. Non è un vincolo: è un punto di partenza. Cinque culture, cinque modi di stare al mondo.</div>
+    </div>
+    <div class="mechanic-card" onclick="window.location='pg_background.html'" style="cursor:pointer;">
+      <div class="mechanic-icon">✦</div>
+      <div class="mechanic-name">3 — Costruisci il Background</div>
+      <div class="mechanic-desc">Cinque domande sul carattere, il contesto sociale, i pregi, l'evento che lo ha cambiato e i difetti. Più la descrizione fisica. Non serve un romanzo: bastano poche righe.</div>
+    </div>
+    <div class="mechanic-card" onclick="window.location='pg_mondo.html'" style="cursor:pointer;">
+      <div class="mechanic-icon">▸</div>
+      <div class="mechanic-name">4 — Inseriscilo nel Mondo</div>
+      <div class="mechanic-desc">Da dove viene, perché se ne è andato, cosa lo muove ogni mattina, chi sta cercando o evitando, cosa vuole diventare. Cinque domande per dargli un posto in Kaelvaran.</div>
     </div>
   </div>
   <div class="quote">
@@ -2404,7 +2431,7 @@ navItems.forEach(item => {
 </script>
 <style>
 .fs-btn{position:fixed;bottom:18px;right:18px;z-index:1200;width:42px;height:42px;border-radius:50%;
-  background:var(--bg-panel,#111520);border:1px solid var(--border-b,rgba(90,130,190,0.28));
+  background:var(--bg-panel,#111520);border:1px solid var(--border-bright,rgba(90,130,190,0.28));
   color:var(--gold,#c9a84c);display:flex;align-items:center;justify-content:center;cursor:pointer;
   transition:.18s ease;box-shadow:0 2px 10px rgba(0,0,0,.4);}
 .fs-btn:hover{border-color:var(--gold,#c9a84c);background:var(--bg-hover,#1a2333);}

@@ -112,5 +112,40 @@ html,body{min-height:100%;background:var(--bg-deepest);color:var(--text-primary)
     <a class="nav-btn" href="pg_cultura.html">Passo 2: La Cultura →</a>
   </div>
 </div>
+<style>
+.fs-btn{position:fixed;bottom:18px;right:18px;z-index:1200;width:42px;height:42px;border-radius:50%;
+  background:var(--bg-panel,#111520);border:1px solid var(--border-bright,rgba(90,130,190,0.28));
+  color:var(--gold,#c9a84c);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:.18s ease;box-shadow:0 2px 10px rgba(0,0,0,.4);}
+.fs-btn:hover{border-color:var(--gold,#c9a84c);background:var(--bg-hover,#1a2333);}
+.fs-btn svg{width:18px;height:18px;display:block;}
+@media print{.fs-btn{display:none;}}
+</style>
+<button class="fs-btn" id="fs-btn" onclick="toggleFullscreen()" title="Schermo intero" aria-label="Attiva/disattiva schermo intero">
+  <svg id="fs-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
+  <svg id="fs-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M8 21v-3a2 2 0 0 0-2-2H3M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>
+</button>
+<script>
+function toggleFullscreen(){
+  var d=document, el=d.documentElement;
+  var isFs = d.fullscreenElement || d.webkitFullscreenElement || d.msFullscreenElement;
+  if(!isFs){
+    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el).catch(function(){});
+  } else {
+    (d.exitFullscreen || d.webkitExitFullscreen || d.msExitFullscreen).call(d);
+  }
+}
+function updateFsIcon(){
+  var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+  var exp=document.getElementById('fs-icon-expand'), col=document.getElementById('fs-icon-collapse');
+  if(!exp||!col) return;
+  exp.style.display = isFs ? 'none' : 'block';
+  col.style.display = isFs ? 'block' : 'none';
+}
+['fullscreenchange','webkitfullscreenchange','msfullscreenchange'].forEach(function(ev){
+  document.addEventListener(ev, updateFsIcon);
+});
+</script>
+
 </body>
 </html>
