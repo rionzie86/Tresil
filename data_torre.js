@@ -235,6 +235,7 @@ Al centro della stanza, accasciato contro una stalagmite, c'è un corpo. Non è 
         {
           titolo: "Il Diario del Biondo",
           tipo: "documento",
+          linkGiocatori: { url: "diario_biondo.html", label: "Apri il Diario per i Giocatori (nuova scheda)" },
           testo: `La copertina è di cuoio scuro, le pagine ingiallite. L'ultima è macchiata di sangue.`,
           documentoCompleto: `DIARIO DI CAMPO — IL BIONDO
 Ad uso esclusivo del Consiglio Ristretto di Tresil

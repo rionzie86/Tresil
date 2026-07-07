@@ -731,11 +731,11 @@ function buildSviluppo() {
         const tipoColor = {
           scena:'var(--blue)', png:'var(--purple)', scontro:'var(--red)',
           stanza:'var(--gold)', documento:'var(--amber)', oggetto:'var(--green)',
-          viaggio:'var(--t2)', placeholder:'var(--t3)'
+          viaggio:'var(--t2)', leggenda:'var(--amber)', placeholder:'var(--t3)'
         }[sez.tipo] || 'var(--t3)';
         const tipoLabel = {
           scena:'Scena', png:'PNG', viaggio:'Viaggio', scontro:'Scontro',
-          oggetto:'Oggetto', documento:'Documento', stanza:'Stanza', placeholder:'In costruzione'
+          oggetto:'Oggetto', documento:'Documento', stanza:'Stanza', leggenda:'Leggenda', placeholder:'In costruzione'
         }[sez.tipo] || sez.tipo;
 
         sezioniHTML += `<div style="margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">`;
@@ -752,6 +752,11 @@ function buildSviluppo() {
             <div style="font-size:9px;letter-spacing:.14em;color:var(--green);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.4rem;">📜 Leggere ai giocatori</div>
             <div style="background:rgba(90,180,143,.05);border:1px solid rgba(90,180,143,.15);border-radius:3px;padding:.75rem 1rem;font-size:13px;color:var(--t2);line-height:1.8;white-space:pre-line;font-style:italic;">${sez.documentoCompleto}</div>
           </div>`;
+        }
+        if (sez.linkGiocatori) {
+          sezioniHTML += `<button class="globo-dm-btn${isMaster ? ' dm-visible' : ''}" style="margin-top:.6rem;" onclick="window.open('${sez.linkGiocatori.url}?v=' + Date.now(), '_blank')">
+            <span class="ico">⧉</span>${sez.linkGiocatori.label}
+          </button>`;
         }
         if (sez.notaDM) {
           sezioniHTML += `<div style="margin-top:.6rem;">

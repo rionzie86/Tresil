@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diario di Campo — Il Biondo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+:root{
+  --bg:#0a0c0f;--gold:#c9a84c;--gold-d:#8a6e2f;--gold-g:rgba(201,168,76,0.10);
+  --t1:#e8e0d0;--t2:#9a9080;--t3:#5a5448;--border:rgba(90,130,190,0.18);
+  --bg-card:#131820;
+  --font-d:'Cinzel',serif;--font-b:'Crimson Pro',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;background:var(--bg);color:var(--t1);font-family:var(--font-b);font-size:17px;line-height:1.75;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(90,130,190,0.05) 0%,transparent 70%);pointer-events:none;z-index:0;}
+.app{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;}
+.hdr{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.25rem;border-bottom:1px solid var(--border);background:rgba(10,12,15,.93);gap:.75rem;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+.hdr-left .title{font-family:var(--font-d);font-size:13px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;}
+.hdr-left .sub{font-size:11px;color:var(--t3);font-style:italic;margin-top:1px;}
+
+.page{max-width:760px;margin:0 auto;padding:48px 40px 90px;}
+.doc-tag{font-family:var(--font-d);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px;text-align:center;}
+.doc-title{font-family:var(--font-d);font-size:26px;font-weight:600;color:var(--gold);line-height:1.3;margin-bottom:6px;text-align:center;}
+.doc-subtitle{font-size:14px;color:var(--t3);font-style:italic;margin-bottom:36px;text-align:center;}
+.divider{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--gold-d),transparent);margin:0 auto 40px;}
+
+.entry{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold-d);border-radius:4px;padding:22px 26px;margin-bottom:22px;}
+.entry-tag{font-family:var(--font-d);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.entry p{color:var(--t1);margin-bottom:1em;}
+.entry p:last-child{margin-bottom:0;}
+
+.entry.frantic{border-left-color:var(--t3);}
+.entry.frantic .entry-tag{color:var(--t2);}
+.entry.frantic p{color:var(--t2);font-style:italic;}
+
+.notation{text-align:center;font-family:var(--font-d);font-size:11px;letter-spacing:.1em;color:var(--gold-d);margin:18px 0;text-transform:uppercase;}
+
+.signature{text-align:right;font-family:var(--font-d);font-size:14px;color:var(--gold);letter-spacing:.08em;margin-top:8px;}
+
+.footer-note{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--t3);font-style:italic;text-align:center;}
+
+@media(max-width:640px){.page{padding:32px 18px 70px;}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="title">Documento Ritrovato</div>
+      <div class="sub">Torre della Follia</div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="doc-tag">Diario di Campo</div>
+    <h1 class="doc-title">Il Biondo</h1>
+    <p class="doc-subtitle">Ad uso esclusivo del Consiglio Ristretto di Tresil</p>
+    <div class="divider"></div>
+
+    <div class="entry">
+      <div class="entry-tag">Prima annotazione — data illeggibile</div>
+      <p>Sono tre mesi che seguo le tracce di Fraxximt. Tre mesi di false piste, testimonianze contraddittorie e notti passate a convincere doganieri e locandieri che le mie domande erano lecite. Il Consiglio mi ha dato carta bianca e poco altro. Non è un uomo facile da trovare, o meglio, lo è stato. Il problema è che quando lo trovi, lui non è mai solo.</p>
+      <p>L'artefatto che ha trafugato dalla Guardia delle Sette Memorie è ancora nelle sue mani. Non so cosa pianifichi di farne. So che non è stupido, e questo mi preoccupa più di qualsiasi altra cosa.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">Seconda annotazione — Fossolento</div>
+      <p>Ho iniziato dall'inizio: Fossolento, il villaggio dove è nato. Un posto che sa di sale e pesce essiccato, dove i bambini giocano vicino ai moli e i vecchi siedono fuori dalle porte a guardare il mare. Non il posto da cui ti aspetti esca un mago che ruba artefatti al Consiglio.</p>
+      <p>Ho parlato con chi lo ricordava. Era uno studioso, dicevano. Brillante, un poco strano, ma non cattivo. Aveva una moglie e un marito, tutti e tre inseparabili — Dorvek, un occhio verde e uno scuro, mento squadrato, e una giovane contadina del villaggio. Poi se n'è andato per studiare, come fanno quelli che hanno cervello e non vogliono sprecarsi a riparare reti da pesca. Nessuno lo ha visto tornare.</p>
+      <p>Mi chiedo se lo abbiano cercato.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">Terza annotazione — Greyhollow, Brennvar Varlhavn</div>
+      <p>L'ho quasi preso.</p>
+      <p>Quasi.</p>
+      <p>Greyhollow è una città che puzza di carbone e ambizione, il tipo di posto dove un mago in fuga può sparire tra mille facce anonime. Invece lui si è fatto notare. Qualcuno che si fa notare o è disperato o è arrogante. Fraxximt, ho capito, è entrambe le cose.</p>
+      <p>Ho seguito la pista fino a un archivio privato nel quartiere basso. Era lì che cercava qualcosa, un incantesimo, secondo le voci. Quando ho sfondato la porta era ancora dentro. La colluttazione è stata breve. Lui ha attivato una maledizione che non avevo visto arrivare, e il fuoco ha fatto il resto.</p>
+      <p>Non su di me. Su di lui.</p>
+      <p>Mi sono fermato sulla soglia a guardarlo mentre si teneva il viso tra le mani. Le ustioni erano serie. Il tipo di ustioni che non guariscono mai del tutto. Quando ha abbassato le mani e mi ha guardato, ho capito perché da quel giorno tutti avrebbero smesso di chiamarlo Fraxximt.</p>
+      <p>È scappato prima che potessi bloccarlo. Ha portato con sé quello che cercava: un incantesimo antico, oscuro, con più rischi che benefici. Qualcosa che evoca un'ombra dal mondo dei Dimenticati, nell'Oltrevelo. Non riesco ancora a capire perché lo voglia. Le ombre dei Dimenticati non obbediscono a nessuno. Non ricordano nemmeno se stesse.</p>
+      <p>Da Greyhollow in poi, lo chiamo il Rospo.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">Quarta annotazione — Impero Solnari, luogo non specificato</div>
+      <p>Non avrei dovuto seguirlo qui. Le guerre civili hanno reso ogni confine una trappola e ogni volto uno straniero potenzialmente ostile. Ho attraversato tre posti di blocco con documenti che reggono all'esame solo se l'esaminatore non è troppo sveglio.</p>
+      <p>Il Rospo si muove come se le guerre non lo riguardassero. Forse non lo riguardano davvero, un uomo con il viso bruciato e nessuna bandiera è invisibile in un posto dove tutti guardano il nemico dall'altra parte.</p>
+      <p>L'ha preso in un tempio abbandonato a due giorni dalla costa. Un amuleto Solnari, antico, pre-Frattura, secondo le mie stime. Plasma la pietra. La modella come argilla, a quanto ne so. Non ho capito subito il perché. Lo sto ancora capendo.</p>
+      <p>L'ho perso di nuovo prima di riuscire a bloccarlo. Stavo seguendo quella che pensavo fosse una pista solida che lo riportava nel Varlhavn quando è arrivata la missiva del Consiglio.</p>
+      <p>Il Rospo era stato avvistato a Rombia.</p>
+      <p>Ho impiegato un momento a ricordare dov'era Rombia. Isola di Mushara. A nord di Tresil.</p>
+      <p>Sono ripartito quella stessa notte.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">Quinta annotazione — Rombia</div>
+      <p>Il villaggio puzza ancora. Non di morte, di qualcosa prima della morte. Quell'odore umido e ferroso che si attacca alle pareti e non se ne va più.</p>
+      <p>L'epidemia ha colpito quattro mesi fa. Chi è rimasto parla poco e tiene gli occhi bassi, come se guardare in faccia le persone fosse diventato pericoloso. Forse lo è.</p>
+      <p>Ho ricostruito la sequenza con pazienza, un testimone alla volta.</p>
+      <p>Cinque giorni prima che iniziasse tutto, una ragazza e il suo compagno erano passati dal villaggio. Non si erano fermati, avevano solo comprato qualcosa al mercato, della carne, delle verdure, del pane, e poi erano ripartiti verso nord. La ragazza sembrava stanca ma sana. Il compagno camminava storto, in un modo che non tornava, come se qualcosa nel suo corpo non funzionasse nel verso giusto. Nessuno ci aveva dato peso.</p>
+      <p>Poi era arrivata l'epidemia. Persone e animali in preda a qualcosa che somigliava alla rabbia, occhi iniettati di sangue, morsi, urla. Una cosa che si trasmetteva al contatto. Non tutti erano caduti, ma abbastanza.</p>
+      <p>Due mesi dopo l'epidemia era arrivato il Rospo. Lo hanno descritto senza saperlo: viso segnato, occhi attenti, non beveva. Faceva domande sulla ragazza e sul suo compagno. Molte domande. Ma faceva anche domande strane, domande sui sogni degli abitanti durante i giorni dell'epidemia, cosa avevano visto, se si ricordavano qualcosa al risveglio, se i sogni erano cambiati. Nessuno aveva capito perché. Poi aveva pagato il conto ed era partito verso nord, nella stessa direzione della ragazza.</p>
+      <p>Io sono arrivato altri due mesi dopo. Ho ascoltato, ho preso note, ho ringraziato e sono ripartito.</p>
+      <p>Il Rospo non stava inseguendo la ragazza in tempo reale. Stava seguendo una traccia di magia che l'epidemia aveva lasciato nell'aria. Cercava qualcosa da rubare, come sempre. Ha trovato qualcosa di peggio.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">Sesta annotazione — ai piedi del monte, notte</div>
+      <p>Le tracce dell'amuleto Solnari sono ovunque qui. La pietra è stata lavorata, non in modo grezzo, ma con una precisione che fa quasi paura. Qualcuno ha aperto un passaggio dove non doveva esserci nessun passaggio.</p>
+      <p>Ho forzato l'ingresso. Dentro ho trovato una stanza. Piccola, bassa, abitata a lungo. Due stuoie. Un camino ricavato nella roccia. L'odore di chi ha vissuto qui per mesi senza mai uscire.</p>
+      <p>E due cadaveri.</p>
+      <p>Una ragazza, Rahlia, ho trovato il nome su alcuni scritti sparsi. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.</p>
+      <p>Ho capito cosa cercava il Rospo. Non la ragazza. Quello che la ragazza portava con sé.</p>
+      <p>Sono entrato nella torre.</p>
+    </div>
+
+    <div class="entry frantic">
+      <div class="entry-tag">Settima annotazione — scritta a tratti, l'inchiostro macchia il foglio in punti irregolari</div>
+      <p>devo essere rapido. la mano non risponde bene.</p>
+      <p>la torre è una follia. non c'è altro modo per dirlo. cambia, le stanze si spostano, le scale non portano dove dovrebbero. il Rospo ha aperto un varco con l'incantesimo delle ombre e la torre ne è piena. incubi, ombre dei Dimenticati che non ricordano chi erano ma ricordano come fare del male. li tiene lontani solo la luce dell'occhio, ho tenuto gli occhi aperti finché potevo.</p>
+      <p>ci sono anche spettri nelle scale. nel piano più basso. non si avvicinano se non ti fermi.</p>
+      <p>sono arrivato al piano nascosto. oltre il trono del Rospo.</p>
+      <p>non voglio scrivere quello che ho trovato lì. ma devo. qualcuno deve saperlo.</p>
+      <p>Eritha. la moglie del Rospo. era lì. quello che il Rospo ha fatto a lei, non so se chiamarlo ancora con un nome umano. l'ha trasformata. una macchina. produce bambini che non sono bambini. e l'altro, il marito, credo, trasformato in un guardiano. gli occhi vuoti. nessuna volontà rimasta dentro.</p>
+      <p>ho trovato l'artefatto. un'ampolla. spine di ottone attorno al vetro. dentro un cuore. pulsava. più mi avvicinavo all'uscita più batteva forte, come se sentisse qualcosa.</p>
+      <p>quando sono tornato nella grotta lui mi aspettava.</p>
+      <p>il ragazzo col petto aperto. si muoveva. non come prima, con intenzione. mi ha strappato l'ampolla. stava per infilarsela nel petto quando uno sperone di roccia è uscito dalla parete.</p>
+      <p>mi ha attraversato la pancia.</p>
+      <p>ha attraversato anche lui.</p>
+      <p>poi la musica. qualcuno fischiettava, labbra screpolate, una nota che non finiva mai. il ragazzo col petto aperto si è bloccato di colpo. completamente fermo. come pietrificato dal suono.</p>
+      <p>il Rospo è entrato nella stanza. ha strappato l'ampolla dalle mani del ragazzo. ha chiuso tutto, l'ingresso esterno, l'ingresso alla torre. pietra su pietra.</p>
+      <p>mi ha lasciato qui.</p>
+    </div>
+
+    <div class="entry frantic">
+      <div class="entry-tag">Ultima annotazione — scrittura quasi illeggibile</div>
+      <p>il ragazzo col petto aperto ansima accanto a me. ogni tanto mi guarda. non so cosa veda.</p>
+      <p>poi ha parlato.</p>
+      <p>si chiama Dogti. o si chiamava. non sono sicuro che lui sappia la differenza.</p>
+      <p>mi ha detto di Rahlia. che era morto in una guerra che non ricordava più e che era rimasto nell'oscurità finché non aveva sentito il suo canto. che il canto lo aveva riportato, non in vita, ma a qualcosa che le somigliava. che erano scappati insieme perché chiunque si avvicinasse a lui finiva come lui, e lei non voleva che succedesse a nessuno.</p>
+      <p>si erano nascosti qui. per un tempo che lui non sa misurare.</p>
+      <p>poi il Rospo li aveva trovati. aveva ucciso Rahlia. gli aveva strappato il cuore dal petto, letteralmente, con le mani, e lo aveva usato come tramite per quello che stava costruendo.</p>
+      <p>da allora Dogti è qui. senza cuore. senza Rahlia. senza una ragione per muoversi che non sia quella nota fischiettata che a volte arriva da sopra e lo fa smettere di pensare.</p>
+      <p>mi dispiace, gli ho detto. non so se capisce.</p>
+      <p>prima che smettesse di parlare, Dogti ha iniziato a fischiettare. piano, con le labbra screpolate. ho riconosciuto la melodia — è una canzone popolare Varlmenn, la conosco. ho trascritto le note qui sotto mentre potevo ancora muovere la mano.</p>
+      <div class="notation">♪ [note musicali trascritte — la melodia, in notazione arcana] ♪</div>
+      <p>sotto le note ha tracciato con un dito nel sangue sul pavimento queste parole: l'amata la cantava per richiamare l'amato.</p>
+      <p>la mano non si muove più bene.</p>
+      <p>l'artefatto è nella torre. il Rospo ce l'ha. non sono riuscito a portarlo via.</p>
+      <p>Mi dispiace, Iria amore mio.</p>
+      <div class="signature">— Il Biondo</div>
+    </div>
+
+    <div class="footer-note">Il diario termina qui. L'ultima pagina è macchiata di sangue.</div>
+  </div>
+</div>
+
+<style>
+.fs-btn{position:fixed;bottom:18px;right:18px;z-index:1200;width:42px;height:42px;border-radius:50%;
+  background:rgba(10,12,15,.93);border:1px solid var(--border,rgba(90,130,190,0.18));
+  color:var(--gold,#c9a84c);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:.18s ease;box-shadow:0 2px 10px rgba(0,0,0,.4);}
+.fs-btn:hover{border-color:var(--gold-d,#8a6e2f);background:var(--gold-g,rgba(201,168,76,0.10));}
+.fs-btn svg{width:18px;height:18px;display:block;}
+@media print{.fs-btn{display:none;}}
+</style>
+<button class="fs-btn" id="fs-btn" onclick="toggleFullscreen()" title="Schermo intero" aria-label="Attiva/disattiva schermo intero">
+  <svg id="fs-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
+  <svg id="fs-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M8 21v-3a2 2 0 0 0-2-2H3M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>
+</button>
+<script>
+function toggleFullscreen(){
+  var d=document, el=d.documentElement;
+  var isFs = d.fullscreenElement || d.webkitFullscreenElement || d.msFullscreenElement;
+  if(!isFs){
+    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el).catch(function(){});
+  } else {
+    (d.exitFullscreen || d.webkitExitFullscreen || d.msExitFullscreen).call(d);
+  }
+}
+function updateFsIcon(){
+  var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+  var exp=document.getElementById('fs-icon-expand'), col=document.getElementById('fs-icon-collapse');
+  if(!exp||!col) return;
+  exp.style.display = isFs ? 'none' : 'block';
+  col.style.display = isFs ? 'block' : 'none';
+}
+['fullscreenchange','webkitfullscreenchange','msfullscreenchange'].forEach(function(ev){
+  document.addEventListener(ev, updateFsIcon);
+});
+</script>
+</body>
+</html>
