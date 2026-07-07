@@ -250,11 +250,13 @@ L'artefatto che ha trafugato dalla Guardia delle Sette Memorie è ancora nelle s
 
 [Seconda annotazione, Fossolento]
 
-Ho iniziato dall'inizio: Fossolento, il villaggio dove è nato. Un posto che sa di sale e pesce essiccato, dove i bambini giocano vicino ai moli e i vecchi siedono fuori dalle porte a guardare il mare. Non il posto da cui ti aspetti esca un mago che ruba artefatti al Consiglio.
+Ho iniziato dall'inizio: chi era Fraxximt prima di diventare il Rospo.
 
-Ho parlato con chi lo ricordava. Era uno studioso, dicevano. Brillante, un poco strano, ma non cattivo. Aveva una moglie e un marito, tutti e tre inseparabili — Dorvek, un occhio verde e uno scuro, mento squadrato, e una giovane contadina del villaggio. Poi se n'è andato per studiare, come fanno quelli che hanno cervello e non vogliono sprecarsi a riparare reti da pesca. Nessuno lo ha visto tornare.
+Da giovanissimo attirò l'attenzione di un funzionario della Guardia delle Sette Memorie — non so ancora come, né perché — e ottenne una borsa di studio. Nei pochi giorni liberi che gli restavano ogni anno tornava a Fossolento, dove conobbe la moglie, una bella contadina, più larga che alta, e il marito, Dorvek, un occhio verde e uno scuro, mento squadrato. Inseparabili, i tre.
 
-Mi chiedo se lo abbiano cercato.
+Avviati gli studi, deve aver fatto colpo su qualche pezzo grosso, perché entrò a far parte di un progetto segreto, nome in codice Tikan. Quando ho provato a indagare in quella direzione, il Consiglio di Tresil ha fatto pressioni perché smettessi.
+
+Poi, una missione apparentemente normale. Fraxximt tornò a casa in licenza e scoprì che i figli erano morti. Da lì, a quanto pare, iniziò a impazzire.
 
 
 [Terza annotazione, Greyhollow, Brennvar Varlhavn]
@@ -278,11 +280,11 @@ Da Greyhollow in poi, lo chiamo il Rospo.
 
 [Quarta annotazione, Impero Solnari, luogo non specificato]
 
-Non avrei dovuto seguirlo qui. Le guerre civili hanno reso ogni confine una trappola e ogni volto uno straniero potenzialmente ostile. Ho attraversato tre posti di blocco con documenti che reggono all'esame solo se l'esaminatore non è troppo sveglio.
+Non avrei dovuto seguirlo qui. Le guerre civili hanno reso ogni confine una trappola e ogni volto uno straniero potenzialmente ostile. Ho attraversato tre posti di blocco con documenti che reggono all'esame solo se conditi da monete d'argento.
 
 Il Rospo si muove come se le guerre non lo riguardassero. Forse non lo riguardano davvero, un uomo con il viso bruciato e nessuna bandiera è invisibile in un posto dove tutti guardano il nemico dall'altra parte.
 
-L'ha preso in un tempio abbandonato a due giorni dalla costa. Un amuleto Solnari, antico, pre-Frattura, secondo le mie stime. Plasma la pietra. La modella come argilla, a quanto ne so. Non ho capito subito il perché. Lo sto ancora capendo.
+L'ha preso in un tempio abbandonato a due giorni dalla costa. Un amuleto Solnari, antico, pre-Frattura, secondo le mie stime. Plasma la pietra. La modella come argilla, a quanto ne so. Ancora non capisco come sono collegati tra loro gli oggetti che sta trafugando.
 
 L'ho perso di nuovo prima di riuscire a bloccarlo. Stavo seguendo quella che pensavo fosse una pista solida che lo riportava nel Varlhavn quando è arrivata la missiva del Consiglio.
 
@@ -320,7 +322,7 @@ Ho forzato l'ingresso. Dentro ho trovato una stanza. Piccola, bassa, abitata a l
 
 E due cadaveri.
 
-Una ragazza, Rahlia, ho trovato il nome su alcuni scritti sparsi. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.
+Una ragazza. E un ragazzo con il petto squarciato. Il cuore non c'era. La cavità toracica era pulita, quasi chirurgica. Non è stato un animale.
 
 Ho capito cosa cercava il Rospo. Non la ragazza. Quello che la ragazza portava con sé.
 
@@ -345,7 +347,7 @@ ho trovato l'artefatto. un'ampolla. spine di ottone attorno al vetro. dentro un 
 
 quando sono tornato nella grotta lui mi aspettava.
 
-il ragazzo col petto aperto. si muoveva. non come prima, con intenzione. mi ha strappato l'ampolla. stava per infilarsela nel petto quando uno sperone di roccia è uscito dalla parete.
+il ragazzo col petto aperto. si muoveva. con intenzione. mi ha strappato l'ampolla. stava per infilarsela nel petto quando uno sperone di roccia è uscito dalla parete.
 
 mi ha attraversato la pancia.
 
@@ -366,7 +368,7 @@ poi ha parlato.
 
 si chiama Dogti. o si chiamava. non sono sicuro che lui sappia la differenza.
 
-mi ha detto di Rahlia. che era morto in una guerra che non ricordava più e che era rimasto nell'oscurità finché non aveva sentito il suo canto. che il canto lo aveva riportato, non in vita, ma a qualcosa che le somigliava. che erano scappati insieme perché chiunque si avvicinasse a lui finiva come lui, e lei non voleva che succedesse a nessuno.
+mi ha detto di Rahlia. la sua amata, che era morto in una guerra che non ricordava più e che era rimasto nell'oscurità finché non aveva sentito il suo canto. che il canto lo aveva riportato, non in vita, ma a qualcosa che le somigliava. che erano scappati insieme perché chiunque si avvicinasse a lui finiva come lui, e lei non voleva che succedesse a nessuno.
 
 si erano nascosti qui. per un tempo che lui non sa misurare.
 
@@ -380,9 +382,7 @@ prima che smettesse di parlare, Dogti ha iniziato a fischiettare. piano, con le 
 
 [note musicali trascritte — la melodia di Thriller, in notazione arcana]
 
-sotto le note ha tracciato con un dito nel sangue sul pavimento queste parole: l'amata la cantava per richiamare l'amato.
-
-la mano non si muove più bene.
+l'amata la cantava per richiamare l'amato.
 
 l'artefatto è nella torre. il Rospo ce l'ha. non sono riuscito a portarlo via.
 
