@@ -769,10 +769,11 @@ function buildSviluppo() {
     }
 
     // Musica del capitolo
-    // Musica: leggo dal campo diretto del capitolo, oppure dall'array musica come fallback
+    // Musica: leggo dal campo diretto del capitolo (oggetto singolo o array di tracce), oppure dall'array musica come fallback
     let musicaHTML = '';
     if (cap.musica) {
-      musicaHTML = buildMusicPlayer(cap.id, [cap.musica]);
+      const tracce = Array.isArray(cap.musica) ? cap.musica : [cap.musica];
+      musicaHTML = buildMusicPlayer(cap.id, tracce);
     } else {
       const musicaCapitolo = (torreDati.musica || []).filter(m => m.capitolo === cap.id);
       if (musicaCapitolo.length) musicaHTML = buildMusicPlayer(cap.id, musicaCapitolo);
