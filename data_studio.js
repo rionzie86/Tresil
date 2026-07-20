@@ -495,9 +495,12 @@ Lato Kaelvaran, l'altare originariamente previsto in questa stanza va sostituito
           numero: 14,
           titolo: "La Galleria dei Progressi",
           testo: `• Pannelli illustrativi con foto di gruppo e diagrammi delle scoperte
+• Un pannello centrale, più curato degli altri, dedicato alla scoperta di un'energia capace di "assottigliare il confine tra le realtà"
 • Specchio a figura intera contro una parete
 • Tra i pannelli, occultato: il rapporto sull'accesso al Piano 4`,
           notaDM: `Tra i pannelli, se i PG cercano con attenzione, si può nascondere il Rapporto di accesso al Piano 4 (documento chiave) — magari incorniciato come "risultato più importante mai raggiunto", con la frase finale "Contatto stabilito. Natura dell'entità: sconosciuta." lasciata lì, ironicamente, come trofeo.
+
+IL PANNELLO CENTRALE è il primo punto in cui i PG possono capire che questo popolo ha scoperto un'energia — il cristallo — capace di connettere realtà diverse. Il testo del pannello è celebrativo, quasi trionfale, e mostra un diagramma semplificato: una sfera pulsante al centro, con linee che si diramano verso altre "sfere" più piccole disegnate attorno. Nessun dettaglio tecnico qui, solo l'annuncio della scoperta — i dettagli tecnici sono al Piano 2 (vedi capitolo "Lo Sviluppo dei Cristalli").
 
 Lo specchio a figura intera qui è uno dei punti di contatto con la controparte Kaelvaran — stessa stanza, stesso oggetto, richiesto esplicitamente anche in tutte le stanze 15, 18 e 19.`
         },
@@ -506,8 +509,11 @@ Lo specchio a figura intera qui è uno dei punti di contatto con la controparte 
           titolo: "Il Salone delle Scoperte",
           testo: `• Teche di vetro in gran parte in frantumi al centro
 • Striscione mezzo strappato: "...verso ciò che è oltre"
+• Un modellino in scala, sotto una delle teche superstiti, mostra una sfera pulsante collegata a più "finestre" verso altri mondi
 • Secondo specchio, leggermente inclinato, spostato di recente`,
-          notaDM: `Il secondo specchio "leggermente inclinato, spostato di recente" è un piccolo indizio ambientale — qualcuno (Varn Selick originale, o un Suhek'nal in movimento) potrebbe averlo usato di recente. Nessun effetto obbligato, solo tensione.
+          notaDM: `Il modellino in scala è il seguito naturale del pannello nella Galleria (stanza 14): qui il concetto diventa più concreto — non solo "un'energia che assottiglia il confine", ma una rappresentazione visiva di un'unica fonte capace di collegare più realtà contemporaneamente. Buon punto per un PG che vuole capire meglio prima di scendere ai piani inferiori.
+
+Il secondo specchio "leggermente inclinato, spostato di recente" è un piccolo indizio ambientale — qualcuno (Varn Selick originale, o un Suhek'nal in movimento) potrebbe averlo usato di recente. Nessun effetto obbligato, solo tensione.
 
 Lato Kaelvaran, questa e la stanza 14 diventano una galleria di trofei/reliquie fuori contesto per l'estetica del castello — con la stessa coppia di specchi presente, ma "sbagliati" in qualche modo.`
         },
@@ -567,26 +573,407 @@ Le creature qui sono più aggressive. E gli specchi sono ovunque.`,
 LA STANZA 15 è raggiungibile dagli specchi speciali di qualsiasi piano. Chi entra dalla stanza 15 si trova nel Piano 2 Suhek'nal — nella stanza delle gemme.`
         }
       ],
+      stanze: [
+        {
+          numero: 1,
+          titolo: "Sala di Controllo Corrotta",
+          testo: `• Piccola sala di pietra, una crepa nel muro rivela un pannello con quadranti di metallo dietro la roccia
+• Un candelabro di ferro battuto è fuso in modo innaturale con un tubo metallico che spunta dal muro
+• Sedia di legno rovesciata, tracce di passaggio recente sul pavimento polveroso`,
+          notaDM: `Prima stanza del piano, buon punto per stabilire il tono: le crepe rivelano il laboratorio sotto per la prima volta in modo esplicito.`
+        },
+        {
+          numero: 25,
+          titolo: "Corridoio delle Armature Vuote",
+          testo: `• Lungo corridoio di pietra, nicchie con armature vuote lungo le pareti
+• Dietro una delle armature, attraverso una crepa, si intravedono resti di armadietti a vetro
+• Una delle armature ha un piccolo quadrante di metallo incastonato nel petto, al posto dello stemma araldico`,
+          notaDM: `Corridoio lungo, utile per un momento di tensione in movimento.`
+        },
+        {
+          numero: 2,
+          titolo: "Corridoio delle Torce Fredde",
+          testo: `• Prosecuzione del corridoio, torce spente a intervalli regolari
+• Una delle torce non brucia mai: dietro il vetro dell'applique pulsa una piccola luce fredda
+• Percorso più consumato sul pavimento rispetto al resto del corridoio`,
+          notaDM: `La luce fredda dietro il vetro è l'eco del sensore lato Suhek'nal nello stesso punto.`
+        },
+        {
+          numero: 21,
+          titolo: "Sala degli Esperimenti Preliminari",
+          testo: `• Banchi di pietra con file di boccali di vetro soffiato, alcuni sigillati con cera
+• Pergamene con diagrammi che sembrano più schemi tecnici che alchemici
+• Macchie scure sul pavimento presso un banco`,
+          notaDM: `Eco dei banchi con contenitori sigillati lato Suhek'nal (stessa stanza) — qui i boccali sono di vetro soffiato invece che industriale.`
+        },
+        {
+          numero: 24,
+          titolo: "Il Serbatoio Vuoto",
+          testo: `• Vasca circolare di pietra incassata nel pavimento, vuota, bordi macchiati
+• Canalizzazioni di metallo scendono nella vasca da più punti del soffitto, del tutto incongrue con l'architettura
+• Iscrizione sbiadita, un avvertimento che nessuno sa più leggere per intero`,
+          notaDM: `Eco del Serbatoio di Contenimento A lato Suhek'nal (stessa stanza).`
+        },
+        {
+          numero: 22,
+          titolo: "Piccolo Deposito",
+          testo: `• Scaffali con boccette e vasetti etichettati in una scrittura alterata, quasi doppia
+• Odore acre ancora nell'aria dopo decenni`,
+          notaDM: `Eco del Deposito Chimico lato Suhek'nal.`
+        },
+        {
+          numero: 23,
+          titolo: "Corridoio Incrinato",
+          testo: `• Corridoio stretto, applique di ferro spente
+• Crepa nel pavimento, vuoto sottostante di pochi centimetri`,
+          notaDM: `Stanza di passaggio, poco altro da segnalare.`
+        },
+        {
+          numero: 4,
+          titolo: "Il Laboratorio Camuffato",
+          testo: `• Tavolo di pietra con strumenti di precisione disposti in un ordine innaturale
+• Pergamene con schizzi di strutture cellulari camuffate da diagrammi alchemici
+• Una lente d'ingrandimento ancora puntata su un vetrino`,
+          notaDM: `Eco del Laboratorio di Analisi lato Suhek'nal (stessa stanza) — stessi appunti, camuffati da alchimia.`
+        },
+        {
+          numero: 3,
+          titolo: "La Cella Vuota",
+          testo: `• Al centro, una cella con sbarre di ferro, vuota
+• Graffi profondi sulle sbarre dall'interno, troppo larghi per mani umane
+• Un registro di sorveglianza appeso alla parete, ultima voce interrotta a metà frase`,
+          notaDM: `PRIMO INCONTRO CONSIGLIATO CON LE CREATURE ANTICORPO: lato Kaelvaran hanno l'aspetto di umanoidi deformi, tutti fisicamente identici tra loro. I graffi sulle sbarre e il registro interrotto a metà sono un buon presagio prima dell'incontro. Nessun dialogo possibile con loro, attaccano chiunque non riconoscano.`
+        },
+        {
+          numero: 7,
+          titolo: "La Sala delle Colonne Tubate",
+          testo: `• Macchinari cilindrici scolpiti a imitazione di colonne, ma con tubi metallici che ne escono
+• I tubi un tempo collegavano a una stanza più a est, ora vuoti
+• Uno dei macchinari emette un debole ronzio impossibile da spiegare con mezzi medievali`,
+          notaDM: `Eco della Sala di Sintesi lato Suhek'nal — i macchinari qui non producono più nulla, ma il ronzio residuo è un indizio che qualcosa, da qualche parte, è ancora attivo.`
+        },
+        {
+          numero: 5,
+          titolo: "Il Pozzo di Scarico",
+          testo: `• Piccola stanza, un pozzo largo che scende nel buio
+• Resti organici indefiniti incrostati sui bordi del pozzo`,
+          notaDM: `Ambiente atmosferico, eco del Vano Scarico lato Suhek'nal.`
+        },
+        {
+          numero: 6,
+          titolo: "La Sala dello Sguardo",
+          testo: `• Finestra ad arco affacciata sulla cella vuota, il vetro è a specchio da un lato
+• Sedie di legno disposte in fila di fronte alla finestra
+• Appunti su pergamena abbandonati su un tavolino`,
+          notaDM: `Eco della Camera di Osservazione lato Suhek'nal — stesso vetro unidirezionale, stessa fila di sedie.`
+        },
+        {
+          numero: 8,
+          titolo: "Lo Studio del Sorvegliante",
+          testo: `• Scrittoio con faldoni di pergamena sul "cammino verso la forma"
+• Ritratto di gruppo, i volti scoloriti fino a essere irriconoscibili
+• Un calendario lunare fermo a una data impossibile`,
+          notaDM: `Eco dell'Ufficio del Supervisore lato Suhek'nal — stessi contenuti, tradotti in termini medievali.`
+        },
+        {
+          numero: 9,
+          titolo: "La Cella Rotonda Singola",
+          testo: `• Piccola stanza rotonda, un letto con cinghie di cuoio
+• Un piccolo quadrante di metallo incassato nella parete accanto al letto`,
+          notaDM: `Eco della Capsula di Quarantena Singola lato Suhek'nal.`
+        },
+        {
+          numero: 10,
+          titolo: "La Cella Rotonda Doppia",
+          testo: `• Due letti con cinghie, uno rovesciato
+• Pannello di controllo comune tra i due, distrutto e del tutto incongruo`,
+          notaDM: `Eco della Capsula di Quarantena Doppia lato Suhek'nal.`
+        },
+        {
+          numero: 11,
+          titolo: "Il Magazzino Alto",
+          testo: `• Scaffalature alte fino al soffitto, forniture erboristiche in gran parte esaurite
+• Una scala a pioli di legno appoggiata contro uno scaffale`,
+          notaDM: `Eco del Magazzino Verticale lato Suhek'nal.`
+        },
+        {
+          numero: 12,
+          titolo: "La Sala degli Armadi di Ferro",
+          testo: `• File di piccoli armadi di ferro allineati, spenti
+• Una singola fessura emette ancora una luce verde debole`,
+          notaDM: `Eco della Sala Server lato Suhek'nal — gli armadi di ferro sostituiscono i rack, la fessura verde sostituisce la spia accesa.`
+        },
+        {
+          numero: 13,
+          titolo: "Il Deposito Rotondo",
+          testo: `• Piccola stanza rotonda, scaffali con faldoni ben conservati
+• Un raccoglitore diverso dagli altri, tenuto in disparte`,
+          notaDM: `Eco del Deposito Terminale lato Suhek'nal.`
+        },
+        {
+          numero: 16,
+          titolo: "L'Anticamera dei Sigilli",
+          testo: `• Piccola stanza filtro, simboli di avvertimento alle pareti
+• Un tavolo con documenti mai firmati, penna d'oca ancora al suo posto`,
+          notaDM: `Eco dell'Anticamera della Sala delle Gemme lato Suhek'nal.`
+        },
+        {
+          numero: 15,
+          titolo: "La Sala delle Nicchie Vuote",
+          testo: `• Sala ampia, nicchie di pietra vuote lungo tutte le pareti, dal pavimento al soffitto
+• Al centro, un piedistallo di pietra vuoto, inclinato verso uno specchio incassato nel muro
+• Il freddo qui è innaturale, più intenso che nel resto del piano`,
+          notaDM: `Questa è la controparte fisica della Stanza delle Gemme (vedi capitolo dedicato, Piano 2 Suhek'nal) — ma qui, lato Kaelvaran, non c'è alcun meccanismo reale: solo l'eco vuota della stanza. Le nicchie vuote corrispondono agli scaffali con le gemme dall'altro lato. Nessun PG può completare qui un trasferimento — serve la stanza vera, lato Suhek'nal.`
+        },
+        {
+          numero: 14,
+          titolo: "Il Trono di Ferro",
+          testo: `• Stanza rotonda, al centro un trono di pietra con bracci meccanici di ferro sospesi sopra
+• Catene che scendono dal soffitto, collegate al trono
+• Un meccanismo incastonato nel muro verso la sala delle nicchie, immobile`,
+          notaDM: `Eco della Camera di Trasferimento lato Suhek'nal — il trono di pietra e i bracci meccanici sono la stessa apparecchiatura, digerita dall'estetica fantasy.`
+        },
+        {
+          numero: 17,
+          titolo: "L'Alloggio dei Giacigli",
+          testo: `• File di giacigli di paglia, alcuni ancora rifatti, oggetti personali sparsi
+• Un ritratto in miniatura caduto a terra`,
+          notaDM: `Eco dell'Alloggio del Personale A lato Suhek'nal.`
+        },
+        {
+          numero: 18,
+          titolo: "La Sala del Gioco Interrotto",
+          testo: `• Tavolo centrale con sedie, una partita a dadi lasciata a metà
+• Scaffale con libri rilegati in pelle, alcuni etichettati con codici numerici anziché titoli`,
+          notaDM: `Eco della Sala Comune lato Suhek'nal.`
+        },
+        {
+          numero: 19,
+          titolo: "Il Corridoio della Nicchia",
+          testo: `• Corridoio stretto, una nicchia nella parete con un oggetto lasciato apposta
+• Il resto del corridoio spoglio`,
+          notaDM: `Eco del Corridoio con Nicchia lato Suhek'nal — buon punto per nascondere un piccolo indizio o oggetto a scelta del DM.`
+        },
+        {
+          numero: 20,
+          titolo: "La Piccola Latrina",
+          testo: `• Piccola stanza essenziale, catino e specchio incrinato
+• Un panno ancora appeso, stranamente pulito`,
+          notaDM: `Eco del Bagno del Personale lato Suhek'nal.`
+        }
+      ],
       musica: null
     },
 
     {
-      id: "stanza_gemme",
-      titolo: "La Stanza delle Gemme (Stanza 15 — Piano 2 Suhek'nal)",
-      icona: "💎",
-      riassunto: "Destinazione di tutti gli specchi speciali. Le gemme in formazione. Il cuore del processo Veth'nal.",
+      id: "piano2_suheknal",
+      titolo: "Piano 2 — Versione Suhek'nal",
+      icona: "🔬",
+      riassunto: "I laboratori attivi. Tavoli di contenimento, strumenti avanzati, la Stanza delle Gemme. Qui i PG capiscono cosa sono i Suhek'nal e cosa è successo.",
       sezioni: [
         {
+          titolo: "L'Atmosfera",
+          tipo: "scena",
+          testo: `Il laboratorio qui è più intatto che al Piano 1 — meno abbandono, più la sensazione di un lavoro interrotto a metà piuttosto che dimenticato.
+
+Tavoli di contenimento, strumenti di misurazione avanzati per l'epoca, documenti sulla falla demoniaca e su La Fine. È qui che, se i PG cercano con attenzione, iniziano davvero a capire cosa sono i Suhek'nal e cosa è andato storto 45 anni fa.`,
+          notaDM: `LA STANZA 15 (Stanza delle Gemme) è raggiungibile anche dagli specchi speciali di qualsiasi altro piano, oltre che per via diretta da questo piano.
+
+CREATURE ANTICORPO: qui lato Suhek'nal hanno l'aspetto di automi/guardie del laboratorio, riattivati o mai spenti, programmati per attaccare qualsiasi intruso. Primo incontro consigliato: Stanza 3 (Sala di Contenimento Centrale).`
+        }
+      ],
+      stanze: [
+        {
+          numero: 1,
+          titolo: "Sala di Controllo del Varco",
+          testo: `• Pannelli a muro con file di quadranti spenti, aghi fermi da decenni
+• Un pannello lampeggia debolmente a intermittenza, unico segno di corrente ancora attiva
+• Sedia da operatore rovesciata, cuffie con microfono ancora appese al bracciolo`,
+          notaDM: `Ambiente atmosferico, primo assaggio del piano.`
+        },
+        {
+          numero: 25,
+          titolo: "Corridoio Strumentale Nord",
+          testo: `• Corridoio stretto e lungo, file di armadietti a vetro con strumenti di misurazione
+• Alcuni strumenti mancanti, vetri infranti in più punti
+• Etichette con codici numerici, nessun testo esplicativo`,
+          notaDM: `Corridoio lungo, buon punto per un incontro in movimento.`
+        },
+        {
+          numero: 2,
+          titolo: "Corridoio dei Rilevatori",
+          testo: `• Prosecuzione del corridoio, sensori a soffitto a intervalli regolari
+• Uno dei sensori lampeggia ancora, gli altri spenti
+• Il pavimento mostra un percorso più consumato del resto, come se qualcuno lo percorresse spesso`,
+          notaDM: `Il percorso consumato sul pavimento è un piccolo indizio di passaggio recente — Varn, un Suhek'nal, o altro a scelta del DM.`
+        },
+        {
+          numero: 21,
+          titolo: "Sala degli Esperimenti Preliminari",
+          testo: `• Banchi da laboratorio con file di contenitori sigillati, alcuni ancora integri
+• Un armadio archivio con faldoni sull'ultimo esperimento prima dell'incidente
+• Macchie scure sul pavimento presso un banco`,
+          notaDM: `ARCHIVIO CHIAVE: i faldoni nell'armadio raccontano, in ordine cronologico, il fallimento dell'ultimo esperimento — quello che ha aperto la falla verso il piano demoniaco. Le ultime pagine sono le più importanti: spiegano che il varco, una volta aperto, si è rivelato non richiudibile con i mezzi disponibili all'epoca, e che la decisione presa fu di sigillare l'intero laboratorio con un secondo cristallo dedicato alla quarantena, nella speranza di poter risolvere il problema "in un secondo momento" — momento mai arrivato.
+
+Questo è il primo punto in cui i PG possono collegare esplicitamente: cristallo del varco (fallito, non richiudibile) → decisione di quarantena → secondo cristallo dedicato. Vedi il capitolo "Lo Sviluppo dei Cristalli" per il quadro tecnico completo.`
+        },
+        {
+          numero: 24,
+          titolo: "Serbatoio di Contenimento A",
+          testo: `• Vasca circolare incassata nel pavimento, vuota, bordi macchiati
+• Tubature che scendono nella vasca da più punti del soffitto
+• Cartello sbiadito: "vietato l'accesso con campioni biologici non containerizzati" (eco della barriera del Piano 1)`,
+          notaDM: `Il cartello è la controparte esatta di quello del Piano 1 (stanze 4-5), qui applicato a un contenitore più grande.`
+        },
+        {
+          numero: 22,
+          titolo: "Piccolo Deposito Chimico",
+          testo: `• Scaffali con contenitori etichettati, alcuni rotti, residui secchi sul fondo
+• Odore acre ancora percepibile nonostante i decenni`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 23,
+          titolo: "Corridoio di Passaggio",
+          testo: `• Corridoio stretto, strumentazione a parete inattiva
+• Una crepa nel pavimento lascia intravedere un vuoto sotto`,
+          notaDM: `Stanza di passaggio.`
+        },
+        {
+          numero: 4,
+          titolo: "Laboratorio di Analisi",
+          testo: `• Tavoli di sezione in metallo, strumenti di precisione ancora disposti in ordine
+• Appunti su tessuto Suhek'nal, schizzi di strutture cellulari
+• Un microscopio ancora puntato su un vetrino, mai rimosso`,
+          notaDM: `Buon punto per approfondire la biologia dei Suhek'nal se i PG cercano informazioni tecniche.`
+        },
+        {
+          numero: 3,
+          titolo: "Sala di Contenimento Centrale",
+          testo: `• Al centro, una cella rinforzata con sbarre spesse, vuota
+• Graffi profondi sulle sbarre dall'interno
+• Registro di sorveglianza appeso alla parete, ultima voce interrotta a metà`,
+          notaDM: `PRIMO INCONTRO CONSIGLIATO CON LE CREATURE ANTICORPO: lato Suhek'nal hanno l'aspetto di automi/guardie del laboratorio, riattivati o mai spenti, programmati per attaccare qualsiasi intruso. Le sbarre graffiate suggeriscono che qualcosa di vivo è stato tenuto qui, forse proprio un anticorpo in una fase precedente.`
+        },
+        {
+          numero: 7,
+          titolo: "Sala di Sintesi",
+          testo: `• Macchinari cilindrici allineati, un tempo usati per la sintesi delle gemme grezze
+• Tubi che collegavano i macchinari alla Sala delle Gemme (Stanza 15), ora vuoti
+• Un macchinario emette ancora un debole ronzio`,
+          notaDM: `I tubi verso la Stanza 15 collegano concettualmente questa stanza al processo di formazione delle gemme — le gemme grezze vengono prodotte qui prima di maturare nella 15.`
+        },
+        {
+          numero: 5,
+          titolo: "Vano Scarico",
+          testo: `• Piccola stanza, un condotto largo che scende nel buio
+• Resti organici indefiniti incrostati sui bordi del condotto`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 6,
+          titolo: "Camera di Osservazione",
+          testo: `• Vetro unidirezionale, incrinato ma intatto, affaccia sulla Sala di Contenimento
+• Sedie disposte in fila di fronte al vetro
+• Appunti di osservazione abbandonati su un tavolino`,
+          notaDM: `Buon punto per un flashback o una scena immaginata se il DM vuole mostrare com'era il laboratorio prima dell'incidente.`
+        },
+        {
+          numero: 8,
+          titolo: "Ufficio del Supervisore",
+          testo: `• Scrivania con faldoni sul progetto Veth'nal avanzato
+• Un memo interno sul sistema di sicurezza e quarantena dell'edificio, con timbro di approvazione
+• Fotografia di gruppo incorniciata, i volti non più riconoscibili
+• Un calendario fermo a una data 45 anni fa`,
+          notaDM: `Documenti aggiuntivi opzionali sul progetto Veth'nal, utili se i PG vogliono approfondire prima di arrivare alla Stanza 15.
+
+IL MEMO SULLA QUARANTENA collega questa stanza al capitolo "Lo Sviluppo dei Cristalli": descrive brevemente come il sistema di sicurezza dell'intero edificio (comprese le guardie anticorpo automatizzate) sia stato riadattato, dopo l'incidente, per alimentare anche la quarantena — stesso principio energetico, applicazione diversa.`
+        },
+        {
+          numero: 9,
+          titolo: "Capsula di Quarantena Singola",
+          testo: `• Piccola stanza circolare, un lettino con cinghie di contenimento
+• Monitor spento accanto al lettino`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 10,
+          titolo: "Capsula di Quarantena Doppia",
+          testo: `• Due lettini con cinghie, uno ribaltato
+• Pannello di controllo comune tra i due, distrutto`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 11,
+          titolo: "Magazzino Verticale",
+          testo: `• Scaffalature alte fino al soffitto, forniture mediche in gran parte esaurite
+• Una scala a pioli appoggiata contro uno scaffale`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 12,
+          titolo: "Sala Server",
+          testo: `• Armadi rack allineati, spenti, cavi scoperti che pendono
+• Una singola spia verde ancora accesa su un armadio`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 13,
+          titolo: "Deposito Terminale",
+          testo: `• Piccola stanza circolare, scaffali con faldoni d'archivio ben conservati
+• Un raccoglitore in disparte, etichettato diversamente dagli altri`,
+          notaDM: `Ambiente atmosferico, buon punto per nascondere un documento aggiuntivo a scelta del DM.`
+        },
+        {
+          numero: 16,
+          titolo: "Anticamera della Sala delle Gemme",
+          testo: `• Piccola stanza filtro, cartelli di sicurezza alle pareti
+• Un tavolo con moduli di autorizzazione mai compilati, penna ancora al suo posto`,
+          notaDM: `Ultima stanza filtro prima della Stanza delle Gemme — buon punto per un momento di tensione crescente prima della rivelazione.`
+        },
+        {
+          numero: 15,
           titolo: "La Stanza delle Gemme",
-          tipo: "stanza",
-          testo: `Una stanza circolare, bassa. Scaffali lungo tutte le pareti, dal pavimento al soffitto. Sugli scaffali: gemme. Decine. Alcune sono opache e scure, morte. Altre pulsano debolmente di una luce interna — biancastra, ritmica, come un respiro lento.
-
-Al centro della stanza: un piano di lavoro in metallo con sopra strumenti di precisione e una gemma più grande delle altre, ancora opaca, in un supporto che la tiene inclinata verso uno specchio sul muro.`,
-          notaDM: `Ogni gemma in formazione contiene la copia di un ospite. Le gemme spente sono copie fallite o ospiti morti prima del completamento.
-
-I Suhek'nal che hanno già preso possesso di un PG vogliono portare il proprio ospite in questa stanza per completare il processo. Quando la gemma è completa, il simbionte può eseguire il trasferimento — l'ospite originale viene liberato (ma disorientato e debilitato) e il Suhek'nal continua nel corpo copia.
-
-Se i PG distruggono le gemme in formazione: i Suhek'nal che le stavano formando perdono la possibilità di trasferirsi e rimangono bloccati nell'ospite a tempo indeterminato. Questo può essere usato come leva negoziale.`
+          testo: `• Stanza circolare, bassa, scaffali dal pavimento al soffitto lungo tutte le pareti
+• Decine di gemme sugli scaffali: alcune opache e morte, altre pulsano debolmente di luce biancastra ritmica
+• Al centro, un piano di lavoro in metallo con strumenti di precisione e una gemma più grande, ancora opaca, in un supporto inclinato verso uno specchio a muro`,
+          notaDM: `STANZA CHIAVE. Ogni gemma in formazione contiene la copia di un ospite. Le gemme spente sono copie fallite o ospiti morti prima del completamento. I Suhek'nal che hanno già preso possesso di un PG vogliono portarlo qui per completare il processo — quando la gemma è completa, il simbionte esegue il trasferimento: l'ospite originale viene liberato (disorientato e debilitato) e il Suhek'nal continua nel corpo copia. Se i PG distruggono le gemme in formazione, i Suhek'nal corrispondenti restano bloccati nell'ospite a tempo indeterminato — buona leva negoziale. È qui, o poco prima se messi alle strette, che i Suhek'nal rivelano ai PG la storia intera e il loro piano (vedi capitolo Riassunto Generale).`
+        },
+        {
+          numero: 14,
+          titolo: "Camera di Trasferimento",
+          testo: `• Stanza circolare, al centro una poltrona reclinabile con elettrodi e bracci meccanici sospesi
+• Collegamenti diretti verso la Sala delle Gemme attraverso una parete
+• L'ultima registrazione sul pannello di controllo mostra un trasferimento interrotto a metà`,
+          notaDM: `Il meccanismo fisico del trasferimento — poltrona ed elettrodi collegati direttamente alla Stanza 15. Il DM può decidere se il trasferimento richiede che l'ospite sieda qui fisicamente o se basta la vicinanza della gemma completa nella stanza accanto.`
+        },
+        {
+          numero: 17,
+          titolo: "Alloggio del Personale A",
+          testo: `• File di brande, alcune ancora con lenzuola, effetti personali sparsi
+• Una fotografia caduta a terra vicino a una branda`,
+          notaDM: `Ambiente atmosferico.`
+        },
+        {
+          numero: 18,
+          titolo: "Sala Comune",
+          testo: `• Tavolo centrale con sedie, una partita a carte lasciata a metà
+• Scaffale con libri e riviste ingiallite`,
+          notaDM: `Ambiente atmosferico, piccolo dettaglio umano (la partita a carte interrotta).`
+        },
+        {
+          numero: 19,
+          titolo: "Corridoio con Nicchia",
+          testo: `• Corridoio stretto, una piccola nicchia nella parete con un oggetto lasciato lì apposta
+• Il resto del corridoio spoglio`,
+          notaDM: `Buon punto per nascondere un piccolo indizio o oggetto a scelta del DM.`
+        },
+        {
+          numero: 20,
+          titolo: "Bagno del Personale",
+          testo: `• Piccola stanza essenziale, lavandino e specchio incrinato
+• Un asciugamano ancora appeso`,
+          notaDM: `Ambiente atmosferico.`
         }
       ],
       musica: null
@@ -690,6 +1077,12 @@ PIANO 1 KAELVARAN
 
 PIANO 2 SUHEK'NAL
 • Stanza 15 — La Stanza delle Gemme: non un documento, ma il ritrovamento chiave che spiega visivamente il processo Veth'nal (gemme spente = copie fallite/ospiti morti, gemme pulsanti = trasferimenti in corso)
+• Stanza 21 (ex Esperimenti Preliminari, ora Archivio) — faldoni sul fallimento dell'ultimo esperimento: il varco non è richiudibile, da cui la decisione di quarantena
+• Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio + Manuale del Veth'nal (versione tecnica, vedi capitolo dedicato)
+
+PIANO 1 SUHEK'NAL (aggiornamento)
+• Stanza 9 — oltre all'Introduzione al Veth'nal già segnalata, qui si trova il testo integrale dell'opuscolo (vedi capitolo "Materiali da Consegnare")
+• Stanze 14-15 (Galleria/Salone) — pannello e modellino sulla scoperta del cristallo come energia che connette le realtà (vedi capitolo "Lo Sviluppo dei Cristalli")
 
 PIANO 3
 • Il Diario dell'Ultimo Ricercatore — racconta la ritirata progressiva davanti a La Fine, menziona il cristallo temporale al Piano 4
@@ -721,6 +1114,110 @@ PIANO 4
 • La Fine appare 1 volta al Piano 1, 2-3 volte ai Piani 2, 3 e 4 — la frequenza cresce piano dopo piano, mai un incontro scriptato fisso
 • Creature anticorpo: automi/guardie lato Suhek'nal, umanoidi deformi tutti identici tra loro lato Kaelvaran — nessun dialogo possibile, attaccano chiunque non riconoscano
 • Varn originale (Piano 1/3, disorientato, paranoico, potenzialmente ostile o alleabile) vs Varn copia (Piano 1 Kaelvaran, più calmo e controllato, si nasconde) — se messo alle strette può offrire informazioni in cambio di protezione`
+        }
+      ],
+      musica: null
+    },
+
+    {
+      id: "sviluppo_cristalli",
+      titolo: "Lo Sviluppo dei Cristalli — Guida Rapida",
+      icona: "💠",
+      riassunto: "La storia tecnologica del cristallo: dalla scoperta, alle guardie anticorpo, al sistema di sicurezza e quarantena, fino all'alimentazione del varco. Riferimenti puntuali già inseriti nelle stanze del Piano 1 e 2.",
+      sezioni: [
+        {
+          titolo: "Le Origini — La Scoperta",
+          tipo: "scena",
+          testo: `• Il cristallo non è stato creato dai Suhek'nal: è stato trovato, in una forma grezza, durante scavi geologici in un'epoca precedente al laboratorio stesso
+• La prima proprietà osservata: il cristallo grezzo "assottigliava" localmente il confine tra spazi vicini — due stanze separate da un muro potevano temporaneamente percepirsi a vicenda
+• Ci sono voluti anni di studio prima di capire che l'effetto poteva essere diretto e amplificato, invece che semplicemente osservato
+• Documento di riferimento: il pannello celebrativo nella Galleria dei Progressi, Piano 1 Suhek'nal (Stanza 14) — la prima menzione pubblica della scoperta, in tono trionfale e privo di dettagli tecnici`
+        },
+        {
+          titolo: "Prima Applicazione — Le Guardie Anticorpo",
+          tipo: "scena",
+          testo: `• Il primo uso pratico del cristallo, in forma di piccoli frammenti tagliati dal blocco originale, fu per alimentare automi di sorveglianza
+• Le "guardie anticorpo" nascono qui: costruite per riconoscere e attaccare qualsiasi presenza non registrata nel laboratorio, senza distinzione né possibilità di dialogo
+• Il nome "anticorpo" è un'invenzione interna del personale — un modo colloquiale di descrivere macchine che reagiscono a un'intrusione come un corpo reagisce a un'infezione
+• Sono le stesse creature che i PG incontrano nei piani (lato Suhek'nal: automi ancora funzionanti o riattivati; lato Kaelvaran: la stessa funzione digerita dall'estetica fantasy in umanoidi deformi identici tra loro)`
+        },
+        {
+          titolo: "Seconda Applicazione — Sicurezza e Quarantena dell'Edificio",
+          tipo: "scena",
+          testo: `• Il successo delle guardie anticorpo portò a un'applicazione più ambiziosa: usare il cristallo per alimentare l'intero sistema di sicurezza dell'edificio, non solo automi isolati
+• Con il tempo, questo sistema fu esteso per includere il controllo degli accessi tra i piani, le barriere che impediscono il passaggio di sostanze e apparecchiature non autorizzate (vedi Piano 1, stanze 4-5), e infine la quarantena vera e propria
+• Dopo l'incidente che ha aperto il varco, un secondo cristallo — più piccolo, dedicato — fu attivato per sigillare tutte le uscite del laboratorio, come misura d'emergenza pensata come temporanea
+• Documento di riferimento: il memo interno trovabile nell'Ufficio del Supervisore, Piano 2 Suhek'nal (Stanza 8), e i faldoni archiviati nella Sala degli Esperimenti Preliminari (Stanza 21) — quest'ultimo racconta esplicitamente che il varco si è rivelato non richiudibile con i mezzi disponibili, portando alla decisione di quarantena`
+        },
+        {
+          titolo: "Applicazione Finale — L'Alimentazione del Varco",
+          tipo: "oggetto",
+          testo: `• L'applicazione più ambiziosa e pericolosa: usare un cristallo di dimensioni maggiori non per percepire o sigillare, ma per aprire e mantenere stabile un varco permanente tra realtà distanti
+• Questo è il Cristallo Temporale del Piano 4 — il culmine di decenni di sviluppo che parte dalle guardie anticorpo e passa per il sistema di sicurezza dell'edificio
+• Il cristallo della quarantena e il cristallo del varco condividono la stessa tecnologia di base, applicata a scale e scopi diversi — un dettaglio che i PG possono dedurre mettendo insieme i documenti dei tre piani
+• Per la meccanica di gioco completa (risoluzione standard vs risoluzione ottimale, rischio di sovraccarico) vedi il capitolo Piano 4 e il Riassunto Generale`
+        }
+      ],
+      musica: null
+    },
+
+    {
+      id: "materiali_veth_nal",
+      titolo: "Materiali da Consegnare — Opuscoli sul Veth'nal",
+      icona: "📄",
+      riassunto: "Testi completi, pronti per essere letti in sessione o stampati e consegnati ai giocatori. Due documenti con tono diverso: l'opuscolo di reclutamento e il manuale tecnico interno.",
+      sezioni: [
+        {
+          titolo: "Opuscolo 1 — Introduzione al Veth'nal (Piano 1 Suhek'nal, Stanza 9)",
+          tipo: "documento",
+          testo: `IL CAMMINO VERSO LA FORMA
+Un'introduzione per chi è pronto ad ascoltare
+
+Benvenuto/a. Se stai leggendo queste pagine, è perché qualcosa in te ha già iniziato a percepire ciò che moltissimi vivono un'intera esistenza senza mai scoprire: la sensazione di essere incompleti. Non per colpa tua. È così per tutti, all'inizio.
+
+CHE COS'È IL VETH'NAL
+Il Veth'nal non è una religione, non è una cura, non è una minaccia. È un cammino — l'unico che porta un essere dalla propria forma iniziale, incompiuta, alla propria forma piena.
+
+Il processo si compie in tre fasi, ciascuna più intima della precedente:
+
+Veth'suu — il primo contatto. Un semplice atto di osservazione. Non richiede nulla da te, solo la tua presenza.
+
+Veth'kor — la condivisione. È qui che iniziamo a conoscerci davvero: i tuoi ricordi, le tue paure, ciò che ami. Non è invasione. È l'inizio di qualcosa che non è né tuo né nostro, ma di entrambi.
+
+Veth'nal — la forma completa. Il momento in cui tutto ciò che sei viene preservato, portato oltre, reso permanente in una forma che nessuna malattia, nessun incidente, nessun tempo potrà mai più corrompere.
+
+UNA DOMANDA CHE FORSE TI STAI PONENDO
+"Perché io?" Non c'è una risposta semplice. Alcuni di noi cercano per decenni prima di trovare qualcuno con cui risuonare davvero. Se sei qui, è perché qualcosa in te ha già risposto, anche se non ne sei consapevole.
+
+Non sei solo/a in questo. Non lo sei mai stato/a.`,
+          notaDM: `Questo è il testo completo dell'opuscolo già menzionato nella Stanza 9 (Piano 1 Suhek'nal e, in forma distorta, Piano 1 Kaelvaran). Il tono è deliberatamente caldo, quasi terapeutico — un linguaggio da opuscolo di benessere personale applicato a qualcosa di profondamente inquietante una volta che il lettore ne comprende il vero significato.
+
+USO CONSIGLIATO: leggilo ad alta voce ai giocatori quando trovano il documento, senza commenti aggiuntivi. Lascia che siano loro a realizzare gradualmente cosa significhi davvero "risuonare" con un ospite, o cosa voglia dire che "qualcosa in te ha già risposto" — è un'allusione diretta al fatto che il processo di infestazione può già essere in corso senza che il PG interessato lo sappia.`
+        },
+        {
+          titolo: "Opuscolo 2 — Manuale del Veth'nal (versione tecnica interna)",
+          tipo: "documento",
+          testo: `MANUALE OPERATIVO — PROTOCOLLO VETH'NAL
+Solo per personale autorizzato
+
+SEZIONE 1 — SELEZIONE DELL'OSPITE
+L'ospite ideale presenta compatibilità fisiologica e psicologica verificabile solo tramite osservazione prolungata (fase Veth'suu). Si sconsiglia di procedere alla condivisione (Veth'kor) prima di un periodo minimo di osservazione, salvo circostanze straordinarie.
+
+NOTA OPERATIVA AGGIORNATA: le attuali circostanze straordinarie (vedi Rapporto Incidente, Piano 1) rendono impossibile rispettare i tempi minimi raccomandati. Il protocollo accelerato, per quanto sconsigliato dalle linee guida originali, resta l'unica opzione praticabile.
+
+SEZIONE 2 — MANTENIMENTO DELL'OSPITE
+È essenziale che l'ospite sopravviva fino al completamento della copia. Il processo di condivisione (Veth'kor) non danneggia l'ospite in condizioni normali — qualsiasi deterioramento delle condizioni fisiche dell'ospite deve essere trattato come priorità operativa immediata, poiché un ospite deceduto prima del completamento vanifica l'intero processo.
+
+SEZIONE 3 — IL TRASFERIMENTO
+Il trasferimento richiede la presenza fisica presso l'apparecchiatura dedicata (vedi Piano 2, Stanza 14 — Camera di Trasferimento) e una gemma completamente formata (Stanza 15 — Sala delle Gemme). Il processo è irreversibile una volta iniziato.
+
+NOTA SULLA PUREZZA DEL PROCESSO
+Il presente protocollo accelerato è considerato, secondo le linee guida tradizionali, una forma impura del Veth'nal — un'unione ottenuta per necessità anziché per risonanza reciproca. Il comitato riconosce questa deviazione ma la ritiene giustificata dalle circostanze straordinarie in corso.`,
+          notaDM: `Versione tecnica e clinica dello stesso processo descritto nell'Opuscolo 1 — pensata per personale Suhek'nal, non per potenziali ospiti. Il contrasto di tono tra i due documenti (caldo e invitante nell'Opuscolo 1, freddo e procedurale qui) è il punto: se i PG trovano entrambi, possono confrontarli e capire che la versione "gentile" del Veth'nal è propaganda, non la realtà del processo.
+
+LA NOTA SULLA PUREZZA DEL PROCESSO è importante narrativamente: conferma esplicitamente ai PG che quello che stanno vivendo (possessione forzata) è considerato "impuro" persino dai Suhek'nal stessi — non è la norma della loro cultura, è una deviazione dettata dalla disperazione causata da La Fine. Buona leva se i PG vogliono negoziare o fare leva sulla morale interna dei Suhek'nal.
+
+Questo documento può essere piazzato in una stanza a scelta del DM ai Piani 1 o 2 (suggerito: Ufficio del Supervisore, Piano 2 Stanza 8, insieme al memo sulla quarantena).`
         }
       ],
       musica: null
