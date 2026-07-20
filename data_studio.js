@@ -166,17 +166,11 @@ SPECCHI: alcuni specchi in questo piano portano alla stessa stanza nel Piano 1 S
         {
           numero: 1,
           titolo: "La Sala d'Arrivo",
-          testo: `Oltre la frana, lo spazio si apre in una sala quadrata di pietra grigia, circa cinque metri per lato. Ciò che dovrebbe essere una finestra su una parete (l'arco è ancora visibile, con tanto di cornice scolpita a motivi floreali) è invece un muro di terra e roccia compattata, come se il giardino che avrebbe dovuto affacciarsi qui si fosse riversato dentro invece che restare fuori. Radici sottili, morte da tempo, pendono immobili dalla terra pressata. Ma sopra la terra, incastonata nell'arco come se ci fosse sempre stata, una lastra di vetro perfettamente liscia e trasparente — troppo regolare, troppo pulita per essere stata soffiata da un vetraio di questo castello. Non guarda su nulla. Riflette solo la terra che ha di fronte.
-
-Sopra la porta a sud, scolpita nella pietra dell'architrave, una piccola gargolla accovacciata regge tra le zampe anteriori qualcosa che dovrebbe essere uno scrigno, o forse un occhio chiuso — la forma non si decide mai del tutto. Le sue orbite vuote sono rivolte verso il centro della stanza, immobili.
-
-Una singola torcia spenta in un'applique di ferro battuto. Il pavimento in mattoni regolari è interrotto da una crepa che corre da un angolo all'altro, come se l'intera stanza fosse stata posata su qualcosa che non l'ha mai sostenuta davvero.
-
-In un angolo, quello che resta della prima guardia del corpo di Varn. Non è un cadavere nel senso consueto, è un corpo ribaltato. All'esterno, ciò che dovrebbe stare dentro, organi disposti come se qualcuno li avesse posati con cura sopra la pelle. Sotto, le ossa. Più in profondità ancora, i muscoli. E al centro di tutto, raggomitolata come un seme, in un piccolo groviglio interno che non dovrebbe poter esistere in quello spazio, la pelle, con addosso ancora i vestiti.
-
-Non c'è sangue. Non c'è odore. È come se il corpo fosse stato capovolto da qualcosa che non conosce la differenza tra dentro e fuori.
-
-Un varco a sud conduce verso una sala più lunga.`,
+          testo: `• Sala di pietra grigia; arco di finestra murato di terra e radici morte
+• Sopra la terra, una lastra di vetro perfetta e trasparente — non dovrebbe esistere qui
+• Sopra la porta, gargolla che regge uno scrigno/occhio, orbite vuote rivolte alla stanza
+• Crepa diagonale nel pavimento, torcia spenta
+• Corpo rovesciato della guardia di Varn: pelle intatta, organi/ossa disposte da dentro a fuori, niente sangue né odore`,
           notaDM: `Primo segno de La Fine, va giocato con calma, non un jump scare ma una scoperta che si carica lentamente man mano che i giocatori realizzano cosa stanno guardando. Nessuna prova imposta a tavolino, lascia che sia la descrizione a fare il lavoro.
 
 Su richiesta di un PG che esamina da vicino: la pelle al centro del groviglio è ancora intatta, senza tagli né lacerazioni, non è stata aperta. È come se l'intero corpo fosse stato srotolato e poi riavvolto al contrario, strato per strato, senza mai romperne la continuità.
@@ -188,13 +182,9 @@ LA LASTRA DI VETRO e LA GARGOLLA sono i primi due elementi "storti" del piano �
         {
           numero: 2,
           titolo: "Il Corridoio dei Frammenti",
-          testo: `Una sala lunga e stretta, quasi un corridoio dilatato più che una stanza vera, circa dieci metri di lunghezza per tre di larghezza. Il pavimento è cosparso di detriti, frammenti di pietra caduti dal soffitto, schegge di legno che un tempo dovevano essere una trave o un mobile, piccoli oggetti indistinguibili sepolti nella polvere. Camminarci dentro produce un rumore secco e continuo sotto gli stivali.
-
-Le pareti mostrano tre finestre crollate in fila, ognuna con la stessa cornice scolpita vista nella sala d'arrivo. La terra che le riempie non è uniforme, in un punto sembra più fresca, come se qualcosa si fosse mosso lì di recente, smuovendo lo strato superficiale.
-
-Lungo tutto il soffitto corre una fila di archetti decorativi scolpiti nella pietra, a intervalli regolari — un motivo architettonico che nessun mastro scalpellino avrebbe mai potuto realizzare in legno o pietra con quella precisione: le curve sono troppo sinuose, troppo continue, prive di ogni imperfezione dell'utensile a mano. Ogni due o tre archetti, una piccola gargolla identica a quella della sala d'arrivo osserva il corridoio con le sue orbite vuote.
-
-A nord, una porta chiusa riporta verso la sala d'arrivo. A ovest, un'altra porta si apre su una stanza con al centro una struttura circolare. A sud, oltre un breve tratto di corridoio, una porta conduce verso una sala allungata. A sud est, una breve scalinata scende verso una sala più ampia in lontananza.`,
+          testo: `• Corridoio lungo e stretto, detriti rumorosi sotto i piedi
+• Tre finestre murate di terra in fila, una con terra smossa di recente
+• Fila di archetti scolpiti troppo sinuosi per mano umana, con piccole gargolle ripetute a intervalli`,
           notaDM: `Il punto di terra smossa nella terza finestra crollata è un piccolo indizio ambientale, qualcosa o qualcuno è passato di lì o si è nascosto lì di recente. Puoi usarlo per Varn Selick copia, che potrebbe aver attraversato questa stanza cercando un punto più sicuro, oppure lasciarlo come falso indizio, giusto per costruire tensione.
 
 I detriti sparsi rendono la stanza rumorosa da attraversare in silenzio, eventuale prova di furtività con svantaggio se serve un momento di tensione con creature nei paraggi. Nessuna trappola strutturale qui, ma è un buon punto per un primo incontro con una creatura anticorpo del duplicato, vista la lunghezza della sala e le molteplici vie di fuga da gestire narrativamente.
@@ -204,11 +194,8 @@ Gli archetti troppo sinuosi ripetono, in scala architettonica, la fila di teleca
         {
           numero: 3,
           titolo: "La Fontana",
-          testo: `Una sala quadrata di circa sei metri per lato. Al centro, una fontana in pietra, asciutta da tempo, con una vasca poco profonda e una scultura al centro che dovrebbe raffigurare una figura femminile versante acqua da un'anfora. La figura è leggermente sbagliata, come tutto qui, le proporzioni allungate su un lato, il volto girato in una direzione che il resto del corpo non segue. Macchie scure di umidità corrono lungo il bordo della vasca, ma non c'è traccia di acqua vera, solo un residuo secco e biancastro sul fondo.
-
-Ai piedi della fontana, incassata nella pietra della base, una targa metallica ossidata reca un'iscrizione dedicatoria — "al fondatore, per la sua visione, che ci ha condotti oltre il confine conosciuto" — seguita da un nome. Il nome però non è scritto in nessun alfabeto che i PG possano riconoscere come appartenente a Kaelvaran, né sembra un nome che una qualunque cultura del mondo userebbe: sillabe che si ripetono senza vocali riconoscibili. La data sotto il nome, se qualcuno prova a interpretarla secondo il calendario locale, non corrisponde a nessun anno sensato — troppo lontana, o semplicemente sbagliata in un modo che non si riesce a definire.
-
-A est, una porta di legno rinforzato riporta verso il corridoio pieno di detriti. A sud, un'apertura ad arco scende verso una sala più grande.`,
+          testo: `• Fontana asciutta, statua femminile con proporzioni sbagliate
+• Targa alla base: dedica "al fondatore", nome in un alfabeto irriconoscibile, data impossibile`,
           notaDM: `La scultura distorta è un buon punto per un piccolo momento di inquietudine gratuita, niente di meccanico, solo un dettaglio che i giocatori più attenti noteranno. Se qualcuno esamina il residuo bianco sul fondo della vasca, è semplicemente calcare, nessun segreto nascosto qui.
 
 La targa è la controparte distorta di quella, identica nel testo di dedica, che si trova nella stessa stanza lato Suhek'nal (dedicata al fondatore reale del centro ricerche). Qui è stata "digerita" e ricostruita male dal duplicato: nome illeggibile, data impossibile. Nessun enigma da risolvere — è un dettaglio che dovrebbe restare senza spiegazione fino a molto più avanti nella campagna, se mai verrà spiegato del tutto.`
@@ -216,11 +203,9 @@ La targa è la controparte distorta di quella, identica nel testo di dedica, che
         {
           numero: 4,
           titolo: "La Sala dello Specchio",
-          testo: `Una stanza rettangolare, forse cinque metri per sette, con il soffitto leggermente più alto delle altre. Contro una parete, tra due nicchie vuote che un tempo dovevano contenere statue, si erge uno specchio a figura intera, incorniciato in metallo scurito, incrinato in un angolo ma ancora perfettamente funzionante. Il resto della stanza è spoglio, solo polvere e qualche mattone smosso sul pavimento.
-
-Ai due lati dell'ingresso, incassate nella pietra, due colonnine di ferro battuto corrono dal pavimento al soffitto, ciascuna intagliata con una fila di piccoli scudi araldici — tranne che gli "scudi" sono perfettamente identici l'uno all'altro, disposti con una regolarità meccanica che nessuno stemma nobiliare avrebbe mai richiesto. Da una delle colonnine sporge, semi-nascosto, un filo metallico teso all'altezza della caviglia, collegato a un piccolo meccanismo a scatto contro il muro — una trappola, ma costruita male: il meccanismo è visibile a un'occhiata attenta, il filo lucido e nuovo rispetto alla polvere di secoli intorno.
-
-A nord, oltre un breve passaggio, si risale verso la fontana. A ovest, un ampio varco senza porta si apre sulla sala più grande del piano. A sud, un corridoio stretto scende verso un'altra sala.`,
+          testo: `• Stanza spoglia, due nicchie vuote che dovevano contenere statue
+• Specchio a figura intera incrinato: riflesso con ritardo impercettibile, piccolo movimento sulla spalla
+• Colonnine con trappola visibile e mal fatta (filo teso, meccanismo a scatto)`,
           notaDM: `Primo specchio che i giocatori incontreranno, salvo diversa scelta del DM. Chi si guarda dentro vede il proprio riflesso con un ritardo di una frazione di secondo, quasi impercettibile, e un piccolo movimento sulla spalla nel riflesso, che nella realtà non c'è. È qui che il primo Suhek'nal comincia a osservare il proprio futuro ospite. Nessun effetto meccanico immediato, solo il seme piantato.
 
 Le colonnine con la trappola visibile sono la prima delle due "barriere di sicurezza mal congegnate" del piano (l'altra è nella Sala Incrinata, stanza 5) — l'eco distorta dei varchi di controllo che, lato Suhek'nal, occupano le stesse due stanze e bloccavano il passaggio di determinate sostanze e apparecchiature verso i livelli inferiori. Qui il duplicato ha ricostruito solo la forma, non la funzione: una trappola artigianale, relativamente facile da individuare (un tiro di Percezione con CD bassa la nota), che scatta un dardo o un piccolo laccio senza reale pericolo mortale — abbastanza per far capire ai giocatori che qualcuno, o qualcosa, "voleva" fermare chi passa di qui, anche se non ricorda più perché.`
@@ -228,11 +213,8 @@ Le colonnine con la trappola visibile sono la prima delle due "barriere di sicur
         {
           numero: 5,
           titolo: "La Sala Incrinata",
-          testo: `Una stanza quadrata, cinque metri per lato circa, con una crepa profonda che attraversa tutto il pavimento da un angolo all'altro, abbastanza larga da lasciar intravedere un vuoto sottostante di pochi centimetri. Qualche detrito sparso, nulla di significativo.
-
-Presso il varco a ovest, incassato nel telaio di pietra, un secondo meccanismo simile a quello della sala precedente — ma qui è chiaramente danneggiato, uno dei due montanti divelto e piegato verso l'esterno, come se qualcosa di grande e determinato fosse passato con forza senza attendere che scattasse.
-
-A nord, un varco riporta verso la sala dello specchio. A ovest, un corridoio conduce verso una sala di snodo con più uscite. A sud, una breve scalinata scende verso una sala più piccola.`,
+          testo: `• Crepa profonda nel pavimento, vuoto sottostante di pochi centimetri
+• Meccanismo di trappola danneggiato/forzato vicino al varco`,
           notaDM: `La crepa nel pavimento può essere semplicemente scenografica, oppure il DM può decidere che nasconde qualcosa sotto, un piccolo vano, un oggetto caduto lì per caso. Nessun pericolo strutturale a meno che non si voglia introdurne uno.
 
 Il meccanismo forzato è la seconda barriera trasposta, danneggiata esattamente come la sua controparte lato Suhek'nal (vedi stanza 5 lato Suhek'nal) — stesso danno, stessa direzione di sfondamento. Buon dettaglio se il DM vuole più avanti far notare ai giocatori che le due versioni del piano non solo si somigliano, ma "ricordano" gli stessi eventi.`
@@ -240,11 +222,9 @@ Il meccanismo forzato è la seconda barriera trasposta, danneggiata esattamente 
         {
           numero: 6,
           titolo: "La Sala Grande",
-          testo: `Il vano più ampio del piano, una sala che doveva essere un salone principale, forse dieci metri per otto. Il soffitto qui è parzialmente crollato in un punto, e macerie di pietra, travi spezzate e calcinacci coprono buona parte del pavimento, costringendo a un percorso tortuoso tra i detriti. Alcune colonne, un tempo probabilmente decorative, sono spezzate a metà altezza.
-
-Sotto le macerie si intuiscono i resti di lunghe file di tavoli — non le tavolate imbandite che ci si aspetterebbe in un salone da banchetto, ma file troppo regolari, troppo numerose, distanziate con una precisione da refettorio più che da sala di rappresentanza. Su uno dei pochi tavoli ancora in piedi, semi-sepolti dalla polvere, alcuni fogli ingialliti mostrano schizzi che sembrano anatomie di creature vermiformi, accompagnati da annotazioni in una scrittura che nessuno dei presenti riconosce.
-
-A nord, un varco stretto sale verso due piccole stanze. A est, un passaggio riporta verso la sala dello specchio. A ovest, un lungo corridoio, quasi un ponte sospeso tra due sezioni della struttura, conduce verso una sala più distante.`,
+          testo: `• Salone crollato, macerie e colonne spezzate, percorso tortuoso
+• Impronte di lunghe file di tavoli sotto le macerie, troppo regolari per un salone
+• Fogli con schizzi anatomici di creature vermiformi, semisepolti su un tavolo`,
           notaDM: `Le macerie rendono il movimento più lento e rumoroso, buon punto per un incontro con una creatura anticorpo o per un piccolo enigma ambientale, ad esempio un percorso tra i detriti che nasconde una lieve instabilità del pavimento in un punto preciso.
 
 Questa sala è l'eco distorta della Mensa lato Suhek'nal (stessa stanza, stessa funzione originaria di sala da pranzo collettiva). I fogli con gli schizzi anatomici sono la controparte esatta del documento chiave trovabile lì — qui però sono illeggibili o comprensibili solo in parte, un assaggio incompleto della stessa informazione. Se i PG trovano prima questa versione, il documento completo lato Suhek'nal avrà più peso quando (e se) lo troveranno.`
@@ -252,11 +232,8 @@ Questa sala è l'eco distorta della Mensa lato Suhek'nal (stessa stanza, stessa 
         {
           numero: 7,
           titolo: "Il Deposito",
-          testo: `Una piccola stanza, forse tre metri per quattro, con scaffalature di legno marcio lungo una parete, ancora cariche di casse e contenitori in gran parte ridotti in polvere. Tra i resti, qualche oggetto ancora riconoscibile, stoviglie di metallo ossidato, un baule di legno chiuso con un lucchetto arrugginito ma non forzato.
-
-Contro la parete opposta alle scaffalature, incassata nella pietra senza alcuna ragione apparente, una fila di catini di pietra allineati come lavabi, ciascuno con un foro di scolo al centro collegato a tubature che spariscono nel muro e non portano visibilmente da nessuna parte.
-
-A sud, il varco riporta verso la sala grande. A est, un breve passaggio conduce verso una piccola sala ottagonale.`,
+          testo: `• Scaffalature marce, casse ridotte in polvere, baule chiuso non forzato
+• Fila di catini di pietra con tubature che non portano da nessuna parte`,
           notaDM: `Il baule chiuso può contenere un piccolo oggetto utile o semplicemente qualche moneta antica, a discrezione del DM, giusto per premiare chi si prende il tempo di cercare tra le macerie.
 
 I catini di pietra con le tubature senza sbocco sono l'eco distorta del Bagno A lato Suhek'nal (stessa stanza) — impianti idraulici trasposti in arredo apparentemente decorativo e privo di funzione.`
@@ -264,11 +241,9 @@ I catini di pietra con le tubature senza sbocco sono l'eco distorta del Bagno A 
         {
           numero: 8,
           titolo: "La Sala dell'Astrolabio",
-          testo: `Una stanza ottagonale, piccola ma con il soffitto a cupola, forse quattro metri di diametro. Al centro, incassato nel pavimento, un grande disco di metallo inciso con simboli stellari e anelli concentrici, alcuni dei quali ancora mobili se spinti con forza. È un astrolabio, o qualcosa che vorrebbe esserlo, congelato in una posizione che non corrisponde a nessuna configurazione astronomica sensata.
-
-In alto, una piccola apertura circolare nella cupola, ostruita da un disco di pietra semitrasparente che lascia filtrare un pallido chiarore grigiastro — l'unica luce non artificiale dell'intero piano. Contro una parete, un unico foro di scolo identico a quelli visti nella stanza precedente, isolato e privo di senso in questo contesto.
-
-A ovest, il varco riporta verso il deposito.`,
+          testo: `• Stanza ottagonale a cupola, astrolabio inciso nel pavimento, anelli ancora mobili
+• Apertura nella cupola: unica luce naturale di tutto il piano
+• Foro di scolo isolato, privo di senso in questo contesto`,
           notaDM: `L'astrolabio può essere un piccolo enigma opzionale, i giocatori possono provare a ruotare gli anelli per allinearli, senza un vero effetto meccanico a meno che il DM non voglia collegarlo a qualcosa di più ampio in seguito. Per ora è semplicemente un dettaglio inquietante e bello da esplorare, un frammento di scienza vera dei Suhek'nal filtrato attraverso l'estetica fantasy del duplicato.
 
 Questa stanza è l'eco del Bagno B lato Suhek'nal (stessa stanza) — l'apertura nella cupola corrisponde alla finestrella opaca di quella versione, l'unica fonte di luce naturale su tutto il piano in entrambe le realtà. Vale la pena far notare ai giocatori che è l'unica luce "vera" che incontreranno qui.`
@@ -276,13 +251,9 @@ Questa stanza è l'eco del Bagno B lato Suhek'nal (stessa stanza) — l'apertura
         {
           numero: 9,
           titolo: "Lo Snodo",
-          testo: `Una sala irregolare, più larga che profonda, forse sette metri per cinque, con il pavimento in parte ceduto verso un angolo dove si è formata una lieve pendenza. Qui confluiscono più passaggi, e l'aria è leggermente più fredda che nelle stanze precedenti.
-
-Sul lato più basso della sala, dove il pavimento cede in pendenza, lo spazio si restringe in una piccola nicchia arredata in modo incongruo rispetto al resto: tre sedie di legno allineate contro la parete, un tavolino basso con sopra alcuni rotoli di pergamena ingialliti disposti a ventaglio, come lasciati apposta per essere sfogliati da chi attende. Uno dei rotoli è aperto: il testo, in una calligrafia insolitamente regolare, parla di un "cammino verso la forma" e di un'unione che "compie" chi la riceve, accostato a diagrammi che sembrano più schemi tecnici che illustrazioni sacre.
-
-Appena messo piede nella sala, da qualche corridoio indefinito, arriva un urlo. Lontano, breve, impossibile da localizzare. Non si ripete subito.
-
-A est, il lungo corridoio riporta verso la sala grande. A nord ovest, un ampio varco conduce verso una sala più vasta. A sud, un corridoio scende verso un'altra stanza.`,
+          testo: `• Sala di passaggio, pavimento in leggera pendenza verso un angolo
+• Nicchia con tre sedie, tavolino e rotoli di pergamena su "il cammino verso la forma"
+• Appena entrati: un urlo lontano, breve, impossibile da localizzare`,
           notaDM: `Buon punto di snodo narrativo. L'URLO IN LONTANANZA è un innesco atmosferico deliberato — non richiede reazione meccanica, va semplicemente lasciato cadere nel silenzio e mai spiegato subito. Ricompare identico lato Suhek'nal quando i PG raggiungono questa stessa stanza da quella versione: è un'eco che il duplicato riproduce, forse legata a un evento reale accaduto qui 45 anni fa.
 
 La nicchia con i rotoli è l'eco distorta della sala d'attesa lato Suhek'nal (stessa stanza, fondo basso), dove lo stesso testo appare come un opuscolo devozionale dei Suhek'nal — l'Introduzione al Veth'nal. Qui è stato "digerito" in forma di pergamena, con lo stesso contenuto reso più vago e meno tecnico. Buon primo assaggio della filosofia dei Suhek'nal senza svelarla del tutto.`
@@ -290,11 +261,9 @@ La nicchia con i rotoli è l'eco distorta della sala d'attesa lato Suhek'nal (st
         {
           numero: 10,
           titolo: "Il Crocevia",
-          testo: `Una sala di forma allungata, circa sei metri per quattro, con tre uscite oltre a quella d'ingresso, il che la rende un punto di passaggio quasi obbligato. Le pareti mostrano segni di umidità crescente, più evidenti man mano che ci si avvicina a un lato.
-
-Su un lato della sala, una piccola nicchia a forma di garitta è incassata nella parete, chiusa sul fronte da una grata di ferro fine — troppo fine, troppo regolare per essere stata forgiata a mano — che un tempo doveva permettere a qualcuno seduto dentro di sorvegliare senza essere disturbato. Sul lato opposto, una fila di piccole madie di legno chiuse, allineate come se ognuna dovesse contenere gli effetti personali di qualcuno che non è più tornato a riprenderli.
-
-A nord, una breve scalinata sale verso la sala incrinata. A ovest, un corridoio riporta verso lo snodo. A sud, un varco scuro conduce verso una sala quasi sommersa. A sud est, un altro passaggio conduce verso una sala con un altare.`,
+          testo: `• Punto di passaggio obbligato, umidità crescente verso un lato
+• Garitta con grata troppo fine per essere forgiata a mano
+• Fila di madie di legno chiuse`,
           notaDM: `L'umidità crescente verso sud è un indizio ambientale della sala allagata poco oltre, un piccolo dettaglio che prepara i giocatori prima che la vedano.
 
 La garitta con la grata fine e le madie sono l'eco distorta della Guardiania lato Suhek'nal (stessa stanza) — il posto di controllo a vetro e gli armadietti del personale, trasposti in arredo da castello che non ha alcuna funzione difensiva reale. Il DM può nascondere qualcosa in una delle madie chiuse, a piacere.`
@@ -302,11 +271,9 @@ La garitta con la grata fine e le madie sono l'eco distorta della Guardiania lat
         {
           numero: 11,
           titolo: "La Sala dell'Altare",
-          testo: `Una stanza di forma irregolare, forse sei metri di lunghezza, che si restringe verso sud in un piccolo vano più alto che largo. Qui, incassati uno nel soffitto e uno nel pavimento esattamente allineati l'uno con l'altro, due doccioni scolpiti a forma di volto — non un volto umano né animale riconoscibile, qualcosa a metà tra i due, la bocca spalancata in un'espressione che dovrebbe forse essere devozionale e invece risulta solo grottesca. Dalla bocca di quello superiore, un tempo, doveva scorrere acqua; ora non scende nulla, ma l'intera struttura sotto sembra costruita per qualcos'altro che l'acqua — canalizzazioni troppo ampie, troppo dirette, che corrono nei muri in entrambe le direzioni.
-
-Dietro il doccione inferiore, seminascosta, una rampa di scale stretta scende verso il basso.
-
-A nord ovest, un varco riporta verso il crocevia. A est, un passaggio conduce verso una piccola stanza piena di crepe.`,
+          testo: `• Due doccioni scolpiti (volto ibrido), allineati soffitto/pavimento, canalizzazioni sproporzionate
+• Refolo d'aria fredda residuo da quello superiore
+• Scale nascoste dietro il doccione inferiore, scendono al Piano 2`,
           notaDM: `I due doccioni allineati sono l'eco distorta della Doccia di Decontaminazione ad aria compressa che occupa la stessa stanza lato Suhek'nal — stessi due ugelli (sopra e sotto), qui reinterpretati come elementi religiosi/decorativi ma con canalizzazioni che tradiscono una funzione più tecnica di quanto l'estetica voglia ammettere. Le scale dietro il doccione inferiore sono la connessione verticale reale verso il Piano 2, identica nella posizione a quella lato Suhek'nal — è la prima discesa concreta che i PG possono trovare in questo piano, se il DM decide di renderla accessibile già ora.
 
 Nessun potere reale nei doccioni. Se un PG li esamina da vicino, può notare che le "bocche" sono cave e che un debole refolo d'aria, freddo, esce ancora a intervalli irregolari da quella superiore — ultimo residuo di un sistema spento da decenni.`
@@ -314,11 +281,8 @@ Nessun potere reale nei doccioni. Se un PG li esamina da vicino, può notare che
         {
           numero: 12,
           titolo: "La Sala Sommersa",
-          testo: `Una piccola stanza, forse tre metri per tre, quasi completamente allagata da un'infiltrazione d'acqua che filtra da una crepa nel soffitto. L'acqua arriva quasi alle ginocchia, scura e torbida, e riflette a malapena la poca luce che filtra dall'esterno. Muffa e alghe scure ricoprono le pareti fin dove arriva l'umidità.
-
-Sotto la superficie, appena visibili, file di piccole nicchie di pietra corrono lungo una parete, disposte a intervalli regolari come se ognuna dovesse contenere qualcosa. Sono quasi tutte vuote. Da una, il bordo di quello che sembra un cencio di stoffa marcita sporge appena dall'acqua torbida.
-
-A nord, l'unico varco riporta verso il crocevia.`,
+          testo: `• Stanza allagata fino alle ginocchia, muffa e alghe scure sulle pareti
+• Nicchie di pietra sommerse, quasi tutte vuote; in una, un cencio di stoffa marcita`,
           notaDM: `Stanza quasi vuota, pensata più per l'atmosfera che per il contenuto, ma il DM può nascondere qualcosa sul fondo dell'acqua, invisibile senza cercare attivamente, magari un piccolo oggetto perso da chi abitava qui prima della frana.
 
 Le nicchie regolari sono l'eco distorta degli armadietti dello Spogliatoio A lato Suhek'nal (stessa stanza) — qui ridotti a semplici vani di pietra sommersi, la loro funzione originaria del tutto illeggibile senza il confronto con l'altra versione.`
@@ -326,11 +290,8 @@ Le nicchie regolari sono l'eco distorta degli armadietti dello Spogliatoio A lat
         {
           numero: 13,
           titolo: "La Sala delle Crepe",
-          testo: `Una piccola stanza, forse tre metri per quattro, con il pavimento e le pareti attraversate da una fitta rete di crepe, alcune abbastanza larghe da poterci infilare una mano. Da alcune di queste fuoriesce un leggero refolo d'aria più fredda del resto della stanza.
-
-Contro una parete, un basso muretto di pietra corre per tutta la lunghezza della stanza, spezzato da crepe come il resto — ma la sua forma, quasi un bancone o una divisoria bassa, non corrisponde a nessun elemento architettonico che ci si aspetterebbe qui. Su un tratto ancora integro, piegato su se stesso, un panno di stoffa spessa, perfettamente ripiegato, come se qualcuno lo avesse lasciato lì un attimo prima di sparire per sempre.
-
-A ovest, l'unico varco riporta verso la sala dell'altare.`,
+          testo: `• Fitta rete di crepe, refolo d'aria fredda da alcune
+• Muretto basso incongruo, con un panno perfettamente ripiegato`,
           notaDM: `Le crepe più larghe possono nascondere piccoli oggetti per chi cerca con attenzione, o essere semplicemente scenografiche. Il refolo d'aria fredda è un piccolo indizio che da qualche parte, oltre le crepe, c'è uno spazio non mappato, buon gancio se si vuole espandere il piano in futuro.
 
 Il muretto e il panno ripiegato sono l'eco dello Spogliatoio B lato Suhek'nal (stessa stanza) — la panca e l'asciugamano piegato di quella versione, trasposti qui in forma di arredo di pietra. Il dettaglio del panno "lasciato un attimo prima di sparire" può essere ripreso letteralmente se il DM vuole enfatizzare quanto le due versioni condividano lo stesso momento di abbandono improvviso.`
@@ -338,11 +299,8 @@ Il muretto e il panno ripiegato sono l'eco dello Spogliatoio B lato Suhek'nal (s
         {
           numero: 14,
           titolo: "La Sala Vuota",
-          testo: `Un ampio salone, forse nove metri per sei, sorprendentemente spoglio rispetto alle altre stanze, quasi come se fosse stato svuotato deliberatamente. Il pavimento mostra i segni di mobili che un tempo dovevano esserci, quattro rettangoli più chiari nella polvere dove qualcosa di pesante è rimasto a lungo prima di sparire — le forme non corrispondono a nessun mobile medievale riconoscibile: troppo sottili, troppo regolari, più simili a pannelli appesi che a mobilio.
-
-Contro una parete, uno specchio a figura intera, la cornice in un metallo scuro e opaco che non assomiglia al ferro battuto visto altrove nel castello, ancora perfettamente lucido nonostante la polvere che ricopre ogni altra superficie della stanza.
-
-A est, un lungo corridoio riporta verso lo snodo. A ovest, un ampio varco conduce verso una sala più vasta.`,
+          testo: `• Salone spoglio, quattro impronte sottili e regolari nella polvere (non da mobili medievali)
+• Specchio a figura intera, insolitamente pulito e lucido`,
           notaDM: `Buon momento di respiro dopo le sale più dense, oppure il DM può usarla per un incontro con Varn Selick copia, che potrebbe aver scelto proprio questo spazio spoglio per nascondersi, sentendosi meno esposto.
 
 I quattro rettangoli nella polvere sono l'eco dei pannelli illustrativi della Galleria dei Progressi lato Suhek'nal (stessa stanza) — qui il duplicato non ha nemmeno tentato di ricostruirli, lasciando solo l'impronta di ciò che dovrebbe esserci. Lo specchio è uno dei punti di contatto con la controparte esatta, richiesto anche nelle stanze 15, 18 e 19.`
@@ -350,11 +308,10 @@ I quattro rettangoli nella polvere sono l'eco dei pannelli illustrativi della Ga
         {
           numero: 15,
           titolo: "La Sala Grande Ovest",
-          testo: `Il secondo salone più ampio del piano, forse otto metri per sette, con il soffitto sostenuto da una fila di archi in pietra ancora intatti. Su una parete, un'altra finestra crollata, la più grande vista finora, con radici e terra che occupano quasi metà della superficie della parete.
-
-Al centro della sala, alcune vetrine di legno e vetro, in gran parte in frantumi, un tempo dovevano esporre qualcosa — piccoli oggetti o reliquie, ormai scomparsi o ridotti a frammenti irriconoscibili sul fondo. Uno stendardo di stoffa pende ancora dal soffitto, mezzo marcito, con un motto ricamato di cui restano leggibili solo poche parole: "...oltre ciò che è conosciuto". Contro la parete opposta, appoggiato di sbieco come se qualcuno l'avesse spostato di recente e poi abbandonato, un secondo specchio a figura intera.
-
-A est, un varco riporta verso la sala vuota. A nord, un piccolo passaggio conduce verso una stanza minore. A ovest, un ultimo varco conduce verso una stanza isolata.`,
+          testo: `• Vetrine di vetro in frantumi al centro della sala
+• Stendardo mezzo marcito: "...oltre ciò che è conosciuto"
+• Secondo specchio a figura intera, appoggiato di sbieco, spostato di recente
+• Grande finestra murata di terra, la più grande del piano`,
           notaDM: `La grande finestra crollata qui può essere il momento più forte per far notare ai giocatori questo motivo ricorrente del piano, magari con un breve dialogo tra i personaggi se si vuole enfatizzarlo.
 
 Questa sala e la 14 sono l'eco del Salone delle Scoperte lato Suhek'nal (stessa stanza) — le vetrine e lo stendardo trasposti in reliquiario da castello, il motto identico nel senso ma "digerito" dall'estetica fantasy. Il secondo specchio, spostato di recente, è lo stesso indizio ambientale presente lato Suhek'nal: qualcuno lo ha usato di recente — Varn Selick, un Suhek'nal in movimento, o altro a discrezione del DM.`
@@ -362,17 +319,16 @@ Questa sala e la 14 sono l'eco del Salone delle Scoperte lato Suhek'nal (stessa 
         {
           numero: 16,
           titolo: "La Piccola Sala Nord",
-          testo: `Una piccola stanza, forse tre metri per quattro, insolitamente calma rispetto al resto del piano. Al centro, quello che resta di un grande cuscino rotondo, il tessuto ormai marcito e infestato di muffa ma la forma ancora riconoscibile. Una parete intera è occupata da un bassorilievo di pietra scura scolpito a imitare l'acqua che scorre, increspature scolpite con una precisione quasi innaturale — sotto, un canale asciutto alla base suggerisce che un tempo ci scorresse davvero qualcosa. Sulle altre due pareti, due lastre scure e lucide, incorniciate come specchi ma che non riflettono nulla di quanto dovrebbero: le immagini che restituiscono sono leggermente sfasate, un'eco visiva di un istante prima.
-
-A sud, l'unico varco riporta verso la sala grande ovest.`,
+          testo: `• Cuscino rotondo marcito al centro della stanza
+• Parete con bassorilievo che imita una cascata, canale asciutto sotto
+• Due lastre scure contrapposte che riflettono con un lieve ritardo innaturale`,
           notaDM: `Questa stanza è l'eco distorta della Sala di Quiete A lato Suhek'nal (stessa stanza) — cuscino, "cascata" e coppia di specchi contrapposti, tutti presenti ma trasfigurati: la cascata d'acqua reale diventa un bassorilievo che la imita soltanto, gli specchi funzionanti diventano lastre che riflettono con un ritardo innaturale. Buon momento per un piccolo disagio puramente atmosferico, senza alcun effetto meccanico a meno che il DM non voglia usarlo per qualcosa di più avanti nella campagna.`
         },
         {
           numero: 17,
           titolo: "La Sala Isolata",
-          testo: `Una piccola stanza, forse due metri per tre, raggiungibile solo attraverso un breve corridoio stretto, ancora più raccolta della precedente. Al centro, un cuscino quadrato al posto di quello rotondo, ugualmente marcito. La "cascata" scolpita qui è più stretta, un unico velo di pietra scura, e le due lastre riflettenti alle pareti restituiscono la stessa eco visiva sfasata vista nella stanza gemella. Un unico dettaglio fuori posto: un piccolo oggetto personale abbandonato al centro del pavimento, che stona con tutto il resto.
-
-A est, l'unico varco riporta verso la sala grande ovest.`,
+          testo: `• Versione ridotta della sala precedente: cuscino quadrato, cascata più stretta, stesse lastre-specchio
+• Un oggetto personale abbandonato al centro, fuori posto`,
           notaDM: `L'oggetto abbandonato è un gancio narrativo da riempire come si preferisce, magari qualcosa appartenuto a un esploratore precedente, o un piccolo indizio su chi altro potrebbe essere passato di qui prima dei PG.
 
 Variante minore della Sala di Quiete B lato Suhek'nal, stessa coppia di elementi (cuscino, bassorilievo a cascata, lastre-specchio) in scala ridotta.`
@@ -380,21 +336,17 @@ Variante minore della Sala di Quiete B lato Suhek'nal, stessa coppia di elementi
         {
           numero: 18,
           titolo: "Il Passaggio Sud",
-          testo: `Una stanza allungata e stretta, quasi un corridoio più che una sala vera, forse sette metri per tre. Su un lato, incassati nella pietra, alcuni catini bassi di dimensioni stranamente ridotte, quasi da bambino, allineati sotto altrettanti fori di scolo. Dall'altro lato, scaffalature basse cariche di piccoli involti di stoffa marcita, forme che potrebbero essere state indumenti minuscoli, ormai irriconoscibili. In un angolo, appoggiato contro il muro, uno specchio a figura intera, posizionato insolitamente in basso, come pensato per l'altezza di un bambino.
-
-A nord, una porta riporta verso il corridoio dei detriti. A sud est, un varco conduce verso l'ultima sala del piano.`,
+          testo: `• Catini in miniatura, quasi da bambino, allineati sotto fori di scolo
+• Involti di stoffa marcita su scaffali bassi
+• Specchio a figura intera posizionato molto in basso`,
           notaDM: `Stanza di passaggio, utile per allungare il tragitto verso la sala finale e costruire disagio crescente prima della stanza 19. I catini in miniatura, gli involti di stoffa e lo specchio basso sono l'eco distorta dei Servizi del Daycare lato Suhek'nal (stessa stanza) — la scala ridotta di ogni oggetto è il dettaglio che dovrebbe iniziare a inquietare i giocatori prima ancora di entrare nella sala successiva.`
         },
         {
           numero: 19,
           titolo: "La Sala Finale",
-          testo: `L'ultima sala del piano, ampia, forse nove metri per sette, con i segni di un utilizzo passato più intenso rispetto alle altre stanze, tracce di quello che poteva essere un focolare in un angolo, ormai freddo da tempo immemore. Alle pareti, tracce sbiadite di affreschi infantili — animali sorridenti dai contorni ormai quasi illeggibili, dipinti con una tecnica che non assomiglia a nessun altro affresco visto nel castello.
-
-Giocattoli di legno intagliato sono sparsi ovunque sul pavimento, alcuni spezzati, altri intatti in modo quasi più inquietante: un cavallo a dondolo intagliato con un occhio dipinto mancante, blocchi di legno impilati in una torre troppo precisa per essere stata lasciata così per caso.
-
-In un angolo, una piccola sedia a dondolo di legno e vimini, identica nella forma a un oggetto che non dovrebbe esistere in un'ambientazione come questa. Seduta sopra, composta, con le gambe che non toccano terra: una bambola, intagliata nel legno ma con un vestito di stoffa vera, cucito a mano. Il vestito è pulito, stranamente privo della polvere che copre tutto il resto della stanza.
-
-A nord ovest, un varco riporta verso il passaggio sud. A nord, una breve scalinata sale direttamente verso la sala d'arrivo, chiudendo il percorso ad anello del piano.`,
+          testo: `• Tracce di focolare, affreschi infantili sbiaditi alle pareti
+• Giocattoli di legno: cavallo a dondolo con occhio mancante, torre di blocchi troppo precisa
+• In un angolo, sedia a dondolo con una bambola seduta: vestito pulito, senza polvere`,
           notaDM: `Questa sala chiude il giro, permettendo ai giocatori di tornare verso l'ingresso senza dover ripercorrere tutto il piano a ritroso. Buon punto per un ultimo incontro prima di eventualmente scendere al piano successivo.
 
 Questa sala è l'eco distorta del Daycare lato Suhek'nal (stessa stanza, stessa disposizione) — i giocattoli, il cavallo a dondolo con l'occhio mancante, e soprattutto LA BAMBOLA SULLA SEDIA A DONDOLO sono identici, dettaglio per dettaglio, alla loro controparte esatta dall'altra parte dello specchio. Il vestito pulito, privo di polvere in entrambe le versioni, è il segnale più forte del piano: qualcosa attraversa regolarmente il confine tra le due realtà per prendersi cura di questo singolo oggetto, o lo mantiene così deliberatamente. Non spiegare mai questo dettaglio a tavolino — lasciare che i giocatori lo notino da soli, magari in due sessioni diverse, una per versione, è l'effetto voluto.`
@@ -435,11 +387,9 @@ URLA IN LONTANANZA: quando i PG raggiungono la Stanza 9 (da qualunque direzione)
         {
           numero: 1,
           titolo: "L'Atrio",
-          testo: `Una sala d'ingresso squadrata, pensata per accogliere. Il bancone della reception corre lungo una parete, il legno laminato ormai gonfio d'umidità, un monitor a tubo catodico spento posato di traverso, tessere identificative sparse sul pavimento come foglie cadute — nomi e foto ormai sbiaditi.
-
-La parete di fronte all'ingresso era, un tempo, un'intera vetrata a tutta altezza — doveva affacciarsi su un cortile interno. Ora il vetro è ancora lì, intatto, ma dietro non c'è cortile: solo terra compatta, pressata contro la superficie come se il mondo esterno si fosse semplicemente riempito.
-
-Sopra la porta, un piccolo apparecchio rettangolare con una lente scura al centro. Non si muove. Una spia rossa, spenta da tempo, è ancora visibile sotto la polvere.`,
+          testo: `• Bancone reception, monitor CRT spento, tessere identificative sparse sul pavimento
+• Vetrata a tutta altezza intatta: dietro, solo terra compattata
+• Telecamera spenta sopra la porta, spia rossa sotto la polvere`,
           notaDM: `Il vetro intatto contro il muro di terra è il primo elemento del piano che stabilisce il "gemellaggio" con la versione Kaelvaran — la stessa parete, lì, è un muro di terra coperto da una lastra di vetro chiaramente fuori posto. Qui è l'esatto contrario concettuale: la parete era progettata per essere trasparente, e lo è ancora, semplicemente non c'è più nulla da vedere attraverso di essa.
 
 La telecamera sopra la porta è la prima di una serie — verranno replicate, in forma distorta, sul lato Kaelvaran come piccole gargolle. Nessun effetto meccanico: sono morte da 45 anni, ma il DM può usarle come dettaglio ricorrente se vuole introdurre più avanti un sistema di sorveglianza ancora funzionante da qualche parte nei piani inferiori.`
@@ -447,23 +397,23 @@ La telecamera sopra la porta è la prima di una serie — verranno replicate, in
         {
           numero: 2,
           titolo: "Il Corridoio di Sorveglianza",
-          testo: `Un corridoio lungo e stretto, il soffitto basso attraversato da canaline portacavi ormai aperte, fili scoperti che pendono in alcuni punti. Ogni pochi metri, incassata nel muro, una telecamera identica a quella dell'atrio — tutte spente, tutte con la stessa lente rettangolare rivolta verso il basso.
-
-Il pavimento in piastrelle grigie è crepato in più punti, e in una crepa più larga delle altre la terra è visibilmente smossa, come se qualcosa fosse passato di lì di recente, magari nascondendosi.`,
+          testo: `• Canaline portacavi aperte, fili scoperti che pendono
+• Telecamere identiche a intervalli regolari lungo il corridoio
+• Una crepa nel pavimento con terra smossa di recente`,
           notaDM: `Le telecamere ripetute a intervalli regolari sono il motivo ricorrente da portare, trasfigurato, sul lato Kaelvaran (piccole gargolle che reggono uno scrigno o un occhio). La terra smossa nella crepa è lo stesso indizio ambientale già presente lato Kaelvaran — Varn Selick copia (o l'originale, a discrezione del DM) potrebbe essere passato di qui.`
         },
         {
           numero: 3,
           titolo: "La Fontana Commemorativa",
-          testo: `Una piccola fontana ornamentale, asciutta, incassata in una nicchia della parete. La vasca è poco profonda, rivestita di piastrelle azzurre ormai scrostate. Alla base, una targa metallica, verdastra di ossido, riporta un nome e alcune parole di dedica al fondatore del centro ricerche — "per la sua visione, che ci ha condotti oltre il confine conosciuto" — seguito da una data.`,
+          testo: `• Fontana ornamentale asciutta, piastrelle azzurre scrostate
+• Targa alla base dedicata al fondatore del centro ricerche, leggibile e coerente`,
           notaDM: `La targa è pensata per avere una controparte distorta lato Kaelvaran, ai piedi della fontana lì presente: stesso oggetto, stesso posizionamento, ma "qualcosa che non torna" nel testo o nella forma. Qui, lato Suhek'nal, il testo è del tutto coerente e leggibile — nome del fondatore del laboratorio, non necessariamente rilevante per la trama a meno che il DM non voglia collegarlo a un PNG futuro.`
         },
         {
           numero: 4,
           titolo: "La Prima Barriera",
-          testo: `Un passaggio stretto, incorniciato da due colonne metalliche alte fino al soffitto, ciascuna incisa con file di piccole spie — tutte spente. È un varco di controllo, il tipo di struttura che normalmente scansiona chi lo attraversa. Cavi ancora collegati corrono lungo il pavimento fino a una scatola di comando contro la parete, con un piccolo schermo in frantumi.
-
-Un cartello, ancora leggibile, avverte: "Accesso vietato con campioni biologici non containerizzati oltre questo punto."`,
+          testo: `• Varco di controllo tra due colonne di spie spente
+• Cartello: vietato l'accesso con campioni biologici non containerizzati`,
           notaDM: `Questa è la prima di due barriere di sicurezza pensate per impedire il trasporto di determinate sostanze e apparecchiature verso i livelli inferiori del laboratorio (contenimento biologico, presumibilmente legato ai Suhek'nal stessi o ai loro esperimenti). Sono spente da 45 anni — nessun effetto meccanico reale, ma il DM può farle riattivare più avanti nella campagna se vuole introdurre un ostacolo.
 
 Sul lato Kaelvaran, questa stanza e la successiva diventano una serie di trappole vistose ma mal congegnate — l'eco distorta di un sistema che un tempo aveva una funzione precisa.`
@@ -471,15 +421,16 @@ Sul lato Kaelvaran, questa stanza e la successiva diventano una serie di trappol
         {
           numero: 5,
           titolo: "La Seconda Barriera",
-          testo: `Identica nella struttura alla precedente, ma qui il sistema mostra segni di essere stato forzato — una delle colonne è divelta dal basamento, piegata verso l'esterno, come se qualcosa di grande e determinato fosse passato senza attendere l'autorizzazione. Sul pavimento, frammenti di plastica e metallo, i resti di un pannello di controllo esploso verso l'interno.`,
+          testo: `• Identica alla precedente ma forzata: una colonna divelta e piegata
+• Pannello di controllo esploso verso l'interno`,
           notaDM: `Il danno visibile qui suggerisce che qualcuno, o qualcosa, ha forzato il passaggio con violenza — buon gancio per il DM: potrebbe essere stato La Fine stessa, 45 anni fa, o un tentativo disperato di fuga durante l'incidente originale. Nessuna informazione definitiva richiesta a questo punto della storia.`
         },
         {
           numero: 6,
           titolo: "La Mensa",
-          testo: `Una sala ampia, file di tavoli lunghi in metallo e laminato, sedie impilate contro una parete o rovesciate a terra. Su un lato, un bancone con resti di macchine distributrici, i vetri frontali infranti, i vassoi vuoti da tempo. Nella cucina a vista dietro il bancone, pentole industriali ancora appese ai loro ganci.
-
-Su uno dei tavoli, abbandonati a metà lettura, dei fogli con schizzi anatomici — forme vermiformi, annotazioni tecniche a margine sui meccanismi di attacco e di condivisione. Qualcuno li leggeva mentre pranzava.`,
+          testo: `• File di tavoli lunghi in metallo, sedie impilate o rovesciate
+• Distributori automatici infranti, cucina a vista con pentole appese
+• Fogli con schizzi anatomici lasciati su un tavolo, a metà lettura`,
           notaDM: `Documento chiave qui: gli schizzi anatomici dei Suhek'nal. Il dettaglio dei fogli lasciati su un tavolo della mensa, come se qualcuno li leggesse in pausa pranzo, è pensato per essere sottilmente inquietante — un ricercatore studiava i propri futuri ospiti tra un boccone e l'altro.
 
 Lato Kaelvaran questa diventa la Sala Grande, un salone/refettorio con file di tavoli di pietra crollati — le differenze da una mensa "sci-fi" (tavoli di metallo, distributori automatici) rispetto a una sala da pranzo medievale sono un buon momento per un giocatore attento.`
@@ -487,23 +438,23 @@ Lato Kaelvaran questa diventa la Sala Grande, un salone/refettorio con file di t
         {
           numero: 7,
           titolo: "Bagno A",
-          testo: `Una piccola stanza con file di lavandini in ceramica bianca, gli specchi sopra ciascuno incrinati o anneriti dall'umidità. Le porte dei bagni singoli sono socchiuse, alcune mancanti. Un odore di muffa persiste anche dopo decenni.`,
+          testo: `• Fila di lavandini in ceramica, specchi incrinati o anneriti
+• Porte dei bagni singoli socchiuse, alcune mancanti`,
           notaDM: `Ambiente puramente atmosferico. Lato Kaelvaran diventa il Deposito, con scaffalature e casse — le tubature che non portano da nessuna parte, viste in quella versione, sono l'eco distorta di questi impianti idraulici.`
         },
         {
           numero: 8,
           titolo: "Bagno B",
-          testo: `Simile al precedente ma più piccolo, con un unico bagno accessibile e un lavandino. Sulla parete, un distributore di carta ormai vuoto e arrugginito. Una finestrella opaca in alto, l'unica fonte di luce naturale rimasta nell'intero piano, lascia filtrare un chiarore grigiastro.`,
+          testo: `• Bagno singolo, distributore di carta vuoto e arrugginito
+• Finestrella opaca in alto: unica luce naturale del piano`,
           notaDM: `La finestrella opaca è un piccolo dettaglio unico su questo piano — vale la pena enfatizzarlo, dato che quasi nessun'altra stanza ha luce naturale. Lato Kaelvaran diventa la Sala dell'Astrolabio: la finestrella opaca potrebbe essere l'origine, distorta, della cupola che lascia filtrare luce in quella stanza.`
         },
         {
           numero: 9,
           titolo: "Corridoio degli Uffici",
-          testo: `Un ampio spazio di passaggio, ex uffici open space: scrivanie basse divise da pannelli mobili, quasi tutti crollati o rovesciati. Faldoni e documenti coprono il pavimento in strati, alcuni ridotti in poltiglia dall'umidità.
-
-Sul fondo, nella parte più bassa della sala, lo spazio si restringe in un angolo arredato diversamente dal resto: una piccola area d'attesa, con una scrivania di reception, alcune sedie impilate contro le pareti, e un tavolino basso con sopra riviste e opuscoli ingialliti. Uno degli opuscoli, aperto, riporta un linguaggio quasi devozionale — "il cammino verso la forma", "solo nell'unione l'ospite trova compimento" — accostato a diagrammi che assomigliano più a schemi tecnici che a immagini religiose.
-
-Appena si entra in questa sala, da qualche parte nei corridoi, arriva un urlo. Lontano. Impossibile dire da dove.`,
+          testo: `• Ex uffici open space, scrivanie e pannelli mobili crollati, faldoni ovunque
+• Nell'angolo più basso: area d'attesa con reception, sedie, tavolino con opuscoli su "il cammino verso la forma"
+• Appena entrati: un urlo lontano, breve, impossibile da localizzare`,
           notaDM: `L'AREA D'ATTESA in fondo alla sala contiene il documento chiave "Introduzione al Veth'nal" (uno degli opuscoli sul tavolino) — la prima esposizione diretta, seppur criptica, della filosofia religiosa dei Suhek'nal, presentata come materiale informativo per "ospiti" in attesa. Il tono è deliberatamente ambiguo tra opuscolo aziendale e testo di culto.
 
 L'URLO è l'innesco atmosferico descritto nell'atmosfera generale del piano — non richiede una reazione meccanica, solo silenzio e attenzione dei giocatori.`
@@ -511,9 +462,8 @@ L'URLO è l'innesco atmosferico descritto nell'atmosfera generale del piano — 
         {
           numero: 10,
           titolo: "La Guardiania",
-          testo: `Una piccola postazione di controllo, separata dal corridoio da un vetro spesso, ormai crepato in una ragnatela di linee bianche. Dentro, una sedia girevole rovesciata, una tastiera con i tasti scoloriti, un citofono muto. Sul lato destro della stanza, una fila di armadietti metallici, alcuni aperti e vuoti, altri chiusi a chiave — qui i dipendenti dovevano lasciare tutto ciò che non poteva scendere ai livelli inferiori del laboratorio.
-
-Uno degli armadietti chiusi vibra leggermente, quasi impercettibile, se qualcuno vi si avvicina.`,
+          testo: `• Postazione dietro un vetro spesso crepato, citofono muto
+• Fila di armadietti sul lato destro; uno vibra leggermente se ci si avvicina`,
           notaDM: `Gli armadietti chiusi sono un buon gancio opzionale — il DM può decidere cosa contengono (oggetti personali, forse qualcosa di utile, o qualcosa di meglio lasciato chiuso). La vibrazione impercettibile in uno di essi può essere lasciata come mistero irrisolto o sviluppata in seguito.
 
 Lato Kaelvaran diventa il Crocevia — la garitta a vetro si trasforma in una piccola guardiola di legno con una grata, gli armadietti in madie o casse chiuse.`
@@ -521,9 +471,8 @@ Lato Kaelvaran diventa il Crocevia — la garitta a vetro si trasforma in una pi
         {
           numero: 11,
           titolo: "La Doccia di Decontaminazione",
-          testo: `Una stanza stretta e alta, dominata da due grandi ugelli circolari — uno incassato nel soffitto, uno nel pavimento — collegati a tubature che scompaiono nelle pareti. È una camera di decontaminazione ad aria compressa: chi la attraversa dovrebbe essere investito da un getto d'aria dall'alto e dal basso simultaneamente, pensato per "purificare" l'ingresso e l'uscita dal livello successivo del laboratorio.
-
-Dietro l'ugello inferiore, seminascosta, una rampa di scale stretta scende verso il basso — verso il Piano 2.`,
+          testo: `• Due grandi ugelli allineati (soffitto/pavimento) per decontaminazione ad aria compressa
+• Dietro l'ugello inferiore, scale nascoste che scendono al Piano 2`,
           notaDM: `Questa è la connessione verticale verso il Piano 2 su questo lato del duplicato. Il sistema è spento da 45 anni: attraversarla non ha effetti meccanici a meno che il DM non voglia riattivarla (aria compressa reale, o qualcosa di peggio, se vuole introdurre un pericolo).
 
 Lato Kaelvaran, l'altare originariamente previsto in questa stanza va sostituito: al suo posto, a sud, due doccioni scolpiti — uno sopra, uno sotto — eco distorta e "religiosa" degli ugelli di decontaminazione. Le scale dietro restano, portando comunque al Piano 2.`
@@ -531,21 +480,23 @@ Lato Kaelvaran, l'altare originariamente previsto in questa stanza va sostituito
         {
           numero: 12,
           titolo: "Spogliatoio A",
-          testo: `File di armadietti metallici disposti in corridoi stretti, molti con le ante spalancate, vestiti da lavoro ancora appesi ad alcuni ganci, ridotti a stracci dall'umidità. Panche di legno corrono al centro di ogni corridoio, alcune spezzate a metà.`,
+          testo: `• File di armadietti aperti, vestiti da lavoro ridotti a stracci
+• Panche di legno al centro, alcune spezzate`,
           notaDM: `Ambiente atmosferico. Lato Kaelvaran diventa la Sala Sommersa, allagata — le panche spezzate e gli armadietti collassati diventano, in quella versione, macerie sommerse dall'acqua.`
         },
         {
           numero: 13,
           titolo: "Spogliatoio B",
-          testo: `Più piccolo del precedente, con un'unica fila di armadietti e una zona doccia comune separata da un tramezzo basso, piastrelle bianche ormai annerite di muffa. Un asciugamano, ancora piegato, è rimasto su una panca per 45 anni.`,
+          testo: `• Fila di armadietti, zona doccia comune ammuffita
+• Un asciugamano piegato, rimasto su una panca per 45 anni`,
           notaDM: `L'asciugamano piegato è un piccolo dettaglio umano, il tipo di cosa che rende reale l'abbandono improvviso. Lato Kaelvaran diventa la Sala delle Crepe.`
         },
         {
           numero: 14,
           titolo: "La Galleria dei Progressi",
-          testo: `Una sala allungata trasformata in piccola esposizione interna: pannelli illustrativi alle pareti, alcuni ancora leggibili, che ripercorrono le tappe delle scoperte del centro ricerche — diagrammi di apparecchiature, fotografie di gruppo di ricercatori sorridenti, una linea del tempo dei "progressi" raggiunti. È materiale pensato per ispirare chi ci lavora, un piccolo museo interno più che un archivio.
-
-Contro una parete, uno specchio a figura intera, la cornice in metallo opaco, ancora perfettamente lucido nonostante la polvere ovunque.`,
+          testo: `• Pannelli illustrativi con foto di gruppo e diagrammi delle scoperte
+• Specchio a figura intera contro una parete
+• Tra i pannelli, occultato: il rapporto sull'accesso al Piano 4`,
           notaDM: `Tra i pannelli, se i PG cercano con attenzione, si può nascondere il Rapporto di accesso al Piano 4 (documento chiave) — magari incorniciato come "risultato più importante mai raggiunto", con la frase finale "Contatto stabilito. Natura dell'entità: sconosciuta." lasciata lì, ironicamente, come trofeo.
 
 Lo specchio a figura intera qui è uno dei punti di contatto con la controparte Kaelvaran — stessa stanza, stesso oggetto, richiesto esplicitamente anche in tutte le stanze 15, 18 e 19.`
@@ -553,9 +504,9 @@ Lo specchio a figura intera qui è uno dei punti di contatto con la controparte 
         {
           numero: 15,
           titolo: "Il Salone delle Scoperte",
-          testo: `Continuazione della galleria precedente, ma più ampia: al centro, alcune teche di vetro (in gran parte in frantumi) che un tempo contenevano modelli in scala di apparecchiature o forse campioni conservati — ormai vuote, o con resti irriconoscibili sul fondo. Uno striscione appeso al soffitto, mezzo strappato, recita ancora parzialmente "…verso ciò che è oltre".
-
-Un secondo specchio a figura intera è appoggiato contro la parete opposta, leggermente inclinato, come se qualcuno l'avesse spostato di recente e poi lasciato lì.`,
+          testo: `• Teche di vetro in gran parte in frantumi al centro
+• Striscione mezzo strappato: "...verso ciò che è oltre"
+• Secondo specchio, leggermente inclinato, spostato di recente`,
           notaDM: `Il secondo specchio "leggermente inclinato, spostato di recente" è un piccolo indizio ambientale — qualcuno (Varn Selick originale, o un Suhek'nal in movimento) potrebbe averlo usato di recente. Nessun effetto obbligato, solo tensione.
 
 Lato Kaelvaran, questa e la stanza 14 diventano una galleria di trofei/reliquie fuori contesto per l'estetica del castello — con la stessa coppia di specchi presente, ma "sbagliati" in qualche modo.`
@@ -563,29 +514,32 @@ Lato Kaelvaran, questa e la stanza 14 diventano una galleria di trofei/reliquie 
         {
           numero: 16,
           titolo: "Sala di Quiete A",
-          testo: `Una stanza piccola e insolitamente accogliente rispetto al resto del piano. Al centro, un grande cuscino rotondo, ormai marcito e infestato di muffa, ma ancora riconoscibile nella forma. Una parete intera è occupata da una cascata artificiale — una lastra di pietra scura su cui un tempo scorreva un velo d'acqua continuo, ora ferma, con incrostazioni calcaree che ne segnano il percorso. Sulle altre due pareti, specchi a figura intera, incorniciati in metallo scuro, che si riflettono l'uno nell'altro creando un corridoio infinito di immagini che si rimpiccioliscono.`,
+          testo: `• Cuscino rotondo al centro
+• Parete a cascata d'acqua, ora ferma, incrostazioni calcaree
+• Specchi a figura intera contrapposti: corridoio infinito di riflessi`,
           notaDM: `Sala di meditazione per il personale — pensata per la decompressione mentale in un ambiente ad alto stress psicologico. Il gioco di specchi contrapposti (corridoio infinito di riflessi) è un buon momento inquietante puramente atmosferico: nessun effetto meccanico, ma il DM può usarlo per un jump scare leggero se un PG fissa troppo a lungo il proprio riflesso moltiplicato.`
         },
         {
           numero: 17,
           titolo: "Sala di Quiete B",
-          testo: `Identica nella funzione alla precedente ma più piccola, il cuscino centrale qui è quadrato invece che rotondo, altrettanto marcito. La cascata a muro qui è più stretta, un singolo velo di pietra scura ormai secco. Gli specchi contrapposti sulle pareti laterali creano lo stesso effetto di corridoio infinito.`,
+          testo: `• Variante più piccola: cuscino quadrato, cascata più stretta
+• Stessi specchi contrapposti della sala gemella`,
           notaDM: `Variante minore della stanza 16. Il DM può usare questa coppia di stanze come momento di respiro narrativo prima del tratto finale del piano (spogliatoi/daycare).`
         },
         {
           numero: 18,
           titolo: "Servizi del Daycare",
-          testo: `Una stanza mista: da un lato un piccolo bagno con sanitari a misura di bambino, dall'altro scaffalature con pannolini ormai polverosi, biberon, un fasciatoio ribaltato. Un ripostiglio adiacente conserva passeggini piegati e impilati, alcuni con la stoffa marcita.
-
-Contro una parete, uno specchio a figura intera, questo posizionato più in basso del normale — pensato per l'altezza di un bambino.`,
+          testo: `• Bagno a misura di bambino, scaffali con pannolini e biberon
+• Ripostiglio con passeggini piegati e impilati
+• Specchio a figura intera posizionato più in basso, per l'altezza di un bambino`,
           notaDM: `Il dettaglio del bagno a misura di bambino e dello specchio posizionato più in basso è pensato per essere sottilmente perturbante prima ancora di entrare nella stanza 19 — prepara il tono. Lo specchio qui è un altro dei punti di contatto richiesti con la controparte Kaelvaran.`
         },
         {
           numero: 19,
           titolo: "Il Daycare",
-          testo: `Una sala colorata — o che un tempo lo era: le pareti mostrano ancora tracce di murales sbiaditi, animali sorridenti dai contorni ormai irriconoscibili. Giocattoli sparsi ovunque sul pavimento, alcuni rotti, altri intatti in modo quasi più inquietante — un cavallo a dondolo con un occhio dipinto mancante, blocchi da costruzione impilati in una torre troppo precisa per essere stata lasciata così per caso da un bambino.
-
-In un angolo, una piccola sedia a dondolo di legno e vimini. Seduta sopra, composta, con le gambe che non toccano terra: una bambola. Il vestito è pulito, stranamente privo della polvere che copre tutto il resto della stanza.`,
+          testo: `• Murales sbiaditi, animali sorridenti ormai irriconoscibili
+• Giocattoli sparsi: cavallo a dondolo con occhio mancante, torre di blocchi troppo precisa
+• In un angolo, sedia a dondolo con una bambola: vestito pulito, senza polvere`,
           notaDM: `La bambola pulita, priva di polvere, in una stanza altrimenti coperta da 45 anni di abbandono, è il dettaglio più inquietante e importante di questa stanza — qualcuno, o qualcosa, l'ha toccata di recente, o la mantiene così deliberatamente. Il DM decide se e quando dare seguito a questo indizio: può restare un mistero mai risolto, o diventare un gancio per un incontro futuro (magari con un Suhek'nal che imita comportamenti umani osservati, o con qualcosa di più inquietante).
 
 Nessun effetto meccanico imposto: lasciate che siano i giocatori a decidere se toccarla, spostarla, o andarsene senza guardare indietro.`

@@ -167,6 +167,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .ev-list li::before{content:'›';position:absolute;left:0;color:var(--gold-d);}
 
 .callout-m{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#b07070;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
+.callout-n{background:var(--bg-panel);border-left:2px solid var(--border-b);padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:var(--t2);line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
 
 /* ── STANZE (accordion annidato) ── */
 .stanza-list{margin-top:.75rem;}
@@ -554,8 +555,8 @@ function buildSviluppo() {
         }
         if (sez.notaDM) {
           sezioniHTML += `<div style="margin-top:.6rem;">
-            <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
-            <div class="callout-m">${sez.notaDM}</div>
+            <div style="font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
+            <div class="callout-n">${sez.notaDM}</div>
           </div>`;
         }
         sezioniHTML += `</div>`;
@@ -577,8 +578,8 @@ function buildSviluppo() {
             <div class="stanza-body">
               <div class="stanza-text">${st.testo}</div>
               ${st.notaDM ? `<div style="margin-top:.6rem;">
-                <div style="font-size:9px;letter-spacing:.14em;color:#b07070;text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
-                <div class="callout-m">${st.notaDM}</div>
+                <div style="font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:.3rem;">Note DM</div>
+                <div class="callout-n">${st.notaDM}</div>
               </div>` : ''}
             </div>
           </div>`;
