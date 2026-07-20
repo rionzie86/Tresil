@@ -646,6 +646,84 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
         }
       ],
       musica: null
+    },
+
+    {
+      id: "riassunto_generale",
+      titolo: "Riassunto Generale — Guida Rapida",
+      icona: "🗒️",
+      riassunto: "Quadro d'insieme per la giocata: la storia in breve, come funziona il cristallo temporale, e dove si trova ogni ritrovamento chiave, piano per piano.",
+      sezioni: [
+        {
+          titolo: "La Storia in Breve",
+          tipo: "scena",
+          testo: `• 45 anni fa: esperimento dei Suhek'nal al Piano 4 apre un varco su un piano demoniaco → entra La Fine
+• Laboratorio messo in quarantena, tutte le uscite sigillate (cristallo della quarantena)
+• 40 anni fa: secondo varco aperto al Piano 1, verso Kaelvaran — per procurarsi nuovi ospiti dato che La Fine sta decimando i Suhek'nal
+• Il varco genera un duplicato "vivente" del Piano 1 nel mondo di Kaelvaran (castello medievale spontaneo, adattato all'estetica del mondo)
+• Gli specchi collegano le due versioni della stessa stanza; alcuni specchi speciali portano dritti alla Stanza delle Gemme (Piano 2 Suhek'nal, stanza 15)
+• I PG entrano inseguendo Varn Selick (capo di un culto cannibalico, sconfitto due giorni fa) attraverso una frana — in realtà la bocca del varco
+• La Fine vaga tra i piani: lenta, immortale, letale al contatto, non fermabile né distraibile — solo evitabile
+• I Suhek'nal (vermi simbionti) cercano ospiti per il Veth'nal: osservazione dallo specchio (Veth'suu) → condivisione, la gemma si forma (Veth'kor) → trasferimento nella copia perfetta, liberando l'originale (Veth'nal completo)
+• Varn Selick ha già un doppio: l'ORIGINALE vaga disorientato e paranoico tra Piano 1 e Piano 3; la COPIA Suhek'nal vaga nel Piano 1 Kaelvaran cercando di nascondersi, comportamento più calmo e controllato`
+        },
+        {
+          titolo: "Il Cristallo Temporale — Come e Perché",
+          tipo: "oggetto",
+          testo: `• Si trova al Piano 4, alimenta il varco verso il piano demoniaco. Sfera di circa 30cm, superficie liquida ma solida, pulsa cambiando colore
+• Secondo cristallo, più piccolo, alimenta la quarantena — NON va distrutto prima del principale: le uscite si aprono ma La Fine è libera nel mondo
+• RISOLUZIONE STANDARD: spegnere il cristallo principale mentre La Fine è nel duplicato Kaelvaran → varco chiuso, La Fine resta intrappolata lì (non ideale per Kaelvaran)
+• RISOLUZIONE OTTIMALE: sovraccaricare il cristallo e farlo implodere dentro il varco demoniaco → risucchia ogni realtà nella propria origine: La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran
+• Il sovraccarico richiede tempo e precisione — rischio concreto che La Fine arrivi durante la procedura
+• Le istruzioni per sovraccaricare si trovano SOLO negli Scritti sui Cristalli Temporali, Piano 3 — senza quel documento i PG conoscono solo la risoluzione standard`
+        },
+        {
+          titolo: "Ritrovamenti — Dove Trovare Cosa",
+          tipo: "documento",
+          testo: `PIANO 1 SUHEK'NAL
+• Stanza 6 (Mensa) — Schizzi anatomici dei Suhek'nal: forma vermiforme, meccanismi di attacco e condivisione
+• Stanza 9 (Corridoio Uffici, area d'attesa) — Introduzione al Veth'nal: filosofia e processo di simbiosi, tono a metà tra opuscolo aziendale e testo di culto
+• Stanza 14 (Galleria dei Progressi, nascosto tra i pannelli) — Rapporto di accesso al Piano 4: descrive l'esperimento che ha aperto la falla, ultima riga "Contatto stabilito. Natura dell'entità: sconosciuta."
+
+PIANO 1 KAELVARAN
+• Stanza 6 (Sala Grande) — eco distorta e parzialmente illeggibile degli schizzi anatomici, se i PG la trovano prima della controparte Suhek'nal
+
+PIANO 2 SUHEK'NAL
+• Stanza 15 — La Stanza delle Gemme: non un documento, ma il ritrovamento chiave che spiega visivamente il processo Veth'nal (gemme spente = copie fallite/ospiti morti, gemme pulsanti = trasferimenti in corso)
+
+PIANO 3
+• Il Diario dell'Ultimo Ricercatore — racconta la ritirata progressiva davanti a La Fine, menziona il cristallo temporale al Piano 4
+• Gli Scritti sui Cristalli Temporali — istruzioni parziali, sono la CHIAVE per sbloccare la risoluzione ottimale
+
+PIANO 4
+• Il Cristallo Temporale (il varco)
+• Il Cristallo della Quarantena (le uscite)`
+        },
+        {
+          titolo: "Il Piano dei Suhek'nal — L'Infestazione dei PG",
+          tipo: "scena",
+          testo: `• I PG vengono infestati progressivamente durante l'esplorazione (Veth'suu → Veth'kor) — il DM gestisce tempi e modi a tavolino, non è scriptato stanza per stanza
+• Durante l'infestazione, sul Piano 2 lato Suhek'nal la gemma corrispondente matura nella Stanza 15 — passa del tempo prima che sia completa
+• Quando i PG raggiungono fisicamente la Stanza 15 (o vengono condotti lì), i simbionti tentano il trasferimento nei cloni pronti
+• A quel punto — o prima, se messi alle strette — i Suhek'nal rivelano ai PG la storia intera e il loro piano: spegnere la fonte di energia del primo varco mentre La Fine si trova nel duplicato Kaelvaran, per mettere in salvo il proprio mondo natale e potersi affrancare dalla quarantena
+• Da qui nascono le due conclusioni possibili già note: aiutare i Suhek'nal (La Fine resta intrappolata dove si trova in quel momento) oppure trovare e attuare la risoluzione ottimale (implosione del cristallo dentro il varco demoniaco, che risucchia ogni realtà alla propria origine)
+• Un epilogo vero e proprio — cosa succede a Kaelvaran, ai due Varn, ai Suhek'nal superstiti dopo la risoluzione — non è ancora stato scritto: da sviluppare quando arriviamo al Piano 4`
+        },
+        {
+          titolo: "Indizi e Dettagli da Non Dimenticare",
+          tipo: "scena",
+          testo: `• La bambola sulla sedia a dondolo (Piano 1, stanza 19, identica in entrambe le versioni): vestito pulito, senza polvere, su entrambi i lati — non spiegare mai a tavolino
+• L'urlo in lontananza alla Stanza 9 (entrambe le versioni): eco atmosferica ricorrente, mai risolta subito
+• Lo specchio della Stanza 4, Piano 1 Kaelvaran: primo punto in cui un Suhek'nal osserva un futuro ospite
+• Il secondo specchio "spostato di recente" (Stanza 15, Piano 1, entrambe le versioni): qualcuno l'ha usato di recente — Varn, o un Suhek'nal in movimento
+• Le due barriere di sicurezza mal congegnate lato Kaelvaran (Piano 1, stanze 4-5) rispecchiano le barriere di sicurezza reali lato Suhek'nal, danneggiate nello stesso modo in entrambe le versioni
+• Elementi "storti" ripetuti in ogni stanza del Piano 1 Kaelvaran: frammenti sci-fi (telecamere, tubature, arredi da laboratorio) trasposti e resi privi di senso nell'estetica fantasy — motivo visivo ricorrente, non solo decorativo
+• La Fine appare 1 volta al Piano 1, 2-3 volte ai Piani 2, 3 e 4 — la frequenza cresce piano dopo piano, mai un incontro scriptato fisso
+• Creature anticorpo: automi/guardie lato Suhek'nal, umanoidi deformi tutti identici tra loro lato Kaelvaran — nessun dialogo possibile, attaccano chiunque non riconoscano
+• Varn originale (Piano 1/3, disorientato, paranoico, potenzialmente ostile o alleabile) vs Varn copia (Piano 1 Kaelvaran, più calmo e controllato, si nasconde) — se messo alle strette può offrire informazioni in cambio di protezione`
+        }
+      ],
+      musica: null
     }
 
   ],
@@ -668,7 +746,13 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
       nome: "La Fine",
       ruolo: "Antagonista principale — presenza costante",
       descrizione: "Non ha forma visibile. Si percepisce come un'assenza che si muove: aria stagnante, superfici che perdono colore, suoni che si smorzano. Un freddo crescente che precede il suo arrivo.",
-      segreto: "Immortale. Uccide qualsiasi entità viva al contatto istantaneo. Nulla la rallenta o distrae. Vaga costantemente tra i piani. Non può essere comunicata, fermata o combattuta. L'unica soluzione è la risoluzione ottimale del cristallo temporale."
+      segreto: "Immortale. Uccide qualsiasi entità viva al contatto istantaneo. Nulla la rallenta o distrae. Vaga costantemente tra i piani. Non può essere comunicata, fermata o combattuta. L'unica soluzione è la risoluzione ottimale del cristallo temporale. Frequenza di comparsa: una volta al Piano 1, due o tre volte ai Piani 2, 3 e 4 — la tensione cresce piano dopo piano."
+    },
+    {
+      nome: "Le Creature Anticorpo",
+      ruolo: "Minaccia ricorrente — non individui, categoria di nemici",
+      descrizione: "Lato Suhek'nal: automi/guardie del laboratorio, riattivati o rimasti in funzione, programmati per attaccare qualsiasi intruso. Lato Kaelvaran: esseri umanoidi deformi, tutti fisicamente identici tra loro — la stessa 'faccia sbagliata' ripetuta all'infinito.",
+      segreto: "Sono la risposta immunitaria del duplicato/laboratorio a presenze estranee, non creature con una loro volontà narrativa: il lato Kaelvaran le ha 'digerite' dall'estetica fantasy esattamente come fa con gli oggetti (vedi elementi storti del Piano 1), producendo umanoidi deformi anziché automi. Non hanno dialogo né trattativa: attaccano e basta."
     }
   ],
 
