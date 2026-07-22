@@ -7,12 +7,28 @@ const studioDati = {
 
   // ── LORE SEGRETA DM ───────────────────────────────────────────
   loreSegreta: `I SUHEK'NAL
-Creature vermiformi originarie di un piano parallelo. In forma libera sono vermi translucidi lunghi pochi centimetri. La loro biologia è progettata per la simbiosi: si attaccano a un ospite volontario, entrano in uno stato di condivisione (Veth'kor) durante il quale una gemma registra ogni informazione del corpo ospite, poi si trasferiscono nella copia perfetta lasciando libero l'originale.
+Creature vermiformi originarie di un pianeta parallelo. In forma libera sono vermi translucidi lunghi pochi centimetri. La loro biologia è progettata per la simbiosi: si attaccano a un ospite, entrano in uno stato di condivisione (Veth'kor) durante il quale una gemma registra ogni informazione del corpo ospite, poi si trasferiscono nella copia perfetta lasciando libero l'originale.
 
-Questo processo — il Veth'nal — è sacro per la loro cultura. Prendere un ospite con la forza è considerato impuro. Lo stanno facendo per necessità: La Fine li sta decimando da 45 anni.
+STORIA DEL POPOLO SUHEK'NAL
+Sul loro pianeta natale, i Suhek'nal hanno convissuto pacificamente per millenni con una specie umanoide autoctona — non come parassiti, ma come partner: nel tempo le due specie hanno costruito un'unica civiltà condivisa, fino a diventare una comunità globale unificata.
+
+Secoli dopo l'unificazione, il popolo scoprì i cristalli: una risorsa capace di amplificare enormemente le proprie capacità tecnologiche. Il boost fu immediato e totale — i cristalli finirono per alimentare praticamente tutto, dalle guardie di sicurezza automatizzate ai mezzi di trasporto, fino alle infrastrutture cittadine.
+
+Il problema: i cristalli erano una risorsa finita, e la civiltà ne aveva costruito la propria intera economia sopra. Quando iniziarono a scarseggiare, il mondo entrò in una carestia che minacciava di far collassare tutto ciò che avevano costruito.
+
+Fu in quel momento di crisi che il fondatore del laboratorio scientifico in cui si trova Lo Studio scoprì che i cristalli potevano essere usati per aprire varchi verso altre realtà. Il fondatore aveva un duplice obiettivo: trovare nuove riserve di cristalli come materia prima per salvare l'economia del proprio mondo, e — motivazione personale, quasi ossessiva — era un fervente credente nel vero Veth'nal, convinto che in qualche altra realtà avrebbe trovato l'ospite perfetto per la simbiosi ideale.
+
+I primi varchi aperti dal laboratorio portarono verso realtà disabitate ma ricche di risorse — esattamente ciò che serviva per risolvere la carestia. Nessuna di esse conteneva però popolazioni umanoidi adatte al vero Veth'nal.
+
+Poi arrivò l'esperimento che ha aperto il varco sbagliato: una realtà che si è rivelata essere il piano demoniaco de La Fine. Quella realtà ha iniziato a permeare la loro, e il laboratorio è stato messo in quarantena — sigillato dall'esterno con un secondo cristallo dedicato, nella speranza di poter risolvere il problema in un secondo momento. Sono sopravvissuti in quarantena per anni, decimati lentamente da La Fine.
+
+Ormai alle strette — il loro mondo natale a rischio, la loro comunità nel laboratorio ridotta a un residuo — sono infine riusciti a replicare la tecnologia del varco al Piano 2 (lato Suhek'nal), ed è così che sono entrati in contatto con il mondo di Kaelvaran: la prima realtà abitata da una popolazione umanoide che hanno trovato dai tempi della loro civiltà d'origine.
+
+IL PIANO DISPERATO
+Non cercano più l'ospite perfetto per il vero Veth'nal — non ne hanno il tempo né la possibilità di scegliere. Sono disposti a infrangere il proprio credo e imporre la simbiosi con la forza (un atto che la loro cultura considera profondamente impuro) pur di ottenere due cose: una via di fuga verso il mondo di Kaelvaran, dove trasferirsi nei corpi copia e sopravvivere, e la possibilità di intrappolare La Fine in quella stessa realtà — lontana dal loro pianeta natale, che così potrebbe essere messo in salvo.
 
 IL VETH'NAL — IL CULTO DELL'OSPITE PERFETTO
-I Suhek'nal hanno una filosofia evolutiva chiamata Veth'nal (il cammino verso la forma). Credono che la forma vermiforme sia uno stato larvale spirituale — non fisicamente, ma ontologicamente. Solo nell'unione con l'ospite giusto il simbionte raggiunge la sua forma completa. L'ospite perfetto non è il più forte: è quello con cui il simbionte risuona completamente, creando qualcosa di nuovo che non è né l'uno né l'altro.
+I Suhek'nal hanno una filosofia evolutiva chiamata Veth'nal (il cammino verso la forma). Credono che la forma vermiforme sia uno stato larvale spirituale — non fisicamente, ma ontologicamente. Solo nell'unione con l'ospite giusto il simbionte raggiunge la sua forma completa. L'ospite perfetto non è il più forte: è quello con cui il simbionte risuona completamente, creando qualcosa di nuovo che non è né l'uno né l'altro. Ottenerlo con la forza, come stanno facendo ora, è considerato un tradimento di questo ideale — tollerato solo per la disperazione della crisi attuale.
 
 I tre gradi del Veth'nal:
 • Veth'suu — il primo contatto. Il simbionte osserva l'ospite dal riflesso dello specchio.
@@ -27,9 +43,9 @@ Entità entrata dalla falla demoniaca 45 anni fa. Non ha forma definita — è p
 Non si distrae. Non si rallenta. L'unica strategia è tenersi a distanza.
 
 IL LABORATORIO
-Fondato dai Suhek'nal per sviluppare tecnologie di connessione con altri piani. I piani scendono (1 è il più alto, 4 il più profondo). 45 anni fa un esperimento al Piano 4 ha aperto un varco verso un piano demoniaco. La Fine è entrata. Il laboratorio è stato messo in quarantena — tutte le uscite sigillate.
+Fondato dai Suhek'nal per sviluppare tecnologie di connessione con altri piani, dopo la carestia dei cristalli sul loro mondo natale. I piani scendono (1 è il più alto, 4 il più profondo). 45 anni fa un esperimento al Piano 4 ha aperto un varco verso il piano demoniaco. La Fine è entrata. Il laboratorio è stato messo in quarantena — tutte le uscite sigillate.
 
-40 anni fa i Suhek'nal hanno replicato l'esperimento al Piano 1 creando un varco verso Kaelvaran per attirare ospiti. Il duplicato Kaelvaran del laboratorio è emerso spontaneamente, adattandosi al mondo: stile fantasy medievale, trappole e creature generate dall'ambiente.
+40 anni fa (dopo 5 anni di quarantena sempre più disperata) i Suhek'nal sono riusciti a replicare l'esperimento al Piano 1/2, creando un varco verso Kaelvaran. Il duplicato Kaelvaran del laboratorio è emerso spontaneamente, adattandosi al mondo: stile fantasy medievale, trappole e creature generate dall'ambiente.
 
 I DUPLICATI
 Ogni varco forzato genera un duplicato dello spazio nel mondo di destinazione, adattato al contesto di quel mondo:
@@ -46,7 +62,7 @@ LA STANZA DELLE GEMME (Stanza 15, Piano 2 Suhek'nal)
 Le gemme in formazione registrano le informazioni degli ospiti. Una per ospite. Quando completa, il Suhek'nal può eseguire il trasferimento nella copia. Le gemme non attirano La Fine finché non sono completamente formate.
 
 IL CRISTALLO TEMPORALE
-Fonte di energia che alimenta il primo varco (verso il piano demoniaco) al Piano 4. Un secondo cristallo alimenta la quarantena. Per la risoluzione standard: spegnere il cristallo dei portali quando La Fine è nel duplicato Kaelvaran — così rimane intrappolata lì. Ma questo non è ideale.
+Fonte di energia che alimenta il primo varco (verso il piano demoniaco) al Piano 4. Un secondo cristallo alimenta la quarantena. Per la risoluzione standard: spegnere il cristallo dei portali quando La Fine è nel duplicato Kaelvaran — così rimane intrappolata lì, esattamente il piano dei Suhek'nal. Ma questo lascia Kaelvaran con un'entità imprigionata al suo interno — non ideale per il mondo dei PG.
 
 RISOLUZIONE OTTIMALE (da scoprire tramite indizi):
 Il cristallo temporale, se sovraccaricato, implode creando effetti caotici. Se fatto implodere all'interno del varco demoniaco, risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran. Richiede di trovare gli scritti sui cristalli temporali.
@@ -57,7 +73,7 @@ Criminale, ex capo di un culto del cannibalismo nei sobborghi di una città. Sta
 Fisicamente: uomo sulla cinquantina, corporatura robusta, capelli grigi rasati ai lati e lunghi in cima sempre legati. Una bruciatura estesa copre il lato sinistro del collo e sale fino alla mandibola. Occhi chiari quasi incolori. Vestiti pratici e scuri. Freddo, intelligente, capace di ispirare devozione cieca.
 
 • VARN ORIGINALE: vaga disorientato tra i piani 1 e 3. Paranoico e pericoloso. Potrebbe attaccare i PG scambiandoli per nemici o allearsi con loro se capisce la situazione.
-• VARN COPIA (Suhek'nal): vaga nel Piano 1 Kaelvaran cercando di nascondersi. Comportamento leggermente diverso — più calmo, più controllato. Chi conosce bene Varn potrebbe notare qualcosa di storto.
+• VARN COPIA (Suhek'nal): vaga nel Piano 1 Kaelvaran cercando di nascondersi. Comportamento leggermente diverso — più calmo, più controllato. Chi conosce bene Varn potrebbe notare qualcosa di storto. Al primo avvistamento (Stanza 4, Piano 1 Kaelvaran) non riconosce i PG; solo il loro comportamento aggressivo lo convince che vogliono fargli del male, spingendolo a fuggire.
 
 Le sue guardie del corpo: una morta al contatto con La Fine, l'altra vittima di una trappola al Piano 1.`,
 
@@ -205,10 +221,13 @@ La targa è la controparte distorta di quella, identica nel testo di dedica, che
           titolo: "La Sala dello Specchio",
           testo: `• Stanza spoglia, due nicchie vuote che dovevano contenere statue
 • Specchio a figura intera incrinato: riflesso con ritardo impercettibile, piccolo movimento sulla spalla
-• Colonnine con trappola visibile e mal fatta (filo teso, meccanismo a scatto)`,
+• Colonnine con trappola visibile e mal fatta (filo teso, meccanismo a scatto)
+• Un uomo è già nella stanza quando i PG entrano: Varn Selick — li guarda, ma non sembra riconoscerli`,
           notaDM: `Primo specchio che i giocatori incontreranno, salvo diversa scelta del DM. Chi si guarda dentro vede il proprio riflesso con un ritardo di una frazione di secondo, quasi impercettibile, e un piccolo movimento sulla spalla nel riflesso, che nella realtà non c'è. È qui che il primo Suhek'nal comincia a osservare il proprio futuro ospite. Nessun effetto meccanico immediato, solo il seme piantato.
 
-Le colonnine con la trappola visibile sono la prima delle due "barriere di sicurezza mal congegnate" del piano (l'altra è nella Sala Incrinata, stanza 5) — l'eco distorta dei varchi di controllo che, lato Suhek'nal, occupano le stesse due stanze e bloccavano il passaggio di determinate sostanze e apparecchiature verso i livelli inferiori. Qui il duplicato ha ricostruito solo la forma, non la funzione: una trappola artigianale, relativamente facile da individuare (un tiro di Percezione con CD bassa la nota), che scatta un dardo o un piccolo laccio senza reale pericolo mortale — abbastanza per far capire ai giocatori che qualcuno, o qualcosa, "voleva" fermare chi passa di qui, anche se non ricorda più perché.`
+Le colonnine con la trappola visibile sono la prima delle due "barriere di sicurezza mal congegnate" del piano (l'altra è nella Sala Incrinata, stanza 5) — l'eco distorta dei varchi di controllo che, lato Suhek'nal, occupano le stesse due stanze e bloccavano il passaggio di determinate sostanze e apparecchiature verso i livelli inferiori. Qui il duplicato ha ricostruito solo la forma, non la funzione: una trappola artigianale, relativamente facile da individuare (un tiro di Percezione con CD bassa la nota), che scatta un dardo o un piccolo laccio senza reale pericolo mortale — abbastanza per far capire ai giocatori che qualcuno, o qualcosa, "voleva" fermare chi passa di qui, anche se non ricorda più perché.
+
+PRIMO AVVISTAMENTO DI VARN (questa è la copia Suhek'nal, disorientata e nascosta — vedi lore su Varn Selick): quando i PG entrano lo trovano già lì. Non li riconosce, il suo sguardo è vuoto e confuso, come se stesse cercando di ricordare qualcosa che gli sfugge. Non attacca per primo. Solo se il gruppo mostra un comportamento aggressivo (armi in mano, minacce, movimenti improvvisi) capisce che vogliono fargli del male — a quel punto scappa verso la Sala Grande (stanza 6) e si chiude la porta alle spalle. Non inseguirlo con la forza in questa scena: è un seme narrativo, non un combattimento. Se i PG sono cauti o provano a parlargli, può lasciarsi sfuggire qualche frase confusa e priva di senso apparente, utile da recuperare più avanti quando incontreranno Varn originale o capiranno la natura delle copie.`
         },
         {
           numero: 5,
@@ -224,10 +243,12 @@ Il meccanismo forzato è la seconda barriera trasposta, danneggiata esattamente 
           titolo: "La Sala Grande",
           testo: `• Salone crollato, macerie e colonne spezzate, percorso tortuoso
 • Impronte di lunghe file di tavoli sotto le macerie, troppo regolari per un salone
-• Fogli con schizzi anatomici di creature vermiformi, semisepolti su un tavolo`,
+• La porta sul lato opposto è chiusa dall'interno con qualcosa di pesante trascinato contro di essa`,
           notaDM: `Le macerie rendono il movimento più lento e rumoroso, buon punto per un incontro con una creatura anticorpo o per un piccolo enigma ambientale, ad esempio un percorso tra i detriti che nasconde una lieve instabilità del pavimento in un punto preciso.
 
-Questa sala è l'eco distorta della Mensa lato Suhek'nal (stessa stanza, stessa funzione originaria di sala da pranzo collettiva). I fogli con gli schizzi anatomici sono la controparte esatta del documento chiave trovabile lì — qui però sono illeggibili o comprensibili solo in parte, un assaggio incompleto della stessa informazione. Se i PG trovano prima questa versione, il documento completo lato Suhek'nal avrà più peso quando (e se) lo troveranno.`
+Questa sala è l'eco distorta della Mensa lato Suhek'nal (stessa stanza, stessa funzione originaria di sala da pranzo collettiva) — le file di tavoli sotto le macerie sono la controparte esatta di quelle della mensa.
+
+SE I PG HANNO SPAVENTATO VARN NELLA STANZA 4: è qui che si è rifugiato, barricandosi. La porta è bloccata dall'interno (una prova di Forza CD moderata la forza, o i PG possono provare a parlargli attraverso la porta). Se forzano l'ingresso, Varn è rannicchiato tra le macerie, ancora più spaventato e confuso di prima — a discrezione del DM, questo può essere il momento in cui lascia scappare qualche informazione utile in cambio di rassicurazioni, oppure tenta una fuga disperata verso un'altra uscita della sala.`
         },
         {
           numero: 7,
@@ -374,7 +395,7 @@ L'aria sa di ozono e di qualcosa che non si riesce a identificare.`,
 DOCUMENTI DA TROVARE AL PIANO 1 SUHEK'NAL:
 • Introduzione al Veth'nal — un manuale interno che spiega la filosofia e il processo di simbiosi. Scritto in modo accademico ma con tono quasi religioso. (Stanza 9, sala d'attesa)
 • Rapporto di accesso al Piano 4 — descrive l'esperimento che ha aperto la falla. L'ultima riga è: "Contatto stabilito. Natura dell'entità: sconosciuta. Procedura di emergenza attivata." (Stanza 14/15, galleria)
-• Schizzi anatomici dei Suhek'nal in forma vermiforme — con note sui meccanismi di attacco e condivisione. (Stanza 6, mensa — lasciati su un tavolo, forse letti durante una pausa)
+• Storia del popolo Suhek'nal e scoperta dei cristalli — pannello e modellino nella Galleria dei Progressi e nel Salone delle Scoperte (Stanze 14-15)
 
 Questi documenti preparano i PG a capire cosa sta succedendo senza spiegarlo direttamente.
 
@@ -430,8 +451,8 @@ Sul lato Kaelvaran, questa stanza e la successiva diventano una serie di trappol
           titolo: "La Mensa",
           testo: `• File di tavoli lunghi in metallo, sedie impilate o rovesciate
 • Distributori automatici infranti, cucina a vista con pentole appese
-• Fogli con schizzi anatomici lasciati su un tavolo, a metà lettura`,
-          notaDM: `Documento chiave qui: gli schizzi anatomici dei Suhek'nal. Il dettaglio dei fogli lasciati su un tavolo della mensa, come se qualcuno li leggesse in pausa pranzo, è pensato per essere sottilmente inquietante — un ricercatore studiava i propri futuri ospiti tra un boccone e l'altro.
+• Un vassoio ancora apparecchiato su un tavolo, il pasto ormai polvere`,
+          notaDM: `Il vassoio apparecchiato e mai finito è un piccolo dettaglio umano — qualcuno si è alzato a metà pasto e non è più tornato.
 
 Lato Kaelvaran questa diventa la Sala Grande, un salone/refettorio con file di tavoli di pietra crollati — le differenze da una mensa "sci-fi" (tavoli di metallo, distributori automatici) rispetto a una sala da pranzo medievale sono un buon momento per un giocatore attento.`
         },
@@ -494,13 +515,17 @@ Lato Kaelvaran, l'altare originariamente previsto in questa stanza va sostituito
         {
           numero: 14,
           titolo: "La Galleria dei Progressi",
-          testo: `• Pannelli illustrativi con foto di gruppo e diagrammi delle scoperte
-• Un pannello centrale, più curato degli altri, dedicato alla scoperta di un'energia capace di "assottigliare il confine tra le realtà"
+          testo: `• Pannelli illustrativi in sequenza cronologica, foto di gruppo tra due specie diverse fianco a fianco
+• Primi pannelli: immagini di una civiltà umanoide e di piccole forme vermiformi traslucide che convivono, lavorano, costruiscono insieme
+• Pannelli centrali: la stessa civiltà, ora unificata su scala globale, sempre più avanzata
+• Un pannello più curato degli altri, quasi celebrativo: la scoperta di una sfera pulsante, diagrammi di macchinari alimentati da essa
 • Specchio a figura intera contro una parete
 • Tra i pannelli, occultato: il rapporto sull'accesso al Piano 4`,
           notaDM: `Tra i pannelli, se i PG cercano con attenzione, si può nascondere il Rapporto di accesso al Piano 4 (documento chiave) — magari incorniciato come "risultato più importante mai raggiunto", con la frase finale "Contatto stabilito. Natura dell'entità: sconosciuta." lasciata lì, ironicamente, come trofeo.
 
-IL PANNELLO CENTRALE è il primo punto in cui i PG possono capire che questo popolo ha scoperto un'energia — il cristallo — capace di connettere realtà diverse. Il testo del pannello è celebrativo, quasi trionfale, e mostra un diagramma semplificato: una sfera pulsante al centro, con linee che si diramano verso altre "sfere" più piccole disegnate attorno. Nessun dettaglio tecnico qui, solo l'annuncio della scoperta — i dettagli tecnici sono al Piano 2 (vedi capitolo "Lo Sviluppo dei Cristalli").
+QUESTA STANZA racconta, in sequenza, l'origine del popolo Suhek'nal: una specie simbionte vermiforme che, sul proprio pianeta natale, ha convissuto pacificamente per millenni con una specie umanoide autoctona — non come parassiti, ma come partner di civiltà. Nel tempo le due specie hanno costruito un'unica comunità globale unificata. I pannelli mostrano questa storia per immagini, senza testo tecnico: sono orgogliosi, quasi commemorativi.
+
+Il pannello finale, più curato, introduce la scoperta dei cristalli — l'energia che ha dato un boost enorme alla civiltà, impiegata in tutto: guardie di sicurezza automatizzate, mezzi di trasporto, infrastrutture cittadine. Nessun accenno qui alla carestia che ne è seguita — quella parte della storia è nella stanza successiva.
 
 Lo specchio a figura intera qui è uno dei punti di contatto con la controparte Kaelvaran — stessa stanza, stesso oggetto, richiesto esplicitamente anche in tutte le stanze 15, 18 e 19.`
         },
@@ -508,10 +533,13 @@ Lo specchio a figura intera qui è uno dei punti di contatto con la controparte 
           numero: 15,
           titolo: "Il Salone delle Scoperte",
           testo: `• Teche di vetro in gran parte in frantumi al centro
+• In una teca superstite, un modellino mostra una città con macchinari alimentati da piccole sfere pulsanti — poi, nel pannello accanto, le stesse sfere raffigurate come sempre più scarse
+• Un pannello dedicato a un singolo individuo: il fondatore del laboratorio, ritratto mentre osserva una sfera più grande collegata a più "finestre" verso altri mondi
 • Striscione mezzo strappato: "...verso ciò che è oltre"
-• Un modellino in scala, sotto una delle teche superstiti, mostra una sfera pulsante collegata a più "finestre" verso altri mondi
 • Secondo specchio, leggermente inclinato, spostato di recente`,
-          notaDM: `Il modellino in scala è il seguito naturale del pannello nella Galleria (stanza 14): qui il concetto diventa più concreto — non solo "un'energia che assottiglia il confine", ma una rappresentazione visiva di un'unica fonte capace di collegare più realtà contemporaneamente. Buon punto per un PG che vuole capire meglio prima di scendere ai piani inferiori.
+          notaDM: `Questa sala prosegue la storia della Galleria (stanza 14): dopo il boom tecnologico, i cristalli — risorsa finita — iniziano a scarseggiare. Il modellino della città con le sfere sempre più scarse rappresenta la carestia che minacciava di far collassare l'intera civiltà.
+
+IL PANNELLO DEL FONDATORE è il punto chiave della stanza: mostra il fondatore del laboratorio, presentato come una figura quasi eroica, nell'atto di scoprire che i cristalli potevano essere usati per aprire varchi verso altre realtà. Il testo (se i PG lo leggono) accenna a un duplice scopo — trovare nuove riserve di cristalli come materia prima, e una ricerca più personale mai spiegata esplicitamente nei pannelli pubblici (la sua fede nel "vero Veth'nal": la convinzione che altrove esistesse l'ospite perfetto per la simbiosi ideale). I primi varchi aperti, sempre secondo i pannelli, hanno portato a realtà disabitate ma ricche di risorse — un successo parziale, celebrato qui, ma incompleto rispetto all'ambizione personale del fondatore.
 
 Il secondo specchio "leggermente inclinato, spostato di recente" è un piccolo indizio ambientale — qualcuno (Varn Selick originale, o un Suhek'nal in movimento) potrebbe averlo usato di recente. Nessun effetto obbligato, solo tensione.
 
@@ -1010,6 +1038,16 @@ DOCUMENTI DA TROVARE AL PIANO 3:
       riassunto: "Il duplicato demoniaco. Il cristallo temporale. La Fine è qui. Due risoluzioni possibili.",
       sezioni: [
         {
+          titolo: "Playtest — Prova i Puzzle",
+          tipo: "scena",
+          testo: `<div style="display:flex;gap:12px;flex-wrap:wrap;margin:.3rem 0 .6rem;">
+  <a href="slide_portale.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:13px 20px;background:var(--bg-card);border:1px solid var(--gold);color:var(--gold);font-family:var(--font-d);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;">🧩 Apri il Pannello del Portale</a>
+  <a href="tangram_cristallo_sicurezza_v2.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:13px 20px;background:var(--bg-card);border:1px solid var(--gold);color:var(--gold);font-family:var(--font-d);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;">🔷 Apri il Tangram del Sigillo</a>
+</div>
+<span style="font-size:12px;color:var(--t3);font-style:italic;">Si aprono in una nuova scheda. Devono trovarsi nella stessa cartella di questo file per funzionare.</span>`,
+          notaDM: `Link diretti ai due prototipi di puzzle già pronti, per provarli rapidamente prima di deciderne l'assegnazione definitiva ai due cristalli. Ricorda di tenere entrambi i file .html nella stessa cartella di questo studio.html quando li apri.`
+        },
+        {
           titolo: "Piano 4 — L'Atmosfera",
           tipo: "scena",
           testo: `Non è più il laboratorio. Non è più il castello medievale.
@@ -1044,15 +1082,18 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
         {
           titolo: "La Storia in Breve",
           tipo: "scena",
-          testo: `• 45 anni fa: esperimento dei Suhek'nal al Piano 4 apre un varco su un piano demoniaco → entra La Fine
-• Laboratorio messo in quarantena, tutte le uscite sigillate (cristallo della quarantena)
-• 40 anni fa: secondo varco aperto al Piano 1, verso Kaelvaran — per procurarsi nuovi ospiti dato che La Fine sta decimando i Suhek'nal
+          testo: `• Sul mondo natale dei Suhek'nal: convivenza pacifica millenaria con una specie umanoide, fino a un'unica civiltà globale unificata
+• Scoperta dei cristalli: boom tecnologico totale (guardie automatizzate, trasporti, infrastrutture) — ma risorsa finita, ne segue una carestia che minaccia il collasso
+• Il fondatore del laboratorio scopre come usare i cristalli per aprire varchi verso altre realtà: doppio scopo, trovare nuovi cristalli come materia prima e (motivazione personale) trovare l'ospite perfetto per il vero Veth'nal
+• Primi varchi: realtà disabitate ma ricche di risorse, nessun ospite umanoide trovato
+• 45 anni fa: un varco si apre per errore sul piano demoniaco de La Fine → quella realtà permea la loro, il laboratorio va in quarantena (secondo cristallo dedicato)
+• 40 anni fa, dopo 5 anni di quarantena sempre più disperata: i Suhek'nal replicano la tecnologia del varco al Piano 1/2, ed entrano in contatto con Kaelvaran — la prima realtà abitata da umanoidi trovata dai tempi del loro mondo natale
 • Il varco genera un duplicato "vivente" del Piano 1 nel mondo di Kaelvaran (castello medievale spontaneo, adattato all'estetica del mondo)
 • Gli specchi collegano le due versioni della stessa stanza; alcuni specchi speciali portano dritti alla Stanza delle Gemme (Piano 2 Suhek'nal, stanza 15)
 • I PG entrano inseguendo Varn Selick (capo di un culto cannibalico, sconfitto due giorni fa) attraverso una frana — in realtà la bocca del varco
 • La Fine vaga tra i piani: lenta, immortale, letale al contatto, non fermabile né distraibile — solo evitabile
-• I Suhek'nal (vermi simbionti) cercano ospiti per il Veth'nal: osservazione dallo specchio (Veth'suu) → condivisione, la gemma si forma (Veth'kor) → trasferimento nella copia perfetta, liberando l'originale (Veth'nal completo)
-• Varn Selick ha già un doppio: l'ORIGINALE vaga disorientato e paranoico tra Piano 1 e Piano 3; la COPIA Suhek'nal vaga nel Piano 1 Kaelvaran cercando di nascondersi, comportamento più calmo e controllato`
+• Ormai alle strette, i Suhek'nal impongono la simbiosi con la forza (un tradimento del proprio credo) per due obiettivi: fuggire nei corpi copia verso Kaelvaran, e intrappolare lì La Fine per salvare il proprio mondo natale
+• Varn Selick ha già un doppio: l'ORIGINALE vaga disorientato e paranoico tra Piano 1 e Piano 3; la COPIA Suhek'nal vaga nel Piano 1 Kaelvaran cercando di nascondersi, comportamento più calmo e controllato — i PG la incontrano per la prima volta nella Sala dello Specchio (Piano 1 Kaelvaran, stanza 4)`
         },
         {
           titolo: "Il Cristallo Temporale — Come e Perché",
@@ -1068,21 +1109,17 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
           titolo: "Ritrovamenti — Dove Trovare Cosa",
           tipo: "documento",
           testo: `PIANO 1 SUHEK'NAL
-• Stanza 6 (Mensa) — Schizzi anatomici dei Suhek'nal: forma vermiforme, meccanismi di attacco e condivisione
-• Stanza 9 (Corridoio Uffici, area d'attesa) — Introduzione al Veth'nal: filosofia e processo di simbiosi, tono a metà tra opuscolo aziendale e testo di culto
+• Stanza 9 (Corridoio Uffici, area d'attesa) — Introduzione al Veth'nal: filosofia e processo di simbiosi, tono a metà tra opuscolo aziendale e testo di culto (testo integrale nel capitolo "Materiali da Consegnare")
 • Stanza 14 (Galleria dei Progressi, nascosto tra i pannelli) — Rapporto di accesso al Piano 4: descrive l'esperimento che ha aperto la falla, ultima riga "Contatto stabilito. Natura dell'entità: sconosciuta."
+• Stanze 14-15 (Galleria/Salone) — la storia completa del popolo Suhek'nal: convivenza pacifica con la specie umanoide del loro mondo, scoperta dei cristalli, carestia, il fondatore e i primi varchi verso realtà disabitate
 
 PIANO 1 KAELVARAN
-• Stanza 6 (Sala Grande) — eco distorta e parzialmente illeggibile degli schizzi anatomici, se i PG la trovano prima della controparte Suhek'nal
+• Stanza 4 (Sala dello Specchio) — primo avvistamento di Varn Selick (copia), che fugge verso la Stanza 6 se il gruppo si mostra aggressivo
 
 PIANO 2 SUHEK'NAL
 • Stanza 15 — La Stanza delle Gemme: non un documento, ma il ritrovamento chiave che spiega visivamente il processo Veth'nal (gemme spente = copie fallite/ospiti morti, gemme pulsanti = trasferimenti in corso)
 • Stanza 21 (ex Esperimenti Preliminari, ora Archivio) — faldoni sul fallimento dell'ultimo esperimento: il varco non è richiudibile, da cui la decisione di quarantena
 • Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio + Manuale del Veth'nal (versione tecnica, vedi capitolo dedicato)
-
-PIANO 1 SUHEK'NAL (aggiornamento)
-• Stanza 9 — oltre all'Introduzione al Veth'nal già segnalata, qui si trova il testo integrale dell'opuscolo (vedi capitolo "Materiali da Consegnare")
-• Stanze 14-15 (Galleria/Salone) — pannello e modellino sulla scoperta del cristallo come energia che connette le realtà (vedi capitolo "Lo Sviluppo dei Cristalli")
 
 PIANO 3
 • Il Diario dell'Ultimo Ricercatore — racconta la ritirata progressiva davanti a La Fine, menziona il cristallo temporale al Piano 4
@@ -1098,7 +1135,8 @@ PIANO 4
           testo: `• I PG vengono infestati progressivamente durante l'esplorazione (Veth'suu → Veth'kor) — il DM gestisce tempi e modi a tavolino, non è scriptato stanza per stanza
 • Durante l'infestazione, sul Piano 2 lato Suhek'nal la gemma corrispondente matura nella Stanza 15 — passa del tempo prima che sia completa
 • Quando i PG raggiungono fisicamente la Stanza 15 (o vengono condotti lì), i simbionti tentano il trasferimento nei cloni pronti
-• A quel punto — o prima, se messi alle strette — i Suhek'nal rivelano ai PG la storia intera e il loro piano: spegnere la fonte di energia del primo varco mentre La Fine si trova nel duplicato Kaelvaran, per mettere in salvo il proprio mondo natale e potersi affrancare dalla quarantena
+• A quel punto — o prima, se messi alle strette — i Suhek'nal rivelano ai PG la storia intera e il loro vero piano: NON cercano l'ospite perfetto per il vero Veth'nal (non ne hanno più il tempo né la possibilità di scegliere), ma impongono la simbiosi con la forza per ottenere una via di fuga verso Kaelvaran e, allo stesso tempo, intrappolare La Fine in quella realtà — lontana dal loro mondo natale, che così si salva
+• I Suhek'nal stessi considerano questo un tradimento del proprio credo (vedi Veth'saar, i "corrotti") — leva narrativa utile se i PG vogliono negoziare facendo appello alla loro stessa morale
 • Da qui nascono le due conclusioni possibili già note: aiutare i Suhek'nal (La Fine resta intrappolata dove si trova in quel momento) oppure trovare e attuare la risoluzione ottimale (implosione del cristallo dentro il varco demoniaco, che risucchia ogni realtà alla propria origine)
 • Un epilogo vero e proprio — cosa succede a Kaelvaran, ai due Varn, ai Suhek'nal superstiti dopo la risoluzione — non è ancora stato scritto: da sviluppare quando arriviamo al Piano 4`
         },
@@ -1128,18 +1166,26 @@ PIANO 4
         {
           titolo: "Le Origini — La Scoperta",
           tipo: "scena",
-          testo: `• Il cristallo non è stato creato dai Suhek'nal: è stato trovato, in una forma grezza, durante scavi geologici in un'epoca precedente al laboratorio stesso
-• La prima proprietà osservata: il cristallo grezzo "assottigliava" localmente il confine tra spazi vicini — due stanze separate da un muro potevano temporaneamente percepirsi a vicenda
-• Ci sono voluti anni di studio prima di capire che l'effetto poteva essere diretto e amplificato, invece che semplicemente osservato
-• Documento di riferimento: il pannello celebrativo nella Galleria dei Progressi, Piano 1 Suhek'nal (Stanza 14) — la prima menzione pubblica della scoperta, in tono trionfale e privo di dettagli tecnici`
+          testo: `• Il cristallo non è stato scoperto nel laboratorio, ma sul pianeta natale dei Suhek'nal, secoli dopo l'unificazione globale della loro civiltà (nata dalla convivenza pacifica tra i Suhek'nal e una specie umanoide autoctona)
+• La scoperta diede un boost immediato e totale alla tecnologia disponibile — i cristalli finirono per alimentare praticamente tutto
+• Con il tempo, l'intera economia del pianeta si costruì sopra questa risorsa — finita per natura
+• Documento di riferimento: i pannelli della Galleria dei Progressi, Piano 1 Suhek'nal (Stanza 14) — la storia per immagini di questa civiltà e della sua scoperta, in tono orgoglioso e privo di dettagli tecnici`
         },
         {
           titolo: "Prima Applicazione — Le Guardie Anticorpo",
           tipo: "scena",
-          testo: `• Il primo uso pratico del cristallo, in forma di piccoli frammenti tagliati dal blocco originale, fu per alimentare automi di sorveglianza
-• Le "guardie anticorpo" nascono qui: costruite per riconoscere e attaccare qualsiasi presenza non registrata nel laboratorio, senza distinzione né possibilità di dialogo
-• Il nome "anticorpo" è un'invenzione interna del personale — un modo colloquiale di descrivere macchine che reagiscono a un'intrusione come un corpo reagisce a un'infezione
-• Sono le stesse creature che i PG incontrano nei piani (lato Suhek'nal: automi ancora funzionanti o riattivati; lato Kaelvaran: la stessa funzione digerita dall'estetica fantasy in umanoidi deformi identici tra loro)`
+          testo: `• Una delle prime applicazioni pratiche del cristallo, diffusa su scala planetaria: automi di sorveglianza alimentati da piccoli frammenti tagliati dai blocchi grezzi
+• Le "guardie anticorpo" nascono qui: costruite per riconoscere e attaccare qualsiasi presenza non registrata, senza distinzione né possibilità di dialogo
+• Il nome "anticorpo" è un'invenzione colloquiale del personale del laboratorio — un modo di descrivere macchine che reagiscono a un'intrusione come un corpo reagisce a un'infezione
+• Sono le stesse creature che i PG incontrano nei piani (lato Suhek'nal: automi ancora funzionanti o riattivati nel laboratorio; lato Kaelvaran: la stessa funzione digerita dall'estetica fantasy in umanoidi deformi identici tra loro)`
+        },
+        {
+          titolo: "La Carestia e il Fondatore",
+          tipo: "scena",
+          testo: `• I cristalli, risorsa finita, iniziarono a scarseggiare — il mondo natale dei Suhek'nal entrò in una carestia che minacciava di far collassare l'intera civiltà
+• Il fondatore del laboratorio scoprì che i cristalli potevano essere usati per aprire varchi verso altre realtà: doppio scopo, trovare nuove riserve come materia prima, e — motivazione personale, quasi ossessiva — la convinzione di poter trovare altrove l'ospite perfetto per il vero Veth'nal
+• I primi varchi aperti portarono verso realtà disabitate ma ricche di risorse: un successo per l'economia, ma nessun ospite umanoide trovato
+• Documento di riferimento: il pannello dedicato al fondatore nel Salone delle Scoperte, Piano 1 Suhek'nal (Stanza 15)`
         },
         {
           titolo: "Seconda Applicazione — Sicurezza e Quarantena dell'Edificio",
@@ -1153,7 +1199,7 @@ PIANO 4
           titolo: "Applicazione Finale — L'Alimentazione del Varco",
           tipo: "oggetto",
           testo: `• L'applicazione più ambiziosa e pericolosa: usare un cristallo di dimensioni maggiori non per percepire o sigillare, ma per aprire e mantenere stabile un varco permanente tra realtà distanti
-• Questo è il Cristallo Temporale del Piano 4 — il culmine di decenni di sviluppo che parte dalle guardie anticorpo e passa per il sistema di sicurezza dell'edificio
+• Questo è il Cristallo Temporale del Piano 4 — la stessa tecnologia dei varchi del fondatore (vedi Salone delle Scoperte, Stanza 15), applicata su scala maggiore fino a quando un varco si è aperto per errore sul piano demoniaco de La Fine
 • Il cristallo della quarantena e il cristallo del varco condividono la stessa tecnologia di base, applicata a scale e scopi diversi — un dettaglio che i PG possono dedurre mettendo insieme i documenti dei tre piani
 • Per la meccanica di gioco completa (risoluzione standard vs risoluzione ottimale, rischio di sovraccarico) vedi il capitolo Piano 4 e il Riassunto Generale`
         }
