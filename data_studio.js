@@ -130,6 +130,68 @@ Ci sono cose qui dentro che non vogliono farvi del male. Ce ne sono altre che no
   capitoli: [
 
     {
+      id: "scaletta_provvisoria",
+      titolo: "Scaletta della Progressione (Bozza)",
+      icona: "📋",
+      riassunto: "L'ordine degli eventi piano per piano, così come pensato dal DM. Provvisoria — da incrociare con lo sviluppo effettivo delle stanze.",
+      sezioni: [
+        {
+          titolo: "Piano 1",
+          tipo: "scena",
+          testo: `• Ingresso
+• Il portale lato Kaelvaran con cavi che scendono
+• Primo simbionte
+• Guardie ridotte male — Combattimento
+• Varn Selick copia
+• La Fine
+• Varn Selick originale
+• Non possono uscire
+• Il museo
+• Secondo simbionte
+• La stanza dei bambini`
+        },
+        {
+          titolo: "Piano 2",
+          tipo: "scena",
+          testo: `• Guardie ridotte male — Combattimento
+• Terzo simbionte
+• Archivio generale lato Kaelvaran
+• I primi due simbionti si mettono a discutere sottovoce
+• La Fine
+• Sala medica e Stanze private
+• Attraverso lo specchio
+• Diario ricercatore sugli ultimi esperimenti
+• La Fine
+• Archivio generale lato Suhek'nal — Scritti sui cristalli
+• La stanza delle gemme dei cloni
+• Racconto con i Suhek'nal
+• Sviluppo del piano`
+        },
+        {
+          titolo: "Piano 3",
+          tipo: "scena",
+          testo: `• Atmosfera demoniaca e stridente
+• Varn Selick originale impazzito
+• Macchie di oblio demoniaco`
+        },
+        {
+          titolo: "Piano 4",
+          tipo: "scena",
+          testo: `• Ilchia
+• Le camere dei dannati
+• Orrori che cercano di ghermirli
+• Il cristallo della quarantena
+• Varn Selick originale corrotto
+• Il cristallo del portale
+• Combattimento con i demoni
+• Implosione
+• Tutti a casa`
+        }
+      ],
+      musica: null
+    },
+
+    {
       id: "ingresso",
       titolo: "Ingresso — La Frana",
       icona: "🪨",
