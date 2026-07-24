@@ -1190,7 +1190,7 @@ CONFERMATO: questo piano è uno spazio unico fuso, non diviso in due versioni sp
           tipo: "documento",
           testo: `PIANO 1 SUHEK'NAL
 • Stanza 9 (Corridoio Uffici, area d'attesa) — Introduzione al Veth'nal: filosofia e processo di simbiosi, tono a metà tra opuscolo aziendale e testo di culto (testo integrale nel capitolo "Materiali da Consegnare")
-• Stanza 14 (Galleria dei Progressi, nascosto tra i pannelli) — Rapporto di accesso al Piano 4: descrive l'esperimento che ha aperto la falla, ultima riga "Contatto stabilito. Natura dell'entità: sconosciuta."
+• Stanza 14 (Galleria dei Progressi, nascosto tra i pannelli) — Rapporto di accesso al Piano 4: descrive l'esperimento che ha aperto la falla, ultima riga "Contatto stabilito. Natura dell'entità: sconosciuta." (testo integrale nel capitolo "Materiali da Consegnare — I Documenti sui Cristalli")
 • Stanze 14-15 (Galleria/Salone) — la storia completa del popolo Suhek'nal: convivenza pacifica con la specie umanoide del loro mondo, scoperta dei cristalli, carestia, il fondatore e i primi varchi verso realtà disabitate
 
 PIANO 1 KAELVARAN
@@ -1198,9 +1198,9 @@ PIANO 1 KAELVARAN
 
 PIANO 2 SUHEK'NAL
 • Stanza 15 — La Stanza delle Gemme: non un documento, ma il ritrovamento chiave che spiega visivamente il processo Veth'nal (gemme spente = copie fallite/ospiti morti, gemme pulsanti = trasferimenti in corso)
-• Stanza 21 (ex Esperimenti Preliminari, ora Archivio) — faldoni sul fallimento dell'ultimo esperimento: il varco non è richiudibile, da cui la decisione di quarantena
-• Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio + Manuale del Veth'nal (versione tecnica)
-• Stanza 13 (Deposito Terminale — Archivio Generale) — Il Diario dell'Ultimo Ricercatore (ritirata davanti a La Fine) + Gli Scritti sui Cristalli Temporali (CHIAVE per la risoluzione ottimale)
+• Stanza 21 (ex Esperimenti Preliminari, ora Archivio) — faldoni sul fallimento dell'ultimo esperimento: il varco non è richiudibile, da cui la decisione di quarantena (testo integrale nel capitolo "Materiali da Consegnare — I Documenti sui Cristalli")
+• Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio (testo integrale nel capitolo dedicato) + Manuale del Veth'nal (versione tecnica, testo nel capitolo "Materiali da Consegnare — Opuscoli sul Veth'nal")
+• Stanza 13 (Deposito Terminale — Archivio Generale) — Il Diario dell'Ultimo Ricercatore (ritirata davanti a La Fine) + Gli Scritti sui Cristalli Temporali (CHIAVE per la risoluzione ottimale) — testi integrali nel capitolo "Materiali da Consegnare — I Documenti sui Cristalli"
 
 PIANO 3
 • Nessun documento nuovo — è il piano dello scontro fisico con Varn Selick originale (vedi lore su Varn)
@@ -1347,6 +1347,141 @@ Il presente protocollo accelerato è considerato, secondo le linee guida tradizi
 LA NOTA SULLA PUREZZA DEL PROCESSO è importante narrativamente: conferma esplicitamente ai PG che quello che stanno vivendo (possessione forzata) è considerato "impuro" persino dai Suhek'nal stessi — non è la norma della loro cultura, è una deviazione dettata dalla disperazione causata da La Fine. Buona leva se i PG vogliono negoziare o fare leva sulla morale interna dei Suhek'nal.
 
 Questo documento può essere piazzato in una stanza a scelta del DM ai Piani 1 o 2 (suggerito: Ufficio del Supervisore, Piano 2 Stanza 8, insieme al memo sulla quarantena).`
+        }
+      ],
+      musica: null
+    },
+
+    {
+      id: "materiali_cristalli",
+      titolo: "Materiali da Consegnare — I Documenti sui Cristalli",
+      icona: "💠",
+      riassunto: "Testi completi di tutti i documenti relativi ai cristalli trovabili nel gioco, pronti da leggere in sessione o stampare: il rapporto dell'incidente, i faldoni dell'archivio, il memo di sicurezza, il diario del ricercatore e — il più importante — gli Scritti sui Cristalli Temporali.",
+      sezioni: [
+        {
+          titolo: "1 — Rapporto di Accesso al Piano 4 (Piano 1 Suhek'nal, Stanza 14)",
+          tipo: "documento",
+          testo: `RAPPORTO INCIDENTE — ACCESSO SPERIMENTALE PIANO 4
+Classificazione: riservato — solo personale autorizzato
+
+RIEPILOGO
+In data odierna è stato condotto il quarantaduesimo tentativo di apertura di varco verso una nuova realtà, utilizzando il cristallo principale in configurazione avanzata (vedi allegato tecnico 42-A). L'obiettivo dichiarato era l'individuazione di nuovi giacimenti di cristallo grezzo per sostenere l'economia del nostro mondo natale.
+
+CRONOLOGIA
+09:14 — Attivazione del cristallo. Lettura energetica nella norma.
+09:17 — Apertura del varco confermata. Configurazione geometrica dall'altra parte non corrisponde a nessuno dei modelli previsti.
+09:19 — Prima squadra di osservazione invia rapporto: "atmosfera irrespirabile, temperatura elevata, presenza di forme di vita non identificate."
+09:23 — Interruzione delle comunicazioni con la prima squadra.
+09:25 — Rilevata anomalia in espansione dal punto di contatto. La superficie del varco non si richiude secondo i parametri previsti.
+09:31 — Decisione di tentare la chiusura forzata. Fallita.
+
+ESITO
+Il varco non risulta richiudibile con i mezzi attualmente disponibili. Si raccomanda l'attivazione immediata della procedura di quarantena su tutto il laboratorio, in attesa di ulteriori sviluppi tecnici che permettano una soluzione definitiva.
+
+Contatto stabilito. Natura dell'entità: sconosciuta. Procedura di emergenza attivata.`,
+          notaDM: `Questo è il documento che i PG possono trovare nascosto tra i pannelli della Galleria dei Progressi (Piano 1 Suhek'nal, Stanza 14) — già citato lì, qui il testo completo. La frase finale è deliberatamente lasciata identica a come già accennata altrove: è la prima conferma diretta, in un linguaggio burocratico quasi comico nella sua freddezza, di cosa sia successo 45 anni fa. Non nomina mai "La Fine" — a quel tempo i Suhek'nal non avevano ancora un nome per lei.`
+        },
+        {
+          titolo: "2 — Faldoni sul Fallimento dell'Ultimo Esperimento (Piano 2 Suhek'nal, Stanza 21)",
+          tipo: "documento",
+          testo: `ARCHIVIO TECNICO — REVISIONE POST-INCIDENTE
+Fascicolo 42 — Conclusioni
+
+Il presente fascicolo raccoglie le conclusioni del comitato tecnico incaricato di analizzare il fallimento dell'esperimento 42 (vedi Rapporto Incidente, Piano 4).
+
+CONCLUSIONE 1 — NATURA DEL VARCO
+Il varco aperto non condivide le proprietà dei precedenti 41 tentativi riusciti. Laddove le realtà precedenti si sono dimostrate stabili e richiudibili a comando, questa mostra una resistenza attiva alla chiusura, come se qualcosa dall'altra parte si opponesse attivamente al processo.
+
+CONCLUSIONE 2 — IMPOSSIBILITÀ DI CHIUSURA
+Dopo undici tentativi con metodi progressivamente più aggressivi, il comitato conclude che il varco non è richiudibile con la tecnologia attualmente disponibile. Ulteriori tentativi rischiano di aggravare l'instabilità anziché risolverla.
+
+CONCLUSIONE 3 — RACCOMANDAZIONE
+Si raccomanda l'installazione immediata di un secondo cristallo, dedicato esclusivamente al contenimento, per sigillare tutte le uscite del complesso. Questa misura è da considerarsi TEMPORANEA, in attesa di una soluzione tecnica definitiva che il comitato non è al momento in grado di formulare.
+
+NOTA FINALE, aggiunta a mano in calce al fascicolo, data successiva:
+"Sono passati sei mesi. Nessuna soluzione definitiva è stata trovata. La quarantena regge, ma quanto ancora? — F."`,
+          notaDM: `Questo fascicolo dovrebbe trovarsi nell'armadio archivio della Sala degli Esperimenti Preliminari (Piano 2 Suhek'nal, Stanza 21, ora ridefinita come Archivio). È il documento che permette ai PG di collegare esplicitamente: cristallo del varco fallito → impossibilità di richiuderlo → nascita del cristallo di quarantena.
+
+La nota finale a mano, firmata solo "F.", è un piccolo gancio narrativo aperto — potrebbe essere il fondatore stesso (la cui iniziale non è mai stata specificata altrove, quindi il DM è libero di usarla o ignorarla), o un altro ricercatore. Non è necessario risolverlo.`
+        },
+        {
+          titolo: "3 — Memo sul Sistema di Sicurezza e Quarantena (Piano 2 Suhek'nal, Stanza 8)",
+          tipo: "documento",
+          testo: `MEMORANDUM INTERNO
+Da: Ufficio Tecnico
+A: Tutto il personale
+Oggetto: Riconversione dei sistemi di sicurezza — approvato
+
+A seguito delle conclusioni del Fascicolo 42, questo ufficio conferma l'approvazione per la riconversione dell'intero sistema di sicurezza dell'edificio a supporto della quarantena.
+
+Come noto a tutto il personale, i sistemi di sicurezza automatizzata (guardie, controllo accessi, barriere ai piani) condividono la stessa tecnologia di base derivata dai cristalli. La riconversione richiede modifiche minime: gli stessi protocolli che impediscono l'accesso di sostanze e apparecchiature non autorizzate tra i piani sono ora estesi a coprire l'intero perimetro esterno del complesso.
+
+Il personale è pregato di non allarmarsi per il temporaneo malfunzionamento di alcune unità di sicurezza durante la fase di transizione. Le unità torneranno pienamente operative entro la fine della settimana.
+
+Si ricorda che l'uscita dal complesso, fino a nuovo avviso, non è possibile per nessun membro del personale, indipendentemente dal grado o dall'anzianità di servizio.
+
+Timbro di approvazione in calce, firma illeggibile.`,
+          notaDM: `Il memo trovabile nell'Ufficio del Supervisore (Piano 2 Suhek'nal, Stanza 8), insieme al Manuale del Veth'nal. Collega esplicitamente la tecnologia delle guardie anticorpo (già incontrate dai PG) al sistema di quarantena che li tiene rinchiusi — buon momento per un giocatore attento per capire che le stesse guardie che li hanno attaccati ai piani precedenti sono, in un certo senso, la causa "burocratica" per cui nessuno può più uscire da qui.
+
+L'ultima riga ("l'uscita... non è possibile per nessun membro del personale") è la conferma diretta che nemmeno i Suhek'nal possono andarsene — rinforza la disperazione della loro situazione attuale.`
+        },
+        {
+          titolo: "4 — Il Diario dell'Ultimo Ricercatore (Piano 2 Suhek'nal, Stanza 13)",
+          tipo: "documento",
+          testo: `[Le prime pagine sono illeggibili, danneggiate dall'umidità. Il testo leggibile riprende a metà.]
+
+...ancora tre unità di sicurezza fuori uso questa settimana. Non riesco a capire se le sta distruggendo o se semplicemente le attraversa e basta, come se non fossero lì. Forse è proprio questo il punto: per lei, probabilmente, non lo sono.
+
+Abbiamo smesso di chiamarla con il nome tecnico del rapporto. Tra noi, ormai, la chiamiamo solo "La Fine". Nessuno ricorda chi l'ha detto per primo. È rimasto.
+
+—
+
+Oggi abbiamo perso il Piano 4 per intero. Non nel senso che è stato distrutto — nel senso che nessuno è più disposto a scendere fin laggiù, nemmeno con la promessa di una razione doppia. Non li biasimo.
+
+—
+
+Ho sentito dire che il comitato sta valutando l'idea del "secondo varco" — verso una realtà abitata, stavolta, non per le risorse ma per... non voglio scriverlo. So cosa significa. So cosa richiederebbe. Ho passato la vita a credere nel vero Veth'nal, nell'unione che si sceglie, non che si impone. Se lo fanno davvero, non sarà più quello in cui ho creduto.
+
+—
+
+Ancora nessuna soluzione dal comitato tecnico. Il cristallo del varco resta lì, silenzioso, come se aspettasse che qualcuno commettesse di nuovo lo stesso errore. O forse aspetta solo che smettiamo di provare a chiuderlo, e proviamo invece a capire cosa succederebbe se lo facessimo esplodere da dentro—`,
+          notaDM: `Il diario si interrompe letteralmente a metà frase — l'autore non ha mai finito quel pensiero, o non ha mai avuto la possibilità di scriverlo. È il documento più importante emotivamente del gioco: mostra un Suhek'nal comune, non un simbionte antagonista, che si oppone moralmente al piano che poi verrà comunque attuato (l'imposizione forzata del Veth'nal descritta nella Lore Segreta).
+
+L'ultima riga, se i PG ci fanno caso, è anche il primo accenno — non confermato, solo intuito da un ricercatore disperato — all'idea dell'implosione come soluzione. Non è un'istruzione tecnica (quella è negli Scritti sui Cristalli Temporali, documento successivo), ma pianta il seme concettuale prima ancora che i PG trovino la vera chiave.
+
+Da piazzare insieme agli Scritti sui Cristalli Temporali nell'Archivio Generale (Stanza 13).`
+        },
+        {
+          titolo: "5 — Gli Scritti sui Cristalli Temporali (Piano 2 Suhek'nal, Stanza 13) — CHIAVE RISOLUZIONE OTTIMALE",
+          tipo: "documento",
+          testo: `NOTE TECNICHE SUL COMPORTAMENTO DEI CRISTALLI IN CONDIZIONI DI SOVRACCARICO
+Documento di lavoro — incompleto, mai sottoposto a revisione formale
+
+1. PREMESSA
+Il cristallo, in condizioni normali, mantiene un varco stabile tra due realtà distinte, agendo come un punto di ancoraggio permanente. Le nostre osservazioni indicano che questa stabilità dipende da un preciso equilibrio energetico tra le due realtà collegate.
+
+2. OSSERVAZIONE PRINCIPALE
+Se l'equilibrio viene deliberatamente rotto — tramite un afflusso di energia superiore alla capacità di ancoraggio del cristallo — il cristallo non si limita a spegnersi. Entra in una fase di instabilità crescente che, nei nostri modelli teorici (mai testati), dovrebbe concludersi in un collasso totale della struttura.
+
+3. IPOTESI SUGLI EFFETTI DEL COLLASSO
+Non abbiamo dati sperimentali diretti — nessuno ha mai osato provare, per ovvie ragioni di sicurezza. I nostri modelli teorici suggeriscono però che il collasso, se avvenisse mentre il varco è aperto, non chiuderebbe semplicemente il passaggio: lo invertirebbe. Ogni entità, oggetto o porzione di realtà che si trova "nel posto sbagliato" rispetto alla propria origine verrebbe risucchiata indietro, verso la realtà a cui appartiene in origine.
+
+4. AVVERTENZA
+Questo documento è teorico. Non abbiamo modo di verificarlo senza un test diretto, che nessuno del comitato è disposto ad autorizzare, viste le conseguenze di un fallimento (il collasso potrebbe anche semplicemente distruggere tutto quanto si trova nel raggio d'azione, senza alcun effetto "correttivo").
+
+5. CONDIZIONE NECESSARIA
+Perché l'inversione funzioni secondo il modello teorico, il collasso deve avvenire con il cristallo fisicamente all'interno del varco stesso, non a distanza. Sovraccaricarlo da remoto produrrebbe solo un'esplosione convenzionale, priva dell'effetto di inversione.
+
+[Il documento si interrompe qui. Non risultano altre pagine.]`,
+          notaDM: `QUESTO È IL DOCUMENTO CHIAVE per sbloccare la risoluzione ottimale del finale. Senza di esso, i PG possono al massimo dedurre la risoluzione standard (spegnere il cristallo mentre La Fine è nel duplicato Kaelvaran).
+
+Punti meccanici da sottolineare se i PG lo leggono:
+• Il sovraccarico produce un'implosione, non una semplice disattivazione
+• L'implosione, se avviene CON IL CRISTALLO DENTRO IL VARCO, risucchia ogni realtà alla propria origine — è il modo per liberare Kaelvaran, il mondo natale dei Suhek'nal, e rispedire La Fine al suo piano, tutto insieme
+• Il documento è esplicitamente teorico e mai testato — buona fonte di tensione narrativa: i PG staranno eseguendo qualcosa che nessuno ha mai provato prima
+• Il punto 5 è la condizione pratica più importante per la sequenza finale: il cristallo va sovraccaricato mentre si trova fisicamente dentro il varco, non a distanza di sicurezza — il che significa che chi esegue la procedura non può allontanarsi prima del collasso, alzando la posta della scena finale
+
+Da piazzare insieme al Diario dell'Ultimo Ricercatore nell'Archivio Generale (Stanza 13, Piano 2 Suhek'nal).`
         }
       ],
       musica: null
