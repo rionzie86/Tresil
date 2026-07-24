@@ -65,14 +65,14 @@ IL CRISTALLO TEMPORALE
 Fonte di energia che alimenta il primo varco (verso il piano demoniaco) al Piano 4. Un secondo cristallo alimenta la quarantena. Per la risoluzione standard: spegnere il cristallo dei portali quando La Fine è nel duplicato Kaelvaran — così rimane intrappolata lì, esattamente il piano dei Suhek'nal. Ma questo lascia Kaelvaran con un'entità imprigionata al suo interno — non ideale per il mondo dei PG.
 
 RISOLUZIONE OTTIMALE (da scoprire tramite indizi):
-Il cristallo temporale, se sovraccaricato, implode creando effetti caotici. Se fatto implodere all'interno del varco demoniaco, risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran. Richiede di trovare gli scritti sui cristalli temporali.
+Il cristallo temporale, se sovraccaricato, implode creando effetti caotici. Se fatto implodere all'interno del varco demoniaco, risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran. Richiede di trovare gli scritti sui cristalli temporali (Piano 2, Archivio Generale).
 
 VARN SELICK
 Criminale, ex capo di un culto del cannibalismo nei sobborghi di una città. Stava cercando di evocare e soggiogare un incubo della prima era. I PG lo hanno sconfitto due giorni fa ma è fuggito, lasciando tracce che li hanno portati fino alla frana.
 
 Fisicamente: uomo sulla cinquantina, corporatura robusta, capelli grigi rasati ai lati e lunghi in cima sempre legati. Una bruciatura estesa copre il lato sinistro del collo e sale fino alla mandibola. Occhi chiari quasi incolori. Vestiti pratici e scuri. Freddo, intelligente, capace di ispirare devozione cieca.
 
-• VARN ORIGINALE: vaga disorientato tra i piani 1 e 3. Paranoico e pericoloso. Potrebbe attaccare i PG scambiandoli per nemici o allearsi con loro se capisce la situazione.
+• VARN ORIGINALE: le prime volte che i PG lo incrociano (vagando tra Piano 1 e Piano 2) è solo disorientato e paranoico — potrebbe attaccarli scambiandoli per nemici o cercare di allearsi se capisce la situazione. Al Piano 3 lo scontro diventa reale: un vero combattimento, durante il quale Varn riesce a divorare un pezzo di un demone (uno degli "orrori" locali) assorbendone parte dei poteri. Da quel momento è irrimediabilmente corrotto. Al Piano 4 è il nemico finale da sconfiggere mentre i PG cercano di recuperare i due cristalli — non più un uomo disorientato, ma qualcosa che ha smesso di esserlo.
 • VARN COPIA (Suhek'nal): vaga nel Piano 1 Kaelvaran cercando di nascondersi. Comportamento leggermente diverso — più calmo, più controllato. Chi conosce bene Varn potrebbe notare qualcosa di storto. Al primo avvistamento (Stanza 4, Piano 1 Kaelvaran) non riconosce i PG; solo il loro comportamento aggressivo lo convince che vogliono fargli del male, spingendolo a fuggire.
 
 Le sue guardie del corpo: una morta al contatto con La Fine, l'altra vittima di una trappola al Piano 1.`,
@@ -118,10 +118,9 @@ Ci sono cose qui dentro che non vogliono farvi del male. Ce ne sono altre che no
       {
         id: "piano4",
         nome: "Piano 4",
-        versioni: ["Kaelvaran-demoniaco", "Suhek'nal"],
+        versioni: ["Spazio unico fuso — non diviso in Kaelvaran/Suhek'nal"],
         stanze: 17,
-        tema_kaelvaran: "Il duplicato demoniaco. Girone infernale, geometrie impossibili, calore insopportabile. Il cristallo temporale.",
-        tema_suheknal: "Il laboratorio profondo. L'origine della falla. Il varco demoniaco ancora aperto. La fonte di energia."
+        tema: "CONFERMATO: qui le due realtà collassano in un unico spazio, non due versioni speculari come nei piani precedenti. Il duplicato demoniaco e il laboratorio profondo coesistono nello stesso luogo — girone infernale e laboratorio si sovrappongono senza soluzione di continuità: geometrie impossibili, calore insopportabile, macchinari Suhek'nal semi-fusi con la pietra e la carne del piano demoniaco. Il cristallo temporale e il cristallo della quarantena sono entrambi qui. Varn Selick (corrotto dopo aver assorbito potere demoniaco al Piano 3) è il nemico finale del piano."
       }
     ]
   },
@@ -262,12 +261,14 @@ LA LASTRA DI VETRO e LA GARGOLLA sono i primi due elementi "storti" del piano �
           titolo: "Il Corridoio dei Frammenti",
           testo: `• Corridoio lungo e stretto, detriti rumorosi sotto i piedi
 • Tre finestre murate di terra in fila, una con terra smossa di recente
-• Fila di archetti scolpiti troppo sinuosi per mano umana, con piccole gargolle ripetute a intervalli`,
+• Fila di archetti scolpiti troppo sinuosi per mano umana, con piccole gargolle ripetute a intervalli
+• A metà corridoio, un arco di pietra alto quasi quanto il soffitto, con al centro una superficie liscia e scura come acqua ferma verticale — cavi di metallo scendono dal soffitto e si perdono dentro la superficie stessa
+• Ai piedi dell'arco, due o tre figure umanoidi immobili, dalla postura innaturale, la "faccia sbagliata" ripetuta identica su ognuna`,
           notaDM: `Il punto di terra smossa nella terza finestra crollata è un piccolo indizio ambientale, qualcosa o qualcuno è passato di lì o si è nascosto lì di recente. Puoi usarlo per Varn Selick copia, che potrebbe aver attraversato questa stanza cercando un punto più sicuro, oppure lasciarlo come falso indizio, giusto per costruire tensione.
 
-I detriti sparsi rendono la stanza rumorosa da attraversare in silenzio, eventuale prova di furtività con svantaggio se serve un momento di tensione con creature nei paraggi. Nessuna trappola strutturale qui, ma è un buon punto per un primo incontro con una creatura anticorpo del duplicato, vista la lunghezza della sala e le molteplici vie di fuga da gestire narrativamente.
+L'ARCO CON I CAVI è una replica del vero varco — la stessa struttura, identica nella forma, presente anche lato Suhek'nal nella stessa stanza (vedi Corridoio di Sorveglianza). Non è decorativo: è letteralmente il punto usato per aprire il passaggio dal lato Suhek'nal al lato Kaelvaran. Qui appare come un arco di pietra con una superficie scura innaturalmente immobile, i cavi che vi scendono dentro trattati dal duplicato come se fossero radici o intrecci decorativi. Non è funzionante in questo momento (o forse lo è ancora debolmente — a discrezione del DM se si vuole un indizio più concreto per il finale).
 
-Gli archetti troppo sinuosi ripetono, in scala architettonica, la fila di telecamere che lato Suhek'nal percorre lo stesso corridoio a intervalli regolari. Un PG con background pertinente (artigiano, scalpellino, architetto) può notare che nessuna tecnica medievale conosciuta produce quella regolarità — un piccolo indizio, se il DM vuole seminare dubbi prima ancora dello specchio della Stanza 4.`
+LE CREATURE ANTICORPO qui sono danneggiate e ridotte peggio rispetto a quelle che i PG troveranno al Piano 2 — versioni più deboli, movimenti a scatti, facili da sconfiggere o anche da evitare del tutto. È il primo incontro con loro nel gioco: un assaggio prima dello scontro vero alla Stanza 3 del Piano 2. Gli archetti troppo sinuosi ripetono, in scala architettonica, la fila di telecamere che lato Suhek'nal percorre lo stesso corridoio a intervalli regolari. Un PG con background pertinente (artigiano, scalpellino, architetto) può notare che nessuna tecnica medievale conosciuta produce quella regolarità — un piccolo indizio, se il DM vuole seminare dubbi prima ancora dello specchio della Stanza 4.`
         },
         {
           numero: 3,
@@ -482,8 +483,14 @@ La telecamera sopra la porta è la prima di una serie — verranno replicate, in
           titolo: "Il Corridoio di Sorveglianza",
           testo: `• Canaline portacavi aperte, fili scoperti che pendono
 • Telecamere identiche a intervalli regolari lungo il corridoio
-• Una crepa nel pavimento con terra smossa di recente`,
-          notaDM: `Le telecamere ripetute a intervalli regolari sono il motivo ricorrente da portare, trasfigurato, sul lato Kaelvaran (piccole gargolle che reggono uno scrigno o un occhio). La terra smossa nella crepa è lo stesso indizio ambientale già presente lato Kaelvaran — Varn Selick copia (o l'originale, a discrezione del DM) potrebbe essere passato di qui.`
+• Una crepa nel pavimento con terra smossa di recente
+• A metà corridoio, un arco metallico alto fino al soffitto, con al centro un campo di energia scuro e immobile — dozzine di cavi scendono dal soffitto e si innestano direttamente nella struttura
+• Ai piedi dell'arco, due o tre automi di sicurezza fermi, danneggiati, luci intermittenti`,
+          notaDM: `Le telecamere ripetute a intervalli regolari sono il motivo ricorrente da portare, trasfigurato, sul lato Kaelvaran (piccole gargolle che reggono uno scrigno o un occhio). La terra smossa nella crepa è lo stesso indizio ambientale già presente lato Kaelvaran — Varn Selick copia (o l'originale, a discrezione del DM) potrebbe essere passato di qui.
+
+L'ARCO METALLICO è la vera struttura del varco secondario — quella usata dai Suhek'nal per aprire il passaggio verso il mondo di Kaelvaran (vedi Lore Segreta, "IL LABORATORIO"). È la stessa identica posizione della replica trovata lato Kaelvaran, nella stessa stanza. Qui appare per quello che è: tecnologia reale, spenta o funzionante a un livello minimo — a discrezione del DM se renderla un indizio concreto in vista del finale.
+
+GLI AUTOMI DI SICUREZZA qui sono danneggiati e ridotti peggio rispetto a quelli che i PG affronteranno al Piano 2 — il primo incontro con le creature anticorpo nel gioco, pensato per essere più semplice di quello alla Stanza 3 del Piano 2.`
         },
         {
           numero: 3,
@@ -795,10 +802,11 @@ LA STANZA 15 è raggiungibile dagli specchi speciali di qualsiasi piano. Chi ent
         },
         {
           numero: 13,
-          titolo: "Il Deposito Rotondo",
-          testo: `• Piccola stanza rotonda, scaffali con faldoni ben conservati
-• Un raccoglitore diverso dagli altri, tenuto in disparte`,
-          notaDM: `Eco del Deposito Terminale lato Suhek'nal.`
+          titolo: "Il Deposito Rotondo — L'Archivio Generale",
+          testo: `• Stanza rotonda più ampia delle altre, scaffali con faldoni ben conservati
+• Un raccoglitore diverso dagli altri, rilegato in pelle, tenuto in disparte
+• Un secondo raccoglitore pieno di schemi che sembrano più tecnici che alchemici`,
+          notaDM: `Eco del Deposito Terminale lato Suhek'nal — Archivio Generale. Se i PG trovano prima questa versione, contiene un'eco parziale e distorta degli stessi due documenti chiave (il Diario dell'Ultimo Ricercatore e gli Scritti sui Cristalli Temporali), leggibile solo in parte. Il documento completo lato Suhek'nal avrà più peso quando (e se) lo troveranno.`
         },
         {
           numero: 16,
@@ -981,17 +989,17 @@ IL MEMO SULLA QUARANTENA collega questa stanza al capitolo "Lo Sviluppo dei Cris
         },
         {
           numero: 9,
-          titolo: "Capsula di Quarantena Singola",
+          titolo: "Sala Medica — Capsula di Quarantena Singola",
           testo: `• Piccola stanza circolare, un lettino con cinghie di contenimento
 • Monitor spento accanto al lettino`,
-          notaDM: `Ambiente atmosferico.`
+          notaDM: `Prima delle due stanze che compongono la Sala Medica del piano (vedi anche stanza 10). Ambiente atmosferico.`
         },
         {
           numero: 10,
-          titolo: "Capsula di Quarantena Doppia",
+          titolo: "Sala Medica — Capsula di Quarantena Doppia",
           testo: `• Due lettini con cinghie, uno ribaltato
 • Pannello di controllo comune tra i due, distrutto`,
-          notaDM: `Ambiente atmosferico.`
+          notaDM: `Seconda stanza della Sala Medica del piano. Ambiente atmosferico.`
         },
         {
           numero: 11,
@@ -1009,10 +1017,17 @@ IL MEMO SULLA QUARANTENA collega questa stanza al capitolo "Lo Sviluppo dei Cris
         },
         {
           numero: 13,
-          titolo: "Deposito Terminale",
-          testo: `• Piccola stanza circolare, scaffali con faldoni d'archivio ben conservati
-• Un raccoglitore in disparte, etichettato diversamente dagli altri`,
-          notaDM: `Ambiente atmosferico, buon punto per nascondere un documento aggiuntivo a scelta del DM.`
+          titolo: "Deposito Terminale — L'Archivio Generale",
+          testo: `• Stanza circolare più ampia delle altre, scaffali con faldoni d'archivio ben conservati
+• Un raccoglitore in disparte, etichettato diversamente dagli altri: "Diario personale — non archiviare"
+• Un secondo raccoglitore, più tecnico, pieno di calcoli e diagrammi su una sfera pulsante`,
+          notaDM: `DUE DOCUMENTI CHIAVE QUI:
+
+Il Diario dell'Ultimo Ricercatore — racconta la ritirata progressiva davanti a La Fine, capitolo dopo capitolo, fino a un'ultima entry che si interrompe a metà frase. Menziona il cristallo temporale e il varco demoniaco al Piano 4.
+
+Gli Scritti sui Cristalli Temporali — istruzioni parziali ma sufficienti per intuire che il cristallo, se sovraccaricato, può implodere e "risucchiare" ogni realtà collegata alla propria origine. È la CHIAVE per sbloccare la risoluzione ottimale del finale (vedi Riassunto Generale). Senza questo documento i PG conoscono solo la risoluzione standard.
+
+Buon punto per un incontro con La Fine subito dopo la scoperta — la tensione di aver appena trovato la chiave della salvezza, interrotta dal pericolo più immediato.`
         },
         {
           numero: 16,
@@ -1039,10 +1054,10 @@ IL MEMO SULLA QUARANTENA collega questa stanza al capitolo "Lo Sviluppo dei Cris
         },
         {
           numero: 17,
-          titolo: "Alloggio del Personale A",
+          titolo: "Stanze Private — Alloggio del Personale A",
           testo: `• File di brande, alcune ancora con lenzuola, effetti personali sparsi
 • Una fotografia caduta a terra vicino a una branda`,
-          notaDM: `Ambiente atmosferico.`
+          notaDM: `Le "Stanze Private" del piano — gli alloggi personali del personale Suhek'nal. Ambiente atmosferico.`
         },
         {
           numero: 18,
@@ -1085,9 +1100,7 @@ Le pareti mostrano i segni di qualcosa che ha spinto dall'interno — non esplos
 I Suhek'nal hanno combattuto qui. Hanno perso.`,
           notaDM: `Il Piano 3 è il piano più pericoloso fisicamente. Trappole ancora attive (alcuni meccanismi di difesa installati dai Suhek'nal durante la ritirata), zone dove la realtà si è dissolta, e La Fine che vaga con più frequenza.
 
-DOCUMENTI DA TROVARE AL PIANO 3:
-• Il diario dell'ultimo ricercatore rimasto al Piano 3 — descrive la ritirata progressiva davanti a La Fine e menziona il cristallo temporale al Piano 4.
-• Istruzioni parziali sui cristalli temporali — abbastanza da far intuire la possibilità dell'implosione come soluzione alternativa.`
+I documenti chiave su cristalli e ritirata sono già stati trovati al Piano 2 (Archivio Generale, Stanza 13) — qui non ce ne sono di nuovi. Questo piano è incentrato sullo scontro fisico: è qui che i PG affrontano Varn Selick originale in un vero combattimento (vedi lore su Varn Selick).`
         }
       ],
       musica: null
@@ -1129,7 +1142,12 @@ RISOLUZIONE OTTIMALE (richiede gli scritti sui cristalli):
 Sovraccaricare il cristallo temporale e farlo implodere all'interno del varco demoniaco. Risucchia ogni realtà nella propria realtà d'origine — La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran.
 
 COME SOVRACCARICARE IL CRISTALLO:
-Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — durante il processo La Fine potrebbe arrivare.`
+Le istruzioni sono negli scritti del Piano 2 (Archivio Generale, Stanza 13). Richiede tempo e precisione — durante il processo La Fine potrebbe arrivare.
+
+VARN SELICK — IL NEMICO FINALE:
+Dopo essere stato corrotto al Piano 3 (ha divorato un pezzo di demone, assorbendone parte dei poteri), Varn Selick originale è qui, e i PG lo affrontano come vero e proprio boss di fine dungeon mentre cercano di recuperare i due cristalli. Non è più l'uomo disorientato dei piani precedenti — qualcosa di ibrido, corrotto, potenziato dal potere demoniaco assorbito.
+
+CONFERMATO: questo piano è uno spazio unico fuso, non diviso in due versioni speculari come i piani 1-3 — il laboratorio e il girone demoniaco coesistono nello stesso luogo senza soluzione di continuità.`
         }
       ],
       musica: null
@@ -1155,7 +1173,7 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
 • I PG entrano inseguendo Varn Selick (capo di un culto cannibalico, sconfitto due giorni fa) attraverso una frana — in realtà la bocca del varco
 • La Fine vaga tra i piani: lenta, immortale, letale al contatto, non fermabile né distraibile — solo evitabile
 • Ormai alle strette, i Suhek'nal impongono la simbiosi con la forza (un tradimento del proprio credo) per due obiettivi: fuggire nei corpi copia verso Kaelvaran, e intrappolare lì La Fine per salvare il proprio mondo natale
-• Varn Selick ha già un doppio: l'ORIGINALE vaga disorientato e paranoico tra Piano 1 e Piano 3; la COPIA Suhek'nal vaga nel Piano 1 Kaelvaran cercando di nascondersi, comportamento più calmo e controllato — i PG la incontrano per la prima volta nella Sala dello Specchio (Piano 1 Kaelvaran, stanza 4)`
+• Varn Selick ha già un doppio: l'ORIGINALE vaga disorientato e paranoico tra Piano 1 e Piano 2; al Piano 3 i PG lo affrontano in un vero combattimento, durante il quale divora un pezzo di un demone assorbendone parte dei poteri e diventando irrimediabilmente corrotto; al Piano 4 è il nemico finale da sconfiggere mentre si cerca di recuperare i due cristalli. La COPIA Suhek'nal vaga nel Piano 1 Kaelvaran cercando di nascondersi, comportamento più calmo e controllato — i PG la incontrano per la prima volta nella Sala dello Specchio (Piano 1 Kaelvaran, stanza 4)`
         },
         {
           titolo: "Il Cristallo Temporale — Come e Perché",
@@ -1165,7 +1183,7 @@ Le istruzioni sono negli scritti del Piano 3. Richiede tempo e precisione — du
 • RISOLUZIONE STANDARD: spegnere il cristallo principale mentre La Fine è nel duplicato Kaelvaran → varco chiuso, La Fine resta intrappolata lì (non ideale per Kaelvaran)
 • RISOLUZIONE OTTIMALE: sovraccaricare il cristallo e farlo implodere dentro il varco demoniaco → risucchia ogni realtà nella propria origine: La Fine torna nel suo piano, i Suhek'nal nel loro, i PG a Kaelvaran
 • Il sovraccarico richiede tempo e precisione — rischio concreto che La Fine arrivi durante la procedura
-• Le istruzioni per sovraccaricare si trovano SOLO negli Scritti sui Cristalli Temporali, Piano 3 — senza quel documento i PG conoscono solo la risoluzione standard`
+• Le istruzioni per sovraccaricare si trovano SOLO negli Scritti sui Cristalli Temporali, Piano 2 (Archivio Generale, Stanza 13) — senza quel documento i PG conoscono solo la risoluzione standard`
         },
         {
           titolo: "Ritrovamenti — Dove Trovare Cosa",
@@ -1181,11 +1199,11 @@ PIANO 1 KAELVARAN
 PIANO 2 SUHEK'NAL
 • Stanza 15 — La Stanza delle Gemme: non un documento, ma il ritrovamento chiave che spiega visivamente il processo Veth'nal (gemme spente = copie fallite/ospiti morti, gemme pulsanti = trasferimenti in corso)
 • Stanza 21 (ex Esperimenti Preliminari, ora Archivio) — faldoni sul fallimento dell'ultimo esperimento: il varco non è richiudibile, da cui la decisione di quarantena
-• Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio + Manuale del Veth'nal (versione tecnica, vedi capitolo dedicato)
+• Stanza 8 (Ufficio del Supervisore) — faldoni sul progetto Veth'nal avanzato + memo sul sistema di sicurezza/quarantena dell'edificio + Manuale del Veth'nal (versione tecnica)
+• Stanza 13 (Deposito Terminale — Archivio Generale) — Il Diario dell'Ultimo Ricercatore (ritirata davanti a La Fine) + Gli Scritti sui Cristalli Temporali (CHIAVE per la risoluzione ottimale)
 
 PIANO 3
-• Il Diario dell'Ultimo Ricercatore — racconta la ritirata progressiva davanti a La Fine, menziona il cristallo temporale al Piano 4
-• Gli Scritti sui Cristalli Temporali — istruzioni parziali, sono la CHIAVE per sbloccare la risoluzione ottimale
+• Nessun documento nuovo — è il piano dello scontro fisico con Varn Selick originale (vedi lore su Varn)
 
 PIANO 4
 • Il Cristallo Temporale (il varco)
@@ -1195,6 +1213,8 @@ PIANO 4
           titolo: "Il Piano dei Suhek'nal — L'Infestazione dei PG",
           tipo: "scena",
           testo: `• I PG vengono infestati progressivamente durante l'esplorazione (Veth'suu → Veth'kor) — il DM gestisce tempi e modi a tavolino, non è scriptato stanza per stanza
+• Almeno tre PG diversi ricevono un simbionte nel corso del Piano 1 e 2 (primo, secondo e terzo simbionte, in momenti separati) — non è un evento singolo
+• MECCANICA AL TAVOLO: quando due giocatori hanno entrambi un simbionte attivo, i loro simbionti iniziano a comunicare tra loro. Al Piano 2, il DM può chiedere ai due giocatori coinvolti di parlarsi sottovoce, fuori dal tavolo principale, in modo che gli altri giocatori (i cui PG non possono sentirli) non sappiano cosa si stanno dicendo. È un modo per rendere fisicamente reale, al tavolo, il fatto che i simbionti comunicano tra loro all'insaputa degli ospiti e degli altri PG.
 • Durante l'infestazione, sul Piano 2 lato Suhek'nal la gemma corrispondente matura nella Stanza 15 — passa del tempo prima che sia completa
 • Quando i PG raggiungono fisicamente la Stanza 15 (o vengono condotti lì), i simbionti tentano il trasferimento nei cloni pronti
 • A quel punto — o prima, se messi alle strette — i Suhek'nal rivelano ai PG la storia intera e il loro vero piano: NON cercano l'ospite perfetto per il vero Veth'nal (non ne hanno più il tempo né la possibilità di scegliere), ma impongono la simbiosi con la forza per ottenere una via di fuga verso Kaelvaran e, allo stesso tempo, intrappolare La Fine in quella realtà — lontana dal loro mondo natale, che così si salva
@@ -1212,7 +1232,8 @@ PIANO 4
 • Le due barriere di sicurezza mal congegnate lato Kaelvaran (Piano 1, stanze 4-5) rispecchiano le barriere di sicurezza reali lato Suhek'nal, danneggiate nello stesso modo in entrambe le versioni
 • Elementi "storti" ripetuti in ogni stanza del Piano 1 Kaelvaran: frammenti sci-fi (telecamere, tubature, arredi da laboratorio) trasposti e resi privi di senso nell'estetica fantasy — motivo visivo ricorrente, non solo decorativo
 • La Fine appare 1 volta al Piano 1, 2-3 volte ai Piani 2, 3 e 4 — la frequenza cresce piano dopo piano, mai un incontro scriptato fisso
-• Creature anticorpo: automi/guardie lato Suhek'nal, umanoidi deformi tutti identici tra loro lato Kaelvaran — nessun dialogo possibile, attaccano chiunque non riconoscano
+• Creature anticorpo: automi/guardie lato Suhek'nal, umanoidi deformi tutti identici tra loro lato Kaelvaran — nessun dialogo possibile, attaccano chiunque non riconoscano. Prima apparizione (danneggiata, più debole) alla Stanza 2 del Piano 1; primo scontro vero alla Stanza 3 del Piano 2
+• La replica del varco (Piano 1, Stanza 2, entrambe le versioni): un arco con cavi/canaline che scendono dal soffitto — è la struttura fisica realmente usata per aprire il passaggio dal lato Suhek'nal al lato Kaelvaran
 • Varn originale (Piano 1/3, disorientato, paranoico, potenzialmente ostile o alleabile) vs Varn copia (Piano 1 Kaelvaran, più calmo e controllato, si nasconde) — se messo alle strette può offrire informazioni in cambio di protezione`
         }
       ],
@@ -1337,9 +1358,9 @@ Questo documento può essere piazzato in una stanza a scelta del DM ai Piani 1 o
   png: [
     {
       nome: "Varn Selick — Originale",
-      ruolo: "Criminale — vaga tra i piani 1 e 3",
+      ruolo: "Criminale — vaga tra Piano 1 e 2, poi nemico in un vero scontro al Piano 3, poi boss finale al Piano 4",
       descrizione: "Uomo sulla cinquantina, corporatura robusta, capelli grigi rasati ai lati e lunghi in cima sempre legati. Bruciatura estesa sul lato sinistro del collo fino alla mandibola. Occhi chiari quasi incolori. Vestiti pratici e scuri.",
-      segreto: "Disorientato e paranoico. Non capisce cosa gli è successo — sa solo che c'è un suo duplicato in giro. Potrebbe attaccare i PG o cercare di allearsi. Conosce frammenti di informazioni sul dungeon che ha raccolto vagando."
+      segreto: "Disorientato e paranoico ai piani 1-2 — non capisce cosa gli è successo, sa solo che c'è un suo duplicato in giro. Potrebbe attaccare i PG o cercare di allearsi. Al Piano 3 lo scontro diventa reale: durante il combattimento Varn divora un pezzo di un demone locale, assorbendone parte dei poteri, e da quel momento è corrotto senza rimedio. Al Piano 4 è il nemico finale da sconfiggere mentre i PG cercano di recuperare i due cristalli."
     },
     {
       nome: "Varn Selick — Copia Suhek'nal",
@@ -1376,17 +1397,17 @@ Questo documento può essere piazzato in una stanza a scelta del DM ai Piani 1 o
     {
       nome: "Il Manuale del Veth'nal",
       importanza: "Lore fondamentale",
-      descrizione: "Piano 1 Suhek'nal. Spiega la filosofia e il processo di simbiosi dei Suhek'nal. Permette ai PG di capire le intenzioni dei simbionti e aprire un canale di comunicazione."
+      descrizione: "Piano 2 Suhek'nal, Stanza 8 (Ufficio del Supervisore). Versione tecnica e clinica del processo Veth'nal, per il personale — selezione dell'ospite, mantenimento, trasferimento. Include la nota sulla 'purezza del processo' che rivela come persino i Suhek'nal considerino impura la simbiosi forzata attuale. Da non confondere con l'Introduzione al Veth'nal (l'opuscolo di reclutamento, Piano 1)."
     },
     {
       nome: "Gli Scritti sui Cristalli Temporali",
       importanza: "Chiave risoluzione ottimale",
-      descrizione: "Piano 3. Istruzioni parziali sui cristalli temporali. Contengono abbastanza informazioni per intuire la possibilità dell'implosione come soluzione alternativa."
+      descrizione: "Piano 2 Suhek'nal, Stanza 13 (Deposito Terminale — Archivio Generale). Istruzioni parziali sui cristalli temporali. Contengono abbastanza informazioni per intuire la possibilità dell'implosione come soluzione alternativa."
     },
     {
       nome: "Il Diario dell'Ultimo Ricercatore",
       importanza: "Lore + atmosfera",
-      descrizione: "Piano 3. Racconta la ritirata progressiva davanti a La Fine. Menziona il cristallo temporale e il varco demoniaco. L'ultima entry si interrompe a metà frase."
+      descrizione: "Piano 2 Suhek'nal, Stanza 13 (Deposito Terminale — Archivio Generale). Racconta la ritirata progressiva davanti a La Fine. Menziona il cristallo temporale e il varco demoniaco. L'ultima entry si interrompe a metà frase."
     }
   ]
 
