@@ -97,6 +97,36 @@
     border-radius:2px; font-size:13.5px; line-height:1.5; color:var(--ink);}
   svg text{font-family:'Crimson Pro', Georgia, serif;}
   #sigilSvg{user-select:none; -webkit-user-select:none;}
+
+  .mode-row{display:flex; align-items:center; justify-content:center; gap:12px; margin-top:10px; flex-wrap:wrap;}
+  #modeLabel{font-family:'Cinzel',serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px;
+    border:1px solid var(--line-b); border-radius:3px; color:var(--ink-soft);}
+  #modeLabel.dm-on{color:var(--gold); border-color:var(--gold);}
+  .mode-btn{padding:6px 12px; border:1px solid var(--line-b); border-radius:3px; background:var(--bg-card);
+    color:var(--ink-soft); font-family:'Cinzel',serif; font-size:12px; letter-spacing:.05em; cursor:pointer;}
+  .mode-btn:hover{color:var(--gold); border-color:var(--gold);}
+
+  .pw-overlay{display:none; position:fixed; inset:0; background:rgba(6,7,10,0.82); z-index:100;
+    align-items:center; justify-content:center;}
+  .pw-overlay.open{display:flex;}
+  .pw-box{background:var(--bg-card); border:1px solid var(--line-b); border-radius:5px; padding:26px 28px;
+    width:280px; text-align:center;}
+  .pw-title{font-family:'Cinzel',serif; color:var(--gold); font-size:15px; margin-bottom:14px; letter-spacing:.05em;}
+  .pw-input{width:100%; padding:9px 12px; background:var(--bg); border:1px solid var(--line-b); border-radius:3px;
+    color:var(--ink); font-family:'Crimson Pro', Georgia, serif; font-size:15px; margin-bottom:10px;
+    text-align:center; letter-spacing:.1em; box-sizing:border-box;}
+  .pw-input:focus{outline:none; border-color:var(--gold);}
+  .pw-btn{width:100%; padding:9px; border:1px solid var(--gold-d); border-radius:3px; background:var(--gold);
+    color:var(--bg); font-family:'Cinzel',serif; font-size:13px; letter-spacing:.05em; cursor:pointer;}
+  .pw-btn:hover{filter:brightness(1.08);}
+  .pw-err{font-size:12px; color:var(--red); margin-top:8px; display:none; font-style:italic;}
+  .pw-close{margin-top:10px; background:none; border:none; color:var(--ink-mute); font-size:12px; cursor:pointer;
+    text-decoration:underline;}
+
+  optgroup{color:var(--gold); font-family:'Cinzel',serif; font-style:normal; font-size:12px;}
+  option{color:var(--ink); font-family:'Crimson Pro', Georgia, serif;}
+  .import-row{display:none;}
+  .import-row.visible{display:block;}
 </style>
 </head>
 <body>
@@ -104,7 +134,21 @@
 <header>
   <h1>Officina dei Sigilli</h1>
   <p>Scegli le scuole per il Core, poi clicca un glifo nella palette e posizionalo sul sigillo: l'angolo in cui lo posi decide il parametro che modifica.</p>
+  <div class="mode-row">
+    <span id="modeLabel">Modalità: Giocatore</span>
+    <button class="mode-btn" id="dmToggleBtn">◑ Modalità DM</button>
+  </div>
 </header>
+
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <div class="pw-title">◑ Accesso Modalità DM</div>
+    <input type="password" class="pw-input" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
+    <button class="pw-btn" onclick="checkPW()">Sblocca</button>
+    <div class="pw-err" id="pw-err">Password errata.</div>
+    <button class="pw-close" onclick="document.getElementById('pw-overlay').classList.remove('open')">Annulla</button>
+  </div>
+</div>
 
 <div class="layout">
 
@@ -121,6 +165,13 @@
       <button class="tool-btn" id="loadBtn">⭱ Carica da file</button>
     </div>
     <input type="file" id="loadFileInput" accept="application/json" style="display:none;">
+
+    <div class="import-row" id="importRow">
+      <button class="tool-btn" id="importBtn">✦ Importa nel catalogo DM</button>
+      <button class="tool-btn" id="removeImportedBtn" style="display:none;">🗑 Rimuovi sigillo importato</button>
+      <input type="file" id="importFileInput" accept="application/json" style="display:none;">
+      <div class="hint" style="margin-top:2px;">Carica il file .json inviato da un giocatore: verrà salvato in modo permanente nel catalogo "Sigilli Importati".</div>
+    </div>
 
     <h2 style="margin-top:16px;">CORE</h2>
     <div class="glyph-grid" id="schoolGrid"></div>
@@ -175,6 +226,12 @@
 <button id="fullscreenBtn" title="Schermo intero">⛶</button>
 
 <script>
+// ── MODALITÀ DM ────────────────────────────────────────────────────────
+const ADMIN_PW = 'Tresil2025';
+const DM_STORAGE_KEY = 'officina_sigilli_dm';
+let isDM = false;
+try{ if(localStorage.getItem(DM_STORAGE_KEY)==='true') isDM = true; } catch(e){}
+
 function updateLayoutColumns(){
   const l = leftCollapsed ? '44px' : '280px';
   const r = esitoCollapsed ? '200px' : '320px';
@@ -282,7 +339,8 @@ let selectedSchools=["Invocazione"];
 
 function renderSchoolGrid(){
   schoolGrid.innerHTML='';
-  SCHOOLS.forEach(s=>{
+  const list = (typeof KNOWN!=='undefined' && !isDM) ? SCHOOLS.filter(s=>KNOWN.schools.has(s)) : SCHOOLS;
+  list.forEach(s=>{
     const btn=document.createElement('div');
     const idx=selectedSchools.indexOf(s);
     btn.className='glyph-btn' + (idx===0?' school-primary':idx===1?' school-secondary':'');
@@ -301,14 +359,14 @@ function renderSchoolGrid(){
     schoolGrid.appendChild(btn);
   });
 }
-renderSchoolGrid();
 
 const energyGrid=document.getElementById('energyGrid');
 let energies=[];
 
 function renderEnergyGrid(){
   energyGrid.innerHTML='';
-  Object.keys(ENERGIES).forEach(key=>{
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(ENERGIES).filter(k=>KNOWN.energies.has(k)) : Object.keys(ENERGIES);
+  keys.forEach(key=>{
     const btn=document.createElement('div');
     btn.className='glyph-btn';
     btn.dataset.key='energy:'+key;
@@ -321,11 +379,12 @@ function renderEnergyGrid(){
     energyGrid.appendChild(btn);
   });
 }
-renderEnergyGrid();
 
 function mid(sector){ return sector*72+36; }
 
-const CATALOG = [
+// Catalogo "In Sviluppo": i 4 incantesimi base (indici 0-3, questi sono anche i soli
+// visibili al giocatore) più 10 sigilli ancora da progettare (indici 4-13, solo DM).
+const CATALOG_DEV = [
   {
     name:"Trasmutare Energie",
     a:"Trasmutazione", b:"", energy:"Calore", energySelf:true,
@@ -356,48 +415,149 @@ const CATALOG = [
     ]
   },
   {
-    name:"Corazza del Gigante",
-    a:"Trasmutazione", b:"",
-    energy:"Forza", energySelf:true, energySize:0.9,
-    desc:"Il corpo del lanciatore cresce a vista d'occhio — muscoli gonfi, ossa allungate, statura da gigante — mentre un velo di energia cinetica pura si condensa sulla sua pelle come una seconda armatura, assorbendo e respingendo i colpi fisici. Se aggiungi Materia Prima nello spicchio Livello, il suo ingrandimento amplifica insieme la crescita del corpo e la potenza dello scudo (fino a ×4); in Tempo di lancio, invece, allunga il rituale in cambio di uno scudo più economico ed esteso. Disegno verificato pixel per pixel: ogni glifo tocca direttamente il Core, dimensioni tutte uniformi per il massimo bilanciamento.",
+    name:"Trasmutare Energie — Nucleo",
+    a:"Trasmutazione", b:"", energy:"Gelo", energySelf:true,
+    baseRange:4, baseDiameter:0.5,
+    dynamicElemental:true,
+    desc:"Variante raffinata e sicura del sigillo base, pensata per un uso ripetuto e prevedibile invece che per l'estremo. Cesura nello spicchio Durata blocca l'effetto sull'istantaneo evitando derive; Congiunzione nello spicchio Livello offre un piccolo margine di potenza senza sbilanciare il disegno. Gittata e Componenti restano quelli del sigillo originale.",
     glyphs:[
-      {sector:0, key:'congiunzione', angle:20, percent:0, size:0.9},
-      {sector:1, key:'separazione', angle:mid(1), percent:0, size:0.9, self:true},
-      {sector:1, key:'alone', angle:mid(1)+18, percent:0, size:0.9, self:true},
-      {sector:2, key:'intervallo', angle:180, percent:0, size:0.9},
-      {sector:3, key:'sacrificio', angle:252, percent:0, size:0.9}
+      {sector:0, key:'congiunzione', angle:36, percent:20, size:1},
+      {sector:1, key:'scintilla', angle:131, percent:27, size:1},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1},
+      {sector:3, key:'sacrificio', angle:229, percent:27, size:1}
     ]
-  }
+  },
+  {
+    name:"Evocare Creature d'Ombra",
+    a:"Evocazione", b:"Necromanzia", energy:"Negativa", energySelf:false,
+    desc:"Un sigillo di richiamo che lacera per un istante il velo tra i piani, estraendone un frammento d'ombra senziente legato al lanciatore da un patto temporaneo. Materia Prima nello spicchio Livello ne fissa la forza; Separazione nello spicchio Gittata stabilisce la distanza a cui la creatura si materializza; Intervallo ne determina la durata del legame; Sacrificio consuma il reagente rituale necessario a completarlo; Distillazione allunga il tempo di lancio, perché il patto va negoziato con cura, non imposto in fretta.",
+    glyphs:[
+      {sector:0, key:'materiaprima', angle:36, percent:30, size:1},
+      {sector:1, key:'separazione', angle:108, percent:40, size:1},
+      {sector:2, key:'intervallo', angle:180, percent:30, size:1},
+      {sector:3, key:'sacrificio', angle:252, percent:30, size:1},
+      {sector:4, key:'distillazione', angle:324, percent:30, size:1}
+    ]
+  },
+  {name:"Sigillo in sviluppo #1", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #2", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #3", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #4", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #5", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #6", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #7", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #8", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #9", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
+  {name:"Sigillo in sviluppo #10", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]}
 ];
 
+// Indici in CATALOG_DEV che formano i "4 incantesimi base" visibili al giocatore.
+const BASE_SPELL_INDICES = [0,1,2,3];
+
+// Catalogo "Sigilli Importati": persistente in localStorage, popolato dal DM caricando
+// i file .json che i giocatori esportano dalla loro Officina.
+const IMPORT_STORAGE_KEY = 'officina_sigilli_importati';
+let importedCatalog = [];
+try{
+  importedCatalog = JSON.parse(localStorage.getItem(IMPORT_STORAGE_KEY) || '[]');
+} catch(e){ importedCatalog = []; }
+function saveImportedCatalog(){
+  try{ localStorage.setItem(IMPORT_STORAGE_KEY, JSON.stringify(importedCatalog)); } catch(e){}
+}
+
+// Insiemi "conosciuti": scuole, energie, congiunzioni e glifi che compaiono nei 4
+// incantesimi base. Il giocatore vede solo questi.
+function computeKnownSets(){
+  const schools=new Set(), energies=new Set(), conj=new Set(), glyphs=new Set();
+  BASE_SPELL_INDICES.forEach(i=>{
+    const c=CATALOG_DEV[i];
+    schools.add(c.a);
+    if(c.b) schools.add(c.b);
+    if(c.energy) energies.add(c.energy);
+    (c.glyphs||[]).forEach(g=>glyphs.add(g.key));
+    (c.conjunctions||[]).forEach(cj=>conj.add(cj.key));
+  });
+  return {schools, energies, conj, glyphs};
+}
+const KNOWN = computeKnownSets();
+
 const catalogSelect=document.getElementById('catalogSelect');
-catalogSelect.appendChild(new Option("— personalizzato —",""));
-CATALOG.forEach((c,i)=>catalogSelect.appendChild(new Option(c.name,i)));
+
+function buildCatalogSelect(){
+  catalogSelect.innerHTML='';
+  catalogSelect.appendChild(new Option("— personalizzato —",""));
+  if(isDM){
+    const gDev=document.createElement('optgroup');
+    gDev.label='In Sviluppo';
+    CATALOG_DEV.forEach((c,i)=>gDev.appendChild(new Option(c.name,'dev:'+i)));
+    catalogSelect.appendChild(gDev);
+
+    const gImp=document.createElement('optgroup');
+    gImp.label='Sigilli Importati';
+    if(importedCatalog.length){
+      importedCatalog.forEach((c,i)=>gImp.appendChild(new Option(c.name||('Sigillo importato '+(i+1)),'imp:'+i)));
+    } else {
+      const opt=new Option('— nessuno importato —','');
+      opt.disabled=true;
+      gImp.appendChild(opt);
+    }
+    catalogSelect.appendChild(gImp);
+  } else {
+    BASE_SPELL_INDICES.forEach(i=>catalogSelect.appendChild(new Option(CATALOG_DEV[i].name,'dev:'+i)));
+  }
+}
 
 let currentCatalogLabel=null;
 let currentCatalogOriginal=null;
 let glyphIdCounter=0;
+let currentCatalogValue='';
 
-function loadCatalogEntry(idx){
-  const c=CATALOG[idx];
+function loadDevEntry(idx){
+  const c=CATALOG_DEV[idx];
   currentCatalogLabel={name:c.name, desc:c.desc, baseRange:c.baseRange, baseDiameter:c.baseDiameter, dynamicElemental:c.dynamicElemental};
   selectedSchools = c.b ? [c.a, c.b] : [c.a];
   renderSchoolGrid();
   energies = c.energy ? [{key:c.energy, angle:45, percent:0, self:c.energySelf||false, size:c.energySize||1, _id:glyphIdCounter++}] : [];
   conjunctions = (c.conjunctions||[]).map(cj=>({key:cj.key, angle:cj.angle, percent:cj.percent, inCore:cj.inCore||false, coreDist:cj.coreDist||0, rotation:cj.rotation||0, size:cj.size||1, _id:glyphIdCounter++}));
   if(c.dominance) document.getElementById('dominance').value=c.dominance;
-  placed = c.glyphs.map(g=>({sector:g.sector, key:g.key, angle:g.angle, percent:g.percent, size:g.size||1, self:g.self||false, _id:glyphIdCounter++}));
+  placed = (c.glyphs||[]).map(g=>({sector:g.sector, key:g.key, angle:g.angle, percent:g.percent, size:g.size||1, self:g.self||false, _id:glyphIdCounter++}));
   currentCatalogOriginal = placed.map(p=>({...p}));
 }
 
-catalogSelect.addEventListener('change', ()=>{
-  if(catalogSelect.value===""){
+function loadImportedEntry(idx){
+  const data=importedCatalog[idx];
+  if(!data) return;
+  currentCatalogLabel={name:data.name||'Sigillo importato', desc:'Sigillo importato da un file inviato da un giocatore.'};
+  selectedSchools = data.selectedSchools && data.selectedSchools.length ? [...data.selectedSchools] : ["Invocazione"];
+  renderSchoolGrid();
+  if(data.dominance) document.getElementById('dominance').value=data.dominance;
+  energies=(data.energies||[]).map(en=>({...en, _id:glyphIdCounter++}));
+  placed=(data.placed||[]).map(p=>({...p, _id:glyphIdCounter++}));
+  conjunctions=(data.conjunctions||[]).map(c=>({...c, _id:glyphIdCounter++}));
+  currentCatalogOriginal = placed.map(p=>({...p}));
+}
+
+function loadFromSelectValue(val){
+  currentCatalogValue=val;
+  if(val===''){
     currentCatalogLabel=null;
     currentCatalogOriginal=null;
-    render();
+    document.getElementById('removeImportedBtn').style.display='none';
     return;
   }
-  loadCatalogEntry(parseInt(catalogSelect.value));
+  const [kind, idxStr]=val.split(':');
+  const idx=parseInt(idxStr);
+  if(kind==='dev'){
+    loadDevEntry(idx);
+    document.getElementById('removeImportedBtn').style.display='none';
+  } else if(kind==='imp'){
+    loadImportedEntry(idx);
+    document.getElementById('removeImportedBtn').style.display = isDM ? '' : 'none';
+  }
+}
+
+catalogSelect.addEventListener('change', ()=>{
+  loadFromSelectValue(catalogSelect.value);
   render();
 });
 
@@ -407,7 +567,46 @@ document.getElementById('resetBtn').addEventListener('click', ()=>{
     render();
     return;
   }
-  loadCatalogEntry(parseInt(catalogSelect.value));
+  loadFromSelectValue(catalogSelect.value);
+  render();
+});
+
+document.getElementById('importFileInput').addEventListener('change', evt=>{
+  const file=evt.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.placed){ throw new Error('formato non valido'); }
+      importedCatalog.push(data);
+      saveImportedCatalog();
+      buildCatalogSelect();
+      const newIdx=importedCatalog.length-1;
+      catalogSelect.value='imp:'+newIdx;
+      loadFromSelectValue('imp:'+newIdx);
+      render();
+    } catch(err){
+      alert("File non valido o corrotto.");
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value='';
+});
+
+document.getElementById('importBtn').addEventListener('click', ()=>{
+  document.getElementById('importFileInput').click();
+});
+
+document.getElementById('removeImportedBtn').addEventListener('click', ()=>{
+  if(!currentCatalogValue.startsWith('imp:')) return;
+  const idx=parseInt(currentCatalogValue.split(':')[1]);
+  if(!confirm('Rimuovere definitivamente questo sigillo importato dal catalogo?')) return;
+  importedCatalog.splice(idx,1);
+  saveImportedCatalog();
+  buildCatalogSelect();
+  catalogSelect.value='';
+  loadFromSelectValue('');
   render();
 });
 
@@ -470,34 +669,44 @@ const CONJUNCTIONS = {
 };
 
 const conjPalette=document.getElementById('conjPalette');
-Object.keys(CONJUNCTIONS).forEach(key=>{
-  const c=CONJUNCTIONS[key];
-  const btn=document.createElement('div');
-  btn.className='glyph-btn';
-  btn.dataset.key='conj:'+key;
-  btn.innerHTML=`<svg viewBox="0 0 24 24">${c.icon}</svg><span>${c.label}</span>`;
-  btn.addEventListener('click',()=>{
-    const full='conj:'+key;
-    if(armed===full){armed=null;} else {armed=full;}
-    document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+let armed=null;
+
+function buildConjPalette(){
+  conjPalette.innerHTML='';
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(CONJUNCTIONS).filter(k=>KNOWN.conj.has(k)) : Object.keys(CONJUNCTIONS);
+  keys.forEach(key=>{
+    const c=CONJUNCTIONS[key];
+    const btn=document.createElement('div');
+    btn.className='glyph-btn';
+    btn.dataset.key='conj:'+key;
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${c.icon}</svg><span>${c.label}</span>`;
+    btn.addEventListener('click',()=>{
+      const full='conj:'+key;
+      if(armed===full){armed=null;} else {armed=full;}
+      document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+    });
+    conjPalette.appendChild(btn);
   });
-  conjPalette.appendChild(btn);
-});
+}
 
 const palette=document.getElementById('palette');
-let armed=null;
-Object.keys(GLYPHS).forEach(key=>{
-  const g=GLYPHS[key];
-  const btn=document.createElement('div');
-  btn.className='glyph-btn';
-  btn.dataset.key=key;
-  btn.innerHTML=`<svg viewBox="0 0 24 24">${g.icon}</svg><span>${g.label}</span>`;
-  btn.addEventListener('click',()=>{
-    if(armed===key){armed=null;} else {armed=key;}
-    document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+
+function buildPalette(){
+  palette.innerHTML='';
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(GLYPHS).filter(k=>KNOWN.glyphs.has(k)) : Object.keys(GLYPHS);
+  keys.forEach(key=>{
+    const g=GLYPHS[key];
+    const btn=document.createElement('div');
+    btn.className='glyph-btn';
+    btn.dataset.key=key;
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${g.icon}</svg><span>${g.label}</span>`;
+    btn.addEventListener('click',()=>{
+      if(armed===key){armed=null;} else {armed=key;}
+      document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+    });
+    palette.appendChild(btn);
   });
-  palette.appendChild(btn);
-});
+}
 
 let placed=[]; // {sector, key, angle, radius}
 let conjunctions=[]; // {key, angle, percent, rotation}
@@ -1307,6 +1516,75 @@ function buildLeftDecoration(){
   svg+='</svg>';
   document.getElementById('leftDecoration').innerHTML=svg;
 }
+// ── MODALITÀ DM: interfaccia e login ────────────────────────────────────
+function updateModeUI(){
+  const label=document.getElementById('modeLabel');
+  const btn=document.getElementById('dmToggleBtn');
+  const importRow=document.getElementById('importRow');
+  if(isDM){
+    label.textContent='Modalità: DM';
+    label.classList.add('dm-on');
+    btn.textContent='◑ Esci dalla Modalità DM';
+    importRow.classList.add('visible');
+  } else {
+    label.textContent='Modalità: Giocatore';
+    label.classList.remove('dm-on');
+    btn.textContent='◑ Modalità DM';
+    importRow.classList.remove('visible');
+    document.getElementById('removeImportedBtn').style.display='none';
+  }
+
+  // Se la scuola selezionata non è più consentita nella nuova modalità, torna a un default valido.
+  if(!isDM){
+    selectedSchools = selectedSchools.filter(s=>KNOWN.schools.has(s));
+    if(!selectedSchools.length) selectedSchools=[CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
+  }
+
+  renderSchoolGrid();
+  renderEnergyGrid();
+  buildConjPalette();
+  buildPalette();
+  buildCatalogSelect();
+  catalogSelect.value='';
+  loadFromSelectValue('');
+  placed=[]; conjunctions=[]; energies=[];
+  render();
+}
+
+document.getElementById('dmToggleBtn').addEventListener('click', ()=>{
+  if(isDM){
+    isDM=false;
+    try{ localStorage.removeItem(DM_STORAGE_KEY); } catch(e){}
+    updateModeUI();
+  } else {
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-err').style.display='none';
+    document.getElementById('pw-overlay').classList.add('open');
+    setTimeout(()=>document.getElementById('pw-input').focus(), 100);
+  }
+});
+
+function checkPW(){
+  const val=document.getElementById('pw-input').value;
+  if(val===ADMIN_PW){
+    isDM=true;
+    try{ localStorage.setItem(DM_STORAGE_KEY, 'true'); } catch(e){}
+    document.getElementById('pw-overlay').classList.remove('open');
+    updateModeUI();
+  } else {
+    document.getElementById('pw-err').style.display='block';
+  }
+}
+
+// ── INIZIALIZZAZIONE ─────────────────────────────────────────────────────
+selectedSchools = isDM ? ["Invocazione"] : [CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
+renderSchoolGrid();
+renderEnergyGrid();
+buildConjPalette();
+buildPalette();
+buildCatalogSelect();
+updateModeUI();
+
 applyZoom();
 buildLeftDecoration();
 
