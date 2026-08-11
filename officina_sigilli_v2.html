@@ -198,7 +198,7 @@
     </div>
   </div>
 
-  <div class="panel canvas-wrap">
+  <div class="panel canvas-wrap" style="padding-bottom:36px;">
     <div class="zoom-row">
       <h2 style="align-self:flex-start; margin:0;">Il sigillo</h2>
       <div class="zoom-controls">
@@ -208,10 +208,10 @@
         <button class="zoom-btn" id="zoomResetBtn" title="Ripristina zoom">⟲</button>
       </div>
     </div>
-    <div id="sigilScroll">
+    <div id="sigilScroll" style="max-height:76vh;">
       <svg id="sigilSvg" width="500" height="445" viewBox="0 70 640 570"></svg>
     </div>
-    <div class="hint">Sinistro per trascinare, destro per cancellare, rotellina per ridimensionare.</div>
+    <div class="hint" style="margin-top:26px;">Sinistro per trascinare, destro per cancellare, rotellina per ridimensionare.</div>
   </div>
 
   <div class="panel" id="esitoPanel">
@@ -397,61 +397,202 @@ const CATALOG_DEV = [
     ]
   },
   {
-    name:"Trasmutare Energie — Apice",
-    a:"Trasmutazione", b:"", energy:"Fulmine", energySelf:true,
-    baseRange:4, baseDiameter:0.5,
-    dynamicElemental:true,
-    desc:"L'evoluzione più estrema del sigillo base, disposizione rifinita a mano: tutti e cinque gli spicchi occupati al massimo, Materia Prima duplicata (Livello per la potenza, Lancio per il rituale), un Nodo enorme e una Linea a fare da ponte col Core. Dispendio energetico ≈24.5, Moltiplicatore di Potenza ×4 (i watt del Fulmine quadruplicati), Gittata ≈57.6 m, Diametro ≈7.2 m, Tempo di lancio 3 minuti. Inevitabilmente sbilanciato — è il prezzo dell'estremo.",
+    name:"Trasmutare Energie in Gelo",
+    a:"Trasmutazione", b:"", dominance:"a", energy:"Gelo", energySelf:true,
+    dynamicElemental:false,
+    desc:"Variante fissa del sigillo di Trasmutazione elementare: il glifo di Energia al centro è bloccato su Gelo, così il sigillo sottrae calore all'aria trasformandolo in freddo pungente, invece di lasciare libera la scelta dell'elemento come nel sigillo base. Congiunzione nello spicchio Livello offre un piccolo margine di potenza in più; Cesura nello spicchio Durata blocca l'effetto sull'istantaneo evitando derive; Sacrificio consuma il reagente necessario. La Linea che attraversa il Core rinforza il legame diretto fra l'energia e la forma dell'effetto.",
     glyphs:[
-      {sector:0, key:'materiaprima', angle:49.89, percent:100, size:2},
-      {sector:1, key:'scintilla', angle:122.13, percent:100, size:2},
-      {sector:2, key:'coagulazione', angle:184.03, percent:100, size:2},
-      {sector:3, key:'sacrificio', angle:239.36, percent:100, size:2},
-      {sector:4, key:'materiaprima', angle:315.50, percent:100, size:2}
+      {sector:0, key:'congiunzione', angle:42.597215899997366, percent:39, size:0.9, self:false},
+      {sector:1, key:'scintilla', angle:131, percent:27, size:1, self:false},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:229, percent:27, size:1, self:false}
     ],
     conjunctions:[
-      {key:'nodo', angle:10.30, percent:4, inCore:true, coreDist:21.47, rotation:0, size:7},
-      {key:'linea', angle:180.89, percent:24, inCore:false, coreDist:156.48, rotation:270.35, size:1}
-    ]
-  },
-  {
-    name:"Trasmutare Energie — Nucleo",
-    a:"Trasmutazione", b:"", energy:"Gelo", energySelf:true,
-    baseRange:4, baseDiameter:0.5,
-    dynamicElemental:true,
-    desc:"Variante raffinata e sicura del sigillo base, pensata per un uso ripetuto e prevedibile invece che per l'estremo. Cesura nello spicchio Durata blocca l'effetto sull'istantaneo evitando derive; Congiunzione nello spicchio Livello offre un piccolo margine di potenza senza sbilanciare il disegno. Gittata e Componenti restano quelli del sigillo originale.",
-    glyphs:[
-      {sector:0, key:'congiunzione', angle:36, percent:20, size:1},
-      {sector:1, key:'scintilla', angle:131, percent:27, size:1},
-      {sector:2, key:'cesura', angle:180, percent:20, size:1},
-      {sector:3, key:'sacrificio', angle:229, percent:27, size:1}
+      {key:'linea', angle:40.81315889396336, percent:24, inCore:false, coreDist:99.76123360970301, rotation:150.68680415851554, size:2}
     ]
   },
   {
     name:"Evocare Creature d'Ombra",
-    a:"Evocazione", b:"Necromanzia", energy:"Negativa", energySelf:false,
-    desc:"Un sigillo di richiamo che lacera per un istante il velo tra i piani, estraendone un frammento d'ombra senziente legato al lanciatore da un patto temporaneo. Materia Prima nello spicchio Livello ne fissa la forza; Separazione nello spicchio Gittata stabilisce la distanza a cui la creatura si materializza; Intervallo ne determina la durata del legame; Sacrificio consuma il reagente rituale necessario a completarlo; Distillazione allunga il tempo di lancio, perché il patto va negoziato con cura, non imposto in fretta.",
+    a:"Evocazione", b:"Necromanzia", dominance:"a", energy:"Negativa", energySelf:false,
+    desc:"Un sigillo di richiamo che lacera per un istante il velo tra i piani, estraendone un frammento d'ombra senziente legato al lanciatore da un patto temporaneo. Materia Prima nello spicchio Livello ne fissa la forza; Separazione nello spicchio Gittata stabilisce la distanza a cui la creatura si materializza; Intervallo ne determina la durata del legame; Sacrificio, leggermente rimpicciolito, consuma il reagente rituale necessario a completarlo. La Linea che collega il Core allo spicchio Componenti mostra il canale diretto fra il lanciatore e il reagente sacrificato: senza Tempo di lancio dedicato, il rituale resta rapido quanto il resto del sigillo lo consente.",
     glyphs:[
-      {sector:0, key:'materiaprima', angle:36, percent:30, size:1},
-      {sector:1, key:'separazione', angle:108, percent:40, size:1},
-      {sector:2, key:'intervallo', angle:180, percent:30, size:1},
-      {sector:3, key:'sacrificio', angle:252, percent:30, size:1},
-      {sector:4, key:'distillazione', angle:324, percent:30, size:1}
+      {sector:0, key:'materiaprima', angle:26.805957263325126, percent:41, size:1, self:false},
+      {sector:1, key:'separazione', angle:103.8799986944768, percent:46, size:1, self:false},
+      {sector:2, key:'intervallo', angle:180.9901537558013, percent:33, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:243.02160574475357, percent:44, size:0.9, self:false}
+    ],
+    conjunctions:[
+      {key:'linea', angle:235.4213594643928, percent:24, inCore:false, coreDist:0, rotation:329.0487014737257, size:1.5}
     ]
   },
-  {name:"Sigillo in sviluppo #1", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #2", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #3", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #4", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #5", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #6", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #7", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #8", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #9", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]},
-  {name:"Sigillo in sviluppo #10", a:"Invocazione", b:"", desc:"Ancora da progettare.", glyphs:[]}
+  {
+    name:"Evocazione Informe",
+    a:"Evocazione", b:"", dominance:"a", energy:"Forza", energySelf:true, energySize:1.7,
+    desc:"Un grumo di materia informe prende corpo direttamente sul palmo della mano del lanciatore: nessun glifo nello spicchio Gittata significa che l'evocazione può avvenire solo a contatto, non a distanza. Materia Prima nello spicchio Livello ne fissa la quantità grezza; Coagulazione nello spicchio Durata solidifica la materia appena creata, mantenendola il più stabile e persistente possibile invece di dissolversi in un istante.",
+    glyphs:[
+      {sector:0, key:'materiaprima', angle:45.34086519181466, percent:44, size:1, self:false},
+      {sector:2, key:'coagulazione', angle:181.95210218894832, percent:35, size:1, self:false}
+    ],
+    conjunctions:[]
+  },
+  {
+    name:"Invisibilità di Massa",
+    a:"Illusione", b:"",
+    desc:"Un velo d'invisibilità che non copre un singolo bersaglio ma un intero gruppo. Moltiplicazione nello spicchio Livello scala l'effetto dal singolo alla schiera; Esplosione nello spicchio Gittata lo fa scoppiare come un'onda sferica che avvolge tutti gli alleati vicini nell'istante dell'attivazione; Intervallo ne misura la durata; Sacrificio consuma il reagente (un ciglio in gomma arabica); Distillazione allunga il rituale, perché legare così tante sagome all'invisibilità richiede tempo. La Curva che avvolge il disegno rappresenta il gruppo tenuto insieme da un unico incantesimo continuo.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:55, size:1.3},
+      {sector:1, key:'esplosione', angle:108, percent:60, size:1.3},
+      {sector:2, key:'intervallo', angle:180, percent:45, size:1.2},
+      {sector:3, key:'sacrificio', angle:252, percent:35, size:1},
+      {sector:4, key:'distillazione', angle:324, percent:35, size:1}
+    ],
+    conjunctions:[
+      {key:'curva', angle:300, percent:25, inCore:false, coreDist:0, rotation:60, size:1.8}
+    ]
+  },
+  {
+    name:"Inversione di Gravità",
+    a:"Trasmutazione", b:"",
+    desc:"Un'intera area smette di obbedire al basso e comincia a cadere verso l'alto. Moltiplicazione nello spicchio Livello ne amplifica la portata su una zona vasta; Esplosione nello spicchio Gittata la rende un'area sferica anziché un punto; Intervallo ne fissa la durata; Condizione nello spicchio Componenti fa sì che l'effetto scatti quando qualcosa entra o esce dalla zona; Scintilla mantiene il lancio rapido — un solo gesto per capovolgere le leggi fisiche. Il Nodo enorme al centro è la quantità di forza bruta necessaria a piegare la gravità stessa.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:70, size:1.5},
+      {sector:1, key:'esplosione', angle:108, percent:75, size:1.4},
+      {sector:2, key:'intervallo', angle:180, percent:50, size:1.2},
+      {sector:3, key:'condizione', angle:252, percent:40, size:1.1},
+      {sector:4, key:'scintilla', angle:324, percent:30, size:1}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:10, percent:5, inCore:true, coreDist:16, rotation:0, size:3}
+    ]
+  },
+  {
+    name:"Reggia Meravigliosa (Rifugio Meraviglioso)",
+    a:"Evocazione", b:"",
+    desc:"Una porta si apre su una dimora extradimensionale completa di stanze, servitori e provviste, finché l'incantesimo dura. Moltiplicazione nello spicchio Livello costruisce un intero edificio a più stanze anziché un singolo oggetto; Separazione nello spicchio Gittata fissa a che distanza compare la soglia; Coagulazione nello spicchio Durata solidifica la struttura, rendendola stabile finché l'incantesimo regge; Sacrificio consuma i costosi componenti rituali; Distillazione allunga il tempo di lancio a un vero e proprio rito. Il Nodo enorme al centro è la dimensione tascabile stessa, aperta e sostenuta dal potere accumulato nel Core.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:80, size:1.6},
+      {sector:1, key:'separazione', angle:108, percent:50, size:1.2},
+      {sector:2, key:'coagulazione', angle:180, percent:60, size:1.4},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:55, size:1.3}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:5, percent:3, inCore:true, coreDist:11, rotation:0, size:5}
+    ]
+  },
+  {
+    name:"Disintegrazione",
+    a:"Trasmutazione", b:"",
+    desc:"Un sottile raggio verdastro riduce carne, pietra o metallo a un pizzico di polvere fine. Moltiplicazione nello spicchio Livello ne spinge la potenza al limite; Proiezione nello spicchio Gittata libera tutta l'energia in un solo istante lungo un raggio; Cesura conferma che l'effetto è istantaneo, senza strascichi; Sacrificio, ingrandito, riflette il costoso tubo di piombo e ferro necessario al rituale; Scintilla mantiene comunque il lancio fulmineo nonostante la potenza in gioco. La Linea che attraversa il disegno è il raggio stesso, dal Core dritto al bersaglio.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:85, size:1.6},
+      {sector:1, key:'proiezione', angle:108, percent:90, size:1.7},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1},
+      {sector:3, key:'sacrificio', angle:252, percent:60, size:1.3},
+      {sector:4, key:'scintilla', angle:324, percent:25, size:1}
+    ],
+    conjunctions:[
+      {key:'linea', angle:108, percent:35, inCore:false, coreDist:0, rotation:198, size:2.3}
+    ]
+  },
+  {
+    name:"Globo di Invulnerabilità",
+    a:"Abiurazione", b:"",
+    desc:"Una cupola invisibile racchiude il lanciatore e i suoi alleati, respingendo gli incantesimi più deboli come acqua su un vetro. Coagulazione nello spicchio Livello rende la barriera solida e affidabile; Alone nello spicchio Gittata la fa emanare in modo persistente proprio attorno al lanciatore, non altrove; Intervallo ne fissa la durata; Sacrificio consuma il reagente; Distillazione allunga il rituale di preparazione. Il Nodo al centro è la riserva di potere che la cupola consuma costantemente per restare in piedi.",
+    glyphs:[
+      {sector:0, key:'coagulazione', angle:36, percent:60, size:1.4},
+      {sector:1, key:'alone', angle:108, percent:50, size:1.5, self:true},
+      {sector:2, key:'intervallo', angle:180, percent:55, size:1.3},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:40, size:1.1}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:15, percent:6, inCore:true, coreDist:18, rotation:0, size:3}
+    ]
+  },
+  {
+    name:"Campo Antimagia",
+    a:"Abiurazione", b:"",
+    desc:"Una zona in cui la magia semplicemente smette di funzionare: incantesimi soppressi, oggetti magici muti, creature evocate rimandate da dove sono venute. Moltiplicazione nello spicchio Livello estende la soppressione a ogni scuola di magia insieme; Alone nello spicchio Gittata la fa emanare tutt'attorno al lanciatore come un campo persistente; Coagulazione nello spicchio Durata la rende un campo solido e stabile finché dura; Sacrificio consuma il reagente; Distillazione allunga la preparazione del rituale. Il grande Nodo al centro è la quantità di potere necessaria a soffocare ogni altra magia nei paraggi.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:70, size:1.5},
+      {sector:1, key:'alone', angle:108, percent:55, size:1.4, self:true},
+      {sector:2, key:'coagulazione', angle:180, percent:60, size:1.4},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:45, size:1.2}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:8, percent:4, inCore:true, coreDist:14, rotation:0, size:4}
+    ]
+  },
+  {
+    name:"Portale",
+    a:"Evocazione", b:"",
+    desc:"Un varco stabile si apre fra due punti, anche fra piani diversi, abbastanza grande da farci passare un esercito. Moltiplicazione nello spicchio Livello ne spinge la portata oltre ogni limite ordinario; Proiezione nello spicchio Gittata libera la potenza necessaria a bucare la distanza — o il piano — in un solo istante; Intervallo fissa quanto resta aperto il varco; Sacrificio, molto ingrandito, riflette la rarità e il costo dei componenti richiesti; Distillazione allunga il rito fino a diversi lunghi minuti di intonazione. Il Nodo massiccio e la Linea che lo attraversa rappresentano i due capi del portale, tenuti aperti e collegati dal Core.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:90, size:1.7},
+      {sector:1, key:'proiezione', angle:108, percent:95, size:1.8},
+      {sector:2, key:'intervallo', angle:180, percent:50, size:1.2},
+      {sector:3, key:'sacrificio', angle:252, percent:80, size:1.6},
+      {sector:4, key:'distillazione', angle:324, percent:70, size:1.5}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:3, percent:2, inCore:true, coreDist:10, rotation:0, size:6},
+      {key:'linea', angle:190, percent:22, inCore:false, coreDist:0, rotation:280, size:1.4}
+    ]
+  },
+  {
+    name:"Catena di Fulmini",
+    a:"Invocazione", b:"",
+    energy:"Fulmine", energySelf:false, energySize:1.5,
+    desc:"Un fulmine colpisce il primo bersaglio e poi salta da nemico a nemico, indebolendosi a ogni balzo. Moltiplicazione nello spicchio Livello permette al fulmine di rimbalzare su molti bersagli anziché uno solo; Solco nello spicchio Gittata traccia la scarica retta verso il primo bersaglio; Cesura conferma che tutto avviene in un istante; Sacrificio consuma il reagente (un pezzo di rame e uno di vetro sfregati insieme); Scintilla mantiene il lancio fulmineo, coerente col nome. La Linea è la scarica iniziale, la Curva che segue è il balzo che incatena i bersagli successivi.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:75, size:1.5},
+      {sector:1, key:'solco', angle:108, percent:70, size:1.4},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1},
+      {sector:3, key:'sacrificio', angle:252, percent:45, size:1.2},
+      {sector:4, key:'scintilla', angle:324, percent:25, size:1}
+    ],
+    conjunctions:[
+      {key:'linea', angle:108, percent:30, inCore:false, coreDist:0, rotation:198, size:1.8},
+      {key:'curva', angle:150, percent:35, inCore:false, coreDist:0, rotation:240, size:2.2}
+    ]
+  },
+  {
+    name:"Evocazione d'Ombra Massima",
+    a:"Evocazione", b:"Necromanzia", dominance:"a",
+    energy:"Negativa", energySelf:false,
+    desc:"La versione maggiore del sigillo \"Evocare Creature d'Ombra\": stessa struttura di base, ma spinta oltre. Materia Prima è stata sostituita con Moltiplicazione nello spicchio Livello, per evocare qualcosa di ben più grande e potente di un semplice frammento d'ombra; Separazione in Gittata e Intervallo in Durata restano com'erano, solo ingranditi; Sacrificio, anch'esso più grande, consuma un reagente ben più raro; ed è stata aggiunta Distillazione nello spicchio Tempo di lancio, perché la versione \"massima\" richiede un rituale esteso che quella base non necessitava. Il Nodo aggiunto accanto alla Linea è la potenza extra che questa versione richiede per squarciare il velo più a fondo.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:27, percent:60, size:1.4},
+      {sector:1, key:'separazione', angle:104, percent:55, size:1.3},
+      {sector:2, key:'intervallo', angle:181, percent:45, size:1.3},
+      {sector:3, key:'sacrificio', angle:243, percent:55, size:1.3},
+      {sector:4, key:'distillazione', angle:324, percent:45, size:1.2}
+    ],
+    conjunctions:[
+      {key:'linea', angle:235, percent:24, inCore:false, coreDist:0, rotation:329, size:2.5},
+      {key:'nodo', angle:15, percent:5, inCore:true, coreDist:15, rotation:0, size:4}
+    ]
+  },
+  {
+    name:"Conversione della Materia",
+    a:"Trasmutazione", b:"",
+    desc:"Una grande quantità di materiale grezzo — pietra, legno, metallo — cambia natura e diventa qualcos'altro, in modo permanente. Moltiplicazione nello spicchio Livello estende l'effetto a un grande volume di materiale anziché un piccolo oggetto; Esplosione nello spicchio Gittata copre un'intera area col cambiamento; Coagulazione nello spicchio Durata solidifica la trasformazione, rendendola permanente invece che temporanea; Sacrificio consuma il reagente; Distillazione riflette il processo lento e meticoloso richiesto per riorganizzare la materia a un livello così profondo. La Curva rappresenta il materiale che scorre e si riplasma in una nuova forma.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:70, size:1.5},
+      {sector:1, key:'esplosione', angle:108, percent:65, size:1.4},
+      {sector:2, key:'coagulazione', angle:180, percent:55, size:1.4},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:50, size:1.3}
+    ],
+    conjunctions:[
+      {key:'curva', angle:280, percent:28, inCore:false, coreDist:0, rotation:20, size:2.2}
+    ]
+  }
 ];
 
-// Indici in CATALOG_DEV che formano i "4 incantesimi base" visibili al giocatore.
+// Indici in CATALOG_DEV che formano gli incantesimi base visibili al giocatore.
 const BASE_SPELL_INDICES = [0,1,2,3];
 
 // Catalogo "Sigilli Importati": persistente in localStorage, popolato dal DM caricando
