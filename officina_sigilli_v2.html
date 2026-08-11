@@ -165,6 +165,9 @@
       <button class="tool-btn" id="loadBtn">⭱ Carica da file</button>
     </div>
     <input type="file" id="loadFileInput" accept="application/json" style="display:none;">
+    <div class="tool-row">
+      <button class="tool-btn" id="exportPngBtn">🖼 Esporta immagine (PNG)</button>
+    </div>
 
     <div class="import-row" id="importRow">
       <button class="tool-btn" id="importBtn">✦ Importa nel catalogo DM</button>
@@ -795,6 +798,53 @@ document.getElementById('saveBtn').addEventListener('click', ()=>{
 
 document.getElementById('loadBtn').addEventListener('click', ()=>{
   document.getElementById('loadFileInput').click();
+});
+
+document.getElementById('exportPngBtn').addEventListener('click', ()=>{
+  const src=document.getElementById('sigilSvg');
+  const vb=src.viewBox.baseVal; // area utile del disegno (esclude i margini vuoti)
+  const pad=20;
+  const x=Math.max(0, vb.x-pad), y=Math.max(0, vb.y-pad);
+  const w=vb.width+pad*2, h=vb.height+pad*2;
+  const scale=3; // esporta a risoluzione tripla per un PNG nitido
+
+  const clone=src.cloneNode(true);
+  clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  clone.setAttribute('viewBox', `${x} ${y} ${w} ${h}`);
+  clone.setAttribute('width', w*scale);
+  clone.setAttribute('height', h*scale);
+  // Sfondo pieno coerente col tema, altrimenti il PNG esce trasparente/bianco
+  const bgRect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bgRect.setAttribute('x', x); bgRect.setAttribute('y', y);
+  bgRect.setAttribute('width', w); bgRect.setAttribute('height', h);
+  bgRect.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--bg') || '#0a0c0f');
+  clone.insertBefore(bgRect, clone.firstChild);
+
+  const svgData=new XMLSerializer().serializeToString(clone);
+  const svgBlob=new Blob([svgData], {type:'image/svg+xml;charset=utf-8'});
+  const url=URL.createObjectURL(svgBlob);
+  const img=new Image();
+  img.onload=()=>{
+    const canvas=document.createElement('canvas');
+    canvas.width=w*scale; canvas.height=h*scale;
+    const ctx=canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w*scale, h*scale);
+    URL.revokeObjectURL(url);
+    canvas.toBlob(pngBlob=>{
+      const pngUrl=URL.createObjectURL(pngBlob);
+      const a=document.createElement('a');
+      const name=currentCatalogLabel ? currentCatalogLabel.name : "sigillo_personalizzato";
+      const safeName=name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+      a.href=pngUrl;
+      a.download=`sigillo_${safeName||'personalizzato'}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(pngUrl);
+    }, 'image/png');
+  };
+  img.onerror=()=>{ alert('Esportazione non riuscita: prova a ricaricare la pagina e riprovare.'); URL.revokeObjectURL(url); };
+  img.src=url;
 });
 
 document.getElementById('loadFileInput').addEventListener('change', evt=>{
