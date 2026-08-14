@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Officina dei Sigilli — Kaelvaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c0f; --bg-panel:#111520; --bg-card:#161d28;
+    --line:rgba(90,130,190,0.18); --line-b:rgba(90,130,190,0.34);
+    --ink:#e8e0d0; --ink-soft:#9a9080; --ink-mute:#5a5448;
+    --teal:#5ab48f; --amber:#c4954a; --red:#c45a5a; --purple:#8f72d4; --gold:#c9a84c; --gold-d:#8a6e2f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);
+    color:var(--ink); font-family:'Crimson Pro', Georgia, serif; font-size:16px; line-height:1.6;}
+  h1,h2,.display{font-family:'Cinzel', serif; letter-spacing:0.04em;}
+  header{padding:30px 20px 16px; text-align:center; border-bottom:1px solid var(--line);}
+  header h1{margin:0 0 6px; font-size:26px; color:var(--gold); font-weight:600;}
+  header p{margin:0; color:var(--ink-mute); font-style:italic; font-size:14px;}
+  .layout{max-width:1200px; margin:0 auto; padding:24px 18px 60px; display:grid;
+    grid-template-columns:280px 1fr 320px; gap:22px; transition:grid-template-columns .25s ease;}
+  @media (max-width:1000px){.layout{grid-template-columns:1fr !important;}}
+  .panel{position:relative;}
+  .panel-toggle{position:absolute; top:8px; left:8px; width:22px; height:22px; display:flex; align-items:center;
+    justify-content:center; border:1px solid var(--line-b); border-radius:3px; background:var(--bg);
+    color:var(--ink-soft); cursor:pointer; font-size:12px; z-index:5;}
+  .panel-toggle:hover{color:var(--gold); border-color:var(--gold);}
+  #leftPanel.panel-collapsed{padding:8px 4px;}
+  #leftPanel #leftPanelBody{margin-top:26px;}
+  #leftDecoration{margin-top:30px; text-align:center;}
+  #esitoPanel{padding-top:36px;}
+  #fullscreenBtn{position:fixed; bottom:20px; right:20px; z-index:50; padding:10px 14px; border:1px solid var(--line-b);
+    border-radius:4px; background:var(--bg-card); color:var(--ink-soft); font-family:'Cinzel',serif; font-size:14px;
+    cursor:pointer;}
+  #fullscreenBtn:hover{color:var(--gold); border-color:var(--gold);}
+  .esito-summary-line{display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dotted var(--line); font-size:14px;}
+  .esito-summary-desc{margin-top:10px; font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;}
+  .panel{background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:18px 18px;}
+  .panel h2{font-size:13px; margin:0 0 12px; color:var(--gold); text-transform:uppercase; letter-spacing:0.1em;
+    border-bottom:1px solid var(--line); padding-bottom:8px; font-weight:600;}
+  select{width:100%; font-family:'Crimson Pro', Georgia, serif; font-size:15px; padding:6px 8px; margin-bottom:10px;
+    border:1px solid var(--line-b); border-radius:3px; background:var(--bg); color:var(--ink); outline:none;}
+  .glyph-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;}
+  .glyph-btn{display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 2px;
+    border:1px solid var(--line); border-radius:3px; background:var(--bg); cursor:pointer; font-size:10px;
+    color:var(--ink-soft); text-align:center; transition:.15s ease;}
+  .glyph-btn:hover{border-color:var(--line-b);}
+  .glyph-btn svg{width:22px; height:22px; color:var(--ink-soft);}
+  .glyph-btn.armed{background:var(--gold); color:var(--bg); border-color:var(--gold);}
+  .tool-btn{width:100%; margin-top:8px; padding:8px; border:1px solid var(--line-b); border-radius:3px;
+    background:var(--bg); color:var(--ink-soft); font-family:'Crimson Pro', Georgia, serif; font-size:13px; cursor:pointer;}
+  .tool-btn:hover{border-color:var(--gold); color:var(--gold);}
+  .tool-row{display:flex; gap:8px;}
+  .tool-row .tool-btn{margin-top:8px;}
+  .glyph-btn.armed svg{color:var(--bg);}
+  .glyph-btn.school-primary{background:var(--gold); color:var(--bg); border-color:var(--gold);}
+  .glyph-btn.school-primary svg{color:var(--bg);}
+  .glyph-btn.school-secondary{background:var(--purple); color:var(--ink); border-color:var(--purple);}
+  .glyph-btn.school-secondary svg{color:var(--ink);}
+  .canvas-wrap{display:flex; flex-direction:column; align-items:center;}
+  .zoom-row{width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;}
+  .zoom-controls{display:flex; align-items:center; gap:6px;}
+  .zoom-btn{width:26px; height:26px; border:1px solid var(--line-b); border-radius:3px; background:var(--bg);
+    color:var(--ink-soft); font-size:15px; cursor:pointer; line-height:1;}
+  .zoom-btn:hover{color:var(--gold); border-color:var(--gold);}
+  #zoomLabel{font-size:12px; color:var(--ink-mute); min-width:38px; text-align:center;}
+  #sigilScroll{width:100%; max-height:70vh; overflow:auto; display:flex; justify-content:center;
+    scrollbar-color:var(--line-b) var(--bg);}
+  #sigilScroll::-webkit-scrollbar{width:10px; height:10px;}
+  #sigilScroll::-webkit-scrollbar-track{background:var(--bg);}
+  #sigilScroll::-webkit-scrollbar-thumb{background:var(--line-b); border-radius:5px; border:2px solid var(--bg);}
+  #sigilScroll::-webkit-scrollbar-thumb:hover{background:var(--gold-d);}
+  ::-webkit-scrollbar{width:10px; height:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--line-b); border-radius:5px; border:2px solid var(--bg);}
+  ::-webkit-scrollbar-thumb:hover{background:var(--gold-d);}
+  html{scrollbar-color:var(--line-b) var(--bg);}
+  .hint{font-size:12px; color:var(--ink-mute); font-style:italic; margin-top:8px; text-align:center;}
+  .stat-line{display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dotted var(--line); font-size:14px;}
+  .stat-line span:first-child{color:var(--ink-mute);}
+  .badge{display:inline-block; padding:2px 9px; border-radius:2px; font-size:11px; font-weight:600; letter-spacing:.04em;
+    font-family:'Cinzel',serif; text-transform:uppercase; color:var(--bg);}
+  .b-teal{background:var(--teal);} .b-amber{background:var(--amber);} .b-red{background:var(--red);}
+  .flavor{margin-top:12px; padding:12px 14px; background:rgba(201,168,76,0.08); border-left:2px solid var(--gold);
+    font-style:italic; font-size:14px; color:var(--ink-soft);}
+  .spell-desc-box{margin-bottom:14px; padding:12px 14px; background:var(--bg); border:1px solid var(--line-b); border-radius:2px;}
+  .spell-desc-title{font-family:'Cinzel',serif; font-size:13px; letter-spacing:.04em; color:var(--ink); margin-bottom:5px;}
+  .spell-desc-text{font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
+  .mod-tags{color:var(--gold); font-style:italic;}
+  .stat-line.dispendio{font-family:'Cinzel',serif; font-size:15px; padding:6px 0;}
+  .stat-line.dispendio span:first-child{color:var(--gold);}
+  .stat-line.dispendio span:last-child{color:var(--gold); font-weight:600;}
+  .error-box{margin-bottom:14px; padding:12px 14px; background:rgba(196,90,90,0.1); border:1px solid var(--red);
+    border-radius:2px; font-size:13.5px; line-height:1.5; color:var(--ink);}
+  svg text{font-family:'Crimson Pro', Georgia, serif;}
+  #sigilSvg{user-select:none; -webkit-user-select:none;}
+
+  .mode-row{display:flex; align-items:center; justify-content:center; gap:12px; margin-top:10px; flex-wrap:wrap;}
+  #modeLabel{font-family:'Cinzel',serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px;
+    border:1px solid var(--line-b); border-radius:3px; color:var(--ink-soft);}
+  #modeLabel.dm-on{color:var(--gold); border-color:var(--gold);}
+  .mode-btn{padding:6px 12px; border:1px solid var(--line-b); border-radius:3px; background:var(--bg-card);
+    color:var(--ink-soft); font-family:'Cinzel',serif; font-size:12px; letter-spacing:.05em; cursor:pointer;}
+  .mode-btn:hover{color:var(--gold); border-color:var(--gold);}
+
+  .pw-overlay{display:none; position:fixed; inset:0; background:rgba(6,7,10,0.82); z-index:100;
+    align-items:center; justify-content:center;}
+  .pw-overlay.open{display:flex;}
+  .pw-box{background:var(--bg-card); border:1px solid var(--line-b); border-radius:5px; padding:26px 28px;
+    width:280px; text-align:center;}
+  .pw-title{font-family:'Cinzel',serif; color:var(--gold); font-size:15px; margin-bottom:14px; letter-spacing:.05em;}
+  .pw-input{width:100%; padding:9px 12px; background:var(--bg); border:1px solid var(--line-b); border-radius:3px;
+    color:var(--ink); font-family:'Crimson Pro', Georgia, serif; font-size:15px; margin-bottom:10px;
+    text-align:center; letter-spacing:.1em; box-sizing:border-box;}
+  .pw-input:focus{outline:none; border-color:var(--gold);}
+  .pw-btn{width:100%; padding:9px; border:1px solid var(--gold-d); border-radius:3px; background:var(--gold);
+    color:var(--bg); font-family:'Cinzel',serif; font-size:13px; letter-spacing:.05em; cursor:pointer;}
+  .pw-btn:hover{filter:brightness(1.08);}
+  .pw-err{font-size:12px; color:var(--red); margin-top:8px; display:none; font-style:italic;}
+  .pw-close{margin-top:10px; background:none; border:none; color:var(--ink-mute); font-size:12px; cursor:pointer;
+    text-decoration:underline;}
+
+  optgroup{color:var(--gold); font-family:'Cinzel',serif; font-style:normal; font-size:12px;}
+  option{color:var(--ink); font-family:'Crimson Pro', Georgia, serif;}
+  .import-row{display:none;}
+  .import-row.visible{display:block;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Officina dei Sigilli</h1>
+  <p>Scegli le scuole per il Core, poi clicca un glifo nella palette e posizionalo sul sigillo: l'angolo in cui lo posi decide il parametro che modifica.</p>
+  <div class="mode-row">
+    <span id="modeLabel">Modalità: Giocatore</span>
+    <button class="mode-btn" id="dmToggleBtn">◑ Modalità DM</button>
+  </div>
+</header>
+
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <div class="pw-title">◑ Accesso Modalità DM</div>
+    <input type="password" class="pw-input" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
+    <button class="pw-btn" onclick="checkPW()">Sblocca</button>
+    <div class="pw-err" id="pw-err">Password errata.</div>
+    <button class="pw-close" onclick="document.getElementById('pw-overlay').classList.remove('open')">Annulla</button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <div class="panel" id="leftPanel">
+    <div class="panel-toggle" id="leftToggle">◂</div>
+    <div id="leftDecoration" style="display:none;"></div>
+    <div id="leftPanelBody">
+    <h2>Catalogo</h2>
+    <select id="catalogSelect"></select>
+    <div class="hint" style="margin-top:2px;">Carica un incantesimo conosciuto, poi modifica liberamente i glifi per vedere come cambia l'esito.</div>
+    <button class="tool-btn" id="resetBtn">↺ Ripristina disposizione iniziale</button>
+    <div class="tool-row">
+      <button class="tool-btn" id="saveBtn">⭳ Salva su file</button>
+      <button class="tool-btn" id="loadBtn">⭱ Carica da file</button>
+    </div>
+    <input type="file" id="loadFileInput" accept="application/json" style="display:none;">
+    <div class="tool-row">
+      <a class="tool-btn" id="manualBtn" href="manuale_officina_sigilli.html" target="_blank" rel="noopener" style="text-align:center; text-decoration:none; display:block;">📖 Manuale</a>
+    </div>
+
+    <div class="import-row" id="importRow">
+      <button class="tool-btn" id="importBtn">✦ Importa nel catalogo DM</button>
+      <button class="tool-btn" id="removeImportedBtn" style="display:none;">🗑 Rimuovi sigillo importato</button>
+      <input type="file" id="importFileInput" accept="application/json" style="display:none;">
+      <div class="hint" style="margin-top:2px;">Carica il file .json inviato da un giocatore: verrà salvato in modo permanente nel catalogo "Sigilli Importati".</div>
+    </div>
+
+    <h2 style="margin-top:16px;">CORE</h2>
+    <div class="glyph-grid" id="schoolGrid"></div>
+    <div class="hint" style="margin-top:6px;">Clicca una scuola per il Core. Clicca una seconda scuola per fonderla; clicca di nuovo una scuola selezionata per toglierla.</div>
+    <div id="dominanceRow" style="display:none;">
+      <label style="font-size:12px;color:var(--ink-soft);">Se le scuole sono opposte, chi domina?</label>
+      <select id="dominance">
+        <option value="a">Scuola A</option>
+        <option value="b">Scuola B</option>
+      </select>
+    </div>
+
+    <h2 style="margin-top:16px;">Energia</h2>
+    <div class="glyph-grid" id="energyGrid"></div>
+    <div class="hint" style="margin-top:2px;">Il sapore energetico del Core (opzionale, una sola alla volta). Clicca e posa come un glifo: sinistro per spostarla, destro per cancellarla, rotellina per ridimensionarla.</div>
+
+    <h2 style="margin-top:18px;">Congiunzioni</h2>
+    <div class="glyph-grid" id="conjPalette"></div>
+    <div class="hint" style="margin-top:2px;">Collegano le parti del sigillo. Clicca e posa come un glifo; rotellina per ruotarle di 5° alla volta, Maiusc+rotellina per ingrandirle o rimpicciolirle.</div>
+
+    <h2 style="margin-top:18px;">Glifi</h2>
+    <div class="glyph-grid" id="palette"></div>
+    <div class="hint">Clicca un glifo e poi il sigillo per posarlo. Trascinalo (sinistro) per spostarlo, destro per cancellarlo, rotellina per ingrandirlo o rimpicciolirlo fino all'80% dei simboli del Core — la sua dimensione è la potenza che richiede. Separazione: sul Core è il bersaglio sé stesso, vicino al centro è a contatto, più lontano indica i metri di distanza; nello spicchio Durata indica invece impulsi scaglionati.</div>
+    </div>
+  </div>
+
+  <div class="panel canvas-wrap" style="padding-bottom:36px;">
+    <div class="zoom-row">
+      <h2 style="align-self:flex-start; margin:0;">Il sigillo</h2>
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="zoomOutBtn">−</button>
+        <span id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomInBtn">+</button>
+        <button class="zoom-btn" id="zoomResetBtn" title="Ripristina zoom">⟲</button>
+      </div>
+    </div>
+    <div id="sigilScroll" style="max-height:76vh;">
+      <svg id="sigilSvg" width="500" height="445" viewBox="0 70 640 570"></svg>
+    </div>
+    <div class="hint" style="margin-top:26px;">Sinistro per trascinare, destro per cancellare, rotellina per ridimensionare.</div>
+  </div>
+
+  <div class="panel" id="esitoPanel">
+    <div class="panel-toggle" id="esitoToggle" style="left:auto; right:8px;">▸</div>
+    <h2>Esito</h2>
+    <div id="esitoSummary" style="display:none;"></div>
+    <div id="output"></div>
+  </div>
+
+</div>
+
+<button id="fullscreenBtn" title="Schermo intero">⛶</button>
+
+<script>
+// ── MODALITÀ DM ────────────────────────────────────────────────────────
+const ADMIN_PW = 'Tresil2025';
+const DM_STORAGE_KEY = 'officina_sigilli_dm';
+let isDM = false;
+try{ if(localStorage.getItem(DM_STORAGE_KEY)==='true') isDM = true; } catch(e){}
+
+function updateLayoutColumns(){
+  const l = leftCollapsed ? '44px' : '280px';
+  const r = esitoCollapsed ? '200px' : '320px';
+  document.querySelector('.layout').style.gridTemplateColumns = `${l} 1fr ${r}`;
+}
+let leftCollapsed=false, esitoCollapsed=false;
+
+document.getElementById('leftToggle').addEventListener('click', ()=>{
+  leftCollapsed=!leftCollapsed;
+  document.getElementById('leftPanelBody').style.display = leftCollapsed?'none':'';
+  document.getElementById('leftDecoration').style.display = leftCollapsed?'':'none';
+  if(leftCollapsed) buildLeftDecoration();
+  document.getElementById('leftToggle').textContent = leftCollapsed?'▸':'◂';
+  document.getElementById('leftPanel').classList.toggle('panel-collapsed', leftCollapsed);
+  updateLayoutColumns();
+});
+
+document.getElementById('esitoToggle').addEventListener('click', ()=>{
+  esitoCollapsed=!esitoCollapsed;
+  document.getElementById('output').style.display = esitoCollapsed?'none':'';
+  document.getElementById('esitoSummary').style.display = esitoCollapsed?'':'none';
+  document.getElementById('esitoToggle').textContent = esitoCollapsed?'◂':'▸';
+  updateLayoutColumns();
+});
+
+document.getElementById('fullscreenBtn').addEventListener('click', ()=>{
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
+});
+document.addEventListener('fullscreenchange', ()=>{
+  document.getElementById('fullscreenBtn').textContent = document.fullscreenElement ? '⛶ Esci' : '⛶';
+});
+
+let zoomLevel=1.25;
+const ZOOM_BASE_W=400, ZOOM_BASE_H=356;
+function applyZoom(){
+  const svgEl=document.getElementById('sigilSvg');
+  svgEl.style.width=(ZOOM_BASE_W*zoomLevel)+'px';
+  svgEl.style.height=(ZOOM_BASE_H*zoomLevel)+'px';
+  document.getElementById('zoomLabel').textContent=Math.round(zoomLevel*100)+'%';
+}
+document.getElementById('zoomInBtn').addEventListener('click', ()=>{
+  zoomLevel=Math.min(3, Math.round((zoomLevel+0.25)*100)/100);
+  applyZoom();
+});
+document.getElementById('zoomOutBtn').addEventListener('click', ()=>{
+  zoomLevel=Math.max(0.5, Math.round((zoomLevel-0.25)*100)/100);
+  applyZoom();
+});
+document.getElementById('zoomResetBtn').addEventListener('click', ()=>{
+  zoomLevel=1;
+  applyZoom();
+});
+
+const SCHOOLS = ["Invocazione","Divinazione","Necromanzia","Ammaliamento","Illusione","Trasmutazione","Evocazione","Abiurazione"];
+const SECTOR_NAMES = ["Livello","Gittata","Durata","Componenti","Tempo di lancio"];
+
+const GLYPHS = {
+  calcinazione:{label:"Calcinazione", w:-1, icon:'<path d="M15 4 A8 8 0 1 0 15 20 A6 6 0 1 1 15 4 Z" fill="currentColor"/>', phrase:"riduce di un grado, come cenere che resta del fuoco"},
+  materiaprima:{label:"Materia Prima", w:0, icon:'<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/>', phrase:"conferma il valore base, la sostanza non ancora lavorata"},
+  congiunzione:{label:"Congiunzione", w:1, icon:'<path d="M8 5 Q12 1 16 5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="11" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="16" x2="12" y2="22" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="19" x2="15" y2="19" stroke="currentColor" stroke-width="1.5"/>', phrase:"unisce, aggiungendo un grado"},
+  moltiplicazione:{label:"Moltiplicazione", w:3, icon:'<path d="M6 4 L6 13 Q6 17 10 17 L19 17" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="15" y1="9" x2="15" y2="21" stroke="currentColor" stroke-width="1.6"/>', phrase:"moltiplica la potenza di molti gradi"},
+  proiezione:{label:"Proiezione", w:6, icon:'<line x1="7" y1="3" x2="7" y2="21" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.6"/><path d="M11 8 Q19 8 19 14 Q19 20 12 20" fill="none" stroke="currentColor" stroke-width="1.6"/>', phrase:"libera tutta la potenza in un solo istante"},
+  separazione:{label:"Separazione", w:2, icon:'<circle cx="9" cy="15" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13" y1="11" x2="21" y2="3" stroke="currentColor" stroke-width="1.6"/><polyline points="14,3 21,3 21,10" fill="none" stroke="currentColor" stroke-width="1.6"/>', phrase:"stabilisce quanto le cose restano distinte"},
+  cesura:{label:"Cesura", w:0, icon:'<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.6"/>', phrase:"resta istantaneo"},
+  intervallo:{label:"Intervallo", w:1, icon:'<path d="M6 4 L18 4 Q18 12 12 13 Q6 12 6 4 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="13" x2="12" y2="19" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="1.5"/>', phrase:"dura per un tempo misurato"},
+  condizione:{label:"Condizione", w:2, icon:'<path d="M5 12 Q5 19 12 19 Q19 19 19 12" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 6 Q12 2 16 6 Q13 9 12 12 Q11 9 8 6 Z" fill="currentColor"/>', phrase:"si attiva solo a una condizione"},
+  coagulazione:{label:"Coagulazione", w:4, icon:'<polyline points="7,3 17,3 8,13 17,13 7,21" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="1.4"/>', phrase:"solidifica l'effetto, rendendolo permanente"},
+  sacrificio:{label:"Sacrificio", w:2, icon:'<polygon points="12,4 18,14 6,14" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="14" x2="12" y2="21" stroke="currentColor" stroke-width="1.6"/><line x1="8" y1="17.5" x2="16" y2="17.5" stroke="currentColor" stroke-width="1.6"/>', phrase:"consuma un reagente"},
+  scintilla:{label:"Scintilla", w:0, icon:'<line x1="12" y1="21" x2="12" y2="4" stroke="currentColor" stroke-width="1.8"/><polyline points="7,9 12,4 17,9" fill="none" stroke="currentColor" stroke-width="1.8"/>', phrase:"si lancia in un istante"},
+  distillazione:{label:"Distillazione", w:2, icon:'<path d="M12 4 A8 8 0 1 1 4 12" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="4" r="1.6" fill="currentColor"/><circle cx="4" cy="12" r="1.6" fill="currentColor"/>', phrase:"raffina lentamente, richiede un rituale"},
+  ventaglio:{label:"Ventaglio", w:1, icon:'<path d="M12 12 L4 20 A12 12 0 0 0 20 20 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>', phrase:"si apre in un cono dal lanciatore"},
+  esplosione:{label:"Esplosione", w:1, icon:'<path d="M12 2 L14 9 L21 8 L15 13 L19 20 L12 16 L5 20 L9 13 L3 8 L10 9 Z" fill="none" stroke="currentColor" stroke-width="1.3"/>', phrase:"scoppia in un'area sferica"},
+  solco:{label:"Solco", w:1, icon:'<line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.8"/><polyline points="17,8 21,12 17,16" fill="none" stroke="currentColor" stroke-width="1.8"/>', phrase:"traccia una linea retta"},
+  alone:{label:"Alone", w:1, icon:'<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 2"/><circle cx="12" cy="12" r="3" fill="currentColor"/>', phrase:"emana in modo persistente attorno al lanciatore"}
+};
+
+const SCHOOL_ICONS = {
+  Invocazione:'<polygon points="12,4 20,20 4,20" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  Evocazione:'<polygon points="12,20 20,4 4,4" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  Trasmutazione:'<polygon points="12,4 20,19 4,19" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="7.5" y1="14" x2="16.5" y2="14" stroke="currentColor" stroke-width="1.6"/>',
+  Necromanzia:'<line x1="7" y1="3" x2="7" y2="21" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.6"/><path d="M11 8 Q19 8 19 14 Q19 20 12 20" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+  Divinazione:'<path d="M15 4 A8 8 0 1 0 15 20 A6 6 0 1 1 15 4 Z" fill="currentColor"/>',
+  Ammaliamento:'<circle cx="12" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="15" x2="12" y2="21" stroke="currentColor" stroke-width="1.6"/><line x1="9" y1="18" x2="15" y2="18" stroke="currentColor" stroke-width="1.6"/>',
+  Illusione:'<path d="M8 5 Q12 1 16 5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="11" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="16" x2="12" y2="22" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="19" x2="15" y2="19" stroke="currentColor" stroke-width="1.5"/>',
+  Abiurazione:'<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="1.4"/><line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.4"/>'
+};
+
+const ENERGIES = {
+  Calore:'<path d="M12 2 C9 5 5 9 5 13.5 A7 7 0 0 0 19 13.5 C19 10.5 17 8 15 9 C16 5 13.5 3 12 2 Z" fill="currentColor"/>',
+  Gelo:'<line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="8" x2="20" y2="16" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="8" x2="4" y2="16" stroke="currentColor" stroke-width="1.5"/>',
+  Fulmine:'<polygon points="13,2 6,13 11,13 9,22 18,10 12,10 15,2" fill="currentColor"/>',
+  Acido:'<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4 A8 8 0 0 1 12 20 Z" fill="currentColor"/>',
+  Suono:'<path d="M6 8 A9 9 0 0 1 6 16" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 5 A13 13 0 0 1 10 19" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/>',
+  Forza:'<rect x="6" y="6" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="6" x2="12" y2="18" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.2"/>',
+  Negativa:'<circle cx="12" cy="16" r="4" fill="currentColor"/><line x1="12" y1="2" x2="12" y2="11" stroke="currentColor" stroke-width="1.6"/><polyline points="8,7 12,11 16,7" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+  Positiva:'<circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="13" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/><polyline points="8,18 12,22 16,18" fill="none" stroke="currentColor" stroke-width="1.6"/>'
+};
+
+// Glifi che indicano direzione o area d'effetto: la distanza dal nucleo ne determina la
+// gittata, la dimensione ne determina il diametro/area. Separazione (fuori dallo spicchio
+// Durata) si comporta allo stesso modo.
+const DIRECTION_GLYPH_KEYS = new Set(['scintilla','ventaglio','esplosione','solco','alone']);
+
+const schoolGrid=document.getElementById('schoolGrid');
+let selectedSchools=["Invocazione"];
+
+function renderSchoolGrid(){
+  schoolGrid.innerHTML='';
+  const list = (typeof KNOWN!=='undefined' && !isDM) ? SCHOOLS.filter(s=>KNOWN.schools.has(s)) : SCHOOLS;
+  list.forEach(s=>{
+    const btn=document.createElement('div');
+    const idx=selectedSchools.indexOf(s);
+    btn.className='glyph-btn' + (idx===0?' school-primary':idx===1?' school-secondary':'');
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${SCHOOL_ICONS[s]}</svg><span>${s}</span>`;
+    btn.addEventListener('click', ()=>{
+      const i=selectedSchools.indexOf(s);
+      if(i!==-1){
+        if(selectedSchools.length>1) selectedSchools.splice(i,1);
+      } else {
+        selectedSchools.push(s);
+        if(selectedSchools.length>2) selectedSchools.shift();
+      }
+      renderSchoolGrid();
+      render();
+    });
+    schoolGrid.appendChild(btn);
+  });
+}
+
+const energyGrid=document.getElementById('energyGrid');
+let energies=[];
+
+function renderEnergyGrid(){
+  energyGrid.innerHTML='';
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(ENERGIES).filter(k=>KNOWN.energies.has(k)) : Object.keys(ENERGIES);
+  keys.forEach(key=>{
+    const btn=document.createElement('div');
+    btn.className='glyph-btn';
+    btn.dataset.key='energy:'+key;
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${ENERGIES[key]}</svg><span>${key}</span>`;
+    btn.addEventListener('click', ()=>{
+      const full='energy:'+key;
+      if(armed===full){armed=null;} else {armed=full;}
+      document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+    });
+    energyGrid.appendChild(btn);
+  });
+}
+
+function mid(sector){ return sector*72+36; }
+
+// Catalogo "In Sviluppo": i 4 incantesimi base (indici 0-3, questi sono anche i soli
+// visibili al giocatore) più 10 sigilli ancora da progettare (indici 4-13, solo DM).
+const CATALOG_DEV = [
+  {
+    name:"Trasmutare Energie",
+    a:"Trasmutazione", b:"", energy:"Calore", energySelf:true,
+    maxRange:18, maxDiameter:4,
+    dynamicElemental:true,
+    desc:"Sigillo base per l'uso e la trasmutazione delle forze elementari: scambia il glifo di Energia al centro e il glifo nello spicchio Gittata per cambiare natura e forma dell'effetto. La distanza di Scintilla dal nucleo determina la gittata; la sua dimensione determina il diametro dell'effetto — i due parametri sono indipendenti. Nella disposizione base: gittata circa 4,9 metri, diametro 50 cm. Ingrandendo Scintilla al massimo (senza spostarla): diametro 4 metri, la gittata non cambia. Allontanando Scintilla al massimo dal nucleo (senza aggiungere congiunzioni): gittata 18 metri. Aggiungendo una Congiunzione a Linea che colleghi il Core a Scintilla, e spingendo quest'ultima oltre il limite normale di posizionamento: gittata fino a 28 metri. Se in Tempo di lancio viene aggiunto Cesura, il tempo di lancio si dimezza — ma è un glifo in più, quindi il Dispendio Energetico aumenta di conseguenza.",
+    glyphs:[
+      {sector:1, key:'scintilla', angle:131, percent:27, size:1},
+      {sector:3, key:'sacrificio', angle:229, percent:27, size:1}
+    ]
+  },
+  {
+    name:"Trasmutare Energie in Gelo",
+    a:"Trasmutazione", b:"", dominance:"a",
+    energies:[
+      {key:'Gelo', angle:45, percent:0, self:true, size:1},
+      {key:'Calore', angle:247, percent:30, self:false, size:1}
+    ],
+    maxRange:18, maxDiameter:4,
+    dynamicElemental:false,
+    desc:"Variante fissa del sigillo di Trasmutazione elementare: il glifo di Energia al centro è bloccato su Gelo, così il sigillo produce freddo pungente invece di lasciare libera la scelta dell'elemento come nel sigillo base. Una seconda energia, Calore, è sacrificata in Componenti insieme al glifo Sacrificio: è la materia prima energetica da cui il Gelo viene ricavato. Materia Prima nello spicchio Livello guida la trasformazione (il suo moltiplicatore di potenza scala l'intensità del freddo prodotto). Cesura nello spicchio Durata annulla l'effetto autonomo del Calore sacrificato — che altrimenti scalderebbe anziché raffreddare — lasciando campo libero alla trasformazione guidata da Materia Prima, e blocca l'effetto sull'istantaneo evitando derive di durata. La Linea che attraversa il Core rinforza il legame diretto fra l'energia e la forma dell'effetto.",
+    glyphs:[
+      {sector:0, key:'materiaprima', angle:43.86005892189843, percent:33, size:1, self:false},
+      {sector:1, key:'scintilla', angle:131, percent:27, size:1, self:false},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:229, percent:27, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'linea', angle:40.81315889396336, percent:24, inCore:false, coreDist:99.76123360970301, rotation:145.68680415851554, size:2.04}
+    ]
+  },
+  {
+    name:"Evocare Creature d'Ombra",
+    a:"Evocazione", b:"Necromanzia", dominance:"a",
+    energies:[
+      {key:'Negativa', angle:271.1772385901479, percent:35, self:false, size:1}
+    ],
+    desc:"Un sigillo di richiamo che lacera per un istante il velo tra i piani, estraendone un frammento d'ombra senziente legato al lanciatore da un patto temporaneo. Materia Prima nello spicchio Livello ne fissa la forza; Separazione nello spicchio Gittata stabilisce la distanza a cui la creatura si materializza; Intervallo ne determina la durata del legame; Sacrificio, leggermente rimpicciolito, consuma il reagente rituale necessario a completarlo — l'energia Negativa, collocata in Componenti accanto al Sacrificio, è la parte dell'animale offerta in sacrificio, da cui si tenta di evocare una versione ombra completa e senziente. La Linea che collega il Core allo spicchio Componenti mostra il canale diretto fra il lanciatore e il reagente sacrificato: senza Tempo di lancio dedicato, il rituale resta rapido quanto il resto del sigillo lo consente.",
+    glyphs:[
+      {sector:0, key:'materiaprima', angle:26.805957263325126, percent:41, size:1, self:false},
+      {sector:1, key:'separazione', angle:103.8799986944768, percent:46, size:1, self:false},
+      {sector:2, key:'intervallo', angle:180.9901537558013, percent:33, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:243.02160574475357, percent:44, size:0.9, self:false}
+    ],
+    conjunctions:[
+      {key:'linea', angle:235.4213594643928, percent:24, inCore:false, coreDist:0, rotation:329.0487014737257, size:1.51}
+    ]
+  },
+  {
+    name:"Evocazione Informe",
+    a:"Evocazione", b:"", dominance:"a", energy:"Forza", energySelf:true, energySize:1.31,
+    baseVolumeL:6, basePesoKg:3, baseDurezza:3,
+    desc:"Un grumo di materia informe prende corpo direttamente sul palmo della mano del lanciatore: nessun glifo nello spicchio Gittata significa che l'evocazione può avvenire solo a contatto, non a distanza. A livello base il sigillo produce un volume di 12 litri di materiale, per un peso di 6 kg e una durezza di 3 su una scala da 1 (gommapiuma non elastica) a 10 (acciaio) — una durezza 3 è un materiale solido, difficile da rompere o piegare a mani nude. Materia Prima nello spicchio Livello ne fissa la quantità grezza, scalando volume e peso fino a ×4 alla dimensione massima; Coagulazione nello spicchio Durata solidifica la materia appena creata (la sua dimensione scala la durezza), mantenendola il più stabile e persistente possibile invece di dissolversi in un istante.",
+    glyphs:[
+      {sector:0, key:'materiaprima', angle:45.34086519181466, percent:44, size:1, self:false},
+      {sector:2, key:'coagulazione', angle:181.95210218894832, percent:35, size:1, self:false}
+    ],
+    conjunctions:[]
+  },
+  {
+    name:"Invisibilità di Massa",
+    a:"Illusione", b:"", dominance:"a",
+    desc:"Un velo d'invisibilità che non copre un singolo bersaglio ma un intero gruppo. Moltiplicazione nello spicchio Livello scala l'effetto dal singolo alla schiera; Esplosione nello spicchio Gittata lo fa scoppiare come un'onda sferica che avvolge tutti gli alleati vicini nell'istante dell'attivazione; Intervallo ne misura la durata; Sacrificio consuma il reagente (un ciglio in gomma arabica); Distillazione allunga il rituale, perché legare così tante sagome all'invisibilità richiede tempo. Le quattro Curve che circondano il disegno sono i fili invisibili che tengono unito l'intero gruppo a un unico incantesimo continuo.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:40.64919900452361, percent:65, size:1.3, self:false},
+      {sector:1, key:'esplosione', angle:118.43922058099298, percent:56, size:1.3, self:false},
+      {sector:2, key:'intervallo', angle:180, percent:45, size:1.2, self:false},
+      {sector:3, key:'sacrificio', angle:259.5968191288068, percent:38, size:1, self:false},
+      {sector:4, key:'distillazione', angle:327.1889939794377, percent:46, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'curva', angle:223.0856223991368, percent:12, inCore:false, coreDist:0, rotation:355, size:1.7},
+      {key:'curva', angle:43.61573412673988, percent:27, inCore:false, coreDist:34.8989039478749, rotation:138.7329987932735, size:1.6},
+      {key:'curva', angle:106.8588478048369, percent:11, inCore:false, coreDist:135.17520435113968, rotation:187.11462862928227, size:1.4},
+      {key:'curva', angle:309.2792903583735, percent:18, inCore:false, coreDist:133.05576435842087, rotation:22.51401458479944, size:1}
+    ]
+  },
+  {
+    name:"Inversione di Gravità",
+    a:"Trasmutazione", b:"", dominance:"a",
+    energy:"Forza", energySelf:false,
+    desc:"Un'intera area smette di obbedire al basso e comincia a cadere verso l'alto. Moltiplicazione nello spicchio Livello ne amplifica la portata su una zona vasta; Esplosione nello spicchio Gittata la rende un'area sferica anziché un punto; Intervallo ne fissa la durata; Condizione nello spicchio Componenti fa sì che l'effetto scatti quando qualcosa entra o esce dalla zona; Scintilla mantiene il lancio rapido — un solo gesto per capovolgere le leggi fisiche. Due Nodi (uno enorme nel Core, uno più piccolo appena fuori) e una Linea che li collega sono la quantità di forza bruta necessaria a piegare la gravità stessa e a tenerla ancorata all'area bersaglio.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:17.808787861558017, percent:74, size:1.7, self:false},
+      {sector:1, key:'esplosione', angle:91.63359956024647, percent:87, size:1.1, self:false},
+      {sector:2, key:'intervallo', angle:177.43616893973171, percent:76, size:1.1, self:false},
+      {sector:3, key:'condizione', angle:270.74036730284547, percent:77, size:1.1, self:false},
+      {sector:4, key:'scintilla', angle:331.68518033368713, percent:50, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:0.06165272104624364, percent:9, inCore:false, coreDist:37.462031466458534, rotation:355, size:3},
+      {key:'nodo', angle:170.52594412640155, percent:0, inCore:true, coreDist:15.874978226924593, rotation:180.8617213984828, size:5.9},
+      {key:'linea', angle:177.15739820097633, percent:40, inCore:false, coreDist:0, rotation:271.29474239156957, size:1.7}
+    ]
+  },
+  {
+    name:"Reggia Meravigliosa (Rifugio Meraviglioso)",
+    a:"Evocazione", b:"",
+    desc:"Una porta si apre su una dimora extradimensionale completa di stanze, servitori e provviste, finché l'incantesimo dura. Moltiplicazione nello spicchio Livello costruisce un intero edificio a più stanze anziché un singolo oggetto; Separazione nello spicchio Gittata fissa a che distanza compare la soglia; Coagulazione nello spicchio Durata solidifica la struttura, rendendola stabile finché l'incantesimo regge; Sacrificio consuma i costosi componenti rituali; Distillazione allunga il tempo di lancio a un vero e proprio rito. Il Nodo enorme al centro è la dimensione tascabile stessa, aperta e sostenuta dal potere accumulato nel Core.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:80, size:1.6},
+      {sector:1, key:'separazione', angle:108, percent:50, size:1.2},
+      {sector:2, key:'coagulazione', angle:180, percent:60, size:1.4},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:55, size:1.3}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:5, percent:3, inCore:true, coreDist:11, rotation:0, size:5}
+    ]
+  },
+  {
+    name:"Disintegrazione",
+    a:"Trasmutazione", b:"", dominance:"a",
+    desc:"Un sottile raggio verdastro riduce carne, pietra o metallo a un pizzico di polvere fine. Moltiplicazione nello spicchio Livello ne spinge la potenza al limite; Proiezione nello spicchio Gittata (spinta al massimo) libera tutta l'energia in un solo istante lungo un raggio; Cesura conferma che l'effetto è istantaneo, senza strascichi; Sacrificio, ingrandito, riflette il costoso tubo di piombo e ferro necessario al rituale; Scintilla mantiene comunque il lancio fulmineo nonostante la potenza in gioco. La Linea è il raggio stesso che parte dal Core; il grande Nodo al centro è la riserva di potenza pura da cui quel raggio viene strappato.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:42.545770130285746, percent:82, size:1.5, self:false},
+      {sector:1, key:'proiezione', angle:111.44528373787546, percent:100, size:1.3, self:false},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:260.6989290345982, percent:81, size:1.3, self:false},
+      {sector:4, key:'scintilla', angle:313.93701382790516, percent:67, size:1.4, self:false}
+    ],
+    conjunctions:[
+      {key:'linea', angle:50.26619653479065, percent:33, inCore:false, coreDist:0, rotation:148, size:2.3},
+      {key:'nodo', angle:179.849456282696, percent:0, inCore:true, coreDist:19.501196465261742, rotation:3.5758348972817657, size:5.4}
+    ]
+  },
+  {
+    name:"Globo di Invulnerabilità",
+    a:"Abiurazione", b:"", dominance:"a",
+    energy:"Forza", energySelf:false,
+    desc:"Una cupola invisibile racchiude il lanciatore e i suoi alleati, respingendo gli incantesimi più deboli come acqua su un vetro. Coagulazione nello spicchio Livello rende la barriera solida e affidabile; Alone nello spicchio Gittata la fa emanare in modo persistente proprio attorno al lanciatore, non altrove; Intervallo ne fissa la durata; Sacrificio consuma il reagente; Distillazione allunga il rituale di preparazione. Due piccole Congiunzioni rinforzano rispettivamente Gittata e Tempo di lancio, offrendo un margine di potenza in più su quei due parametri. Il grande Nodo al centro, collegato da una Linea, è la riserva di potere che la cupola consuma costantemente per restare in piedi.",
+    glyphs:[
+      {sector:0, key:'coagulazione', angle:51.741220341017254, percent:83, size:1, self:false},
+      {sector:1, key:'alone', angle:108, percent:50, size:1.3, self:true},
+      {sector:2, key:'intervallo', angle:180, percent:55, size:1.1, self:false},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1, self:false},
+      {sector:4, key:'distillazione', angle:324, percent:40, size:1.1, self:false},
+      {sector:4, key:'congiunzione', angle:315.2906732247909, percent:100, size:1, self:false},
+      {sector:1, key:'congiunzione', angle:88.06603581926657, percent:81, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:354.1639094215679, percent:4, inCore:true, coreDist:24.689768718378485, rotation:0, size:6.2},
+      {key:'linea', angle:179.95741781045592, percent:30, inCore:false, coreDist:35.73610305240947, rotation:268.86398427314805, size:1.2}
+    ]
+  },
+  {
+    name:"Campo Antimagia",
+    a:"Abiurazione", b:"", dominance:"a",
+    desc:"Una zona in cui la magia semplicemente smette di funzionare: incantesimi soppressi, oggetti magici muti, creature evocate rimandate da dove sono venute. Moltiplicazione nello spicchio Livello estende la soppressione a ogni scuola di magia insieme; Alone nello spicchio Gittata la fa emanare tutt'attorno al lanciatore come un campo persistente; Coagulazione nello spicchio Durata la rende un campo solido e stabile finché dura; Sacrificio consuma il reagente; Distillazione allunga la preparazione del rituale. Il grande Nodo al centro è la quantità di potere necessaria a soffocare ogni altra magia nei paraggi.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:30.797113032343532, percent:61, size:1.5, self:false},
+      {sector:1, key:'alone', angle:108, percent:55, size:1.4, self:true},
+      {sector:2, key:'coagulazione', angle:180, percent:60, size:1.4, self:false},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1, self:false},
+      {sector:4, key:'distillazione', angle:324, percent:45, size:1.2, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:8, percent:4, inCore:true, coreDist:14, rotation:0, size:4}
+    ]
+  },
+  {
+    name:"Portale",
+    a:"Evocazione", b:"", dominance:"a",
+    desc:"Un varco stabile si apre fra due punti, anche fra piani diversi, abbastanza grande da farci passare un esercito. Moltiplicazione nello spicchio Livello ne spinge la portata oltre ogni limite ordinario; Proiezione nello spicchio Gittata (al massimo) libera la potenza necessaria a bucare la distanza — o il piano — in un solo istante; Intervallo fissa quanto resta aperto il varco; Sacrificio, molto ingrandito, riflette la rarità e il costo dei componenti richiesti; Distillazione allunga il rito fino a diversi lunghi minuti di intonazione; un Alone aggiuntivo nello spicchio Livello segna la soglia che rimane visibile e persistente attorno al varco. Il Nodo massiccio e le due Linee che lo attraversano rappresentano i due capi del portale, tenuti aperti e collegati dal Core.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:39.609922089144675, percent:87, size:1.2, self:false},
+      {sector:1, key:'proiezione', angle:108, percent:95, size:1.8, self:false},
+      {sector:2, key:'intervallo', angle:180, percent:50, size:1.2, self:false},
+      {sector:3, key:'sacrificio', angle:252, percent:80, size:1.6, self:false},
+      {sector:4, key:'distillazione', angle:324, percent:70, size:1.5, self:false},
+      {sector:0, key:'alone', angle:1.7210463951543034, percent:90, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:3, percent:2, inCore:true, coreDist:10, rotation:0, size:6},
+      {key:'linea', angle:190, percent:22, inCore:false, coreDist:0, rotation:280, size:1.4},
+      {key:'linea', angle:3.2948837624959424, percent:51, inCore:false, coreDist:0, rotation:93.5680162620697, size:2}
+    ]
+  },
+  {
+    name:"Catena di Fulmini",
+    a:"Invocazione", b:"", dominance:"a",
+    energy:"Fulmine", energySelf:true, energySize:1.1,
+    desc:"Un fulmine colpisce il primo bersaglio e poi salta da nemico a nemico, indebolendosi a ogni balzo. Moltiplicazione nello spicchio Livello permette al fulmine di rimbalzare su molti bersagli anziché uno solo; Solco nello spicchio Gittata (al massimo) traccia la scarica retta verso il primo bersaglio; Cesura conferma che tutto avviene in un istante; Sacrificio consuma il reagente (un pezzo di rame e uno di vetro sfregati insieme); Scintilla mantiene il lancio fulmineo, coerente col nome. La Linea è la scarica iniziale, le tre Curve che seguono sono i balzi successivi che incatenano i bersagli uno dopo l'altro.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:22.84789683670232, percent:50, size:1.5, self:false},
+      {sector:1, key:'solco', angle:104.87634526165101, percent:100, size:1.4, self:false},
+      {sector:2, key:'cesura', angle:180, percent:20, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:274.77475821397894, percent:41, size:1.2, self:false},
+      {sector:4, key:'scintilla', angle:328.84559669472065, percent:45, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'linea', angle:108, percent:30, inCore:false, coreDist:0, rotation:198, size:1.8},
+      {key:'curva', angle:332.07764714356193, percent:14, inCore:false, coreDist:37.825282853486414, rotation:25, size:1.3},
+      {key:'curva', angle:246.28546360148894, percent:34, inCore:false, coreDist:30.142897923074546, rotation:27.59856831780678, size:1.3},
+      {key:'curva', angle:14.412984118999589, percent:8, inCore:false, coreDist:113.00743722825732, rotation:133.07734380298564, size:1.7}
+    ]
+  },
+  {
+    name:"Evocazione d'Ombra Massima",
+    a:"Evocazione", b:"Necromanzia", dominance:"a",
+    energy:"Negativa", energySelf:false,
+    desc:"La versione maggiore del sigillo \"Evocare Creature d'Ombra\": stessa struttura di base, ma spinta ben oltre. Moltiplicazione sostituisce Materia Prima nello spicchio Livello, per evocare qualcosa di ben più grande e potente di un semplice frammento d'ombra; una Cesura aggiuntiva nello stesso spicchio fissa comunque l'istante dell'apparizione. Separazione in Gittata (al massimo) è affiancata da un'Esplosione che allarga il punto di manifestazione a una zona intera. Intervallo in Durata resta invariato. In Componenti, Sacrificio (al massimo) è accompagnato da un Alone che segna la presenza residua del patto attorno al reagente consumato. In Tempo di lancio, Distillazione per il rituale esteso è affiancata da un secondo, più piccolo Sacrificio: il prezzo si paga due volte per un'evocazione di questa portata. I tre Nodi — uno enorme nel Core e due satelliti — sono la potenza extra necessaria a squarciare il velo molto più a fondo di quanto richieda il sigillo base.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:31.48472855756745, percent:73, size:1.1, self:false},
+      {sector:0, key:'cesura', angle:54.2085402796086, percent:100, size:0.7, self:false},
+      {sector:1, key:'separazione', angle:117.83854466788773, percent:100, size:1.1, self:false},
+      {sector:1, key:'esplosione', angle:111.8077144547866, percent:53, size:0.6, self:false},
+      {sector:2, key:'intervallo', angle:180.83554279807566, percent:45, size:1, self:false},
+      {sector:3, key:'sacrificio', angle:250.44604035701755, percent:100, size:1.2, self:false},
+      {sector:3, key:'alone', angle:251.1773598447583, percent:52, size:0.6, self:false},
+      {sector:4, key:'distillazione', angle:329.5130620408915, percent:59, size:0.9, self:false},
+      {sector:4, key:'sacrificio', angle:304.43042496985026, percent:100, size:0.7, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:182.17948654581406, percent:2, inCore:true, coreDist:32.33350981115225, rotation:0, size:6.5},
+      {key:'nodo', angle:290.3268997249959, percent:54, inCore:false, coreDist:33.182661822229036, rotation:78.43540971538278, size:3.1},
+      {key:'nodo', angle:72.71279296017838, percent:52, inCore:false, coreDist:36.44003944032111, rotation:283.70313241750546, size:3.1}
+    ]
+  },
+  {
+    name:"Conversione della Materia",
+    a:"Trasmutazione", b:"",
+    desc:"Una grande quantità di materiale grezzo — pietra, legno, metallo — cambia natura e diventa qualcos'altro, in modo permanente. Moltiplicazione nello spicchio Livello estende l'effetto a un grande volume di materiale anziché un piccolo oggetto; Esplosione nello spicchio Gittata copre un'intera area col cambiamento; Coagulazione nello spicchio Durata solidifica la trasformazione, rendendola permanente invece che temporanea; Sacrificio consuma il reagente; Distillazione riflette il processo lento e meticoloso richiesto per riorganizzare la materia a un livello così profondo. La Curva rappresenta il materiale che scorre e si riplasma in una nuova forma.",
+    glyphs:[
+      {sector:0, key:'moltiplicazione', angle:36, percent:70, size:1.5},
+      {sector:1, key:'esplosione', angle:108, percent:65, size:1.4},
+      {sector:2, key:'coagulazione', angle:180, percent:55, size:1.4},
+      {sector:3, key:'sacrificio', angle:252, percent:40, size:1.1},
+      {sector:4, key:'distillazione', angle:324, percent:50, size:1.3}
+    ],
+    conjunctions:[
+      {key:'curva', angle:280, percent:28, inCore:false, coreDist:0, rotation:20, size:2.2}
+    ]
+  },
+  {
+    name:"Sigillo personalizzato",
+    a:"Abiurazione", b:"Necromanzia", dominance:"a",
+    forcedDispendio:999,
+    desc:"Sigillo sperimentale caricato dal Master, di provenienza e scopo non ancora documentati — visibile solo in Modalità DM. Struttura anomala: sette glifi di Energia (sei di Forza, uno di Negativa) invece del singolo glifo consueto, tre Separazioni e tre Cesure duplicate su più spicchi, due Aloni, e sette congiunzioni tra cui un Nodo di dimensioni ben oltre il normale limite di sicurezza. Il dispendio energetico registrato (999) è un valore fissato a mano, non calcolato: da trattare come avvertimento, non come dato di gioco standard.",
+    energies:[
+      {key:"Forza", angle:0.3194152730728774, percent:0, self:true, size:1},
+      {key:"Forza", angle:303.0867330773629, percent:100, self:false, size:1},
+      {key:"Forza", angle:44.2569906824063, percent:82, self:false, size:0.8},
+      {key:"Forza", angle:93.4164116176662, percent:88, self:false, size:0.6},
+      {key:"Forza", angle:159.1730247681959, percent:83, self:false, size:0.5},
+      {key:"Forza", angle:250.6828265531605, percent:100, self:false, size:1.5},
+      {key:"Negativa", angle:20.403391086192926, percent:100, self:false, size:1}
+    ],
+    glyphs:[
+      {sector:1, key:'separazione', angle:129.68027495067355, percent:79, size:0.9, self:false},
+      {sector:0, key:'separazione', angle:65.27623253049882, percent:76, size:0.7, self:false},
+      {sector:3, key:'separazione', angle:276.7091990682573, percent:78, size:0.6, self:false},
+      {sector:2, key:'alone', angle:193.17278250286952, percent:100, size:0.8, self:false},
+      {sector:4, key:'alone', angle:327.36038925810044, percent:100, size:0.8, self:false},
+      {sector:4, key:'congiunzione', angle:338.13258088027897, percent:54, size:1, self:false},
+      {sector:3, key:'cesura', angle:216.67903663025947, percent:61, size:1, self:false},
+      {sector:0, key:'cesura', angle:29.921987634270465, percent:36, size:0.7, self:false},
+      {sector:2, key:'cesura', angle:160.2796327634419, percent:100, size:1.3, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:315.1163015260345, percent:57, inCore:false, coreDist:0, rotation:38.228476008620135, size:1.7},
+      {key:'curva', angle:12.229625474715135, percent:46, inCore:false, coreDist:157.3935183627039, rotation:96.56855910766416, size:2.1},
+      {key:'curva', angle:36.63561810118506, percent:34, inCore:false, coreDist:37.21581810021026, rotation:113.97814179685696, size:1.8},
+      {key:'curva', angle:56.77583345646815, percent:38, inCore:false, coreDist:106.54640883993537, rotation:130.35818555443393, size:1.5},
+      {key:'linea', angle:94.00825506099613, percent:55, inCore:false, coreDist:117.48207059978691, rotation:179.2463146696449, size:1.7},
+      {key:'linea', angle:129.53522813632662, percent:45, inCore:false, coreDist:108.74367826083254, rotation:228.80942307355895, size:1},
+      {key:'nodo', angle:217.74380311171421, percent:38, inCore:false, coreDist:37.07189354445542, rotation:222.35532301269984, size:5}
+    ]
+  }
+];
+
+// Indici in CATALOG_DEV che formano gli incantesimi base visibili al giocatore.
+const BASE_SPELL_INDICES = [0,1,2,3];
+
+// Catalogo "Sigilli Importati": persistente in localStorage, popolato dal DM caricando
+// i file .json che i giocatori esportano dalla loro Officina.
+const IMPORT_STORAGE_KEY = 'officina_sigilli_importati';
+let importedCatalog = [];
+try{
+  importedCatalog = JSON.parse(localStorage.getItem(IMPORT_STORAGE_KEY) || '[]');
+} catch(e){ importedCatalog = []; }
+function saveImportedCatalog(){
+  try{ localStorage.setItem(IMPORT_STORAGE_KEY, JSON.stringify(importedCatalog)); } catch(e){}
+}
+
+// Insiemi "conosciuti": scuole, energie, congiunzioni e glifi che compaiono nei 4
+// incantesimi base. Il giocatore vede solo questi.
+function computeKnownSets(){
+  const schools=new Set(), energies=new Set(), conj=new Set(), glyphs=new Set();
+  BASE_SPELL_INDICES.forEach(i=>{
+    const c=CATALOG_DEV[i];
+    schools.add(c.a);
+    if(c.b) schools.add(c.b);
+    if(c.energy) energies.add(c.energy);
+    if(c.energies) c.energies.forEach(en=>energies.add(en.key));
+    (c.glyphs||[]).forEach(g=>glyphs.add(g.key));
+    (c.conjunctions||[]).forEach(cj=>conj.add(cj.key));
+  });
+  return {schools, energies, conj, glyphs};
+}
+const KNOWN = computeKnownSets();
+
+const catalogSelect=document.getElementById('catalogSelect');
+
+function buildCatalogSelect(){
+  catalogSelect.innerHTML='';
+  catalogSelect.appendChild(new Option("— personalizzato —",""));
+  if(isDM){
+    const gDev=document.createElement('optgroup');
+    gDev.label='In Sviluppo';
+    CATALOG_DEV.forEach((c,i)=>gDev.appendChild(new Option(c.name,'dev:'+i)));
+    catalogSelect.appendChild(gDev);
+
+    const gImp=document.createElement('optgroup');
+    gImp.label='Sigilli Importati';
+    if(importedCatalog.length){
+      importedCatalog.forEach((c,i)=>gImp.appendChild(new Option(c.name||('Sigillo importato '+(i+1)),'imp:'+i)));
+    } else {
+      const opt=new Option('— nessuno importato —','');
+      opt.disabled=true;
+      gImp.appendChild(opt);
+    }
+    catalogSelect.appendChild(gImp);
+  } else {
+    BASE_SPELL_INDICES.forEach(i=>catalogSelect.appendChild(new Option(CATALOG_DEV[i].name,'dev:'+i)));
+  }
+}
+
+let currentCatalogLabel=null;
+let currentCatalogOriginal=null;
+let glyphIdCounter=0;
+let currentCatalogValue='';
+
+function loadDevEntry(idx){
+  const c=CATALOG_DEV[idx];
+  currentCatalogLabel={name:c.name, desc:c.desc, maxRange:c.maxRange, maxDiameter:c.maxDiameter, dynamicElemental:c.dynamicElemental,
+    baseVolumeL:c.baseVolumeL, basePesoKg:c.basePesoKg, baseDurezza:c.baseDurezza, forcedDispendio:c.forcedDispendio};
+  selectedSchools = c.b ? [c.a, c.b] : [c.a];
+  renderSchoolGrid();
+  if(c.energies){
+    // Formato esteso: più energie, ciascuna con la propria posizione (es. energia sacrificata
+    // in Componenti + energia prodotta nel nucleo).
+    energies = c.energies.map(en=>({key:en.key, angle:en.angle??45, percent:en.self?0:(en.percent??0), self:en.self||false, size:en.size||1, _id:glyphIdCounter++}));
+  } else {
+    energies = c.energy ? [{key:c.energy, angle:45, percent:0, self:c.energySelf||false, size:c.energySize||1, _id:glyphIdCounter++}] : [];
+  }
+  conjunctions = (c.conjunctions||[]).map(cj=>({key:cj.key, angle:cj.angle, percent:cj.percent, inCore:cj.inCore||false, coreDist:cj.coreDist||0, rotation:cj.rotation||0, size:cj.size||1, _id:glyphIdCounter++}));
+  if(c.dominance) document.getElementById('dominance').value=c.dominance;
+  placed = (c.glyphs||[]).map(g=>({sector:g.sector, key:g.key, angle:g.angle, percent:g.percent, size:g.size||1, self:g.self||false, _id:glyphIdCounter++}));
+  currentCatalogOriginal = placed.map(p=>({...p}));
+}
+
+function loadImportedEntry(idx){
+  const data=importedCatalog[idx];
+  if(!data) return;
+  currentCatalogLabel={name:data.name||'Sigillo importato', desc:'Sigillo importato da un file inviato da un giocatore.'};
+  selectedSchools = data.selectedSchools && data.selectedSchools.length ? [...data.selectedSchools] : ["Invocazione"];
+  renderSchoolGrid();
+  if(data.dominance) document.getElementById('dominance').value=data.dominance;
+  energies=(data.energies||[]).map(en=>({...en, _id:glyphIdCounter++}));
+  placed=(data.placed||[]).map(p=>({...p, _id:glyphIdCounter++}));
+  conjunctions=(data.conjunctions||[]).map(c=>({...c, _id:glyphIdCounter++}));
+  currentCatalogOriginal = placed.map(p=>({...p}));
+}
+
+function loadFromSelectValue(val){
+  currentCatalogValue=val;
+  if(val===''){
+    currentCatalogLabel=null;
+    currentCatalogOriginal=null;
+    document.getElementById('removeImportedBtn').style.display='none';
+    return;
+  }
+  const [kind, idxStr]=val.split(':');
+  const idx=parseInt(idxStr);
+  if(kind==='dev'){
+    loadDevEntry(idx);
+    document.getElementById('removeImportedBtn').style.display='none';
+  } else if(kind==='imp'){
+    loadImportedEntry(idx);
+    document.getElementById('removeImportedBtn').style.display = isDM ? '' : 'none';
+  }
+}
+
+catalogSelect.addEventListener('change', ()=>{
+  loadFromSelectValue(catalogSelect.value);
+  render();
+});
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  if(catalogSelect.value===""){
+    placed=[]; conjunctions=[]; energies=[];
+    render();
+    return;
+  }
+  loadFromSelectValue(catalogSelect.value);
+  render();
+});
+
+document.getElementById('importFileInput').addEventListener('change', evt=>{
+  const file=evt.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.placed){ throw new Error('formato non valido'); }
+      importedCatalog.push(data);
+      saveImportedCatalog();
+      buildCatalogSelect();
+      const newIdx=importedCatalog.length-1;
+      catalogSelect.value='imp:'+newIdx;
+      loadFromSelectValue('imp:'+newIdx);
+      render();
+    } catch(err){
+      alert("File non valido o corrotto.");
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value='';
+});
+
+document.getElementById('importBtn').addEventListener('click', ()=>{
+  document.getElementById('importFileInput').click();
+});
+
+document.getElementById('removeImportedBtn').addEventListener('click', ()=>{
+  if(!currentCatalogValue.startsWith('imp:')) return;
+  const idx=parseInt(currentCatalogValue.split(':')[1]);
+  if(!confirm('Rimuovere definitivamente questo sigillo importato dal catalogo?')) return;
+  importedCatalog.splice(idx,1);
+  saveImportedCatalog();
+  buildCatalogSelect();
+  catalogSelect.value='';
+  loadFromSelectValue('');
+  render();
+});
+
+document.getElementById('saveBtn').addEventListener('click', ()=>{
+  const data={
+    savedAt:new Date().toISOString(),
+    name:currentCatalogLabel ? currentCatalogLabel.name : "Sigillo personalizzato",
+    selectedSchools:[...selectedSchools],
+    dominance:document.getElementById('dominance').value,
+    energies:energies.map(e=>({...e})),
+    placed:placed.map(p=>({...p})),
+    conjunctions:conjunctions.map(c=>({...c}))
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const safeName=data.name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+  a.href=url;
+  a.download=`sigillo_${safeName||'personalizzato'}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('loadBtn').addEventListener('click', ()=>{
+  document.getElementById('loadFileInput').click();
+});
+
+document.getElementById('loadFileInput').addEventListener('change', evt=>{
+  const file=evt.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      selectedSchools = data.selectedSchools && data.selectedSchools.length ? data.selectedSchools : ["Invocazione"];
+      renderSchoolGrid();
+      if(data.dominance) document.getElementById('dominance').value=data.dominance;
+      energies=(data.energies||[]).map(en=>({...en, _id:glyphIdCounter++}));
+      placed=(data.placed||[]).map(p=>({...p, _id:glyphIdCounter++}));
+      conjunctions=(data.conjunctions||[]).map(c=>({...c, _id:glyphIdCounter++}));
+      currentCatalogLabel=null;
+      currentCatalogOriginal=null;
+      catalogSelect.value="";
+      render();
+    } catch(err){
+      alert("File non valido o corrotto.");
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value='';
+});
+
+
+const CONJUNCTIONS = {
+  linea:{label:"Linea", icon:'<path d="M21.92,14.25 L21.88,9.59 L21.39,9.70 L21.26,10.93 L20.93,11.11 L1.00,11.20 L20.76,11.59 L21.15,11.79 L21.00,12.14 L13.47,12.21 L10.57,12.58 L8.52,13.27 L13.58,12.56 L21.11,12.67 L21.39,12.82 L21.46,13.97 Z M22.69,8.87 L22.63,9.06 L22.58,9.59 L22.63,10.80 L22.49,12.82 L22.52,14.32 L22.65,15.00 L22.74,15.13 L22.82,15.13 L22.93,14.94 L22.98,14.72 L22.96,13.99 L22.87,13.38 L22.87,12.01 L23.00,9.92 L22.87,8.95 L22.80,8.87 Z" fill="currentColor" fill-rule="evenodd"/>'},
+  curva:{label:"Curva", icon:'<path d="M22.66,9.40 L22.46,9.74 L22.46,10.48 L22.39,10.55 L22.46,13.11 L22.39,13.18 L22.39,14.06 L22.33,14.13 L22.33,14.87 L22.26,14.94 L22.33,17.50 L22.46,17.90 L22.46,18.24 L22.66,18.58 L22.87,18.44 L22.87,18.24 L22.93,18.17 L22.93,16.76 L22.87,16.69 L22.80,14.73 L22.87,14.67 L22.93,11.29 L23.00,11.22 L23.00,10.48 L22.87,10.08 L22.87,9.74 Z M2.15,5.42 L2.01,6.57 L1.07,8.05 L1.00,9.40 L1.74,12.03 L2.62,13.18 L5.59,14.60 L10.38,15.54 L17.40,15.21 L18.55,14.53 L21.11,14.60 L21.38,14.80 L21.45,17.90 L21.79,18.44 L21.79,9.47 L21.52,9.27 L21.18,9.54 L21.58,11.16 L21.31,12.91 L21.65,13.86 L21.04,14.33 L8.96,14.26 L6.40,13.99 L3.43,12.71 L2.62,12.17 L2.01,11.22 L1.47,8.39 L2.21,6.50 Z" fill="currentColor" fill-rule="evenodd"/>'},
+  nodo:{label:"Nodo", icon:'<path d="M20.39,6.64 L21.12,7.73 L21.29,8.94 L20.00,10.54 L14.33,12.87 L14.02,12.67 L13.52,10.93 L13.35,11.10 L14.08,13.43 L12.98,11.24 L13.94,13.80 L13.01,16.24 L14.02,14.19 L14.16,14.53 L13.38,16.32 L14.30,15.00 L17.44,16.80 L19.83,17.47 L21.62,17.47 L22.58,16.63 L22.97,15.93 L22.97,14.67 L22.78,15.87 L21.71,17.11 L20.50,17.25 L18.96,16.85 L14.19,14.72 L14.53,14.22 L14.72,14.55 L14.61,13.68 L15.09,13.04 L14.83,12.93 L14.53,13.60 L14.55,12.93 L18.57,11.80 L20.45,10.62 L21.40,9.59 L21.34,7.73 Z M14.27,13.57 L14.30,13.57 L14.33,13.60 L14.33,13.63 L14.36,13.66 L14.36,13.71 L14.39,13.74 L14.39,13.77 L14.41,13.80 L14.41,13.85 L14.44,13.88 L14.41,13.91 L14.41,13.94 L14.39,13.96 L14.39,14.02 L14.36,14.05 L14.36,14.08 L14.33,14.10 L14.30,14.10 L14.27,14.08 L14.27,13.96 L14.24,13.94 L14.24,13.91 L14.22,13.88 L14.22,13.82 L14.19,13.80 L14.19,13.74 L14.22,13.71 L14.22,13.68 L14.24,13.66 L14.24,13.60 Z M3.92,6.44 L2.91,7.54 L2.82,9.45 L3.81,10.54 L5.52,11.69 L8.07,12.65 L8.97,12.70 L9.47,13.66 L9.28,14.58 L9.53,14.10 L9.70,14.22 L9.59,14.75 L3.47,16.85 L1.81,16.35 L1.22,15.45 L1.03,14.13 L1.00,15.42 L1.42,16.21 L2.29,17.02 L4.37,17.05 L6.61,16.46 L9.67,14.83 L10.57,16.18 L9.90,14.44 L10.04,14.13 L10.96,16.10 L10.15,13.68 L11.13,11.33 L10.04,13.38 L10.68,11.05 L9.87,12.93 L9.59,12.56 L9.50,12.84 L3.92,10.23 L2.94,8.86 L3.13,7.54 Z M9.81,13.49 L9.84,13.52 L9.84,13.54 L9.87,13.57 L9.87,13.60 L9.90,13.63 L9.90,13.71 L9.87,13.74 L9.87,13.80 L9.84,13.82 L9.84,13.85 L9.81,13.88 L9.81,13.91 L9.78,13.94 L9.78,13.96 L9.76,13.99 L9.70,13.94 L9.70,13.91 L9.67,13.88 L9.67,13.82 L9.64,13.80 L9.64,13.77 L9.67,13.74 L9.67,13.71 L9.70,13.68 L9.70,13.66 L9.73,13.63 L9.73,13.57 L9.76,13.54 L9.76,13.52 L9.78,13.49 Z M9.33,12.87 L9.36,12.90 L9.39,12.90 L9.45,12.95 L9.47,12.95 L9.50,12.98 L9.56,12.98 L9.64,13.07 L9.64,13.09 L9.67,13.12 L9.67,13.18 L9.70,13.21 L9.70,13.23 L9.67,13.26 L9.67,13.29 L9.59,13.38 L9.59,13.40 L9.53,13.46 L9.50,13.43 L9.50,13.40 L9.47,13.38 L9.47,13.32 L9.45,13.29 L9.45,13.23 L9.42,13.21 L9.42,13.18 L9.39,13.15 L9.39,13.09 L9.36,13.07 L9.36,13.04 L9.33,13.01 L9.33,12.95 L9.31,12.93 L9.31,12.90 Z" fill="currentColor" fill-rule="evenodd"/>'}
+};
+
+const conjPalette=document.getElementById('conjPalette');
+let armed=null;
+
+function buildConjPalette(){
+  conjPalette.innerHTML='';
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(CONJUNCTIONS).filter(k=>KNOWN.conj.has(k)) : Object.keys(CONJUNCTIONS);
+  keys.forEach(key=>{
+    const c=CONJUNCTIONS[key];
+    const btn=document.createElement('div');
+    btn.className='glyph-btn';
+    btn.dataset.key='conj:'+key;
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${c.icon}</svg><span>${c.label}</span>`;
+    btn.addEventListener('click',()=>{
+      const full='conj:'+key;
+      if(armed===full){armed=null;} else {armed=full;}
+      document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+    });
+    conjPalette.appendChild(btn);
+  });
+}
+
+const palette=document.getElementById('palette');
+
+function buildPalette(){
+  palette.innerHTML='';
+  const keys = (typeof KNOWN!=='undefined' && !isDM) ? Object.keys(GLYPHS).filter(k=>KNOWN.glyphs.has(k)) : Object.keys(GLYPHS);
+  keys.forEach(key=>{
+    const g=GLYPHS[key];
+    const btn=document.createElement('div');
+    btn.className='glyph-btn';
+    btn.dataset.key=key;
+    btn.innerHTML=`<svg viewBox="0 0 24 24">${g.icon}</svg><span>${g.label}</span>`;
+    btn.addEventListener('click',()=>{
+      if(armed===key){armed=null;} else {armed=key;}
+      document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+    });
+    palette.appendChild(btn);
+  });
+}
+
+let placed=[]; // {sector, key, angle, radius}
+let conjunctions=[]; // {key, angle, percent, rotation}
+
+const svg=document.getElementById('sigilSvg');
+const dominanceRow=document.getElementById('dominanceRow');
+const cx=320, cy=320, coreR=38, outerR=140;
+const PLACEMENT_OUTER=outerR*1.3;
+
+function angleFromClick(evt){
+  const pt=svg.createSVGPoint();
+  pt.x=evt.clientX; pt.y=evt.clientY;
+  const loc=pt.matrixTransform(svg.getScreenCTM().inverse());
+  const dx=loc.x-cx, dy=loc.y-cy;
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  let angle=(Math.atan2(dx,-dy)*180/Math.PI+360)%360;
+  const percent=Math.max(0, Math.min(100, Math.round(((dist-coreR)/(outerR-coreR))*100)));
+  return {angle, dist, percent};
+}
+
+// Più energie possono coesistere sullo stesso sigillo (es. l'energia sacrificata come
+// componente e l'energia prodotta al centro): al massimo una però può stare nel nucleo.
+function pushEnergy(key, angle, percent, self){
+  if(self && energies.some(e=>e.self)) self=false;
+  energies.push({key, angle, percent: self?0:percent, self, size:1, _id:glyphIdCounter++});
+}
+
+let dragIdx=null, dragKind=null;
+
+svg.addEventListener('mousedown', evt=>{
+  const chip=evt.target.closest && evt.target.closest('.placed-chip');
+  if(!chip || evt.button!==0) return;
+  const idx=parseInt(chip.dataset.idx);
+  const kind=chip.dataset.kind||'glyph';
+  if(kind==='glyph' && placed[idx].sector===-1) return;
+  dragIdx=idx; dragKind=kind;
+  evt.preventDefault();
+});
+
+svg.addEventListener('mousemove', evt=>{
+  if(dragIdx===null) return;
+  const {angle, dist, percent}=angleFromClick(evt);
+  if(dragKind==='conj'){
+    const c=conjunctions[dragIdx];
+    c.angle=angle;
+    if(dist<coreR){ c.inCore=true; c.coreDist=dist; }
+    else { c.inCore=false; c.percent=percent; }
+    render();
+    return;
+  }
+  if(dragKind==='energy'){
+    const en=energies[dragIdx];
+    en.angle=angle;
+    const wantsSelf = dist<coreR;
+    const otherSelfExists = energies.some((e,i)=>i!==dragIdx && e.self);
+    en.self = wantsSelf && !otherSelfExists;
+    en.percent = en.self ? 0 : percent;
+    render();
+    return;
+  }
+  const p=placed[dragIdx];
+  const self = (p.key==='separazione' && dist<coreR);
+  p.angle=angle;
+  p.percent=percent;
+  p.self=self;
+  if(!(self)) p.sector=Math.floor(angle/72);
+  else p.sector=1;
+  render();
+});
+
+window.addEventListener('mouseup', ()=>{ dragIdx=null; dragKind=null; });
+
+svg.addEventListener('contextmenu', evt=>{
+  evt.preventDefault();
+  const chip=evt.target.closest && evt.target.closest('.placed-chip');
+  if(!chip) return;
+  const idx=parseInt(chip.dataset.idx);
+  const kind=chip.dataset.kind||'glyph';
+  if(kind==='conj'){ conjunctions.splice(idx,1); }
+  else if(kind==='energy'){ energies.splice(idx,1); }
+  else { placed.splice(idx,1); }
+  render();
+});
+
+svg.addEventListener('click', evt=>{
+  const target=evt.target;
+  if(target.closest && target.closest('.placed-chip')) return;
+
+  const pt=svg.createSVGPoint();
+  pt.x=evt.clientX; pt.y=evt.clientY;
+  const loc=pt.matrixTransform(svg.getScreenCTM().inverse());
+  if(loc.y<130){
+    if(!armed) return;
+    const defaultAngle=Math.random()*360;
+    const defaultPercent=50;
+    if(armed.startsWith('conj:')){
+      const key=armed.slice(5);
+      conjunctions.push({key, angle:defaultAngle, percent:defaultPercent, inCore:false, coreDist:0, rotation:(defaultAngle+90)%360, size:1, _id:glyphIdCounter++});
+      render();
+      return;
+    }
+    if(armed.startsWith('energy:')){
+      const key=armed.slice(7);
+      pushEnergy(key, defaultAngle, defaultPercent, false);
+      render();
+      return;
+    }
+    const sector=Math.floor(defaultAngle/72);
+    placed.push({sector, key:armed, angle:defaultAngle, percent:defaultPercent, size:1, self:false, _id:glyphIdCounter++});
+    render();
+    return;
+  }
+
+  const {angle, dist, percent}=angleFromClick(evt);
+  if(dist>PLACEMENT_OUTER) return;
+  if(armed && armed.startsWith('conj:')){
+    const key=armed.slice(5);
+    const inCore = dist<coreR;
+    conjunctions.push({key, angle, percent, inCore, coreDist:dist, rotation:(angle+90)%360, size:1, _id:glyphIdCounter++});
+    render();
+    return;
+  }
+  if(armed && armed.startsWith('energy:')){
+    const key=armed.slice(7);
+    pushEnergy(key, angle, percent, dist<coreR);
+    render();
+    return;
+  }
+  if(dist<coreR && armed!=='separazione') return;
+  if(!armed) return;
+  const self = (armed==='separazione' && dist<coreR);
+  const sector = self ? 1 : Math.floor(angle/72);
+  placed.push({sector, key:armed, angle, percent, size:1, self, _id:glyphIdCounter++});
+  render();
+});
+
+svg.addEventListener('wheel', evt=>{
+  const chipEl=evt.target.closest && evt.target.closest('.placed-chip');
+  if(!chipEl) return;
+  evt.preventDefault();
+  const idx=parseInt(chipEl.dataset.idx);
+  const kind=chipEl.dataset.kind||'glyph';
+  if(kind==='conj'){
+    const c=conjunctions[idx];
+    const dir = evt.deltaY<0 ? 1 : -1;
+    if(evt.shiftKey){
+      const maxSize = c.key==='nodo' ? 7 : 2.5;
+      c.size = Math.max(0.5, Math.min(maxSize, Math.round(((c.size||1)+dir*0.1)*10)/10));
+    } else {
+      c.rotation=((c.rotation + dir*5)%360+360)%360;
+    }
+    render();
+    return;
+  }
+  if(kind==='energy'){
+    const delta = evt.deltaY<0 ? 0.1 : -0.1;
+    const cur = energies[idx].size||1;
+    energies[idx].size = Math.max(0.5, Math.min(2, Math.round((cur+delta)*10)/10));
+    render();
+    return;
+  }
+  const delta = evt.deltaY<0 ? 0.1 : -0.1;
+  const cur = placed[idx].size||1;
+  placed[idx].size = Math.max(0.5, Math.min(2, Math.round((cur+delta)*10)/10));
+  render();
+}, {passive:false});
+
+const OUTER_DIAM = outerR*2;
+const CORE_ICON_DIAM = 0.9*OUTER_DIAM;
+const MIN_RING_DIAM = 22, MAX_RING_DIAM = 0.8*CORE_ICON_DIAM;
+
+function glyphDiam(size){
+  const t=Math.max(0, Math.min(1, ((size||1)-0.5)/1.5));
+  return MIN_RING_DIAM + t*(MAX_RING_DIAM-MIN_RING_DIAM);
+}
+
+function polar(r,deg){
+  const rad=deg*Math.PI/180;
+  return {x:cx+r*Math.sin(rad), y:cy-r*Math.cos(rad)};
+}
+
+function conjPos(c){
+  return c.inCore ? polar(c.coreDist, c.angle) : polar(coreR+15+(c.percent/100)*(PLACEMENT_OUTER-coreR-30), c.angle);
+}
+
+const HIT_SIZE=640;
+const hitCanvas=document.createElement('canvas');
+hitCanvas.width=HIT_SIZE; hitCanvas.height=HIT_SIZE;
+const hitCtx=hitCanvas.getContext('2d');
+
+function drawIconOnCtx(ctx, iconHtml){
+  const tagRe=/<(path|line|circle|polygon|polyline)\b([^>]*)\/>/g;
+  let m;
+  while((m=tagRe.exec(iconHtml))){
+    const tag=m[1];
+    const attrs={};
+    const attrRe=/([\w-]+)="([^"]*)"/g;
+    let am;
+    while((am=attrRe.exec(m[2]))) attrs[am[1]]=am[2];
+    const hasFill=attrs.fill && attrs.fill!=='none';
+    const hasStroke=attrs.stroke==='currentColor';
+    ctx.lineWidth=parseFloat(attrs['stroke-width']||'1');
+    if(tag==='path'){
+      const p=new Path2D(attrs.d);
+      if(hasFill) ctx.fill(p, attrs['fill-rule']==='evenodd' ? 'evenodd' : 'nonzero');
+      if(hasStroke) ctx.stroke(p);
+      continue;
+    }
+    ctx.beginPath();
+    if(tag==='line'){
+      ctx.moveTo(+attrs.x1, +attrs.y1);
+      ctx.lineTo(+attrs.x2, +attrs.y2);
+      ctx.stroke();
+    } else if(tag==='circle'){
+      ctx.arc(+attrs.cx, +attrs.cy, +attrs.r, 0, Math.PI*2);
+      if(hasFill) ctx.fill();
+      if(hasStroke) ctx.stroke();
+    } else {
+      const pts=attrs.points.trim().split(/\s+/).map(s=>s.split(',').map(Number));
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0], pts[i][1]);
+      if(tag==='polygon') ctx.closePath();
+      if(hasFill) ctx.fill();
+      if(hasStroke) ctx.stroke();
+    }
+  }
+}
+
+function buildNodeShapeList(){
+  const list=[];
+  const outerDiam=outerR*2;
+  const coreShapes=[];
+  if(selectedSchools[1] && selectedSchools[1]!==selectedSchools[0]){
+    const s=(0.8*0.75*outerDiam)/24;
+    const p1x=cx-22, p2x=cx+22;
+    coreShapes.push({tx:p1x-12*s, ty:cy-12*s, rot:0, scale:s, post:null, icon:SCHOOL_ICONS[selectedSchools[0]]});
+    coreShapes.push({tx:p2x-12*s, ty:cy-12*s, rot:0, scale:s, post:null, icon:SCHOOL_ICONS[selectedSchools[1]]});
+  } else {
+    const s=(0.9*0.75*outerDiam)/24;
+    coreShapes.push({tx:cx-12*s, ty:cy-12*s, rot:0, scale:s, post:null, icon:SCHOOL_ICONS[selectedSchools[0]]});
+  }
+  const coreHalf=(0.9*outerDiam/2)*1.1;
+  list.push({key:'core', label:'Core', shapes:coreShapes, bbox:{x:cx-coreHalf, y:cy-coreHalf, w:coreHalf*2, h:coreHalf*2}});
+
+  placed.forEach((p,idx)=>{
+    const pos=p.self ? {x:cx,y:cy} : polar(coreR+15+(p.percent/100)*(PLACEMENT_OUTER-coreR-30), p.angle);
+    const diam=glyphDiam(p.size||1);
+    const iconScale=diam/24;
+    const half=diam/2*1.05;
+    list.push({
+      key:'glyph:'+idx, kind:'glyph', idx,
+      label:`${GLYPHS[p.key].label} (${SECTOR_NAMES[p.sector]})`,
+      shapes:[{tx:pos.x-12*iconScale, ty:pos.y-12*iconScale, rot:0, scale:iconScale, post:null, icon:GLYPHS[p.key].icon}],
+      bbox:{x:pos.x-half, y:pos.y-half, w:half*2, h:half*2}
+    });
+  });
+
+  conjunctions.forEach((c,idx)=>{
+    const pos=conjPos(c);
+    const scale=2.2*(c.size||1);
+    const half=scale*13*1.1;
+    list.push({
+      key:'conj:'+idx, kind:'conj', idx,
+      label:`${CONJUNCTIONS[c.key].label} (congiunzione)`,
+      shapes:[{tx:pos.x, ty:pos.y, rot:c.rotation, scale, post:[-12,-12], icon:CONJUNCTIONS[c.key].icon}],
+      bbox:{x:pos.x-half, y:pos.y-half, w:half*2, h:half*2}
+    });
+  });
+
+  energies.forEach((en,idx)=>{
+    const pos=en.self ? {x:cx,y:cy} : polar(coreR+15+(en.percent/100)*(PLACEMENT_OUTER-coreR-30), en.angle);
+    const diam=glyphDiam(en.size||1);
+    const iconScale=diam/24;
+    const half=diam/2*1.05;
+    list.push({
+      key:'energy:'+idx, kind:'energy', idx,
+      label:`${en.key} (energia)`,
+      shapes:[{tx:pos.x-12*iconScale, ty:pos.y-12*iconScale, rot:0, scale:iconScale, post:null, icon:ENERGIES[en.key]}],
+      bbox:{x:pos.x-half, y:pos.y-half, w:half*2, h:half*2}
+    });
+  });
+
+  return list;
+}
+
+function paintNodeMask(node){
+  hitCtx.clearRect(0,0,HIT_SIZE,HIT_SIZE);
+  hitCtx.fillStyle='#000'; hitCtx.strokeStyle='#000';
+  node.shapes.forEach(sh=>{
+    hitCtx.save();
+    hitCtx.translate(sh.tx, sh.ty);
+    if(sh.rot) hitCtx.rotate(sh.rot*Math.PI/180);
+    hitCtx.scale(sh.scale, sh.scale);
+    if(sh.post) hitCtx.translate(sh.post[0], sh.post[1]);
+    drawIconOnCtx(hitCtx, sh.icon);
+    hitCtx.restore();
+  });
+}
+
+function bboxIntersect(a,b){
+  return !(a.x+a.w<b.x || b.x+b.w<a.x || a.y+a.h<b.y || b.y+b.h<a.y);
+}
+
+function bodiesOverlap(nodeA, nodeB){
+  if(!bboxIntersect(nodeA.bbox, nodeB.bbox)) return false;
+  const rx=Math.max(0, Math.floor(Math.max(nodeA.bbox.x, nodeB.bbox.x)));
+  const ry=Math.max(0, Math.floor(Math.max(nodeA.bbox.y, nodeB.bbox.y)));
+  const rx2=Math.min(HIT_SIZE, Math.ceil(Math.min(nodeA.bbox.x+nodeA.bbox.w, nodeB.bbox.x+nodeB.bbox.w)));
+  const ry2=Math.min(HIT_SIZE, Math.ceil(Math.min(nodeA.bbox.y+nodeA.bbox.h, nodeB.bbox.y+nodeB.bbox.h)));
+  const rw=rx2-rx, rh=ry2-ry;
+  if(rw<=0 || rh<=0) return false;
+
+  paintNodeMask(nodeA);
+  const dataA=hitCtx.getImageData(rx, ry, rw, rh).data;
+  paintNodeMask(nodeB);
+  const dataB=hitCtx.getImageData(rx, ry, rw, rh).data;
+
+  for(let i=3;i<dataA.length;i+=4){
+    if(dataA[i]>10 && dataB[i]>10) return true;
+  }
+  return false;
+}
+
+function computeConnectivity(){
+  const nodes=buildNodeShapeList();
+  const others=nodes.slice(1);
+  const visited=new Set(['core']);
+  let changed=true;
+  while(changed){
+    changed=false;
+    for(const n of others){
+      if(visited.has(n.key)) continue;
+      for(const other of nodes){
+        if(other.key===n.key) continue;
+        if(other.key!=='core' && !visited.has(other.key)) continue;
+        if(bodiesOverlap(n, other)){ visited.add(n.key); changed=true; break; }
+      }
+    }
+  }
+  return {nodes, visited};
+}
+
+function computeDisconnected(){
+  const {nodes, visited}=computeConnectivity();
+  return nodes.slice(1).filter(n=>!visited.has(n.key));
+}
+
+function describeGlyph(p){
+  const g=GLYPHS[p.key];
+  const potenza=Math.round((p.size||1)*100);
+  if(p.key==='separazione'){
+    if(p.sector===2){
+      const pulses=Math.max(2, Math.round(2+(p.percent/100)*4));
+      return `Separazione — ${pulses} impulsi scaglionati (potenza ${potenza}%)`;
+    }
+    if(p.self) return `Separazione — bersaglio: sé stesso (potenza ${potenza}%)`;
+    if(p.percent<=5) return `Separazione — bersaglio a contatto (potenza ${potenza}%)`;
+    const maxR = (currentCatalogLabel && currentCatalogLabel.maxRange) ? currentCatalogLabel.maxRange : 30;
+    const meters=Math.round((p.percent/100)*maxR);
+    return `Separazione — bersaglio a ${meters} m (potenza ${potenza}%)`;
+  }
+  return `${g.label} (${p.percent}%, potenza ${potenza}%)`;
+}
+
+function wheelResult(a,b,dominance){
+  const i=SCHOOLS.indexOf(a), j=SCHOOLS.indexOf(b);
+  let d=Math.abs(i-j); d=Math.min(d,8-d);
+  if(d===0) return {result:a, distance:0, clean:true};
+  if(d===2){
+    const diffFwd=(j-i+8)%8;
+    const dir=diffFwd===2?1:-1;
+    return {result:SCHOOLS[(i+dir+8)%8], distance:2, clean:true};
+  }
+  if(d===4){
+    const midA=SCHOOLS[(i+2)%8], midB=SCHOOLS[(i-2+8)%8];
+    const chosen = dominance==='b' ? midB : midA;
+    return {result:chosen, options:[midA,midB], distance:4, clean:false, ambiguous:true};
+  }
+  return {result:`ibrido ${a}/${b}`, distance:d, clean:false};
+}
+
+function render(){
+  const a=selectedSchools[0], b=selectedSchools[1]||"";
+  dominanceRow.style.display='none';
+  let wRes={result:a, distance:0, clean:true};
+  if(b && b!==a){
+    const i=SCHOOLS.indexOf(a), j=SCHOOLS.indexOf(b);
+    let d=Math.abs(i-j); d=Math.min(d,8-d);
+    if(d===4) dominanceRow.style.display='block';
+    wRes=wheelResult(a,b, document.getElementById('dominance').value);
+  }
+
+  let svgStr='<defs><filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="glowConj" filterUnits="userSpaceOnUse" x="-24" y="-24" width="72" height="72"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+  svgStr+=`<rect x="20" y="85" width="600" height="42" rx="4" fill="var(--bg-card)" stroke="var(--line-b)" stroke-width="1" stroke-dasharray="4 3" id="stagingArea" style="cursor:pointer;"/>
+    <text x="320" y="106" text-anchor="middle" font-size="11" fill="var(--ink-soft)">Area di attesa — clicca per far comparire il glifo armato, poi trascinalo dove preferisci</text>`;
+  for(let s=0;s<5;s++){
+    const startA=s*72, endA=startA+72;
+    const p1=polar(outerR,startA);
+    svgStr+=`<line x1="${cx}" y1="${cy}" x2="${p1.x}" y2="${p1.y}" stroke="var(--line-b)" stroke-width="0.6"/>`;
+    const lp=polar(outerR+30, startA+36);
+    svgStr+=`<text x="${lp.x}" y="${lp.y}" text-anchor="middle" font-size="11" fill="var(--ink-soft)">${SECTOR_NAMES[s]}</text>`;
+  }
+  svgStr+=`<circle cx="${cx}" cy="${cy}" r="${outerR+20}" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.3"/>`;
+  for(let t=0;t<24;t++){
+    const ang=t*15;
+    const big=t%6===0;
+    const p1t=polar(outerR+4, ang);
+    const p2t=polar(big?outerR+18:outerR+11, ang);
+    svgStr+=`<line x1="${p1t.x}" y1="${p1t.y}" x2="${p2t.x}" y2="${p2t.y}" stroke="var(--gold)" stroke-width="${big?1.1:0.6}" opacity="${big?0.75:0.5}"/>`;
+  }
+  svgStr+=`<circle cx="${cx}" cy="${cy}" r="${outerR}" fill="none" stroke="var(--gold)" stroke-width="1" filter="url(#glow)" opacity="0.9"/>`;
+  svgStr+=`<circle cx="${cx}" cy="${cy}" r="${coreR}" fill="none" stroke="var(--gold)" stroke-width="1.3" filter="url(#glow)" opacity="0.95"/>`;
+
+  const outerDiam=outerR*2;
+  const aIcon=SCHOOL_ICONS[a];
+  if(b && b!==a){
+    const s=(0.8*0.75*outerDiam)/24;
+    const p1x=cx-22, p2x=cx+22;
+    svgStr+=`<g transform="translate(${p1x-12*s},${cy-12*s}) scale(${s})" filter="url(#glow)" opacity="0.9">${aIcon}</g>`;
+    svgStr+=`<g transform="translate(${p2x-12*s},${cy-12*s}) scale(${s})" filter="url(#glow)" opacity="0.9">${SCHOOL_ICONS[b]}</g>`;
+    svgStr+=`<line x1="${cx}" y1="${cy-coreR+4}" x2="${cx}" y2="${cy+coreR-4}" stroke="var(--gold)" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.6"/>`;
+  } else {
+    const s=(0.9*0.75*outerDiam)/24;
+    svgStr+=`<g transform="translate(${cx-12*s},${cy-12*s}) scale(${s})" filter="url(#glow)" opacity="0.9">${aIcon}</g>`;
+  }
+
+  energies.forEach((en,idx)=>{
+    const size=en.size||1;
+    const pos = en.self ? {x:cx, y:cy} : polar(coreR+15+(en.percent/100)*(PLACEMENT_OUTER-coreR-30), en.angle);
+    const diam=glyphDiam(size);
+    const iconScale=diam/24;
+    svgStr+=`<g class="placed-chip" data-idx="${idx}" data-kind="energy" style="cursor:pointer;">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${diam/2}" fill="transparent"/>
+      <g transform="translate(${pos.x-12*iconScale},${pos.y-12*iconScale}) scale(${iconScale})" filter="url(#glow)" opacity="0.9">${ENERGIES[en.key]}</g>
+      <text x="${pos.x}" y="${pos.y+diam/2+12}" text-anchor="middle" font-size="9" fill="var(--ink-mute)">${en.key} · potenza ${Math.round(size*100)}%</text>
+    </g>`;
+  });
+
+  conjunctions.forEach((c,idx)=>{
+    const pos=conjPos(c);
+    const scale=2.2*(c.size||1);
+    svgStr+=`<g class="placed-chip" data-idx="${idx}" data-kind="conj" style="cursor:pointer;">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${26*(c.size||1)}" fill="transparent"/>
+      <g transform="translate(${pos.x} ${pos.y}) rotate(${c.rotation}) scale(${scale}) translate(-12 -12)" filter="url(#glowConj)" opacity="0.85">${CONJUNCTIONS[c.key].icon}</g>
+    </g>`;
+  });
+
+  const sectorCounts=[0,0,0,0,0];
+  placed.forEach((p,idx)=>{
+    const size=p.size||1;
+    sectorCounts[p.sector]++;
+    const pos = p.self ? {x:cx, y:cy} : polar(coreR+15+(p.percent/100)*(PLACEMENT_OUTER-coreR-30), p.angle);
+    const diam=glyphDiam(size);
+    const iconScale=diam/24;
+    svgStr+=`<g class="placed-chip" data-idx="${idx}" data-kind="glyph" style="cursor:pointer;">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${diam/2}" fill="transparent"/>
+      <g transform="translate(${pos.x-12*iconScale},${pos.y-12*iconScale}) scale(${iconScale})" filter="url(#glow)" opacity="0.9">${GLYPHS[p.key].icon}</g>
+      <text x="${pos.x}" y="${pos.y+diam/2+12}" text-anchor="middle" font-size="9" fill="var(--ink-mute)">${describeGlyph(p)}</text>
+    </g>`;
+  });
+
+  const disconnected=computeDisconnected();
+  disconnected.forEach(n=>{
+    const bx=n.bbox.x+n.bbox.w/2, by=n.bbox.y+n.bbox.h/2, br=Math.max(n.bbox.w,n.bbox.h)/2+4;
+    svgStr+=`<circle cx="${bx}" cy="${by}" r="${br}" fill="none" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="3 3"/>`;
+  });
+
+  svg.innerHTML=svgStr;
+
+  computeAndDisplay(a,b,wRes);
+}
+
+// ---- Note dinamiche di modifica rispetto all'originale del catalogo ----
+
+const REACH_SIZE_WEIGHT = 50; // converte una variazione di size in "punti percentuali" equivalenti
+
+function reachScore(p){
+  return p.percent + ((p.size||1)-1)*REACH_SIZE_WEIGHT;
+}
+
+function generateModificationTags(original, current){
+  if(!original) return [];
+  const tags=[];
+  const handled=new Set();
+
+  const origById=new Map(original.map(p=>[p._id,p]));
+  const curById=new Map(current.map(p=>[p._id,p]));
+
+  // Regola speciale: Materia Prima affiancata a Sacrificio nel settore Componenti (3)
+  const sec3Now=current.filter(p=>p.sector===3);
+  const sec3Orig=original.filter(p=>p.sector===3);
+  const hasMPnow=sec3Now.some(p=>p.key==='materiaprima');
+  const hasSacNow=sec3Now.some(p=>p.key==='sacrificio');
+  const hasMPorig=sec3Orig.some(p=>p.key==='materiaprima');
+  if(hasMPnow && hasSacNow && !hasMPorig){
+    tags.push("Componente materiale mutata");
+    sec3Now.filter(p=>p.key==='materiaprima').forEach(p=>handled.add(p._id));
+  }
+
+  curById.forEach((p,id)=>{
+    if(handled.has(id)) return;
+    const o=origById.get(id);
+    if(!o) return; // gestito nel passaggio "aggiunti" più sotto
+    if(o.sector!==p.sector){
+      tags.push(`${GLYPHS[p.key].label} spostato da ${SECTOR_NAMES[o.sector]} a ${SECTOR_NAMES[p.sector]}`);
+      handled.add(id);
+      return;
+    }
+    if(p.key==='separazione' && p.sector===1){
+      const delta=reachScore(p)-reachScore(o);
+      if(delta>10){ tags.push("Distanza incrementata"); handled.add(id); return; }
+      if(delta<-10){ tags.push("Distanza ridotta"); handled.add(id); return; }
+    }
+    if(p.key==='separazione' && p.sector===2){
+      const delta=reachScore(p)-reachScore(o);
+      if(delta>10){ tags.push("Impulsi più frequenti"); handled.add(id); return; }
+      if(delta<-10){ tags.push("Impulsi più radi"); handled.add(id); return; }
+    }
+    const pDelta=Math.abs(p.percent-o.percent), sDelta=Math.abs((p.size||1)-(o.size||1));
+    if(pDelta>15 || sDelta>0.25){
+      tags.push(`${GLYPHS[p.key].label} alterato (${SECTOR_NAMES[p.sector]})`);
+      handled.add(id);
+    }
+  });
+
+  curById.forEach((p,id)=>{
+    if(!origById.has(id) && !handled.has(id)){
+      tags.push(`${GLYPHS[p.key].label} aggiunto (${SECTOR_NAMES[p.sector]})`);
+    }
+  });
+  origById.forEach((o,id)=>{
+    if(!curById.has(id)){
+      tags.push(`${GLYPHS[o.key].label} rimosso (${SECTOR_NAMES[o.sector]})`);
+    }
+  });
+
+  return tags;
+}
+
+const ENERGY_EFFECT_PHRASES = {
+  Calore:"Una vampata di fiamme ardenti",
+  Gelo:"Un soffio di aria gelida e pungente",
+  Fulmine:"Una scarica di elettricità crepitante",
+  Acido:"Una nube di vapori corrosivi",
+  Suono:"Un'onda d'urto sonora assordante",
+  Forza:"Un'ondata di energia cinetica pura"
+};
+
+const SHAPE_EFFECT_PHRASES = {
+  scintilla:()=>"si dirige in linea retta verso il bersaglio scelto",
+  ventaglio:()=>"si dipana a ventaglio, investendo tutto ciò che si trova davanti al lanciatore",
+  esplosione:(p)=>`esplode in un'area circolare nel punto in cui è stata posizionata la runa — più la runa è grande, più l'esplosione è ampia`,
+  solco:()=>"traccia un solco rettilineo che attraversa e colpisce tutto ciò che incontra sul suo cammino",
+  alone:()=>"avvolge il lanciatore in un alone persistente, che dura finché il sigillo resta attivo"
+};
+
+function generateElementalDescription(){
+  const en=energies.find(e=>e.self) || energies[0];
+  if(!en) return null;
+  const shapeEntry=placed.find(p=>p.sector===1 && SHAPE_EFFECT_PHRASES[p.key]);
+  if(!shapeEntry) return null;
+  const energyPhrase=ENERGY_EFFECT_PHRASES[en.key];
+  if(!energyPhrase) return `${en.key} non ha ancora un effetto di trasmutazione definito per questo sigillo.`;
+  return `${energyPhrase} ${SHAPE_EFFECT_PHRASES[shapeEntry.key](shapeEntry)}.`;
+}
+
+function coeffVar(values){
+  if(!values.length) return 0;
+  const mean=values.reduce((a,b)=>a+b,0)/values.length;
+  if(mean===0) return 0;
+  const variance=values.reduce((a,v)=>a+(v-mean)*(v-mean),0)/values.length;
+  return Math.min(1, Math.sqrt(variance)/mean);
+}
+
+function computeAndDisplay(a,b,wRes){
+  const sectorGlyphs=[[],[],[],[],[]];
+  placed.forEach(p=>{
+    sectorGlyphs[p.sector].push(p);
+  });
+
+  const sectorLines=[];
+  sectorGlyphs.forEach((entries,s)=>{
+    const names=entries.map(p=>describeGlyph(p)).join(" + ") || "—";
+    sectorLines.push({name:SECTOR_NAMES[s], names});
+  });
+
+  const allSizes = placed.map(p=>p.size||1);
+  const potenzaComplessiva = placed.reduce((acc,p)=>acc + (p.percent/100)*(p.size||1), 0);
+
+  // Regola 1: le componenti hanno dimensioni simili tra loro
+  const sizeImbalance = coeffVar(allSizes);
+
+  // Regola 2 (solo informativa, non entra più nel calcolo del rischio): il disegno è
+  // equilibrato a riempimento — ogni spicchio pesa quanto gli altri.
+  const sectorFill = sectorGlyphs.map(entries=>
+    entries.reduce((acc,p)=>{ const d=glyphDiam(p.size||1); return acc + d*d; }, 0)
+  );
+  const fillImbalance = coeffVar(sectorFill);
+  const allSectorsFilled = sectorGlyphs.every(entries=>entries.length>0);
+  const radialValues = placed.map(p=>p.self?0:p.percent);
+  const radialImbalance = coeffVar(radialValues);
+
+  const imbalance = Math.max(sizeImbalance, radialImbalance);
+
+  // ---- Modello energetico ----
+  // Componenti e Tempo di lancio concedono energia potenziale al sigillo;
+  // Gittata e Durata la consumano; Livello è la potenza che deve restare in equilibrio con il saldo.
+  function sectorMagnitude(entries){
+    return entries.reduce((acc,p)=>acc + (p.size||1)*(p.percent/100), 0);
+  }
+  const componentiMag = sectorMagnitude(sectorGlyphs[3]);
+  const lancioMag = sectorMagnitude(sectorGlyphs[4]);
+  const gittataMag = sectorMagnitude(sectorGlyphs[1]);
+  const durataMag = sectorMagnitude(sectorGlyphs[2]);
+  const energyIncome = componentiMag + lancioMag;
+  const energyCost = gittataMag + durataMag;
+  const netEnergy = energyIncome - energyCost;
+
+  const livelloPower = sectorGlyphs[0].reduce((acc,p)=>acc + GLYPHS[p.key].w*(p.percent/100)*(p.size||1), 0);
+  const energyOvershoot = livelloPower - netEnergy;
+  const energyImbalance = energyOvershoot<=0 ? 0 : Math.min(1, energyOvershoot/6);
+
+  // Durata e Tempo di lancio devono essere correlati: una durata lunga richiede un lancio lungo
+  const correlationGap = durataMag - lancioMag;
+  const correlationImbalance = correlationGap<=0 ? 0 : Math.min(1, correlationGap/3);
+
+  const overallImbalance = Math.max(imbalance, energyImbalance, correlationImbalance);
+
+  // Rituale: Materia Prima nello spicchio Tempo di lancio modifica il tempo di lancio in entrambe
+  // le direzioni. Ingrandita e allontanata dal centro: lancio più lento (fino a 3 minuti) in cambio
+  // di efficienza (dispendio dimezzato, gittata raddoppiata). Rimpicciolita: lancio più rapido,
+  // fino a dimezzare i 6 secondi base (nessun altro effetto).
+  const materiaPrimaLancio = placed.find(p=>p.key==='materiaprima' && p.sector===4);
+  let ritualFactor = 0, castingSeconds = 6;
+  if(materiaPrimaLancio){
+    const size = materiaPrimaLancio.size||1;
+    if(size>1){
+      const distFactor = materiaPrimaLancio.percent/100;
+      const sizeFactor = (size-1)/1;
+      ritualFactor = Math.max(0, Math.min(1, distFactor*sizeFactor));
+      castingSeconds = 6 + ritualFactor*(180-6);
+    } else if(size<1){
+      const shrinkFactor = Math.max(0, Math.min(1, (1-size)/0.5));
+      castingSeconds = 6 - shrinkFactor*3;
+    }
+  }
+  // Cesura in Tempo di lancio: dimezza il tempo di lancio. È un glifo aggiuntivo, quindi il
+  // suo costo in Dispendio Energetico è già coperto dalle regole generiche (complessità oltre
+  // il terzo glifo, affollamento dello spicchio se condiviso con Materia Prima) — nessun bonus
+  // di velocità è gratis.
+  const cesuraLancio = placed.find(p=>p.key==='cesura' && p.sector===4);
+  if(cesuraLancio) castingSeconds = castingSeconds/2;
+
+  const castingCostMultiplier = 1 - 0.65*ritualFactor;
+  const castingRangeMultiplier = 1 + 2*ritualFactor;
+  function formatCastingTime(sec){
+    return sec<60 ? `${Math.round(sec)} secondi` : `${(sec/60).toFixed(1)} minuti`;
+  }
+
+  // Dispendio Energetico: parte da 1 per un sigillo base. La crescita di un glifo pesa al
+  // quadrato (raddoppiare la dimensione quadruplica il suo contributo, coerente con gittata/area
+  // che scalano col quadrato del raggio). Il bilanciamento fa poi da moltiplicatore: un sigillo
+  // totalmente bilanciato dimezza il costo, uno totalmente sbilanciato lo raddoppia.
+  const allElementSizes = [...placed, ...conjunctions, ...energies].map(el=>el.size||1);
+  const dispendioImbalance = coeffVar(allElementSizes);
+  const balanceMultiplier = 0.5 + 1.5*dispendioImbalance;
+
+  // Sconto per-glifo: ogni glifo collegato al Core tramite una congiunzione ottiene uno sconto
+  // sul proprio contributo alla crescita — Linea 10%, Curva 25%, Nodo 50%. Se tocca il Core
+  // direttamente (nessuna congiunzione in mezzo) non c'è sconto.
+  const CONJ_DISCOUNT={linea:0.90, curva:0.75, nodo:0.50};
+  const {nodes:connNodes, visited:connVisited} = computeConnectivity();
+  const coreNode = connNodes[0];
+  const glyphDiscounts = [];
+  let growthRaw = 0;
+  placed.forEach((p,idx)=>{
+    const size=p.size||1;
+    if(size<=1) return;
+    const raw = size*size-1;
+    const gNode = connNodes.find(n=>n.key==='glyph:'+idx);
+    let mult=1, usedKey=null;
+    if(gNode && !bodiesOverlap(gNode, coreNode)){
+      conjunctions.forEach((c,cidx)=>{
+        const conjNode=connNodes.find(n=>n.key==='conj:'+cidx);
+        if(conjNode && connVisited.has(conjNode.key) && bodiesOverlap(gNode, conjNode)){
+          const m=CONJ_DISCOUNT[c.key];
+          if(m<mult){ mult=m; usedKey=c.key; }
+        }
+      });
+    }
+    if(usedKey) glyphDiscounts.push({label:GLYPHS[p.key].label, key:usedKey, pct:Math.round((1-mult)*100)});
+    growthRaw = Math.max(growthRaw, raw*mult);
+  });
+  conjunctions.forEach(el=>{
+    const size=el.size||1;
+    if(size>1) growthRaw = Math.max(growthRaw, (size*size-1)/4);
+  });
+  energies.forEach(el=>{
+    const size=el.size||1;
+    if(size>1) growthRaw = Math.max(growthRaw, size*size-1);
+  });
+
+  const dispendioEnergetico = (1 + growthRaw*balanceMultiplier) * castingCostMultiplier;
+
+  // Materia Prima nello spicchio Livello moltiplica la potenza espressa dell'energia
+  // (gradi, watt, ecc. a seconda dell'energia scelta) da x1 (dimensione minima) a x4
+  // (dimensione massima) — e il dispendio energetico di quel glifo scala nello stesso modo,
+  // di pari passo, senza sconti.
+  const materiaPrimaLivello = placed.find(p=>p.key==='materiaprima' && p.sector===0);
+  let powerMultiplier = 1;
+  if(materiaPrimaLivello){
+    const sizeFrac = Math.max(0, Math.min(1, ((materiaPrimaLivello.size||1)-0.5)/1.5));
+    powerMultiplier = 1 + sizeFrac*3;
+  }
+
+  // Complessità: ogni glifo oltre al terzo aggiunge 1 al dispendio energetico, a prescindere
+  // dalla sua dimensione — un sigillo con più pezzi è di per sé più difficile da tenere insieme.
+  const glyphCountPenalty = Math.max(0, placed.length-3);
+
+  // Affollamento: ogni spicchio che contiene due o più glifi moltiplica il dispendio per 1.5,
+  // uno per ciascuno spicchio affollato (si accumula se più spicchi lo sono).
+  let sectorCrowdMultiplier = 1;
+  sectorGlyphs.forEach(entries=>{ if(entries.length>=2) sectorCrowdMultiplier *= 1.5; });
+
+  const dispendioFinale = dispendioEnergetico*(allSectorsFilled?0.85:1)*powerMultiplier*sectorCrowdMultiplier + glyphCountPenalty;
+
+  // ---- Gittata e diametro: distanza dal nucleo → gittata, dimensione del glifo → diametro ----
+  //   diametro = maxDiameter × (size/2)³   (size massima = 2 → diametro pieno)
+  //   gittata  = maxRange × (percentuale effettiva/100)   (100% → gittata piena)
+  // Una Congiunzione a Linea collegata al Core e al glifo può spingerlo oltre il normale
+  // limite del 100%: più la linea stessa è grande e distesa, più estende la gittata raggiungibile
+  // (fino a +55.6 punti percentuali equivalenti — es. gittata piena 18 m → 28 m).
+  const RANGE_EXT_MAX_PCT = 55.56;
+  function conjunctionExtension(glyphIdx){
+    const gNode = connNodes.find(n=>n.key==='glyph:'+glyphIdx);
+    if(!gNode) return 0;
+    let best=0;
+    conjunctions.forEach((c,cidx)=>{
+      if(c.key!=='linea') return;
+      const conjNode=connNodes.find(n=>n.key==='conj:'+cidx);
+      if(!conjNode || !connVisited.has(conjNode.key)) return;
+      if(!bodiesOverlap(gNode, conjNode)) return;
+      const reach = Math.min(1, c.percent/100) * Math.min(1, (c.size||1)/2.5);
+      best=Math.max(best, reach);
+    });
+    return best*RANGE_EXT_MAX_PCT;
+  }
+
+  const rangeGlyphIdx = placed.findIndex(p=>p.sector===1 && (DIRECTION_GLYPH_KEYS.has(p.key) || (p.key==='separazione' && !p.self)));
+  let rangeInfo = null;
+  if(rangeGlyphIdx>=0 && currentCatalogLabel && currentCatalogLabel.maxRange){
+    const rg=placed[rangeGlyphIdx];
+    const size=rg.size||1;
+    const fillBoost = allSectorsFilled ? 1.2 : 1;
+    const ext = conjunctionExtension(rangeGlyphIdx);
+    const effectivePct = Math.min(100+RANGE_EXT_MAX_PCT, rg.percent+ext);
+    const diamFactor = Math.pow(size/2, 3);
+    rangeInfo = {
+      range: (currentCatalogLabel.maxRange*(effectivePct/100)*castingRangeMultiplier*fillBoost).toFixed(1),
+      diameter: (currentCatalogLabel.maxDiameter*diamFactor*castingRangeMultiplier*fillBoost).toFixed(2),
+      extended: ext>0.5
+    };
+  }
+
+  // ---- Coagulazione: comportamento diverso a seconda dello spicchio ----
+  // In Durata: la dimensione dà solidità, la distanza dal nucleo dà persistenza/durata.
+  // In Gittata: la dimensione dà coesione del materiale trasportato, la distanza dal nucleo
+  // dà la quantità di massa trasportabile (es. teletrasporto/portale).
+  const coagDurata = placed.find(p=>p.key==='coagulazione' && p.sector===2);
+  const coagGittata = placed.find(p=>p.key==='coagulazione' && p.sector===1);
+  let coagInfo = null;
+  if(coagDurata){
+    coagInfo = {
+      sector:'Durata',
+      solidita: Math.round((coagDurata.size||1)*50),
+      persistenza: Math.round(coagDurata.percent)
+    };
+  } else if(coagGittata){
+    coagInfo = {
+      sector:'Gittata',
+      coesione: Math.round((coagGittata.size||1)*50),
+      capacita: Math.round(coagGittata.percent)
+    };
+  }
+
+  // ---- Cesura in Durata + Materia Prima in Livello: trasformazione elementare ----
+  // Cesura in Durata annulla l'effetto autonomo dell'energia usata come sacrificio (deve
+  // esserci un'energia non nel nucleo abbinata a un glifo Sacrificio in Componenti) e lascia
+  // che Materia Prima in Livello ne guidi la trasformazione nell'energia prodotta (nel nucleo).
+  const cesuraDurata = placed.find(p=>p.key==='cesura' && p.sector===2);
+  const sacrificioComponenti = placed.find(p=>p.key==='sacrificio' && p.sector===3);
+  const sacrificedEnergy = energies.find(en=>!en.self && Math.floor(en.angle/72)===3);
+  const producedEnergy = energies.find(en=>en.self);
+  let transmutationNote = null;
+  if(cesuraDurata && sacrificioComponenti && sacrificedEnergy){
+    transmutationNote = `Cesura annulla l'effetto autonomo di <b>${sacrificedEnergy.key}</b> (sacrificata in Componenti)` +
+      (materiaPrimaLivello ? `; Materia Prima in Livello ne guida la trasformazione${producedEnergy?` in <b>${producedEnergy.key}</b>`:''} (moltiplicatore ×${powerMultiplier.toFixed(2)}).` : `, ma senza Materia Prima in Livello la trasformazione non ha nulla che la guidi.`);
+  }
+
+  // ---- Proprietà fisiche della materia creata (sigilli di evocazione informe) ----
+  // Volume e peso scalano con il moltiplicatore di potenza di Materia Prima in Livello;
+  // la durezza (scala 1-10: 1=gommapiuma, 10=acciaio) scala con la dimensione di Coagulazione
+  // in Durata, se presente.
+  let physicalInfo = null;
+  if(currentCatalogLabel && currentCatalogLabel.baseVolumeL){
+    const durezza = coagDurata
+      ? Math.max(1, Math.min(10, Math.round(currentCatalogLabel.baseDurezza*(coagDurata.size||1))))
+      : currentCatalogLabel.baseDurezza;
+    physicalInfo = {
+      volume: (currentCatalogLabel.baseVolumeL*powerMultiplier).toFixed(1),
+      peso: (currentCatalogLabel.basePesoKg*powerMultiplier).toFixed(1),
+      durezza
+    };
+  }
+
+  const fusion=(b && b!==a);
+  let zoneIndex = overallImbalance>0.55 ? 2 : (overallImbalance>0.25 ? 1 : 0);
+  if(fusion) zoneIndex=Math.min(2, zoneIndex+1);
+
+  const zoneLabels=['Sicuro','Richiede molte energie','Molto rischioso'];
+  const zoneClasses=['b-teal','b-amber','b-red'];
+
+
+  let schoolNote='';
+  if(fusion){
+    if(wRes.distance===2) schoolNote=`Fusione a due passi: pulita, classificata come <b>${wRes.result}</b>.`;
+    else if(wRes.distance===4) schoolNote=`Fusione a quattro passi (scuole opposte): ambigua tra <b>${wRes.options[0]}</b> e <b>${wRes.options[1]}</b> — qui prevale <b>${wRes.result}</b>.`;
+    else schoolNote=`Fusione a ${wRes.distance} passi: nessun punto medio pulito, resta un <b>${wRes.result}</b>.`;
+  } else {
+    schoolNote=`Sigillo entro la scuola ${a}, nessuna fusione.`;
+  }
+
+  const out=document.getElementById('output');
+  const disconnected=computeDisconnected();
+  let errorBlock='';
+  if(disconnected.length){
+    errorBlock=`<div class="error-box"><b>Il sigillo non si esprime.</b> Non sono collegati al Core: ${disconnected.map(n=>n.label).join(', ')}. Avvicina o collega questi elementi con una congiunzione.</div>`;
+  }
+  let catalogBlock='';
+  if(currentCatalogLabel){
+    const tags=generateModificationTags(currentCatalogOriginal, placed);
+    const tagsHtml = tags.length ? ` <span class="mod-tags">— ${tags.join('; ')}.</span>` : '';
+    catalogBlock=`<div class="spell-desc-box"><div class="spell-desc-title">${currentCatalogLabel.name}</div><div class="spell-desc-text">${currentCatalogLabel.desc}${tagsHtml}</div></div>`;
+    if(currentCatalogLabel.dynamicElemental){
+      const dyn=generateElementalDescription();
+      if(dyn) catalogBlock += `<div class="spell-desc-box"><div class="spell-desc-title">L'effetto in questa configurazione</div><div class="spell-desc-text">${dyn}</div></div>`;
+    }
+  }
+  if(transmutationNote){
+    catalogBlock += `<div class="spell-desc-box"><div class="spell-desc-title">Trasmutazione elementare</div><div class="spell-desc-text">${transmutationNote}</div></div>`;
+  }
+  // Un sigillo del catalogo può forzare a mano il valore mostrato di Dispendio Energetico
+  // (es. un sigillo anomalo/non calcolabile) invece di quello calcolato normalmente.
+  const displayDispendio = (currentCatalogLabel && currentCatalogLabel.forcedDispendio!=null) ? currentCatalogLabel.forcedDispendio : dispendioFinale;
+  out.innerHTML=`
+    ${errorBlock}
+    ${catalogBlock}
+    <div class="stat-line"><span>Scuola risultante</span><span>${wRes.result}</span></div>
+    ${energies.length ? energies.map(en=>{
+        const role = en.self ? 'nucleo — prodotta' : `${SECTOR_NAMES[Math.floor(en.angle/72)]} — sacrificata/componente`;
+        return `<div class="stat-line"><span>Energia (${role})</span><span>${en.key} · potenza ${Math.round((en.size||1)*100)}%</span></div>`;
+      }).join('') : `<div class="stat-line"><span>Energia</span><span>—</span></div>`}
+    <div class="stat-line dispendio"><span>Dispendio Energetico</span><span>${displayDispendio.toFixed(2)}</span></div>
+    ${glyphCountPenalty>0 ? `<div class="stat-line"><span>Complessità (${placed.length} glifi)</span><span>+${glyphCountPenalty}</span></div>` : ''}
+    ${sectorCrowdMultiplier>1 ? `<div class="stat-line"><span>Affollamento spicchio</span><span>×${sectorCrowdMultiplier.toFixed(2)}</span></div>` : ''}
+    ${materiaPrimaLivello ? `<div class="stat-line"><span>Moltiplicatore di Potenza</span><span>×${powerMultiplier.toFixed(2)}</span></div>` : ''}
+    ${glyphDiscounts.map(g=>`<div class="stat-line"><span>Sconto ${g.label} (${CONJUNCTIONS[g.key].label})</span><span>-${g.pct}%</span></div>`).join('')}
+    ${rangeInfo ? `<div class="stat-line"><span>Gittata effettiva${rangeInfo.extended?' (estesa da congiunzione)':''}</span><span>${rangeInfo.range} m</span></div><div class="stat-line"><span>Diametro effettivo</span><span>${rangeInfo.diameter} m</span></div>` : ''}
+    ${coagInfo && coagInfo.sector==='Durata' ? `<div class="stat-line"><span>Coagulazione (Durata) — solidità</span><span>${coagInfo.solidita}%</span></div><div class="stat-line"><span>Coagulazione (Durata) — persistenza</span><span>${coagInfo.persistenza}%</span></div>` : ''}
+    ${coagInfo && coagInfo.sector==='Gittata' ? `<div class="stat-line"><span>Coagulazione (Gittata) — coesione</span><span>${coagInfo.coesione}%</span></div><div class="stat-line"><span>Coagulazione (Gittata) — massa trasportabile</span><span>${coagInfo.capacita}%</span></div>` : ''}
+    ${physicalInfo ? `<div class="stat-line"><span>Volume</span><span>${physicalInfo.volume} L</span></div><div class="stat-line"><span>Peso</span><span>${physicalInfo.peso} kg</span></div><div class="stat-line"><span>Durezza</span><span>${physicalInfo.durezza} / 10</span></div>` : ''}
+    ${cesuraLancio ? `<div class="stat-line"><span style="color:var(--gold);">Cesura — Tempo di lancio dimezzato</span><span></span></div>` : ''}
+    <div class="stat-line"><span>Tempo di lancio</span><span>${formatCastingTime(castingSeconds)}</span></div>
+    <div class="stat-line"><span>Dimensioni disuniformi</span><span>${Math.round(sizeImbalance*100)}%</span></div>
+    ${allSectorsFilled
+      ? `<div class="stat-line"><span style="color:var(--gold);">Riempimento equilibrato</span><span style="color:var(--gold);">−15% dispendio, +20% effetto</span></div>`
+      : `<div class="stat-line"><span>Riempimento squilibrato</span><span>${Math.round(fillImbalance*100)}%</span></div>`}
+    <div class="stat-line"><span>Distanze irregolari</span><span>${Math.round(radialImbalance*100)}%</span></div>
+    <div class="stat-line"><span>Stato</span><span class="badge ${zoneClasses[zoneIndex]}">${zoneLabels[zoneIndex]}</span></div>
+    <div class="flavor">${schoolNote} Gli effetti specifici in caso di incantesimo rischioso sono ancora da definire.</div>
+  `;
+
+  let briefDesc = schoolNote;
+  if(currentCatalogLabel){
+    if(currentCatalogLabel.dynamicElemental){
+      const dyn=generateElementalDescription();
+      if(dyn) briefDesc = dyn;
+    } else {
+      briefDesc = currentCatalogLabel.desc.split('. ')[0] + '.';
+    }
+  }
+  document.getElementById('esitoSummary').innerHTML = `
+    <div class="esito-summary-line"><span>Dispendio Energetico</span><span>${displayDispendio.toFixed(2)}</span></div>
+    <div class="esito-summary-line"><span>Stato</span><span class="badge ${zoneClasses[zoneIndex]}">${zoneLabels[zoneIndex]}</span></div>
+    <div class="esito-summary-desc">${briefDesc}</div>
+  `;
+}
+
+document.getElementById('dominance').addEventListener('change', render);
+
+function buildLeftDecoration(){
+  const keys=['separazione','moltiplicazione','coagulazione','sacrificio','alone','proiezione',
+              'condizione','distillazione','ventaglio','esplosione','solco','cesura'];
+  const svgEl=document.getElementById('sigilSvg');
+  const svgH = svgEl ? svgEl.getBoundingClientRect().height : 480;
+  const panelH = Math.max(svgH + 70, 300); // + intestazione e testo di aiuto del pannello sigillo
+  const usableH = panelH - 50;
+  const spacing = usableH/keys.length;
+  let svg=`<svg width="100%" height="${panelH}" viewBox="0 0 44 ${panelH}">
+    <defs><filter id="glowGoldDeco" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
+  keys.forEach((k,i)=>{
+    const cy=35+spacing*i+spacing/2;
+    svg+=`<g transform="translate(22,${cy}) scale(1.15)" color="var(--gold)" filter="url(#glowGoldDeco)" opacity="0.85"><g transform="translate(-9,-9)">${GLYPHS[k].icon}</g></g>`;
+  });
+  svg+='</svg>';
+  document.getElementById('leftDecoration').innerHTML=svg;
+}
+// ── MODALITÀ DM: interfaccia e login ────────────────────────────────────
+function updateModeUI(){
+  const label=document.getElementById('modeLabel');
+  const btn=document.getElementById('dmToggleBtn');
+  const importRow=document.getElementById('importRow');
+  if(isDM){
+    label.textContent='Modalità: DM';
+    label.classList.add('dm-on');
+    btn.textContent='◑ Esci dalla Modalità DM';
+    importRow.classList.add('visible');
+  } else {
+    label.textContent='Modalità: Giocatore';
+    label.classList.remove('dm-on');
+    btn.textContent='◑ Modalità DM';
+    importRow.classList.remove('visible');
+    document.getElementById('removeImportedBtn').style.display='none';
+  }
+  // Il manuale collegato cambia a seconda della modalità: quello DM copre anche le rune non
+  // ancora "scoperte" dai giocatori, quello Giocatore no.
+  document.getElementById('manualBtn').href = isDM ? 'manuale_officina_sigilli.html' : 'manuale_officina_sigilli_giocatori.html';
+
+  // Se la scuola selezionata non è più consentita nella nuova modalità, torna a un default valido.
+  if(!isDM){
+    selectedSchools = selectedSchools.filter(s=>KNOWN.schools.has(s));
+    if(!selectedSchools.length) selectedSchools=[CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
+  }
+
+  renderSchoolGrid();
+  renderEnergyGrid();
+  buildConjPalette();
+  buildPalette();
+  buildCatalogSelect();
+  catalogSelect.value='';
+  loadFromSelectValue('');
+  placed=[]; conjunctions=[]; energies=[];
+  render();
+}
+
+document.getElementById('dmToggleBtn').addEventListener('click', ()=>{
+  if(isDM){
+    isDM=false;
+    try{ localStorage.removeItem(DM_STORAGE_KEY); } catch(e){}
+    updateModeUI();
+  } else {
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-err').style.display='none';
+    document.getElementById('pw-overlay').classList.add('open');
+    setTimeout(()=>document.getElementById('pw-input').focus(), 100);
+  }
+});
+
+function checkPW(){
+  const val=document.getElementById('pw-input').value;
+  if(val===ADMIN_PW){
+    isDM=true;
+    try{ localStorage.setItem(DM_STORAGE_KEY, 'true'); } catch(e){}
+    document.getElementById('pw-overlay').classList.remove('open');
+    updateModeUI();
+  } else {
+    document.getElementById('pw-err').style.display='block';
+  }
+}
+
+// ── INIZIALIZZAZIONE ─────────────────────────────────────────────────────
+selectedSchools = isDM ? ["Invocazione"] : [CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
+renderSchoolGrid();
+renderEnergyGrid();
+buildConjPalette();
+buildPalette();
+buildCatalogSelect();
+updateModeUI();
+
+applyZoom();
+buildLeftDecoration();
+
+render();
+</script>
+</body>
+</html>
