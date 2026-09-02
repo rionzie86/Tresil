@@ -57,7 +57,9 @@ Ma Ithar osservò ciò che avevano fatto e lo giudicò imperfetto. Decise di dis
 
 Le sei Figlie scomparvero in quell'esplosione. Da allora le culture di Kaelvaran le ricordano come le Sei Sorelle: madri perdute, forze della natura, profezie di ritorno.
 
-Nacquero le prime aberrazioni, le prime creature caotiche, i primi fatati. La realtà smise di essere stabile.`
+Nacquero le prime aberrazioni, le prime creature caotiche, i primi fatati. La realtà smise di essere stabile.
+
+Il sacrificio delle Sei Figlie è l'Anno Zero del Computo della Frattura, il calendario condiviso adottato a Tresil. Nella cultura popolare l'evento viene datato genericamente "circa 5000 anni fa"; gli studiosi più rigorosi lo collocano con maggiore precisione a 4987 anni prima del presente narrativo.`
       },
       {
         titolo: "I Millenni di Silenzio",
@@ -67,7 +69,7 @@ Al centro del mondo l'Atollo — un arcipelago cicatrizzato di potere e follia �
       },
       {
         titolo: "L'Eco del Sacrificio",
-        testo: `551 anni fa — anno 3981 del calendario comune — l'energia residua del sacrificio delle Figlie tornò a manifestarsi. Terremoti, maremoti, disastri arcani e fratture dimensionali colpirono ogni cultura. Ma con il caos arrivò anche un segnale: i continenti cominciarono a riavvicinarsi.
+        testo: `531 anni fa — anno 4456 del calendario comune (Computo della Frattura, che conta gli anni a partire dal Collasso di Ithar/sacrificio delle Sei Figlie, Anno Zero) — l'energia residua del sacrificio delle Figlie tornò a manifestarsi. Terremoti, maremoti, disastri arcani e fratture dimensionali colpirono ogni cultura. Ma con il caos arrivò anche un segnale: i continenti cominciarono a riavvicinarsi.
 
 Le culture si ritrovarono dopo millenni. Le guerre furono inevitabili, ma anche gli scambi. Da allora Kaelvaran vive un'era fragile: di pace apparente, di scoperte, di tensione sotterranea.`
       },
@@ -201,7 +203,9 @@ Rappresentano oggi il punto di maggiore mescolanza culturale. Mercenari, profeti
 
 È governata nominalmente da un consiglio di gilde, ma il potere reale è frammentato tra fazioni in equilibrio precario. Le leggi esistono, ma la loro applicazione dipende molto da chi sei e da chi conosci.
 
-Da Tresil partono le nuove mappe. Da Tresil giungono le prime voci sui mutamenti dell'Atollo. Ed è a Tresil che sono stati firmati, rotti e riscritti quasi tutti i trattati noti.`,
+Da Tresil partono le nuove mappe. Da Tresil giungono le prime voci sui mutamenti dell'Atollo. Ed è a Tresil che sono stati firmati, rotti e riscritti quasi tutti i trattati noti.
+
+Fondata 361 anni fa (anno 4626 del Computo della Frattura) da tre co-fondatori, uno per ciascuna delle tre culture coinvolte nella sua nascita: Eirikr di Stølagård (Varlmenn), Ayumi Kohana (Shizenka) e Tiero Venn'Aresh (Solnari). La fondazione arrivò dopo che le isole erano già riconosciute come terreno neutrale dalla Prima Alleanza delle Stirpi, un incontro precedente tra le cinque culture.`,
         tag: ["Città", "Porto", "Centro politico", "Neutrale"]
       }
     ]
