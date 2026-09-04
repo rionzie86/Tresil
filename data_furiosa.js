@@ -10,6 +10,10 @@
 // delle prime due sessioni giocate al tavolo, e la trascrizione
 // Plaud della Sessione 3 (2-3 settembre 2026, conclusione dello
 // scontro alla Rosa Storta e racconto completo di Whilliam).
+// Aggiornato ulteriormente il 4 settembre 2026 (2): corretto il
+// nome dello spiritello-rana (Wvrewvrol, non più "Verolinguo");
+// Whilliam spostato dai PNG principali al gruppo "Gli Otto Raggi"
+// (ottoRaggi), reso visibile dentro la pagina Personaggi.
 // ============================================================
 
 const FURIOSA_DATA = {
@@ -22,34 +26,40 @@ const FURIOSA_DATA = {
   },
 
   sezioni: [
-    { id: "panoramica", label: "Panoramica",    icona: "◈" },
-    { id: "personaggi", label: "Personaggi",    icona: "◉" },
-    { id: "pv-rei",     label: "Rei",           icona: "R" },
-    { id: "pv-zoraya",  label: "Zoraya",        icona: "Z" },
-    { id: "pv-nikla",   label: "Nikla",         icona: "N" },
-    { id: "pv-karl",    label: "Karl",          icona: "K" },
-    { id: "sessioni",   label: "Sessioni",      icona: "◎" },
-    { id: "lore",       label: "Lore Segreta",  icona: "◑" },
-    { id: "thread",     label: "Thread Aperti", icona: "◐" },
-    { id: "note",       label: "Note DM",       icona: "◻" }
+    { id: "panoramica", label: "Panoramica",    icona: "◈", gruppo: "principale" },
+    { id: "personaggi", label: "Personaggi",    icona: "◉", gruppo: "principale" },
+    { id: "sessioni",   label: "Sessioni",      icona: "◎", gruppo: "principale" },
+    { id: "pv-rei",     label: "Rei",           icona: "R", gruppo: "pdv" },
+    { id: "pv-zoraya",  label: "Zoraya",        icona: "Z", gruppo: "pdv" },
+    { id: "pv-nikla",   label: "Nikla",         icona: "N", gruppo: "pdv" },
+    { id: "pv-karl",    label: "Karl",          icona: "K", gruppo: "pdv" },
+    { id: "lore",       label: "Lore Segreta",  icona: "◑", gruppo: "dm" },
+    { id: "thread",     label: "Thread Aperti", icona: "◐", gruppo: "dm" },
+    { id: "note",       label: "Note DM",       icona: "◻", gruppo: "dm" }
   ],
 
   // Termini che diventano link cliccabili nei testi
   glossario: {
     "Furiosa":              { sezione: "lore", voce: "furiosa-divinita", label: "Furiosa — la Divinità", soloMaster: true },
     "frammenti divini":     { sezione: "lore", voce: "furiosa-divinita", label: "Furiosa — la Divinità",  soloMaster: true },
-    "Ados":                 { sezione: "lore", voce: "ados-kesper",      label: "Ados e gli Otto Raggi di Kesper", soloMaster: true },
-    "Otto Raggi di Kesper": { sezione: "lore", voce: "ados-kesper",      label: "Ados e gli Otto Raggi di Kesper", soloMaster: true },
+    "Otto Raggi di Kesper": { sezione: "lore", voce: "ados-kesper",      label: "Ados e gli Otto Raggi di Kesper (lore completa)", soloMaster: true },
     "Wvrewvrol":            { sezione: "personaggi", voce: "wvrewvrol",  label: "Wvrewvrol" },
+    "Ados":                 { sezione: "otto-raggi", voce: "ados",       label: "Ados" },
+    "Lilglia":              { sezione: "otto-raggi", voce: "lilglia",    label: "Lilglia" },
+    "Kaf":                  { sezione: "otto-raggi", voce: "kaf",        label: "Kaf" },
+    "Refistas":             { sezione: "otto-raggi", voce: "refistas",   label: "Refistas" },
     "Whilliam":             { sezione: "otto-raggi", voce: "whilliam",   label: "Whilliam" },
+    "Berer":                { sezione: "otto-raggi", voce: "berer",      label: "Berer" },
+    "Elia":                 { sezione: "otto-raggi", voce: "elia",       label: "Elia" },
+    "Theris":               { sezione: "otto-raggi", voce: "theris",     label: "Theris" },
     "Rosa Storta":          { sezione: "otto-raggi", voce: "whilliam",   label: "Whilliam", soloMaster: true }
   },
 
   panoramica: {
     filoGiocatori: "Il gruppo viaggia per Kaelvaran raccogliendo frammenti divini sparsi per il mondo. Ovunque si trovino, non sono gli unici a cercarli: sette, cultisti e mostri si contendono lo stesso bottino — a volte il party arriva prima di loro, a volte deve strapparglieli dalle mani. Durante il viaggio qualcosa di più grande si fa strada: voci di una \"profezia di distruzione\" il cui significato resta, per ora, oscuro.",
     filoMaster: "Quando tutti i frammenti divini saranno riuniti, apparirà Furiosa, divinità della furia nata dalle Sei Sorelle (le Sei Figlie della Creazione, generate da Ithar — stesso lore già presente nella campagna di Tresil). Farà delle protagoniste i suoi araldi, e una di loro diventerà il suo campione — Zoraya, per la sua connessione onirica con la dea, resta la candidata più naturale, ma la scelta non è ancora stata decisa in modo definitivo; da rivalutare anche alla luce del nuovo arco di Rei, che nel diario del giorno 9 mostra per la prima volta un vero moto di volontà/protezione.\n\nFuriosa vuole attraversare il velo ed entrare nell'Irkalla (il regno dei morti) per dare giustizia alle sue sei madri. Attorno a lei nasce un sistema di credenze in contrapposizione a quello delle Sei Sorelle — le sue stesse madri — ed esiste un gruppo che sta riunendo le fedi disperse in un unico Pantheon: se sia alleato o nemico di Furiosa resta da stabilire.\n\nPunto di lore ancora aperto: se i frammenti divini di questa campagna coincidano con i Frammenti delle Sei Sorelle già noti nella campagna di Tresil, o siano di natura diversa (vedi Lore Segreta). Indizio nuovo dal giorno 8: la fusione dei frammenti di Kaf e Theris in mano a Rei non ha mostrato segni di corruzione come quella di Ados — forse la corruzione dipende da chi fonde e perché, non dal semplice atto di fondere.",
-    statoGiocatori: "La campagna è in corso: il party ha già affrontato due sessioni al tavolo, con un primo scontro alla Rosa Storta e l'inizio della sottotrama del villaggio.",
-    statoMaster: "Due sessioni giocate finora (vedi Sessioni). Gancio d'apertura consumato: Rei è stata avvicinata da Kaf in un bar malfamato per incastrare Theris; nello scontro che ne è seguito sia Kaf che Theris sono morti, e i loro frammenti si sono fusi in mano a Rei. Il filo prosegue ora alla locanda Rosa Storta, dove il party ha incontrato Whilliam (uno degli Otto Raggi di Kesper) e affrontato tre sgherri legati ad Ados."
+    statoGiocatori: "La campagna è in corso: il party ha già affrontato tre sessioni al tavolo. Dopo lo scontro alla Rosa Storta e il racconto di Whilliam sugli Otto Raggi di Kesper, il gruppo è ora in viaggio verso il villaggio di Pozzprofond, sulle tracce di Ados.",
+    statoMaster: "Tre sessioni giocate finora (vedi Sessioni). Gancio d'apertura consumato: Rei è stata avvicinata da Kaf in un bar malfamato per incastrare Theris; nello scontro che ne è seguito sia Kaf che Theris sono morti, e i loro frammenti si sono fusi in mano a Rei. Alla locanda Rosa Storta il party ha incontrato Whilliam (uno degli Otto Raggi di Kesper), affrontato e abbattuto definitivamente i tre sgherri non-morti di Ados, e ascoltato il racconto completo della sottotrama di Ados. Il gruppo è ora diretto a Pozzprofond, sulle tracce di Ados."
   },
 
   personaggi: {
@@ -57,6 +67,7 @@ const FURIOSA_DATA = {
       {
         id: "zoraya", nome: "Zoraya Al Khmani", giocatore: "Federica",
         colore: "#5a8fd4", iniziali: "Z",
+        immagine: "images/zoraya.webp", immaginePos: "center 22%",
         tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewvrol"],
         descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewvrol, una rana che la accompagna ovunque.",
         loreGiocatori: "Figlia di un pescatore e di una tessitrice di reti che canta mentre lavora, ultima di 5 fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un forte rifiuto delle gerarchie nate dalle \"vie\": non accetta che i Figli della Cenere abbiano fiamme fioche solo perché nati nello scalino più basso della società — un'ingiustizia per cui si è già presa più di una cicatrice sul volto.\n\nMandata dal padre alla Scuola della Fiamma per diventare Jyotir, durante gli anni di studio matura una discordanza crescente con ciò che vede: il Grande Jyotir servito in ogni funzione da un esercito di Figli della Cenere. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro l'ingiustizia delle vie e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Probabile evento scatenante del suo attuale girovagare.\n\nHa visioni ricorrenti nel sonno: sogna una donna coperta di sangue, una corona di spine sulla fronte, che danza in un bosco fatto di alberi che non sono alberi — tronchi di pietra, tetti di tegole al posto delle chiome. La sua danza è passione e furia insieme; intorno, ai margini della luce del fuoco, restano immobili sagome di uomini, animali e ombre, incapaci di avvicinarsi. Quando per un istante gli sguardi si incrociano, quella rabbia la attraversa come una scarica — e si sveglia senza sapere se l'ha solo vista, o se ora le appartiene.",
@@ -66,6 +77,7 @@ const FURIOSA_DATA = {
       {
         id: "nikla", nome: "Nikla Kruv", giocatore: "Alessandra",
         colore: "#8f72d4", iniziali: "N",
+        immagine: "images/nikla.webp", immaginePos: "center 15%",
         tag: ["Maga dell'inchiostro", "Sigilli", "Compagno: inchiostro senziente"],
         descrizione: "25 anni, di Ferrath (Ferromarchi). Maga dell'inchiostro: la sua magia passa attraverso i sigilli che disegna e sviluppa personalmente, componendoli in un sistema di tatuaggi. Il suo strumento — e in un certo senso il suo famiglio — è un inchiostro senziente e maledetto: non lancia gli incantesimi in modo diretto, è l'inchiostro stesso a canalizzarne l'effetto.",
         loreGiocatori: "Orfana, cresciuta nelle fogne di Ferrath dopo la morte dei genitori (operai, morti in un incidente sul lavoro quando lei aveva 6 anni). Cresciuta da Mr. Percival Mirr, che la prende in simpatia e la introduce ai segreti delle fogne — la figura paterna più vicina che abbia mai avuto, da cui eredita un forte senso critico verso il mondo.\n\nCarattere curioso e flessibile, ma con una visione del mondo diadica: giusto o sbagliato, nessuna scala di grigio. Una volta guadagnata la sua fiducia, è leale per sempre. Arrampicatrice esperta (ogni superficie delle fogne era \"casa\"); pessima cuoca.\n\nDa mesi cerca una biblioteca nascosta di testi antichi legati alla Volontà magica dei Primi Uomini — l'ha mancata per poco: un gruppo di tagliagole l'ha trovata per prima e sta bruciando i volumi per scaldarsi.",
@@ -75,6 +87,7 @@ const FURIOSA_DATA = {
       {
         id: "karl", nome: "Karl Brenner", giocatore: "Jacopo",
         colore: "#c4954a", iniziali: "K",
+        immagine: "images/karl.webp", immaginePos: "center 22%",
         tag: ["Paladino", "Plasmare il metallo", "Ex guardia cittadina"],
         descrizione: "26 anni, di Ferrath (Ferromarchi) — come Nikla. Paladino capace di plasmare il metallo a proprio piacimento (accenno di metalbending, coerente con la Volontà Ferromarchi — poco esplorato finora, non essendo di suo particolare interesse), un dono che unisce alla sua fede e alla sua forza in combattimento.",
         loreGiocatori: "Famiglia medio-borghese: padre pragmatico e artigiano del legno/metallo, madre affettuosa ma sottomessa in casa. Svogliato e poco entusiasta della vita, finché non si innamora perdutamente di \"X\" (identità ancora non chiarita), che dà scopo alla sua esistenza. La mette incinta; la famiglia di lei li allontana per motivi economici. Karl si arruola nella guardia cittadina per garantire un reddito solido.\n\nSposa Claudia Brenner, hanno una figlia, Hetel Brenner — entrambe uccise da briganti una sera in cui Karl era di ronda. Ne segue un trigger di depressione e senso di colpa profondo; inizia la storia gravemente malnutrito ed emaciato, molto più magro del suo fisico massiccio abituale.\n\nCarattere paziente e gentile, morale solida ma difficoltà a esprimere emozioni; dopo la tragedia alterna deflessione umorale ad aggressività manifesta. Rudimenti di combattimento con spada e scudo; carpenteria e artigianato di base.",
@@ -84,6 +97,7 @@ const FURIOSA_DATA = {
       {
         id: "rei", nome: "Rei", giocatore: "Giulia",
         colore: "#c45a5a", iniziali: "R",
+        immagine: "images/rei.webp", immaginePos: "center 18%",
         tag: ["Assassina", "Anima strappata", "Oltre il velo"],
         descrizione: "Assassina la cui anima è stata strappata: una metà vive ancora nel mondo reale, l'altra resta oltre il velo, in un altrove che nessun altro personaggio può percepire come lei.",
         loreGiocatori: "Il suo aggancio alla campagna comincia in un bar di una zona malfamata: viene avvicinata da un tale, Kaf, che vuole ingaggiarla per inscenare un alterco pubblico con un secondo uomo, Theris — il piano di Kaf è ucciderlo durante la rissa per rubargli un frammento e far ricadere la colpa su di lei. Per motivi personali, l'incarico le riporta alla mente un'avventura vissuta tempo fa con un vecchio gruppo, sotto un \"vecchio maestro\" che le insegnò a uccidere \"come un lavoro, senza volontà\".\n\nGiorno 8 del terzo mese: mentre è con Theris, lui lancia sul tavolo con frustrazione il proprio frammento di vetro. Rei lo tocca — qualcosa in lei si smuove, un moto mai provato prima — e cerca di salvarlo, ma fallisce: Theris muore. Segue uno scontro in cui Rei uccide Kaf, che l'avrebbe uccisa per prima. I due frammenti recuperati si fondono in uno solo in tasca sua, e da quel momento toccarlo non produce più alcun effetto.\n\nGiorno 9: alla locanda Rosa Storta scopre che Whilliam ne è il locandiere. Tre uomini entrano e lo minacciano; Rei, spinta per la prima volta da un vero moto di protezione — non più il \"lavoro senza volontà\" del suo addestramento — si offre di occuparsene e ne colpisce a morte due. I tre, incredibilmente, si rialzano come non-morti (vedi Sessione 3).",

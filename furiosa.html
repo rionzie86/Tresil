@@ -49,7 +49,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .nav-btn:hover{color:var(--t1);background:var(--bg-hover);}
 .nav-btn.active{color:var(--gold);background:var(--bg-act);}
 .nav-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);}
-.nav-btn.dm-hidden{display:none;}
+.dm-hidden{display:none;}
 .nav-ico{font-size:11px;width:14px;text-align:center;color:var(--t3);flex-shrink:0;}
 .nav-btn.active .nav-ico{color:var(--gold);}
 
@@ -79,7 +79,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .card-body.empty{font-style:italic;color:var(--t3);}
 
 /* ── STAT GRID ── */
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin-bottom:1.25rem;}
 .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:.9rem;}
 .stat-lbl{font-size:9px;letter-spacing:.14em;color:var(--t3);text-transform:uppercase;font-family:var(--font-d);margin-bottom:5px;}
 .stat-val{font-family:var(--font-d);font-size:15px;color:var(--t1);}
@@ -105,6 +105,14 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .pg-text{font-size:14px;color:var(--t2);line-height:1.75;white-space:pre-line;}
 .callout-m{background:rgba(143,68,68,.08);border-left:2px solid #8f4444;padding:.65rem .9rem;margin:.6rem 0;font-size:13px;color:#b07070;line-height:1.7;white-space:pre-line;border-radius:0 3px 3px 0;}
 .pg-group-lbl{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;margin:1.5rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);}
+.pg-av-img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+
+/* ── HERO IMMAGINE (punti di vista) ── */
+.pv-hero{position:relative;height:280px;border-radius:4px;overflow:hidden;margin-bottom:1.5rem;background:var(--bg-card);}
+.pv-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.pv-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,12,15,0) 40%, rgba(10,12,15,.55) 78%, var(--bg) 100%);}
+.pv-hero-name{position:absolute;left:1.5rem;bottom:1rem;z-index:2;font-family:var(--font-d);font-size:26px;font-weight:600;letter-spacing:.03em;text-shadow:0 2px 14px rgba(0,0,0,.7);}
+@media(max-width:680px){.pv-hero{height:200px;}.pv-hero-name{font-size:20px;left:1rem;}}
 
 /* ── LORE SEGRETA ── */
 .lore-cat-title{font-family:var(--font-d);font-size:10px;letter-spacing:.2em;color:var(--t3);text-transform:uppercase;margin:1.5rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid var(--border);}
@@ -335,8 +343,8 @@ function updateDMUI() {
   const lbl = document.getElementById('dm-label');
   toggle.classList.toggle('active', isMaster);
   lbl.textContent = isMaster ? 'DM attivo' : 'Modalità DM';
-  document.querySelectorAll('.nav-btn.dm-hidden').forEach(el => {
-    el.style.display = isMaster ? '' : 'none';
+  document.querySelectorAll('.dm-gate').forEach(el => {
+    el.classList.toggle('dm-hidden', !isMaster);
   });
   buildPanoramica();
   buildPersonaggi();
@@ -363,10 +371,23 @@ function toggleSidebar() {
 // ── NAVIGAZIONE ────────────────────────────────────
 function buildNav() {
   const c = document.getElementById('nav-cont');
-  const dmOnly = ['lore', 'thread'];
+  const dmOnly = ['lore', 'thread', 'note'];
+  const groupLabels = { pdv: 'Punti di Vista', dm: 'Strumenti DM' };
+  let lastGroup = null;
   FURIOSA_DATA.sezioni.forEach(s => {
+    const g = s.gruppo || 'principale';
+    if (g !== lastGroup) {
+      const label = groupLabels[g];
+      if (label) {
+        const lbl = document.createElement('div');
+        lbl.className = 'nav-lbl' + (g === 'dm' ? ' dm-gate dm-hidden' : '');
+        lbl.textContent = label;
+        c.appendChild(lbl);
+      }
+      lastGroup = g;
+    }
     const btn = document.createElement('button');
-    btn.className = 'nav-btn' + (dmOnly.includes(s.id) ? ' dm-hidden' : '');
+    btn.className = 'nav-btn' + (dmOnly.includes(s.id) ? ' dm-gate dm-hidden' : '');
     btn.dataset.section = s.id;
     btn.innerHTML = `<span class="nav-ico">${s.icona}</span>${s.label}`;
     btn.onclick = () => showSection(s.id);
@@ -435,17 +456,32 @@ function tagsHTML(arr, cls='') {
   return `<div class="tags">${arr.map(t => `<span class="tag ${cls}">${t}</span>`).join('')}</div>`;
 }
 
+// Avatar riutilizzabile: se il personaggio ha un campo "immagine" la
+// mostra ritagliata a cerchio, altrimenti torna alle iniziali colorate.
+function avatarHTML(p) {
+  if (p.immagine) {
+    return `<div class="pg-av" style="padding:0;overflow:hidden;border-color:${p.colore}44">
+      <img class="pg-av-img" src="${p.immagine}" alt="${p.nome}" style="object-position:${p.immaginePos || 'center'}">
+    </div>`;
+  }
+  return `<div class="pg-av" style="background:${p.colore}22;color:${p.colore};border-color:${p.colore}44">${p.iniziali}</div>`;
+}
+
 // ── PANORAMICA ─────────────────────────────────────
 function buildPanoramica() {
   const c = document.getElementById('section-panoramica');
   const m = FURIOSA_DATA.meta;
   const nPg = FURIOSA_DATA.personaggi.pg.length;
   const nPng = FURIOSA_DATA.personaggi.png.length;
+  const nOtto = FURIOSA_DATA.ottoRaggi?.membri?.length || 0;
+  const nSess = FURIOSA_DATA.sessioni.length;
   c.innerHTML = `
     <div class="sec-head"><div class="sec-title">Panoramica</div><div class="sec-sub">Stato attuale della campagna</div></div>
     <div class="stat-grid">
       <div class="stat-card"><div class="stat-lbl">Data in-world</div><div class="stat-val">${m.dataAttuale}</div></div>
       <div class="stat-card"><div class="stat-lbl">Personaggi</div><div class="stat-val">${nPg} PG${nPng ? ' + ' + nPng + ' PNG' : ''}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Sessioni giocate</div><div class="stat-val">${nSess}</div></div>
+      <div class="stat-card"><div class="stat-lbl">Gli Otto Raggi</div><div class="stat-val">${nOtto} membri (vecchio gruppo di Ados)</div></div>
       <div class="stat-card"><div class="stat-lbl">Destinazione</div><div class="stat-val">${m.prossimaDestinazione}</div></div>
     </div>`;
 
@@ -486,7 +522,7 @@ function buildPgCard(p) {
 
   wrap.innerHTML = `
     <div class="pg-head" onclick="this.parentElement.classList.toggle('open')">
-      <div class="pg-av" style="background:${p.colore}22;color:${p.colore};border-color:${p.colore}44">${p.iniziali}</div>
+      ${avatarHTML(p)}
       <div>
         <div class="pg-name">${p.nome}</div>
         <div class="pg-player">${p.giocatore || p.tipo.toUpperCase()}</div>
@@ -521,7 +557,7 @@ function appendOttoRaggi(c) {
     d.id = 'otto-' + m.id;
     d.innerHTML = `
       <div class="pg-head" onclick="this.parentElement.classList.toggle('open')">
-        <div class="pg-av" style="background:${m.colore}22;color:${m.colore};border-color:${m.colore}44">${m.iniziali}</div>
+        ${avatarHTML(m)}
         <div>
           <div class="pg-name">${m.nome}</div>
         </div>
@@ -541,9 +577,22 @@ function buildPuntoDiVista(key) {
   if (!c) return;
   const p = FURIOSA_DATA.puntiDiVista?.[key];
   if (!p) return;
+  // L'immagine è definita una sola volta sulla scheda del PG in
+  // Personaggi (personaggi.pg) e riusata qui automaticamente.
+  const pg = FURIOSA_DATA.personaggi.pg.find(x => x.id === key);
+  const img = pg?.immagine;
+  const heroHTML = img ? `
+    <div class="pv-hero">
+      <img src="${img}" alt="${p.nome}" style="object-position:${pg.immaginePos || 'center'}">
+      <div class="pv-hero-name" style="color:${p.colore}">${p.nome}</div>
+    </div>` : '';
+  const titleHTML = img
+    ? `<div class="sec-title" style="color:${p.colore}">Punto di vista</div>`
+    : `<div class="sec-title" style="color:${p.colore}">${p.nome} <span style="color:var(--t3);font-family:var(--font-b);font-weight:400;font-size:14px">— punto di vista</span></div>`;
   c.innerHTML = `
+    ${heroHTML}
     <div class="sec-head">
-      <div class="sec-title" style="color:${p.colore}">${p.nome} <span style="color:var(--t3);font-family:var(--font-b);font-weight:400;font-size:14px">— punto di vista</span></div>
+      ${titleHTML}
       <div class="sec-sub">${p.sottotitolo}</div>
     </div>`;
   (p.sezioni || []).forEach(s => {
