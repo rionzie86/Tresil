@@ -475,7 +475,13 @@ function buildPanoramica() {
   const nPng = FURIOSA_DATA.personaggi.png.length;
   const nOtto = FURIOSA_DATA.ottoRaggi?.membri?.length || 0;
   const nSess = FURIOSA_DATA.sessioni.length;
+  const heroHTML = m.immagine ? `
+    <div class="pv-hero">
+      <img src="${m.immagine}" alt="Furiosa" style="object-position:${m.immaginePos || 'center 15%'}">
+      <div class="pv-hero-name" style="color:var(--red)">Furiosa</div>
+    </div>` : '';
   c.innerHTML = `
+    ${heroHTML}
     <div class="sec-head"><div class="sec-title">Panoramica</div><div class="sec-sub">Stato attuale della campagna</div></div>
     <div class="stat-grid">
       <div class="stat-card"><div class="stat-lbl">Data in-world</div><div class="stat-val">${m.dataAttuale}</div></div>

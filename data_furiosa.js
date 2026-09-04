@@ -22,7 +22,8 @@ const FURIOSA_DATA = {
     titolo: "Archivio di Furiosa",
     sottotitolo: "Campagna dei Frammenti Divini",
     dataAttuale: "Giorno 9-10 del terzo mese — tre sessioni giocate al tavolo",
-    prossimaDestinazione: "In viaggio verso il villaggio di Pozzprofond, sulle tracce di Ados"
+    prossimaDestinazione: "In viaggio verso il villaggio di Pozzprofond, sulle tracce di Ados",
+    immagine: "images/furiosa_hero.webp"
   },
 
   sezioni: [
