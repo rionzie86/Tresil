@@ -24,7 +24,6 @@ const FURIOSA_DATA = {
   sezioni: [
     { id: "panoramica", label: "Panoramica",    icona: "◈" },
     { id: "personaggi", label: "Personaggi",    icona: "◉" },
-    { id: "otto-raggi", label: "Gli Otto Raggi", icona: "✦" },
     { id: "pv-rei",     label: "Rei",           icona: "R" },
     { id: "pv-zoraya",  label: "Zoraya",        icona: "Z" },
     { id: "pv-nikla",   label: "Nikla",         icona: "N" },

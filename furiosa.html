@@ -249,7 +249,6 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   <main class="main" id="main">
     <div id="section-panoramica" class="section"></div>
     <div id="section-personaggi" class="section"></div>
-    <div id="section-otto-raggi" class="section"></div>
     <div id="section-pv-rei"     class="section"></div>
     <div id="section-pv-zoraya"  class="section"></div>
     <div id="section-pv-nikla"   class="section"></div>
@@ -474,6 +473,7 @@ function buildPersonaggi() {
 
   mkGroup(allPg, 'Protagonisti');
   mkGroup(allPng, 'PNG chiave');
+  appendOttoRaggi(c);
 }
 
 function buildPgCard(p) {
@@ -505,11 +505,15 @@ function buildPgCard(p) {
 }
 
 // ── GLI OTTO RAGGI (vecchio gruppo di Ados) ────────
-function buildOttoRaggi() {
-  const c = document.getElementById('section-otto-raggi');
-  if (!c) return;
+// Non è una pagina a sé: è un gruppo dentro "Personaggi",
+// nello stesso punto dove prima c'era la scheda di Whilliam.
+function appendOttoRaggi(c) {
   const o = FURIOSA_DATA.ottoRaggi;
-  c.innerHTML = `<div class="sec-head"><div class="sec-title">Gli Otto Raggi</div><div class="sec-sub">Il vecchio gruppo di avventurieri di Ados — quello che i giocatori ne sanno</div></div>`;
+  if (!o) return;
+  const lbl = document.createElement('div');
+  lbl.className = 'pg-group-lbl';
+  lbl.textContent = 'Gli Otto Raggi';
+  c.appendChild(lbl);
   if (o.intro) c.appendChild(card('', o.intro));
   (o.membri || []).forEach(m => {
     const d = document.createElement('div');
@@ -750,7 +754,6 @@ function saveNote(id, svId) {
 function buildAllSections() {
   buildPanoramica();
   buildPersonaggi();
-  buildOttoRaggi();
   buildPuntoDiVista('rei');
   buildPuntoDiVista('zoraya');
   buildPuntoDiVista('nikla');
