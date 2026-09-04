@@ -249,6 +249,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   <main class="main" id="main">
     <div id="section-panoramica" class="section"></div>
     <div id="section-personaggi" class="section"></div>
+    <div id="section-otto-raggi" class="section"></div>
     <div id="section-pv-rei"     class="section"></div>
     <div id="section-pv-zoraya"  class="section"></div>
     <div id="section-pv-nikla"   class="section"></div>
@@ -406,6 +407,9 @@ function openGlossModal(term) {
     const all = [...FURIOSA_DATA.personaggi.pg, ...FURIOSA_DATA.personaggi.png];
     const p = all.find(x => x.id === voce);
     if (p) { titolo = p.nome; corpo = p.descrizione; }
+  } else if (sezione === 'otto-raggi') {
+    const m = FURIOSA_DATA.ottoRaggi.membri.find(x => x.id === voce);
+    if (m) { titolo = m.nome; corpo = m.testo; }
   }
   document.getElementById('modal-title').textContent = titolo;
   document.getElementById('modal-body').innerHTML = linkify(corpo);
@@ -498,6 +502,33 @@ function buildPgCard(p) {
       ${hasMaster && isMaster ? `<div class="pg-sec-lbl" style="color:#c47070">⚠ Solo Master</div><div class="callout-m">${linkify(p.loreMaster)}</div>` : ''}
     </div>`;
   return wrap;
+}
+
+// ── GLI OTTO RAGGI (vecchio gruppo di Ados) ────────
+function buildOttoRaggi() {
+  const c = document.getElementById('section-otto-raggi');
+  if (!c) return;
+  const o = FURIOSA_DATA.ottoRaggi;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Gli Otto Raggi</div><div class="sec-sub">Il vecchio gruppo di avventurieri di Ados — quello che i giocatori ne sanno</div></div>`;
+  if (o.intro) c.appendChild(card('', o.intro));
+  (o.membri || []).forEach(m => {
+    const d = document.createElement('div');
+    d.className = 'pg-card';
+    d.id = 'otto-' + m.id;
+    d.innerHTML = `
+      <div class="pg-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="pg-av" style="background:${m.colore}22;color:${m.colore};border-color:${m.colore}44">${m.iniziali}</div>
+        <div>
+          <div class="pg-name">${m.nome}</div>
+        </div>
+        <span class="pg-arr">▶</span>
+      </div>
+      <div class="pg-body">
+        ${m.tag ? tagsHTML(m.tag) : ''}
+        <div class="pg-text">${linkify(m.testo)}</div>
+      </div>`;
+    c.appendChild(d);
+  });
 }
 
 // ── PUNTI DI VISTA (schede soggettive PG) ──────────
@@ -719,6 +750,7 @@ function saveNote(id, svId) {
 function buildAllSections() {
   buildPanoramica();
   buildPersonaggi();
+  buildOttoRaggi();
   buildPuntoDiVista('rei');
   buildPuntoDiVista('zoraya');
   buildPuntoDiVista('nikla');

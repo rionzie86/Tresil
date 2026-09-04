@@ -24,6 +24,7 @@ const FURIOSA_DATA = {
   sezioni: [
     { id: "panoramica", label: "Panoramica",    icona: "◈" },
     { id: "personaggi", label: "Personaggi",    icona: "◉" },
+    { id: "otto-raggi", label: "Gli Otto Raggi", icona: "✦" },
     { id: "pv-rei",     label: "Rei",           icona: "R" },
     { id: "pv-zoraya",  label: "Zoraya",        icona: "Z" },
     { id: "pv-nikla",   label: "Nikla",         icona: "N" },
@@ -40,9 +41,9 @@ const FURIOSA_DATA = {
     "frammenti divini":     { sezione: "lore", voce: "furiosa-divinita", label: "Furiosa — la Divinità",  soloMaster: true },
     "Ados":                 { sezione: "lore", voce: "ados-kesper",      label: "Ados e gli Otto Raggi di Kesper", soloMaster: true },
     "Otto Raggi di Kesper": { sezione: "lore", voce: "ados-kesper",      label: "Ados e gli Otto Raggi di Kesper", soloMaster: true },
-    "Verolinguo":           { sezione: "personaggi", voce: "verolinguo", label: "Verolinguo" },
-    "Whilliam":             { sezione: "personaggi", voce: "whilliam",   label: "Whilliam" },
-    "Rosa Storta":          { sezione: "personaggi", voce: "whilliam",   label: "Whilliam", soloMaster: true }
+    "Wvrewvrol":            { sezione: "personaggi", voce: "wvrewvrol",  label: "Wvrewvrol" },
+    "Whilliam":             { sezione: "otto-raggi", voce: "whilliam",   label: "Whilliam" },
+    "Rosa Storta":          { sezione: "otto-raggi", voce: "whilliam",   label: "Whilliam", soloMaster: true }
   },
 
   panoramica: {
@@ -57,10 +58,10 @@ const FURIOSA_DATA = {
       {
         id: "zoraya", nome: "Zoraya Al Khmani", giocatore: "Federica",
         colore: "#5a8fd4", iniziali: "Z",
-        tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewrol"],
-        descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewrol, una rana che la accompagna ovunque.",
+        tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewvrol"],
+        descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewvrol, una rana che la accompagna ovunque.",
         loreGiocatori: "Figlia di un pescatore e di una tessitrice di reti che canta mentre lavora, ultima di 5 fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un forte rifiuto delle gerarchie nate dalle \"vie\": non accetta che i Figli della Cenere abbiano fiamme fioche solo perché nati nello scalino più basso della società — un'ingiustizia per cui si è già presa più di una cicatrice sul volto.\n\nMandata dal padre alla Scuola della Fiamma per diventare Jyotir, durante gli anni di studio matura una discordanza crescente con ciò che vede: il Grande Jyotir servito in ogni funzione da un esercito di Figli della Cenere. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro l'ingiustizia delle vie e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Probabile evento scatenante del suo attuale girovagare.\n\nHa visioni ricorrenti nel sonno: sogna una donna coperta di sangue, una corona di spine sulla fronte, che danza in un bosco fatto di alberi che non sono alberi — tronchi di pietra, tetti di tegole al posto delle chiome. La sua danza è passione e furia insieme; intorno, ai margini della luce del fuoco, restano immobili sagome di uomini, animali e ombre, incapaci di avvicinarsi. Quando per un istante gli sguardi si incrociano, quella rabbia la attraversa come una scarica — e si sveglia senza sapere se l'ha solo vista, o se ora le appartiene.",
-        loreMaster: "Il sogno è quasi certamente una visione di Furiosa stessa: segno di un legame speciale tra Zoraya e la dea. È la candidata più naturale a diventarne il campione, ma la scelta non è ancora stata narrata né decisa in modo definitivo. Il tema della \"verità\" nella sua backstory (canta la verità sulle gerarchie, sul Grande Jyotir) è un parallelo diretto con Verolinguo — non ancora sfruttato narrativamente. La fuga dalla Scuola della Fiamma è un candidato forte per spiegare come Zoraya arriva a incontrare Nikla e Rei.",
+        loreMaster: "Il sogno è quasi certamente una visione di Furiosa stessa: segno di un legame speciale tra Zoraya e la dea. È la candidata più naturale a diventarne il campione, ma la scelta non è ancora stata narrata né decisa in modo definitivo. Il tema della \"verità\" nella sua backstory (canta la verità sulle gerarchie, sul Grande Jyotir) è un parallelo diretto con Wvrewvrol — non ancora sfruttato narrativamente. La fuga dalla Scuola della Fiamma è un candidato forte per spiegare come Zoraya arriva a incontrare Nikla e Rei.",
         note: ""
       },
       {
@@ -93,22 +94,64 @@ const FURIOSA_DATA = {
     ],
     png: [
       {
-        id: "verolinguo", nome: "Verolinguo", giocatore: "", tipo: "png",
-        colore: "#5ab48f", iniziali: "V",
+        id: "wvrewvrol", nome: "Wvrewvrol", giocatore: "", tipo: "png",
+        colore: "#5ab48f", iniziali: "W",
         tag: ["PNG comico", "Spiritello", "Legato a Zoraya"],
-        descrizione: "Spiritello della verità imbarazzante. Non nasce da un singolo evento, ma dall'accumulo di ogni \"non dovevi dirlo\" della storia: è lo spirito di tutte le verità vomitate fuori nei momenti sbagliati. Non riesce a mentire nemmeno volendo — la verità gli esce di bocca come un singhiozzo, per quanto imbarazzante o pericolosa. Ha sempre e solo forma di rana (confermato in Sessione 3: non ha una forma umanoide alternativa). Il suo vero nome è Wvrewrol; si definisce \"gran cavaliere della verità raggiante\".",
+        descrizione: "Spiritello della verità imbarazzante. Non nasce da un singolo evento, ma dall'accumulo di ogni \"non dovevi dirlo\" della storia: è lo spirito di tutte le verità vomitate fuori nei momenti sbagliati. Non riesce a mentire nemmeno volendo — la verità gli esce di bocca come un singhiozzo, per quanto imbarazzante o pericolosa. Ha sempre e solo forma di rana (confermato in Sessione 3: non ha una forma umanoide alternativa). Il suo nome è Wvrewvrol; si definisce \"gran cavaliere della verità raggiante\".",
         loreGiocatori: "Si è legato a Zoraya perché lei è, letteralmente, la verità più grande e ingombrante che lui abbia mai incontrato camminare su due gambe — e per la prima volta le sue uscite non vengono accolte con orrore, ma (quasi) capite. La sua saliva ha proprietà rigenerative fatate, ma funziona bene solo su ferite superficiali: davanti a una ferita grave si blocca, o peggio, ne annuncia ad alta voce la gravità. Odia leccare le ferite (confermato in gioco, Sessione 3) — lo fa comunque perché è l'unico modo in cui la sua magia funziona. Se catturato o interrogato non può mentire per proteggere il gruppo — utile gancio per una missione di salvataggio.",
         loreMaster: "Aggancio narrativo di come entra nel party ancora da definire. Parallelo tematico con la backstory di Zoraya (entrambi legati al tema della verità detta nel momento sbagliato) — non ancora sfruttato.",
         note: ""
+      }
+    ]
+  },
+
+  // ── GLI OTTO RAGGI — vecchio gruppo di avventurieri di Ados ──
+  // Ciò che i giocatori sanno di ciascuno dei membri, per lo più
+  // dal racconto di Whilliam in Sessione 3. I dettagli riservati
+  // (lettere, taccuino di Refistas, meccaniche di corruzione)
+  // restano solo in Lore Segreta.
+  ottoRaggi: {
+    intro: "Il vecchio gruppo di avventurieri di Ados — \"Gli Otto Raggi di Kesper\", dal nome di una ruota leggendaria a otto raggi. In un tempio senza nome, molto a est, il gruppo trovò otto frammenti di vetro e se li divise per scherzo, come souvenir, senza sospettarne il potere: fu lì che Ados dichiarò il proprio amore a Lilglia. Whilliam ha raccontato per esteso questa storia al party nella Sessione 3, confermando anche che Ados è il mandante dei tre uomini che lo hanno assalito alla Rosa Storta.",
+    membri: [
+      {
+        id: "ados", nome: "Ados", iniziali: "A", colore: "#8f4444",
+        tag: ["Leader informale", "Mandante degli assalitori"],
+        testo: "Scaltro e forte, era il leader informale del gruppo. Marito di Lilglia, morta di recente a 82 anni. Whilliam ha confermato che è lui il mandante dei tre uomini che hanno assalito la Rosa Storta, e ha implorato il party di andare a cercarlo e, se possibile, salvarlo — ricordando che \"è una brava persona, che illuminava gli altri\". Il party è ora in viaggio verso Pozzprofond sulle sue tracce."
       },
       {
-        id: "whilliam", nome: "Whilliam", giocatore: "", tipo: "png",
-        colore: "#c4954a", iniziali: "W",
-        tag: ["Uno degli Otto Raggi di Kesper", "Locandiere della Rosa Storta"],
-        descrizione: "Uno degli Otto Raggi di Kesper: semplice, enorme, immune alle lusinghe, adorava Ados e avrebbe fatto di tutto per lui. Identificato in gioco (giorno 9) come il locandiere della Rosa Storta stesso — non un semplice avventore in attesa, come si ipotizzava dalla lore precedente.",
-        loreGiocatori: "Osservato prendersi cura con gentilezza di \"un ragazzo derelitto\" trascinatosi dentro il locale (PNG minore, non ancora sviluppato, non più menzionato in Sessione 3). Minacciato da tre uomini loschi, poi difeso da Rei e dal party nello scontro (concluso in Sessione 3: tutti e tre i non-morti definitivamente abbattuti). Fa indossare a Karl un guanto d'arme di famiglia. Racconta in Sessione 3 la storia completa degli Otto Raggi di Kesper: un tempio senza nome, molto lontano a est, dove il vecchio gruppo trovò i frammenti e se li divise \"per scherzo\", come souvenir, senza sospettarne il potere; lì Ados dichiarò il proprio amore a Lilglia. Conferma che Ados è il mandante dei tre aggressori e implora il party di \"salvare Ados\".",
-        loreMaster: "Non possiede più il proprio frammento: lo ha spedito via tramite lo stesso messo che gli aveva portato la lettera di Ados (quindi presumibilmente verso Ados). Teneva un diario sulle stranezze crescenti di Ados — dove/quando il party lo trova nella trama è più vicino ora che Whilliam è un PNG raggiungibile in scena.",
-        note: ""
+        id: "lilglia", nome: "Lilglia", iniziali: "L", colore: "#c4954a",
+        tag: ["Moglie di Ados", "Guaritrice", "Deceduta"],
+        testo: "Moglie di Ados, grande guaritrice del gruppo. Morta di recente all'età di 82 anni (dettaglio raccontato da Whilliam in Sessione 3). Il tempio dove il gruppo trovò gli otto frammenti fu anche il luogo in cui lei e Ados si dichiararono per la prima volta il proprio amore."
+      },
+      {
+        id: "kaf", nome: "Kaf", iniziali: "K", colore: "#7a7a7a",
+        tag: ["Deceduto"],
+        testo: "Veloce con le mani, interessato solo al denaro. Aveva ingaggiato Rei per incastrare Theris e rubargli il frammento — un piano finito male: Kaf è morto in combattimento per mano di Rei, che gli ha preso il frammento (giorno 8 del terzo mese)."
+      },
+      {
+        id: "refistas", nome: "Refistas", iniziali: "R", colore: "#5a8fd4",
+        tag: ["Studioso", "Deceduto"],
+        testo: "Studioso, un vero \"tuttologo\" metodico più che uno specialista. Ucciso dai banditi sulla strada per Tresil, mentre andava a un appuntamento con Whilliam alla Rosa Storta — un incontro che quindi non è mai avvenuto."
+      },
+      {
+        id: "whilliam", nome: "Whilliam", iniziali: "W", colore: "#c4954a",
+        tag: ["Locandiere della Rosa Storta", "Vivo"],
+        testo: "Semplice, enorme, immune alle lusinghe; adora Ados e farebbe di tutto per lui. Identificato in gioco come il locandiere della Rosa Storta stesso. Minacciato alla locanda dai tre uomini mandati da Ados, difeso da Rei e dal party nello scontro; nello scontro finale (Sessione 3) dichiara \"Sono già morti, ragazzo!\", indossa il busto della sua armatura di famiglia (lo guarisce non appena indossata) e affida a Karl il guanto d'arme dello stesso set (rigenera lentamente le ferite di chi lo indossa). A scontro concluso racconta per esteso al party la storia degli Otto Raggi, conferma che Ados è il mandante dei tre aggressori, rivela di aver già rispedito il proprio frammento ad Ados tramite un messo — pentendosene amaramente — e chiede al party di andare a cercare Ados e, se possibile, di salvarlo."
+      },
+      {
+        id: "berer", nome: "Berer", iniziali: "B", colore: "#5ab48f",
+        tag: ["Esploratore", "Deceduto"],
+        testo: "L'esploratore del gruppo, grande amico di Refistas. Morto poco prima che Refistas si ritirasse dalla vita da avventuriero. Sepolto da Refistas nel villaggio di Pozzprofond, ai piedi del castagno su cui giocava da bambino — proprio la destinazione verso cui il party è ora diretto."
+      },
+      {
+        id: "elia", nome: "Elia", iniziali: "E", colore: "#c47070",
+        tag: ["Deceduta"],
+        testo: "Morta di parto, dando alla luce due gemelli. Il suo frammento è stato donato a un orfanotrofio."
+      },
+      {
+        id: "theris", nome: "Theris", iniziali: "T", colore: "#8f72d4",
+        tag: ["Deceduto"],
+        testo: "La vittima designata nel piano di Kaf. Morto in scena (giorno 8 del terzo mese) — Rei ha tentato invano di salvarlo. Prima di morire le ha lasciato il proprio frammento, poi fusosi con quello di Kaf."
       }
     ]
   },
@@ -168,7 +211,7 @@ const FURIOSA_DATA = {
         },
         {
           label: "Cose che solo lei sa",
-          testo: "Non viaggia mai sola: al suo fianco c'è sempre Wvrewrol (Verolinguo), la rana-spiritello che non riesce a mentire e che, a modo suo, la protegge quanto lei protegge lui — è stata la prima persona, dopo la sua fuga dalla Scuola della Fiamma, a non trattare le sue uscite di troppa verità come un difetto da correggere. Percepisce le emozioni e le intenzioni nascoste dietro le parole altrui — dote che usa apertamente, senza vergognarsene, come prova della propria formazione da Jyotir."
+          testo: "Non viaggia mai sola: al suo fianco c'è sempre Wvrewvrol, la rana-spiritello che non riesce a mentire e che, a modo suo, la protegge quanto lei protegge lui — è stata la prima persona, dopo la sua fuga dalla Scuola della Fiamma, a non trattare le sue uscite di troppa verità come un difetto da correggere. Percepisce le emozioni e le intenzioni nascoste dietro le parole altrui — dote che usa apertamente, senza vergognarsene, come prova della propria formazione da Jyotir."
         },
         {
           label: "Domande che si porta dietro",
