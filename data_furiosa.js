@@ -4,10 +4,12 @@
 // ============================================================
 // Struttura analoga a data.js (Tresil). Contenuti presi dai
 // documenti di sviluppo su Drive (cartella "Furiosa/Campagna"),
-// aggiornati al 2 settembre 2026 con: le schede dei quattro
+// aggiornati al 4 settembre 2026 con: le schede dei quattro
 // giocatori (Zoraya, Nikla, Karl, Rei), il diario in-play di Rei
-// (giorni 8-9 del terzo mese) e la scaletta scene/colonna sonora
-// delle prime due sessioni giocate al tavolo.
+// (giorni 8-9 del terzo mese), la scaletta scene/colonna sonora
+// delle prime due sessioni giocate al tavolo, e la trascrizione
+// Plaud della Sessione 3 (2-3 settembre 2026, conclusione dello
+// scontro alla Rosa Storta e racconto completo di Whilliam).
 // ============================================================
 
 const FURIOSA_DATA = {
@@ -15,13 +17,17 @@ const FURIOSA_DATA = {
   meta: {
     titolo: "Archivio di Furiosa",
     sottotitolo: "Campagna dei Frammenti Divini",
-    dataAttuale: "Giorno 9 del terzo mese — due sessioni giocate al tavolo",
-    prossimaDestinazione: "Alla Rosa Storta, dopo lo scontro con i tre sgherri e la scena del villaggio — sviluppi futuri ancora da definire"
+    dataAttuale: "Giorno 9-10 del terzo mese — tre sessioni giocate al tavolo",
+    prossimaDestinazione: "In viaggio verso il villaggio di Pozzprofond, sulle tracce di Ados"
   },
 
   sezioni: [
     { id: "panoramica", label: "Panoramica",    icona: "◈" },
     { id: "personaggi", label: "Personaggi",    icona: "◉" },
+    { id: "pv-rei",     label: "Rei",           icona: "R" },
+    { id: "pv-zoraya",  label: "Zoraya",        icona: "Z" },
+    { id: "pv-nikla",   label: "Nikla",         icona: "N" },
+    { id: "pv-karl",    label: "Karl",          icona: "K" },
     { id: "sessioni",   label: "Sessioni",      icona: "◎" },
     { id: "lore",       label: "Lore Segreta",  icona: "◑" },
     { id: "thread",     label: "Thread Aperti", icona: "◐" },
@@ -51,8 +57,8 @@ const FURIOSA_DATA = {
       {
         id: "zoraya", nome: "Zoraya Al Khmani", giocatore: "Federica",
         colore: "#5a8fd4", iniziali: "Z",
-        tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewol"],
-        descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewol, una rana che la accompagna ovunque.",
+        tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewrol"],
+        descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewrol, una rana che la accompagna ovunque.",
         loreGiocatori: "Figlia di un pescatore e di una tessitrice di reti che canta mentre lavora, ultima di 5 fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un forte rifiuto delle gerarchie nate dalle \"vie\": non accetta che i Figli della Cenere abbiano fiamme fioche solo perché nati nello scalino più basso della società — un'ingiustizia per cui si è già presa più di una cicatrice sul volto.\n\nMandata dal padre alla Scuola della Fiamma per diventare Jyotir, durante gli anni di studio matura una discordanza crescente con ciò che vede: il Grande Jyotir servito in ogni funzione da un esercito di Figli della Cenere. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro l'ingiustizia delle vie e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Probabile evento scatenante del suo attuale girovagare.\n\nHa visioni ricorrenti nel sonno: sogna una donna coperta di sangue, una corona di spine sulla fronte, che danza in un bosco fatto di alberi che non sono alberi — tronchi di pietra, tetti di tegole al posto delle chiome. La sua danza è passione e furia insieme; intorno, ai margini della luce del fuoco, restano immobili sagome di uomini, animali e ombre, incapaci di avvicinarsi. Quando per un istante gli sguardi si incrociano, quella rabbia la attraversa come una scarica — e si sveglia senza sapere se l'ha solo vista, o se ora le appartiene.",
         loreMaster: "Il sogno è quasi certamente una visione di Furiosa stessa: segno di un legame speciale tra Zoraya e la dea. È la candidata più naturale a diventarne il campione, ma la scelta non è ancora stata narrata né decisa in modo definitivo. Il tema della \"verità\" nella sua backstory (canta la verità sulle gerarchie, sul Grande Jyotir) è un parallelo diretto con Verolinguo — non ancora sfruttato narrativamente. La fuga dalla Scuola della Fiamma è un candidato forte per spiegare come Zoraya arriva a incontrare Nikla e Rei.",
         note: ""
@@ -72,7 +78,7 @@ const FURIOSA_DATA = {
         tag: ["Paladino", "Plasmare il metallo", "Ex guardia cittadina"],
         descrizione: "26 anni, di Ferrath (Ferromarchi) — come Nikla. Paladino capace di plasmare il metallo a proprio piacimento (accenno di metalbending, coerente con la Volontà Ferromarchi — poco esplorato finora, non essendo di suo particolare interesse), un dono che unisce alla sua fede e alla sua forza in combattimento.",
         loreGiocatori: "Famiglia medio-borghese: padre pragmatico e artigiano del legno/metallo, madre affettuosa ma sottomessa in casa. Svogliato e poco entusiasta della vita, finché non si innamora perdutamente di \"X\" (identità ancora non chiarita), che dà scopo alla sua esistenza. La mette incinta; la famiglia di lei li allontana per motivi economici. Karl si arruola nella guardia cittadina per garantire un reddito solido.\n\nSposa Claudia Brenner, hanno una figlia, Hetel Brenner — entrambe uccise da briganti una sera in cui Karl era di ronda. Ne segue un trigger di depressione e senso di colpa profondo; inizia la storia gravemente malnutrito ed emaciato, molto più magro del suo fisico massiccio abituale.\n\nCarattere paziente e gentile, morale solida ma difficoltà a esprimere emozioni; dopo la tragedia alterna deflessione umorale ad aggressività manifesta. Rudimenti di combattimento con spada e scudo; carpenteria e artigianato di base.",
-        loreMaster: "Personaggio non presente nei documenti di sviluppo originali — emerso solo dalla scheda ricevuta il 1 settembre 2026. Non è chiaro se sia un quarto membro stabile del party o se il suo inserimento sostituisca/riconfiguri la composizione a tre nota in precedenza: da chiarire con il tavolo. Aperto anche chi sia \"X\" e come si incastri cronologicamente rispetto agli eventi di Rei del giorno 8-9.",
+        loreMaster: "Personaggio non presente nei documenti di sviluppo originali — emerso solo dalla scheda ricevuta il 1 settembre 2026. Non è chiaro se sia un quarto membro stabile del party o se il suo inserimento sostituisca/riconfiguri la composizione a tre nota in precedenza: da chiarire con il tavolo. Aperto anche chi sia \"X\" (Sessione 3: emerso un dettaglio ulteriore — Karl racconta di aver protetto in passato una bambina da un uomo che voleva farle del male, da conciliare con la sua scheda).\n\nSessione 3: Whilliam gli fa indossare un guanto d'arme di famiglia (si lega dolorosamente alla mano, poi rigenera lentamente le ferite di chi lo indossa — nessun altro effetto). Separatamente, Karl inizia a percepire \"punti rossi\" di pericolo/connessione su persone e oggetti (la cintura di Nikla, il fermaglio di Zoraya) — capacità non legata al guanto, ancora senza spiegazione neppure per i giocatori stessi.",
         note: ""
       },
       {
@@ -80,8 +86,8 @@ const FURIOSA_DATA = {
         colore: "#c45a5a", iniziali: "R",
         tag: ["Assassina", "Anima strappata", "Oltre il velo"],
         descrizione: "Assassina la cui anima è stata strappata: una metà vive ancora nel mondo reale, l'altra resta oltre il velo, in un altrove che nessun altro personaggio può percepire come lei.",
-        loreGiocatori: "Il suo aggancio alla campagna comincia in un bar di una zona malfamata: viene avvicinata da un tale, Kaf, che vuole ingaggiarla per inscenare un alterco pubblico con un secondo uomo, Theris — il piano di Kaf è ucciderlo durante la rissa per rubargli un frammento e far ricadere la colpa su di lei. Per motivi personali, l'incarico le riporta alla mente un'avventura vissuta tempo fa con un vecchio gruppo, sotto un \"vecchio maestro\" che le insegnò a uccidere \"come un lavoro, senza volontà\".\n\nGiorno 8 del terzo mese: mentre è con Theris, lui lancia sul tavolo con frustrazione il proprio frammento di vetro. Rei lo tocca — qualcosa in lei si smuove, un moto mai provato prima — e cerca di salvarlo, ma fallisce: Theris muore. Segue uno scontro in cui Rei uccide Kaf, che l'avrebbe uccisa per prima. I due frammenti recuperati si fondono in uno solo in tasca sua, e da quel momento toccarlo non produce più alcun effetto.\n\nGiorno 9: alla locanda Rosa Storta scopre che Whilliam ne è il locandiere. Tre uomini entrano e lo minacciano; Rei, spinta per la prima volta da un vero moto di protezione — non più il \"lavoro senza volontà\" del suo addestramento — si offre di occuparsene e sgozza uno dei tre.",
-        loreMaster: "Kaf e Theris erano due degli otto membri del vecchio gruppo di avventurieri di Ados, gli \"Otto Raggi di Kesper\" (vedi Lore Segreta) — entrambi ora morti in scena. Il frammento fuso Kaf+Theris è ora in possesso di Rei. Elementi nuovi dal diario ancora da sviluppare: chi/cosa è \"la Madre Nera\" che Rei teme possa averla trovata; chi è il suo \"vecchio maestro\"; identità e mandante dei tre uomini della Rosa Storta e delle due donne sospette osservate nella stessa scena.",
+        loreGiocatori: "Il suo aggancio alla campagna comincia in un bar di una zona malfamata: viene avvicinata da un tale, Kaf, che vuole ingaggiarla per inscenare un alterco pubblico con un secondo uomo, Theris — il piano di Kaf è ucciderlo durante la rissa per rubargli un frammento e far ricadere la colpa su di lei. Per motivi personali, l'incarico le riporta alla mente un'avventura vissuta tempo fa con un vecchio gruppo, sotto un \"vecchio maestro\" che le insegnò a uccidere \"come un lavoro, senza volontà\".\n\nGiorno 8 del terzo mese: mentre è con Theris, lui lancia sul tavolo con frustrazione il proprio frammento di vetro. Rei lo tocca — qualcosa in lei si smuove, un moto mai provato prima — e cerca di salvarlo, ma fallisce: Theris muore. Segue uno scontro in cui Rei uccide Kaf, che l'avrebbe uccisa per prima. I due frammenti recuperati si fondono in uno solo in tasca sua, e da quel momento toccarlo non produce più alcun effetto.\n\nGiorno 9: alla locanda Rosa Storta scopre che Whilliam ne è il locandiere. Tre uomini entrano e lo minacciano; Rei, spinta per la prima volta da un vero moto di protezione — non più il \"lavoro senza volontà\" del suo addestramento — si offre di occuparsene e ne colpisce a morte due. I tre, incredibilmente, si rialzano come non-morti (vedi Sessione 3).",
+        loreMaster: "Kaf e Theris erano due degli otto membri del vecchio gruppo di avventurieri di Ados, gli \"Otto Raggi di Kesper\" (vedi Lore Segreta) — entrambi ora morti in scena, entrambi per mano di Rei. Il frammento fuso Kaf+Theris è ora in possesso di Rei. Sessione 3: Rei finisce uno dei tre non-morti spappolandogli la testa con un calderone, poi vomita per lo shock. Elementi ancora da sviluppare: chi/cosa è \"la Madre Nera\" che Rei teme possa averla trovata; chi è il suo \"vecchio maestro\".",
         note: ""
       }
     ],
@@ -90,8 +96,8 @@ const FURIOSA_DATA = {
         id: "verolinguo", nome: "Verolinguo", giocatore: "", tipo: "png",
         colore: "#5ab48f", iniziali: "V",
         tag: ["PNG comico", "Spiritello", "Legato a Zoraya"],
-        descrizione: "Spiritello della verità imbarazzante. Non nasce da un singolo evento, ma dall'accumulo di ogni \"non dovevi dirlo\" della storia: è lo spirito di tutte le verità vomitate fuori nei momenti sbagliati. Non riesce a mentire nemmeno volendo — la verità gli esce di bocca come un singhiozzo, per quanto imbarazzante o pericolosa. Corporatura sostanzialmente umana ma con dettagli leggermente inquietanti: occhi da geco, lingua sottile e appuntita spesso penzolante, tratti del viso innaturalmente regolari (zona uncanny valley).",
-        loreGiocatori: "Si è legato a Zoraya perché lei è, letteralmente, la verità più grande e ingombrante che lui abbia mai incontrato camminare su due gambe — e per la prima volta le sue uscite non vengono accolte con orrore, ma (quasi) capite. La sua saliva ha proprietà rigenerative fatate, ma funziona bene solo su ferite superficiali: davanti a una ferita grave si blocca, o peggio, ne annuncia ad alta voce la gravità. Se catturato o interrogato non può mentire per proteggere il gruppo — utile gancio per una missione di salvataggio.",
+        descrizione: "Spiritello della verità imbarazzante. Non nasce da un singolo evento, ma dall'accumulo di ogni \"non dovevi dirlo\" della storia: è lo spirito di tutte le verità vomitate fuori nei momenti sbagliati. Non riesce a mentire nemmeno volendo — la verità gli esce di bocca come un singhiozzo, per quanto imbarazzante o pericolosa. Ha sempre e solo forma di rana (confermato in Sessione 3: non ha una forma umanoide alternativa). Il suo vero nome è Wvrewrol; si definisce \"gran cavaliere della verità raggiante\".",
+        loreGiocatori: "Si è legato a Zoraya perché lei è, letteralmente, la verità più grande e ingombrante che lui abbia mai incontrato camminare su due gambe — e per la prima volta le sue uscite non vengono accolte con orrore, ma (quasi) capite. La sua saliva ha proprietà rigenerative fatate, ma funziona bene solo su ferite superficiali: davanti a una ferita grave si blocca, o peggio, ne annuncia ad alta voce la gravità. Odia leccare le ferite (confermato in gioco, Sessione 3) — lo fa comunque perché è l'unico modo in cui la sua magia funziona. Se catturato o interrogato non può mentire per proteggere il gruppo — utile gancio per una missione di salvataggio.",
         loreMaster: "Aggancio narrativo di come entra nel party ancora da definire. Parallelo tematico con la backstory di Zoraya (entrambi legati al tema della verità detta nel momento sbagliato) — non ancora sfruttato.",
         note: ""
       },
@@ -100,18 +106,137 @@ const FURIOSA_DATA = {
         colore: "#c4954a", iniziali: "W",
         tag: ["Uno degli Otto Raggi di Kesper", "Locandiere della Rosa Storta"],
         descrizione: "Uno degli Otto Raggi di Kesper: semplice, enorme, immune alle lusinghe, adorava Ados e avrebbe fatto di tutto per lui. Identificato in gioco (giorno 9) come il locandiere della Rosa Storta stesso — non un semplice avventore in attesa, come si ipotizzava dalla lore precedente.",
-        loreGiocatori: "Osservato prendersi cura con gentilezza di \"un ragazzo derelitto\" trascinatosi dentro il locale (PNG minore, non ancora sviluppato). Minacciato da tre uomini loschi, difeso da Rei nello scontro — uno dei tre è stato ucciso. Non ha ancora incontrato o riconosciuto Rei come possibile \"messaggera\" al posto di Refistas, che non arrivò mai al loro appuntamento.",
-        loreMaster: "Probabilmente possiede ancora il proprio frammento (dedotto dalle parole dei tre aggressori, non confermato). Teneva un diario sulle stranezze crescenti di Ados — dove/quando il party lo trova nella trama è più vicino ora che Whilliam è un PNG raggiungibile in scena.",
+        loreGiocatori: "Osservato prendersi cura con gentilezza di \"un ragazzo derelitto\" trascinatosi dentro il locale (PNG minore, non ancora sviluppato, non più menzionato in Sessione 3). Minacciato da tre uomini loschi, poi difeso da Rei e dal party nello scontro (concluso in Sessione 3: tutti e tre i non-morti definitivamente abbattuti). Fa indossare a Karl un guanto d'arme di famiglia. Racconta in Sessione 3 la storia completa degli Otto Raggi di Kesper: un tempio senza nome, molto lontano a est, dove il vecchio gruppo trovò i frammenti e se li divise \"per scherzo\", come souvenir, senza sospettarne il potere; lì Ados dichiarò il proprio amore a Lilglia. Conferma che Ados è il mandante dei tre aggressori e implora il party di \"salvare Ados\".",
+        loreMaster: "Non possiede più il proprio frammento: lo ha spedito via tramite lo stesso messo che gli aveva portato la lettera di Ados (quindi presumibilmente verso Ados). Teneva un diario sulle stranezze crescenti di Ados — dove/quando il party lo trova nella trama è più vicino ora che Whilliam è un PNG raggiungibile in scena.",
         note: ""
       }
     ]
   },
 
-  // Cronologia sessioni — due sessioni giocate finora.
-  // NOTA: la suddivisione esatta tra le due sessioni non è confermata
-  // dall'utente — qui è impostata in corrispondenza delle due pause
-  // rilevate negli appunti manoscritti originali (vedi Scaletta Sessioni
-  // — Scene e Colonna Sonora.md, cartella Furiosa/Campagna su Drive).
+  // ── PUNTI DI VISTA — ciò che ogni PG sa, ricorda, ha vissuto ──
+  // Contenuti soggettivi: non necessariamente la verità oggettiva
+  // (quella è in Lore Segreta), ma quello che il personaggio stesso
+  // sa, crede, ha sognato o percepito. Ricostruiti da backstory dei
+  // giocatori, diario in-play di Rei e trascrizione Plaud della
+  // Sessione 3. Aggiornato al 4 settembre 2026.
+  puntiDiVista: {
+    rei: {
+      nome: "Rei", giocatore: "Giulia", colore: "#c45a5a", iniziali: "R",
+      sottotitolo: "Ciò che Rei sa, ricorda e ha vissuto — la sua verità, non necessariamente quella oggettiva.",
+      sezioni: [
+        {
+          label: "Il suo aggancio alla storia",
+          testo: "Tutto comincia in un bar di una zona malfamata: un tale, Kaf, la avvicina per farle inscenare un alterco pubblico con un secondo uomo, Theris — dietro, un piano che lei ignora fino all'ultimo: Kaf vuole ucciderlo durante la rissa per rubargli un pezzo di vetro e far ricadere la colpa su di lei.\n\nCon Theris — un uomo \"perso ma presente\", pieno di ricordi di una vita di avventure che lei invidia — quel pezzo di vetro lanciato sul tavolo con frustrazione le smuove qualcosa che non aveva mai provato prima. Cerca di salvarlo. Fallisce: Theris muore. Poco dopo uccide anche Kaf, che l'avrebbe uccisa per prima — e dalle sue tasche recupera un secondo frammento, che si fonde con quello di Theris in un solo pezzo. Da quel momento toccarlo non produce più nulla: nessuna visione, nessuno specchio, nessuna \"altra sé\", a differenza di prima — ma la storia continua a risuonarle dentro. Tra gli averi di Theris trova un appunto per un appuntamento alla locanda Rosa Storta, e un nome: William."
+        },
+        {
+          label: "La Rosa Storta — giorno 9",
+          testo: "Alla locanda osserva tutto come \"l'unica spettatrice di uno strano spettacolo\": i pochi avventori sembrano attori di un teatrino organizzato. William è il locandiere — gentile col \"ragazzo derelitto\" trascinatosi dentro — e due giovani donne che si avvicendano nella sala non la convincono. Il suo primo pensiero, vedendole, è che la Madre Nera l'abbia trovata; scarta presto l'idea, ma resta certa che ognuno di loro sia stato attirato lì per un incontro col destino.\n\nQuando tre uomini loschi minacciano il locandiere, si offre di occuparsene — e nel momento stesso in cui lo dice si stupisce di se stessa: non è più il \"lavoro senza volontà\" del suo addestramento, ma un vero moto di protezione verso un estraneo, sensazione mai provata prima. Nello scontro ne colpisce a morte due; subito dopo un lampo di visione la travolge e perde i sensi. Al risveglio è coperta di sangue, la locanda è un macello, e i tre uomini — nonostante i colpi mortali — si sono rialzati come non-morti. Prova quasi invidia per chi, come le due ragazze, riesce ancora a provare disgusto autentico davanti alla violenza: \"dilettanti\", pensa, e subito dopo si vergogna di averlo pensato.\n\nCuriosamente, nel suo diario Rei non chiama mai le due donne per nome — restano \"le due ragazze\" fino alla fine, anche dopo aver deciso di viaggiare con loro verso Pozzprofond."
+        },
+        {
+          label: "Sogni e visioni",
+          testo: "Due volte, toccando qualcosa legato ai frammenti, si è ritrovata a fluttuare nel nulla, senza peso, davanti a una superficie che riflette come un lago ghiacciato. La prima volta, toccando la propria immagine, un'esplosione di emozioni troppo forte da sopportare l'ha scagliata lontano — si è ritrovata piccola e indifesa, rannicchiata sotto i colpi di quelle emozioni, finché non ha alzato lo sguardo e visto due piedi coperti di sangue: una voce di donna le ha detto \"non è ancora finita!\".\n\nLa seconda volta, dopo aver sgozzato un uomo alla Rosa Storta, la stessa scena si è ripetuta — stavolta durante le convulsioni che gli altri hanno scambiato per crisi epilettica, mentre lei fluttuava di nuovo tra quelle stelle."
+        },
+        {
+          label: "Cose che solo lei sa",
+          testo: "La paura della Madre Nera — un'entità o organizzazione che teme la stia cercando, la cui natura resta oscura anche a lei stessa. Il ricordo del suo vecchio maestro, che le insegnò a uccidere \"come un lavoro, senza volontà\" — e il contrasto tra quell'addestramento e il nuovo impulso protettivo che ha sentito nascere verso Whilliam è, per lei, qualcosa di completamente inedito.\n\nLa morte, per Rei, è \"come un elastico\": da un lato l'attrae, quasi naturale, memoria di un muscolo; dall'altro la respinge come un'indigestione. Uccidere le procura disgusto e ripugnanza — eppure sente che qualcosa accade in lei ogni volta che entra in contatto con la morte, qualcosa che non sa spiegare."
+        },
+        {
+          label: "Dal suo diario",
+          testo: "Scritto di suo pugno (fonte: \"Copia di Terzo mese\", cartella Diario Rei):\n\n\"I suoi occhi… i suoi ricordi… sembrava così perso, eppure così presente […] Avrei voluto provare tutto quel dolore pur di provare qualcosa. E qualcosa in me si è mosso.\"\n\n\"Che senso ha desistere quando è la morte stessa a venirmi a cercare? Quando è l'unica cosa che so davvero fare bene?\"\n\n\"Voglio scegliere perché so cosa volere, desiderare, non perché eseguo ordini o seguo un istinto primario… E credo che tutto questo possa avvicinarmi un po' alla mia verità.\"\n\n\"Non mi sento terribilmente sola da quando sono rinata? […] Perché non dovrei anche io concedermi questa nuova esperienza?\""
+        },
+        {
+          label: "Domande che si porta dietro",
+          testo: "Chi o cosa sia davvero la Madre Nera, e se la stia ancora cercando. Chi fosse il suo vecchio maestro, e perché le abbia insegnato a uccidere senza volontà. Cosa significhino le sue visioni — quella voce femminile, quei piedi insanguinati, quella bambina rannicchiata che piange. Perché ora, per la prima volta, sente nascere in sé un moto di protezione verso qualcun altro."
+        }
+      ]
+    },
+    zoraya: {
+      nome: "Zoraya", giocatore: "Federica", colore: "#5a8fd4", iniziali: "Z",
+      sottotitolo: "Ciò che Zoraya sa, ricorda e ha vissuto.",
+      sezioni: [
+        {
+          label: "Chi è e da dove viene",
+          testo: "Figlia di un pescatore del Mare Dorato e di una tessitrice di reti che canta mentre lavora, ultima di cinque fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un rifiuto viscerale delle gerarchie nate dalle \"vie\" — un'ingiustizia per cui porta ancora sul volto piccole cicatrici permanenti.\n\nMandata alla Scuola della Fiamma per diventare Jyotir, matura con gli anni una discordanza crescente con ciò che vede: il Grande Jyotir servito da un esercito di Figli della Cenere per ogni funzione minima. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro quell'ingiustizia e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Da allora è in viaggio, alla ricerca di un luogo — e di persone — capaci di capire quanto la verità sia legata alla giustizia."
+        },
+        {
+          label: "Il sogno ricorrente",
+          testo: "Sogna, a intervalli, di trovarsi in un bosco fatto di alberi che non sono alberi — tronchi di pietra, tetti di tegole al posto delle chiome. Al centro arde un fuoco enorme, e in quella luce danza una donna coperta di sangue, una corona di spine sulla fronte che non la ferisce mai: ogni suo passo è insieme dolore e furia. Ai margini dell'ombra, sagome di uomini, animali e ombre restano immobili, incapaci — o non disposte — ad avvicinarsi alla luce di quel fuoco, che Zoraya percepisce come verità troppo grande per essere guardata senza vacillare.\n\nQuando per un istante gli sguardi si incrociano, quella rabbia la attraversa come una scarica; si sveglia sempre con il cuore che batte ancora al ritmo di quel ballo, senza sapere se quella furia l'ha solo vista o se ora le appartiene."
+        },
+        {
+          label: "La notte alla Rosa Storta",
+          testo: "Tiene Rei tra le braccia durante le convulsioni, cercando di evitare che si morda la lingua o soffochi — e da quella posizione vede tutto: Rei che sgozza l'uomo sulle scale, i tre corpi che si rialzano dopo essere stati dati per morti. Quando lo scontro finisce, si ritrova nel suo angolo a vomitare così a lungo da non avere \"più niente\" da vomitare.\n\nQuando Karl, sopraffatto dall'orrore, cerca di andarsene nella notte, è lei a corrergli dietro e a fermarlo — insiste perché tutti restino finché non si sarà capito \"l'inizio e la fine di questa storia\". Usa il proprio dono da Jyotir (percepire se qualcuno mente, cantando mentre l'altro parla) per confermare che Whilliam sta dicendo la verità sugli Otto Raggi — gesto che lo fa scoppiare in lacrime. Più tardi si toglie il proprio fermaglio e lo porge al misterioso avventore ubriaco del mattino dopo, per testare la sua capacità di \"vedere rosso\" sugli oggetti del gruppo."
+        },
+        {
+          label: "Cose che solo lei sa",
+          testo: "Non viaggia mai sola: al suo fianco c'è sempre Wvrewrol (Verolinguo), la rana-spiritello che non riesce a mentire e che, a modo suo, la protegge quanto lei protegge lui — è stata la prima persona, dopo la sua fuga dalla Scuola della Fiamma, a non trattare le sue uscite di troppa verità come un difetto da correggere. Percepisce le emozioni e le intenzioni nascoste dietro le parole altrui — dote che usa apertamente, senza vergognarsene, come prova della propria formazione da Jyotir."
+        },
+        {
+          label: "Domande che si porta dietro",
+          testo: "Chi sia davvero la donna del suo sogno, e perché quella furia sembri toccarla personalmente ogni volta. Cosa significhi essere stata l'unica, quella notte, capace di percepire con certezza che Whilliam non mentiva. Se valga la pena restare legata a un gruppo che ha appena visto uccidere tre persone — e uccidere di nuovo, forse, prima che il viaggio verso Pozzprofond sia finito."
+        }
+      ]
+    },
+    nikla: {
+      nome: "Nikla", giocatore: "Alessandra", colore: "#8f72d4", iniziali: "N",
+      sottotitolo: "Ciò che Nikla sa, ricorda e ha vissuto.",
+      sezioni: [
+        {
+          label: "Chi è e da dove viene",
+          testo: "Orfana, cresciuta nelle fogne di Ferrath dopo la morte dei genitori, operai scomparsi in un incidente sul lavoro quando lei aveva 6 anni. Cresciuta da Mr. Percival Mirr, la figura paterna più vicina che abbia mai avuto, da cui eredita un forte senso critico verso il mondo. Vede tutto in bianco e nero, giusto o sbagliato, senza scale di grigio — ma una volta guadagnata la sua fiducia, è leale per sempre.\n\nDa mesi cerca una biblioteca nascosta di testi antichi legati alla Volontà magica dei Primi Uomini — l'ha mancata per poco: dei tagliagole l'hanno trovata prima di lei e stanno bruciando i volumi per scaldarsi. Il suo strumento — e in un certo senso il suo famiglio — è un inchiostro senziente e maledetto, che canalizza la sua magia attraverso sigilli tatuati."
+        },
+        {
+          label: "Il frammento e le sue visioni",
+          testo: "Toccando il frammento di Theris ha una visione: la stessa cosa vista quando è svenuta durante lo scontro — un lago ghiacciato con un riflesso, simile ma non identica. Non riesce a spiegarsi perché quel pezzo di vetro le mostri qualcosa; sa solo che ha bisogno di rivederlo, e che quando lo tocca di nuovo, semplicemente, non succede più nulla — \"un altro buco nell'acqua\".\n\nScopre di possedere più di un frammento: il proprio, e uno ricevuto in dono dalla sorella — un dettaglio che lei stessa, messa alle strette, rivela quasi controvoglia: \"non era un regalo, ma lo puoi tenere\". Quando avvicina i due pezzi, questi si attaccano fra loro."
+        },
+        {
+          label: "La notte alla Rosa Storta",
+          testo: "Durante lo scontro lancia un'evocazione informe contro uno degli uomini rialzati, e più tardi una gelatina viola che gli avvolge testa e gola. Resta accanto a Rei mentre questa sbava e convulsiona, spaventata e senza sapere come aiutarla. È la prima volta in vita sua che si ubriaca, ed è la prima volta che uccide una persona — lo dice a voce alta, con un candore di cui lei stessa sembra sorpresa.\n\nQuando scopre di piangere senza motivo apparente, davanti a Whilliam che si sta rompendo in lacrime a sua volta, non capisce cosa le stia succedendo: chiede se sia una malattia. Le viene detto che si tratta solo di essere commossa — parola che sembra non conoscere. Preleva un dito e una mano da uno dei cadaveri prima che i corpi vengano spostati in ghiacciaia — un gesto che compie in silenzio, senza spiegarlo a nessuno, nemmeno a se stessa nel racconto che ne resta."
+        },
+        {
+          label: "Cose che solo lei sa",
+          testo: "Ha già un legame non del tutto chiarito con un fatato: il suo inchiostro senziente, forse un antico strumento del Mondo dei Sogni Condiviso. La sua visione del mondo, rigidamente diadica, viene messa alla prova per la prima volta da quello che ha visto quella notte — non sa più distinguere con la stessa sicurezza di prima cosa sia giusto e cosa sbagliato. Ha una sorella, mai nominata altrove nei suoi racconti, che le ha regalato uno dei due frammenti che ora possiede."
+        },
+        {
+          label: "Domande che si porta dietro",
+          testo: "Perché ha sentito il bisogno di prelevare un dito e una mano da un cadavere. Cosa significhino davvero i simboli sui frammenti, e perché toccarli le mostri delle visioni. Chi sia sua sorella, e perché le abbia regalato proprio quel pezzo di vetro. Perché, quella notte, ha pianto senza riuscire a spiegarsi il motivo."
+        }
+      ]
+    },
+    karl: {
+      nome: "Karl", giocatore: "Jacopo", colore: "#c4954a", iniziali: "K",
+      sottotitolo: "Ciò che Karl sa, ricorda e ha vissuto.",
+      sezioni: [
+        {
+          label: "Chi è e da dove viene",
+          testo: "Famiglia medio-borghese di Ferrath: padre pragmatico e artigiano, madre affettuosa ma sottomessa in casa. Svogliato e poco entusiasta della vita, finché non si innamora perdutamente di \"X\", che dà scopo alla sua esistenza — la mette incinta, la famiglia di lei li allontana per motivi economici, e Karl si arruola nella guardia cittadina per garantire un reddito solido.\n\nSposa Claudia Brenner, hanno una figlia, Hetel — entrambe uccise da briganti una sera in cui lui era di ronda. Da allora alterna deflessione umorale ad aggressività manifesta, e porta ancora addosso i segni di una malnutrizione grave, come se il corpo non si fosse mai davvero ripreso da quella notte."
+        },
+        {
+          label: "La Rosa Storta — la notte dello scontro",
+          testo: "Arriva alla locanda ferito e malmesso, accolto con gentilezza da Whilliam. Quando i tre uomini si rialzano dopo essere stati dati per morti, sceglie di non porsi troppe domande: Whilliam gli fa indossare un guanto d'arme di famiglia — dieci aghi che gli penetrano dolorosamente la mano prima che il guanto si adatti — e lui lo usa per colpire, non per uccidere: \"per me quello lì deve stare giù, non ho intenzione di ucciderlo\". Tiene bloccato uno degli uomini nonostante le costole rotte e i tentativi di mordere, finché anche quello smette di muoversi.\n\nDopo lo scontro, sopraffatto — \"sarà che non mangiavo da giorni […] ma tutta questa roba mi ricorda altro\" — esce nella notte sotto la pioggia e crolla in un vicolo, tra sonno e delirio, prima di rientrare la mattina dopo."
+        },
+        {
+          label: "La vista rossa",
+          testo: "Nello stesso momento in cui indossa il guanto, comincia a percepire dei punti rossi su persone e oggetti — la cintura di Nikla, il fermaglio di Zoraya — mentre tutto il resto gli appare grigio, sbiadito, \"come Frodo quando mette l'anello\", ma al contrario. Non sa cosa significhino quei punti, se siano legati al guanto o a qualcos'altro in lui: sa solo che sono davvero l'unica cosa rossa che quelle persone hanno addosso, e che continuano a vederli anche il mattino dopo, ancora più intensi."
+        },
+        {
+          label: "Un ricordo che riaffiora",
+          testo: "La mattina dopo lo scontro, ancora confuso e provato, gli riaffiora — o qualcuno gli fa notare — un ricordo di sé stesso che protegge una bambina da un uomo che voleva farle del male: un dettaglio del suo passato che nemmeno lui aveva mai raccontato prima, e che non sa ancora bene come conciliare con quello che ricorda della propria vita a Ferrath."
+        },
+        {
+          label: "Domande che si porta dietro",
+          testo: "Perché vede questi punti rossi, e cosa significhi che appaiono proprio sugli oggetti di Nikla e Zoraya. Chi fosse davvero quella bambina che ricorda di aver protetto, e come si lega al resto della sua storia. Se abbia senso, per lui, restare con un gruppo che ha appena visto — e fatto — cose che preferirebbe non aver mai visto."
+        }
+      ]
+    }
+  },
+
+  // Cronologia sessioni — tre sessioni giocate finora.
+  // La Sessione 3 (trascrizione Plaud, 2-3 settembre 2026) ha permesso di
+  // confermare che il "Blocco 5" della scaletta manoscritta originale
+  // (villaggio, rituale di Lilglia) NON è ancora stato giocato: è stato
+  // rimosso dal riassunto della Sessione 2 e resta materiale futuro.
+  // Vedi Scaletta Sessioni — Scene e Colonna Sonora.md, cartella
+  // Furiosa/Campagna su Drive, per i dettagli del riscontro.
   sessioni: [
     {
       data: "Sessione 1",
@@ -139,30 +264,58 @@ const FURIOSA_DATA = {
     },
     {
       data: "Sessione 2",
-      titolo: "La Rosa Storta e il villaggio",
-      luogo: "Locanda Rosa Storta, poi un villaggio non ancora nominato",
-      riassunto: "Giorno 9 del terzo mese: il party arriva alla locanda Rosa Storta, dove scopre che Whilliam (uno degli Otto Raggi di Kesper) ne è il locandiere. Tre sgherri legati ad Ados entrano per minacciarlo — sono venuti a utilizzare i frammenti. Rei si offre di occuparsene e nello scontro uccide uno dei tre; Whilliam racconta la propria storia. Il gruppo prosegue poi verso un villaggio dove tutti sembrano \"impazziti\" (\"Ados è via, tornerà domani\"): di notte, per non far adorare Lilglia, la setta locale si riunisce per un sacrificio, diretto da uno zombie di nome Lilglia. Segue un combattimento, l'unione dei frammenti, visioni personalizzate per i personaggi e il salvataggio del villaggio.",
+      titolo: "La Rosa Storta",
+      luogo: "Locanda Rosa Storta",
+      riassunto: "Giorno 9 del terzo mese: il party arriva alla locanda Rosa Storta, dove scopre che Whilliam (uno degli Otto Raggi di Kesper) ne è il locandiere. Tre sgherri legati ad Ados entrano per minacciarlo — sono venuti a utilizzare i frammenti. Rei, spinta per la prima volta da un vero moto di protezione, si offre di occuparsene e nello scontro ne colpisce a morte due — che incredibilmente si rialzano come non-morti. Lo scontro prosegue e si conclude nella Sessione 3.",
       eventiChiave: [
         "Il party arriva alla Rosa Storta; Whilliam identificato come il locandiere",
-        "Tre sgherri di Ados minacciano Whilliam — combattimento, uno degli sgherri ucciso da Rei",
-        "Whilliam racconta la propria storia (dettagli da trascrivere)",
-        "Il party raggiunge un villaggio dove la popolazione è sconvolta: \"Ados è via, tornerà domani\"",
-        "Una setta locale si riunisce di notte per un sacrificio legato a \"Lilglia\"",
-        "Uno zombie chiamato Lilglia dirige il rituale",
-        "Combattimento finale, unione dei frammenti, visioni personalizzate per i personaggi, villaggio salvato"
+        "Tre sgherri di Ados minacciano Whilliam — combattimento",
+        "Rei colpisce a morte due dei tre uomini, che si rialzano come non-morti",
+        "Lo scontro resta in sospeso, concluso nella Sessione 3"
       ],
-      tag: ["Rosa Storta", "Villaggio", "Rituale"],
-      nuova: true,
+      tag: ["Rosa Storta"],
+      nuova: false,
       economia: [],
       oggetti: [],
       approfondimenti: [
         {
           titolo: "Scaletta scene e colonna sonora (originale)",
-          testo: "Ingresso alla Rosa Storta — \"Engwith\"\nEntrano 3 sgherri di Ados — \"Cordyceps\" (sono venuti a utilizzare i frammenti)\nCombattimento — \"The Cove Battle\"\nRacconto Whilliam — \"Turn Turn Turn Again\"\n\nViaggio — \"Godhome\" – Poker Bard\nIl villaggio, tutti crazy — \"Tragedy\" (\"Ados è via, tornerà domani\")\nNotte, % per non adorare Lilglia —\nLa setta si riunisce e sacrificio —\nLilglia zombie fa da dirigente del rituale —\nCombattimento —\nL'unione dei frammenti —\nVisioni personalizzate —\nSalvare il villaggio §"
+          testo: "Ingresso alla Rosa Storta — \"Engwith\"\nEntrano 3 sgherri di Ados — \"Cordyceps\" (sono venuti a utilizzare i frammenti)\nCombattimento — \"The Cove Battle\"\nRacconto Whilliam — \"Turn Turn Turn Again\""
         },
         {
-          titolo: "Nota DM — chi/cosa è Lilglia?",
-          testo: "Attenzione: il nome \"Lilglia\" compare qui (zombie che dirige il rituale del villaggio) ma è ANCHE il nome già noto in Lore Segreta come la moglie defunta di Ados, il cui frammento si è fuso col suo corrompendolo. Non è confermato se si tratti della stessa entità — è un'ipotesi plausibile e narrativamente forte (spiegherebbe uno zombie legato a un culto vicino ad Ados), ma va trattata come ipotesi non decisa finché non viene confermata dal tavolo."
+          titolo: "Nota DM — il Blocco 5 della scaletta manoscritta (villaggio, Lilglia) è contenuto futuro",
+          testo: "La scaletta manoscritta originale proseguiva con un Blocco 5 (viaggio, un villaggio \"tutti crazy\" in attesa del ritorno di Ados, un rituale notturno diretto da uno zombie chiamato Lilglia, combattimento, unione dei frammenti, visioni personalizzate, villaggio salvato). Questo materiale NON è ancora stato giocato al tavolo: la Sessione 3 copre solo la conclusione dello scontro alla Rosa Storta e la partenza per Pozzprofond. Il Blocco 5 resta una scaletta/piano per una sessione futura, non un evento già accaduto. Chi/cosa sia \"Lilglia\" è comunque stato chiarito: è la moglie/amata defunta di Ados (vedi Lore Segreta e Sessione 3) — lo zombie del Blocco 5 è quindi presumibile foreshadowing coerente, non ancora confermato in scena."
+        }
+      ]
+    },
+    {
+      data: "Sessione 3",
+      titolo: "Il resoconto di Whilliam e la partenza per Pozzprofond",
+      luogo: "Locanda Rosa Storta",
+      riassunto: "2-3 settembre 2026 (fuori gioco). Prosegue e si conclude lo scontro con i tre uomini rialzati come non-morti: Rei ne finisce uno spappolandogli la testa con un calderone (e vomita per lo shock); i corpi vengono portati in una ghiacciaia, Nikla preleva un dito e una mano da uno dei cadaveri. Whilliam fa indossare a Karl un guanto d'arme di famiglia (rigenera lentamente le ferite di chi lo indossa) e racconta la storia completa degli Otto Raggi di Kesper: un tempio senza nome, molto lontano a est, dove il vecchio gruppo trovò i frammenti e se li divise per scherzo come souvenir; lì Ados dichiarò il proprio amore a Lilglia, poi sposata e morta di recente a 82 anni. Whilliam conferma che Ados è il mandante dei tre aggressori e implora il party di salvarlo; rivela di aver già spedito via il proprio frammento tramite il messo che gli aveva portato la lettera di Ados. Nel corso della sessione emergono anche due nuove capacità/misteri: Karl inizia a percepire \"punti rossi\" di pericolo/connessione su persone e oggetti (senza spiegazione), e viene chiarito — incrociando la scena con il diario di Rei — che le \"due donne sospette\" della locanda sono in realtà Nikla e Zoraya stesse. Il gruppo parte infine per il villaggio di Pozzprofond, sulle tracce di Ados.",
+      eventiChiave: [
+        "Conclusione dello scontro: Rei finisce uno dei non-morti con un calderone",
+        "I corpi portati in ghiacciaia; Nikla preleva un dito e una mano da un cadavere",
+        "Whilliam fa indossare a Karl un guanto d'arme di famiglia",
+        "Whilliam racconta la storia completa degli Otto Raggi di Kesper e del tempio senza nome",
+        "Confermato: Ados è il mandante dei tre aggressori; Whilliam implora di salvarlo",
+        "Whilliam ha già spedito via il proprio frammento tramite un messo",
+        "Karl inizia a percepire \"punti rossi\" di pericolo/connessione — mistero aperto",
+        "Chiarito: le \"due donne sospette\" della locanda sono Nikla e Zoraya",
+        "Il party parte per il villaggio di Pozzprofond"
+      ],
+      tag: ["Rosa Storta", "Whilliam", "Otto Raggi di Kesper"],
+      nuova: true,
+      economia: [],
+      oggetti: [],
+      approfondimenti: [
+        {
+          titolo: "Fonte",
+          testo: "Trascrizione automatica (Plaud) della seduta al tavolo del 2-3 settembre 2026, caricata e integrata il 4 settembre 2026, incrociata con il diario personale di Rei e con le correzioni fornite direttamente dall'utente. Il file completo della trascrizione è archiviato in Furiosa/Trascrizioni/Sessione 3 — 2-3 settembre 2026.md."
+        },
+        {
+          titolo: "Nota DM — misteri aperti emersi in questa sessione",
+          testo: "Perché Nikla ha prelevato un dito e una mano dal cadavere. Il meccanismo dietro la capacità di Karl di vedere \"punti rossi\". Chi sia \"X\", la ragazza che Karl racconta di aver protetto da bambina da un uomo che voleva farle del male, e come si concili con la sua scheda."
         }
       ]
     }
@@ -185,7 +338,7 @@ const FURIOSA_DATA = {
         nome: "Ados e gli Otto Raggi di Kesper",
         colore: "#c4954a",
         condiviso: false,
-        testo: "Gli \"8 Raggi di Kesper\" era il nome del vecchio gruppo di avventurieri di Ados — dalla ruota di Kesper, il carro leggendario di una delle Sei Figlie, a otto raggi come loro. Il gruppo trovò otto frammenti di vetro apparentemente senza valore in un palazzo sotterraneo inesplorato, e se li divise uno a testa come simbolo del legame — senza mai sospettare avessero un potere.\n\nI membri: Ados (leader, scaltro e forte — oggi ossessionato dal recuperare tutti i frammenti dopo aver ucciso per sbaglio la moglie Lilglia, il cui frammento si è fuso col suo, corrompendolo). Kaf — morto (ucciso da Rei, giorno 8 del terzo mese); il suo frammento si è fuso con quello di Theris ed è ora in possesso di Rei. Refistas (studioso metodico, ucciso dai banditi sulla strada per Tresil mentre andava a un appuntamento con Whilliam alla Rosa Storta — nei suoi ultimi giorni indagava sui frammenti in un taccuino). Whilliam — identificato in gioco come il locandiere della Rosa Storta stesso; minacciato da tre uomini legati alla vecchia compagnia (uno ucciso da Rei); probabilmente possiede ancora il proprio frammento. Berer (esploratore, morto poco prima che Refistas si ritirasse — sepolto da Refistas a Pozzprofond, ai piedi di un castagno, col proprio frammento). Elia (morta di parto, il suo frammento donato a un orfanotrofio). Theris — morto in scena (giorno 8), Rei ha tentato invano di salvarlo.\n\nStato dei frammenti: Ados ha il proprio + quello di Lilglia (fusi e corrotti). Kaf+Theris fusi, in possesso di Rei (fusione SENZA segni di corruzione — dato rilevante per l'ipotesi di Refistas, vedi sotto). Quello di Berer è ancora sepolto a Pozzprofond, mai reclamato. Quello di Elia è a destinazione sconosciuta dopo l'orfanotrofio. Quello di Refistas è di stato sconosciuto — finito nel bottino dei banditi? Ancora sul corpo? Whilliam presumibilmente ha ancora il suo.\n\nSviluppi dal tavolo (giorno 9): tre uomini hanno minacciato Whilliam alla Rosa Storta (uno ucciso da Rei, due dispersi) — dalle loro parole, probabile legame con la vecchia compagnia. Identità e mandante non confermati: possibile collegamento con Ados stesso (che nella Lettera V aveva già minacciato di morte l'intero gruppo) o con \"la Madre Nera\" temuta da Rei. Osservate anche due giovani donne sospette nella stessa locanda, ruolo non sviluppato.\n\nIpotesi di Refistas (dal suo taccuino, non confermata): il cristallo/frammenti sarebbero magia antica non più concessa agli uomini, capace di spezzare il velo se riuniti — possibile collegamento diretto con la corruzione di Ados e con l'obiettivo di Furiosa di attraversare il velo verso l'Irkalla. Da confermare/correggere alla luce del dato sulla fusione Kaf+Theris priva di corruzione.\n\nPossibile collegamento non confermato: nella Sessione 2, un villaggio è terrorizzato da una setta che venera/teme un'entità chiamata \"Lilglia\", con uno zombie dello stesso nome a dirigere un rituale — stesso nome della moglie defunta di Ados. Se sia la stessa entità (magari risorta o corrotta a sua volta) è un'ipotesi narrativamente forte ma NON decisa: va trattata come pista aperta, non come fatto stabilito."
+        testo: "Gli \"8 Raggi di Kesper\" era il nome del vecchio gruppo di avventurieri di Ados — dalla ruota di Kesper, il carro leggendario di una delle Sei Figlie, a otto raggi come loro. Il gruppo trovò otto frammenti di vetro apparentemente senza valore in un tempio senza nome, molto lontano a est, e se li divise uno a testa per scherzo, come souvenir, senza mai sospettare avessero un potere. In quel tempio Ados dichiarò il proprio amore a Lilglia.\n\nI membri: Ados (leader, scaltro e forte — oggi ossessionato dal recuperare tutti i frammenti dopo aver ucciso per sbaglio la moglie Lilglia, il cui frammento si è fuso col suo, corrompendolo). Kaf — morto, ucciso da Rei (giorno 8 del terzo mese); il suo frammento si è fuso con quello di Theris ed è ora in possesso di Rei. Refistas (studioso metodico, ucciso dai banditi sulla strada per Tresil mentre andava a un appuntamento con Whilliam alla Rosa Storta — nei suoi ultimi giorni indagava sui frammenti in un taccuino). Whilliam — identificato in gioco come il locandiere della Rosa Storta stesso; minacciato dai tre uomini mandati da Ados (tutti e tre uccisi da Rei, poi rialzati come non-morti e definitivamente abbattuti in Sessione 3); ha già spedito via il proprio frammento tramite il messo che gli aveva portato la lettera di Ados. Berer (esploratore, morto poco prima che Refistas si ritirasse — sepolto da Refistas a Pozzprofond, ai piedi di un castagno, col proprio frammento). Elia (morta di parto, il suo frammento donato a un orfanotrofio). Theris — morto in scena (giorno 8), Rei ha tentato invano di salvarlo. Lilglia — moglie/amata di Ados, sposata dopo l'episodio del tempio, morta di recente all'età di 82 anni; il suo frammento si è fuso con quello di Ados, corrompendolo.\n\nStato dei frammenti: Ados ha il proprio + quello di Lilglia (fusi e corrotti). Kaf+Theris fusi, in possesso di Rei (fusione SENZA segni di corruzione — dato rilevante per l'ipotesi di Refistas, vedi sotto). Quello di Berer è ancora sepolto a Pozzprofond, mai reclamato. Quello di Elia è a destinazione sconosciuta dopo l'orfanotrofio. Quello di Refistas è di stato sconosciuto — finito nel bottino dei banditi? Ancora sul corpo? Whilliam ha spedito il proprio via tramite un messo (presumibilmente verso Ados) — non più in suo possesso.\n\nSviluppi dal tavolo (Sessione 3): confermato che Ados è il mandante dei tre uomini della Rosa Storta, tutti e tre abbattuti definitivamente dal party; Whilliam implora il party di \"salvare Ados\". Chiarito anche chi fossero le \"due giovani donne sospette\" osservate nella stessa locanda: sono Nikla e Zoraya stesse, non NPC misteriosi — mistero risolto (vedi PNG e Alleati.md per il dettaglio dei tratti/soprannomi ipotizzati). Resta aperto il legame con \"la Madre Nera\" temuta da Rei.\n\nIpotesi di Refistas (dal suo taccuino, non confermata): il cristallo/frammenti sarebbero magia antica non più concessa agli uomini, capace di spezzare il velo se riuniti — possibile collegamento diretto con la corruzione di Ados e con l'obiettivo di Furiosa di attraversare il velo verso l'Irkalla. Da confermare/correggere alla luce del dato sulla fusione Kaf+Theris priva di corruzione.\n\nChi è Lilglia — risolto: è la moglie/amata defunta di Ados descritta sopra. Il Blocco 5 della scaletta manoscritta originale (un villaggio con una setta che venera/teme un'entità chiamata \"Lilglia\", diretta da uno zombie dello stesso nome) resta però contenuto NON ancora giocato al tavolo — foreshadowing coerente con l'ipotesi che Ados stia cercando di riportarla in vita, ma non ancora confermato in scena."
       }
     ]
   },
@@ -202,14 +355,14 @@ const FURIOSA_DATA = {
       { id: "th-07", testo: "Cosa è successo esattamente al frammento di Refistas dopo la sua morte (bottino dei banditi? recuperabile?)." },
       { id: "th-08", testo: "Dove/quando il party trova le lettere di Ados e il taccuino di Refistas nella trama — il diario di Whilliam è più vicino ora che è un PNG raggiungibile." },
       { id: "th-09", testo: "Confermare o correggere l'ipotesi di Refistas sulla vera natura dei frammenti, alla luce della fusione Kaf+Theris priva di corruzione." },
-      { id: "th-10", testo: "Aggancio narrativo di Verolinguo — come entra concretamente nel party." },
-      { id: "th-11", testo: "Chi è Karl Brenner nel party — quarto membro stabile o sostituto? Chi è \"X\", la donna di cui si innamora nella sua backstory?" },
+      { id: "th-11", testo: "Chi è Karl Brenner nel party — quarto membro stabile o sostituto? Chi è \"X\", la donna di cui si innamora nella sua backstory (Sessione 3: racconta anche di aver protetto da bambina una ragazza da un uomo che voleva farle del male — da conciliare con la sua scheda)." },
       { id: "th-12", testo: "Chi/cosa è \"la Madre Nera\" che Rei teme possa averla trovata, e chi è il suo \"vecchio maestro\"." },
-      { id: "th-13", testo: "Identità e mandante dei tre uomini della Rosa Storta e delle due donne sospette osservate nella stessa scena." },
-      { id: "th-14", testo: "Chi è \"il ragazzo derelitto\" di cui Whilliam si prende cura alla locanda." },
+      { id: "th-14", testo: "Chi è \"il ragazzo derelitto\" di cui Whilliam si prende cura alla locanda (non più menzionato in Sessione 3)." },
       { id: "th-15", testo: "Cosa faceva esattamente il frammento di Theris quando Rei lo toccava la prima volta (visioni/specchio/\"altra sé\") — perché ha smesso di funzionare una volta fuso con quello di Kaf." },
-      { id: "th-16", testo: "Se \"Lilglia\" (lo zombie che dirige il rituale del villaggio, Sessione 2) sia la stessa Lilglia moglie defunta di Ados — ipotesi forte ma non confermata." },
-      { id: "th-17", testo: "Confermare la suddivisione esatta tra Sessione 1 e Sessione 2 nella scaletta scene/colonna sonora — attualmente solo un'ipotesi di lavoro." }
+      { id: "th-16", testo: "Se il rituale del Blocco 5 (villaggio, zombie di nome Lilglia — ancora non giocato) confermerà il legame con la Lilglia moglie di Ados, la cui identità/backstory è ora nota (vedi Lore Segreta)." },
+      { id: "th-17", testo: "Confermare la suddivisione esatta tra Sessione 1 e Sessione 2 nella scaletta scene/colonna sonora — attualmente solo un'ipotesi di lavoro." },
+      { id: "th-18", testo: "Perché Nikla ha prelevato un dito e una mano da uno dei cadaveri alla Rosa Storta (Sessione 3)." },
+      { id: "th-19", testo: "Meccanismo dietro la capacità di Karl di percepire \"punti rossi\" di pericolo/connessione — emersa in Sessione 3, distinta dal guanto d'arme." }
     ]
   }
 

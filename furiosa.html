@@ -249,6 +249,10 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   <main class="main" id="main">
     <div id="section-panoramica" class="section"></div>
     <div id="section-personaggi" class="section"></div>
+    <div id="section-pv-rei"     class="section"></div>
+    <div id="section-pv-zoraya"  class="section"></div>
+    <div id="section-pv-nikla"   class="section"></div>
+    <div id="section-pv-karl"    class="section"></div>
     <div id="section-sessioni"   class="section"></div>
     <div id="section-lore"       class="section"></div>
     <div id="section-thread"     class="section"></div>
@@ -496,6 +500,22 @@ function buildPgCard(p) {
   return wrap;
 }
 
+// ── PUNTI DI VISTA (schede soggettive PG) ──────────
+function buildPuntoDiVista(key) {
+  const c = document.getElementById('section-pv-' + key);
+  if (!c) return;
+  const p = FURIOSA_DATA.puntiDiVista?.[key];
+  if (!p) return;
+  c.innerHTML = `
+    <div class="sec-head">
+      <div class="sec-title" style="color:${p.colore}">${p.nome} <span style="color:var(--t3);font-family:var(--font-b);font-weight:400;font-size:14px">— punto di vista</span></div>
+      <div class="sec-sub">${p.sottotitolo}</div>
+    </div>`;
+  (p.sezioni || []).forEach(s => {
+    c.appendChild(card(s.label, s.testo));
+  });
+}
+
 // ── SESSIONI ───────────────────────────────────────
 function buildSessioni() {
   const c = document.getElementById('section-sessioni');
@@ -699,6 +719,10 @@ function saveNote(id, svId) {
 function buildAllSections() {
   buildPanoramica();
   buildPersonaggi();
+  buildPuntoDiVista('rei');
+  buildPuntoDiVista('zoraya');
+  buildPuntoDiVista('nikla');
+  buildPuntoDiVista('karl');
   buildSessioni();
   buildLore();
   buildThread();
