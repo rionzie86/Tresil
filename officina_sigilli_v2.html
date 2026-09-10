@@ -662,11 +662,31 @@ const CATALOG_DEV = [
       {key:'linea', angle:129.53522813632662, percent:45, inCore:false, coreDist:108.74367826083254, rotation:228.80942307355895, size:1},
       {key:'nodo', angle:217.74380311171421, percent:38, inCore:false, coreDist:37.07189354445542, rotation:222.35532301269984, size:5}
     ]
+  },
+  {
+    name:"Rigenerazione della carne",
+    a:"Trasmutazione", b:"", dominance:"a",
+    forcedDispendio:10,
+    forcedZoneIndex:0,
+    desc:"Il rituale traccia il sigillo direttamente sulla carne del bersaglio: Materia Prima nello spicchio Gittata non indica una distanza, ma il bersaglio stesso su cui il glifo è applicato — la carne della persona su cui viene disegnato. Al centro, l'energia Negativa è l'energia prodotta, ricavata consumando l'energia Tempo sacrificata in Componenti insieme a un glifo Sacrificio: Cesura nello spicchio Livello non si limita ad annullare l'effetto autonomo dell'energia sacrificata come farebbe di norma — dato che l'energia prodotta nel nucleo è proprio Negativa, ne riporta indietro il decorso, facendo regredire le ferite del bersaglio fino al punto in cui non erano ancora state inferte. La dimensione del glifo Tempo e la sua distanza dal nucleo determinano insieme sia quanto tempo viene riavvolto nella carne sia il Tempo di lancio del rituale — i due valori coincidono sempre: alla dimensione e distanza minime, 2 secondi in entrambi i casi, con un dispendio energetico aggiuntivo di 2; al massimo, fino a 3 minuti in entrambi i casi, con un dispendio aggiuntivo di 30. Il Nodo che circonda il Core, di dimensione contenuta e ben ancorato al nucleo, stabilizza l'intero processo: Dispendio Energetico fissato a 10, un valore giudicato sicuro nonostante la natura potente dell'effetto.",
+    energies:[
+      {key:"Negativa", angle:357.05489805042254, percent:0, self:true, size:1},
+      {key:"Negativa", angle:246.44129108945074, percent:56, self:false, size:1},
+      {key:"Tempo", angle:287.117373694546, percent:64, self:false, size:0.8}
+    ],
+    glyphs:[
+      {sector:4, key:'sacrificio', angle:331.7459718951414, percent:70, size:1, self:false},
+      {sector:1, key:'materiaprima', angle:111.41363178364901, percent:69, size:1, self:false},
+      {sector:0, key:'cesura', angle:56.66488284609051, percent:57, size:1, self:false}
+    ],
+    conjunctions:[
+      {key:'nodo', angle:31.39666033874198, percent:1, inCore:true, coreDist:13.768822586849671, rotation:15.288035406109884, size:5.2}
+    ]
   }
 ];
 
 // Indici in CATALOG_DEV che formano gli incantesimi base visibili al giocatore.
-const BASE_SPELL_INDICES = [0,1,2,3];
+const BASE_SPELL_INDICES = [0,1,2,3,15];
 
 // Catalogo "Sigilli Importati": persistente in localStorage, popolato dal DM caricando
 // i file .json che i giocatori esportano dalla loro Officina.
@@ -730,7 +750,7 @@ let currentCatalogValue='';
 function loadDevEntry(idx){
   const c=CATALOG_DEV[idx];
   currentCatalogLabel={name:c.name, desc:c.desc, maxRange:c.maxRange, maxDiameter:c.maxDiameter, dynamicElemental:c.dynamicElemental,
-    baseVolumeL:c.baseVolumeL, basePesoKg:c.basePesoKg, baseDurezza:c.baseDurezza, forcedDispendio:c.forcedDispendio};
+    baseVolumeL:c.baseVolumeL, basePesoKg:c.basePesoKg, baseDurezza:c.baseDurezza, forcedDispendio:c.forcedDispendio, forcedZoneIndex:c.forcedZoneIndex};
   selectedSchools = c.b ? [c.a, c.b] : [c.a];
   renderSchoolGrid();
   if(c.energies){
@@ -1747,6 +1767,10 @@ function computeAndDisplay(a,b,wRes){
   const fusion=(b && b!==a);
   let zoneIndex = overallImbalance>0.55 ? 2 : (overallImbalance>0.25 ? 1 : 0);
   if(fusion) zoneIndex=Math.min(2, zoneIndex+1);
+  // Un sigillo del catalogo può forzare a mano lo Stato mostrato (es. un rituale giudicato
+  // sicuro dal DM a prescindere dallo sbilanciamento calcolato), sullo stesso modello di
+  // forcedDispendio qui sopra.
+  if(currentCatalogLabel && currentCatalogLabel.forcedZoneIndex!=null) zoneIndex = currentCatalogLabel.forcedZoneIndex;
 
   const zoneLabels=['Sicuro','Richiede molte energie','Molto rischioso'];
   const zoneClasses=['b-teal','b-amber','b-red'];
