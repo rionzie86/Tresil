@@ -666,13 +666,12 @@ const CATALOG_DEV = [
   {
     name:"Rigenerazione della carne",
     a:"Trasmutazione", b:"", dominance:"a",
-    forcedDispendio:10,
     forcedZoneIndex:0,
-    desc:"Il rituale traccia il sigillo direttamente sulla carne del bersaglio: Materia Prima nello spicchio Gittata non indica una distanza, ma il bersaglio stesso su cui il glifo è applicato — la carne della persona su cui viene disegnato. Al centro, l'energia Negativa è l'energia prodotta, ricavata consumando l'energia Tempo sacrificata in Componenti insieme a un glifo Sacrificio: Cesura nello spicchio Livello non si limita ad annullare l'effetto autonomo dell'energia sacrificata come farebbe di norma — dato che l'energia prodotta nel nucleo è proprio Negativa, ne riporta indietro il decorso, facendo regredire le ferite del bersaglio fino al punto in cui non erano ancora state inferte. La dimensione del glifo Tempo e la sua distanza dal nucleo determinano insieme sia quanto tempo viene riavvolto nella carne sia il Tempo di lancio del rituale — i due valori coincidono sempre: alla dimensione e distanza minime, 2 secondi in entrambi i casi, con un dispendio energetico aggiuntivo di 2; al massimo, fino a 3 minuti in entrambi i casi, con un dispendio aggiuntivo di 30. Il Nodo che circonda il Core, di dimensione contenuta e ben ancorato al nucleo, stabilizza l'intero processo: Dispendio Energetico fissato a 10, un valore giudicato sicuro nonostante la natura potente dell'effetto.",
+    desc:"Il rituale traccia il sigillo direttamente sulla carne del bersaglio: Materia Prima nello spicchio Gittata non indica una distanza, ma il bersaglio stesso su cui il glifo è applicato — la carne della persona su cui viene disegnato. Al centro, l'energia Negativa è l'energia prodotta, ricavata consumando l'energia Tempo sacrificata in Componenti insieme a un glifo Sacrificio: Cesura nello spicchio Livello non si limita ad annullare l'effetto autonomo dell'energia sacrificata come farebbe di norma — dato che l'energia prodotta nel nucleo è proprio Negativa, ne riporta indietro il decorso, facendo regredire le ferite del bersaglio fino al punto in cui non erano ancora state inferte. La dimensione del glifo Tempo e la sua distanza dal nucleo determinano insieme sia quanto tempo viene riavvolto nella carne sia il Tempo di lancio del rituale — i due valori coincidono sempre: alla dimensione e distanza minime, 2 secondi in entrambi i casi, con un dispendio energetico aggiuntivo di 2; al massimo, fino a 3 minuti in entrambi i casi, con un dispendio aggiuntivo di 30. Il Dispendio Energetico dell'intero rituale è determinato da questa stessa dimensione/distanza — non dal calcolo generico dei glifi — con un rapporto fisso di 10 per ogni minuto di tempo riavvolto: nella disposizione qui mostrata, 10. Il Nodo che circonda il Core stabilizza il processo: nonostante il costo, è giudicato sicuro (vedi Stato).",
     energies:[
       {key:"Negativa", angle:357.05489805042254, percent:0, self:true, size:1},
       {key:"Negativa", angle:246.44129108945074, percent:56, self:false, size:1},
-      {key:"Tempo", angle:287.117373694546, percent:64, self:false, size:0.8}
+      {key:"Tempo", angle:287.117373694546, percent:37.142857142857146, self:false, size:0.8}
     ],
     glyphs:[
       {sector:4, key:'sacrificio', angle:331.7459718951414, percent:70, size:1, self:false},
@@ -1602,6 +1601,27 @@ function computeAndDisplay(a,b,wRes){
   const cesuraLancio = placed.find(p=>p.key==='cesura' && p.sector===4);
   if(cesuraLancio) castingSeconds = castingSeconds/2;
 
+  // ---- Cesura in Livello + Negativa nel nucleo + Tempo sacrificata: riavvolgimento temporale ----
+  // Invece di annullare soltanto la componente sacrificata, Cesura ne inverte il decorso. La
+  // dimensione e la distanza dal nucleo del glifo Energia Tempo definiscono insieme sia quanto
+  // tempo viene riavvolto sia il Tempo di lancio del rituale (i due valori coincidono sempre) sia
+  // il Dispendio Energetico dell'intero sigillo — che qui sostituisce il calcolo generico, non si
+  // somma ad esso: da dimensione/distanza minime (2 secondi, dispendio 2) a dimensione/distanza
+  // massime (3 minuti, dispendio 30 — 10 per ogni minuto riavvolto) — vedi il manuale, voce Cesura.
+  const cesuraLivello = placed.find(p=>p.key==='cesura' && p.sector===0);
+  const negativaCore = energies.find(en=>en.self && en.key==='Negativa');
+  const tempoSacrificata = energies.find(en=>!en.self && en.key==='Tempo');
+  let tempoRewindInfo = null;
+  if(cesuraLivello && negativaCore && tempoSacrificata){
+    const sizeNorm = Math.max(0, Math.min(1, ((tempoSacrificata.size||1)-0.5)/1.5));
+    const distNorm = Math.max(0, Math.min(1, (tempoSacrificata.percent||0)/100));
+    const t = (sizeNorm+distNorm)/2;
+    const rewoundSeconds = 2 + t*(180-2);
+    const tempoDispendio = 2 + t*(30-2);
+    castingSeconds = rewoundSeconds;
+    tempoRewindInfo = { seconds: rewoundSeconds, dispendio: tempoDispendio };
+  }
+
   const castingCostMultiplier = 1 - 0.65*ritualFactor;
   const castingRangeMultiplier = 1 + 2*ritualFactor;
   function formatCastingTime(sec){
@@ -1805,8 +1825,11 @@ function computeAndDisplay(a,b,wRes){
     catalogBlock += `<div class="spell-desc-box"><div class="spell-desc-title">Trasmutazione elementare</div><div class="spell-desc-text">${transmutationNote}</div></div>`;
   }
   // Un sigillo del catalogo può forzare a mano il valore mostrato di Dispendio Energetico
-  // (es. un sigillo anomalo/non calcolabile) invece di quello calcolato normalmente.
-  const displayDispendio = (currentCatalogLabel && currentCatalogLabel.forcedDispendio!=null) ? currentCatalogLabel.forcedDispendio : dispendioFinale;
+  // (es. un sigillo anomalo/non calcolabile) invece di quello calcolato normalmente. Il
+  // riavvolgimento temporale (Cesura in Livello + Negativa nel nucleo + Tempo sacrificata)
+  // sostituisce a sua volta il calcolo generico con un valore dipendente dal glifo Tempo.
+  const displayDispendio = tempoRewindInfo ? tempoRewindInfo.dispendio
+    : (currentCatalogLabel && currentCatalogLabel.forcedDispendio!=null) ? currentCatalogLabel.forcedDispendio : dispendioFinale;
   out.innerHTML=`
     ${errorBlock}
     ${catalogBlock}
@@ -1825,6 +1848,7 @@ function computeAndDisplay(a,b,wRes){
     ${coagInfo && coagInfo.sector==='Gittata' ? `<div class="stat-line"><span>Coagulazione (Gittata) — coesione</span><span>${coagInfo.coesione}%</span></div><div class="stat-line"><span>Coagulazione (Gittata) — massa trasportabile</span><span>${coagInfo.capacita}%</span></div>` : ''}
     ${physicalInfo ? `<div class="stat-line"><span>Volume</span><span>${physicalInfo.volume} L</span></div><div class="stat-line"><span>Peso</span><span>${physicalInfo.peso} kg</span></div><div class="stat-line"><span>Durezza</span><span>${physicalInfo.durezza} / 10</span></div>` : ''}
     ${cesuraLancio ? `<div class="stat-line"><span style="color:var(--gold);">Cesura — Tempo di lancio dimezzato</span><span></span></div>` : ''}
+    ${tempoRewindInfo ? `<div class="stat-line"><span style="color:var(--gold);">Tempo riavvolto nella carne</span><span>${formatCastingTime(tempoRewindInfo.seconds)}</span></div>` : ''}
     <div class="stat-line"><span>Tempo di lancio</span><span>${formatCastingTime(castingSeconds)}</span></div>
     <div class="stat-line"><span>Dimensioni disuniformi</span><span>${Math.round(sizeImbalance*100)}%</span></div>
     ${allSectorsFilled
