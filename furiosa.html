@@ -93,7 +93,10 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .pg-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:1rem;overflow:hidden;transition:border-color var(--tr);}
 .pg-card:hover{border-color:var(--border-b);}
 .pg-head{display:flex;align-items:center;gap:12px;padding:1rem 1.4rem;cursor:pointer;background:var(--bg-panel);border-bottom:1px solid var(--border);}
-.pg-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:14px;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.08);}
+.pg-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:14px;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.08);background-size:cover;background-position:center;overflow:hidden;}
+.pg-av img{width:100%;height:100%;object-fit:cover;display:block;}
+.pv-portrait{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.1);}
+.pv-head-row{display:flex;align-items:center;gap:14px;}
 .pg-name{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--t1);letter-spacing:.04em;}
 .pg-player{font-size:11px;color:var(--t3);font-style:italic;}
 .pg-arr{font-size:10px;color:var(--t3);margin-left:auto;transition:transform var(--tr);}
@@ -486,7 +489,7 @@ function buildPgCard(p) {
 
   wrap.innerHTML = `
     <div class="pg-head" onclick="this.parentElement.classList.toggle('open')">
-      <div class="pg-av" style="background:${p.colore}22;color:${p.colore};border-color:${p.colore}44">${p.iniziali}</div>
+      <div class="pg-av" style="background:${p.colore}22;color:${p.colore};border-color:${p.colore}44">${p.immagine ? `<img src="${p.immagine}" alt="${p.nome}">` : p.iniziali}</div>
       <div>
         <div class="pg-name">${p.nome}</div>
         <div class="pg-player">${p.giocatore || p.tipo.toUpperCase()}</div>
@@ -539,8 +542,13 @@ function buildPuntoDiVista(key) {
   if (!p) return;
   c.innerHTML = `
     <div class="sec-head">
-      <div class="sec-title" style="color:${p.colore}">${p.nome} <span style="color:var(--t3);font-family:var(--font-b);font-weight:400;font-size:14px">— punto di vista</span></div>
-      <div class="sec-sub">${p.sottotitolo}</div>
+      <div class="pv-head-row">
+        ${p.immagine ? `<img class="pv-portrait" src="${p.immagine}" alt="${p.nome}">` : ''}
+        <div>
+          <div class="sec-title" style="color:${p.colore}">${p.nome} <span style="color:var(--t3);font-family:var(--font-b);font-weight:400;font-size:14px">— punto di vista</span></div>
+          <div class="sec-sub">${p.sottotitolo}</div>
+        </div>
+      </div>
     </div>`;
   (p.sezioni || []).forEach(s => {
     c.appendChild(card(s.label, s.testo));

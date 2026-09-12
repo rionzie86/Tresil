@@ -57,7 +57,7 @@ const FURIOSA_DATA = {
     pg: [
       {
         id: "zoraya", nome: "Zoraya Al Khmani", giocatore: "Federica",
-        colore: "#5a8fd4", iniziali: "Z",
+        colore: "#5a8fd4", iniziali: "Z", immagine: "images/zoraya.webp",
         tag: ["Cantrice", "Ex allieva della Scuola della Fiamma", "Percepisce la verità e le intenzioni", "Compagna: Wvrewvrol"],
         descrizione: "25 anni, del Mare Dorato. Cantrice capace di percepire la verità e le intenzioni nascoste dietro le parole altrui. Non viaggia mai sola: al suo fianco c'è sempre Wvrewvrol, una rana che la accompagna ovunque.",
         loreGiocatori: "Figlia di un pescatore e di una tessitrice di reti che canta mentre lavora, ultima di 5 fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un forte rifiuto delle gerarchie nate dalle \"vie\": non accetta che i Figli della Cenere abbiano fiamme fioche solo perché nati nello scalino più basso della società — un'ingiustizia per cui si è già presa più di una cicatrice sul volto.\n\nMandata dal padre alla Scuola della Fiamma per diventare Jyotir, durante gli anni di studio matura una discordanza crescente con ciò che vede: il Grande Jyotir servito in ogni funzione da un esercito di Figli della Cenere. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro l'ingiustizia delle vie e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Probabile evento scatenante del suo attuale girovagare.\n\nHa visioni ricorrenti nel sonno: sogna una donna coperta di sangue, una corona di spine sulla fronte, che danza in un bosco fatto di alberi che non sono alberi — tronchi di pietra, tetti di tegole al posto delle chiome. La sua danza è passione e furia insieme; intorno, ai margini della luce del fuoco, restano immobili sagome di uomini, animali e ombre, incapaci di avvicinarsi. Quando per un istante gli sguardi si incrociano, quella rabbia la attraversa come una scarica — e si sveglia senza sapere se l'ha solo vista, o se ora le appartiene.",
@@ -66,7 +66,7 @@ const FURIOSA_DATA = {
       },
       {
         id: "nikla", nome: "Nikla Kruv", giocatore: "Alessandra",
-        colore: "#8f72d4", iniziali: "N",
+        colore: "#8f72d4", iniziali: "N", immagine: "images/nikla.webp",
         tag: ["Maga dell'inchiostro", "Sigilli", "Compagno: inchiostro senziente"],
         descrizione: "25 anni, di Ferrath (Ferromarchi). Maga dell'inchiostro: la sua magia passa attraverso i sigilli che disegna e sviluppa personalmente, componendoli in un sistema di tatuaggi. Il suo strumento — e in un certo senso il suo famiglio — è un inchiostro senziente e maledetto: non lancia gli incantesimi in modo diretto, è l'inchiostro stesso a canalizzarne l'effetto.",
         loreGiocatori: "Orfana, cresciuta nelle fogne di Ferrath dopo la morte dei genitori (operai, morti in un incidente sul lavoro quando lei aveva 6 anni). Cresciuta da Mr. Percival Mirr, che la prende in simpatia e la introduce ai segreti delle fogne — la figura paterna più vicina che abbia mai avuto, da cui eredita un forte senso critico verso il mondo.\n\nCarattere curioso e flessibile, ma con una visione del mondo diadica: giusto o sbagliato, nessuna scala di grigio. Una volta guadagnata la sua fiducia, è leale per sempre. Arrampicatrice esperta (ogni superficie delle fogne era \"casa\"); pessima cuoca.\n\nDa mesi cerca una biblioteca nascosta di testi antichi legati alla Volontà magica dei Primi Uomini — l'ha mancata per poco: un gruppo di tagliagole l'ha trovata per prima e sta bruciando i volumi per scaldarsi.",
@@ -75,7 +75,7 @@ const FURIOSA_DATA = {
       },
       {
         id: "karl", nome: "Karl Brenner", giocatore: "Jacopo",
-        colore: "#c4954a", iniziali: "K",
+        colore: "#c4954a", iniziali: "K", immagine: "images/karl.webp",
         tag: ["Paladino", "Plasmare il metallo", "Ex guardia cittadina"],
         descrizione: "26 anni, di Ferrath (Ferromarchi) — come Nikla. Paladino capace di plasmare il metallo a proprio piacimento (accenno di metalbending, coerente con la Volontà Ferromarchi — poco esplorato finora, non essendo di suo particolare interesse), un dono che unisce alla sua fede e alla sua forza in combattimento.",
         loreGiocatori: "Famiglia medio-borghese: padre pragmatico e artigiano del legno/metallo, madre affettuosa ma sottomessa in casa. Svogliato e poco entusiasta della vita, finché non si innamora perdutamente di Claudia, che dà scopo alla sua esistenza. La mette incinta; la famiglia di lei li allontana per motivi economici. Karl si arruola nella guardia cittadina per garantire un reddito solido, e la sposa: nasce la figlia Hetel Brenner — entrambe, Claudia e Hetel, uccise da briganti una sera in cui Karl era di ronda. Ne segue un trigger di depressione e senso di colpa profondo; inizia la storia gravemente malnutrito ed emaciato, molto più magro del suo fisico massiccio abituale.\n\nCarattere paziente e gentile, morale solida ma difficoltà a esprimere emozioni; dopo la tragedia alterna deflessione umorale ad aggressività manifesta. Rudimenti di combattimento con spada e scudo; carpenteria e artigianato di base.",
@@ -84,7 +84,7 @@ const FURIOSA_DATA = {
       },
       {
         id: "rei", nome: "Rei", giocatore: "Giulia",
-        colore: "#c45a5a", iniziali: "R",
+        colore: "#c45a5a", iniziali: "R", immagine: "images/rei.webp",
         tag: ["Assassina", "Anima strappata", "Oltre il velo"],
         descrizione: "Assassina la cui anima è stata strappata: una metà vive ancora nel mondo reale, l'altra resta oltre il velo, in un altrove che nessun altro personaggio può percepire come lei.",
         loreGiocatori: "Il suo aggancio alla campagna comincia in un bar di una zona malfamata: viene avvicinata da un tale, Kaf, che vuole ingaggiarla per inscenare un alterco pubblico con un secondo uomo, Theris — il piano di Kaf è ucciderlo durante la rissa per rubargli un frammento e far ricadere la colpa su di lei. Per motivi personali, l'incarico le riporta alla mente un'avventura vissuta tempo fa con un vecchio gruppo, sotto un \"vecchio maestro\" che le insegnò a uccidere \"come un lavoro, senza volontà\".\n\nGiorno 8 del terzo mese: mentre è con Theris, lui lancia sul tavolo con frustrazione il proprio frammento di vetro. Rei lo tocca — qualcosa in lei si smuove, un moto mai provato prima — e cerca di salvarlo, ma fallisce: Theris muore. Segue uno scontro in cui Rei uccide Kaf, che l'avrebbe uccisa per prima. I due frammenti recuperati si fondono in uno solo in tasca sua, e da quel momento toccarlo non produce più alcun effetto.\n\nGiorno 9: alla locanda Rosa Storta scopre che Whilliam ne è il locandiere. Tre uomini entrano e lo minacciano; Rei, spinta per la prima volta da un vero moto di protezione — non più il \"lavoro senza volontà\" del suo addestramento — si offre di occuparsene e ne colpisce a morte due. I tre, incredibilmente, si rialzano come non-morti (vedi Sessione 3).",
@@ -171,7 +171,7 @@ const FURIOSA_DATA = {
   // sessione — ") e anteporre la nuova come primo elemento dell'array.
   puntiDiVista: {
     rei: {
-      nome: "Rei", giocatore: "Giulia", colore: "#c45a5a", iniziali: "R",
+      nome: "Rei", giocatore: "Giulia", colore: "#c45a5a", iniziali: "R", immagine: "images/rei.webp",
       sottotitolo: "Ciò che Rei sa, ricorda e ha vissuto — la sua verità, non necessariamente quella oggettiva.",
       sezioni: [
         {
@@ -205,7 +205,7 @@ const FURIOSA_DATA = {
       ]
     },
     zoraya: {
-      nome: "Zoraya", giocatore: "Federica", colore: "#5a8fd4", iniziali: "Z",
+      nome: "Zoraya", giocatore: "Federica", colore: "#5a8fd4", iniziali: "Z", immagine: "images/zoraya.webp",
       sottotitolo: "Ciò che Zoraya sa, ricorda e ha vissuto.",
       sezioni: [
         {
@@ -235,7 +235,7 @@ const FURIOSA_DATA = {
       ]
     },
     nikla: {
-      nome: "Nikla", giocatore: "Alessandra", colore: "#8f72d4", iniziali: "N",
+      nome: "Nikla", giocatore: "Alessandra", colore: "#8f72d4", iniziali: "N", immagine: "images/nikla.webp",
       sottotitolo: "Ciò che Nikla sa, ricorda e ha vissuto.",
       sezioni: [
         {
@@ -265,7 +265,7 @@ const FURIOSA_DATA = {
       ]
     },
     karl: {
-      nome: "Karl", giocatore: "Jacopo", colore: "#c4954a", iniziali: "K",
+      nome: "Karl", giocatore: "Jacopo", colore: "#c4954a", iniziali: "K", immagine: "images/karl.webp",
       sottotitolo: "Ciò che Karl sa, ricorda e ha vissuto.",
       sezioni: [
         {
