@@ -160,13 +160,24 @@ const FURIOSA_DATA = {
   // Contenuti soggettivi: non necessariamente la verità oggettiva
   // (quella è in Lore Segreta), ma quello che il personaggio stesso
   // sa, crede, ha sognato o percepito. Ricostruiti da backstory dei
-  // giocatori, diario in-play di Rei e trascrizione Plaud della
-  // Sessione 3. Aggiornato al 4 settembre 2026.
+  // giocatori, diario in-play di Rei e trascrizioni Plaud delle sessioni.
+  // Aggiornato al 12 settembre 2026 (Sessione 4).
+  //
+  // CONVENZIONE per i prossimi aggiornamenti: la prima voce di ogni
+  // sezioni[] di ciascun PG deve essere il recap dell'ULTIMA sessione
+  // giocata, con label "Ultima sessione — <titolo>". Quando si aggiunge
+  // la sessione successiva, rinominare la voce esistente con il titolo
+  // della sessione a cui si riferisce (perde il prefisso "Ultima
+  // sessione — ") e anteporre la nuova come primo elemento dell'array.
   puntiDiVista: {
     rei: {
       nome: "Rei", giocatore: "Giulia", colore: "#c45a5a", iniziali: "R",
       sottotitolo: "Ciò che Rei sa, ricorda e ha vissuto — la sua verità, non necessariamente quella oggettiva.",
       sezioni: [
+        {
+          label: "Ultima sessione — Fonte Verde e la visione di Furiosa",
+          testo: "A Fonte Verde, di notte, il gruppo si imbatte in una processione silenziosa attorno a una casa chiusa e in un rituale in cui un \"Gran Sacerdote\" sgozza una donna. Davanti alla porta compare una donna dalla pelle cadente, un osso visibile allo zigomo, con al collo un anello di metallo incastonato di frammenti rosso sangue — Rei non le dà un nome, non la riconosce. Nello scontro che segue, mentre cerca di evitare — per la solita paura delle convulsioni — di usare le lame sulla gola di chiunque, Rei viene sommersa e ferita più volte; quando Karl strappa l'anello dal collo della donna e questa gli infila la mano nel costato, è lei a reciderle la mano per liberarlo.\n\nSubito dopo, mentre Karl incastra i frammenti nell'anello, tutto si spegne. Rei si ritrova di nuovo nel non-luogo di pietra nera e acqua che già conosce dalle sue visioni precedenti — stavolta con una figura davanti a sé che finalmente ha un volto e un nome. Le dice di essere \"nata da un'ombra, sfruttata\", di lottare per la libertà dalle catene, di \"rinascere completa\"; le chiede di essere ricomposta, promettendole \"la libertà di essere completi\". Rei le chiede chi sia — \"Io sono Furiosa... i miei frammenti ti chiamano\" — e le tende la mano. Rei l'afferra. Un attimo dopo è di nuovo circondata dagli altri, nel caos della scena reale."
+        },
         {
           label: "Il suo aggancio alla storia",
           testo: "Tutto comincia in un bar di una zona malfamata: un tale, Kaf, la avvicina per farle inscenare un alterco pubblico con un secondo uomo, Theris — dietro, un piano che lei ignora fino all'ultimo: Kaf vuole ucciderlo durante la rissa per rubargli un pezzo di vetro e far ricadere la colpa su di lei.\n\nCon Theris — un uomo \"perso ma presente\", pieno di ricordi di una vita di avventure che lei invidia — quel pezzo di vetro lanciato sul tavolo con frustrazione le smuove qualcosa che non aveva mai provato prima. Cerca di salvarlo. Fallisce: Theris muore. Poco dopo uccide anche Kaf, che l'avrebbe uccisa per prima — e dalle sue tasche recupera un secondo frammento, che si fonde con quello di Theris in un solo pezzo. Da quel momento toccarlo non produce più nulla: nessuna visione, nessuno specchio, nessuna \"altra sé\", a differenza di prima — ma la storia continua a risuonarle dentro. Tra gli averi di Theris trova un appunto per un appuntamento alla locanda Rosa Storta, e un nome: William."
@@ -188,10 +199,6 @@ const FURIOSA_DATA = {
           testo: "Scritto di suo pugno (fonte: \"Copia di Terzo mese\", cartella Diario Rei):\n\n\"I suoi occhi… i suoi ricordi… sembrava così perso, eppure così presente […] Avrei voluto provare tutto quel dolore pur di provare qualcosa. E qualcosa in me si è mosso.\"\n\n\"Che senso ha desistere quando è la morte stessa a venirmi a cercare? Quando è l'unica cosa che so davvero fare bene?\"\n\n\"Voglio scegliere perché so cosa volere, desiderare, non perché eseguo ordini o seguo un istinto primario… E credo che tutto questo possa avvicinarmi un po' alla mia verità.\"\n\n\"Non mi sento terribilmente sola da quando sono rinata? […] Perché non dovrei anche io concedermi questa nuova esperienza?\""
         },
         {
-          label: "Fonte Verde e la visione di Furiosa",
-          testo: "A Fonte Verde, di notte, il gruppo si imbatte in una processione silenziosa attorno a una casa chiusa e in un rituale in cui un \"Gran Sacerdote\" sgozza una donna. Davanti alla porta compare una donna dalla pelle cadente, un osso visibile allo zigomo, con al collo un anello di metallo incastonato di frammenti rosso sangue — Rei non le dà un nome, non la riconosce. Nello scontro che segue, mentre cerca di evitare — per la solita paura delle convulsioni — di usare le lame sulla gola di chiunque, Rei viene sommersa e ferita più volte; quando Karl strappa l'anello dal collo della donna e questa gli infila la mano nel costato, è lei a reciderle la mano per liberarlo.\n\nSubito dopo, mentre Karl incastra i frammenti nell'anello, tutto si spegne. Rei si ritrova di nuovo nel non-luogo di pietra nera e acqua che già conosce dalle sue visioni precedenti — stavolta con una figura davanti a sé che finalmente ha un volto e un nome. Le dice di essere \"nata da un'ombra, sfruttata\", di lottare per la libertà dalle catene, di \"rinascere completa\"; le chiede di essere ricomposta, promettendole \"la libertà di essere completi\". Rei le chiede chi sia — \"Io sono Furiosa... i miei frammenti ti chiamano\" — e le tende la mano. Rei l'afferra. Un attimo dopo è di nuovo circondata dagli altri, nel caos della scena reale."
-        },
-        {
           label: "Domande che si porta dietro",
           testo: "Chi o cosa sia davvero la Madre Nera, e se la stia ancora cercando. Chi fosse il suo vecchio maestro, e perché le abbia insegnato a uccidere senza volontà. Cosa significhino le sue visioni — quella voce femminile, quei piedi insanguinati, quella bambina rannicchiata che piange. Perché ora, per la prima volta, sente nascere in sé un moto di protezione verso qualcun altro. E ora, chi è davvero Furiosa, e cosa significa esattamente \"ricomporla\"."
         }
@@ -201,6 +208,10 @@ const FURIOSA_DATA = {
       nome: "Zoraya", giocatore: "Federica", colore: "#5a8fd4", iniziali: "Z",
       sottotitolo: "Ciò che Zoraya sa, ricorda e ha vissuto.",
       sezioni: [
+        {
+          label: "Ultima sessione — Fonte Verde e la visione di Furiosa",
+          testo: "Alla processione notturna di Fonte Verde, Zoraya si oppone alle guardie dagli occhi bianchi mentre la casa prende fuoco attorno a loro; nel caos che segue aiuta Karl, che si è aperto un varco a spintoni per raggiungere la donna sfigurata, restandogli \"a traino\".\n\nQuando tutto si spegne, si ritrova sospesa nella stessa landa vuota del suo sogno ricorrente — e stavolta la donna coperta di sangue la riconosce, come se l'avesse aspettata. Le appoggia la mano enorme sul viso e le parla di non accettare più \"i ciechi\", di far ardere insieme la fiamma della verità, di ricomporla per donare a tutti la libertà di accettare la verità stessa. Zoraya, spiazzata, chiede di lei e dei suoi compagni: sono i frammenti? È questa la chiave? Furiosa si morde le labbra fino a sanguinare invece di risponderle — e la visione si chiude prima che Zoraya abbia una risposta."
+        },
         {
           label: "Chi è e da dove viene",
           testo: "Figlia di un pescatore del Mare Dorato e di una tessitrice di reti che canta mentre lavora, ultima di cinque fratelli. Cresciuta tra i vicoli del porto, impara la lotta dal fratello maggiore e sviluppa presto un rifiuto viscerale delle gerarchie nate dalle \"vie\" — un'ingiustizia per cui porta ancora sul volto piccole cicatrici permanenti.\n\nMandata alla Scuola della Fiamma per diventare Jyotir, matura con gli anni una discordanza crescente con ciò che vede: il Grande Jyotir servito da un esercito di Figli della Cenere per ogni funzione minima. Il giorno del suo esame pubblico, invece di dimostrarsi degna, canta contro quell'ingiustizia e dichiara il Grande Jyotir indegno perfino di accendere un cerino — poi fugge prima che le guardie la accerchino. Da allora è in viaggio, alla ricerca di un luogo — e di persone — capaci di capire quanto la verità sia legata alla giustizia."
@@ -218,10 +229,6 @@ const FURIOSA_DATA = {
           testo: "Non viaggia mai sola: al suo fianco c'è sempre Wvrewvrol, la rana-spiritello che non riesce a mentire e che, a modo suo, la protegge quanto lei protegge lui — è stata la prima persona, dopo la sua fuga dalla Scuola della Fiamma, a non trattare le sue uscite di troppa verità come un difetto da correggere. Percepisce le emozioni e le intenzioni nascoste dietro le parole altrui — dote che usa apertamente, senza vergognarsene, come prova della propria formazione da Jyotir."
         },
         {
-          label: "Fonte Verde e la visione di Furiosa",
-          testo: "Alla processione notturna di Fonte Verde, Zoraya si oppone alle guardie dagli occhi bianchi mentre la casa prende fuoco attorno a loro; nel caos che segue aiuta Karl, che si è aperto un varco a spintoni per raggiungere la donna sfigurata, restandogli \"a traino\".\n\nQuando tutto si spegne, si ritrova sospesa nella stessa landa vuota del suo sogno ricorrente — e stavolta la donna coperta di sangue la riconosce, come se l'avesse aspettata. Le appoggia la mano enorme sul viso e le parla di non accettare più \"i ciechi\", di far ardere insieme la fiamma della verità, di ricomporla per donare a tutti la libertà di accettare la verità stessa. Zoraya, spiazzata, chiede di lei e dei suoi compagni: sono i frammenti? È questa la chiave? Furiosa si morde le labbra fino a sanguinare invece di risponderle — e la visione si chiude prima che Zoraya abbia una risposta."
-        },
-        {
           label: "Domande che si porta dietro",
           testo: "Chi sia davvero la donna del suo sogno, e perché quella furia sembri toccarla personalmente ogni volta. Cosa significhi essere stata l'unica, quella notte, capace di percepire con certezza che Whilliam non mentiva. Se valga la pena restare legata a un gruppo che ha appena visto uccidere tre persone — e uccidere di nuovo, forse, prima che il viaggio verso Pozzprofond sia finito. E ora: la donna del suo sogno era davvero Furiosa? Perché non le ha risposto quando ha chiesto dei frammenti e della chiave?"
         }
@@ -231,6 +238,10 @@ const FURIOSA_DATA = {
       nome: "Nikla", giocatore: "Alessandra", colore: "#8f72d4", iniziali: "N",
       sottotitolo: "Ciò che Nikla sa, ricorda e ha vissuto.",
       sezioni: [
+        {
+          label: "Ultima sessione — Fonte Verde e la visione di Furiosa",
+          testo: "Durante lo scontro nella casa in fiamme a Fonte Verde, Nikla tenta un'evocazione d'ombra — i tatuaggi si muovono, l'inchiostro forma un cerchio sul corpo del sacerdote a terra, una figura d'ombra lo assale prima di sbriciolarsi in polvere. Mentre sta ultimando l'evocazione viene colpita da un pugnale al petto e crolla.\n\nUn dolore al petto, poi si ritrova sospesa in una piana d'acqua sotto un cielo stellato: Furiosa le parla con voce rotta, \"di carne e sangue\", dicendole che dopo che le Sei Madri sono state escluse, pochi hanno ancora accesso al \"codice sorgente\" — e che ricomponendola potrebbe aiutarla a plasmare la realtà secondo la propria volontà, ottenendo in dono tutta la conoscenza perduta. Mentre parla, qualcosa la tira via da dietro — un velo, una bocca piena di denti che sembra succhiare via le stelle stesse. Furiosa le afferra le spalle un istante: \"Rapiti! Non arrenderti! Rifiutalo!\" — poi la visione si interrompe di colpo."
+        },
         {
           label: "Chi è e da dove viene",
           testo: "Orfana, cresciuta nelle fogne di Ferrath dopo la morte dei genitori, operai scomparsi in un incidente sul lavoro quando lei aveva 6 anni. Cresciuta da Mr. Percival Mirr, la figura paterna più vicina che abbia mai avuto, da cui eredita un forte senso critico verso il mondo. Vede tutto in bianco e nero, giusto o sbagliato, senza scale di grigio — ma una volta guadagnata la sua fiducia, è leale per sempre.\n\nDa mesi cerca una biblioteca nascosta di testi antichi legati alla Volontà magica dei Primi Uomini — l'ha mancata per poco: dei tagliagole l'hanno trovata prima di lei e stanno bruciando i volumi per scaldarsi. Il suo strumento — e in un certo senso il suo famiglio — è un inchiostro senziente e maledetto, che canalizza la sua magia attraverso sigilli tatuati."
@@ -248,10 +259,6 @@ const FURIOSA_DATA = {
           testo: "Ha già un legame non del tutto chiarito con un fatato: il suo inchiostro senziente, forse un antico strumento del Mondo dei Sogni Condiviso. La sua visione del mondo, rigidamente diadica, viene messa alla prova per la prima volta da quello che ha visto quella notte — non sa più distinguere con la stessa sicurezza di prima cosa sia giusto e cosa sbagliato. Ha una sorella, mai nominata altrove nei suoi racconti, che le ha regalato uno dei due frammenti che ora possiede."
         },
         {
-          label: "Fonte Verde e la visione di Furiosa",
-          testo: "Durante lo scontro nella casa in fiamme a Fonte Verde, Nikla tenta un'evocazione d'ombra — i tatuaggi si muovono, l'inchiostro forma un cerchio sul corpo del sacerdote a terra, una figura d'ombra lo assale prima di sbriciolarsi in polvere. Mentre sta ultimando l'evocazione viene colpita da un pugnale al petto e crolla.\n\nUn dolore al petto, poi si ritrova sospesa in una piana d'acqua sotto un cielo stellato: Furiosa le parla con voce rotta, \"di carne e sangue\", dicendole che dopo che le Sei Madri sono state escluse, pochi hanno ancora accesso al \"codice sorgente\" — e che ricomponendola potrebbe aiutarla a plasmare la realtà secondo la propria volontà, ottenendo in dono tutta la conoscenza perduta. Mentre parla, qualcosa la tira via da dietro — un velo, una bocca piena di denti che sembra succhiare via le stelle stesse. Furiosa le afferra le spalle un istante: \"Rapiti! Non arrenderti! Rifiutalo!\" — poi la visione si interrompe di colpo."
-        },
-        {
           label: "Domande che si porta dietro",
           testo: "Perché ha sentito il bisogno di prelevare un dito e una mano da un cadavere. Cosa significhino davvero i simboli sui frammenti, e perché toccarli le mostri delle visioni. Chi sia sua sorella, e perché le abbia regalato proprio quel pezzo di vetro. Perché, quella notte, ha pianto senza riuscire a spiegarsi il motivo. E ora: cos'era quella cosa che la tirava via durante la visione di Furiosa, e cosa intendeva Furiosa per \"codice sorgente\"?"
         }
@@ -261,6 +268,10 @@ const FURIOSA_DATA = {
       nome: "Karl", giocatore: "Jacopo", colore: "#c4954a", iniziali: "K",
       sottotitolo: "Ciò che Karl sa, ricorda e ha vissuto.",
       sezioni: [
+        {
+          label: "Ultima sessione — Fonte Verde e la visione di Furiosa",
+          testo: "A Fonte Verde, Karl è il primo a capire che bisogna \"disinnescare\" il Gran Sacerdote e la donna sfigurata al suo fianco — i suoi punti rossi lo guidano dritto a loro. Si apre un varco a spintoni e coltellate, con Zoraya al seguito, e strappa dal collo della donna l'anello di metallo con i frammenti rosso sangue incastonati; lei gli infila la mano nel costato spezzandogli due costole, prima che Rei le reciso la mano e lo liberi.\n\nCon l'anello recuperato, urla a Rei di dargli il proprio frammento e cerca di raggiungere anche Nikla per prendere il suo — viene colpito alla schiena mentre ci prova. Incastra comunque i frammenti che ha: tutto si spegne, luce e suono, tranne che per lui.\n\nSi ritrova in un buio su una piana d'acqua e pietra nera. Una casa in fiamme; voci — Claudia, sua figlia — che chiamano da dentro; nella scarsella, una chiave che non ricordava di avere quella notte. Poi una figura femminile alta come tre uomini, coperta di sangue, insieme compassionevole e furiosa: Furiosa. Gli dice che ciò che è stato è stato, che loro — le sue madri — volevano solo vivere; gli promette che insieme potranno costruire un mondo dove sia impossibile uccidere chi desidera aggrapparsi alla vita, e gli chiede di ergersi a suo campione. Gli offre un dono — \"dieci unghie, dieci vite puoi ancorare al corpo\" — mentre sente il guanto d'arme fondersi con la sua mano, questa volta per sempre. \"Ricomponetemi. Le mie parti vi chiamano\", gli dice per ultimo."
+        },
         {
           label: "Chi è e da dove viene",
           testo: "Famiglia medio-borghese di Ferrath: padre pragmatico e artigiano, madre affettuosa ma sottomessa in casa. Svogliato e poco entusiasta della vita, finché non si innamora perdutamente di \"X\", che dà scopo alla sua esistenza — la mette incinta, la famiglia di lei li allontana per motivi economici, e Karl si arruola nella guardia cittadina per garantire un reddito solido.\n\nSposa Claudia Brenner, hanno una figlia, Hetel — entrambe uccise da briganti una sera in cui lui era di ronda. Da allora alterna deflessione umorale ad aggressività manifesta, e porta ancora addosso i segni di una malnutrizione grave, come se il corpo non si fosse mai davvero ripreso da quella notte."
@@ -276,10 +287,6 @@ const FURIOSA_DATA = {
         {
           label: "Un ricordo che riaffiora",
           testo: "La mattina dopo lo scontro, ancora confuso e provato, gli riaffiora — o qualcuno gli fa notare — un ricordo di sé stesso che protegge una bambina da un uomo che voleva farle del male: un dettaglio del suo passato che nemmeno lui aveva mai raccontato prima, e che non sa ancora bene come conciliare con quello che ricorda della propria vita a Ferrath."
-        },
-        {
-          label: "Fonte Verde e la visione di Furiosa",
-          testo: "A Fonte Verde, Karl è il primo a capire che bisogna \"disinnescare\" il Gran Sacerdote e la donna sfigurata al suo fianco — i suoi punti rossi lo guidano dritto a loro. Si apre un varco a spintoni e coltellate, con Zoraya al seguito, e strappa dal collo della donna l'anello di metallo con i frammenti rosso sangue incastonati; lei gli infila la mano nel costato spezzandogli due costole, prima che Rei le reciso la mano e lo liberi.\n\nCon l'anello recuperato, urla a Rei di dargli il proprio frammento e cerca di raggiungere anche Nikla per prendere il suo — viene colpito alla schiena mentre ci prova. Incastra comunque i frammenti che ha: tutto si spegne, luce e suono, tranne che per lui.\n\nSi ritrova in un buio su una piana d'acqua e pietra nera. Una casa in fiamme; voci — Claudia, sua figlia — che chiamano da dentro; nella scarsella, una chiave che non ricordava di avere quella notte. Poi una figura femminile alta come tre uomini, coperta di sangue, insieme compassionevole e furiosa: Furiosa. Gli dice che ciò che è stato è stato, che loro — le sue madri — volevano solo vivere; gli promette che insieme potranno costruire un mondo dove sia impossibile uccidere chi desidera aggrapparsi alla vita, e gli chiede di ergersi a suo campione. Gli offre un dono — \"dieci unghie, dieci vite puoi ancorare al corpo\" — mentre sente il guanto d'arme fondersi con la sua mano, questa volta per sempre. \"Ricomponetemi. Le mie parti vi chiamano\", gli dice per ultimo."
         },
         {
           label: "Domande che si porta dietro",
@@ -408,12 +415,12 @@ const FURIOSA_DATA = {
           testo: "Trascrizione automatica (Plaud) della seduta del 11 settembre 2026. Diversi speaker restano incerti nella trascrizione originale (in particolare nelle Scene 0 e 5-7); il file completo è archiviato in Furiosa/Trascrizioni/Sessione 4 — 11 settembre 2026.md."
         },
         {
-          titolo: "Nota DM — chiarimenti raccolti dopo la seduta",
-          testo: "La direzione verso Ados/Fonte Verde è stata data dal fratello di Berer (il padre del ragazzo sedicenne trovato in casa), non da un fantomatico \"padre di Berer\" (Berer non ha genitori in scena). La donna sfigurata è, nella verità di Lore Segreta, Lilglia — non ancora rivelato ai PG. La frase di Furiosa a Nikla su \"Sei Madri escluse\" e \"codice sorgente\" è stata scelta come retorica di Furiosa, non un indizio letterale sul Progettatore (vedi Lore Segreta). La forza che tentava di portare via Nikla durante la sua visione è la Morte stessa: Nikla era in quel momento gravemente ferita/morente in scena (colpita da un pugnale al petto), non una nuova entità narrativa a sé stante."
+          titolo: "Nota DM — correzione di trascrizione",
+          testo: "La direzione verso Ados/Fonte Verde è stata data dal fratello di Berer (il padre del ragazzo sedicenne trovato in casa), non da un fantomatico \"padre di Berer\" (Berer non ha genitori in scena)."
         },
         {
           titolo: "Nota DM — misteri aperti emersi in questa sessione",
-          testo: "Cosa ne è stato di Ados e del Gran Sacerdote — nessuno dei due si è mostrato in scena. Se Lilglia sia sopravvissuta all'incendio nonostante la mano recisa. Cosa significhi esattamente la chiave nella scarsella nella visione di Karl (dettaglio assente dalla sua scheda originale). Se e come i quattro PG risponderanno alle rispettive offerte di Furiosa — nessuno ha ancora accettato o rifiutato in scena."
+          testo: "Chi sia davvero la donna sfigurata del rituale, e se sia sopravvissuta all'incendio nonostante la mano recisa. Cosa ne è stato di Ados e del Gran Sacerdote — nessuno dei due si è mostrato in scena. Cosa significhi esattamente la chiave nella scarsella nella visione di Karl (dettaglio assente dalla sua scheda originale). Se e come i quattro PG risponderanno alle rispettive offerte di Furiosa — nessuno ha ancora accettato o rifiutato in scena. (Le risposte che il DM già conosce per i primi due punti sono in Lore Segreta, non qui: questa pagina resta visibile anche in modalità Giocatore.)"
         }
       ]
     }
