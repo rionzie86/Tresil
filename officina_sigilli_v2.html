@@ -41,17 +41,35 @@
   #esitoPanel{padding-top:36px;}
   #fullscreenBtn{position:fixed; bottom:20px; right:20px; z-index:210; padding:10px 14px; border:1px solid var(--line-b);
     border-radius:4px; background:var(--bg-card); color:var(--ink-soft); font-family:'Cinzel',serif; font-size:14px;
-    cursor:pointer;}
+    cursor:pointer; transition:bottom .18s ease;}
   #fullscreenBtn:hover{color:var(--gold); border-color:var(--gold);}
+  body.chip-selected #fullscreenBtn{bottom:78px;}
   body.pseudo-fs{overflow:hidden;}
   body.pseudo-fs header, body.pseudo-fs #leftPanel, body.pseudo-fs #esitoPanel{display:none;}
   body.pseudo-fs .layout{display:block; max-width:none; padding:0; margin:0; height:100vh;}
   body.pseudo-fs .canvas-wrap{position:fixed; inset:0; z-index:200; margin:0; border-radius:0; height:100vh;
     padding:12px; overflow:auto; background:var(--bg-card);}
   body.pseudo-fs #sigilScroll{max-height:calc(100vh - 60px);}
+
+  /* ── Controlli tocco per il glifo selezionato (dimensione/rotazione/eliminazione) ── */
+  #chipControls{position:fixed; left:0; right:0; bottom:0; z-index:215; display:none;
+    background:var(--bg-panel); border-top:1px solid var(--line-b); padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));
+    box-shadow:0 -2px 14px rgba(0,0,0,0.4);}
+  #chipControls.open{display:block;}
+  #chipControlsLabel{font-family:'Cinzel',serif; font-size:11px; letter-spacing:.04em; color:var(--gold);
+    text-align:center; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .cc-row{display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;}
+  .cc-btn{width:42px; height:42px; border:1px solid var(--line-b); border-radius:4px; background:var(--bg-card);
+    color:var(--ink-soft); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    line-height:1; flex:0 0 auto;}
+  .cc-btn:hover{color:var(--gold); border-color:var(--gold);}
+  .cc-btn:disabled{opacity:.3; cursor:default;}
+  .cc-btn:disabled:hover{color:var(--ink-soft); border-color:var(--line-b);}
+  .cc-btn.cc-delete{color:var(--red); border-color:var(--red);}
+  .cc-btn.cc-close{color:var(--ink-mute);}
   .esito-summary-line{display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dotted var(--line); font-size:14px;}
   .esito-summary-desc{margin-top:10px; font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;}
-  .panel{background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:18px 18px;}
+  .panel{background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:18px 18px; min-width:0;}
   .panel h2{font-size:13px; margin:0 0 12px; color:var(--gold); text-transform:uppercase; letter-spacing:0.1em;
     border-bottom:1px solid var(--line); padding-bottom:8px; font-weight:600;}
   select{width:100%; font-family:'Crimson Pro', Georgia, serif; font-size:15px; padding:6px 8px; margin-bottom:10px;
@@ -73,14 +91,14 @@
   .glyph-btn.school-primary svg{color:var(--bg);}
   .glyph-btn.school-secondary{background:var(--purple); color:var(--ink); border-color:var(--purple);}
   .glyph-btn.school-secondary svg{color:var(--ink);}
-  .canvas-wrap{display:flex; flex-direction:column; align-items:center;}
+  .canvas-wrap{display:flex; flex-direction:column; align-items:center; min-width:0;}
   .zoom-row{width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;}
   .zoom-controls{display:flex; align-items:center; gap:6px;}
   .zoom-btn{width:26px; height:26px; border:1px solid var(--line-b); border-radius:3px; background:var(--bg);
     color:var(--ink-soft); font-size:15px; cursor:pointer; line-height:1;}
   .zoom-btn:hover{color:var(--gold); border-color:var(--gold);}
   #zoomLabel{font-size:12px; color:var(--ink-mute); min-width:38px; text-align:center;}
-  #sigilScroll{width:100%; max-height:70vh; overflow:auto; display:flex; justify-content:center;
+  #sigilScroll{width:100%; min-width:0; max-height:70vh; overflow:auto; display:flex; justify-content:center;
     scrollbar-color:var(--line-b) var(--bg);}
   #sigilScroll::-webkit-scrollbar{width:10px; height:10px;}
   #sigilScroll::-webkit-scrollbar-track{background:var(--bg);}
@@ -241,6 +259,18 @@
 
 <button id="fullscreenBtn" title="Schermo intero">⛶</button>
 
+<div id="chipControls">
+  <div id="chipControlsLabel">—</div>
+  <div class="cc-row">
+    <button class="cc-btn" id="ccSizeDown" title="Rimpicciolisci">−</button>
+    <button class="cc-btn" id="ccSizeUp" title="Ingrandisci">+</button>
+    <button class="cc-btn" id="ccRotDown" title="Ruota in senso antiorario">⟲</button>
+    <button class="cc-btn" id="ccRotUp" title="Ruota in senso orario">⟳</button>
+    <button class="cc-btn cc-delete" id="ccDelete" title="Elimina">🗑</button>
+    <button class="cc-btn cc-close" id="ccClose" title="Deseleziona">✕</button>
+  </div>
+</div>
+
 <script>
 // ── MODALITÀ DM ────────────────────────────────────────────────────────
 const ADMIN_PW = 'Tresil2025';
@@ -335,12 +365,26 @@ document.addEventListener('fullscreenchange', ()=>{
 
 let zoomLevel=1.25;
 const ZOOM_BASE_W=400, ZOOM_BASE_H=356;
+// Su schermi stretti il sigillo, alla dimensione richiesta dallo zoom corrente, può
+// essere più largo dello schermo stesso: senza questo limite lo spicchio andrebbe
+// tagliato fuori dalla pagina invece di rimpicciolirsi per stare nello schermo.
+// Qui limitiamo la larghezza effettiva a quella disponibile nel contenitore, così il
+// sigillo si adatta automaticamente; lo zoom "+"/"−" resta comunque utilizzabile per
+// ingrandire oltre lo schermo (a quel punto si scorre con un dito, come previsto).
 function applyZoom(){
   const svgEl=document.getElementById('sigilSvg');
-  svgEl.style.width=(ZOOM_BASE_W*zoomLevel)+'px';
-  svgEl.style.height=(ZOOM_BASE_H*zoomLevel)+'px';
+  const scrollEl=document.getElementById('sigilScroll');
+  let w=ZOOM_BASE_W*zoomLevel, h=ZOOM_BASE_H*zoomLevel;
+  const available=scrollEl.clientWidth;
+  if(available>0 && w>available && zoomLevel<=1.25){
+    const scale=available/w;
+    w=available; h=h*scale;
+  }
+  svgEl.style.width=w+'px';
+  svgEl.style.height=h+'px';
   document.getElementById('zoomLabel').textContent=Math.round(zoomLevel*100)+'%';
 }
+window.addEventListener('resize', ()=>{ applyZoom(); });
 document.getElementById('zoomInBtn').addEventListener('click', ()=>{
   zoomLevel=Math.min(3, Math.round((zoomLevel+0.25)*100)/100);
   applyZoom();
@@ -809,6 +853,7 @@ let glyphIdCounter=0;
 let currentCatalogValue='';
 
 function loadDevEntry(idx){
+  clearSelection();
   const c=CATALOG_DEV[idx];
   currentCatalogLabel={name:c.name, desc:c.desc, maxRange:c.maxRange, maxDiameter:c.maxDiameter, dynamicElemental:c.dynamicElemental,
     baseVolumeL:c.baseVolumeL, basePesoKg:c.basePesoKg, baseDurezza:c.baseDurezza, forcedDispendio:c.forcedDispendio, forcedZoneIndex:c.forcedZoneIndex};
@@ -828,6 +873,7 @@ function loadDevEntry(idx){
 }
 
 function loadImportedEntry(idx){
+  clearSelection();
   const data=importedCatalog[idx];
   if(!data) return;
   currentCatalogLabel={name:data.name||'Sigillo importato', desc:'Sigillo importato da un file inviato da un giocatore.'};
@@ -865,6 +911,7 @@ catalogSelect.addEventListener('change', ()=>{
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{
+  clearSelection();
   if(catalogSelect.value===""){
     placed=[]; conjunctions=[]; energies=[];
     render();
@@ -955,6 +1002,7 @@ document.getElementById('loadFileInput').addEventListener('change', evt=>{
       currentCatalogLabel=null;
       currentCatalogOriginal=null;
       catalogSelect.value="";
+      clearSelection();
       render();
     } catch(err){
       alert("File non valido o corrotto.");
@@ -1025,13 +1073,15 @@ function svgPointFromEvent(evt){
   return pt.matrixTransform(svg.getScreenCTM().inverse());
 }
 
-function angleFromClick(evt){
-  const loc=svgPointFromEvent(evt);
+function angleFromPoint(loc){
   const dx=loc.x-cx, dy=loc.y-cy;
   const dist=Math.sqrt(dx*dx+dy*dy);
   let angle=(Math.atan2(dx,-dy)*180/Math.PI+360)%360;
   const percent=Math.max(0, Math.min(100, Math.round(((dist-coreR)/(outerR-coreR))*100)));
   return {angle, dist, percent};
+}
+function angleFromClick(evt){
+  return angleFromPoint(svgPointFromEvent(evt));
 }
 
 // ── Selezione di glifi sovrapposti ──────────────────────────────────────
@@ -1083,6 +1133,81 @@ function pushEnergy(key, angle, percent, self){
 
 let dragIdx=null, dragKind=null;
 
+// ── Selezione persistente (tocco) ───────────────────────────────────────
+// Senza mouse non esistono rotellina/tasto destro: un glifo toccato va quindi
+// selezionato in modo visibile, e i pulsanti del pannello #chipControls
+// permettono di ingrandirlo/rimpicciolirlo, ruotarlo (solo le congiunzioni
+// hanno una rotazione propria) o eliminarlo. La selezione è tracciata per
+// _id (non per indice), così resta valida anche se l'array viene modificato.
+let selected=null; // {kind:'glyph'|'energy'|'conj', id}
+
+function chipArray(kind){
+  return kind==='energy' ? energies : kind==='conj' ? conjunctions : placed;
+}
+function selectChip(kind, idx){
+  const obj=chipArray(kind)[idx];
+  selected = obj ? {kind, id:obj._id} : null;
+}
+function resolveSelected(){
+  if(!selected) return null;
+  const arr=chipArray(selected.kind);
+  const idx=arr.findIndex(o=>o._id===selected.id);
+  if(idx===-1){ selected=null; return null; }
+  return {kind:selected.kind, idx, obj:arr[idx]};
+}
+function clearSelection(){ selected=null; }
+
+const CHIP_LABELS = {
+  glyph:(obj)=>GLYPHS[obj.key].label,
+  energy:(obj)=>obj.key,
+  conj:(obj)=>CONJUNCTIONS[obj.key].label
+};
+
+function updateChipControlsUI(selInfo){
+  const panel=document.getElementById('chipControls');
+  if(!selInfo){
+    panel.classList.remove('open');
+    document.body.classList.remove('chip-selected');
+    return;
+  }
+  panel.classList.add('open');
+  document.body.classList.add('chip-selected');
+  document.getElementById('chipControlsLabel').textContent = CHIP_LABELS[selInfo.kind](selInfo.obj);
+  const isConj = selInfo.kind==='conj';
+  document.getElementById('ccRotDown').disabled = !isConj;
+  document.getElementById('ccRotUp').disabled = !isConj;
+}
+
+function adjustSelectedSize(dir){
+  const sel=resolveSelected(); if(!sel) return;
+  if(sel.kind==='conj'){
+    const maxSize = sel.obj.key==='nodo' ? 7 : 2.5;
+    sel.obj.size = Math.max(0.5, Math.min(maxSize, Math.round(((sel.obj.size||1)+dir*0.1)*10)/10));
+  } else {
+    const cur=sel.obj.size||1;
+    sel.obj.size = Math.max(0.5, Math.min(2, Math.round((cur+dir*0.1)*10)/10));
+  }
+  render();
+}
+function rotateSelected(dir){
+  const sel=resolveSelected(); if(!sel || sel.kind!=='conj') return;
+  sel.obj.rotation=((sel.obj.rotation + dir*5)%360+360)%360;
+  render();
+}
+function deleteSelected(){
+  const sel=resolveSelected(); if(!sel) return;
+  chipArray(sel.kind).splice(sel.idx,1);
+  clearSelection();
+  render();
+}
+
+document.getElementById('ccSizeDown').addEventListener('click', ()=>adjustSelectedSize(-1));
+document.getElementById('ccSizeUp').addEventListener('click', ()=>adjustSelectedSize(1));
+document.getElementById('ccRotDown').addEventListener('click', ()=>rotateSelected(-1));
+document.getElementById('ccRotUp').addEventListener('click', ()=>rotateSelected(1));
+document.getElementById('ccDelete').addEventListener('click', deleteSelected);
+document.getElementById('ccClose').addEventListener('click', ()=>{ clearSelection(); render(); });
+
 svg.addEventListener('mousedown', evt=>{
   if(evt.button!==0) return;
   const chip=chipAt(svgPointFromEvent(evt));
@@ -1093,8 +1218,7 @@ svg.addEventListener('mousedown', evt=>{
   evt.preventDefault();
 });
 
-svg.addEventListener('mousemove', evt=>{
-  if(dragIdx===null) return;
+function performDragMove(evt){
   const {angle, dist, percent}=angleFromClick(evt);
   if(dragKind==='conj'){
     const c=conjunctions[dragIdx];
@@ -1122,6 +1246,11 @@ svg.addEventListener('mousemove', evt=>{
   if(!(self)) p.sector=Math.floor(angle/72);
   else p.sector=1;
   render();
+}
+
+svg.addEventListener('mousemove', evt=>{
+  if(dragIdx===null) return;
+  performDragMove(evt);
 });
 
 window.addEventListener('mouseup', ()=>{ dragIdx=null; dragKind=null; });
@@ -1131,15 +1260,21 @@ svg.addEventListener('contextmenu', evt=>{
   const chip=chipAt(svgPointFromEvent(evt));
   if(!chip) return;
   const {idx, kind}=chip;
+  if(kind===selected?.kind && chipArray(kind)[idx]?._id===selected?.id) clearSelection();
   if(kind==='conj'){ conjunctions.splice(idx,1); }
   else if(kind==='energy'){ energies.splice(idx,1); }
   else { placed.splice(idx,1); }
   render();
 });
 
-svg.addEventListener('click', evt=>{
-  const loc=svgPointFromEvent(evt);
-  if(chipAt(loc)) return;
+function handleCanvasTap(loc){
+  const chip=chipAt(loc);
+  if(chip){
+    selectChip(chip.kind, chip.idx);
+    render();
+    return;
+  }
+  if(selected){ clearSelection(); render(); }
 
   if(loc.y<130){
     if(!armed) return;
@@ -1163,7 +1298,7 @@ svg.addEventListener('click', evt=>{
     return;
   }
 
-  const {angle, dist, percent}=angleFromClick(evt);
+  const {angle, dist, percent}=angleFromPoint(loc);
   if(dist>PLACEMENT_OUTER) return;
   if(armed && armed.startsWith('conj:')){
     const key=armed.slice(5);
@@ -1184,6 +1319,10 @@ svg.addEventListener('click', evt=>{
   const sector = self ? 1 : Math.floor(angle/72);
   placed.push({sector, key:armed, angle, percent, size:1, self, _id:glyphIdCounter++});
   render();
+}
+
+svg.addEventListener('click', evt=>{
+  handleCanvasTap(svgPointFromEvent(evt));
 });
 
 svg.addEventListener('wheel', evt=>{
@@ -1214,6 +1353,47 @@ svg.addEventListener('wheel', evt=>{
   const cur = placed[idx].size||1;
   placed[idx].size = Math.max(0.5, Math.min(2, Math.round((cur+delta)*10)/10));
   render();
+}, {passive:false});
+
+// ── Interazione a tocco (smartphone/tablet) ─────────────────────────────
+// Non esiste rotellina né tasto destro: toccare un glifo lo seleziona subito
+// (evidenziato nel disegno + pannello controlli in basso) e permette anche di
+// trascinarlo; toccare l'area vuota con un glifo "armato" lo posa, come un click.
+let touchStartClientPt=null;
+
+svg.addEventListener('touchstart', evt=>{
+  if(evt.touches.length!==1) return;
+  const t=evt.touches[0];
+  touchStartClientPt={x:t.clientX, y:t.clientY};
+  const loc=svgPointFromEvent(t);
+  const chip=chipAt(loc);
+  if(chip){
+    const {idx, kind}=chip;
+    if(!(kind==='glyph' && placed[idx].sector===-1)){
+      dragIdx=idx; dragKind=kind;
+    }
+    selectChip(kind, idx);
+    render();
+    evt.preventDefault();
+  }
+}, {passive:false});
+
+svg.addEventListener('touchmove', evt=>{
+  if(dragIdx===null) return;
+  evt.preventDefault();
+  performDragMove(evt.touches[0]);
+}, {passive:false});
+
+svg.addEventListener('touchend', evt=>{
+  const wasDragging = dragIdx!==null;
+  dragIdx=null; dragKind=null;
+  if(wasDragging) return;
+  const t=evt.changedTouches[0];
+  if(!t || !touchStartClientPt) return;
+  const moved=Math.hypot(t.clientX-touchStartClientPt.x, t.clientY-touchStartClientPt.y);
+  if(moved>12) return; // gesto di scorrimento, non un tocco
+  evt.preventDefault();
+  handleCanvasTap(svgPointFromEvent(t));
 }, {passive:false});
 
 const OUTER_DIAM = outerR*2;
@@ -1516,7 +1696,14 @@ function render(){
     svgStr+=`<circle cx="${bx}" cy="${by}" r="${br}" fill="none" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="3 3"/>`;
   });
 
+  const selInfo=resolveSelected();
+  if(selInfo){
+    const {pos, r}=chipGeometry(selInfo.kind, selInfo.idx);
+    svgStr+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r+6}" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-dasharray="4 3" opacity="0.9"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.4s" repeatCount="indefinite"/></circle>`;
+  }
+
   svg.innerHTML=svgStr;
+  updateChipControlsUI(selInfo);
 
   computeAndDisplay(a,b,wRes);
 }
@@ -2030,6 +2217,7 @@ function updateModeUI(){
   catalogSelect.value='';
   loadFromSelectValue('');
   placed=[]; conjunctions=[]; energies=[];
+  clearSelection();
   render();
 }
 
