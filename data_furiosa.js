@@ -414,7 +414,7 @@ const FURIOSA_DATA = {
       approfondimenti: [
         {
           titolo: "Fonte",
-          testo: "Trascrizione automatica (Plaud) della seduta. Diversi speaker restano incerti nella trascrizione originale (in particolare nelle Scene 0 e 5-7); il file completo è archiviato in Furiosa/Trascrizioni/Sessione 4.md."
+          testo: "Trascrizione automatica (Plaud) della seduta. Diversi speaker restano incerti nella trascrizione originale (in particolare nelle Scene 0 e 5-7). Nota (15 settembre 2026): a differenza della Sessione 3, il testo grezzo di questa trascrizione non risulta archiviato in Furiosa/Trascrizioni/ — se il file originale di Plaud è ancora recuperabile, andrebbe salvato lì come Sessione 4.md."
         },
         {
           titolo: "Nota DM — correzione di trascrizione",
