@@ -72,6 +72,20 @@
   .panel{background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:18px 18px; min-width:0;}
   .panel h2{font-size:13px; margin:0 0 12px; color:var(--gold); text-transform:uppercase; letter-spacing:0.1em;
     border-bottom:1px solid var(--line); padding-bottom:8px; font-weight:600;}
+
+  /* ── Sezioni del menu Catalogo (a tendina su mobile) ── */
+  .menu-section{margin-top:18px;}
+  .menu-section:first-child{margin-top:0;}
+  .section-head{width:100%; display:flex; align-items:center; justify-content:space-between; gap:8px;
+    background:none; border:none; border-bottom:1px solid var(--line); margin:0 0 12px; padding:0 0 8px;
+    cursor:pointer; font-family:'Cinzel',serif; font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; text-align:left;}
+  .section-arrow{font-size:10px; color:var(--ink-soft); transition:transform .2s ease; flex:0 0 auto;}
+  .menu-section.open .section-arrow{transform:rotate(180deg);}
+  @media (max-width:1000px){
+    .section-body{display:none;}
+    .menu-section.open .section-body{display:block;}
+  }
   select{width:100%; font-family:'Crimson Pro', Georgia, serif; font-size:15px; padding:6px 8px; margin-bottom:10px;
     border:1px solid var(--line-b); border-radius:3px; background:var(--bg); color:var(--ink); outline:none;}
   .glyph-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;}
@@ -187,48 +201,70 @@
     <div class="panel-toggle" id="leftToggle">◂</div>
     <div id="leftDecoration" style="display:none;"></div>
     <div id="leftPanelBody">
-    <h2>Catalogo</h2>
-    <select id="catalogSelect"></select>
-    <div class="hint" style="margin-top:2px;">Carica un incantesimo conosciuto, poi modifica liberamente i glifi per vedere come cambia l'esito.</div>
-    <button class="tool-btn" id="resetBtn">↺ Ripristina disposizione iniziale</button>
-    <div class="tool-row">
-      <button class="tool-btn" id="saveBtn">⭳ Salva su file</button>
-      <button class="tool-btn" id="loadBtn">⭱ Carica da file</button>
-    </div>
-    <input type="file" id="loadFileInput" accept="application/json" style="display:none;">
-    <div class="tool-row">
-      <a class="tool-btn" id="manualBtn" href="manuale_officina_sigilli.html" target="_blank" rel="noopener" style="text-align:center; text-decoration:none; display:block;">📖 Manuale</a>
-    </div>
 
-    <div class="import-row" id="importRow">
-      <button class="tool-btn" id="importBtn">✦ Importa nel catalogo DM</button>
-      <button class="tool-btn" id="removeImportedBtn" style="display:none;">🗑 Rimuovi sigillo importato</button>
-      <input type="file" id="importFileInput" accept="application/json" style="display:none;">
-      <div class="hint" style="margin-top:2px;">Carica il file .json inviato da un giocatore: verrà salvato in modo permanente nel catalogo "Sigilli Importati".</div>
-    </div>
+    <div class="menu-section" data-section="catalogo">
+      <button class="section-head" type="button"><span>Catalogo</span><span class="section-arrow">▾</span></button>
+      <div class="section-body">
+        <select id="catalogSelect"></select>
+        <div class="hint" style="margin-top:2px;">Carica un incantesimo conosciuto, poi modifica liberamente i glifi per vedere come cambia l'esito.</div>
+        <button class="tool-btn" id="resetBtn">↺ Ripristina disposizione iniziale</button>
+        <div class="tool-row">
+          <button class="tool-btn" id="saveBtn">⭳ Salva su file</button>
+          <button class="tool-btn" id="loadBtn">⭱ Carica da file</button>
+        </div>
+        <input type="file" id="loadFileInput" accept="application/json" style="display:none;">
+        <div class="tool-row">
+          <a class="tool-btn" id="manualBtn" href="manuale_officina_sigilli.html" target="_blank" rel="noopener" style="text-align:center; text-decoration:none; display:block;">📖 Manuale</a>
+        </div>
 
-    <h2 style="margin-top:16px;">CORE</h2>
-    <div class="glyph-grid" id="schoolGrid"></div>
-    <div class="hint" style="margin-top:6px;">Clicca una scuola per il Core. Clicca una seconda scuola per fonderla; clicca di nuovo una scuola selezionata per toglierla.</div>
-    <div id="dominanceRow" style="display:none;">
-      <label style="font-size:12px;color:var(--ink-soft);">Se le scuole sono opposte, chi domina?</label>
-      <select id="dominance">
-        <option value="a">Scuola A</option>
-        <option value="b">Scuola B</option>
-      </select>
+        <div class="import-row" id="importRow">
+          <button class="tool-btn" id="importBtn">✦ Importa nel catalogo DM</button>
+          <button class="tool-btn" id="removeImportedBtn" style="display:none;">🗑 Rimuovi sigillo importato</button>
+          <input type="file" id="importFileInput" accept="application/json" style="display:none;">
+          <div class="hint" style="margin-top:2px;">Carica il file .json inviato da un giocatore: verrà salvato in modo permanente nel catalogo "Sigilli Importati".</div>
+        </div>
+      </div>
     </div>
 
-    <h2 style="margin-top:16px;">Energia</h2>
-    <div class="glyph-grid" id="energyGrid"></div>
-    <div class="hint" style="margin-top:2px;">Il sapore energetico del Core (opzionale, una sola alla volta). Clicca e posa come un glifo: sinistro per spostarla, destro per cancellarla, rotellina per ridimensionarla.</div>
+    <div class="menu-section" data-section="core">
+      <button class="section-head" type="button"><span>Core</span><span class="section-arrow">▾</span></button>
+      <div class="section-body">
+        <div class="glyph-grid" id="schoolGrid"></div>
+        <div class="hint" style="margin-top:6px;">Clicca una scuola per il Core. Clicca una seconda scuola per fonderla; clicca di nuovo una scuola selezionata per toglierla.</div>
+        <div id="dominanceRow" style="display:none;">
+          <label style="font-size:12px;color:var(--ink-soft);">Se le scuole sono opposte, chi domina?</label>
+          <select id="dominance">
+            <option value="a">Scuola A</option>
+            <option value="b">Scuola B</option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-    <h2 style="margin-top:18px;">Congiunzioni</h2>
-    <div class="glyph-grid" id="conjPalette"></div>
-    <div class="hint" style="margin-top:2px;">Collegano le parti del sigillo. Clicca e posa come un glifo; rotellina per ruotarle di 5° alla volta, Maiusc+rotellina per ingrandirle o rimpicciolirle.</div>
+    <div class="menu-section" data-section="energia">
+      <button class="section-head" type="button"><span>Energia</span><span class="section-arrow">▾</span></button>
+      <div class="section-body">
+        <div class="glyph-grid" id="energyGrid"></div>
+        <div class="hint" style="margin-top:2px;">Il sapore energetico del Core (opzionale, una sola alla volta). Clicca e posa come un glifo: sinistro per spostarla, destro per cancellarla, rotellina per ridimensionarla.</div>
+      </div>
+    </div>
 
-    <h2 style="margin-top:18px;">Glifi</h2>
-    <div class="glyph-grid" id="palette"></div>
-    <div class="hint">Clicca un glifo e poi il sigillo per posarlo. Trascinalo (sinistro) per spostarlo, destro per cancellarlo, rotellina per ingrandirlo o rimpicciolirlo fino all'80% dei simboli del Core — la sua dimensione è la potenza che richiede. Separazione: sul Core è il bersaglio sé stesso, vicino al centro è a contatto, più lontano indica i metri di distanza; nello spicchio Durata indica invece impulsi scaglionati.</div>
+    <div class="menu-section" data-section="congiunzioni">
+      <button class="section-head" type="button"><span>Congiunzioni</span><span class="section-arrow">▾</span></button>
+      <div class="section-body">
+        <div class="glyph-grid" id="conjPalette"></div>
+        <div class="hint" style="margin-top:2px;">Collegano le parti del sigillo. Clicca e posa come un glifo; rotellina per ruotarle di 5° alla volta, Maiusc+rotellina per ingrandirle o rimpicciolirle.</div>
+      </div>
+    </div>
+
+    <div class="menu-section" data-section="glifi">
+      <button class="section-head" type="button"><span>Glifi</span><span class="section-arrow">▾</span></button>
+      <div class="section-body">
+        <div class="glyph-grid" id="palette"></div>
+        <div class="hint">Clicca un glifo e poi il sigillo per posarlo. Trascinalo (sinistro) per spostarlo, destro per cancellarlo, rotellina per ingrandirlo o rimpicciolirlo fino all'80% dei simboli del Core — la sua dimensione è la potenza che richiede. Separazione: sul Core è il bersaglio sé stesso, vicino al centro è a contatto, più lontano indica i metri di distanza; nello spicchio Durata indica invece impulsi scaglionati.</div>
+      </div>
+    </div>
+
     </div>
   </div>
 
@@ -285,12 +321,19 @@ function updateLayoutColumns(){
 }
 let leftCollapsed=false, esitoCollapsed=false;
 
-// Su schermi stretti i pannelli Catalogo ed Esito partono chiusi, così il
-// sigillo è subito visibile senza dover scorrere a lungo.
+// Su schermi stretti il pannello Esito parte chiuso, così il sigillo è subito
+// visibile senza dover scorrere a lungo. Il menu Catalogo invece parte aperto:
+// le sue singole sezioni (Catalogo, Core, Energia, Congiunzioni, Glifi) sono a
+// tendina e partono chiuse una per una, così il menu resta comunque compatto.
 if(window.matchMedia('(max-width:1000px)').matches){
-  leftCollapsed = true;
   esitoCollapsed = true;
 }
+
+document.querySelectorAll('.menu-section > .section-head').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    btn.parentElement.classList.toggle('open');
+  });
+});
 
 document.getElementById('leftToggle').addEventListener('click', ()=>{
   leftCollapsed=!leftCollapsed;
