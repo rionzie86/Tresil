@@ -32,10 +32,16 @@
   #leftPanel #leftPanelBody{margin-top:26px;}
   #leftDecoration{margin-top:30px; text-align:center;}
   #esitoPanel{padding-top:36px;}
-  #fullscreenBtn{position:fixed; bottom:20px; right:20px; z-index:50; padding:10px 14px; border:1px solid var(--line-b);
+  #fullscreenBtn{position:fixed; bottom:20px; right:20px; z-index:210; padding:10px 14px; border:1px solid var(--line-b);
     border-radius:4px; background:var(--bg-card); color:var(--ink-soft); font-family:'Cinzel',serif; font-size:14px;
     cursor:pointer;}
   #fullscreenBtn:hover{color:var(--gold); border-color:var(--gold);}
+  body.pseudo-fs{overflow:hidden;}
+  body.pseudo-fs header, body.pseudo-fs #leftPanel, body.pseudo-fs #esitoPanel{display:none;}
+  body.pseudo-fs .layout{display:block; max-width:none; padding:0; margin:0; height:100vh;}
+  body.pseudo-fs .canvas-wrap{position:fixed; inset:0; z-index:200; margin:0; border-radius:0; height:100vh;
+    padding:12px; overflow:auto; background:var(--bg-card);}
+  body.pseudo-fs #sigilScroll{max-height:calc(100vh - 60px);}
   .esito-summary-line{display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dotted var(--line); font-size:14px;}
   .esito-summary-desc{margin-top:10px; font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;}
   .panel{background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:18px 18px;}
@@ -242,6 +248,13 @@ function updateLayoutColumns(){
 }
 let leftCollapsed=false, esitoCollapsed=false;
 
+// Su schermi stretti i pannelli Catalogo ed Esito partono chiusi, così il
+// sigillo è subito visibile senza dover scorrere a lungo.
+if(window.matchMedia('(max-width:1000px)').matches){
+  leftCollapsed = true;
+  esitoCollapsed = true;
+}
+
 document.getElementById('leftToggle').addEventListener('click', ()=>{
   leftCollapsed=!leftCollapsed;
   document.getElementById('leftPanelBody').style.display = leftCollapsed?'none':'';
@@ -260,15 +273,57 @@ document.getElementById('esitoToggle').addEventListener('click', ()=>{
   updateLayoutColumns();
 });
 
+// Applica subito lo stato di partenza (chiuso su mobile) creato sopra.
+if(leftCollapsed){
+  document.getElementById('leftPanelBody').style.display = 'none';
+  document.getElementById('leftDecoration').style.display = '';
+  document.getElementById('leftToggle').textContent = '▸';
+  document.getElementById('leftPanel').classList.add('panel-collapsed');
+  // buildLeftDecoration() usa GLYPHS, definito più sotto nello script: viene
+  // richiamata subito dopo, vicino a buildPalette()/render().
+}
+if(esitoCollapsed){
+  document.getElementById('output').style.display = 'none';
+  document.getElementById('esitoSummary').style.display = '';
+  document.getElementById('esitoToggle').textContent = '◂';
+}
+updateLayoutColumns();
+
+// Il tasto "Schermo intero" prova prima la Fullscreen API nativa; se non è
+// disponibile o fallisce (es. Safari su iOS non la supporta per elementi
+// generici), passa a uno pseudo-schermo-intero via CSS che comunque nasconde
+// header/pannelli laterali e ingrandisce il sigillo.
+function isPseudoFS(){ return document.body.classList.contains('pseudo-fs'); }
+function enterPseudoFS(){
+  document.body.classList.add('pseudo-fs');
+  document.getElementById('fullscreenBtn').textContent = '⛶ Esci';
+}
+function exitPseudoFS(){
+  document.body.classList.remove('pseudo-fs');
+  document.getElementById('fullscreenBtn').textContent = '⛶';
+}
+const nativeFSAvailable = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+
 document.getElementById('fullscreenBtn').addEventListener('click', ()=>{
-  if(!document.fullscreenElement){
-    document.documentElement.requestFullscreen().catch(()=>{});
+  if(isPseudoFS()){ exitPseudoFS(); return; }
+  if(document.fullscreenElement){ document.exitFullscreen(); return; }
+  if(nativeFSAvailable){
+    const req = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+    Promise.resolve(req.call(document.documentElement)).catch(()=>{ enterPseudoFS(); });
+    // Se la promise resta pesa e non scatta fullscreenchange in tempi brevi
+    // (comune su iOS, dove la chiamata non fa nulla senza errore), passiamo
+    // comunque allo pseudo-fullscreen.
+    setTimeout(()=>{ if(!document.fullscreenElement && !isPseudoFS()) enterPseudoFS(); }, 400);
   } else {
-    document.exitFullscreen();
+    enterPseudoFS();
   }
 });
 document.addEventListener('fullscreenchange', ()=>{
-  document.getElementById('fullscreenBtn').textContent = document.fullscreenElement ? '⛶ Esci' : '⛶';
+  if(document.fullscreenElement){
+    document.getElementById('fullscreenBtn').textContent = '⛶ Esci';
+  } else if(!isPseudoFS()){
+    document.getElementById('fullscreenBtn').textContent = '⛶';
+  }
 });
 
 let zoomLevel=1.25;
