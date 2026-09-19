@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compendio di Tresil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deepest:#0a0c0f; --bg-dark:#0f1318; --bg-panel:#131820; --bg-card:#171e28;
+  --bg-hover:#1c2535; --bg-active:#1e2d42;
+  --border:rgba(100,140,200,0.12); --border-bright:rgba(100,140,200,0.28);
+  --gold:#c9a84c; --gold-dim:#8a6e2f; --gold-glow:rgba(201,168,76,0.12);
+  --text-primary:#e8e0d0; --text-secondary:#9a9080; --text-muted:#5a5448;
+  --accent-blue:#5a8fd4; --accent-purple:#8f72d4; --accent-amber:#c4954a;
+  --accent-green:#5ab48f; --accent-red:#c45a5a;
+  --font-display:'Cinzel',serif; --font-body:'Crimson Pro',Georgia,serif;
+  --sidebar-w:262px; --transition:0.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;background:var(--bg-deepest);color:var(--text-primary);font-family:var(--font-body);font-size:17px;line-height:1.75;}
+
+.app{display:flex;height:100vh;overflow:hidden;}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+.sidebar-header{padding:20px 16px 14px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);text-decoration:none;font-family:var(--font-display);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;transition:color var(--transition);}
+.back-link:hover{color:var(--gold);}
+.sidebar-title{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+.sidebar-sub{font-size:12px;color:var(--text-muted);font-style:italic;}
+
+/* SEARCH */
+.search-wrap{padding:12px 14px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.search-input{width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:8px 12px 8px 32px;color:var(--text-primary);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color var(--transition);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235a5448' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:10px center;}
+.search-input:focus{border-color:var(--gold-dim);}
+.search-input::placeholder{color:var(--text-muted);}
+
+/* NAV */
+.nav{flex:1;overflow-y:auto;padding:8px 0 20px;}
+.nav::-webkit-scrollbar{width:4px;}
+.nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.nav-group-label{font-family:var(--font-display);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);padding:12px 16px 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;transition:background var(--transition);border-left:2px solid transparent;font-size:14px;color:var(--text-secondary);line-height:1.3;}
+.nav-item:hover{background:var(--bg-hover);color:var(--text-primary);}
+.nav-item.active{background:var(--bg-active);border-left-color:var(--gold);color:var(--gold);}
+.nav-item.hidden{display:none;}
+.nav-icon{font-family:var(--font-display);font-size:11px;flex-shrink:0;opacity:.7;width:18px;}
+
+/* MAIN */
+.main{flex:1;overflow-y:auto;background:var(--bg-dark);}
+.main::-webkit-scrollbar{width:6px;}
+.main::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.content-section{display:none;padding:48px 56px;max-width:900px;}
+.content-section.visible{display:block;}
+
+/* HEADER */
+.section-tag{font-family:var(--font-display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px;}
+.section-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:6px;}
+.section-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold-dim),transparent);margin-bottom:32px;}
+
+/* PROSE */
+.prose p{margin-bottom:1.2em;color:var(--text-primary);}
+.prose p:last-child{margin-bottom:0;}
+.prose em{color:var(--gold);font-style:italic;}
+.prose strong{color:var(--text-primary);font-weight:600;}
+.prose ul,.prose ol{margin:0 0 1.2em 1.4em;}
+.prose li{margin-bottom:.6em;color:var(--text-primary);}
+.prose li::marker{color:var(--gold-dim);}
+
+/* H2/H3 (chapter-internal) */
+.content-h2{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.content-h3{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:.04em;margin:26px 0 10px;}
+.prose h2:first-child,.prose h3:first-child{margin-top:0;}
+
+/* QUOTE */
+.quote{margin:24px 0;padding:16px 22px;border-left:2px solid var(--gold-dim);background:var(--gold-glow);}
+.quote p{font-style:italic;color:var(--text-secondary);font-size:16px;margin-bottom:0;}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--border);border-radius:6px;}
+table.ctable{width:100%;border-collapse:collapse;font-size:14px;}
+table.ctable th,table.ctable td{padding:9px 14px;border-bottom:1px solid var(--border);text-align:left;color:var(--text-secondary);vertical-align:top;}
+table.ctable thead tr:first-child th{color:var(--gold);font-family:var(--font-display);font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--bg-card);}
+table.ctable tbody tr:hover{background:var(--bg-hover);}
+table.ctable th strong{color:inherit;}
+
+/* NO RESULTS */
+.no-results{padding:60px 40px;text-align:center;color:var(--text-muted);font-style:italic;font-size:15px;}
+
+/* HAMBURGER */
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:1000;background:var(--bg-panel);border:1px solid var(--border-bright);border-radius:4px;width:40px;height:40px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;}
+.hamburger span{display:block;width:18px;height:2px;background:var(--gold);border-radius:1px;transition:all 0.25s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:900;opacity:0;transition:opacity 0.25s ease;pointer-events:none;}
+.sidebar-overlay.visible{display:block;opacity:1;pointer-events:auto;}
+
+@media(max-width:768px){
+  .app{flex-direction:column;height:auto;overflow:visible;}
+  .hamburger{display:flex;}
+  .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;max-height:100vh;z-index:950;transform:translateX(-100%);transition:transform 0.28s ease;border-right:1px solid var(--border-bright);overflow-y:auto;}
+  .sidebar.open{transform:translateX(0);}
+  .main{width:100%;height:auto;overflow:visible;padding-top:60px;}
+  body.menu-open{overflow:hidden;}
+  .content-section{padding:24px 18px;max-width:100%;}
+  .section-title{font-size:22px;}
+  .content-h2{font-size:14px;}
+  table.ctable{font-size:12.5px;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a class="back-link" href="index.html">← Portale</a>
+    <div class="sidebar-title">Compendio di Tresil</div>
+    <div class="sidebar-sub">Fondazione, gilde, leggi, economia e villaggi</div>
+  </div>
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="searchInput" placeholder="Cerca capitolo…" autocomplete="off">
+  </div>
+  <nav class="nav" id="navList">
+      <div class="nav-item active" data-section="cap1"><span class="nav-icon">I</span>Fondazione di Tresil</div>
+      <div class="nav-item" data-section="cap2"><span class="nav-icon">II</span>Villaggi limitrofi</div>
+      <div class="nav-item" data-section="cap3"><span class="nav-icon">III</span>L’Economia di Tresil</div>
+      <div class="nav-item" data-section="cap4"><span class="nav-icon">IV</span>Sistema monetario di Kaelvaran</div>
+      <div class="nav-item" data-section="cap5"><span class="nav-icon">V</span>Leggi e Punizioni</div>
+      <div class="nav-item" data-section="cap6"><span class="nav-icon">VI</span>Gilde e fazioni</div>
+      <div class="nav-item" data-section="cap7"><span class="nav-icon">VII</span>Le Vene Nascoste di Tresil</div>
+      <div class="nav-item" data-section="cap8"><span class="nav-icon">VIII</span>La Guardia di Tresil</div>
+      <div class="nav-item" data-section="cap9"><span class="nav-icon">IX</span>Taverne di Tresil</div>
+      <div class="nav-item" data-section="cap10"><span class="nav-icon">X</span>Personaggi</div>
+  </nav>
+</aside>
+
+<main class="main">
+  <div class="no-results" id="noResults" style="display:none;">Nessun capitolo trovato.</div>
+<div class="content-section visible" id="sec-cap1">
+  <div class="section-tag">Capitolo 1</div>
+  <h1 class="section-title">Fondazione di Tresil</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<div class="quote"><p><em>“Sulla cresta di un’onda, nel cuore di una tempesta di voci, tre spiriti diversi trovarono un solo sogno. Da quel sogno nacque Tresil.”</em><br />
+— Anonimo, incisa nel marmo della Vecchia Piazza</p></div>
+<h3 class="content-h3" id="i-tre-eroi-fondatori">I Tre Eroi Fondatori</h3>
+<p>Secoli fa, quando le rotte tra le isole dell’Atollo erano infide e le culture umane appena tornavano a incontrarsi dopo le ere di isolamento, le tensioni tra le genti dell’arcipelago esplodevano di continuo in faide, atti di sabotaggio e guerre navali.</p>
+<p>Tra i pochi che vedevano oltre le differenze c’erano tre figure:</p>
+<ol type="1">
+<li><p><strong>Il Navigatore Varlmenn – Eirikr di Stølagård<br />
+</strong> Uomo di poche parole, occhi come ghiaccio e mani callose di timone, vedeva le isole come un’unica terra spezzata solo dal mare. Sosteneva la cooperazione tra le culture e la necessità di una rotta comune.</p></li>
+<li><p><strong>La Diplomatica Shizenka – Ayumi Kohana<br />
+</strong> Maestra di Kokoro-no-Michi e di pace, credeva che solo da un’armonia profonda tra le genti potesse nascere un futuro stabile. Aiutò a risolvere le prime diatribe tra clan solnari e ferromarchi con eleganti parole e rituali antichi.</p></li>
+<li><p><strong>L’Incaviatore Solnari – Tiero Venn’Aresh<br />
+</strong> Incisore di memorie e reliquie, Tiero fu il cuore pulsante del progetto. Ogni volta che le genti discutevano di antichi torti, Tiero mostrava loro le tracce lasciate da quegli eventi nelle reliquie: dolore, speranza, gratitudine. Lo scopo? Insegnare a ricordare per non ripetere.</p></li>
+</ol>
+<h3 class="content-h3" id="la-genesi-di-tresil">La Genesi di Tresil</h3>
+<p>Attorno a questi tre iniziarono a radunarsi equipaggi, costruttori, filosofi e mercanti di ogni stirpe.<br />
+Decisero di costruire su uno scoglio impervio nel cuore dell’atollo — un luogo difficile da conquistare, ma facile da proteggere.</p>
+<p>Su quel punto costruirono tre insediamenti iniziali, ciascuno simbolicamente dedicato a uno dei fondatori. Con il tempo, le tre “città” si fusero in un’unica capitale:</p>
+<ul>
+<li><p>Il <strong>Porto Vecchio</strong> (originariamente approdo di Eirikr) divenne l’accesso al mare.</p></li>
+<li><p>La <strong>Città Vecchia</strong> (nata tra le sale di riflessione e le case di Ayumi) divenne il centro diplomatico e culturale.</p></li>
+<li><p>Il <strong>Vecchio Castello</strong> (le stanze di Tiero Venn’Aresh) fu l’archivio della memoria e la prima casa del Consiglio.</p></li>
+</ul>
+<p>Attorno a questo nucleo sacro sorsero le nuove mura e i quartieri di Tresil.</p>
+<h3 class="content-h3" id="lo-spirito-di-tresil">Lo Spirito di Tresil</h3>
+<p>Tresil non nacque come nazione, ma come <strong>idea concreta di neutralità e memoria condivisa</strong>:</p>
+<ul>
+<li><p>Nessun popolo fu escluso, a patto di rispettare la Costituzione.</p></li>
+<li><p>Nessun esercito straniero poté mai marciare entro le sue mura.</p></li>
+<li><p>Ogni delegazione fu ascoltata nel “Vecchio Castello”, dove i tre seggi del Consiglio dei Tre vegliavano come testimoni viventi del patto originario.</p></li>
+</ul>
+<h3 class="content-h3" id="la-costituzione-di-tresil">La Costituzione di Tresil</h3>
+<p>La <strong>Costituzione di Tresil</strong> è incisa su tre lastre di pietra bianca conservate nel Vecchio Castello, nel cuore del quartiere antico. È fondata sui principi dei tre eroi fondatori — Eirikr di Stølagård, Ayumi Kohana e Tiero Venn’Aresh — e vincola la città a una neutralità ferrea, alla trasparenza e al dialogo tra le culture.</p>
+<h3 class="content-h3" id="i-tre-principi-fondamentali"><strong>I Tre Principi Fondamentali</strong></h3>
+<ol type="1">
+<li><p><strong>Il Patto del Navigatore (Eirikr di Stølagård)<br />
+</strong></p>
+</blockquote>
+<ul>
+<li><div class="quote"><p>Neutralità assoluta tra le potenze esterne.</p></li>
+<li><p>Accoglienza di tutti i popoli purché rispettino le leggi della città.</p></li>
+<li><p>Protezione del commercio e libero scambio nel porto.</p></li>
+</ul></li>
+<li><p><strong>La Via della Diplomazia (Ayumi Kohana)<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p>Ogni conflitto tra delegazioni deve essere discusso nei saloni del Consiglio prima di sfociare in tensioni aperte.</p></li>
+<li><p>La risoluzione pacifica e l’ascolto tra le parti sono obbligo istituzionale.</p></li>
+</ul></li>
+<li><p><strong>L’Eco della Memoria (Tiero Venn’Aresh)<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p>Trasparenza nelle decisioni politiche e nella gestione del patrimonio culturale.</p></li>
+<li><p>Tutti i trattati, le cronache e le deliberazioni sono registrati nel Grande Archivio del Vecchio Castello e accessibili ai delegati e ai cittadini.</p></li>
+<li><p>La memoria collettiva di Tresil viene preservata da archivisti imparziali e Incaviatori ufficiali.</p></li>
+</ul></li>
+</ol>
+<h3 class="content-h3" id="il-consiglio-dei-tre">Il Consiglio dei Tre</h3>
+<p>Al vertice del governo di Tresil si trova il <strong>Consiglio dei Tre</strong>:</p>
+<ul>
+<li><p>Tre membri eletti tra i cittadini di Tresil, rappresentanti simbolici dei tre principi.</p></li>
+<li><p>Durata del mandato: 9 anni, con possibilità di un solo rinnovo.</p></li>
+<li><p>Compiti:</p></div>
+<ul>
+<li><blockquote>
+<p>Supervisione della neutralità cittadina.</p></li>
+<li><p>Mediazione tra le delegazioni.</p></li>
+<li><p>Approvazione di esplorazioni archeologiche e regolamentazione del commercio.</p></li>
+</ul></li>
+<li><p>I Consiglieri hanno a loro disposizione consiglieri di varie discipline (economia, difesa portuale, diritto, cultura) e la Guardia di Tresil, composta da cittadini addestrati alla difesa dell’ordine.</p></li>
+</ul>
+<h3 class="content-h3" id="le-ambasciate-di-tresil">Le Ambasciate di Tresil</h3>
+<p>Tresil ospita <strong>quattro grandi ambasciate culturali</strong>, una per ciascuna delle cinque culture umane:</p>
+<ul>
+<li><p>Ferromarchi</p></li>
+<li><p>Shizenka</p></li>
+<li><p>Varlmenn</p></li>
+<li><p>Solnari</p></li>
+</ul>
+<p><strong>Ogni ambasciata:</strong></p>
+<ul>
+<li><p>È una residenza ufficiale per le delegazioni di regni, stati e territori appartenenti a quella cultura.</p></li>
+<li><p>È regolata interamente dalle leggi di Tresil, non dal regno d’origine né da norme esterne.</p></li>
+<li><p>Ospita le delegazioni temporanee di qualunque regno di quella cultura, anche quando le tradizioni o le sottoculture di provenienza divergono dal “modello” ufficiale.</p></li>
+<li><p>È dotata di sale riunioni, foresterie, biblioteche culturali e spazi rituali dedicati a tradizioni e credenze di quella stirpe.</p></li>
+</ul>
+<h3 class="content-h3" id="relazioni-con-le-delegazioni-internazionali">Relazioni con le Delegazioni Internazionali</h3>
+<ul>
+<li><p><strong>Accoglienza diplomatica:<br />
+</strong> Ogni delegato riceve ospitalità gratuita per la durata del soggiorno ufficiale.</p></li>
+<li><p><strong>Conferenza dell’Anello:<br />
+</strong> Ogni tre anni, le cinque delegazioni culturali e i loro ospiti da vari regni si riuniscono a Tresil per discutere problemi comuni e risolvere diatribe internazionali.</p></li>
+<li><p><strong>Compensi e regolamenti:<br />
+</strong> Tresil percepisce un contributo per ogni delegazione ospitata come forma di sostegno alle infrastrutture cittadine.</p></li>
+<li><p><strong>Neutralità culturale:<br />
+</strong> Anche le figure professionali (monaci, Incaviatori, scribi, soldati) presenti nelle delegazioni non sono automaticamente legate alla loro cultura di origine — le sottoculture e le tradizioni regionali generano una varietà di pratiche, ruoli e personalità.</p></li>
+</ul>
+<h3 class="content-h3" id="lo-spirito-di-tresil-1">Lo Spirito di Tresil</h3>
+<p>Tresil è da secoli il crocevia del mondo conosciuto.<br />
+Tra le mura antiche del Porto Vecchio e le sale solenni del Vecchio Castello vive la memoria del patto tra le genti.<br />
+Tra le ampie piazze e le ambasciate, i popoli scambiano sapere e commerci, risolvono conflitti e si misurano con le proprie differenze.</p>
+<p>In questo crogiolo di culture diverse e sempre mutevoli, i visitatori trovano una città disegnata per non piegarsi mai a una sola bandiera.</p>
+<h2 class="content-h2" id="section"></h2>
+<h2 class="content-h2" id="eventi-memorabili-nella-storia-di-tresil">Eventi memorabili nella storia di Tresil</h2>
+<ol type="1">
+<li><p><strong>Anno 0 — Il Patto dei Tre:</strong> La fondazione di Tresil da parte di Eirikr, Ayumi e Tiero, come città di neutralità tra le culture.</p></li>
+<li><p><strong>Anno 35 — La Grande Tempesta:</strong> Una tempesta devastante distrugge le vecchie banchine; i cittadini le ricostruiscono insieme, rafforzando il senso di comunità.</p></li>
+<li><p><strong>Anno 72 — La Rivolta dei Mercanti:</strong> Il governo interviene per regolamentare le gilde dopo le sommosse dei mercanti contro le imposizioni dei primi Consiglieri.</p></li>
+<li><p><strong>Anno 110 — La Notte Senza Stelle:</strong> Una misteriosa oscurità di tre giorni avvolge l’isola; i cittadini si riuniscono per accendere fuochi nei quartieri.</p></li>
+<li><p><strong>Anno 164 — L’Arrivo dei Rifugiati Aenari:</strong> Una colonia di Aenari viene accolta tra le mura.</p></li>
+<li><p><strong>Anno 228 — La Scoperta del Passaggio Sotto la Collina:</strong> Un’antica cripta viene trovata nel sottosuolo del Vecchio Castello; da quel momento iniziano gli studi archeologici ufficiali.</p></li>
+<li><p><strong>Anno 273 — L’Incendio del Porto Vecchio:</strong> Una notte di fiamme devasta moli e magazzini; la città rinasce più forte con il Nuovo Porto.</p></li>
+<li><p><strong>Anno 310 — La Pace dei Tre Anelli:</strong> Un trattato tripartito tra le gilde, le ambasciate e il governo cittadino stabilizza per secoli l’economia di Tresil.</p></li>
+<li><p><strong>Anno 356 — La Prima Fiera dei Cinque Popoli:</strong> Festa di scambio culturale tra i quartieri, da allora celebrata ogni anno.</p></li>
+<li><p><strong>Anno 377 — La Grande Peste:</strong> Un’epidemia colpisce la città; grazie al sacrificio dei guaritori di ogni stirpe, Tresil sopravvive e istituisce la Casa della Cura.</p></li>
+<li><p><strong>Anno 401 — L’Illuminazione del Vecchio Castello:</strong> Durante un rituale collettivo, la cittadinanza illumina con fuochi magici le mura del castello come simbolo di rinascita.</p></li>
+<li><p><strong>Anno 432 — La Prima Lanterna al Cielo:</strong> Un bambino libera la prima lanterna commemorativa nel cielo, dando inizio alla tradizione della Veglia della Memoria.</p></li>
+<li><p><strong>Anno 502 — Il Restauro dei Portali Antichi:</strong> Vengono scoperte antiche iscrizioni dei Tre Fondatori nei portali della città vecchia.</p></li>
+<li><p><strong>Anno 531 — L’Eclissi d’Inverno:</strong> Un’eclissi diurna straordinaria viene interpretata come segno di buon auspicio e segna l’inizio di un periodo di prosperità.</p></li>
+</ol>
+<h2 class="content-h2" id="festività-di-tresil">Festività di Tresil </h2>
+<p><strong>Festa del Patto dei Tre</strong></p>
+<p><strong>Data:</strong> 1º giorno del Primo mese<br />
+<strong>Origine:</strong> Rievoca la fondazione di Tresil da parte dei tre eroi.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Al mattino: le campane del Vecchio Castello risuonano tre volte.</p></li>
+<li><p>Durante il giorno: processioni tra le tre zone antiche (Porto Vecchio, Città Vecchia, Castello), narratori nelle piazze raccontano la storia della città.</p></li>
+<li><p>Al tramonto: fuochi d’artificio visibili da ogni quartiere.</p></li>
+<li><p>Simbolo: tre fiaccole incrociate, a rappresentare unità e memoria.</p></li>
+</ul>
+<p><strong>Celebrazione della Tempesta Rinnovatrice</strong></p>
+<p><strong>Data:</strong> 35º giorno del Terzo mese<br />
+<strong>Origine:</strong> Ricorda la Grande Tempesta (Anno 35) e la successiva rinascita.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>I cittadini costruiscono piccole zattere di legno con preghiere scritte sopra e le rilasciano nei canali o nel mare.</p></li>
+<li><p>Gara tra quartieri per la zattera decorata più bella.</p></li>
+<li><p>Alla sera le zattere sono illuminate da lumini, creando un fiume di luci.</p></li>
+<li><p>Simbolo: l’onda intrecciata a un germoglio.</p></li>
+</ul>
+<p><strong>Veglia della Memoria</strong></p>
+<p><strong>Data:</strong> Notte tra il 22º e il 23º giorno del Settimo mese (plenilunio)<br />
+<strong>Origine:</strong> Ispirata alla Notte Senza Stelle e al lancio della prima lanterna nel 432.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Nelle piazze si accendono lanterne di carta da far volare nel cielo.</p></li>
+<li><p>I narratori recitano le Cronache del Grande Archivio.</p></li>
+<li><p>In ogni casa si accende una candela vicino alla finestra.</p></li>
+<li><p>Simbolo: una lanterna circondata da stelle.</p></li>
+</ul>
+<p><strong>Giorno della Cura Comune</strong></p>
+<p><strong>Data:</strong> 10º giorno del Nono mese<br />
+<strong>Origine:</strong> La memoria della Grande Peste (Anno 377).<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Medici, guaritori e sacerdoti offrono consulti gratuiti nelle piazze.</p></li>
+<li><p>Banchi di infusi, erbe e rimedi antichi, lezioni pubbliche di primo soccorso.</p></li>
+<li><p>Un momento di gratitudine verso coloro che curano.</p></li>
+<li><p>Simbolo: due mani unite attorno a un ramo di salvia.</p></li>
+</ul>
+<p><strong>Festa delle Scoperte</strong></p>
+<p><strong>Data:</strong> 28º giorno del Quinto mese<br />
+<strong>Origine:</strong> La scoperta della cripta e del passaggio nel sottosuolo nel 228.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Conferenze, mostre e gare di enigmi nei musei e nei cortili scolastici.</p></li>
+<li><p>Banchi di antiquariato, esploratori e cronisti di viaggio narrano le loro imprese.</p></li>
+<li><p>Simbolo: una chiave antica incisa sopra una spirale.</p></li>
+</ul>
+<p><strong>Luce del Castello</strong></p>
+<p><strong>Data:</strong> 15º giorno dell’Undicesimo mese<br />
+<strong>Origine:</strong> L’illuminazione rituale del Vecchio Castello nel 401.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Al tramonto le torri del castello vengono illuminate con fuochi rituali e incanti di luce.</p></li>
+<li><p>Cori per le strade, rievocazioni storiche e spettacoli di fuoco.</p></li>
+<li><p>Simbolo: una torre sormontata da un fuoco dorato.</p></li>
+</ul>
+<p><strong>Eclissi della Fortuna</strong></p>
+<p><strong>Data:</strong> 7º giorno del Dodicesimo mese (in ricordo dell’Eclissi del 531)<br />
+<strong>Origine:</strong> L’eclissi diurna straordinaria vista come segno di benedizione per la città.<br />
+<strong>Descrizione:</strong></p>
+<ul>
+<li><p>Offerte simboliche nei templi e nelle piazze, dove monaci e cittadini osservano insieme il cielo.</p></li>
+<li><p>Nei quartieri artigiani vendono amuleti “di buon auspicio” forgiati solo quel giorno.</p></li>
+<li><p>Simbolo: una falce di sole oscurata da una luna d’ombra.</p></li>
+</ul>
+<h2 class="content-h2" id="la-pianta-di-tresil-una-città-sincretica-e-vibrante">La pianta di Tresil: una città sincretica e vibrante</h2>
+<p>Dopo quattro secoli di convivenza e scambi tra le culture dei cinque popoli, <strong>Tresil</strong> è divenuta la culla di una nuova civiltà, con una propria lingua – il <strong>Tresiliano</strong> – miscuglio armonioso di suoni, espressioni e simboli provenienti da tutte le lingue originarie. Questa lingua comune ha reso Tresil una città unica nel mondo, dove le barriere culturali sono ormai memoria del passato.</p>
+<p><strong>Le Tre Zone Antiche</strong></p>
+<h4 id="il-porto-vecchio"><strong>1. Il Porto Vecchio</strong></h4>
+<ul>
+<li><p>Antico approdo di dignitari e ambasciatori.</p></li>
+<li><p>Edifici in pietra bianca decorati con elementi stilistici ibridi: archi varlmenn, motivi geometrici solnari, dettagli floreali shizenka.</p></li>
+<li><p>Sede di cerimonie ufficiali, benvenuti rituali e feste miste tra i diversi popoli.</p></li>
+<li><p>Amministrazione <strong>pubblica</strong>, garantita da ufficiali scelti tra i migliori parlanti tresiliano.</p></li>
+</ul>
+<h4 id="la-città-vecchia"><strong>2. La Città Vecchia</strong></h4>
+<ul>
+<li><p>Un intricato labirinto di vicoli, piazzette e porticati.</p></li>
+<li><p>Botteghe artigiane e piccoli laboratori dove le tecniche di ogni cultura sono mescolate (ceramiche decorate a motivi solnari, metalli lavorati in stile varlmenn, tessuti shizenka).</p></li>
+<li><p>Locande e caffè multiculturali dove le lingue antiche ormai non servono più: tutti parlano tresiliano.</p></li>
+<li><p>La gestione delle piazze e delle infrastrutture spetta al governo, le botteghe sono di famiglie miste e cooperative di artigiani.</p></li>
+</ul>
+<h4 id="section-1"></h4>
+<h4 id="section-2"></h4>
+<h4 id="il-vecchio-castello"><strong>3. Il Vecchio Castello</strong></h4>
+<ul>
+<li><p>Il cuore politico e simbolico di Tresil, rimasto immutato nelle sue funzioni.</p></li>
+<li><p>Sede del <strong>Consiglio dei Tre</strong>, dei tribunali e del Grande Archivio.</p></li>
+<li><p>Corridoi e stanze affrescate da generazioni di artisti di origine mista, con scene di pace tra le culture e leggende comuni.</p></li>
+<li><p>Custodito e amministrato dal governo cittadino.</p></li>
+</ul>
+<p><strong>Le Espansioni della Città Moderna</strong></p>
+<h4 id="il-nuovo-porto"><strong>4. Il Nuovo Porto</strong></h4>
+<ul>
+<li><p>Cuore pulsante del commercio.</p></li>
+<li><p>Magazzini e moli regolati dal governo; le attività commerciali sono di privati e consorzi che versano parte dei guadagni alla città.</p></li>
+<li><p>Nella zona portuale anche le parlate di altri continenti si sentono di rado: il tresiliano è ormai la lingua del commercio.</p></li>
+</ul>
+<h4 id="quartieri-residenziali"><strong>5. Quartieri Residenziali</strong></h4>
+<ul>
+<li><p>Estesi viali alberati, abitazioni a terrazza e giardini pensili.</p></li>
+<li><p>Gli abitanti sono figli di incroci tra popoli diversi, e le loro case riflettono questo sincretismo: una porta varlmenn, un tetto shizenka, un giardino alla solnari.</p></li>
+<li><p>Ogni famiglia sente di appartenere prima di tutto a Tresil; solo nei racconti dei nonni sopravvivono dettagli di altre tradizioni.</p></li>
+</ul>
+<h4 id="distretto-del-sapere-e-della-cultura"><strong>6.</strong> Distretto del Sapere e della Cultura</h4>
+<ul>
+<li><p>Accademie di magia, scuole di arti marziali, biblioteche di testi in tre lingue (antiche) e in tresiliano.</p></li>
+<li><p>La gestione è mista: il governo mantiene le strutture, ma le famiglie e le gilde di studiosi collaborano all’insegnamento e alla trasmissione del sapere.</p></li>
+</ul>
+<p><strong>7. Zona Borghese</strong></p>
+<p>● Viali ordinati, palazzi eleganti a tre piani con balconi fioriti e cortili interni.<br />
+● Abitata da mercanti medi, scribi, guaritori, artisti affermati e famiglie miste.<br />
+● Boutique raffinate, caffè letterari e studi privati in stile sincretico sobrio.<br />
+● Quartiere tranquillo, ben sorvegliato, simbolo della vita civile di Tresil.</p>
+<h4 id="quartieri-popolari-di-tresil"><br />
+8. Quartieri Popolari di Tresil</h4>
+<p>● <strong>Strade vive e mescolate</strong>: vicoli affollati, case addossate in materiali diversi, costruite con stili misti delle cinque culture; piccoli mercati e botteghe animano ogni angolo.</p>
+<p>● <strong>Vita quotidiana del volgo</strong>: abitati da artigiani, portatori, famiglie miste, marinai e lavoratori del porto; qui si parla solo tresiliano, spesso con proverbi regionali.</p>
+<p>● <strong>Solidarietà e sopravvivenza</strong>: reti di mutuo soccorso tra vicini, crediti informali nelle taverne, gilde minori e apprendisti vivono fianco a fianco a chi lotta per restare a galla.</p>
+<p>● <strong>Ombre e cultura popolare</strong>: covi occasionali di ladri o spie, ma anche culla di feste spontanee, lanterne fatte a mano e leggende tramandate attorno ai bracieri.</p>
+<h4 id="section-3"></h4>
+<h4 id="piazze-dei-festival-e-dei-riti-comuni">9<strong>. Piazze dei Festival e dei Riti Comuni</strong></h4>
+<ul>
+<li><p>Grandi piazze all’aperto, parchi pubblici, anfiteatri per le celebrazioni di tutta la città.</p></li>
+<li><p>Spazio per il “Festival del Patto” e la “Giornata del Mare”, festività laiche e religiose nate a Tresil nel tempo.</p></li>
+</ul>
+<p><strong>Le Zone Marginali e Informali</strong></p>
+<h4 id="i-sobborghi-e-le-zone-selvagge">10<strong>. I Sobborghi e le Zone Selvagge</strong></h4>
+<ul>
+<li><p>Dove le strade di Tresil si perdono tra le colline e le foreste.</p></li>
+<li><p>Alcune aree non regolamentate sono popolate da comunità autosufficienti o da piccoli clan informali.</p></li>
+<li><p>Qui agiscono anche le organizzazioni meno limpide: contrabbando di antichità, traffici di reliquie e magie oscure. La Guardia interviene solo quando l’armonia della città è messa in pericolo.</p></li>
+</ul>
+<p><strong>Sistema di Governo e Giustizia</strong></p>
+<ul>
+<li><p>La <strong>lingua tresiliana</strong> è obbligatoria nelle istituzioni e nei procedimenti ufficiali.</p></li>
+<li><p>Le <strong>magistrature comuni</strong> risolvono le dispute tra cittadini e ospiti.</p></li>
+<li><p>La <strong>Guardia cittadina</strong> assicura l’ordine nei quartieri regolamentati.</p></li>
+<li><p>Ogni cittadino ha diritto di accesso a scuole, sanità e spazi pubblici mantenuti dal governo.</p></li>
+</ul>
+<p><strong>Una Città Unica nel Mondo</strong></p>
+<p>In quattro secoli, le barriere tra culture d’origine sono svanite:</p>
+<ul>
+<li><p>I cittadini di Tresil si sentono prima di tutto tresiliani.</p></li>
+<li><p>La loro lingua, le loro arti, le loro feste sono un prodotto di secoli di scambi e di memoria condivisa.</p></li>
+<li><p>Ogni vicolo, ogni piazza porta il segno di un passato plurale e di un futuro costruito insieme.</p></li>
+</ul>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap2">
+  <div class="section-tag">Capitolo 2</div>
+  <h1 class="section-title">Villaggi limitrofi</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<h3 class="content-h3" id="villaggio-di-rocciascura"><strong>1. Villaggio di Rocciascura</strong></h3>
+<p><strong>Origine</strong>: Nato come piccolo accampamento di taglialegna ai margini della foresta. È diventato villaggio quando le famiglie di Tresil iniziarono a cercare risorse di legno e carbone.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: circa <strong>200<br />
+</strong></p></li>
+<li><p><strong>Case</strong>: 45 case di legno</p></li>
+<li><p><strong>Fattorie e centri lavorativi</strong>: 2 segherie, 3 carbonaie, 1 piccolo mulino</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p>
+</blockquote>
+<ul>
+<li><div class="quote"><p><strong>Borgomastro Keltan Brin</strong>: uomo saggio, ex boscaiolo.</p></li>
+<li><p><strong>Maestra delle asce Valka Orvin</strong>: coordina le segherie.</p></li>
+<li><p><strong>Kedrin di Sasso</strong>, locandiere della Taverna "Ceppo di Luna".</p></li>
+<li><p><strong>Hulun “Gufo Nero”</strong>, capo delle sentinelle e abile arciere.</p></li>
+<li><p><strong>La vecchia Madre Azra</strong>: erborista e curatrice del villaggio.</p></li>
+<li><p><strong>Kilia</strong>: giovane apprendista maga della natura.</p></li>
+</ul></li>
+<li><p><strong>Caratteristiche</strong>: Avamposto perfetto per avventurieri. Pochi comfort, ma tanta ospitalità. Di notte spesso si sentono gli ululati dei lupi.</p></li>
+</ul>
+<h3 class="content-h3" id="villaggio-di-pontebrezza"> 2. Villaggio di Pontebrezza</h3>
+<p><strong>Origine</strong>: Nato intorno a un ponte di pietra sul fiume Lirys, un punto di passaggio commerciale tra Tresil e le zone montuose.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: circa <strong>350<br />
+</strong></p></li>
+<li><p><strong>Case</strong>: 70 case in pietra e legno</p></li>
+<li><p><strong>Fattorie e centri lavorativi</strong>: 8 botteghe artigiane, 2 mulini idraulici, 1 cava di argilla</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p></div>
+<ul>
+<li><div class="quote"><p><strong>Borgomastro Miras Ollen</strong>: uomo pratico e severo.</p></li>
+<li><p><strong>Capitano Brien Losta</strong>: comanda le guardie del ponte.</p></li>
+<li><p><strong>Jurik il Mugnaio</strong>: famoso per le sue farine e il suo temperamento.</p></li>
+<li><p><strong>L’amanuense Hilda Serri</strong>: esperta di documenti ufficiali e leggende locali.</p></li>
+<li><p><strong>Nanuk e Sinne</strong>, due gemelli fabbri noti per le loro spade di buona fattura.</p></li>
+</ul></li>
+<li><p><strong>Caratteristiche</strong>: Cittadina di passaggio vivace e ben sorvegliata. I suoni del fiume danno ritmo alla giornata.</p></li>
+</ul>
+<h3 class="content-h3" id="villaggio-di-colleraggio"> 3. Villaggio di Colleraggio</h3>
+<p><strong>Origine</strong>: Fondato da agricoltori Varlmenn in cerca di terreni fertili tra le colline.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: circa <strong>180<br />
+</strong></p></li>
+<li><p><strong>Case</strong>: 40 casette basse</p></li>
+<li><p><strong>Fattorie e centri lavorativi</strong>: 6 fattorie di cereali e ortaggi, 2 granai comuni, 1 frantoio</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p></div>
+<ul>
+<li><div class="quote"><p><strong>Sindaco Henrik Ralden</strong>: anziano cordiale e rispettato.</p></li>
+<li><p><strong>Farmer Una Klarens</strong>: produttrice di grano e consigliera.</p></li>
+<li><p><strong>Torv Il Forzuto</strong>: campione del villaggio nei giochi contadini.</p></li>
+<li><p><strong>Mina la Fanciulla dei Fiori</strong>: giovane venditrice di ghirlande e profumi.</p></li>
+<li><p><strong>Kellir</strong>, bardo itinerante spesso di passaggio.</p></li>
+</ul></li>
+<li><p><strong>Caratteristiche</strong>: Feste del raccolto frequenti, accogliente per forestieri, produce il miglior pane nei dintorni.</p></li>
+</ul>
+<h3 class="content-h3" id="villaggio-di-granomasso">4. Villaggio di Granomasso</h3>
+<p><strong>Origine</strong>: Nato come insediamento di minatori per scavare pietra grigia e calcare.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: circa <strong>120<br />
+</strong></p></li>
+<li><p><strong>Case</strong>: 25 baracche e case di pietra</p></li>
+<li><p><strong>Fattorie e centri lavorativi</strong>: 2 cave di pietra, 1 laboratorio di scalpellini</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p></div>
+<ul>
+<li><div class="quote"><p><strong>Borgomastro Uldric Ferrostinco</strong>: robusto e autoritario.</p></li>
+<li><p><strong>Kala la Scalpellina</strong>: artista della roccia.</p></li>
+<li><p><strong>Mastro Thordek</strong>: capo minatore esperto di esplosivi.</p></li>
+<li><p><strong>Ranni la Cantastorie</strong>: intrattiene i minatori la sera.</p></li>
+<li><p><strong>Guerriera Lyse</strong>: capitana della milizia locale.</p></li>
+</ul></li>
+<li><p><strong>Caratteristiche</strong>: Aria polverosa e laboriosa, atmosfere ruvide ma genuine. Taverna rudimentale, fuochi la sera.</p></li>
+</ul>
+<h3 class="content-h3" id="villaggio-di-fontelucente">5. Villaggio di Fontelucente</h3>
+<p><strong>Origine</strong>: Sviluppatosi vicino a una sorgente cristallina ritenuta sacra da diversi pellegrini.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: circa <strong>220<br />
+</strong></p></li>
+<li><p><strong>Case</strong>: 50 case color pastello</p></li>
+<li><p><strong>Fattorie e centri lavorativi</strong>: 3 case di cura e bagni termali, 2 piccole coltivazioni di erbe medicinali</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p></div>
+<ul>
+<li><blockquote>
+<p><strong>Sindaca Ilmira Tyllen</strong>: saggia, pacata e appassionata di medicina.</p></li>
+<li><p><strong>Guaritore Jaros Kallen</strong>: esperto di rimedi antichi.</p></li>
+<li><p><strong>Sentinella Loen</strong>: vigila le fonti.</p></li>
+<li><p><strong>Vivien la Vetraia</strong>: crea ampolle e fiale.</p></li>
+<li><p><strong>La cantastorie Yra</strong>, conosciuta per le leggende sulla sorgente.</p></li>
+</ul></li>
+<li><p><strong>Caratteristiche</strong>: Atmosfera rilassata e spirituale. Le acque sono rinomate per guarigione e purificazione. Ottima tappa per riposarsi dopo un lungo viaggio.</p></li>
+</ul>
+<h3 class="content-h3" id="pozzprofond">6. Pozzprofond</h3>
+<p><strong>Origine</strong>: Villaggio dove è sepolto Berer, uno degli Otto Raggi di Kesper (vecchio gruppo di avventurieri legato alla sottotrama di Ados) — la sua tomba si trova ai piedi di un grande castagno su cui, da bambino, giocava.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: non quantificati in scena — nucleo piccolo, a giudicare dal fatto che il nipote e il fratello di Berer sono i primi e unici referenti incontrati dal gruppo.</p></li>
+<li><p><strong>Personaggi di spicco</strong>:</p></li>
+<li><p><strong>Il fratello di Berer</strong>: non conosce Ados, ma indica ai PG la direzione di Fonte Verde, a ovest, sconsigliando vivamente di andarci.</p></li>
+<li><p><strong>Il nipote di Berer</strong>: presente insieme allo zio nell'incontro col party.</p></li>
+<li><p><strong>Caratteristiche</strong>: Tappa di passaggio lungo la strada per Fonte Verde. Il party vi ha trovato la tomba di Berer profanata di recente — segno che qualcuno (verosimilmente legato ad Ados) è già passato di lì in cerca del suo frammento. È anche il luogo dove il party ha lasciato in custodia due cavalli (di proprietà di Whilliam) prima di proseguire verso Fonte Verde — cavalli che il gruppo ha deciso di recuperare al proprio ritorno, dopo gli eventi della Sessione 5, prima di rientrare a Tresil.</p></li>
+<li><p><strong>Lungo la strada per Pozzprofond</strong>: il party ha pernottato in un piccolo villaggio boschivo senza nome ai margini della foresta, dove Zoraya ha imparato le basi della cavalcata mentre le condizioni di Karl (febbre, ferita infetta) peggioravano.</p></li>
+</ul>
+<h3 class="content-h3" id="fonte-verde">7. Fonte Verde</h3>
+<p><strong>Origine</strong>: Villaggio a ovest di Pozzprofond, sconsigliato dal fratello di Berer. Teatro degli eventi centrali della Sessione 4 della campagna “Furiosa” (frammenti divini).</p>
+<ul>
+<li><p><strong>Abitanti</strong>: non quantificati — il party vi arriva di notte e incontra prima di tutto i segni di un massacro.</p></li>
+<li><p><strong>Caratteristiche</strong>: Il party vi giunge verso l'una-le due di notte (giorno 13 del terzo mese) e si imbatte in una processione silenziosa attorno a una casa con gli scuroni chiusi, circondata da una decina di cadaveri di ragazze con la gola tagliata. All'interno, un “Gran Sacerdote” incappucciato sta officiando un rituale notturno su una donna dalla pelle cadente e l'osso visibile allo zigomo (in realtà Lilglia, moglie non-morta di Ados — i PG non lo sanno), che porta al collo un anello di metallo incastonato di frammenti rosso sangue.</p></li>
+<li><p><strong>Eventi chiave</strong>: Nello scontro, Karl strappa l'anello dal collo della donna — che gli spezza due costole infilandogli la mano nel costato prima che Zoraya la liberi recidendole la mano. Incastrando nell'anello i frammenti già in possesso del party si scatena un blackout sensoriale seguito da quattro visioni separate — una per personaggio — di un'entità che si presenta come Furiosa, che chiede a ciascuno di aiutarla a essere “ricomposta” offrendo un dono calibrato sul desiderio più profondo di ognuno. Il “Gran Sacerdote” muore nel caos, divorato da Lilglia stessa.</p></li>
+</ul>
+<h3 class="content-h3" id="il-villaggio-dei-villici-presso-fonte-verde">8. Il villaggio dei villici (presso Fonte Verde)</h3>
+<p><strong>Origine</strong>: Piccolo villaggio poco fuori Fonte Verde, teatro del combattimento culminante della Sessione 5.</p>
+<ul>
+<li><p><strong>Abitanti</strong>: non quantificati — la popolazione locale (“i villici”) compare in scena perlopiù come vittime/aggressori posseduti o sotto il controllo del rituale in corso, incluse figure come un ragazzino di 16 anni e un uomo sulla sessantina.</p></li>
+<li><p><strong>Caratteristiche</strong>: Qui la donna sfigurata di Fonte Verde, ormai cresciuta a dimensioni mostruose (circa 3-3,5 metri) e nutrendosi dei cadaveri lasciati sul campo, viene affrontata e uccisa definitivamente: Zoraya le impone la verità in faccia (“sei morta, sei un cadavere e stai mangiando cadaveri”) facendola crollare, e Rei la decapita saltandole a cavalcioni sul collo. Nello stesso scontro Nikla, ferita gravemente (sterno quasi spaccato), rischia la morte e viene salvata da un rischioso incantesimo di rigenerazione; Karl la protegge più volte e infine sigilla con piastre di metallo la capanna in cui il gruppo trascorre la notte per riposare.</p></li>
+<li><p><strong>Esito</strong>: Al mattino seguente, nella stessa capanna, i quattro personaggi si confrontano sinceramente sulle rispettive visioni di Furiosa e decidono di restare uniti come gruppo “scelto” dalla dea, dirigendosi poi verso Pozzprofond (per recuperare i cavalli) e infine verso Tresil.</p></li>
+</ul>
+<p><em>Nota: Pozzprofond, Fonte Verde e il villaggio dei villici appartengono alla linea di campagna “Furiosa” (i frammenti divini), condotta in parallelo alla campagna principale di Tresil/Kaelvaran. Fonte: Personaggi.md, Sottotrama — Ados e gli Otto Raggi di Kesper.md, Furiosa (La Divinità).md, stato_lavori.md e data_furiosa.js (Progetto Furiosa), aggiornati al 17-19 settembre 2026.</em></p>
+<h3 class="content-h3" id="sole-velato">9. Sole Velato</h3>
+<p><strong>Origine</strong>: Villaggio noto per le caverne che ospitano un antico laboratorio nascosto, scoperto dal gruppo durante una missione affidata da avventurieri in vacanza.</p>
+<ul>
+<li><p><strong>Caratteristiche</strong>: Entrando nella caverna il gruppo è entrato in un sogno condiviso, viaggiando con i propri corpi fino a raggiungere, sul fondo, un laboratorio tecnologico popolato da creature metà macchina e metà biologiche. Lì è stato trovato Axelions, un discendente dei Primi Uomini in sospensione, che ha rivelato che i Primi percepivano il mondo dei sogni come fisico e che i sogni stessi sono “vascelli”; ha inoltre nominato la katana di Naru “Shpada” e promesso di rivelare dove si trova la madre di Larimar. Il laboratorio potrebbe essere collegato al programma di studio della Volontà portato avanti dagli Aenari (non ancora confermato in scena).</p></li>
+</ul>
+<h3 class="content-h3" id="roccia-brillante">10. Roccia Brillante</h3>
+<p><strong>Origine</strong>: Villaggio ingaggiato tramite commissione da Alexis Duvindale per il recupero di una pietra.</p>
+<ul>
+<li><p><strong>Caratteristiche</strong>: Il gruppo, arrivato al limite del villaggio, si è trovato intrappolato in un sogno distorto: un abitante pazzo era entrato in possesso di una scheggia delle Sei Sorelle e aveva rinchiuso l'intero villaggio nel proprio sogno cercando di evocare una divinità del caos. Durante l'episodio, Han (chiamato “carne impura” da un fatato locale e trattato come spazzatura) è stato divorato da Larimar, che ne ha acquisito storia, ricordi e le quattro regole del mondo condiviso (non uccidere umani per cibarsi; non portare umani nel mondo condiviso; non interferire con le vite umane; non procreare con gli umani). Il gruppo ha infine recuperato il frammento dalla mente del pazzo — Naru ha resistito alla tentazione di tenerlo e lo ha distrutto, causando un po' di caos residuo.</p></li>
+</ul>
+<h3 class="content-h3" id="pozz-de-ferr">11. Pozz de Ferr</h3>
+<p><strong>Origine</strong>: Località termale a circa 3 giorni di viaggio a nord-est di Tresil.</p>
+<ul>
+<li><p><strong>Caratteristiche</strong>: Meta di riposo del gruppo per tre giorni. Qui Larimar ha ottenuto un passaporto, e Naru ha incontrato Yome Musashi, che gli ha parlato di “prove” — mettendo inoltre in chiaro con Larimar e Han che i propri sogni restano off-limits. Tappa utile soprattutto per le dinamiche libere tra i personaggi, tra una missione e l'altra.</p></li>
+</ul>
+<p><em>Nota: Sole Velato, Roccia Brillante e Pozz de Ferr appartengono alla campagna principale di Tresil/Kaelvaran (party di Naru, Larimar, Han, Osiris). Fonte: data.js (Sessioni S06, S07, S10) e Villaggi limitrofi.md.</em></p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap3">
+  <div class="section-tag">Capitolo 3</div>
+  <h1 class="section-title">L’Economia di Tresil</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<h3 class="content-h3" id="fondamenti-delleconomia-di-tresil">Fondamenti dell’economia di Tresil</h3>
+<p>L’economia di Tresil si basa su <strong>quattro pilastri</strong>:</p>
+<ol type="1">
+<li><p><strong>Commercio marittimo internazionale<br />
+</strong> Grazie al Nuovo Porto, Tresil è crocevia tra le cinque culture, con <strong>navi cariche di spezie, tessuti, reliquie, metalli e magie</strong> provenienti da 40+ porti.</p></li>
+<li><p><strong>Artigianato e manifattura di lusso<br />
+</strong> Armi pregiate, ceramiche, tessuti, reliquie e oggetti magici venduti in tutto il continente.</p></li>
+<li><p><strong>Cultura e servizi<br />
+</strong> Festival, scuole, accademie di magia, spettacoli della Corporazione dei Maestri di Scena e le strutture termali attraggono viaggiatori da tutto il mondo.</p></li>
+<li><p><strong>Tasse sul commercio e sulle gilde<br />
+</strong> Il Consiglio dei Tre riscuote <strong>tasse sulle navi, mercati, magazzini, carovane, gilde e ambasciate</strong>, generando ricchezza stabile.</p></li>
+</ol>
+<p><strong>Tipologie di commercio</strong></p>
+<ul>
+<li><p><strong>Esportazioni</strong>: oggetti magici, armi pregiate, tessuti finissimi, ceramiche, erbe rare.</p></li>
+<li><p><strong>Importazioni</strong>: grani, spezie, metalli preziosi, pietre rare, sabbie magiche, legni esotici.</p></li>
+<li><p><strong>Mercato nero</strong>: armi proibite, reliquie, contrabbando di informazioni e magie oscure tramite la Mano d’Ottone, Rosa d’Ombra e Lanterna Spenta.</p></li>
+<li><p><strong>Servizi</strong>: portuali, bancari, creditizi, insegnamento e cura magica.</p></li>
+</ul>
+<h3 class="content-h3" id="flusso-settimanale-di-navi-e-carovane">Flusso settimanale di navi e carovane</h3>
+<ul>
+<li><p><strong>Navi mercantili:<br />
+</strong></p>
+</blockquote>
+<ul>
+<li><div class="quote"><p><strong>60–80 navi a settimana</strong>, di cui:</p></div>
+<ul>
+<li><div class="quote"><p>15–20 di grande stazza intercontinentale</p></li>
+<li><p>45–60 regionali</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Carovane terrestri:<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p><strong>40–50 carovane a settimana</strong> da villaggi limitrofi e città dell’entroterra.</p></li>
+</ul></li>
+</ul>
+<p>Tresil vede una media di <strong>12–16 navi al giorno</strong> e <strong>6–8 carovane al giorno</strong>.</p>
+<p><strong>Entrate settimanali della città</strong></p>
+<p><strong>Con una popolazione di 500.000 abitanti e traffici internazionali:</strong></p>
+<ul>
+<li><p><strong>Entrate settimanali: 3.500–4.500 op (oro piccolo)<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p>pari a <strong>3,5–4,5 miliardi di bp<br />
+</strong></p></li>
+</ul></li>
+</ul>
+<p><strong>Distribuzione:</strong></p>
+<ul>
+<li><p>35% tasse portuali e attracco</p></li>
+<li><p>25% mercati e fiere</p></li>
+<li><p>20% gilde ufficiali e quote di appartenenza</p></li>
+<li><p>10% quote di ambasciate e ospitalità diplomatica</p></li>
+<li><p>10% permessi edilizi, sanzioni, servizi extra</p></li>
+</ul>
+<p><strong>Spese settimanali per welfare e gestione</strong></p>
+<p><strong>Tresil dedica il 40–45% delle entrate settimanali al welfare cittadino:</strong></p>
+<ul>
+<li><p><strong>1.400–2.000 op/settimana (1,4–2 miliardi di bp)</strong> per:</p></div>
+<ul>
+<li><div class="quote"><p>ospedali, bagni pubblici e guaritori</p></li>
+<li><p>scuole pubbliche e Accademia del Sigillo di Cera</p></li>
+<li><p>fontane e fornitura di acqua potabile</p></li>
+<li><p>manutenzione strade, canali e illuminazione magica</p></li>
+<li><p>sostegno a famiglie in difficoltà e pensioni di vedove</p></li>
+<li><p>celebrazioni pubbliche (Festa del Patto dei Tre, Festival delle Scoperte)</p></li>
+</ul></li>
+</ul>
+<h3 class="content-h3" id="altri-dettagli-economici">Altri dettagli economici</h3>
+<ul>
+<li><p><strong>Costo della vita</strong>:</p></div>
+<ul>
+<li><div class="quote"><p>Operaio: 1–2 bg/giorno (100–200 bp)</p></li>
+<li><p>Artigiano: 5–10 bg/giorno (500–1.000 bp)</p></li>
+<li><p>Mercante medio: 5–20 op/mese (5–20 milioni bp)</p></li>
+<li><p>Affitto bottega: 2–5 ag/settimana (200.000–500.000 bp)</p></li>
+<li><p>Affitto magazzino porto: 1–3 op/settimana</p></li>
+</ul></li>
+<li><p><strong>Commercio clandestino</strong>:</p></div>
+<ul>
+<li><div class="quote"><p>Valore stimato: 300–500 op/settimana (300–500 milioni bp)</p></li>
+<li><p>Comprende armi, reliquie, incanti proibiti e traffico di informazioni.</p></li>
+</ul></li>
+<li><p><strong>Sistema di credito</strong>:</p></div>
+<ul>
+<li><div class="quote"><p>Note sigillate dall’Accademia del Sigillo di Cera garantiscono transazioni per carichi di 5–50 op.</p></li>
+<li><p>Interessi tra il 2–5% mensile regolati per evitare usura.</p></li>
+</ul></li>
+<li><p><strong>Contributi delle ambasciate</strong>:</p></div>
+<ul>
+<li><blockquote>
+<p>50–100 op/mese ciascuna come quota ospitalità e servizi, per un totale di 300–500 op/mese.</p></li>
+</ul></li>
+</ul>
+<h3 class="content-h3" id="sintesi-numerica">Sintesi numerica</h3>
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Voce</strong></th>
+<th><strong>Quantità stimata</strong></th>
+</tr>
+<tr class="odd">
+<th>Navi a settimana</th>
+<th>60–80</th>
+</tr>
+<tr class="header">
+<th>Carovane a settimana</th>
+<th>40–50</th>
+</tr>
+<tr class="odd">
+<th>Entrate settimanali</th>
+<th>3.500–4.500 op (3,5–4,5 miliardi bp)</th>
+</tr>
+<tr class="header">
+<th>Spese welfare settimanali</th>
+<th>1.400–2.000 op (1,4–2 miliardi bp)</th>
+</tr>
+<tr class="odd">
+<th>Valore commercio clandestino</th>
+<th>300–500 op (300–500 milioni bp)</th>
+</tr>
+<tr class="header">
+<th>Quota ambasciate mensile</th>
+<th>300–500 op complessivi</th>
+</tr>
+<tr class="odd">
+<th>Salario operaio</th>
+<th>1–2 bg/giorno</th>
+</tr>
+<tr class="header">
+<th>Salario artigiano</th>
+<th>5–10 bg/giorno</th>
+</tr>
+<tr class="odd">
+<th>Salario mercante medio</th>
+<th>5–20 op/mese</th>
+</tr>
+<tr class="header">
+<th>Affitto bottega</th>
+<th>2–5 ag/settimana</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+<p><strong>Conclusione</strong></p>
+<p>Tresil, con i suoi <strong>mezzo milione di abitanti</strong>, è <strong>un cuore pulsante di traffici, arte e cultura</strong>, sostenuta da una <strong>macchina economica efficiente, sincretica e viva</strong>, in cui la ricchezza scorre tra:</p>
+<ul>
+<li><p>le navi cariche di spezie e reliquie,</p></li>
+<li><p>le botteghe degli artigiani,</p></li>
+<li><p>le scuole di magia,</p></li>
+<li><p>le gilde riconosciute,</p></li>
+<li><p>e le ombre del mercato nero.</p></li>
+</ul>
+<p>Il sogno dei Tre Fondatori si realizza ogni giorno nelle monete che passano di mano, nelle navi che entrano nel porto e nelle luci che illuminano le piazze di Tresil.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap4">
+  <div class="section-tag">Capitolo 4</div>
+  <h1 class="section-title">Sistema monetario di Kaelvaran</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 49%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Moneta</strong></th>
+<th><strong>Valore</strong></th>
+<th></th>
+</tr>
+<tr class="odd">
+<th>Bronzo piccola (bp)</th>
+<th>1 bp</th>
+<th></th>
+</tr>
+<tr class="header">
+<th>Bronzo media (bm)</th>
+<th>10 bp</th>
+<th></th>
+</tr>
+<tr class="odd">
+<th>Bronzo grande (bg)</th>
+<th>100 bp = 10 bm</th>
+<th></th>
+</tr>
+<tr class="header">
+<th>Argento piccolo (ap)</th>
+<th>1 ap = 10 bg = 1000 bp</th>
+<th></th>
+</tr>
+<tr class="odd">
+<th>Argento medio (am)</th>
+<th>10 ap = 10000 bp</th>
+<th></th>
+</tr>
+<tr class="header">
+<th>Argento grande (ag)</th>
+<th>100 ap = 100000 bp</th>
+<th></th>
+</tr>
+<tr class="odd">
+<th>Oro piccolo (op)</th>
+<th>1 op = 10 ag = 1 000 000 bp</th>
+<th></th>
+</tr>
+<tr class="header">
+<th>Oro medio (om)</th>
+<th>10 op = 10 000 000 bp</th>
+<th></th>
+</tr>
+<tr class="odd">
+<th>Oro grande (og)</th>
+<th>100 op = 100 000 000 bp</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+<p>→ <strong>Stima per Kaelvaran:</strong> un contadino normale guadagna <strong>1 bg/giorno</strong> (~1 bronzo grande).</p>
+<h3 class="content-h3" id="prezzi-dei-beni-primari-in-kaelvaran">Prezzi dei beni primari in Kaelvaran</h3>
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 19%" />
+<col style="width: 18%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Prodotto</strong></th>
+<th><strong>Quantità/Settimana</strong></th>
+<th><strong>Costo</strong></th>
+<th><strong>Spieghiamo il potere d’acquisto</strong></th>
+</tr>
+<tr class="odd">
+<th>Pane comune</th>
+<th>1 pagnotta</th>
+<th>1 bp</th>
+<th>Abbondante e molto accessibile</th>
+</tr>
+<tr class="header">
+<th>Farina (kg)</th>
+<th>7 kg</th>
+<th>7 bp</th>
+<th>Costo settimanale contenuto</th>
+</tr>
+<tr class="odd">
+<th>Cereali (grano)</th>
+<th>7 kg</th>
+<th>14 bp</th>
+<th>Fonte di energia essenziale</th>
+</tr>
+<tr class="header">
+<th>Ortaggi freschi</th>
+<th>5 porzioni</th>
+<th>5 bp</th>
+<th>Vitamine quotidiane</th>
+</tr>
+<tr class="odd">
+<th>Una gallina viva</th>
+<th>1 capo</th>
+<th>1 bm = 10 bp</th>
+<th>A chi può permettersi il lusso</th>
+</tr>
+<tr class="header">
+<th>Uova (10)</th>
+<th>10 uova</th>
+<th>1 bm</th>
+<th>Fonte proteica economica</th>
+</tr>
+<tr class="odd">
+<th>Legna da ardere</th>
+<th>1 fascio</th>
+<th>5 bp</th>
+<th>Essenziale per cuocere e riscaldare</th>
+</tr>
+<tr class="header">
+<th>Birra debole</th>
+<th>1 boccale</th>
+<th>2 bp</th>
+<th>Birra piccola</th>
+</tr>
+<tr class="odd">
+<th>Pecora</th>
+<th>1 capo</th>
+<th>3 bm = 30 bp</th>
+<th>Lana e carne</th>
+</tr>
+<tr class="header">
+<th>Maiale vivo</th>
+<th>1 capo</th>
+<th>1 am = 1000 bp</th>
+<th>Macellato stagionale</th>
+</tr>
+<tr class="odd">
+<th>Sale (1 kg)</th>
+<th>1 kg</th>
+<th>2 bm</th>
+<th>Spezia importante</th>
+</tr>
+<tr class="header">
+<th>Grazie tessile (lana grezza)</th>
+<th>1 kg</th>
+<th>2 bm</th>
+<th>Materiale per abbigliamento</th>
+</tr>
+<tr class="odd">
+<th>Vestito semplice</th>
+<th>1 indumento</th>
+<th>1 am (1000 bp)</th>
+<th>Dispendioso per i contadini</th>
+</tr>
+<tr class="header">
+<th>Ferratura di un cavallo</th>
+<th>1 volta</th>
+<th>2 am</th>
+<th>Cura necessaria, ma costosa</th>
+</tr>
+<tr class="odd">
+<th>Giorno di manodopera (edile/contadino)</th>
+<th>1 giorno</th>
+<th>1 bg</th>
+<th>Fissato per lavoro stagionale</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+<h3 class="content-h3" id="interpretazione-del-potere-dacquisto">Interpretazione del potere d’acquisto</h3>
+<ul>
+<li><p>Un <strong>contadino normale</strong>, con reddito ~<strong>1 bg al giorno</strong>, copre cibo e legna, ma deve lavorare parecchio per acquistare animali o vestiti.</p></li>
+<li><p><strong>Salari extra</strong> (artigiano o lavori in città) potrebbero arrivare a <strong>2 bg/giorno</strong>, permettendo risparmi per acquisti piccoli (galline, uova) o occasionali vestiti.</p></li>
+<li><p>Un <strong>amministratore, cavaliere o mercante</strong> guadagna in oro o argento, potendo permettersi carrozze, armature, strumenti e favori politici.</p></li>
+</ul>
+<h2 class="content-h2" id="section-4"></h2>
+<h2 class="content-h2" id="section-5"></h2>
+<h2 class="content-h2" id="section-6"></h2>
+<h2 class="content-h2" id="section-7"></h2>
+<h2 class="content-h2" id="section-8"></h2>
+<h3 class="content-h3" id="tabella-locande-servizi">Tabella Locande &amp; Servizi</h3>
+<p><em>(Costi in bronzo piccolo — bp — per semplicità)</em></p>
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Servizio</strong></th>
+<th><strong>Sporco (Taverna malfamata)</strong></th>
+<th><strong>Relativamente pulito (Locanda modesta)</strong></th>
+<th><strong>Lusso (Albergo signorile)</strong></th>
+</tr>
+<tr class="odd">
+<th>Pernottamento (1 notte)</th>
+<th>5 bp</th>
+<th>2 bm (20 bp)</th>
+<th>1 ag (1000 bp)</th>
+</tr>
+<tr class="header">
+<th>Pasto semplice</th>
+<th>3 bp</th>
+<th>1 bm (10 bp)</th>
+<th>3 bm (30 bp)</th>
+</tr>
+<tr class="odd">
+<th>Pasto completo (carne &amp; pane)</th>
+<th>—</th>
+<th>3 bm (30 bp)</th>
+<th>1 bg (100 bp)</th>
+</tr>
+<tr class="header">
+<th>Birra o vino</th>
+<th>2 bp</th>
+<th>5 bp</th>
+<th>2 bm (20 bp)</th>
+</tr>
+<tr class="odd">
+<th>Bagno caldo</th>
+<th>—</th>
+<th>2 bm (20 bp)</th>
+<th>5 bm (50 bp)</th>
+</tr>
+<tr class="header">
+<th>Stalla per cavallo</th>
+<th>2 bp</th>
+<th>5 bp</th>
+<th>1 bm (10 bp)</th>
+</tr>
+<tr class="odd">
+<th>Favore sessuale (1 ora)</th>
+<th>2 bm (20 bp)</th>
+<th>5 bm (50 bp)</th>
+<th>1 ag (1000 bp)</th>
+</tr>
+<tr class="header">
+<th>Favore sessuale + pernottamento</th>
+<th>—</th>
+<th>—</th>
+<th>1 am (10 000 bp)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+<p><em>(Nota: i favori sessuali sono costosi e regolati da gilde, particolarmente nelle locande di lusso. Nei posti malfamati è “mercato libero”.)</em></p>
+<h3 class="content-h3" id="tabella-beni-per-avventurieri">Tabella Beni per Avventurieri</h3>
+<p><em>(Costi in bronzo piccolo — bp — con equivalenze tra monete per comodità)</em></p>
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Oggetto</strong></th>
+<th><strong>Costo</strong></th>
+</tr>
+<tr class="odd">
+<th>Vestiario semplice</th>
+<th>3 bm (30 bp)</th>
+</tr>
+<tr class="header">
+<th>Vestiario da viaggio</th>
+<th>1 bg (100 bp)</th>
+</tr>
+<tr class="odd">
+<th>Tenda da campo</th>
+<th>2 bg (200 bp)</th>
+</tr>
+<tr class="header">
+<th>Cavallo da soma</th>
+<th>5 ag (5000 bp)</th>
+</tr>
+<tr class="odd">
+<th>Cavallo da sella</th>
+<th>1 am (10 000 bp)</th>
+</tr>
+<tr class="header">
+<th>Pugnale</th>
+<th>2 bm (20 bp)</th>
+</tr>
+<tr class="odd">
+<th>Spada</th>
+<th>1 ag (1000 bp)</th>
+</tr>
+<tr class="header">
+<th>Armatura di cuoio</th>
+<th>5 ag (5000 bp)</th>
+</tr>
+<tr class="odd">
+<th>Armatura di maglia</th>
+<th>1 am (10 000 bp)</th>
+</tr>
+<tr class="header">
+<th>Ago e filo</th>
+<th>2 bp</th>
+</tr>
+<tr class="odd">
+<th>Candele (10 pezzi)</th>
+<th>5 bp</th>
+</tr>
+<tr class="header">
+<th>Pergamena (foglio)</th>
+<th>1 bm (10 bp)</th>
+</tr>
+<tr class="odd">
+<th>Acqua (otre da 2L)</th>
+<th>1 bp</th>
+</tr>
+<tr class="header">
+<th>Razioni da viaggio (1 giorno)</th>
+<th>1 bm (10 bp)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+<h3 class="content-h3" id="tabella-strumenti-davventura">Tabella Strumenti d’Avventura</h3>
+<p><em>(Costi in bronzo piccolo — bp — e loro equivalenze quando utili)</em></p>
+<div class="table-wrap"><table class="ctable">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 21%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Oggetto</strong></th>
+<th><strong>Costo</strong></th>
+<th><strong>Note</strong></th>
+</tr>
+<tr class="odd">
+<th>Torcia (singola)</th>
+<th>1 bp</th>
+<th>Durata ~1 ora</th>
+</tr>
+<tr class="header">
+<th>Lanterna semplice</th>
+<th>2 bm (20 bp)</th>
+<th>Brucia olio per 4 ore</th>
+</tr>
+<tr class="odd">
+<th>Fiasca d’olio per lanterna</th>
+<th>1 bm (10 bp)</th>
+<th>Una fiasca = 4 ore di luce</th>
+</tr>
+<tr class="header">
+<th>Corda (10 m)</th>
+<th>5 bm (50 bp)</th>
+<th>Canapa, resistente</th>
+</tr>
+<tr class="odd">
+<th>Rampino</th>
+<th>1 ag (1000 bp)</th>
+<th>Metallo temprato</th>
+</tr>
+<tr class="header">
+<th>Piccone da scavo</th>
+<th>5 bm (50 bp)</th>
+<th>Robusto, di ferro</th>
+</tr>
+<tr class="odd">
+<th>Pala</th>
+<th>2 bm (20 bp)</th>
+<th>Utile per scavi e campeggio</th>
+</tr>
+<tr class="header">
+<th>Zaino da viaggio</th>
+<th>1 ag (1000 bp)</th>
+<th>Tela cerata, tasche interne</th>
+</tr>
+<tr class="odd">
+<th>Sacca da viaggio</th>
+<th>5 bm (50 bp)</th>
+<th>Borsa di pelle</th>
+</tr>
+<tr class="header">
+<th>Sacco a pelo</th>
+<th>5 bm (50 bp)</th>
+<th>Tessuto spesso</th>
+</tr>
+<tr class="odd">
+<th>Grimaldelli (set)</th>
+<th>3 ag (3000 bp)</th>
+<th>Utensili da scassinatore</th>
+</tr>
+<tr class="header">
+<th>Bussola</th>
+<th>2 ag (2000 bp)</th>
+<th>Metallo e vetro</th>
+</tr>
+<tr class="odd">
+<th>Acciarino e pietra focaia</th>
+<th>1 bm (10 bp)</th>
+<th>Essenziale per accendere fuochi</th>
+</tr>
+<tr class="header">
+<th>Mappa locale</th>
+<th>2 bm (20 bp)</th>
+<th>Pergamena disegnata a mano</th>
+</tr>
+<tr class="odd">
+<th>Kit da cucito</th>
+<th>5 bp</th>
+<th>Ago, filo, bottoni</th>
+</tr>
+<tr class="header">
+<th>Sacco di juta</th>
+<th>1 bp</th>
+<th>Per bottino e provviste</th>
+</tr>
+<tr class="odd">
+<th>Fiasca d’acqua</th>
+<th>1 bm (10 bp)</th>
+<th>Pelle di capra</th>
+</tr>
+<tr class="header">
+<th>Borsa porta-ingredienti</th>
+<th>3 bm (30 bp)</th>
+<th>Scomparti per spezie</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap5">
+  <div class="section-tag">Capitolo 5</div>
+  <h1 class="section-title">Leggi e Punizioni</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<div class="quote"><p>“Ogni porto ha le sue maree, ogni città i suoi giudici. Qui, le leggi sono le catene che tengono fermo il molo.”<br />
+<em>Detto tra i giudici del Consiglio dei Tre</em></p></div>
+<h3 class="content-h3" id="fondamento-delle-leggi">Fondamento delle Leggi</h3>
+<p>Le leggi di Tresil discendono dal <strong>Patto dei Tre Fondatori</strong>, riformate più volte per adattarsi al traffico di merci e al vivere comune tra le cinque culture presenti in città.</p>
+<p>Esse sono <strong>trascritte su tavolette lignee e lastre di pietra incise</strong>, conservate nella <strong>Sala del Nodo</strong> e lette pubblicamente durante le “Giornate del Sigillo”, quando vengono applicati nuovi editti o revocate antiche leggi non più necessarie.</p>
+<p>Il diritto si basa su tre pilastri:</p>
+<ul>
+<li><p><strong>Protezione del commercio e delle vie di scambio.<br />
+</strong></p></li>
+<li><p><strong>Salvaguardia della pace cittadina.<br />
+</strong></p></li>
+<li><p><strong>Custodia delle reliquie e della memoria collettiva.<br />
+</strong></p></li>
+</ul>
+<h3 class="content-h3" id="tipologia-di-leggi">Tipologia di Leggi</h3>
+<ol type="1">
+<li><p><strong>Leggi Mercantili<br />
+</strong> Tutela degli scambi, obblighi di registrazione dei carichi, tasse doganali, regolamenti sulle misure e pesi. Le dispute tra mercanti sono spesso risolte da arbitri nominati dalle gilde.</p></li>
+<li><p><strong>Leggi di Sicurezza Pubblica<br />
+</strong> Divieto di portare armi senza sigillo di permesso, proibizione di duelli in piazza, controllo della magia urbana non autorizzata.</p></li>
+<li><p><strong>Leggi Religiose e di Custodia delle Reliquie<br />
+</strong> Vietato sottrarre reliquie da cripte e catacombe. La profanazione di un luogo sacro comporta severe punizioni.</p></li>
+<li><p><strong>Leggi sul Porto e le Acque<br />
+</strong> Regole su attracchi, scarico di merci, pagamento di dazi, divieto di scarichi inquinanti nelle acque interne.</p></li>
+<li><p><strong>Leggi della Notte<br />
+</strong> Durante la “Campana della Nebbia” (tre ore dopo il tramonto), è proibito circolare in gruppi armati nei quartieri interni senza permesso.</p></li>
+<li><p><strong>Leggi sui Fatati e sulla Magia<br />
+</strong> L’uso di magie che influenzano le menti o le emozioni è severamente controllato. I Fatati stabilizzati godono di protezione se registrati, ma sono soggetti a confino in caso di comportamenti pericolosi.</p></li>
+</ol>
+<h3 class="content-h3" id="il-sistema-di-giustizia">Il Sistema di Giustizia</h3>
+<p>Il <strong>Consiglio dei Tre</strong> nomina ogni anno i <strong>Giudici dei Tre Sigilli</strong>, che tengono udienze pubbliche tre volte a settimana nelle Piazze del Nodo. Casi minori sono giudicati da capitani della Guardia Interna o da arbitri delle gilde.</p>
+<p>I testimoni prestano giuramento sulla <strong>Pietra del Patto</strong>, una lastra che, si dice, si riscalda se si pronuncia menzogna.</p>
+<h3 class="content-h3" id="tipologia-di-punizioni">Tipologia di Punizioni</h3>
+<p>Le punizioni a Tresil mirano a <strong>mantenere l’ordine e proteggere la città</strong>, ma anche a mostrare la legge come un monito visibile. Le punizioni variano in base alla gravità del crimine, al rango dell’imputato e alla disponibilità a riparare economicamente il danno.</p>
+<h4 id="punizioni-pecuniarie"><strong>Punizioni Pecuniarie</strong></h4>
+<ul>
+<li><p>Multa in moneta o in beni (da 10 bg fino a 20 op nei casi gravi).</p></li>
+<li><p>Confisca di merci o strumenti usati per il crimine.</p></li>
+</ul>
+<h4 id="punizioni-corporali"><strong>Punizioni Corporali</strong></h4>
+<ul>
+<li><p><strong>Esposizione al Piloro</strong>: il condannato viene legato per alcune ore in pubblica piazza, spesso con cartelli che indicano il reato.</p></li>
+<li><p><strong>Marchiatura</strong>: un piccolo sigillo inciso sulla spalla o sull’avambraccio per furti recidivi.</p></li>
+<li><p><strong>Fustigazione</strong>: applicata per furti, risse e insulti gravi alle autorità.</p></li>
+<li><p><strong>Amputazione simbolica</strong> (un dito o l’orecchio) per ladri che tornano a delinquere, pratica rara ma ancora temuta.</p></li>
+</ul>
+<h4 id="detenzione-e-lavori-forzati"><strong>Detenzione e Lavori Forzati</strong></h4>
+<ul>
+<li><p>Reclusione nelle celle del Castello o nei sotterranei della Guardia Portuale.</p></li>
+<li><p>Lavori obbligati per riparazioni pubbliche (ponti, mura, pulizia delle fogne).</p></li>
+</ul>
+<h4 id="section-9"></h4>
+<h4 id="bando"><strong>Bando</strong></h4>
+<ul>
+<li><p>Allontanamento dalla città per un periodo (da un mese a dieci anni).</p></li>
+<li><p>I banditi sono marchiati con sigilli magici che brillano se tentano di rientrare clandestinamente.</p></li>
+</ul>
+<h4 id="pena-di-morte"><strong>Pena di Morte</strong></h4>
+<ul>
+<li><p>Riservata a omicidi premeditati, tradimento verso la città o furto sacrilego di reliquie.</p></li>
+<li><p>Eseguita con la spada, raramente in pubblico, talvolta al sorgere del sole sul molo principale.</p></li>
+</ul>
+<h3 class="content-h3" id="punizioni-per-crimini-magici">Punizioni per Crimini Magici</h3>
+<p>Chi pratica incantamenti proibiti o tenta di influenzare la mente dei cittadini senza licenza può subire:</p>
+<ul>
+<li><p>Confisca degli strumenti magici.</p></li>
+<li><p>Taglio dei capelli o delle barbe rituali, segno di vergogna per molti maghi.</p></li>
+<li><p>Bando dalla città per dieci anni.</p></li>
+<li><p>In casi estremi, soppressione magica tramite sigilli degli Incaviatori.</p></li>
+</ul>
+<h3 class="content-h3" id="esempi-di-crimini-e-pene-comuni">Esempi di Crimini e Pene Comuni</h3>
+<ul>
+<li><p><strong>Furto minore</strong>: multa pari al doppio del valore rubato + esposizione al piloro.</p></li>
+<li><p><strong>Rissa pubblica con feriti</strong>: fustigazione + multa di 50 bg.</p></li>
+<li><p><strong>Contrabbando di merci</strong>: confisca delle merci + multa di 2–5 op.</p></li>
+<li><p><strong>Uso di magia di controllo mentale su cittadini</strong>: confisca degli strumenti + bando di 5 anni.</p></li>
+<li><p><strong>Profanazione di una cripta</strong>: confisca dei beni, multa di 10 op, eventuale marchiatura.</p></li>
+<li><p><strong>Omicidio</strong>: pena di morte, oppure lavori forzati a vita in casi eccezionali.</p></li>
+</ul>
+<h3 class="content-h3" id="il-volto-della-legge">Il Volto della Legge</h3>
+<p>La legge a Tresil non è solo rigore: conosce la clemenza per chi ripara il danno e rispetta il Patto. Le gilde possono pagare multe in nome dei propri affiliati, ma in cambio si espongono a sanzioni più severe in caso di recidiva.</p>
+<p>Gli Incaviatori osservano i processi in silenzio, pronti a segnalare se la giustizia diverge dal Patto dei Tre, ricordando che Tresil vive solo finché la legge rimane uno scudo per i deboli e una catena per chi vuole tradirla.</p>
+<h3 class="content-h3" id="conclusione">Conclusione</h3>
+<p>Le leggi e le punizioni a Tresil non sono semplici strumenti di controllo: sono un <strong>intreccio di timore, rispetto e memoria</strong>, una barriera che permette alla città di prosperare senza cadere nel caos, e un monito che ogni passo nell’ombra può portare alla luce del giorno, quando la Campana della Nebbia cessa e il sole si alza sulle acque del porto.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap6">
+  <div class="section-tag">Capitolo 6</div>
+  <h1 class="section-title">Gilde e fazioni</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<h3 class="content-h3" id="la-lega-dei-mercanti-di-tresil-gilda-dei-grandi-mercanti">1. La Lega dei Mercanti di Tresil — Gilda dei Grandi Mercanti</h3>
+<p><strong>Descrizione generale:<br />
+</strong> La Lega dei Mercanti è la più antica e influente gilda di Tresil. Raggruppa i mercanti di spezie, tessuti, metalli pregiati e oggetti esotici provenienti da ogni angolo del mondo. Le loro sale si trovano in un edificio di marmo bianco vicino al Porto Nuovo, sempre affollato da membri impegnati a siglare accordi commerciali.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Espandere le rotte di commercio e assicurare il benessere economico di Tresil. Ogni membro vuole aumentare la propria influenza, ma esiste anche un orgoglio collettivo nel rappresentare la città al meglio.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Pragmatismo, onestà nei contratti e lealtà tra membri della gilda. I patti non si infrangono mai, pena l’espulsione e la rovina commerciale.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Siran Voles</em>, nobile mercante di vini pregiati e arredi di lusso, tra i più rispettati.<br />
+– <em>Melina Druan</em> ha collaborato spesso con loro per piazzare merci esotiche.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> La gilda inaugura ogni anno le sue trattative principali con una cerimonia chiamata “Patto del Sale e del Ferro”, simbolo di solidità e sapore negli affari.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Protezione legale dei contratti, stanze di deposito merci, reti di informatori su prezzi e andamenti dei mercati.</p>
+<h3 class="content-h3" id="la-gilda-dei-maestri-artigiani-fabbri-falegnami-tessitori-vasai">2. La Gilda dei Maestri Artigiani — Fabbri, Falegnami, Tessitori, Vasai</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Questa gilda riunisce tutti coloro che creano oggetti di qualità a Tresil. La loro sede è un edificio di mattoni rossi nel Quartiere Vecchio, con cortili rumorosi e botteghe sempre piene di apprendisti al lavoro.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Mantenere vivo l’orgoglio del mestiere e tramandare i segreti artigiani di generazione in generazione.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Apprezzano la dedizione, la pazienza e il perfezionismo. Ogni pezzo finito porta il marchio della gilda come garanzia di qualità.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Kivan Berrol</em>, giovane fabbro apprendista molto apprezzato tra i membri.<br />
+– <em>Ilna Resti</em>, ceramista di talento spesso chiamata come giudice nelle gare di artigianato.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni nuovo maestro incide il proprio nome sulla “Pietra dei Maestri” nel cortile della gilda, come simbolo d’onore.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Corsi di perfezionamento, laboratori comuni, mostre periodiche e vendita collettiva di pezzi artigianali.</p>
+<h3 class="content-h3" id="la-corporazione-dei-maestri-di-scena-attori-musicisti-intrattenitori">3. La Corporazione dei Maestri di Scena — Attori, Musicisti, Intrattenitori</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Compagnia vivace e numerosa di attori, cantori, danzatori e artisti di strada. Ha la sua sede vicino al Quartiere delle Arti, in un teatro storico sempre animato da prove e spettacoli.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Diffondere la bellezza e intrattenere il popolo di Tresil, mantenendo vivi i miti e le leggende della città.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Creatività, passione e generosità. Tra di loro la competizione è forte, ma l’appartenenza alla gilda li fa sentire una famiglia.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Alvera Nomié</em>, cantastorie affermata, ha spesso ricevuto il patrocinio della gilda.<br />
+– <em>Roderin Falca</em>, giocoliere stimato e collaboratore fisso nelle rappresentazioni di piazza.<br />
+– <em>Menrik Tolhar</em>, burattinaio anziano e rispettato.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Alla fine di ogni esibizione ufficiale, i membri suonano insieme un breve motivo chiamato “Canto del Sipario” per salutare le Muse.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Scuole di musica e teatro, organizzazione di feste pubbliche, noleggio di artisti per eventi ufficiali e privati.</p>
+<h3 class="content-h3" id="la-compagnia-dei-navigatori-e-marinai-gilda-marittima">4. La Compagnia dei Navigatori e Marinai — Gilda Marittima</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Unione di marinai, capitani e timonieri di Tresil, con sede in una grande casa di legno vicino al porto. È anche un luogo di ritrovo e di addestramento per i giovani aspiranti marinai.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Tutelare la vita e i diritti di chi solca i mari e coordinare le spedizioni commerciali e le esplorazioni.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Solidarietà tra marinai, coraggio, fedeltà al mare e al proprio equipaggio.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Lurien Sest</em>, pescatore esperto e membro onorario.<br />
+– Alcuni dei clienti della Rosa dei Venti sono anche membri di spicco della Compagnia.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Prima di ogni viaggio ufficiale, i capitani toccano un’antica ancora di bronzo all’ingresso della sede come buon auspicio.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Registri di navi e marinai, carte nautiche aggiornate, addestramenti di giovani mozzi e stanze per i viaggiatori di passaggio.</p>
+<h3 class="content-h3" id="lordine-dei-magistrati-e-avvocati-gilda-di-giustizia">5. L’Ordine dei Magistrati e Avvocati — Gilda di Giustizia</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Questa gilda riunisce giudici, avvocati e scribi legali di Tresil. La loro sede è una torre di pietra bianca vicino al Vecchio Castello, con stanze colme di volumi di leggi e archivi segreti.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Garantire l’equità e l’imparzialità nel sistema giuridico della città, risolvendo i conflitti in modo giusto e ordinato.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Giustizia, rigore e imparzialità. Il loro motto è “La Legge È Luce.”</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – Alcuni membri del Consiglio dei Tre sono stati magistrati in passato.<br />
+– Avvocati celebri come <em>Maren Telos</em> si formano qui prima di mettersi in proprio.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> I nuovi membri pronunciano un giuramento sulla bilancia di marmo al centro della sala principale.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Consulenze legali, registro ufficiale di cause, mediazione tra cittadini e tra le varie fazioni.</p>
+<h3 class="content-h3" id="la-confraternita-del-focolare-gilda-di-osti-e-tavernieri">6. La Confraternita del Focolare — Gilda di Osti e Tavernieri</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Gruppo numeroso e vivace, riunisce i gestori di locande, osterie e taverne di Tresil. La loro sede è una taverna vera e propria nel Quartiere Vecchio, sempre affollata di membri e clienti.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Assicurare cibo e alloggio di qualità e regolamentare i prezzi dei pasti e dei letti in città.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Accoglienza calorosa, onestà nei conti, generosità nei confronti dei viaggiatori.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Siona Vass</em>, proprietaria della Fontana d’Opale, tra le più stimate nel gruppo.<br />
+– <em>Horlen Valt</em>, della Rosa dei Venti, collabora con la gilda in numerose occasioni.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni mese i membri versano una moneta in un forziere comune per aiutare le taverne in difficoltà.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Organizzazione di banchetti ufficiali, regolamentazione dei prezzi, spazi per riunioni pubbliche e notizie aggiornate su nuovi arrivi in città.</p>
+<h3 class="content-h3" id="laccademia-del-sigillo-di-cera-scuola-di-scribes-amanuensi-e-copisti">7. L’Accademia del Sigillo di Cera — Scuola di Scribes, Amanuensi e Copisti</h3>
+<p><strong>Descrizione generale:<br />
+</strong> I loro studi sono pieni di banchi, penne, inchiostri e volumi di ogni tipo. Accolgono giovani aspiranti amanuensi da tutta l’isola per istruirli nella calligrafia, nell’archivistica e nel restauro dei testi antichi.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Proteggere e diffondere il sapere scritto, garantire copie accurate dei documenti ufficiali e preservare la memoria di Tresil.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Precisione, pazienza, devozione al sapere e all’integrità delle informazioni.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – Serea Luthan, ritrattista di talento, ha collaborato con loro per illustrare manoscritti preziosi.<br />
+– Anziani amanuensi, come <em>Miro Elan</em>, sono autorità riconosciute nel campo.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> All’inizio di ogni giornata di lavoro accendono una piccola candela vicino al sigillo di cera ufficiale della gilda.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Riproduzione di testi ufficiali, restauri di documenti antichi, corsi di scrittura e calligrafia per nobili e burocrati.</p>
+<h3 class="content-h3" id="la-gilda-dei-portatori-unione-di-facchini-e-trasportatori">8. La Gilda dei Portatori — Unione di Facchini e Trasportatori</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Corporazione robusta e affiatata di portatori, facchini e traslocatori, con la loro sede vicino al mercato. Sono conosciuti per la loro resistenza e la loro disponibilità.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Organizzare equamente il lavoro tra i portatori, garantire tariffe giuste e tutelare la sicurezza di chi sposta le merci per le strade.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Mutuo soccorso, lealtà tra compagni di lavoro e dignità del mestiere.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Darlen Vokk</em>, facchino del porto, spesso fa da portavoce per i suoi compagni.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni sera i portatori alzano insieme un brindisi al “Sacco Pieno” come augurio di guadagni onesti.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Trasporto merci per la città e le navi, custodia di oggetti preziosi e aiuto nei traslochi.</p>
+<h3 class="content-h3" id="la-mano-dottone-gilda-informale-di-armaioli-e-trafficanti-darmi">9. La Mano d’Ottone — Gilda informale di armaioli e trafficanti d’armi</h3>
+<p><strong>Descrizione generale:<br />
+</strong> La Mano d’Ottone riunisce artigiani specializzati nel produrre armi personalizzate e di alta qualità. Ufficialmente rispettati come artigiani, in realtà intrattengono affari anche con collezionisti dubbi e mercenari. La loro bottega principale è nascosta nel quartiere del Ferro, dietro una facciata di umile laboratorio.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Diventare la principale rete di fornitura di armi della città, inclusi modelli non regolamentari.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Lealtà tra membri e discrezione assoluta su ciò che viene commissionato.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Kivan Berrol</em>, giovane fabbro ambizioso, spesso incaricato di realizzare armi su commissione.<br />
+– <em>Kolan Varek</em>, veterano e maestro forgiatore.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Segnano le armi approvate con una piccola incisione a forma di chiave, invisibile a occhio nudo.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Creazione di armi e armature personalizzate, modifiche segrete, contrabbando di armi in altre città.</p>
+<h3 class="content-h3" id="la-compagnia-dei-corrieri-di-vento-rete-di-messaggeri-délite">10. La Compagnia dei Corrieri di Vento — Rete di messaggeri d’élite</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Una rete di messaggeri rapidissimi e astuti, ufficialmente “corrieri cittadini”, ufficiosamente anche informatori e spie per le gilde. La loro sede ufficiale è una piccola casa vicino al porto, sempre piena di ragazzi pronti a partire.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Diventare indispensabili a ogni fazione della città, conoscendo segreti prima di chiunque altro.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Loyalty tra i messaggeri e riserbo totale sulle informazioni trasportate.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Tenno Rivas</em>, giovane messaggero esperto e conosciuto in città.<br />
+– <em>Sira Yenhal</em>, collaboratrice saltuaria per incarichi speciali.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni nuovo corriere riceve un piccolo campanello d’argento da portare alla cintura come simbolo di libertà.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Messaggi urgenti, trasporto di piccoli oggetti, informatori tra le strade.</p>
+<h3 class="content-h3" id="la-lanterna-spenta-rete-di-spie-e-informatori-clandestini">11. La Lanterna Spenta — Rete di spie e informatori clandestini</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Luogo nascosto tra i vicoli del porto vecchio. Membri invisibili tra le ombre, pronti a raccogliere e vendere informazioni a chi offre di più.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Accumulare ricchezze e segreti, esercitando un potere nascosto sulla città.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Lealtà solo al profitto, neutralità e segretezza assoluta.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Niro Vesk</em>, proprietario della taverna omonima, capo indiscusso della rete.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Si scambiano le informazioni solo in cambio di un piccolo pezzo di vetro scuro — simbolo del loro patto di segretezza.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Raccolta e vendita di informazioni, sorveglianza discreta, incarichi di spionaggio.</p>
+<h3 class="content-h3" id="i-corvi-di-cenere-banda-di-ladri-e-borseggiatori">12. I Corvi di Cenere — Banda di ladri e borseggiatori</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Gruppo agile di ladri operanti nel Quartiere Vecchio, spesso camuffati da mendicanti o garzoni. Hanno piccoli nascondigli tra le soffitte e i tetti.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Sopravvivere con astuzia, arricchirsi alle spalle dei più abbienti e non farsi mai catturare.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Complicità tra i membri e protezione reciproca.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Sira Yenhal</em>, giovane abile borseggiatrice e informatrice.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni membro porta al collo una piuma bruciacchiata come segno di appartenenza.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Borseggio, furto su commissione, commercio di oggetti sottratti.</p>
+<h3 class="content-h3" id="la-rosa-dombra-circolo-di-contrabbandieri">13. La Rosa d’Ombra — Circolo di contrabbandieri</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Organizzazione segreta di contrabbandieri specializzati nel far passare spezie rare, vini pregiati e merci illecite tra le isole.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Creare una rete di commercio illegale invisibile al Consiglio dei Tre e arricchirsi nell’ombra.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Rispetto dei patti, lealtà alla Rosa e segretezza assoluta.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Nerek Voss</em>, uomo enigmatico e astuto, capo indiscusso.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Ogni nuovo membro riceve una rosa di ferro nero come simbolo di fedeltà.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Contrabbando di qualsiasi merce proibita, contatti con porti remoti, scambio di passaggi clandestini.</p>
+<h3 class="content-h3" id="i-sussurratori-dopale-setta-esoterica-di-indovini-e-occultisti">14. I Sussurratori d’Opale — Setta esoterica di indovini e occultisti</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Rete di veggenti, ritualisti e medium nascosti in botteghe e stanze segrete, alla costante ricerca di presagi e verità invisibili.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Svelare i segreti del futuro e dei tempi passati, accumulando conoscenze proibite e offrendo le loro visioni al miglior offerente.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Segretezza, devozione ai rituali e condivisione di segreti solo tra iniziati.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – <em>Ena Sildra</em>, erborista e medium nel quartiere vecchio.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Si riuniscono nelle notti di luna nuova, tracciando spirali di sabbia per evocare visioni collettive.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Divinazioni private, talismani, lettura del destino su pergamena, rituali di protezione.</p>
+<h3 class="content-h3" id="i-martelli-di-sangue-banda-di-assassini-prezzolati">15. I Martelli di Sangue — Banda di assassini prezzolati</h3>
+<p><strong>Descrizione generale:<br />
+</strong> Banda di sicari spietati, sempre nascosti tra le ombre della città. La loro sede segreta è in una cantina abbandonata nel quartiere portuale.</p>
+<p><strong>Motivazioni profonde:<br />
+</strong> Ottenere potere e oro eliminando le minacce al miglior offerente.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Fedeltà solo al contratto firmato col sangue e assoluta assenza di scrupoli.</p>
+<p><strong>Figure di rilievo:<br />
+</strong> – Una figura chiamata solo <em>La Maschera Nera</em>, leader segreto e mai visto in volto.</p>
+<p><strong>Rituali o abitudini personali:<br />
+</strong> Prima di un incarico importante, i membri incidono una piccola lama su una pietra nera come giuramento.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Assassinii su commissione, intimidazioni, scorta clandestina di figure potenti.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap7">
+  <div class="section-tag">Capitolo 7</div>
+  <h1 class="section-title">Le Vene Nascoste di Tresil</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<div class="quote"><p>“Nessuna città è viva davvero se non ha radici che scendono nel buio.”<br />
+<em>Detto degli Incaviatori di Tresil</em></p></div>
+<p>Dove finiscono le strade lastricate e le luci delle lanterne tremolanti, Tresil prosegue, in silenzio, nelle sue vene nascoste. Sotto le piazze affollate, le calli fitte e le botteghe ricolme di spezie, si intreccia un dedalo di cripte, catacombe, cunicoli e gallerie che conservano la memoria e i segreti della città.</p>
+<p>Tresil è stata costruita sopra sé stessa, pietra su pietra, epoca su epoca, e in quel groviglio di archi umidi e corridoi di mattoni vivono le tracce dei popoli che la fondarono, dei mercanti che la fecero prosperare, delle gilde che la governano nell'ombra.</p>
+<h3 class="content-h3" id="il-respiro-del-sottosuolo">Il Respiro del Sottosuolo</h3>
+<p>I cunicoli più antichi risalgono all’epoca della fondazione, quando Eirikr di Stølagård fece scavare i primi corridoi sotto il Porto Vecchio per nascondere viveri e reliquie. Col tempo, le famiglie degli Incaviatori scolpirono cripte e camere rituali sotto la Collina del Castello, dove oggi riposano pietre incise con frammenti di memorie antiche e giuramenti scolpiti a protezione della città.</p>
+<p>Alcuni corridoi sono larghi quanto basti a un carro, altri non permettono il passaggio se non strisciando tra le radici e le rocce. Il suono dell’acqua che scorre nei canali secondari, l’odore di sale che risale dal mare, il respiro caldo delle torce e il riverbero dei passi creano un silenzio carico di attese.</p>
+<p>Nelle notti di pioggia, i tunnel si riempiono del mormorio dell’acqua che scende dalle strade, mentre nelle ore di quiete si possono udire i canti sommessi dei Sussurratori d’Opale che eseguono riti nelle cripte sigillate, circondati dalle ossa dei defunti e dal profumo acre delle erbe bruciate.</p>
+<h3 class="content-h3" id="le-cripte-e-le-catacombe">Le Cripte e le Catacombe</h3>
+<p>Le cripte custodiscono gli antichi sigilli dei Tre Fondatori, lampade di pietra che, si dice, si accendono da sole quando qualcuno attraversa quelle stanze con intenzioni oscure. Le catacombe, costruite su livelli successivi, conservano ossari, camere con statue spezzate, tombe varlmenn e altari shizenka coperti di polvere. In alcuni corridoi il soffitto crollato ha creato sacche d’aria inaccessibili, luoghi in cui si dice riposino reliquie dimenticate, armi forgiate con rune perdute, pergamene di antichi incaviatori che hanno rinunciato alla luce.</p>
+<p>Talvolta, chi scende nelle catacombe torna dicendo di aver udito voci tra le pietre, altre volte non torna affatto.</p>
+<h3 class="content-h3" id="le-fogne-e-i-canali-nascosti">Le Fogne e i Canali Nascosti</h3>
+<p>Le fogne di Tresil non sono semplici scarichi. Alcune gallerie sono sorvegliate dalla Guardia di Tresil, che controlla il passaggio di mercanzie e cerca di impedire che il contrabbando fluisca silenzioso sotto le strade. Ma il mare è complice, e durante l’alta marea, alcune di queste vie si aprono verso grotte costiere, creando un passaggio per chi sa muoversi tra le ombre.</p>
+<p>Le lanterne si spengono facilmente tra quelle pareti umide, e l’acqua che scorre nasconde i passi di chi fugge o insegue.</p>
+<h3 class="content-h3" id="le-gilde-tra-le-vene-sotterranee">Le Gilde tra le Vene Sotterranee</h3>
+<p>Molte gilde hanno lasciato il loro segno tra queste pietre.</p>
+<p>La Mano d’Ottone ha una forgia segreta in una camera nascosta sotto il Quartiere del Ferro. Il rumore dei martelli, attutito da strati di terra e pietra, si mescola al respiro delle fiamme, mentre armi su commissione vengono incise con segni invisibili a chi non conosce il loro codice.</p>
+<p>La Rosa d’Ombra utilizza passaggi che conducono a banchine sotterranee dove carichi di spezie, vini pregiati e reliquie vengono caricati di notte su piccole barche che attendono il momento giusto per salpare.</p>
+<p>La Lanterna Spenta usa cripte abbandonate come sale di contrattazione. Qui, in stanze illuminate da candele nere, informazioni e segreti vengono scambiati per pezzi di vetro scuro, simbolo del loro patto.</p>
+<p>I Sussurratori d’Opale camminano tra le ossa e le ombre, tracciando spirali di sabbia mentre attendono visioni che il respiro del sottosuolo sussurra loro durante le notti di luna nuova.</p>
+<p>I Corvi di Cenere hanno imparato a fuggire nei cunicoli sotto le locande o a nascondere refurtiva tra le pietre umide delle fogne, dove il buio è amico e i topi sono silenziosi testimoni.</p>
+<h3 class="content-h3" id="voci-e-segreti">Voci e Segreti</h3>
+<p>Si racconta che in alcuni tratti delle catacombe le torce si spengano da sole se chi le porta ha tradito un patto, o che le cripte più profonde ospitino scale di pietra che scendono in pozzi senza fondo, scavati da mani che non appartenevano più agli uomini.</p>
+<p>Alcuni Incaviatori affermano che le pareti conservino l’eco delle ultime parole di chi è morto nelle catacombe, che il soffio del mare porti sogni confusi nelle menti di chi si addormenta lì sotto, e che alcune pietre, se toccate, raccontino frammenti di battaglie, amori e tradimenti di secoli fa.</p>
+<h3 class="content-h3" id="il-cuore-nascosto-di-tresil">Il Cuore Nascosto di Tresil</h3>
+<p>Le vene sotterranee di Tresil sono più che passaggi: sono la memoria vivente della città, il luogo dove la storia si nasconde e respira, in attesa di chi saprà ascoltarla.</p>
+<p>Chi discende in quelle profondità porta con sé il rischio e la promessa di scoperta, la possibilità di ritrovare reliquie perdute o di non riemergere mai più, e la certezza che ogni passo tra quelle pietre umide riecheggerà nel futuro della città, come un sussurro antico che attende solo orecchie pronte ad ascoltarlo.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap8">
+  <div class="section-tag">Capitolo 8</div>
+  <h1 class="section-title">La Guardia di Tresil</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<div class="quote"><p>“Il mare porta mercanzie, e a volte tempeste. Noi siamo il molo che non cede.”<br />
+<em>Isyll Trenmor, Capitano della Guardia Interna di Tresil</em></p></div>
+<p>Tresil, città di luci riflesse sull’acqua e voci che riempiono i mercati, vive e prospera sotto la protezione di coloro che vegliano tra le sue ombre e le sue mura. Se le sue strade sono fiumi di lingue, passi e profumi, tra quelle onde cammina la Guardia, discreta ma vigile, come l’alito del vento che precede la tempesta.</p>
+<h3 class="content-h3" id="i-tre-pilastri-della-sicurezza">I Tre Pilastri della Sicurezza</h3>
+<p>La difesa di Tresil si regge su <strong>tre ordini interconnessi</strong>, ognuno con compiti distinti ma legati da un giuramento al Patto dei Tre Fondatori.</p>
+<h4 id="la-guardia-interna"><strong>1. La Guardia Interna</strong></h4>
+<p>Con mantelli grigio-cenere e corazze leggere intagliate con simboli di mare e vento, la Guardia Interna mantiene l’ordine tra le strade, i mercati e le piazze. Sono i primi a intervenire quando la quiete si spezza, quando una voce si alza troppo, quando un pugnale cade al suolo prima di colpire.</p>
+<p>Ogni turno è scandito dai rintocchi delle campane dell’Orologio delle Onde, e ogni pattuglia conosce ogni vicolo, ogni passaggio tra le case e i canali. Alcuni di loro possiedono piccole reliquie di famiglia, lame che non brillano mai, bracciali di pelle che “sentono” il pericolo quando le ombre si muovono.</p>
+<h4 id="la-guardia-portuale"><strong>2. La Guardia Portuale</strong></h4>
+<p>Il mare è ricchezza, ma anche minaccia. Navi cariche di spezie e tessuti attraccano accanto a vascelli che portano uomini disperati e occhi colmi di desideri proibiti.</p>
+<p>La Guardia Portuale vigila su ogni attracco, controlla le stive, sorveglia i magazzini. Portano divise color sabbia, sporche di sale e usura, e il loro stemma è l’àncora spezzata con un occhio inciso. Si dice che la notte, quando le acque sono nere, vedano luci sotto le onde e ombre che scivolano tra le barche, ma non parlano mai di ciò che non può essere catturato con le catene.</p>
+<h4 id="la-guardia-del-muro"><strong>3. La Guardia del Muro</strong></h4>
+<p>Lontani dal clamore del porto e dalle voci dei mercati, i Guardiani del Muro camminano sulle mura antiche, sentinelle che vegliano sulle strade che portano alla città e sulle campagne che la circondano. Tra loro ci sono arcieri, guardie a cavallo e alcuni Incaviatori che hanno scelto di restare in silenzio e ascoltare le pietre delle mura.</p>
+<p>Quando le nubi scure si addensano a oriente, e si teme che banditi o creature mutate dalle Scintille del Collasso si avvicinino, è la Guardia del Muro a inviare segnali con lanterne azzurre lungo le torri, a scandire il tempo con tamburi sordi che si odono fino al Castello.</p>
+<h3 class="content-h3" id="la-catena-del-comando">La Catena del Comando</h3>
+<p>Al vertice della sicurezza di Tresil siede <strong>il Consiglio dei Tre</strong>, che affida la gestione quotidiana della sicurezza a tre figure note come <strong>Gli Occhi di Tresil</strong>:</p>
+<ul>
+<li><p><strong>Isyll Trenmor</strong>, Capitano della Guardia Interna, conosciuta per la sua calma che precede l’azione e per il suo sguardo che sembra leggere nei gesti più che nelle parole.</p></li>
+<li><p><strong>Rhav Borrim</strong>, Comandante della Guardia Portuale, con mani callose come le funi delle navi, che conosce ogni capitano e ogni contrabbandiere della baia.</p></li>
+<li><p><strong>Selani Vrash</strong>, Custode del Muro, donna alta e silenziosa, i cui stivali hanno percorso ogni palmo delle mura sotto pioggia e sole.</p></li>
+</ul>
+<p>I tre si incontrano ogni mattina all’alba nella <strong>Sala del Nodo</strong>, sotto il Castello, per condividere informazioni, discutere voci raccolte dalle spie di strada, tracciare mappe di movimenti sospetti, e decidere dove dirigere le pattuglie quel giorno.</p>
+<h3 class="content-h3" id="le-gilde-e-le-ombre">Le Gilde e le Ombre</h3>
+<p>Tresil è viva anche sotto la superficie, e la Guardia lo sa.</p>
+<p>Le gilde clandestine e le società ombra si muovono tra le cripte, i tunnel e le catacombe. Alcuni capitani della Guardia Interna chiudono un occhio in cambio di silenzi preziosi o informazioni che permettono di fermare minacce più grandi. Altri dichiarano guerra aperta alla Mano d’Ottone o alla Lanterna Spenta, guidando retate tra le vene oscure della città, rischiando lame silenziose e magie proibite.</p>
+<p>La <strong>Rosa d’Ombra</strong>, in particolare, mantiene patti di non aggressione con parti della Guardia Portuale, garantendo protezione a navi selezionate in cambio di informazioni sui carichi sospetti.</p>
+<h3 class="content-h3" id="strumenti-della-vigilanza">Strumenti della Vigilanza</h3>
+<ul>
+<li><p><strong>Le Torce dei Sospiri</strong>: piccole lampade che emettono un soffio quando rilevano presenza magica o reliquie attive.</p></li>
+<li><p><strong>I Fischetti del Vento</strong>: sottili corni che generano un suono udibile solo a chi ha giurato servizio nella Guardia, usati per segnalare pericoli invisibili.</p></li>
+<li><p><strong>I Sigilli dei Tre</strong>: pezzi di metallo inciso che permettono il passaggio in aree chiuse al pubblico, anche tra le cripte e i tunnel del sottosuolo.</p></li>
+</ul>
+<h3 class="content-h3" id="sfide-e-minacce">Sfide e Minacce</h3>
+<p>La Guardia di Tresil deve fronteggiare ogni giorno:</p>
+<ul>
+<li><p><strong>Furti e assassinii politici</strong>, orchestrati tra le gilde e le casate in visita.</p></li>
+<li><p><strong>Creature mutate</strong> che emergono dai tunnel quando le maree si confondono.</p></li>
+<li><p><strong>Contrabbando di reliquie</strong> e oggetti magici che alterano le percezioni dei cittadini.</p></li>
+<li><p><strong>Spie delle potenze straniere</strong> che osservano i traffici del porto.</p></li>
+<li><p><strong>Rivolte e tensioni tra le gilde</strong>, che possono sfociare in scontri aperti tra le strade.</p></li>
+</ul>
+<h3 class="content-h3" id="la-guardia-nella-memoria-di-tresil">La Guardia nella Memoria di Tresil</h3>
+<p>Gli anziani raccontano che i Guardiani del Muro furono i primi a scorgere, decenni fa, una nave fantasma emergere dalle nebbie, e che le loro frecce non si fermarono fino a quando le luci verdi svanirono tra le onde.</p>
+<p>Si dice che la Guardia Interna abbia catturato un Fatato stabilizzato che si nutriva dei ricordi di un intero quartiere, sigillandolo nelle cripte sotto la Collina del Castello.</p>
+<p>Ogni notte, quando le luci dei mercati si spengono e le ultime barche si legano ai moli, le pattuglie percorrono le strade con passi cadenzati. E in quel ritmo, la città respira, sapendo che qualcuno veglia tra le sue vene e i suoi silenzi.</p>
+<h3 class="content-h3" id="conclusione-1">Conclusione</h3>
+<p>La milizia e la sicurezza di Tresil non sono solo difesa: sono la <strong>memoria viva della città</strong>, la linea sottile che separa la luce del mattino dal sussurro delle ombre. In un mondo di reliquie che sognano, di mari che nascondono antichi segreti e di poteri che bramano la città, la Guardia è l’equilibrio che tiene Tresil ancorata al presente, affinché possa continuare a commerciare, cantare, prosperare, sognare.</p>
+<h3 class="content-h3" id="section-10"></h3>
+<h3 class="content-h3" id="section-11"></h3>
+<h3 class="content-h3" id="section-12"></h3>
+<h3 class="content-h3" id="section-13"></h3>
+<h3 class="content-h3" id="section-14"></h3>
+<h3 class="content-h3" id="section-15"></h3>
+<h3 class="content-h3" id="la-forza-della-guardia-di-tresil">La Forza della Guardia di Tresil</h3>
+<p>Con una popolazione di mezzo milione e un porto che accoglie settimanalmente decine di navi e carovane, Tresil mantiene una forza di sicurezza stabile ma flessibile, pronta a espandersi in caso di crisi.</p>
+<p>Si stima che <strong>circa 4.000 uomini e donne</strong> servano stabilmente nei ranghi della Guardia, suddivisi tra i tre pilastri della sicurezza.</p>
+<h4 id="ripartizione-delle-forze"><strong>Ripartizione delle forze:</strong></h4>
+<ul>
+<li><p><strong>Guardia Interna (Ordine e pattuglie cittadine):<br />
+</strong></p>
+</blockquote>
+<ul>
+<li><div class="quote"><p><strong>2.000 effettivi</strong> suddivisi in:</p></div>
+<ul>
+<li><div class="quote"><p>1.500 pattuglianti a piedi e a cavallo tra i quartieri e le piazze principali.</p></li>
+<li><p>300 investigatori e agenti in borghese che sorvegliano mercati, gilde e locande.</p></li>
+<li><p>200 riserve notturne che presidiano i punti chiave durante le ore più oscure.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Guardia Portuale (Sicurezza dei moli e del commercio marittimo):<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p><strong>1.200 effettivi</strong> suddivisi in:</p></div>
+<ul>
+<li><div class="quote"><p>700 guardiani dei moli e dei magazzini.</p></li>
+<li><p>300 ispettori doganali e supervisori dei carichi.</p></li>
+<li><p>100 unità addette alla ronda costiera e alle barche leggere di pattuglia.</p></li>
+<li><p>100 uomini di pronto intervento per incendi o emergenze sul porto.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Guardia del Muro (Sentinelle e difesa perimetrale):<br />
+</strong></p></div>
+<ul>
+<li><div class="quote"><p><strong>800 effettivi</strong> suddivisi in:</p></div>
+<ul>
+<li><blockquote>
+<p>400 sentinelle sulle mura e torri di guardia.</p></li>
+<li><p>200 unità a cavallo per il pattugliamento delle strade tra Tresil e i villaggi vicini.</p></li>
+<li><p>100 arcieri scelti con postazioni strategiche.</p></li>
+<li><p>100 tecnici e incaviatori per la manutenzione delle difese e delle segnalazioni luminose.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 class="content-h3" id="ulteriori-figure-di-supporto">Ulteriori figure di supporto</h3>
+<p>Oltre alle guardie armate, Tresil impiega:</p>
+<ul>
+<li><p><strong>Circa 300 guaritori, scribi e maestri di segnalazione</strong> che collaborano con le pattuglie.</p></li>
+<li><p>Una rete di <strong>informatori non ufficiali</strong> tra i mercati, le taverne e i moli, spesso retribuiti con piccole somme o con protezione per segnalazioni utili.</p></li>
+<li><p><strong>Squadre di manutenzione delle Torce dei Sospiri</strong> e delle barriere magiche di emergenza, coordinate dagli Incaviatori alleati al Consiglio dei Tre.</p></li>
+</ul>
+<h3 class="content-h3" id="rapporto-con-la-popolazione">Rapporto con la popolazione</h3>
+<p>Con <strong>un guardiano ogni 125 abitanti circa</strong>, Tresil riesce a mantenere:</p>
+<ul>
+<li><p>Una presenza discreta ma continua nelle strade principali.</p></li>
+<li><p>Pattugliamenti regolari nei quartieri più affollati.</p></li>
+<li><p>Un controllo relativamente stretto del porto e delle carovane.</p></li>
+<li><p>Una vigilanza costante sulle mura e sulle strade verso i villaggi, vitale per la sicurezza dei traffici.</p></li>
+</ul>
+<p>In caso di minaccia esterna, la Guardia del Muro può richiamare milizie cittadine o arruolare temporaneamente lavoratori e artigiani per aumentare le difese, portando la forza attiva a <strong>oltre 5.500 armati in poche giornate</strong>, se necessario.</p>
+<h3 class="content-h3" id="conclusione-integrata">Conclusione integrata</h3>
+<p>La Guardia di Tresil non è un esercito opprimente, ma <strong>una rete di occhi e mani pronte</strong> a sorreggere la città quando il vento cambia. Ogni effettivo, con la propria lama o lanterna, partecipa al fragile equilibrio che consente alla città di respirare, al commercio di scorrere e ai segreti di restare, per ora, sepolti tra le pietre e le acque che lambiscono Tresil.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap9">
+  <div class="section-tag">Capitolo 9</div>
+  <h1 class="section-title">Taverne di Tresil</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<h3 class="content-h3" id="la-rosa-dei-venti-taverna-di-avventurieri-e-mercanti">1. La Rosa dei Venti — Taverna di Avventurieri e Mercanti</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Taverna spaziosa vicino al nuovo porto di Tresil. Pareti di legno robusto, mappe nautiche antiche appese alle pareti e grandi finestre affacciate sulla baia. Al centro campeggia un bancone di rovere scuro.</p>
+<p><strong>Proprietario:<br />
+</strong> <strong>Horlen Valt</strong>, uomo di mezza età robusto e gioviale, capelli color sabbia e barba corta. Porta sempre un grembiule di cuoio e un fazzoletto al collo. È pratico e ha un senso dell’umorismo schietto.</p>
+<p><strong>Personale:<br />
+</strong> Due cameriere sveglie e sorridenti (Jila e Nira), un cuoco esperto di piatti di mare (Ramis), e un giovane garzone di nome Tavin sempre indaffarato a pulire i tavoli.</p>
+<p><strong>Clientela tipo:<br />
+</strong> Mercanti, marinai di passaggio, esploratori e artigiani che cercano un pasto abbondante e qualche chiacchiera informata su ciò che accade nel porto.</p>
+<p><strong>Motivazioni profonde del proprietario:<br />
+</strong> Horlen vuole rendere la sua taverna il punto di riferimento per chi arriva a Tresil, affinché la Rosa dei Venti sia sinonimo di accoglienza e buoni affari.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Honlen crede nel duro lavoro e nel dare a tutti una possibilità. È leale ai clienti abituali e non tollera le risse nel locale.</p>
+<p><strong>Punti di forza:<br />
+</strong> Servizio veloce, piatti saporiti e informazioni aggiornate su rotte e arrivi.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> La taverna è sempre affollata, a volte caotica, e le camere per dormire sono poche e spartane.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Horlen ha appeso vicino all’ingresso una vecchia bussola rotta, come portafortuna per i viaggiatori smarriti.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla un tresiliano franco e qualche parola di dialetti portuali.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Birra robusta, stufati di mare, stanze semplici, servizio di spedizione lettere, bacheca di incarichi per mercanti e cacciatori di tesori.</p>
+<h3 class="content-h3" id="la-lira-di-fuoco-taverna-di-musicisti-e-teatranti">2. La Lira di Fuoco — Taverna di Musicisti e Teatranti</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Piccola locanda nel quartiere delle Arti. Il locale è arredato con drappi rossi e oro, con un piccolo palco rialzato per i musici. Tavolini bassi e cuscini al posto delle sedie.</p>
+<p><strong>Proprietario:<br />
+</strong> <strong>Kelim Brat</strong>, ex liutista dai capelli scuri brizzolati e occhi vivaci. Veste sempre di tuniche eleganti color porpora, indossa un piccolo medaglione di rame inciso a forma di lira.</p>
+<p><strong>Personale:<br />
+</strong> Due cameriere giovani e aggraziate (Sela e Aris), un cuoco appassionato di dolci speziati (Yoren), e un garzone apprendista (Pirik).</p>
+<p><strong>Clientela tipo:<br />
+</strong> Musicisti, attori, narratori di passaggio e cittadini curiosi in cerca di buona musica.</p>
+<p><strong>Motivazioni profonde del proprietario:<br />
+</strong> Kelim vuole tenere viva l’arte musicale a Tresil, creare un ambiente ispirante per gli artisti e un rifugio per chi cerca bellezza.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Onesto, gentile e sempre pronto a sostenere giovani talenti.</p>
+<p><strong>Punti di forza:<br />
+</strong> Atmosfera calda e conviviale, intrattenimento di qualità, drink aromatici e dolci freschi.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> Pochi posti a sedere e prezzi più alti della media.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Kelim ha l’abitudine di accendere tre candele sul palco prima di ogni esibizione, come gesto di benvenuto agli spiriti dell’arte.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla tresiliano melodioso, infarcito di espressioni poetiche.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Vino speziato, infusi profumati, spettacoli musicali ogni sera e lezioni di liuto al mattino.</p>
+<h3 class="content-h3" id="la-perla-nera-taverna-di-avventurieri-e-commercianti-esotici">3. La Perla Nera — Taverna di Avventurieri e Commercianti Esotici</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Locale ampio vicino ai moli, con soffitti alti e cordami appesi alle travi. L’ambiente profuma di spezie e legno di sandalo.</p>
+<p><strong>Proprietario:<br />
+</strong> <strong>Melina Druan</strong>, donna energica e misteriosa con un occhio coperto da una benda scura e lunghe trecce nere. Veste in tuniche color prugna e indossa numerosi bracciali di rame.</p>
+<p><strong>Personale:<br />
+</strong> Due camerieri forzuti (Rolen e Kara), una giovane cuoca dalle mani d’oro (Estin) e un garzone di nome Voro, sempre pronto a correre tra le casse di spezie.</p>
+<p><strong>Clientela tipo:<br />
+</strong> Avventurieri di ritorno da terre lontane, mercanti di reliquie e viaggiatori in cerca di incontri di affari.</p>
+<p><strong>Motivazioni profonde della proprietaria:<br />
+</strong> Melina vuole arricchirsi, creare una rete di contatti potenti e scambiare segreti preziosi tra le sue mura.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Astuta e pragmatica, ma leale a chi le porta affari puliti.</p>
+<p><strong>Punti di forza:<br />
+</strong> Arredamento esotico, cibi speziati introvabili altrove e personale sempre aggiornato su voci e notizie.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> Ambiente rumoroso e a volte frequentato da figure ambigue.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Melina conserva nel retro della taverna una vecchia perla nera proveniente da un naufragio, che ritiene le porti fortuna.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla tresiliano fluente e diverse espressioni solnari e shizenka.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Rum speziato, piatti di pesce affumicato, stanze segrete per contrattazioni e spazi privati per riunioni.</p>
+<h3 class="content-h3" id="il-focolare-del-viandante-taverna-rurale-di-contadini-e-pellegrini">4. Il Focolare del Viandante — Taverna Rurale di Contadini e Pellegrini</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Locale in legno e pietra a ridosso delle prime campagne fuori le mura. Un focolare sempre acceso riscalda l’unica stanza ampia, con panche di quercia e travi annerite dal fumo.</p>
+<p><strong>Proprietaria:<br />
+</strong> <strong>Ela Vinn</strong>, donna gentile di mezza età, corporatura robusta, capelli grigi sempre ordinati sotto un fazzoletto bianco.</p>
+<p><strong>Personale:<br />
+</strong> Un cuoco giovane e timido (Vilan) e due cameriere (Iria e Telsa), entrambe sveglie e amichevoli.</p>
+<p><strong>Clientela tipo:<br />
+</strong> Contadini, pastori, pellegrini di passaggio e viaggiatori esausti.</p>
+<p><strong>Motivazioni profonde della proprietaria:<br />
+</strong> Ela desidera offrire riparo e ristoro a chi ha bisogno, portando avanti la tradizione di ospitalità tramandata da sua madre.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Accogliente, altruista, solidale con i più umili.</p>
+<p><strong>Punti di forza:<br />
+</strong> Ambiente caloroso, piatti caserecci, prezzi modesti e letti comodi.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> Servizio lento quando c'è folla e varietà di piatti limitata.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Ogni sera Ela mette vicino al focolare una ciotola di latte e miele come offerta per la casa e gli spiriti del viaggio.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla un tresiliano con accento rurale, melodioso e rassicurante.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Stufati caldi, pane appena sfornato, letti semplici ma accoglienti, stalle per gli animali.</p>
+<h3 class="content-h3" id="la-lanterna-spenta-taverna-nascosta-tra-i-vicoli">5. La Lanterna Spenta — Taverna Nascosta tra i Vicoli</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Locale angusto e buio tra le stradine del Quartiere Vecchio, con soffitto basso, pochi tavoli e un odore di spezie e fumo. La luce fioca proviene da lanterne mezze spente.</p>
+<p><strong>Proprietario:<br />
+</strong> <strong>Niro Vesk</strong>, uomo magro e schivo, sempre incappucciato. È noto per le sue parole sommesse e le occhiate rapide.</p>
+<p><strong>Personale:<br />
+</strong> Un solo cameriere riservato (Kedrin), veloce e invisibile come un’ombra.</p>
+<p><strong>Clientela tipo:<br />
+</strong> Spie, ladri, contrabbandieri e informatori in cerca di riservatezza.</p>
+<p><strong>Motivazioni profonde del proprietario:<br />
+</strong> Niro vuole mantenere un rifugio per i fuorilegge e le anime inquiete, e nel contempo raccogliere segreti da rivendere al momento giusto.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Pragmatico e cinico, non fa domande e non prende le parti di nessuno.</p>
+<p><strong>Punti di forza:<br />
+</strong> Privacy assoluta, angoli appartati e una discrezione garantita.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> Locale poco pulito, spesso malfamato e privo di qualsiasi comfort.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Sulla porta d’ingresso è incisa una runa di protezione shizenka per tenere lontani gli intrusi indesiderati.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla tresiliano basso e sussurrato, conosce qualche termine cifrato tra malavitosi.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Liquori forti e amari, cibi secchi, stanze segrete per trattative e una rete di contatti per incarichi oscuri.</p>
+<h3 class="content-h3" id="la-fontana-dopale-taverna-di-quartiere-familiare">6. La Fontana d’Opale — Taverna di Quartiere Familiare</h3>
+<p><strong>Descrizione fisica e ambiente:<br />
+</strong> Ampia sala luminosa nel cuore di un quartiere popolare. Pareti chiare, fiori freschi nei vasi alle finestre e una piccola fontana d’acqua limpida al centro del locale.</p>
+<p><strong>Proprietaria:<br />
+</strong> <strong>Siona Vass</strong>, donna amichevole e sorridente, capelli biondo scuro intrecciati e occhi color nocciola sempre premurosi.</p>
+<p><strong>Personale:<br />
+</strong> Due cameriere allegre (Mira e Dalis), un cuoco esperto di cucina casereccia (Pavrin) e un giovane garzone timido (Liso).</p>
+<p><strong>Clientela tipo:<br />
+</strong> Famiglie, artigiani, bambini e passanti in cerca di un pasto genuino e di compagnia.</p>
+<p><strong>Motivazioni profonde della proprietaria:<br />
+</strong> Siona desidera mantenere viva l’anima del quartiere, far sentire tutti come a casa propria e tramandare le tradizioni culinarie di Tresil.</p>
+<p><strong>Sistema di valori ed etica:<br />
+</strong> Generosa, inclusiva e sempre pronta a dare una mano a chi ha bisogno.</p>
+<p><strong>Punti di forza:<br />
+</strong> Ambiente allegro, piatti caldi e saporiti, ospitalità calorosa.</p>
+<p><strong>Punti di debolezza:<br />
+</strong> Locale spesso affollato, a volte rumoroso, e tempi di attesa lunghi nelle ore di punta.</p>
+<p><strong>Particolarità culturali o superstizioni personali:<br />
+</strong> Siona getta sempre un fiore bianco nella fontana ogni mattina come offerta alla prosperità del quartiere.</p>
+<p><strong>Lingue parlate e accento:<br />
+</strong> Parla tresiliano dolce e musicale, conosce anche qualche espressione varlmenn appresa da vecchi clienti.</p>
+<p><strong>Servizi offerti:<br />
+</strong> Minestre, pane caldo, dolci fatti in casa, musica del quartiere nelle sere di festa e giochi per i bambini.</p>
+
+  </div>
+</div>
+
+<div class="content-section" id="sec-cap10">
+  <div class="section-tag">Capitolo 10</div>
+  <h1 class="section-title">Personaggi</h1>
+  <div class="section-divider"></div>
+  <div class="prose">
+
+<h3 class="content-h3" id="personaggi-di-quartiere">Personaggi di quartiere</h3>
+<ol type="1">
+<li><p><strong>Kareen Vella</strong> — Lavandaia sempre allegra, conosce i segreti di tutte le famiglie del vicolo.</p></li>
+<li><p><strong>Borek Sufar</strong> — Pescatore anziano e taciturno, conosciuto per le sue storie di mostri marini.</p></li>
+<li><p><strong>Eslen Dara</strong> — Bimba di strada vivace e curiosa, sempre in cerca di monete o dolcetti.</p></li>
+<li><p><strong>Kivan Berrol</strong> — Fabbro apprendista dal temperamento focoso, pronto a dare una mano.</p></li>
+<li><p><strong>Maira Kelto</strong> — Venditrice di spezie dai mille profumi, abile nel dare consigli culinari.</p></li>
+<li><p><strong>Tenno Rivas</strong> — Fattorino e messaggero instancabile, corre per la città a qualsiasi ora.</p></li>
+<li><p><strong>Alika Neris</strong> — Musicista di strada con un liuto rattoppato, canta antiche melodie di mare.</p></li>
+<li><p><strong>Joval Marnen</strong> — Barbiere ciarliero e curioso, sempre aggiornato su tutti i pettegolezzi.</p></li>
+<li><p><strong>Hilmar Vostri</strong> — Anziano ciabattino paziente e gentile, le sue scarpe durano anni.</p></li>
+<li><p><strong>Siveth Orlan</strong> — Ragazza acrobata e giocoliera, regala spettacoli improvvisati al mercato.</p></li>
+<li><p><strong>Parim Uldas</strong> — Taglialegna robusto e sorridente, noto per la sua risata fragorosa.</p></li>
+<li><p><strong>Ena Sildra</strong> — Erborista dai modi schivi, ha sempre un rimedio per malanni comuni.</p></li>
+<li><p><strong>Darlen Vokk</strong> — Facchino instancabile, muscoloso e di poche parole, conosciuto da tutti i mercanti.</p></li>
+<li><p><strong>Riven Lorae</strong> — Scrittrice di lettere per gli analfabeti, con penna veloce e fantasia colorita.</p></li>
+<li><p><strong>Kessa Turin</strong> — Pescivendola energica e sempre indaffarata, vende il pescato fresco del porto.</p></li>
+<li><p><strong>Milo Ron</strong> — Garzone di bottega pasticcione ma simpatico, amato da tutti i bottegai.</p></li>
+<li><p><strong>Selika Druan</strong> — Guardiana del pozzo della piazza, conosciuta per le sue canzoni cantate all’alba.</p></li>
+<li><p><strong>Huren Telem</strong> — Spazzino orgoglioso del suo quartiere, tiene le strade immacolate come casa sua.</p></li>
+<li><p><strong>Ilna Resti</strong> — Ceramista artigiana, i suoi vasi colorati decorano le case di Tresil.</p></li>
+<li><p><strong>Ferol Haska</strong> — Ombrellaio distratto, sempre perso tra i suoi schizzi di nuovi modelli.</p></li>
+<li><p><strong>Vanin Heres</strong> — Bracciante stagionale, robusto e gioviale, conosciuto da tutti nelle campagne intorno.</p></li>
+<li><p><strong>Silvan Krelis</strong> — Guida dei carretti pubblici, instancabile nel portare le persone da un quartiere all’altro.</p></li>
+<li><p><strong>Mirna Varess</strong> — Balia premurosa e dolce, sa tutto su come far addormentare i bambini irrequieti.</p></li>
+<li><p><strong>Torim Sakes</strong> — Raccoglitore di ferraglie e oggetti di scarto, ha l’occhio buono per ciò che ha ancora valore.</p></li>
+<li><p><strong>Elen Redis</strong> — Sartina allegra e creativa, specializzata nel rammendo di abiti vecchi con estro colorato</p></li>
+</ol>
+<h3 class="content-h3" id="personaggi-influenti">Personaggi influenti</h3>
+<div class="quote"><p><strong>Sarethin Torsen — Maestro delle Guardie cittadine:</strong> Uomo possente sulla cinquantina, volto segnato da cicatrici, portamento autoritario. È noto per la sua ferrea disciplina e le ronde notturne tra i quartieri.</p>
+<p><strong>Melira Voan — Rettrice dell’Accademia dei Saperi:</strong> Donna di mezza età dallo sguardo acuto, veste sempre con abiti color smeraldo. È rispettata da maestri e studenti per la sua vasta conoscenza di storia e arti arcane.</p>
+<p><strong>Darran Kleth — Sovrintendente alle Opere Pubbliche:</strong> Uomo anziano e magro, occhiali spessi, mani sempre macchiate d’inchiostro. Supervisiona le costruzioni e le manutenzioni della città, famoso per la sua meticolosità.</p>
+<p><strong>Aysha Rimaer — Alta Curatrice del Santuario dei Riti Comuni:</strong> Donna giovane e serena, di origini miste. Conosce i rituali di tutte le culture e organizza le celebrazioni religiose comuni tra le genti di Tresil.</p>
+<p><strong>Vardan Elnis — Magistrato del Tribunale Civile:</strong> Uomo di mezza età con barba curata e voce profonda. Considerato imparziale e giusto, viene chiamato a dirimere le controversie tra le famiglie della città.</p>
+<p><strong>Kelis Arken — Capo dei Banchieri e dei Finanzieri di Tresil:</strong> Donna anziana e distinta, elegante nel portamento, sempre attorniata da segretari. È la mente dietro le finanze cittadine e mantiene i rapporti con i grandi mercanti forestieri.</p></div>
+<h3 class="content-h3" id="section-16"></h3>
+<h3 class="content-h3" id="section-17"></h3>
+<h3 class="content-h3" id="nomi-da-assegnare">Nomi da assegnare</h3>
+<p>Eldrin Varell</p>
+<p>Kaela Nymir</p>
+<p>Torik Malven</p>
+<p>Ysra Luneth<br />
+Drenna Voss</p>
+<p>Halrik Durn</p>
+<p>Seralyn Vire</p>
+<p>Molric Emberlane</p>
+<p>Ilyra Daen</p>
+<p>Tharn Orest</p>
+<p>Nimel Feran</p>
+<p>Vaelis Thorne</p>
+<p>Mirael Sunshade</p>
+<p>Grannik Torgun</p>
+<p>Siraen Velmora</p>
+<p>Jorek Flamebeard</p>
+<p>Lurea Stillwind</p>
+<p>Brynden Gael</p>
+<p>Aysel Moonfen</p>
+<p>Torven RaskFarya Greenthorn</p>
+<p>Kelrik Stormwatch</p>
+<p>Isolde Ravelle</p>
+<p>Orran Blackbriar</p>
+<p>Nyssa Vireen</p>
+<p>Thalanor Myrr</p>
+<p>Vessa Crimelight</p>
+<p>Darak Stoneveil</p>
+<p>Elira Mistgrove</p>
+<p>Gorun Felstone</p>
+<p>Silmeira Duskvale</p>
+<p>Kaedren Hollow</p>
+<p>Althea Dawnrise</p>
+<p>Brannik Ironsoul</p>
+<p>Zelva Nocthyr</p>
+<p>Faelar Mournleaf</p>
+<p>Mirel Ambrasil</p>
+<p>Vorrik Ashlane</p>
+<p>Lenari Treeshade</p>
+<p>Harlund Greybark</p>
+<p>Sylvaren Quell</p>
+<p>Ydra Mossveil</p>
+<p>Caldan Virelorn</p>
+<p>Thessa Brightmere</p>
+
+  </div>
+</div>
+</main>
+
+</div>
+<script>
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('.content-section');
+const searchInput = document.getElementById('searchInput');
+const noResults = document.getElementById('noResults');
+
+function nav(id) {
+  navItems.forEach(n => n.classList.remove('active'));
+  sections.forEach(s => s.classList.remove('visible'));
+  const target = document.getElementById('sec-' + id);
+  if (target) {
+    target.classList.add('visible');
+    document.querySelector('.main').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+  const navItem = document.querySelector('.nav-item[data-section="' + id + '"]');
+  if (navItem) {
+    navItem.classList.add('active');
+    navItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+}
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => nav(item.dataset.section));
+});
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  let visible = 0;
+  navItems.forEach(item => {
+    const label = item.textContent.toLowerCase();
+    if (!q || label.includes(q)) { item.classList.remove('hidden'); visible++; }
+    else { item.classList.add('hidden'); }
+  });
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+});
+
+// HAMBURGER MENU
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.getElementById('overlay');
+function openMenu(){sidebar.classList.add('open');overlay.classList.add('visible');hamburger.classList.add('open');document.body.classList.add('menu-open');}
+function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('visible');hamburger.classList.remove('open');document.body.classList.remove('menu-open');}
+hamburger.addEventListener('click', () => { sidebar.classList.contains('open') ? closeMenu() : openMenu(); });
+overlay.addEventListener('click', closeMenu);
+navItems.forEach(item => { item.addEventListener('click', () => { if (window.innerWidth <= 768) closeMenu(); }); });
+</script>
+</body>
+</html>
