@@ -129,6 +129,11 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .resolve-btn{margin-left:auto;flex-shrink:0;background:none;border:1px solid var(--border);border-radius:2px;color:var(--t3);font-size:9px;padding:2px 7px;cursor:pointer;font-family:var(--font-d);letter-spacing:.05em;transition:var(--tr);}
 .resolve-btn:hover{border-color:var(--green);color:var(--green);}
 .resolved-grp-title{font-family:var(--font-d);font-size:9px;letter-spacing:.18em;color:var(--t3);text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:6px;padding:.5rem 0;border-top:1px solid var(--border);margin-top:1rem;}
+.prep-row{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid rgba(90,130,190,.05);font-size:14px;color:var(--t2);cursor:pointer;}
+.prep-row:last-child{border-bottom:none;}
+.prep-row input{margin-top:3px;flex-shrink:0;accent-color:var(--gold);cursor:pointer;}
+.prep-row.checked span{opacity:.45;text-decoration:line-through;}
+.prep-row span{line-height:1.5;}
 .resolved-list{display:none;}
 .resolved-list.open{display:block;}
 
@@ -263,6 +268,8 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
     <div id="section-lore"       class="section"></div>
     <div id="section-thread"     class="section"></div>
     <div id="section-note"       class="section"></div>
+    <div id="section-prep"       class="section"></div>
+    <div id="section-libro"      class="section"></div>
   </main>
 </div>
 
@@ -342,12 +349,14 @@ function updateDMUI() {
   toggle.classList.toggle('active', isMaster);
   lbl.textContent = isMaster ? 'DM attivo' : 'Modalità DM';
   document.querySelectorAll('.nav-btn.dm-hidden').forEach(el => {
-    el.style.display = isMaster ? '' : 'none';
+    el.style.display = isMaster ? 'flex' : 'none';
   });
   buildPanoramica();
   buildPersonaggi();
   buildLore();
   buildThread();
+  buildPrep();
+  buildLibro();
 }
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -369,7 +378,7 @@ function toggleSidebar() {
 // ── NAVIGAZIONE ────────────────────────────────────
 function buildNav() {
   const c = document.getElementById('nav-cont');
-  const dmOnly = ['lore', 'thread'];
+  const dmOnly = ['lore', 'thread', 'prep', 'libro'];
   FURIOSA_DATA.sezioni.forEach(s => {
     const btn = document.createElement('button');
     btn.className = 'nav-btn' + (dmOnly.includes(s.id) ? ' dm-hidden' : '');
@@ -764,6 +773,63 @@ function saveNote(id, svId) {
   if (m) { m.style.display = 'block'; setTimeout(() => m.style.display = 'none', 2500); }
 }
 
+// ── PREPARAZIONE SESSIONE (checklist DM) ───────────
+function buildPrep() {
+  const c = document.getElementById('section-prep');
+  if (!isMaster) {
+    c.innerHTML = `<div class="sec-head"><div class="sec-title">Prep. Sessione</div></div>
+      <div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
+    return;
+  }
+  const p = FURIOSA_DATA.prepProssimaSessione;
+  const checkedIds = JSON.parse(localStorage.getItem('furiosa_prep_checked') || '[]');
+  let html = `<div class="sec-head"><div class="sec-title">${p.titolo}</div><div class="sec-sub">${p.sottotitolo}</div></div>`;
+  html += `<div class="card"><div class="card-body">${p.nota}</div></div>`;
+
+  function group(title, items) {
+    let g = `<div class="card"><div class="card-title">${title}</div>`;
+    items.forEach(it => {
+      const on = checkedIds.includes(it.id);
+      g += `<label class="prep-row${on ? ' checked' : ''}">
+        <input type="checkbox" ${on ? 'checked' : ''} onchange="togglePrep('${it.id}')">
+        <span>${it.testo}</span>
+      </label>`;
+    });
+    g += `</div>`;
+    return g;
+  }
+  html += group('Eventi scatenanti (in sequenza)', p.eventi);
+  html += group('Situazioni comuni (riempitivo)', p.situazioniComuni);
+  html += group('Temi di fondo, se la conversazione langue', p.temiFondo);
+  c.innerHTML = html;
+}
+
+function togglePrep(id) {
+  let checked = JSON.parse(localStorage.getItem('furiosa_prep_checked') || '[]');
+  const idx = checked.indexOf(id);
+  if (idx === -1) checked.push(id); else checked.splice(idx, 1);
+  localStorage.setItem('furiosa_prep_checked', JSON.stringify(checked));
+  buildPrep();
+}
+
+// ── SVILUPPO LIBRO (caratterizzazione) ─────────────
+function buildLibro() {
+  const c = document.getElementById('section-libro');
+  if (!isMaster) {
+    c.innerHTML = `<div class="sec-head"><div class="sec-title">Sviluppo Libro</div></div>
+      <div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
+    return;
+  }
+  const lib = FURIOSA_DATA.caratterizzazioneLibro;
+  let html = `<div class="sec-head"><div class="sec-title">Sviluppo Libro — Caratterizzazione</div><div class="sec-sub">Note per la scrittura della serie di romanzi tratta dalla campagna</div></div>`;
+  ['zoraya', 'nikla', 'rei', 'karl', 'sintesiGruppo'].forEach(k => {
+    const ch = lib[k];
+    if (!ch) return;
+    html += `<div class="card"><div class="card-title">${ch.titolo}</div><div class="card-body">${ch.corpo}</div></div>`;
+  });
+  c.innerHTML = html;
+}
+
 // ── BUILD ALL ──────────────────────────────────────
 function buildAllSections() {
   buildPanoramica();
@@ -777,6 +843,8 @@ function buildAllSections() {
   buildLore();
   buildThread();
   buildNote();
+  buildPrep();
+  buildLibro();
 }
 </script>
 <style>
