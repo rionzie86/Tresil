@@ -269,7 +269,6 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
     <div id="section-thread"     class="section"></div>
     <div id="section-note"       class="section"></div>
     <div id="section-prep"       class="section"></div>
-    <div id="section-libro"      class="section"></div>
   </main>
 </div>
 
@@ -356,7 +355,6 @@ function updateDMUI() {
   buildLore();
   buildThread();
   buildPrep();
-  buildLibro();
 }
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -378,7 +376,7 @@ function toggleSidebar() {
 // ── NAVIGAZIONE ────────────────────────────────────
 function buildNav() {
   const c = document.getElementById('nav-cont');
-  const dmOnly = ['lore', 'thread', 'prep', 'libro'];
+  const dmOnly = ['lore', 'thread', 'prep'];
   FURIOSA_DATA.sezioni.forEach(s => {
     const btn = document.createElement('button');
     btn.className = 'nav-btn' + (dmOnly.includes(s.id) ? ' dm-hidden' : '');
@@ -812,24 +810,6 @@ function togglePrep(id) {
   buildPrep();
 }
 
-// ── SVILUPPO LIBRO (caratterizzazione) ─────────────
-function buildLibro() {
-  const c = document.getElementById('section-libro');
-  if (!isMaster) {
-    c.innerHTML = `<div class="sec-head"><div class="sec-title">Sviluppo Libro</div></div>
-      <div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
-    return;
-  }
-  const lib = FURIOSA_DATA.caratterizzazioneLibro;
-  let html = `<div class="sec-head"><div class="sec-title">Sviluppo Libro — Caratterizzazione</div><div class="sec-sub">Note per la scrittura della serie di romanzi tratta dalla campagna</div></div>`;
-  ['zoraya', 'nikla', 'rei', 'karl', 'sintesiGruppo'].forEach(k => {
-    const ch = lib[k];
-    if (!ch) return;
-    html += `<div class="card"><div class="card-title">${ch.titolo}</div><div class="card-body">${ch.corpo}</div></div>`;
-  });
-  c.innerHTML = html;
-}
-
 // ── BUILD ALL ──────────────────────────────────────
 function buildAllSections() {
   buildPanoramica();
@@ -844,7 +824,6 @@ function buildAllSections() {
   buildThread();
   buildNote();
   buildPrep();
-  buildLibro();
 }
 </script>
 <style>
