@@ -36,7 +36,8 @@ const FURIOSA_DATA = {
     { id: "lore",       label: "Lore Segreta",  icona: "◑" },
     { id: "thread",     label: "Thread Aperti", icona: "◐" },
     { id: "note",       label: "Note DM",       icona: "◻" },
-    { id: "prep",       label: "Prep. Sessione", icona: "☰" }
+    { id: "prep",       label: "Prep. Sessione", icona: "☰" },
+    { id: "nomi",       label: "Nomi",          icona: "✎" }
   ],
 
   prepProssimaSessione: {
@@ -44,31 +45,63 @@ const FURIOSA_DATA = {
     sottotitolo: "Chiacchierata conoscitiva — scaletta DM (Blocco 6, aggiunta 20 settembre 2026)",
     nota: "Scaletta di supporto per la seduta del viaggio di ritorno da Pozzprofond a Tresil dopo gli eventi di Fonte Verde/villaggio dei villici (Sessione 5). Pensata per dare spazio a una lunga chiacchierata conoscitiva tra i quattro personaggi. Le caselle si spuntano e restano salvate su questo dispositivo.",
     eventi: [
-      { id: "prep-ev-1",  testo: "Partenza da Pozzprofond — i cavalli. Karl fatica con le cinghie per la mano indolenzita dal guanto → qualcuno gli chiede cosa gli sia successo a Fonte Verde → confronto sulle visioni di Furiosa." },
-      { id: "prep-ev-2",  testo: "Il bivio fuori dal villaggio — dritti a Tresil o deviazione per cercare tracce di Ados? Conversazione pratica sul \"cosa facciamo dopo\", da riprendere più avanti nel viaggio." },
-      { id: "prep-ev-3",  testo: "Primo pomeriggio di cavalcata — il paesaggio cambia (fumo di fonderia, un accento familiare) → Karl e Nikla parlano delle rispettive vite a Ferrath." },
-      { id: "prep-ev-4",  testo: "La sosta per mangiare — provviste ammuffite o Nikla che cucina (disastro) → momento leggero, buono per stemperare dopo un argomento pesante." },
-      { id: "prep-ev-5",  testo: "Il guado di un fiume/tratto scosceso — aiuto fisico reciproco → un \"grazie\" che apre la domanda di Nikla a Rei sul perché sia rimasta con loro." },
-      { id: "prep-ev-6",  testo: "L'accampamento serale, accendere il fuoco — primo vero momento fermo → tema dei costi fisici dei nuovi poteri (dita viola di Nikla, unghie mancanti di Karl, il \"fumare\" di Zoraya)." },
-      { id: "prep-ev-7",  testo: "La cena intorno al fuoco — il momento più naturale per la conversazione grande: \"Sono già morti, ragazzo\" — cosa vuol dire uccidere chi è già morto." },
-      { id: "prep-ev-8",  testo: "Turni di guardia notturna a coppie (accosta chi normalmente non parla molto, es. Karl e Rei) — spazio per conversazioni più intime: le \"due voci\" di Rei, o chi diventerà il campione di Furiosa." },
-      { id: "prep-ev-9",  testo: "Un rumore nella notte (falso allarme) — l'adrenalina condivisa apre spazio per una paura più grande ammessa ad alta voce." },
-      { id: "prep-ev-10", testo: "Ultimo tratto, Tresil in vista — il patto non detto: \"e dopo, cosa siamo l'uno per l'altro?\", prima di rientrare in città." }
+      { id: "prep-ev-1",  testo: "Riassunto" },
+      { id: "prep-ev-2",  testo: "Discussione in viaggio" },
+      { id: "prep-ev-3",  testo: "La tana del Lortone" },
+      { id: "prep-ev-4",  testo: "Discussioni in locanda" },
+      { id: "prep-ev-5",  testo: "Rumori nella notte, i cavalli schiacciati" },
+      { id: "prep-ev-6",  testo: "Indagini" },
+      { id: "prep-ev-7",  testo: "Combattimento" },
+      { id: "prep-ev-8",  testo: "Discussione non soft" },
+      { id: "prep-ev-9",  testo: "Viaggio" },
+      { id: "prep-ev-10", testo: "Tresil" }
     ],
     situazioniComuni: [
       { id: "prep-sit-1", testo: "Un cavallo che zoppica e va controllato." },
       { id: "prep-sit-2", testo: "La pioggia costringe a un riparo di fortuna prima del previsto." },
       { id: "prep-sit-3", testo: "Qualcuno insegna una piccola abilità a un altro (Zoraya mostra un canto a Nikla, Karl spiega un nodo)." },
       { id: "prep-sit-4", testo: "Un venditore ambulante o pellegrino incrociato per strada chiede notizie da Tresil." },
-      { id: "prep-sit-5", testo: "Un'incombenza pratica (rammendare, pulire le armi) tiene le mani occupate mentre la bocca parla liberamente." }
-    ],
-    temiFondo: [
-      { id: "prep-tema-1", testo: "Furiosa ha usato la parola \"campione/campionessa\" con più di uno — se ne accorgono? Cosa pensano di una promessa non esclusiva?" },
-      { id: "prep-tema-2", testo: "Che tipo di dea emerge, mettendo a confronto le quattro visioni (verità, conoscenza, libertà, protezione dei propri cari)?" },
-      { id: "prep-tema-3", testo: "Dovrebbero darsi delle regole su quando è lecito usare i nuovi poteri, visti i costi fisici?" }
+      { id: "prep-sit-5", testo: "Un'incombenza pratica (rammendare, pulire le armi) tiene le mani occupate mentre la bocca parla liberamente." },
+      { id: "prep-sit-6", testo: "Un tratto di strada dissestato costringe tutti a scendere e guidare i cavalli a mano." },
+      { id: "prep-sit-7", testo: "Qualcuno nota una cicatrice o un oggetto mai visto prima su un compagno, e ne chiede l'origine." },
+      { id: "prep-sit-8", testo: "Un gioco da campo (carte improvvisate, indovinelli, scommesse sciocche) per ammazzare il tempo." },
+      { id: "prep-sit-9", testo: "Un rifugiato o un mercante di passaggio racconta voci contrastanti sugli eventi di Fonte Verde." },
+      { id: "prep-sit-10", testo: "Il cibo scarseggia: bisogna decidere chi rinuncia alla propria razione, o come dividerla." }
     ]
   },
 
+
+  // Pagina Nomi (portata dal Manuale di Kaelvaran, Appendice C) —
+  // liste rapide di nomi per PNG, comparse e improvvisazioni al tavolo.
+  nomi: {
+    intro: "Liste di nomi per personaggi non giocanti, comparse e improvvisazioni al tavolo — portate qui dal Manuale di Kaelvaran, Appendice C. Non esaustive né vincolanti.",
+    culture: [
+      {
+        nome: "I Ferromarchi",
+        maschili: ["Karsten", "Heinrich", "Étienne", "Dietger", "Lucien", "Gerhardt", "Armand", "Baldrik", "Théodore", "Wendel", "Frederick", "Manfred", "Sébastien", "Gunther", "Rutger", "Bertrand", "Alaric", "Ludwig", "Renard", "Oswin"],
+        femminili: ["Ingrid", "Élodie", "Hilde", "Camille", "Roswitha", "Adrienne", "Ottilie", "Margaux", "Ursel", "Noélie", "Brunhilde", "Céline", "Gertrude", "Isolde", "Mathilde", "Solange", "Waltraud", "Clémence", "Rosalind", "Heidrun"],
+        cognomi: ["Brenner", "Voss", "Hartmann", "Lécuyer", "Kessler", "Dubreuil", "Falkner", "Moreau", "Reinholt", "Vasseur", "Steiner", "Fournier", "Wexler", "Bergmann", "Lambert", "Krauss", "Mercier", "Winterhalt", "Aumont", "Schreiber"]
+      },
+      {
+        nome: "I Varlmenn",
+        maschili: ["Bjorn", "Ferenc", "Sigurd", "Zoltán", "Ragnvald", "Miklós", "Hrafnkel", "Károly", "Thorvald", "Endre", "Gunnar", "István", "Leif", "Bálint", "Torvald", "Gábor", "Halvard", "Domokos", "Sveinung", "Tamás"],
+        femminili: ["Brynhild", "Ilona", "Astrid", "Zsófia", "Sigrun", "Katalin", "Freydis", "Borbála", "Solveig", "Ágota", "Gudrun", "Erzsébet", "Ragnhild", "Viktória", "Thora", "Ildikó", "Ásta", "Krisztina", "Signe", "Boglárka"],
+        cognomi: ["Halvardsson", "Kővári", "Ravnsdóttir", "Szabari", "Eiriksson", "de Vresh", "Hallgrim", "Nagyvári", "Ulfsdóttir", "Draskovic", "Björnsson", "Farkasházi", "Sigmundsdóttir", "Rácsvári", "Ottarsson", "Horvátfi", "Bragadóttir", "Kelemenfi", "Sturlusson", "Vörösmarti"]
+      },
+      {
+        nome: "Gli Shizenka",
+        maschili: ["Hiroshi", "Minh", "Kenji", "Wei", "Sopheak", "Takeshi", "Jian", "Ryo", "Anh", "Haru", "Daisuke", "Long", "Katsu", "Feng", "Sokha", "Tuan", "Rin", "Bao", "Isamu", "Cuong"],
+        femminili: ["Yumi", "Linh", "Sakura", "Mei", "Kanya", "Aiko", "Xiu", "Natsuki", "Thuy", "Hana", "Emiko", "Trang", "Rina", "Lian", "Sreymom", "Michiko", "Yue", "Hien", "Nozomi", "Chau"],
+        cognomi: ["Kohana", "Kurohana", "Tanaka", "Nguyen", "Wong", "Yamada", "Phan", "Chen", "Matsuda", "Tran", "Sato", "Le", "Huang", "Fujimori", "Pham", "Watanabe", "Vo", "Lin", "Nakamura", "Dang"]
+      },
+      {
+        nome: "I Solnari",
+        maschili: ["Zahir", "Arjun", "Yaotl", "Kavi", "Tenoch", "Rashid", "Devendra", "Malik", "Ravi", "Cusi", "Amir", "Tochtli", "Sanjay", "Farid", "Itzcoatl", "Rohan", "Nadir", "Mixtli", "Karan", "Yusuf"],
+        femminili: ["Zahra", "Amara", "Ixchel", "Priya", "Citlali", "Layla", "Kavita", "Nayeli", "Farah", "Anjali", "Soraya", "Deepa", "Yasmin", "Xochitl", "Ranya", "Meera", "Itzel", "Nadia", "Malinalli", "Zaira"],
+        cognomi: ["Al Khmani", "Varnis", "Voan", "Vass", "Orest", "Vella", "Al Sarrafi", "Al-Rashidi", "Quispe", "Nstar", "Al Zahrani", "Vantosh", "Koya", "Ashkar", "Verrin", "Al Mansuri", "Pillai", "Sarasti", "Tumaq", "Orvanti"]
+      }
+    ]
+  },
 
   // Termini che diventano link cliccabili nei testi
   glossario: {

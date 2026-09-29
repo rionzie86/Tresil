@@ -269,6 +269,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
     <div id="section-thread"     class="section"></div>
     <div id="section-note"       class="section"></div>
     <div id="section-prep"       class="section"></div>
+    <div id="section-nomi"       class="section"></div>
   </main>
 </div>
 
@@ -355,6 +356,7 @@ function updateDMUI() {
   buildLore();
   buildThread();
   buildPrep();
+  buildNomi();
 }
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -376,7 +378,7 @@ function toggleSidebar() {
 // ── NAVIGAZIONE ────────────────────────────────────
 function buildNav() {
   const c = document.getElementById('nav-cont');
-  const dmOnly = ['lore', 'thread', 'prep'];
+  const dmOnly = ['lore', 'thread', 'prep', 'nomi'];
   FURIOSA_DATA.sezioni.forEach(s => {
     const btn = document.createElement('button');
     btn.className = 'nav-btn' + (dmOnly.includes(s.id) ? ' dm-hidden' : '');
@@ -798,7 +800,6 @@ function buildPrep() {
   }
   html += group('Eventi scatenanti (in sequenza)', p.eventi);
   html += group('Situazioni comuni (riempitivo)', p.situazioniComuni);
-  html += group('Temi di fondo, se la conversazione langue', p.temiFondo);
   c.innerHTML = html;
 }
 
@@ -808,6 +809,27 @@ function togglePrep(id) {
   if (idx === -1) checked.push(id); else checked.splice(idx, 1);
   localStorage.setItem('furiosa_prep_checked', JSON.stringify(checked));
   buildPrep();
+}
+
+// ── NOMI (Appendice, solo DM) ───────────────────────
+function buildNomi() {
+  const c = document.getElementById('section-nomi');
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Nomi</div><div class="sec-sub">Liste rapide per PNG e comparse</div></div>`;
+  if (!isMaster) {
+    c.innerHTML += `<div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
+    return;
+  }
+  const d = FURIOSA_DATA.nomi;
+  let html = `<div class="card"><div class="card-body">${d.intro}</div></div>`;
+  d.culture.forEach(cult => {
+    html += `<div class="card">
+      <div class="card-title">${cult.nome}</div>
+      <div style="margin-bottom:.6rem"><strong style="color:var(--t1)">Maschili — </strong><span style="color:var(--t2)">${cult.maschili.join(', ')}</span></div>
+      <div style="margin-bottom:.6rem"><strong style="color:var(--t1)">Femminili — </strong><span style="color:var(--t2)">${cult.femminili.join(', ')}</span></div>
+      <div><strong style="color:var(--t1)">Cognomi — </strong><span style="color:var(--t2)">${cult.cognomi.join(', ')}</span></div>
+    </div>`;
+  });
+  c.innerHTML += html;
 }
 
 // ── BUILD ALL ──────────────────────────────────────
