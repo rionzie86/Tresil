@@ -800,6 +800,24 @@ function buildPrep() {
   }
   html += group('Eventi scatenanti (in sequenza)', p.eventi);
   html += group('Situazioni comuni (riempitivo)', p.situazioniComuni);
+  (p.schede || []).forEach(sc => {
+    let b = `<div class="card"><div class="card-title">${sc.titolo}</div>`;
+    if (sc.intro) b += `<div class="card-body" style="margin-bottom:.8rem">${sc.intro}</div>`;
+    if (sc.tabella) {
+      b += `<div style="overflow-x:auto;margin-bottom:.8rem"><table style="width:100%;border-collapse:collapse;font-size:13.5px;color:var(--t2)"><thead><tr>`;
+      sc.tabella.colonne.forEach(col => b += `<th style="text-align:left;padding:.35rem .6rem;border-bottom:1px solid var(--border-b);color:var(--gold);font-weight:600">${col}</th>`);
+      b += `</tr></thead><tbody>`;
+      sc.tabella.righe.forEach(r => {
+        b += `<tr>` + r.map((v, i) => `<td style="padding:.35rem .6rem;border-bottom:1px solid var(--border);vertical-align:top${i === 0 ? ';color:var(--t1);font-weight:600;white-space:nowrap' : ''}">${v}</td>`).join('') + `</tr>`;
+      });
+      b += `</tbody></table></div>`;
+    }
+    (sc.blocchi || []).forEach(bl => {
+      b += `<div style="margin-top:.6rem"><strong style="color:var(--t1)">${bl.titolo}</strong><div class="card-body">${bl.testo}</div></div>`;
+    });
+    b += `</div>`;
+    html += b;
+  });
   c.innerHTML = html;
 }
 
