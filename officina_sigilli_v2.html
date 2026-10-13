@@ -2,7 +2,11 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0c0f">
 <title>Officina dei Sigilli — Kaelvaran</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -43,7 +47,6 @@
     border-radius:4px; background:var(--bg-card); color:var(--ink-soft); font-family:'Cinzel',serif; font-size:14px;
     cursor:pointer; transition:bottom .18s ease;}
   #fullscreenBtn:hover{color:var(--gold); border-color:var(--gold);}
-  body.chip-selected #fullscreenBtn{bottom:78px;}
   body.pseudo-fs{overflow:hidden;}
   body.pseudo-fs header, body.pseudo-fs #leftPanel, body.pseudo-fs #esitoPanel{display:none;}
   body.pseudo-fs .layout{display:block; max-width:none; padding:0; margin:0; height:100vh;}
@@ -172,6 +175,98 @@
   option{color:var(--ink); font-family:'Crimson Pro', Georgia, serif;}
   .import-row{display:none;}
   .import-row.visible{display:block;}
+
+  /* ── Suggerimenti: mouse vs tocco ── */
+  .hint-touch{display:none;}
+  @media (hover:none){ .hint-mouse{display:none;} .hint-touch{display:inline;} }
+
+  /* ── Tasto schermo intero dentro la barra zoom (non più flottante) ── */
+  .zoom-controls #fullscreenBtn{position:static; padding:0; width:26px; height:26px; font-size:13px; line-height:1;
+    border-radius:3px; background:var(--bg); font-family:inherit;}
+  .zoom-controls #fullscreenBtn.fs-on{width:auto; padding:0 8px;}
+  #tmGoBtn{display:none;}
+  @media (max-width:760px){ #tmGoBtn{display:inline-block;} }
+
+  /* ══ VISTA AL TAVOLO (mobile) ══════════════════════════════════════════ */
+  #tmView, #tmBackdrop, #tmMenuExtras, #tmEsitoClose{display:none;}
+  body.tm{overflow:hidden; height:100dvh;}
+  body.tm header, body.tm .canvas-wrap, body.tm #chipControls, body.tm #leftToggle,
+  body.tm #esitoToggle, body.tm #leftDecoration{display:none !important;}
+  body.tm .layout{display:block; padding:0; margin:0; max-width:none;}
+  body.tm #tmView{display:flex; position:fixed; inset:0; z-index:60; flex-direction:column; background:var(--bg);
+    padding:calc(6px + env(safe-area-inset-top,0px)) 14px calc(12px + env(safe-area-inset-bottom,0px));}
+  .tm-top{display:flex; align-items:center; gap:10px; flex:0 0 auto;}
+  .tm-icon-btn{width:36px; height:36px; flex:0 0 36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line-b); border-radius:4px; background:var(--bg-card); color:var(--ink-soft);
+    font-size:17px; cursor:pointer; padding:0; line-height:1;}
+  .tm-icon-btn:active{color:var(--gold); border-color:var(--gold);}
+  .tm-icon-btn[hidden]{display:none;}
+  .tm-title{flex:1; min-width:0; text-align:center;}
+  #tmName{font-family:'Cinzel',serif; color:var(--gold); font-size:17px; font-weight:600; letter-spacing:.03em;
+    line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  #tmSchool{font-size:13px; color:var(--ink-mute); font-style:italic; line-height:1.3;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  #tmSigil{flex:0 0 40dvh; height:40dvh; display:flex; align-items:center; justify-content:center; margin-top:4px;}
+  body.tm #sigilSvg{width:100% !important; height:100% !important; touch-action:manipulation;}
+  body.tm #sigilSvg > text{font-size:16px; fill:var(--ink-soft);}
+  body.tm #sigilSvg .placed-chip text, body.tm #sigilSvg #stagingArea{display:none;}
+
+  .tm-sel{flex:0 0 auto; margin-top:6px; padding:10px 12px 12px; border:1px solid var(--line); border-radius:6px; background:var(--bg-card);}
+  .tm-sel-head{display:flex; align-items:center; gap:8px; min-height:30px;}
+  #tmSelName{font-family:'Cinzel',serif; font-size:15px; color:var(--ink); font-weight:600; white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis;}
+  #tmSelName.empty{font-family:'Crimson Pro',Georgia,serif; font-weight:400; font-style:italic; color:var(--ink-mute);}
+  #tmSelSector{font-size:13px; color:var(--ink-mute); white-space:nowrap; flex:1; overflow:hidden; text-overflow:ellipsis;}
+  #tmDelete{width:30px; height:30px; flex:0 0 30px; font-size:14px; color:var(--red); border-color:rgba(196,90,90,.5);}
+  .tm-tabs{display:flex; gap:6px; margin-top:8px;}
+  .tm-tab{flex:1; padding:5px 0; border:1px solid var(--line-b); border-radius:3px; background:var(--bg);
+    color:var(--ink-soft); font-family:'Cinzel',serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; cursor:pointer;}
+  .tm-tab.on{background:var(--gold); color:var(--bg); border-color:var(--gold);}
+  .tm-tab:disabled{opacity:.3;}
+  .tm-tab[hidden]{display:none;}
+  .tm-slider-row{display:flex; align-items:center; gap:12px; margin-top:12px;}
+  #tmSliderVal{min-width:52px; text-align:right; font-family:'Cinzel',serif; font-size:14px; color:var(--gold);}
+  #tmSlider{flex:1; -webkit-appearance:none; appearance:none; height:30px; background:transparent; margin:0;}
+  #tmSlider::-webkit-slider-runnable-track{height:6px; border-radius:3px; background:linear-gradient(90deg,var(--gold-d) var(--fill,50%),var(--line-b) var(--fill,50%));}
+  #tmSlider::-moz-range-track{height:6px; border-radius:3px; background:var(--line-b);}
+  #tmSlider::-moz-range-progress{height:6px; border-radius:3px; background:var(--gold-d);}
+  #tmSlider::-webkit-slider-thumb{-webkit-appearance:none; width:28px; height:28px; margin-top:-11px; border-radius:50%;
+    background:var(--gold); border:3px solid var(--bg); box-shadow:0 0 0 1px var(--gold);}
+  #tmSlider::-moz-range-thumb{width:22px; height:22px; border-radius:50%; background:var(--gold); border:3px solid var(--bg);}
+  #tmSlider:disabled{opacity:.3;}
+
+  .tm-values{flex:0 0 auto; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+  .tm-val{padding:10px 12px; border:1px solid var(--line); border-radius:6px; background:var(--bg-card); min-width:0;}
+  .tm-val-label{font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .tm-val-num{font-family:'Cinzel',serif; font-size:26px; line-height:1.2; color:var(--gold); font-weight:600; margin-top:2px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .tm-val-num.small{font-size:18px;}
+  .tm-val-sub{font-size:13px; color:var(--ink-soft); line-height:1.35; margin-top:3px;}
+  #tmWarn{flex:0 0 auto; margin-top:8px; font-size:13px; color:var(--red); text-align:center; display:none;}
+  #tmToast{position:fixed; left:50%; top:calc(56px + env(safe-area-inset-top,0px)); transform:translateX(-50%); z-index:70;
+    max-width:90vw; padding:7px 14px; border:1px solid var(--gold); border-radius:4px; background:var(--bg-panel);
+    color:var(--gold); font-size:14px; display:none; text-align:center;}
+  #tmToast.show{display:block;}
+
+  /* Menu laterale: è il pannello Catalogo esistente, trasformato in cassetto */
+  body.tm #leftPanel{position:fixed; top:0; bottom:0; left:0; width:min(86vw,360px); z-index:80; overflow-y:auto;
+    border-radius:0 6px 6px 0; padding:calc(14px + env(safe-area-inset-top,0px)) 16px 30px;
+    transform:translateX(-105%); transition:transform .22s ease;}
+  body.tm.tm-menu #leftPanel{transform:none;}
+  body.tm #leftPanel #leftPanelBody{margin-top:0; display:block !important;}
+  body.tm #tmMenuExtras{display:block; margin-bottom:18px;}
+  .tm-menu-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
+  .tm-menu-head span{font-family:'Cinzel',serif; color:var(--gold); font-size:15px; letter-spacing:.08em;}
+  body.tm.tm-menu #tmBackdrop, body.tm.tm-esito #tmBackdrop{display:block; position:fixed; inset:0; z-index:75; background:rgba(6,7,10,.6);}
+
+  /* Esito completo, aperto dal menu */
+  body.tm #esitoPanel{display:none;}
+  body.tm.tm-esito #esitoPanel{display:block; position:fixed; inset:calc(10px + env(safe-area-inset-top,0px)) 10px calc(10px + env(safe-area-inset-bottom,0px));
+    z-index:85; overflow-y:auto; padding-top:16px;}
+  body.tm.tm-esito #esitoPanel #output{display:block !important;}
+  body.tm.tm-esito #esitoPanel #esitoSummary{display:none !important;}
+  body.tm.tm-esito #tmEsitoClose{display:flex; position:absolute; top:10px; right:10px;}
 </style>
 </head>
 <body>
@@ -182,6 +277,7 @@
   <div class="mode-row">
     <span id="modeLabel">Modalità: Giocatore</span>
     <button class="mode-btn" id="dmToggleBtn">◑ Modalità DM</button>
+    <button class="mode-btn" id="tmGoBtn">☰ Vista al tavolo</button>
   </div>
 </header>
 
@@ -201,6 +297,13 @@
     <div class="panel-toggle" id="leftToggle">◂</div>
     <div id="leftDecoration" style="display:none;"></div>
     <div id="leftPanelBody">
+
+    <div id="tmMenuExtras">
+      <div class="tm-menu-head"><span>Menu</span><button class="tm-icon-btn" id="tmMenuClose" aria-label="Chiudi menu">✕</button></div>
+      <button class="tool-btn" id="tmEsitoBtn">📜 Esito completo</button>
+      <button class="tool-btn" id="tmDmBtn">◑ Modalità DM</button>
+      <button class="tool-btn" id="tmFullViewBtn">⊞ Vista completa (tutti i controlli)</button>
+    </div>
 
     <div class="menu-section" data-section="catalogo">
       <button class="section-head" type="button"><span>Catalogo</span><span class="section-arrow">▾</span></button>
@@ -245,7 +348,7 @@
       <button class="section-head" type="button"><span>Energia</span><span class="section-arrow">▾</span></button>
       <div class="section-body">
         <div class="glyph-grid" id="energyGrid"></div>
-        <div class="hint" style="margin-top:2px;">Il sapore energetico del Core (opzionale, una sola alla volta). Clicca e posa come un glifo: sinistro per spostarla, destro per cancellarla, rotellina per ridimensionarla.</div>
+        <div class="hint" style="margin-top:2px;">Il sapore energetico del Core (opzionale, una sola alla volta). <span class="hint-mouse">Clicca e posa come un glifo: sinistro per spostarla, destro per cancellarla, rotellina per ridimensionarla.</span><span class="hint-touch">Tocca e posa come un glifo; toccala sul sigillo per selezionarla e regolarla.</span></div>
       </div>
     </div>
 
@@ -253,7 +356,7 @@
       <button class="section-head" type="button"><span>Congiunzioni</span><span class="section-arrow">▾</span></button>
       <div class="section-body">
         <div class="glyph-grid" id="conjPalette"></div>
-        <div class="hint" style="margin-top:2px;">Collegano le parti del sigillo. Clicca e posa come un glifo; rotellina per ruotarle di 5° alla volta, Maiusc+rotellina per ingrandirle o rimpicciolirle.</div>
+        <div class="hint" style="margin-top:2px;">Collegano le parti del sigillo. <span class="hint-mouse">Clicca e posa come un glifo; rotellina per ruotarle di 5° alla volta, Maiusc+rotellina per ingrandirle o rimpicciolirle.</span><span class="hint-touch">Tocca e posa come un glifo; toccala sul sigillo per ruotarla o ridimensionarla.</span></div>
       </div>
     </div>
 
@@ -261,7 +364,7 @@
       <button class="section-head" type="button"><span>Glifi</span><span class="section-arrow">▾</span></button>
       <div class="section-body">
         <div class="glyph-grid" id="palette"></div>
-        <div class="hint">Clicca un glifo e poi il sigillo per posarlo. Trascinalo (sinistro) per spostarlo, destro per cancellarlo, rotellina per ingrandirlo o rimpicciolirlo fino all'80% dei simboli del Core — la sua dimensione è la potenza che richiede. Separazione: sul Core è il bersaglio sé stesso, vicino al centro è a contatto, più lontano indica i metri di distanza; nello spicchio Durata indica invece impulsi scaglionati.</div>
+        <div class="hint"><span class="hint-mouse">Clicca un glifo e poi il sigillo per posarlo. Trascinalo (sinistro) per spostarlo, destro per cancellarlo, rotellina per ingrandirlo o rimpicciolirlo</span><span class="hint-touch">Tocca un glifo e poi il sigillo per posarlo. Toccalo sul sigillo per selezionarlo: puoi trascinarlo, ingrandirlo, rimpicciolirlo o eliminarlo</span> fino all'80% dei simboli del Core — la sua dimensione è la potenza che richiede. Separazione: sul Core è il bersaglio sé stesso, vicino al centro è a contatto, più lontano indica i metri di distanza; nello spicchio Durata indica invece impulsi scaglionati.</div>
       </div>
     </div>
 
@@ -276,16 +379,18 @@
         <span id="zoomLabel">100%</span>
         <button class="zoom-btn" id="zoomInBtn">+</button>
         <button class="zoom-btn" id="zoomResetBtn" title="Ripristina zoom">⟲</button>
+        <button class="zoom-btn" id="fullscreenBtn" title="Schermo intero">⛶</button>
       </div>
     </div>
     <div id="sigilScroll" style="max-height:76vh;">
-      <svg id="sigilSvg" width="500" height="445" viewBox="0 70 640 570"></svg>
+      <svg id="sigilSvg" width="500" height="406" viewBox="0 70 640 520"></svg>
     </div>
-    <div class="hint" style="margin-top:26px;">Sinistro per trascinare, destro per cancellare, rotellina per ridimensionare.</div>
+    <div class="hint" style="margin-top:14px;"><span class="hint-mouse">Sinistro per trascinare, destro per cancellare, rotellina per ridimensionare.</span><span class="hint-touch">Tocca un glifo per selezionarlo, trascinalo per spostarlo; i pulsanti in basso lo ridimensionano, ruotano o eliminano.</span></div>
   </div>
 
   <div class="panel" id="esitoPanel">
     <div class="panel-toggle" id="esitoToggle" style="left:auto; right:8px;">▸</div>
+    <button class="tm-icon-btn" id="tmEsitoClose" aria-label="Chiudi esito">✕</button>
     <h2>Esito</h2>
     <div id="esitoSummary" style="display:none;"></div>
     <div id="output"></div>
@@ -293,7 +398,46 @@
 
 </div>
 
-<button id="fullscreenBtn" title="Schermo intero">⛶</button>
+<div id="tmBackdrop"></div>
+
+<div id="tmView">
+  <div class="tm-top">
+    <button class="tm-icon-btn" id="tmMenuBtn" aria-label="Menu">☰</button>
+    <div class="tm-title"><div id="tmName">—</div><div id="tmSchool"></div></div>
+    <button class="tm-icon-btn" id="tmFsBtn" aria-label="Schermo intero">⛶</button>
+  </div>
+  <div id="tmSigil"></div>
+  <div class="tm-sel">
+    <div class="tm-sel-head">
+      <span id="tmSelName" class="empty">Tocca un glifo sul sigillo</span>
+      <span id="tmSelSector"></span>
+      <button class="tm-icon-btn" id="tmDelete" aria-label="Elimina glifo" hidden>🗑</button>
+    </div>
+    <div class="tm-tabs">
+      <button class="tm-tab on" data-p="size" type="button">Potenza</button>
+      <button class="tm-tab" data-p="dist" type="button">Distanza</button>
+      <button class="tm-tab" data-p="rot" type="button" hidden>Rotazione</button>
+    </div>
+    <div class="tm-slider-row">
+      <input type="range" id="tmSlider" min="0" max="100" step="1" value="50" disabled>
+      <span id="tmSliderVal">—</span>
+    </div>
+  </div>
+  <div class="tm-values">
+    <div class="tm-val">
+      <div class="tm-val-label" id="tmEffLabel">Effetto</div>
+      <div class="tm-val-num" id="tmEffVal">—</div>
+      <div class="tm-val-sub" id="tmEffSub"></div>
+    </div>
+    <div class="tm-val">
+      <div class="tm-val-label">Dispendio energetico</div>
+      <div class="tm-val-num" id="tmEnergyVal">—</div>
+      <div class="tm-val-sub" id="tmState"></div>
+    </div>
+  </div>
+  <div id="tmWarn"></div>
+</div>
+<div id="tmToast"></div>
 
 <div id="chipControls">
   <div id="chipControlsLabel">—</div>
@@ -374,13 +518,18 @@ updateLayoutColumns();
 // generici), passa a uno pseudo-schermo-intero via CSS che comunque nasconde
 // header/pannelli laterali e ingrandisce il sigillo.
 function isPseudoFS(){ return document.body.classList.contains('pseudo-fs'); }
+function setFsBtnLabel(on){
+  const b=document.getElementById('fullscreenBtn');
+  b.textContent = on ? '⛶ Esci' : '⛶';
+  b.classList.toggle('fs-on', on);
+}
 function enterPseudoFS(){
   document.body.classList.add('pseudo-fs');
-  document.getElementById('fullscreenBtn').textContent = '⛶ Esci';
+  setFsBtnLabel(true);
 }
 function exitPseudoFS(){
   document.body.classList.remove('pseudo-fs');
-  document.getElementById('fullscreenBtn').textContent = '⛶';
+  setFsBtnLabel(false);
 }
 const nativeFSAvailable = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
 
@@ -399,15 +548,16 @@ document.getElementById('fullscreenBtn').addEventListener('click', ()=>{
   }
 });
 document.addEventListener('fullscreenchange', ()=>{
+  if(tableMode) return;
   if(document.fullscreenElement){
-    document.getElementById('fullscreenBtn').textContent = '⛶ Esci';
+    setFsBtnLabel(true);
   } else if(!isPseudoFS()){
-    document.getElementById('fullscreenBtn').textContent = '⛶';
+    setFsBtnLabel(false);
   }
 });
 
 let zoomLevel=1.25;
-const ZOOM_BASE_W=400, ZOOM_BASE_H=356;
+const ZOOM_BASE_W=400, ZOOM_BASE_H=325;
 // Su schermi stretti il sigillo, alla dimensione richiesta dallo zoom corrente, può
 // essere più largo dello schermo stesso: senza questo limite lo spicchio andrebbe
 // tagliato fuori dalla pagina invece di rimpicciolirsi per stare nello schermo.
@@ -533,6 +683,7 @@ function renderEnergyGrid(){
       const full='energy:'+key;
       if(armed===full){armed=null;} else {armed=full;}
       document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+      tmArmed(key);
     });
     energyGrid.appendChild(btn);
   });
@@ -950,6 +1101,8 @@ function loadFromSelectValue(val){
 
 catalogSelect.addEventListener('change', ()=>{
   loadFromSelectValue(catalogSelect.value);
+  try{ localStorage.setItem(LAST_SPELL_KEY, catalogSelect.value); } catch(e){}
+  if(tableMode){ tmSelectFirst(); closeTmMenu(); }
   render();
 });
 
@@ -1078,6 +1231,7 @@ function buildConjPalette(){
       const full='conj:'+key;
       if(armed===full){armed=null;} else {armed=full;}
       document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+      tmArmed(c.label);
     });
     conjPalette.appendChild(btn);
   });
@@ -1097,6 +1251,7 @@ function buildPalette(){
     btn.addEventListener('click',()=>{
       if(armed===key){armed=null;} else {armed=key;}
       document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.toggle('armed', b.dataset.key===armed));
+      tmArmed(g.label);
     });
     palette.appendChild(btn);
   });
@@ -1257,6 +1412,7 @@ svg.addEventListener('mousedown', evt=>{
   if(!chip) return;
   const {idx, kind}=chip;
   if(kind==='glyph' && placed[idx].sector===-1) return;
+  if(tableMode){ evt.preventDefault(); return; }
   dragIdx=idx; dragKind=kind;
   evt.preventDefault();
 });
@@ -1365,7 +1521,7 @@ function handleCanvasTap(loc){
 }
 
 svg.addEventListener('click', evt=>{
-  handleCanvasTap(svgPointFromEvent(evt));
+  handleTap(svgPointFromEvent(evt));
 });
 
 svg.addEventListener('wheel', evt=>{
@@ -1412,9 +1568,10 @@ svg.addEventListener('touchstart', evt=>{
   const chip=chipAt(loc);
   if(chip){
     const {idx, kind}=chip;
-    if(!(kind==='glyph' && placed[idx].sector===-1)){
+    if(!tableMode && !(kind==='glyph' && placed[idx].sector===-1)){
       dragIdx=idx; dragKind=kind;
     }
+    if(tableMode && !(selected && selected.kind===kind && chipArray(kind)[idx]?._id===selected.id)) tmParam='size';
     selectChip(kind, idx);
     render();
     evt.preventDefault();
@@ -1436,7 +1593,7 @@ svg.addEventListener('touchend', evt=>{
   const moved=Math.hypot(t.clientX-touchStartClientPt.x, t.clientY-touchStartClientPt.y);
   if(moved>12) return; // gesto di scorrimento, non un tocco
   evt.preventDefault();
-  handleCanvasTap(svgPointFromEvent(t));
+  handleTap(svgPointFromEvent(t));
 }, {passive:false});
 
 const OUTER_DIAM = outerR*2;
@@ -1749,6 +1906,7 @@ function render(){
   updateChipControlsUI(selInfo);
 
   computeAndDisplay(a,b,wRes);
+  if(tableMode) updateTableUI();
 }
 
 // ---- Note dinamiche di modifica rispetto all'originale del catalogo ----
@@ -2161,6 +2319,12 @@ function computeAndDisplay(a,b,wRes){
   // sostituisce a sua volta il calcolo generico con un valore dipendente dal glifo Tempo.
   const displayDispendio = tempoRewindInfo ? tempoRewindInfo.dispendio
     : (currentCatalogLabel && currentCatalogLabel.forcedDispendio!=null) ? currentCatalogLabel.forcedDispendio : dispendioFinale;
+  lastCalc = {
+    rangeInfo, rangeGlyphIdx, castingSeconds, cesuraLancio:!!cesuraLancio, materiaPrimaLancio:!!materiaPrimaLancio,
+    coagInfo, physicalInfo, powerMultiplier, materiaPrimaLivello:!!materiaPrimaLivello, tempoRewindInfo,
+    glyphDiscounts, dispendio:displayDispendio, zoneIndex, zoneLabel:zoneLabels[zoneIndex], zoneClass:zoneClasses[zoneIndex],
+    disconnectedKeys:disconnected.map(n=>n.key), disconnectedLabels:disconnected.map(n=>n.label), schoolResult:wRes.result
+  };
   out.innerHTML=`
     ${errorBlock}
     ${catalogBlock}
@@ -2245,6 +2409,7 @@ function updateModeUI(){
   // Il manuale collegato cambia a seconda della modalità: quello DM copre anche le rune non
   // ancora "scoperte" dai giocatori, quello Giocatore no.
   document.getElementById('manualBtn').href = isDM ? 'manuale_officina_sigilli.html' : 'manuale_officina_sigilli_giocatori.html';
+  document.getElementById('tmDmBtn').textContent = isDM ? '◑ Esci dalla Modalità DM' : '◑ Modalità DM';
 
   // Se la scuola selezionata non è più consentita nella nuova modalità, torna a un default valido.
   if(!isDM){
@@ -2289,6 +2454,251 @@ function checkPW(){
   }
 }
 
+
+// ══ VISTA AL TAVOLO (telefono) ═══════════════════════════════════════════
+// Su schermi stretti la pagina si apre in una vista semplificata: nome e sigillo
+// in alto, un tocco seleziona un glifo, una sola barra ne regola potenza /
+// distanza (/ rotazione per le congiunzioni), e sotto due numeri: l'effetto del
+// glifo selezionato e il Dispendio Energetico totale. Tutto il resto (catalogo,
+// scuole, palette, esito completo) sta nel menu ☰. "Vista completa" torna
+// all'interfaccia originale; la scelta viene ricordata su questo dispositivo.
+const TM_PREF_KEY='officina_sigilli_vista';
+const LAST_SPELL_KEY='officina_sigilli_ultimo';
+const TM_VIEWBOX='104 112 432 432';
+const FULL_VIEWBOX='0 70 640 520';
+let tableMode=false, tmParam='size', lastCalc=null;
+const $id=(i)=>document.getElementById(i);
+
+function fmtSec(sec){ return sec<60 ? `${Math.round(sec)} s` : `${(sec/60).toFixed(1)} min`; }
+
+function enterTableMode(){
+  tableMode=true;
+  document.body.classList.add('tm');
+  if(isPseudoFS()) exitPseudoFS();
+  $id('tmSigil').appendChild(svg);
+  svg.setAttribute('viewBox', TM_VIEWBOX);
+  // Le sezioni del menu partono chiuse, tranne il Catalogo.
+  document.querySelectorAll('.menu-section').forEach(sec=>sec.classList.toggle('open', sec.dataset.section==='catalogo'));
+  render();
+}
+function exitTableMode(){
+  tableMode=false;
+  document.body.classList.remove('tm','tm-menu','tm-esito');
+  $id('sigilScroll').appendChild(svg);
+  svg.setAttribute('viewBox', FULL_VIEWBOX);
+  applyZoom();
+  render();
+}
+function openTmMenu(){ document.body.classList.add('tm-menu'); }
+function closeTmMenu(){ document.body.classList.remove('tm-menu'); }
+function tmToast(msg, ms){
+  const t=$id('tmToast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tmToast._h); if(ms) tmToast._h=setTimeout(()=>t.classList.remove('show'), ms);
+}
+function tmHideToast(){ $id('tmToast').classList.remove('show'); }
+function tmArmed(label){
+  if(!tableMode) return;
+  if(armed){ closeTmMenu(); tmToast(`Tocca il sigillo dove posare: ${label}`); }
+  else tmHideToast();
+}
+function tmSelectFirst(){
+  const order=[['glyph',placed],['energy',energies],['conj',conjunctions]];
+  for(const [k,arr] of order){ if(arr.length){ selectChip(k,0); tmParam='size'; return; } }
+  clearSelection();
+}
+
+// Tocco sul sigillo: come prima, ma nella vista al tavolo il glifo appena
+// posato viene selezionato subito e il glifo "armato" si disarma.
+function handleTap(loc){
+  const before=[placed.length, energies.length, conjunctions.length];
+  handleCanvasTap(loc);
+  if(!tableMode) return;
+  let made=null;
+  if(placed.length>before[0]) made=['glyph', placed.length-1];
+  else if(energies.length>before[1]) made=['energy', energies.length-1];
+  else if(conjunctions.length>before[2]) made=['conj', conjunctions.length-1];
+  if(made){
+    armed=null;
+    document.querySelectorAll('.glyph-btn').forEach(b=>b.classList.remove('armed'));
+    tmHideToast();
+    selectChip(made[0], made[1]); tmParam='size';
+    render();
+  }
+}
+
+function tmSectorText(sel){
+  const o=sel.obj;
+  if(sel.kind==='conj') return o.inCore ? 'Congiunzione · nel Core' : 'Congiunzione';
+  if(sel.kind==='energy') return o.self ? 'Energia · nucleo' : `Energia · ${SECTOR_NAMES[Math.floor(o.angle/72)]}`;
+  if(o.self) return 'Gittata · sé stesso';
+  return SECTOR_NAMES[o.sector];
+}
+function tmLabel(sel){
+  return sel.kind==='glyph' ? GLYPHS[sel.obj.key].label : sel.kind==='energy' ? sel.obj.key : CONJUNCTIONS[sel.obj.key].label;
+}
+
+// Valore d'effetto del glifo selezionato, preso dagli stessi calcoli dell'Esito.
+function tableEffect(sel, L){
+  if(!sel){
+    if(L && L.rangeInfo) return {label:'Gittata', value:`${L.rangeInfo.range} m`, sub:`Diametro ${L.rangeInfo.diameter} m`};
+    return {label:'Effetto', value:'—', sub:(placed.length||energies.length||conjunctions.length) ? 'Tocca un glifo per vederne l’effetto' : 'Apri il menu ☰ e scegli un sigillo'};
+  }
+  const o=sel.obj, pot=Math.round((o.size||1)*100);
+  if(sel.kind==='energy'){
+    if(L.tempoRewindInfo && o.key==='Tempo' && !o.self)
+      return {label:'Tempo riavvolto', value:fmtSec(L.tempoRewindInfo.seconds), sub:'Uguale al tempo di lancio'};
+    if(o.self){
+      const mult=L.materiaPrimaLivello ? ` · ×${L.powerMultiplier.toFixed(2)} da Materia Prima` : '';
+      return {label:`${o.key} — potenza`, value:`${pot}%`, sub:`Energia prodotta nel nucleo${mult}`};
+    }
+    return {label:'Energia sacrificata', value:`${pot}%`, sub:`${o.key}, consumata come componente`};
+  }
+  if(sel.kind==='conj'){
+    const disc=(L.glyphDiscounts||[]).filter(g=>g.key===o.key).map(g=>`−${g.pct}% su ${g.label}`);
+    if(o.key==='linea' && L.rangeInfo && L.rangeInfo.extended)
+      return {label:'Gittata (estesa)', value:`${L.rangeInfo.range} m`, sub:disc.length?`Sconto ${disc.join(', ')}`:'La Linea spinge oltre il limite'};
+    return {label:'Dimensione', value:`${pot}%`, sub: disc.length ? `Sconto ${disc.join(', ')}` : 'Collega le parti al Core'};
+  }
+  const g=GLYPHS[o.key];
+  if(sel.idx===L.rangeGlyphIdx && L.rangeInfo)
+    return {label:'Gittata', value:`${L.rangeInfo.range} m`, sub:`Diametro ${L.rangeInfo.diameter} m`};
+  if(o.key==='separazione'){
+    if(o.sector===2) return {label:'Impulsi', value:`${Math.max(2, Math.round(2+(o.percent/100)*4))}`, sub:'Impulsi scaglionati nel tempo'};
+    if(o.self) return {label:'Bersaglio', value:'Sé stesso', small:true, sub:`Potenza ${pot}%`};
+    if(o.percent<=5) return {label:'Bersaglio', value:'Contatto', small:true, sub:`Potenza ${pot}%`};
+    const maxR=(currentCatalogLabel && currentCatalogLabel.maxRange) ? currentCatalogLabel.maxRange : 30;
+    return {label:'Bersaglio a', value:`${Math.round((o.percent/100)*maxR)} m`, sub:`Potenza ${pot}%`};
+  }
+  if(o.sector===4)
+    return {label:'Tempo di lancio', value:fmtSec(L.castingSeconds), sub: L.cesuraLancio ? 'Dimezzato da Cesura' : (L.materiaPrimaLancio ? 'Regolato da Materia Prima' : g.phrase)};
+  if(o.key==='materiaprima' && o.sector===0){
+    const pi=L.physicalInfo;
+    return {label:'Moltiplicatore', value:`×${L.powerMultiplier.toFixed(2)}`, sub: pi ? `${pi.volume} L · ${pi.peso} kg · durezza ${pi.durezza}/10` : 'Potenza dell’effetto'};
+  }
+  if(o.key==='cesura' && o.sector===0 && L.tempoRewindInfo)
+    return {label:'Tempo riavvolto', value:fmtSec(L.tempoRewindInfo.seconds), sub:'Uguale al tempo di lancio'};
+  if(o.key==='coagulazione' && L.coagInfo){
+    if(L.coagInfo.sector==='Durata'){
+      const d=L.physicalInfo ? ` · durezza ${L.physicalInfo.durezza}/10` : '';
+      return {label:'Solidità', value:`${L.coagInfo.solidita}%`, sub:`Persistenza ${L.coagInfo.persistenza}%${d}`};
+    }
+    return {label:'Coesione', value:`${L.coagInfo.coesione}%`, sub:`Massa trasportabile ${L.coagInfo.capacita}%`};
+  }
+  if(o.key==='cesura' && o.sector===2) return {label:'Durata', value:'Istantanea', small:true, sub:g.phrase};
+  return {label:`${SECTOR_NAMES[o.sector]} — potenza`, value:`${pot}%`, sub:`${g.phrase.charAt(0).toUpperCase()+g.phrase.slice(1)} · distanza ${o.percent}%`};
+}
+
+function tmSliderSpec(sel){
+  const o=sel.obj;
+  if(tmParam==='dist') return {min:0, max:100, step:1, val:o.percent||0, fmt:v=>`${Math.round(v)}%`};
+  if(tmParam==='rot') return {min:0, max:355, step:5, val:Math.round((o.rotation||0)/5)*5%360, fmt:v=>`${Math.round(v)}°`};
+  const max = sel.kind==='conj' ? (o.key==='nodo'?7:2.5) : 2;
+  return {min:0.5, max, step:0.05, val:o.size||1, fmt:v=>`${Math.round(v*100)}%`};
+}
+
+function updateTableUI(){
+  const L=lastCalc||{};
+  $id('tmName').textContent = currentCatalogLabel ? currentCatalogLabel.name
+    : ((placed.length||energies.length||conjunctions.length) ? 'Sigillo personalizzato' : 'Sigillo vuoto');
+  const schools=selectedSchools.join(' + ');
+  $id('tmSchool').textContent = (selectedSchools.length>1 && L.schoolResult) ? `${schools} → ${L.schoolResult}` : schools;
+
+  const sel=resolveSelected();
+  const nameEl=$id('tmSelName');
+  const tabs=[...document.querySelectorAll('.tm-tab')];
+  const slider=$id('tmSlider');
+  if(!sel){
+    nameEl.textContent='Tocca un glifo sul sigillo'; nameEl.classList.add('empty');
+    $id('tmSelSector').textContent=''; $id('tmDelete').hidden=true;
+    tabs.forEach(t=>{ t.disabled=true; t.classList.toggle('on', t.dataset.p==='size'); t.hidden = t.dataset.p==='rot'; });
+    slider.disabled=true; $id('tmSliderVal').textContent='—';
+    slider.style.setProperty('--fill','0%');
+  } else {
+    nameEl.textContent=tmLabel(sel); nameEl.classList.remove('empty');
+    $id('tmSelSector').textContent='· '+tmSectorText(sel); $id('tmDelete').hidden=false;
+    const canDist = !sel.obj.self && !(sel.kind==='conj' && sel.obj.inCore);
+    const canRot = sel.kind==='conj';
+    if((tmParam==='dist' && !canDist) || (tmParam==='rot' && !canRot)) tmParam='size';
+    tabs.forEach(t=>{
+      const p=t.dataset.p;
+      t.hidden = p==='rot' && !canRot;
+      t.disabled = (p==='dist' && !canDist);
+      t.classList.toggle('on', p===tmParam);
+      if(p==='size') t.textContent = sel.kind==='conj' ? 'Dimensione' : 'Potenza';
+    });
+    const sp=tmSliderSpec(sel);
+    slider.disabled=false; slider.min=sp.min; slider.max=sp.max; slider.step=sp.step;
+    if(document.activeElement!==slider || Math.abs(parseFloat(slider.value)-sp.val)>sp.step) slider.value=sp.val;
+    slider.style.setProperty('--fill', `${((sp.val-sp.min)/(sp.max-sp.min))*100}%`);
+    $id('tmSliderVal').textContent=sp.fmt(sp.val);
+  }
+
+  const eff=tableEffect(sel, L);
+  $id('tmEffLabel').textContent=eff.label;
+  $id('tmEffVal').textContent=eff.value;
+  $id('tmEffVal').classList.toggle('small', !!eff.small || eff.value.length>7);
+  $id('tmEffSub').textContent=eff.sub||'';
+  $id('tmEnergyVal').textContent = L.dispendio!=null ? L.dispendio.toFixed(2) : '—';
+  $id('tmState').innerHTML = L.zoneLabel ? `<span class="badge ${L.zoneClass}">${L.zoneLabel}</span>` : '';
+
+  const warn=$id('tmWarn');
+  if(L.disconnectedLabels && L.disconnectedLabels.length){
+    warn.textContent=`Il sigillo non si esprime: non collegati al Core — ${L.disconnectedLabels.join(', ')}.`;
+    warn.style.display='block';
+  } else warn.style.display='none';
+}
+
+$id('tmSlider').addEventListener('input', e=>{
+  const sel=resolveSelected(); if(!sel) return;
+  const v=parseFloat(e.target.value);
+  if(tmParam==='dist'){
+    sel.obj.percent=Math.round(v);
+  } else if(tmParam==='rot'){
+    sel.obj.rotation=v;
+  } else {
+    sel.obj.size=Math.round(v*100)/100;
+  }
+  render();
+});
+document.querySelectorAll('.tm-tab').forEach(t=>t.addEventListener('click', ()=>{
+  if(t.disabled) return;
+  tmParam=t.dataset.p; updateTableUI();
+}));
+$id('tmDelete').addEventListener('click', ()=>{ deleteSelected(); });
+$id('tmMenuBtn').addEventListener('click', openTmMenu);
+$id('tmMenuClose').addEventListener('click', closeTmMenu);
+$id('tmBackdrop').addEventListener('click', ()=>{ closeTmMenu(); document.body.classList.remove('tm-esito'); });
+$id('tmEsitoBtn').addEventListener('click', ()=>{ closeTmMenu(); document.body.classList.add('tm-esito'); });
+$id('tmEsitoClose').addEventListener('click', ()=>document.body.classList.remove('tm-esito'));
+$id('tmDmBtn').addEventListener('click', ()=>$id('dmToggleBtn').click());
+$id('tmFullViewBtn').addEventListener('click', ()=>{
+  try{ localStorage.setItem(TM_PREF_KEY,'completa'); } catch(e){}
+  exitTableMode();
+});
+$id('tmGoBtn').addEventListener('click', ()=>{
+  try{ localStorage.setItem(TM_PREF_KEY,'tavolo'); } catch(e){}
+  enterTableMode();
+});
+
+// Schermo intero: il browser lo concede solo dopo un gesto, quindi parte al primo
+// tocco sulla pagina (Android/Chrome). Su iPhone Safari non lo permette alle
+// pagine web: lì la vista occupa comunque tutto lo schermo disponibile, e
+// aggiungendo la pagina alla schermata Home si apre senza barre del browser.
+function tmRequestFS(){
+  const el=document.documentElement;
+  const req=el.requestFullscreen||el.webkitRequestFullscreen;
+  if(req && !document.fullscreenElement && !document.webkitFullscreenElement){
+    try{ Promise.resolve(req.call(el)).catch(()=>{}); } catch(e){}
+  }
+}
+$id('tmFsBtn').addEventListener('click', ()=>{
+  if(document.fullscreenElement){ document.exitFullscreen(); return; }
+  tmRequestFS();
+});
+document.addEventListener('pointerup', function firstTouchFS(){
+  if(tableMode) tmRequestFS();
+}, {once:true});
+
 // ── INIZIALIZZAZIONE ─────────────────────────────────────────────────────
 selectedSchools = isDM ? ["Invocazione"] : [CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
 renderSchoolGrid();
@@ -2301,7 +2711,22 @@ updateModeUI();
 applyZoom();
 buildLeftDecoration();
 
-render();
+// Riapre l'ultimo sigillo scelto dal catalogo (comodo al tavolo).
+try{
+  const last=localStorage.getItem(LAST_SPELL_KEY);
+  if(last && [...catalogSelect.options].some(o=>o.value===last && !o.disabled)){
+    catalogSelect.value=last; loadFromSelectValue(last);
+  }
+} catch(e){}
+
+let tmPref=null;
+try{ tmPref=localStorage.getItem(TM_PREF_KEY); } catch(e){}
+if(window.matchMedia('(max-width:760px)').matches && tmPref!=='completa'){
+  tmSelectFirst();
+  enterTableMode();
+} else {
+  render();
+}
 </script>
 </body>
 </html>
