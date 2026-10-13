@@ -267,6 +267,64 @@
   body.tm.tm-esito #esitoPanel #output{display:block !important;}
   body.tm.tm-esito #esitoPanel #esitoSummary{display:none !important;}
   body.tm.tm-esito #tmEsitoClose{display:flex; position:absolute; top:10px; right:10px;}
+  body.tm #tmView{overflow-y:auto;}
+
+  /* ══ PUNTI ENERGIA ═════════════════════════════════════════════════════ */
+  .pe-box{display:flex; flex-direction:column; gap:8px;}
+  #peTable{flex:0 0 auto; margin-top:10px;}
+  #peFull{margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  body.tm #peFull{display:none;}
+  .pe-meter{display:block; width:100%; text-align:left; padding:10px 12px; border:1px solid var(--line); border-radius:6px;
+    background:var(--bg-card); color:var(--ink); cursor:pointer; font-family:inherit;}
+  .pe-meter:active{border-color:var(--gold);}
+  .pe-top{display:flex; justify-content:space-between; align-items:baseline; gap:8px;}
+  .pe-label{font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);}
+  .pe-num{font-family:'Cinzel',serif; font-size:15px; color:var(--ink-soft); white-space:nowrap;}
+  .pe-num b{font-size:22px; color:var(--gold); font-weight:600;}
+  .pe-num.low b{color:var(--red);}
+  .pe-edit{font-size:12px; color:var(--ink-mute); margin-left:4px;}
+  .pe-bar{height:7px; margin-top:7px; border-radius:4px; background:var(--line-b); overflow:hidden;}
+  .pe-bar div{height:100%; background:linear-gradient(90deg,var(--gold-d),var(--gold)); border-radius:4px; transition:width .3s ease;}
+  .pe-bar.low div{background:var(--red);}
+  .pe-setup{font-size:15px; color:var(--gold); font-style:italic;}
+  .pe-cast{width:100%; padding:12px; border:1px solid var(--gold); border-radius:6px; background:var(--gold); color:var(--bg);
+    font-family:'Cinzel',serif; font-size:14px; font-weight:600; letter-spacing:.06em; cursor:pointer;
+    display:flex; justify-content:center; gap:10px; align-items:baseline;}
+  .pe-cast span{font-size:13px; opacity:.8;}
+  .pe-cast:disabled{background:transparent; color:var(--ink-mute); border-color:var(--line-b); cursor:default;}
+  .pe-msg{font-size:12.5px; color:var(--ink-mute); text-align:center; font-style:italic; min-height:0;}
+  .pe-msg:empty{display:none;}
+
+  #peToast{position:fixed; left:50%; top:calc(52px + env(safe-area-inset-top,0px)); transform:translateX(-50%); z-index:95;
+    display:none; align-items:center; justify-content:space-between; gap:12px; width:calc(100vw - 28px); max-width:420px; padding:9px 10px 9px 16px; border:1px solid var(--gold);
+    border-radius:6px; background:var(--bg-panel); color:var(--ink); font-size:14px; box-shadow:0 4px 20px rgba(0,0,0,.5);}
+  #peToast.show{display:flex;}
+  #peUndo{padding:6px 12px; border:1px solid var(--line-b); border-radius:4px; background:var(--bg); color:var(--gold);
+    font-family:'Cinzel',serif; font-size:12px; letter-spacing:.05em; cursor:pointer; white-space:nowrap;}
+
+  #peSheet{display:none; position:fixed; inset:0; z-index:92; background:rgba(6,7,10,.7); align-items:flex-end; justify-content:center;}
+  #peSheet.open{display:flex;}
+  .pe-sheet-box{width:100%; max-width:440px; max-height:90dvh; overflow-y:auto; background:var(--bg-card); border:1px solid var(--line-b);
+    border-radius:10px 10px 0 0; padding:16px 18px calc(18px + env(safe-area-inset-bottom,0px));}
+  @media (min-width:761px){ #peSheet{align-items:center;} .pe-sheet-box{border-radius:8px;} }
+  .pe-sheet-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .pe-sheet-head span{font-family:'Cinzel',serif; color:var(--gold); font-size:15px; letter-spacing:.06em;}
+  .pe-field{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px dotted var(--line);}
+  .pe-field label{font-size:15px; color:var(--ink-soft); line-height:1.3;}
+  .pe-field label small{display:block; font-size:12px; color:var(--ink-mute); font-style:italic;}
+  .pe-field input{width:96px; padding:8px 10px; background:var(--bg); border:1px solid var(--line-b); border-radius:4px;
+    color:var(--ink); font-family:'Cinzel',serif; font-size:17px; text-align:center;}
+  .pe-field input:focus{outline:none; border-color:var(--gold);}
+  .pe-sheet-btns{display:flex; gap:8px; margin-top:14px;}
+  .pe-sheet-btns button{flex:1; padding:10px; border:1px solid var(--line-b); border-radius:4px; background:var(--bg);
+    color:var(--ink-soft); font-family:'Cinzel',serif; font-size:12.5px; letter-spacing:.04em; cursor:pointer;}
+  .pe-sheet-btns button.primary{background:var(--gold); color:var(--bg); border-color:var(--gold); font-weight:600;}
+  .pe-log-title{margin-top:18px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);}
+  .pe-log{list-style:none; margin:6px 0 0; padding:0; font-size:14px;}
+  .pe-log li{display:flex; justify-content:space-between; gap:10px; padding:5px 0; border-bottom:1px dotted var(--line); color:var(--ink-soft);}
+  .pe-log li span:last-child{color:var(--gold); white-space:nowrap; font-family:'Cinzel',serif;}
+  .pe-log li.ev span:last-child{color:var(--teal);}
+  .pe-log-empty{font-size:13px; color:var(--ink-mute); font-style:italic; margin-top:6px;}
 </style>
 </head>
 <body>
@@ -301,6 +359,7 @@
     <div id="tmMenuExtras">
       <div class="tm-menu-head"><span>Menu</span><button class="tm-icon-btn" id="tmMenuClose" aria-label="Chiudi menu">✕</button></div>
       <button class="tool-btn" id="tmEsitoBtn">📜 Esito completo</button>
+      <button class="tool-btn" id="tmPeBtn">✦ Punti energia e ultimi lanci</button>
       <button class="tool-btn" id="tmDmBtn">◑ Modalità DM</button>
       <button class="tool-btn" id="tmFullViewBtn">⊞ Vista completa (tutti i controlli)</button>
     </div>
@@ -392,6 +451,7 @@
     <div class="panel-toggle" id="esitoToggle" style="left:auto; right:8px;">▸</div>
     <button class="tm-icon-btn" id="tmEsitoClose" aria-label="Chiudi esito">✕</button>
     <h2>Esito</h2>
+    <div id="peFull" class="pe-host"></div>
     <div id="esitoSummary" style="display:none;"></div>
     <div id="output"></div>
   </div>
@@ -435,9 +495,32 @@
       <div class="tm-val-sub" id="tmState"></div>
     </div>
   </div>
+  <div id="peTable" class="pe-host"></div>
   <div id="tmWarn"></div>
 </div>
 <div id="tmToast"></div>
+
+<div id="peToast"><span id="peToastText"></span><button id="peUndo" type="button">Annulla</button></div>
+
+<div id="peSheet">
+  <div class="pe-sheet-box">
+    <div class="pe-sheet-head"><span>Punti energia</span><button class="tm-icon-btn" id="peClose" aria-label="Chiudi">✕</button></div>
+    <div class="pe-field">
+      <label for="peMaxIn">Massimo<small>Dipende dall'inchiostro in uso</small></label>
+      <input type="number" id="peMaxIn" inputmode="decimal" min="0" step="0.5">
+    </div>
+    <div class="pe-field">
+      <label for="peCurIn">Residui<small>Correggi a mano se serve</small></label>
+      <input type="number" id="peCurIn" inputmode="decimal" min="0" step="0.5">
+    </div>
+    <div class="pe-sheet-btns">
+      <button type="button" id="peRefill">Ricarica al massimo</button>
+      <button type="button" id="peSave" class="primary">Salva</button>
+    </div>
+    <div class="pe-log-title">Ultimi lanci</div>
+    <ul class="pe-log" id="peLog"></ul>
+  </div>
+</div>
 
 <div id="chipControls">
   <div id="chipControlsLabel">—</div>
@@ -1907,6 +1990,7 @@ function render(){
 
   computeAndDisplay(a,b,wRes);
   if(tableMode) updateTableUI();
+  updateEnergyUI();
 }
 
 // ---- Note dinamiche di modifica rispetto all'originale del catalogo ----
@@ -2671,6 +2755,7 @@ $id('tmBackdrop').addEventListener('click', ()=>{ closeTmMenu(); document.body.c
 $id('tmEsitoBtn').addEventListener('click', ()=>{ closeTmMenu(); document.body.classList.add('tm-esito'); });
 $id('tmEsitoClose').addEventListener('click', ()=>document.body.classList.remove('tm-esito'));
 $id('tmDmBtn').addEventListener('click', ()=>$id('dmToggleBtn').click());
+$id('tmPeBtn').addEventListener('click', ()=>{ closeTmMenu(); peOpenSheet(); });
 $id('tmFullViewBtn').addEventListener('click', ()=>{
   try{ localStorage.setItem(TM_PREF_KEY,'completa'); } catch(e){}
   exitTableMode();
@@ -2698,6 +2783,126 @@ $id('tmFsBtn').addEventListener('click', ()=>{
 document.addEventListener('pointerup', function firstTouchFS(){
   if(tableMode) tmRequestFS();
 }, {once:true});
+
+// ══ PUNTI ENERGIA ════════════════════════════════════════════════════════
+// Ogni giocatore tiene sul proprio dispositivo i Punti Energia: il massimo
+// (che dipende dall'inchiostro usato) e quelli residui. "Lancia il sigillo"
+// sottrae il Dispendio Energetico del sigillo attuale; l'ultimo lancio si può
+// annullare per qualche secondo. Ricaricando l'inchiostro si torna al massimo.
+const PE_KEY='officina_sigilli_energia';
+let PE={max:null, cur:null, log:[]};
+try{ const raw=JSON.parse(localStorage.getItem(PE_KEY)||'null'); if(raw && typeof raw==='object') PE={max:raw.max??null, cur:raw.cur??null, log:Array.isArray(raw.log)?raw.log:[]}; } catch(e){}
+function peSave(){ try{ localStorage.setItem(PE_KEY, JSON.stringify(PE)); } catch(e){} }
+function peFmt(v){ return (Math.round(v*100)/100).toLocaleString('it-IT',{maximumFractionDigits:2}); }
+function peNum(str){ const v=parseFloat(String(str).replace(',','.')); return isFinite(v) ? Math.max(0, Math.round(v*100)/100) : null; }
+function peLog(entry){ PE.log.unshift({...entry, t:Date.now()}); PE.log=PE.log.slice(0,15); }
+
+function updateEnergyUI(){
+  const L=lastCalc||{};
+  const cost = L.dispendio!=null ? Math.round(L.dispendio*100)/100 : null;
+  const spellName = currentCatalogLabel ? currentCatalogLabel.name : 'Sigillo personalizzato';
+  const hasSigil = placed.length||energies.length||conjunctions.length||currentCatalogLabel;
+  const blocked = L.disconnectedLabels && L.disconnectedLabels.length;
+  let meter, castDisabled=true, msg='';
+  if(PE.max==null){
+    meter=`<button class="pe-meter" data-act="edit" type="button"><span class="pe-setup">Imposta i tuoi punti energia ›</span></button>`;
+    msg='Inserisci il massimo dato dal tuo inchiostro.';
+  } else {
+    const ratio = PE.max>0 ? Math.max(0, Math.min(1, PE.cur/PE.max)) : 0;
+    const low = ratio<0.25;
+    meter=`<button class="pe-meter" data-act="edit" type="button">
+      <div class="pe-top"><span class="pe-label">Punti energia</span>
+        <span class="pe-num${low?' low':''}"><b>${peFmt(PE.cur)}</b> / ${peFmt(PE.max)}<span class="pe-edit">✎</span></span></div>
+      <div class="pe-bar${low?' low':''}"><div style="width:${ratio*100}%"></div></div>
+    </button>`;
+    if(!hasSigil) msg='Componi o scegli un sigillo da lanciare.';
+    else if(blocked) msg='Il sigillo non si esprime: non si può lanciare.';
+    else if(cost==null) msg='';
+    else if(cost>PE.cur) msg=`Energia insufficiente: servono ${peFmt(cost)} punti.`;
+    else castDisabled=false;
+  }
+  const costTxt = cost!=null && hasSigil ? `<span>−${peFmt(cost)}</span>` : '';
+  const html=`<div class="pe-box">${meter}
+    <button class="pe-cast" data-act="cast" type="button"${castDisabled?' disabled':''}>Lancia il sigillo ${costTxt}</button>
+    <div class="pe-msg">${msg}</div></div>`;
+  document.querySelectorAll('.pe-host').forEach(h=>{ h.innerHTML=html; h.dataset.cost=cost??''; h.dataset.name=spellName; });
+}
+
+let peUndoTimer=null, peLastCast=null;
+function peCast(){
+  const L=lastCalc||{};
+  if(PE.max==null || L.dispendio==null) return;
+  if(L.disconnectedLabels && L.disconnectedLabels.length) return;
+  const cost=Math.round(L.dispendio*100)/100;
+  if(cost>PE.cur) return;
+  const name=currentCatalogLabel ? currentCatalogLabel.name : 'Sigillo personalizzato';
+  const before=PE.cur;
+  PE.cur=Math.round((PE.cur-cost)*100)/100;
+  peLog({name, delta:-cost});
+  peSave();
+  peLastCast={before, logT:PE.log[0].t};
+  $id('peToastText').textContent=`${name}: −${peFmt(cost)} · restano ${peFmt(PE.cur)}`;
+  $id('peToast').classList.add('show');
+  clearTimeout(peUndoTimer);
+  peUndoTimer=setTimeout(()=>{ $id('peToast').classList.remove('show'); peLastCast=null; }, 7000);
+  updateEnergyUI();
+}
+$id('peUndo').addEventListener('click', ()=>{
+  if(!peLastCast) return;
+  PE.cur=peLastCast.before;
+  PE.log=PE.log.filter(e=>e.t!==peLastCast.logT);
+  peLastCast=null; peSave();
+  clearTimeout(peUndoTimer); $id('peToast').classList.remove('show');
+  updateEnergyUI();
+});
+
+function peRenderLog(){
+  const ul=$id('peLog');
+  if(!PE.log.length){ ul.innerHTML='<li class="pe-log-empty" style="border:none">Nessun lancio registrato.</li>'; return; }
+  ul.innerHTML=PE.log.map(e=>{
+    const d=new Date(e.t);
+    const when=d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+    const ev = e.delta>=0;
+    return `<li class="${ev?'ev':''}"><span>${e.name} <small style="color:var(--ink-mute)">· ${when}</small></span><span>${ev?'+':'−'}${peFmt(Math.abs(e.delta))}</span></li>`;
+  }).join('');
+}
+function peOpenSheet(){
+  $id('peToast').classList.remove('show');
+  $id('peMaxIn').value = PE.max!=null ? PE.max : '';
+  $id('peCurIn').value = PE.cur!=null ? PE.cur : '';
+  peRenderLog();
+  $id('peSheet').classList.add('open');
+}
+function peCloseSheet(){ $id('peSheet').classList.remove('open'); }
+$id('peClose').addEventListener('click', peCloseSheet);
+$id('peSheet').addEventListener('click', e=>{ if(e.target.id==='peSheet') peCloseSheet(); });
+$id('peSave').addEventListener('click', ()=>{
+  const max=peNum($id('peMaxIn').value);
+  let cur=peNum($id('peCurIn').value);
+  if(max==null){ $id('peMaxIn').focus(); return; }
+  const wasUnset = PE.max==null;
+  if(cur==null || wasUnset && $id('peCurIn').value==='') cur=max;
+  PE.max=max; PE.cur=Math.min(cur, max);
+  peSave(); peCloseSheet(); updateEnergyUI();
+});
+$id('peRefill').addEventListener('click', ()=>{
+  const max=peNum($id('peMaxIn').value);
+  if(max==null){ $id('peMaxIn').focus(); return; }
+  const before=PE.cur??0;
+  PE.max=max; PE.cur=max;
+  if(max-before>0) peLog({name:'Ricarica inchiostro', delta:max-before});
+  peSave(); peCloseSheet(); updateEnergyUI();
+});
+// Quando si cambia il massimo e i residui erano pieni, li porta con sé.
+$id('peMaxIn').addEventListener('input', ()=>{
+  if(PE.max!=null && PE.cur===PE.max) $id('peCurIn').value=$id('peMaxIn').value;
+});
+document.addEventListener('click', e=>{
+  const btn=e.target.closest('.pe-host [data-act]');
+  if(!btn || btn.disabled) return;
+  if(btn.dataset.act==='edit') peOpenSheet();
+  else if(btn.dataset.act==='cast') peCast();
+});
 
 // ── INIZIALIZZAZIONE ─────────────────────────────────────────────────────
 selectedSchools = isDM ? ["Invocazione"] : [CATALOG_DEV[BASE_SPELL_INDICES[0]].a];
