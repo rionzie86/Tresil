@@ -799,8 +799,7 @@ function buildPrep() {
     return g;
   }
   html += group('Eventi scatenanti (in sequenza)', p.eventi);
-  html += group('Situazioni comuni (riempitivo)', p.situazioniComuni);
-  (p.schede || []).forEach(sc => {
+  function scheda(sc) {
     let b = `<div class="card"><div class="card-title">${sc.titolo}</div>`;
     if (sc.intro) b += `<div class="card-body" style="margin-bottom:.8rem">${sc.intro}</div>`;
     if (sc.tabella) {
@@ -816,8 +815,13 @@ function buildPrep() {
       b += `<div style="margin-top:.6rem"><strong style="color:var(--t1)">${bl.titolo}</strong><div class="card-body">${bl.testo}</div></div>`;
     });
     b += `</div>`;
-    html += b;
-  });
+    return b;
+  }
+  if ((p.incontri || []).length) {
+    html += `<div class="sec-head" style="margin-top:1.2rem"><div class="sec-title" style="font-size:1.2em">Incontri</div></div>`;
+    p.incontri.forEach(sc => { html += scheda(sc); });
+  }
+  (p.schede || []).forEach(sc => { html += scheda(sc); });
   c.innerHTML = html;
 }
 
