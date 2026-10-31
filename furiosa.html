@@ -265,6 +265,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
     <div id="section-pv-nikla"   class="section"></div>
     <div id="section-pv-karl"    class="section"></div>
     <div id="section-sessioni"   class="section"></div>
+    <div id="section-economia"   class="section"></div>
     <div id="section-lore"       class="section"></div>
     <div id="section-thread"     class="section"></div>
     <div id="section-note"       class="section"></div>
@@ -302,6 +303,8 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
 </div>
 
 <script src="data_furiosa.js"></script>
+<script src="data_economia_kaelvaran.js"></script>
+<script src="economia_kaelvaran.js"></script>
 <script>
 // ── STATO ──────────────────────────────────────────
 const ADMIN_PW = 'furiosa2025';
@@ -357,6 +360,7 @@ function updateDMUI() {
   buildThread();
   buildPrep();
   buildNomi();
+  buildEconomia();
 }
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -854,6 +858,20 @@ function buildNomi() {
   c.innerHTML += html;
 }
 
+// ── ECONOMIA ───────────────────────────────────────
+// Listino condiviso con il Manuale (data_economia_kaelvaran.js),
+// più il registro delle somme passate di mano al tavolo.
+function buildEconomia() {
+  const c = document.getElementById('section-economia');
+  if (!c) return;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Economia</div><div class="sec-sub">Monete, salari e prezzi di Kaelvaran — aggiornati con quanto detto al tavolo</div></div>`;
+  if (typeof renderEconomiaKaelvaran !== 'function') {
+    c.appendChild(card('', 'Listino non trovato: controlla che data_economia_kaelvaran.js ed economia_kaelvaran.js siano nella stessa cartella di furiosa.html.'));
+    return;
+  }
+  renderEconomiaKaelvaran(c, { registro: true, modifiche: isMaster });
+}
+
 // ── BUILD ALL ──────────────────────────────────────
 function buildAllSections() {
   buildPanoramica();
@@ -864,6 +882,7 @@ function buildAllSections() {
   buildPuntoDiVista('nikla');
   buildPuntoDiVista('karl');
   buildSessioni();
+  buildEconomia();
   buildLore();
   buildThread();
   buildNote();

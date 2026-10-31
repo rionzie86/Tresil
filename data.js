@@ -1104,6 +1104,9 @@ Poi Kael ciondola leggermente e sprofonda in una pozza scura che si chiude su di
     risolti: []
   },
 
+  // NOTA (31 ottobre 2026): questo listino non è più usato da tresil.html,
+  // che ora mostra quello condiviso in data_economia_kaelvaran.js.
+  // Resta qui solo come archivio del vecchio listino.
   economia: {
     valute: [
       { sigla: "bp", nome: "Bronzo piccolo",  valore: 1,          note: "Moneta base" },

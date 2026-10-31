@@ -260,6 +260,7 @@ a.ilink:active{color:var(--gold);}
       <div class="nav-item" data-section="magia" data-tags="magia meccaniche"><span class="nav-icon">📜</span>La Magia Perduta</div>
       <div class="nav-item" data-section="fatati" data-tags="fatati lore"><span class="nav-icon">🌙</span>I Fatati</div>
       <div class="nav-item" data-section="oltrevelo" data-tags="lore"><span class="nav-icon">👁</span>L'Oltrevelo</div>
+      <div class="nav-item" data-section="economia" data-tags="meccaniche culture"><span class="nav-icon">💰</span>Economia e Prezzi</div>
     </div>
     <div class="nav-group">
       <div class="nav-group-label">Le Cinque Stirpi</div>
@@ -2429,11 +2430,28 @@ a.ilink:active{color:var(--gold);}
 </div>
 
 <!-- NO RESULTS -->
+<!-- ══ ECONOMIA E PREZZI ══ -->
+<div class="content-section" id="sec-economia">
+  <div class="section-tag">Il Mondo · Vita quotidiana</div>
+  <h1 class="section-title">Economia e Prezzi</h1>
+  <p class="section-subtitle">Le nove monete — Bronzi di Tresil e rami di Ferrath — Salari — Listino dei prezzi</p>
+  <div class="section-divider"></div>
+  <div class="prose">
+    <p>Ogni stirpe ha la propria economia, raccontata nel suo capitolo: il triangolo carbone-ferro-ferrovia di <a class="ilink" data-target="mc6">Ferrath</a>, le riserve invernali e il commercio delle memorie dei <a class="ilink" data-target="mc7">Varlmenn</a>, l'artigianato rituale di <a class="ilink" data-target="mc5">Solambar</a>. Quando però si tratta di pagare un pasto, una stanza o una spada, nell'area di <a class="ilink" data-target="mc10">Tresil e dell'Atollo</a> si conta con un'unica scala di monete. Qui sotto la trovate insieme ai salari e al listino dei prezzi più comuni.</p>
+  </div>
+  <div id="economia-kaelvaran"></div>
+</div>
+
 <div class="no-results" id="noResults" style="display:none">Nessun capitolo corrisponde alla ricerca.</div>
 
 </main>
 </div>
 
+<script src="data_economia_kaelvaran.js"></script>
+<script src="economia_kaelvaran.js"></script>
+<script>
+if (typeof renderEconomiaKaelvaran === 'function') renderEconomiaKaelvaran(document.getElementById('economia-kaelvaran'));
+</script>
 <script>
 const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('.content-section');
