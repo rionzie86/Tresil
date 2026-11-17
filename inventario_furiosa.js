@@ -12,7 +12,7 @@
   ];
   const CAT = {
     armi: 'Armi', vestiario: 'Vestiario', viaggio: 'Viaggio', scrittura: 'Scrittura e inchiostri',
-    cibo: 'Cibo', reperti: 'Reperti', magia: 'Doni e magia', ricordi: 'Ricordi', animali: 'Animali', altro: 'Altro'
+    cibo: 'Cibo', reperti: 'Reperti', magia: 'Doni e magia', ricordi: 'Ricordi', animali: 'Animali', cura: 'Cure e igiene', altro: 'Altro'
   };
   const STATO = {
     magico:   { ico: '✦', txt: 'Dono / magico: non in vendita' },
@@ -46,6 +46,7 @@
     if (!p) return null;
     return { min: p.min * qta, max: p.max * qta, mid: (p.min + p.max) / 2 * qta, range: p.min !== p.max };
   }
+  const kgTxt = k => nf(k, k < 10 ? 1 : 0) + ' kg';
   const fmtVal = v => !v ? '—' : (v.range ? monete(v.min) + ' – ' + monete(v.max) : monete(v.min));
 
   const CSS = `
@@ -118,7 +119,8 @@
       const den = soldi.filter(d => d.chi === id && d.v).reduce((a, d) => a + d.v.mid, 0);
       const n = items.filter(o => o.chi === id && o.stato !== 'perso').length;
       const ignoti = soldi.some(d => d.chi === id && !d.v);
-      return { ogg, den, n, ignoti };
+      const kg = items.filter(o => o.chi === id && o.stato !== 'perso' && o.peso).reduce((a, o) => a + o.peso * o.qta, 0);
+      return { ogg, den, n, ignoti, kg };
     }
 
     const wrap = document.createElement('div'); wrap.className = 'invF';
@@ -140,7 +142,7 @@
           const t = totali(p.id);
           return box(p.id, p.nome, `<span class="inv-dot" style="background:${p.colore}">${esc(p.iniziali)}</span>`,
             (t.ogg + t.den) ? monete(t.ogg + t.den) : '—',
-            `${t.n} ${t.n === 1 ? 'oggetto' : 'oggetti'}${t.ogg ? ' · ' + monete(t.ogg) : ''}${t.den ? (t.ogg ? ' + ' : ' · ') + 'denaro ' + monete(t.den) : ''}${t.ignoti ? ' + denaro da contare' : ''}${(t.ogg + t.den) ? '<br>' + lavoro(t.ogg + t.den) : ''}`);
+            `${t.kg ? 'carico ' + kgTxt(t.kg) + ' · ' : ''}${t.n} ${t.n === 1 ? 'oggetto' : 'oggetti'}${t.ogg ? ' · ' + monete(t.ogg) : ''}${t.den ? (t.ogg ? ' + ' : ' · ') + 'denaro ' + monete(t.den) : ''}${t.ignoti ? ' + denaro da contare' : ''}${(t.ogg + t.den) ? '<br>' + lavoro(t.ogg + t.den) : ''}`);
         }).join('');
       tot.querySelectorAll('.inv-pg').forEach(el => el.onclick = () => { filtro = el.dataset.id; drawTot(); drawList(); });
     }
@@ -154,7 +156,7 @@
     q.oninput = () => drawList(); cPersi.onchange = () => drawList();
 
     const leg = document.createElement('div'); leg.className = 'inv-leg';
-    leg.innerHTML = `<span><span class="b mag">✦</span> dono o oggetto magico</span><span><span class="b rep">◆</span> reperto</span><span><span class="b">↔</span> in prestito</span><span><span class="b ver">?</span> da verificare</span><span><span class="b dur">⧗</span> si guasta</span><span>I valori con un intervallo contano nei totali per il valore medio. ✦, ◆ e ↔ non entrano nei totali.</span>`;
+    leg.innerHTML = `<span><span class="b mag">✦</span> dono o oggetto magico</span><span><span class="b rep">◆</span> reperto</span><span><span class="b">↔</span> in prestito</span><span><span class="b ver">?</span> da verificare</span><span><span class="b dur">⧗</span> si guasta</span><span>I valori con un intervallo contano nei totali per il valore medio. ✦, ◆ e ↔ non entrano nei totali.</span><span>Il carico comprende finimenti, vestiti e acqua. Un cavallo da sella comune regge circa 120 kg al passo, cavaliere compreso (peso dei cavalieri stimato); verde = margine, ambra = al limite, rosso = troppo.</span>`;
     wrap.appendChild(leg);
 
     const list = document.createElement('div'); wrap.appendChild(list);
@@ -174,15 +176,23 @@
         <td class="n">${esc(o.nome)}${badges}<span class="inv-sub">${esc(o.fonte || '')}</span></td>
         <td class="q">${o.qta}</td>
         <td class="v">${valTxt}${cad ? `<span class="inv-sub">${cad} l'uno</span>` : ''}${o.v ? `<span class="inv-sub">${lavoro(o.v.mid)}</span>` : ''}</td>
+        <td class="q">${o.peso ? kgTxt(o.peso * o.qta) : ''}</td>
         <td class="c"><span class="inv-cat">${esc(CAT[o.cat] || o.cat || '')}</span></td>
         <td>${note.map((n, i) => i === 0 && !o.durata ? esc(n) : (i === 0 ? esc(n) : n)).join('<br>')}</td></tr>`;
     }
     function rigaSoldi(d) {
       return `<tr class="den"><td class="n">💰 ${esc(d.nome)}${d.verificare ? '<span class="b ver" title="Cifra da verificare">?</span>' : ''}<span class="inv-sub">${esc(d.fonte || '')}</span></td>
         <td class="q">—</td><td class="v">${d.v ? monete(d.v.mid) + `<span class="inv-sub">${lavoro(d.v.mid)}</span>` : 'da contare'}</td>
-        <td class="c"><span class="inv-cat">Denaro</span></td><td>${esc(d.note || '')}</td></tr>`;
+        <td></td><td class="c"><span class="inv-cat">Denaro</span></td><td>${esc(d.note || '')}</td></tr>`;
     }
 
+    function caricoTxt(p, t) {
+      if (!t.kg) return '';
+      if (!p.limite) return ' · carico ' + kgTxt(t.kg);
+      const tot = t.kg + (p.cavaliere || 0);
+      const col = tot > p.limite ? 'var(--red)' : tot > p.limite * 0.92 ? 'var(--amber)' : 'var(--green)';
+      return ` · <span style="color:${col}">sul cavallo ${kgTxt(t.kg)}${p.cavaliere ? ' + cavaliere ~' + p.cavaliere + ' kg' : ''} = ${kgTxt(tot)} su ~${p.limite} kg</span>`;
+    }
     function drawList() {
       const s = q.value.trim().toLowerCase();
       const match = o => !s || [o.nome, o.note, o.fonte, CAT[o.cat], o.durata].join(' ').toLowerCase().includes(s);
@@ -193,8 +203,8 @@
         if (!its.length && !den.length) return '';
         const t = totali(p.id);
         return `<div class="inv-grp"><div class="inv-grp-t"><span class="inv-dot" style="background:${p.colore}">${esc(p.iniziali)}</span>${esc(p.nome)}
-            <small>${p.giocatore ? esc(p.giocatore) + ' · ' : ''}oggetti ${monete(t.ogg)}${t.den ? ' · denaro ' + monete(t.den) : ''}</small></div>
-          <div class="inv-wrap"><table><thead><tr><th>Oggetto</th><th>Q.tà</th><th>Valore</th><th class="c">Tipo</th><th>Note</th></tr></thead>
+            <small>${p.giocatore ? esc(p.giocatore) + ' · ' : ''}${t.ogg ? 'oggetti ' + monete(t.ogg) : 'oggetti personali'}${t.den ? ' · denaro ' + monete(t.den) : ''}${caricoTxt(p, t)}</small></div>
+          <div class="inv-wrap"><table><thead><tr><th>Oggetto</th><th>Q.tà</th><th>Valore</th><th>Peso</th><th class="c">Tipo</th><th>Note</th></tr></thead>
           <tbody>${den.map(rigaSoldi).join('')}${its.map(riga).join('')}</tbody></table></div></div>`;
       }).join('') || '<div class="card"><div class="card-body empty">Nessun oggetto corrisponde alla ricerca.</div></div>';
     }
