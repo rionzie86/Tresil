@@ -186,12 +186,13 @@
         + (o.verificare ? '<span class="b ver" title="Da verificare">?</span>' : '');
       const val = o.v ? monete(o.v.mid) : o.stato === 'magico' || o.stato === 'reperto' ? '<span class="ia-pers">non in vendita</span>' : o.stato === 'perso' ? '' : '<span class="ia-pers">personale</span>';
       const peso = o.peso ? kg(o.peso * o.qta) : '';
+      const desc = o.desc || (INV.descrizioni || {})[o.nome];
       const det = [
+        desc ? `<span style="color:var(--t1)">${esc(desc)}</span>` : '',
         o.qta > 1 && o.costo ? `${esc(o.costo)} l'uno` : '',
         o.note ? esc(o.note) : '',
         o.durata ? `⧗ Si conserva: ${esc(o.durata)}` : '',
         dove(o) ? `Dove: ${ZONE[dove(o)].t.toLowerCase()}` : '',
-        o.v ? `Vale ${lavoro(Math.abs(o.v.mid))}` : '',
         o.fonte ? `<i>${esc(o.fonte)}</i>` : ''
       ].filter(Boolean);
       return `<details class="ia-it${o.stato === 'perso' ? ' ia-perso' : ''}"><summary>
@@ -260,15 +261,9 @@
       body.querySelectorAll('.ia-grid .ia-card').forEach(c => c.onclick = () => { sel = c.dataset.id; drawChips(); draw(); wrap.scrollIntoView({ block: 'start' }); });
     }
 
-    // ── movimenti e note per il master
+    // ── note per il master
     const tail = document.createElement('div'); wrap.appendChild(tail);
-    if (INV.movimenti?.length) {
-      const nome = id => (port.find(p => p.id === id) || {}).nome || id;
-      tail.innerHTML = `<details class="ia-sec" style="margin-top:1rem"><summary>Movimenti<span class="ia-right">${INV.movimenti.length}</span></summary><div class="ia-list"><table>
-        ${INV.movimenti.map(m => `<tr><td>${esc(m.quando)} · <b style="color:var(--t1)">${esc(nome(m.chi))}</b><br>${esc(m.cosa)}</td><td class="r">${esc(m.cifra || '')}</td></tr>`).join('')}
-        </table></div></details>`;
-    }
-    if (opts.master) tail.insertAdjacentHTML('beforeend', `<div class="ia-dm"><b style="color:var(--gold)">Come si aggiorna (solo master).</b> I dati stanno in <code>data_inventario.js</code> e si aggiornano a ogni trascrizione caricata: oggetti nuovi con prezzo (sigle del listino) e peso, quelli venduti o usati segnati <i>perso</i>, una riga nei movimenti e una nei conti della borsa comune.</div>`);
+    if (opts.master) tail.insertAdjacentHTML('beforeend', `<div class="ia-dm"><b style="color:var(--gold)">Come si aggiorna (solo master).</b> I dati stanno in <code>data_inventario.js</code> e si aggiornano a ogni trascrizione caricata: oggetti nuovi con prezzo (sigle del listino) e peso, quelli venduti o usati segnati <i>perso</i>, e una riga nei conti della borsa comune.</div>`);
 
     drawChips(); draw();
   };
