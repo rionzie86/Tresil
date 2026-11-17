@@ -283,6 +283,8 @@ const KAELVARAN_ECO = {
       voci: [
         { nome: "Guaritore (ferite comuni)",       costo: "2 bg–2 ap", note: "Dipende dalla gravità; alcuni chiedono favori invece di denaro" },
         { nome: "Chierico o guaritore di fama",    costo: "1–5 am",   note: "Per chi è ridotto «da moribondo»" },
+        { nome: "Pozione di guarigione",          costo: "1–2 op",   note: "Rara e cara: almeno un oro piccolo (decisione dell'autrice, 17/11/2026)" },
+        { nome: "Antitossina (una dose)",         costo: "1 ap",     note: "Contro veleni e morsi; prezzo stimato" },
         { nome: "Braccio nuovo",                   costo: "~20 om",   note: "Solo su ferita fresca, da guaritori molto bravi: «un principe ci pensa due volte»", gioco: "Sessione 10 · Cap 19 (Gabbo)" },
         { nome: "Dentista / cavadenti",            costo: "1–5 bg",   note: "" },
         { nome: "Documento ufficiale (redazione)", costo: "2–6 bg",   note: "Presso uno scriba" },

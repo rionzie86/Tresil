@@ -33,7 +33,7 @@ const FURIOSA_INVENTARIO = {
 
   aggiornato: "Mattina del 18 del Terzo mese, acquisti per il viaggio fatti (Sessione 13 da confermare con la trascrizione)",
 
-  intro: "Ciò che ciascuno porta con sé e quanto vale, ai prezzi del listino di Kaelvaran. «Giornate» = la paga di un bracciante (1 bronzo grande). Contano solo ciò che è stato comprato o venduto in gioco e il denaro: gli oggetti personali, i doni di Furiosa, i reperti e le cose avute in prestito non hanno un prezzo e non entrano nei totali.",
+  intro: "Valori ai prezzi del listino di Kaelvaran. Hanno un prezzo solo le cose comprate in gioco: oggetti personali, doni di Furiosa e reperti no.",
 
   portatori: [
     { id: "karl", cavaliere: 89, limite: 120,   nome: "Karl" },
@@ -45,15 +45,16 @@ const FURIOSA_INVENTARIO = {
   ],
 
   denaro: [
-    { chi: "gruppo", nome: "Borsa comune (la porta Karl dal Cap 20)", cifra: "3 op + 7 ag + 2 am + 8 ap + 8 bm + 5 bp", verificare: true,
-      note: "Sacchetto di Whilliam (4 ori piccoli e 2 argenti grandi) più i 16 argenti medi dei brocchi, meno le spese di Tresil note (spada 4 am, scudo, biblioteca, abiti) e meno gli acquisti per il viaggio (5 ag 8 am 1 ap 9 bg 1 bm 5 bp, cavalli compresi).",
-      fonte: "Sessioni 8–12 · Cap 17–20" },
-    { chi: "karl",  nome: "Paga da guardia nella scarsella", cifra: null, verificare: true,
-      note: "La paga dell'ultimo mese; ci ha pagato stanze e i conti di Horlen (4 bg 6 bm). Quanto resta non è stato detto.", fonte: "Cap 9, 13, 20" },
-    { chi: "rei",   nome: "Monete proprie", cifra: null, verificare: true,
-      note: "L'argento medio di Kaf e le poche monete con cui è arrivata a Tresil; ne ha lasciati 2 argenti piccoli sulla mensola di Gabbo.", fonte: "Cap 2, 19" },
-    { chi: "nikla", nome: "Monete di Ferrath", cifra: null, verificare: true,
-      note: "Qualche rame piccolo: il cambio con i bronzi non è fissato.", fonte: "Cap 4, 13" }
+    { chi: "gruppo", nome: "Borsa comune (la tiene Karl)", cifra: "1 op + 7 ag + 3 am + 6 ap + 8 bm + 5 bp", verificare: true,
+      note: "Per ora tutto il denaro del gruppo è qui, monete personali comprese: se lo divideranno nella giocata del 17 novembre 2026. Da verificare con la trascrizione.",
+      fonte: "Sessioni 8–12 · Cap 17–20",
+      conti: [
+        { cosa: "Sacchetto di Whilliam", cifra: "+4 op + 2 ag", fonte: "Cap 17" },
+        { cosa: "Due brocchi rivenduti", cifra: "+16 am", fonte: "Cap 17" },
+        { cosa: "Spese di Tresil (spada, scudo, biblioteca, abiti)", cifra: "−5 am", fonte: "Cap 18–20" },
+        { cosa: "Acquisti per il viaggio, cavalli e due pozioni compresi", cifra: "−2 op 5 ag 7 am 3 ap 9 bg 1 bm 5 bp", fonte: "17–18 Terzo mese" },
+        { cosa: "Monete personali di Karl, Rei e Nikla, messe nella borsa", cifra: "non contate", fonte: "decisione del 17/11" }
+      ] },
   ],
 
   oggetti: [
@@ -125,7 +126,6 @@ const FURIOSA_INVENTARIO = {
     {"chi": "karl", "nome": "Acciarino e pietra focaia", "qta": 1, "costo": "1,5 bg", "peso": 0.1, "cat": "viaggio", "durata": "l'esca va tenuta asciutta", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "karl", "nome": "Otre d'acqua (2 l)", "qta": 1, "costo": "4 bg", "peso": 2.3, "cat": "viaggio", "durata": "l'acqua prende sapore di cuoio in 2–3 giorni", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "peso da piena"},
     {"chi": "karl", "nome": "Gavetta di stagno con cucchiaio", "qta": 1, "costo": "2 bg", "peso": 0.4, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "karl", "nome": "Pozione di guarigione", "qta": 1, "costo": "20 bg", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato: il listino non le prevede"},
     {"chi": "karl", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "karl", "nome": "Cote per armi", "qta": 1, "costo": "50 bp", "peso": 0.3, "cat": "armi", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "Rei ha la sua"},
     {"chi": "karl", "nome": "Olio per le lame (fiaschetta)", "qta": 1, "costo": "1 bg", "peso": 0.3, "cat": "armi", "fonte": "Acquisti del 17–18 · Terzo mese"},
@@ -159,7 +159,7 @@ const FURIOSA_INVENTARIO = {
     {"chi": "rei", "nome": "Cannocchiale", "qta": 1, "costo": "3,5 am", "peso": 0.6, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Chiodi da roccia", "qta": 12, "costo": "50 bp", "peso": 0.1, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Martello da roccia", "qta": 1, "costo": "8 bg", "peso": 0.7, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "rei", "nome": "Pozione di guarigione", "qta": 1, "costo": "20 bg", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato: il listino non le prevede"},
+    {"chi": "rei", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Chi le porta si decide al tavolo"},
     {"chi": "rei", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Olio per le lame (fiaschetta)", "qta": 1, "costo": "1 bg", "peso": 0.3, "cat": "armi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Sacca da viaggio", "qta": 1, "costo": "8 bg", "peso": 1, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "nuove per tutti"},
@@ -187,7 +187,6 @@ const FURIOSA_INVENTARIO = {
     {"chi": "nikla", "nome": "Copia della mappa di Refistas", "qta": 1, "costo": "10 bg", "peso": 0.05, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "fatta da un copista: l'originale resta al sicuro"},
     {"chi": "nikla", "nome": "Astuccio di cuoio cerato per le mappe", "qta": 1, "costo": "3 bg", "peso": 0.3, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Gesso e carbone", "qta": 1, "costo": "1 bg", "peso": 0.2, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "nikla", "nome": "Pozione di guarigione", "qta": 1, "costo": "20 bg", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato: il listino non le prevede"},
     {"chi": "nikla", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Kit da cucito e pezze", "qta": 1, "costo": "14 bg", "peso": 0.6, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Sacca da viaggio", "qta": 1, "costo": "8 bg", "peso": 1, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "nuove per tutti"},
@@ -195,8 +194,8 @@ const FURIOSA_INVENTARIO = {
     {"chi": "nikla", "nome": "Pergamena (foglio)", "qta": 5, "costo": "1,5 bg", "peso": 0.01, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Gallette (kg)", "qta": 8, "costo": "40 bp", "peso": 1, "cat": "cibo", "durata": "3–6 mesi all'asciutto", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Carne salata (kg)", "qta": 2, "costo": "2 bg", "peso": 1, "cat": "cibo", "durata": "2–4 mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "nikla", "nome": "Legumi secchi (kg)", "qta": 4, "costo": "30 bp", "peso": 1, "cat": "cibo", "durata": "un anno", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "nikla", "nome": "Orzo e farina (kg)", "qta": 3, "costo": "35 bp", "peso": 1, "cat": "cibo", "durata": "2–3 mesi all'asciutto", "fonte": "Acquisti del 17–18 · Terzo mese"},
+    {"chi": "soma", "nome": "Legumi secchi (kg)", "qta": 4, "costo": "30 bp", "peso": 1, "cat": "cibo", "durata": "un anno", "fonte": "Acquisti del 17–18 · Terzo mese"},
+    {"chi": "soma", "nome": "Orzo e farina (kg)", "qta": 3, "costo": "35 bp", "peso": 1, "cat": "cibo", "durata": "2–3 mesi all'asciutto", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Mele secche e noci (kg)", "qta": 2, "costo": "1,5 bg", "peso": 1, "cat": "cibo", "durata": "3–6 mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Miele (½ l)", "qta": 1, "costo": "75 bp", "peso": 0.8, "cat": "cibo", "durata": "non scade", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Cavallo da sella comune", "qta": 1, "costo": "7 am", "peso": 0, "cat": "animali", "fonte": "Acquisti del 17–18 · Terzo mese"},
@@ -220,7 +219,7 @@ const FURIOSA_INVENTARIO = {
     {"chi": "zoraya", "nome": "Gavetta di stagno con cucchiaio", "qta": 1, "costo": "2 bg", "peso": 0.4, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Corda di seta (30 m)", "qta": 1, "costo": "6 am", "peso": 1.5, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "una di canapa costerebbe ~12 bg ma peserebbe ~4,5 kg"},
     {"chi": "zoraya", "nome": "Rampino", "qta": 1, "costo": "9 bg", "peso": 1.5, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "zoraya", "nome": "Pozione di guarigione", "qta": 1, "costo": "20 bg", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato: il listino non le prevede"},
+    {"chi": "zoraya", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Chi le porta si decide al tavolo"},
     {"chi": "zoraya", "nome": "Kit di primo soccorso (bende, erbe, unguenti, acquavite, ago)", "qta": 1, "costo": "21 bg", "peso": 1.5, "cat": "cura", "durata": "erbe 6 mesi; unguenti 1–2 mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Antitossina (dose)", "qta": 4, "costo": "10 bg", "peso": 0.1, "cat": "cura", "durata": "un anno", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato"},
     {"chi": "zoraya", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
@@ -271,6 +270,6 @@ const FURIOSA_INVENTARIO = {
     { quando: "Sessione 11", chi: "nikla",  cosa: "Perde il vestito; esce dalla biblioteca con la tela e gli appunti; consegna la borsa del gruppo a Karl", cifra: "", fonte: "Cap 20" },
     { quando: "Sessione 11", chi: "karl",   cosa: "Paga i conti di Horlen con la sua paga", cifra: "−4 bg 6 bm", fonte: "Cap 20" },
     { quando: "Sessione 12", chi: "karl",   cosa: "Riceve la catenella del nonno di Greta, lo scalpello e il martelletto, un fagotto di cibo; dà la maglia a Nikla", cifra: "", fonte: "Cap 21" },
-    { quando: "17–18 Terzo mese", chi: "gruppo", cosa: "Acquisti per il viaggio verso est: cinque cavalli (quattro da sella e uno da soma) con finimenti e ferratura, vestiario, campo, orientamento, scalata, cure e provviste per dieci giorni", cifra: "−5 ag 8 am 1 ap 9 bg 1 bm 5 bp", fonte: "Equipaggiamento — Viaggio verso est" }
+    { quando: "17–18 Terzo mese", chi: "gruppo", cosa: "Acquisti per il viaggio verso est: cinque cavalli (quattro da sella e uno da soma) con finimenti e ferratura, vestiario, campo, orientamento, scalata, cure (due pozioni di guarigione) e provviste per dieci giorni", cifra: "−2 op 5 ag 7 am 3 ap 9 bg 1 bm 5 bp", fonte: "Equipaggiamento — Viaggio verso est" }
   ]
 };
