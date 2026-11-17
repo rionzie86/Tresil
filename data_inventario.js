@@ -5,7 +5,7 @@
 // SI AGGIORNA CON LE TRASCRIZIONI DELLE GIOCATE: a ogni sessione
 // caricata, aggiungere ciò che è stato comprato, trovato o ricevuto,
 // togliere (o segnare perso) ciò che è stato venduto, usato o dato
-// via, e registrare il passaggio in «movimenti».
+// via, e aggiornare i conti della borsa comune.
 //
 // Campi di un oggetto:
 //   chi      "karl" | "rei" | "nikla" | "zoraya" | "gruppo"
@@ -36,7 +36,7 @@ const FURIOSA_INVENTARIO = {
   intro: "Valori ai prezzi del listino di Kaelvaran. Hanno un prezzo solo le cose comprate in gioco: oggetti personali, doni di Furiosa e reperti no.",
 
   portatori: [
-    { id: "karl", cavaliere: 89, limite: 120,   nome: "Karl" },
+    { id: "karl", cavaliere: 85, limite: 120,   nome: "Karl" },
     { id: "rei", cavaliere: 61, limite: 120,    nome: "Rei" },
     { id: "nikla", cavaliere: 51, limite: 120,  nome: "Nikla" },
     { id: "zoraya", cavaliere: 60, limite: 120, nome: "Zoraya" },
@@ -45,13 +45,13 @@ const FURIOSA_INVENTARIO = {
   ],
 
   denaro: [
-    { chi: "gruppo", nome: "Borsa comune (la tiene Karl)", cifra: "1 op + 7 ag + 3 am + 6 ap + 8 bm + 5 bp", verificare: true,
+    { chi: "gruppo", nome: "Borsa comune (la tiene Karl)", cifra: "1 op + 7 ag + 3 am + 9 ap + 8 bm + 5 bp", verificare: true,
       note: "Per ora tutto il denaro del gruppo è qui, monete personali comprese: se lo divideranno nella giocata del 17 novembre 2026. Da verificare con la trascrizione.",
       fonte: "Sessioni 8–12 · Cap 17–20",
       conti: [
         { cosa: "Sacchetto di Whilliam", cifra: "+4 op + 2 ag", fonte: "Cap 17" },
         { cosa: "Due brocchi rivenduti", cifra: "+16 am", fonte: "Cap 17" },
-        { cosa: "Spese di Tresil (spada, scudo, biblioteca, abiti)", cifra: "−5 am", fonte: "Cap 18–20" },
+        { cosa: "Spese di Tresil (spada, biblioteca, abiti; lo scudo è stato annullato)", cifra: "−4 am 7 ap", fonte: "Cap 18–20" },
         { cosa: "Acquisti per il viaggio, cavalli e due pozioni compresi", cifra: "−2 op 5 ag 7 am 3 ap 9 bg 1 bm 5 bp", fonte: "17–18 Terzo mese" },
         { cosa: "Monete personali di Karl, Rei e Nikla, messe nella borsa", cifra: "non contate", fonte: "decisione del 17/11" }
       ] },
@@ -60,7 +60,6 @@ const FURIOSA_INVENTARIO = {
   oggetti: [
     // ── KARL ─────────────────────────────────────────────
     { chi: "karl", nome: "Spada media «di un mastro», con fodero e boccetta di miscela", costo: "4 am", cat: "armi", fonte: "Sessione 9 · Cap 18", note: "Marchio di gilda al tallone; pagata 4 argenti medi" },
-    { chi: "karl", nome: "Scudo di frassino cerchiato di ferro", costo: "24–36 bg", cat: "armi", verificare: true, fonte: "Sessione 9 · Cap 18", note: "Da Mastro Balsan, «al prezzo giusto»: cifra non detta" },
     { chi: "karl", nome: "I guanti di Berta", qta: 2, costo: null, cat: "magia", stato: "magico", fonte: "Sessioni 3, 9, 11–12", note: "Pezzi dell'armatura di Whilliam: ognuno cura la parte che copre. Uno è plasmato in protezione per l'avambraccio" },
     { chi: "karl", nome: "Abiti usati (giubba e brache)", costo: "4 bm", cat: "vestiario", fonte: "Sessione 10 · Cap 19", note: "Pagati 4 bronzi medi; a listino valgono 10–20 bg" },
     { chi: "karl", nome: "Scarsella di cuoio", costo: null, cat: "viaggio", fonte: "Cap 11", note: "Alla cintura da sempre" },
@@ -159,7 +158,7 @@ const FURIOSA_INVENTARIO = {
     {"chi": "rei", "nome": "Cannocchiale", "qta": 1, "costo": "3,5 am", "peso": 0.6, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Chiodi da roccia", "qta": 12, "costo": "50 bp", "peso": 0.1, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Martello da roccia", "qta": 1, "costo": "8 bg", "peso": 0.7, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "rei", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Chi le porta si decide al tavolo"},
+    {"chi": "karl", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Una la porta Karl, l'altra Zoraya"},
     {"chi": "rei", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Olio per le lame (fiaschetta)", "qta": 1, "costo": "1 bg", "peso": 0.3, "cat": "armi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "rei", "nome": "Sacca da viaggio", "qta": 1, "costo": "8 bg", "peso": 1, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "nuove per tutti"},
@@ -219,7 +218,7 @@ const FURIOSA_INVENTARIO = {
     {"chi": "zoraya", "nome": "Gavetta di stagno con cucchiaio", "qta": 1, "costo": "2 bg", "peso": 0.4, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Corda di seta (30 m)", "qta": 1, "costo": "6 am", "peso": 1.5, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "una di canapa costerebbe ~12 bg ma peserebbe ~4,5 kg"},
     {"chi": "zoraya", "nome": "Rampino", "qta": 1, "costo": "9 bg", "peso": 1.5, "cat": "viaggio", "fonte": "Acquisti del 17–18 · Terzo mese"},
-    {"chi": "zoraya", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Chi le porta si decide al tavolo"},
+    {"chi": "zoraya", "nome": "Pozione di guarigione", "qta": 1, "costo": "1 op", "peso": 0.25, "cat": "cura", "durata": "1–2 anni, se tappata e al buio", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "rara: almeno un oro piccolo (prezzo deciso dall'autrice). Una la porta Karl, l'altra Zoraya"},
     {"chi": "zoraya", "nome": "Kit di primo soccorso (bende, erbe, unguenti, acquavite, ago)", "qta": 1, "costo": "21 bg", "peso": 1.5, "cat": "cura", "durata": "erbe 6 mesi; unguenti 1–2 mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Antitossina (dose)", "qta": 4, "costo": "10 bg", "peso": 0.1, "cat": "cura", "durata": "un anno", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "prezzo stimato"},
     {"chi": "zoraya", "nome": "Sapone e kit da igiene (pettine, telo)", "qta": 1, "costo": "4 bg", "peso": 0.5, "cat": "cura", "fonte": "Acquisti del 17–18 · Terzo mese"},
@@ -250,26 +249,5 @@ const FURIOSA_INVENTARIO = {
     {"chi": "soma", "nome": "Olio da cucina (½ l)", "qta": 1, "costo": "50 bp", "peso": 0.5, "cat": "cibo", "durata": "mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "soma", "nome": "Vino comune (4 l, in otre)", "qta": 1, "costo": "7,2 bg", "peso": 4.5, "cat": "cibo", "durata": "aperto, 7–10 giorni", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "otre compreso"},
     {"chi": "gruppo", "nome": "Avena (sacco da 10 kg) — sul carro della carovana", "qta": 6, "costo": "1,5 bg", "peso": 10, "cat": "animali", "durata": "mesi all'asciutto; bagnata ammuffisce in 3–4 giorni", "fonte": "Acquisti del 17–18 · Terzo mese", "note": "Viaggia sul carro dei viveri della carovana fino alla Torre (accordo con Orsolo); dopo la Torre va sul cavallo da soma, alleggerito dal cibo consumato"}
-  ],
-
-  // Passaggi di mano, in ordine di sessione (si aggiunge una riga per ogni
-  // acquisto, vendita, dono o perdita trovati nella trascrizione)
-  movimenti: [
-    { quando: "Sessione 6",  chi: "gruppo", cosa: "Perdono i quattro cavalli di Whilliam", cifra: "", fonte: "Cap 15" },
-    { quando: "Sessione 6",  chi: "nikla",  cosa: "Dà a Raffa i soldi per partire", cifra: "−2 am", fonte: "Cap 14" },
-    { quando: "Sessione 8",  chi: "gruppo", cosa: "Comprano due brocchi e li rivendono a Tresil", cifra: "+16 am", fonte: "Cap 17" },
-    { quando: "Sessione 8",  chi: "gruppo", cosa: "Ricevono il sacchetto di Whilliam (lo tiene Nikla)", cifra: "+4 op + 2 ag", fonte: "Cap 17" },
-    { quando: "Sessione 9",  chi: "karl",   cosa: "Spada media dall'armaiolo (trattata da Rei)", cifra: "−4 am", fonte: "Cap 18" },
-    { quando: "Sessione 9",  chi: "karl",   cosa: "Scudo da Mastro Balsan", cifra: "non detta", fonte: "Cap 18" },
-    { quando: "Sessione 9",  chi: "karl",   cosa: "Il secondo guanto di Berta, da Whilliam", cifra: "", fonte: "Cap 18" },
-    { quando: "Sessione 10", chi: "nikla",  cosa: "Lasciapassare delle Biblioteche della Croce", cifra: "−1 ap", fonte: "Cap 19" },
-    { quando: "Sessione 10", chi: "karl",   cosa: "Abiti usati", cifra: "−4 bm", fonte: "Cap 19" },
-    { quando: "Sessione 10", chi: "zoraya", cosa: "Tunica e velo usati", cifra: "−3 bm", fonte: "Cap 19" },
-    { quando: "Sessione 10", chi: "rei",    cosa: "Lascia due argenti piccoli sulla mensola di Gabbo", cifra: "−2 ap", fonte: "Cap 19" },
-    { quando: "Sessione 11", chi: "zoraya", cosa: "Presta il velo verde a Rei", cifra: "", fonte: "Cap 20" },
-    { quando: "Sessione 11", chi: "nikla",  cosa: "Perde il vestito; esce dalla biblioteca con la tela e gli appunti; consegna la borsa del gruppo a Karl", cifra: "", fonte: "Cap 20" },
-    { quando: "Sessione 11", chi: "karl",   cosa: "Paga i conti di Horlen con la sua paga", cifra: "−4 bg 6 bm", fonte: "Cap 20" },
-    { quando: "Sessione 12", chi: "karl",   cosa: "Riceve la catenella del nonno di Greta, lo scalpello e il martelletto, un fagotto di cibo; dà la maglia a Nikla", cifra: "", fonte: "Cap 21" },
-    { quando: "17–18 Terzo mese", chi: "gruppo", cosa: "Acquisti per il viaggio verso est: cinque cavalli (quattro da sella e uno da soma) con finimenti e ferratura, vestiario, campo, orientamento, scalata, cure (due pozioni di guarigione) e provviste per dieci giorni", cifra: "−2 op 5 ag 7 am 3 ap 9 bg 1 bm 5 bp", fonte: "Equipaggiamento — Viaggio verso est" }
   ]
 };
