@@ -31,7 +31,7 @@
       const b = parts[1].match(rx);
       if (!b) return null;
       let a = parts[0].match(rx);
-      const lo = a ? parseFloat(a[1].replace(',', '.')) * VAL[a[2]] : parseFloat(parts[0]) * VAL[b[2]];
+      const lo = a ? parseFloat(a[1].replace(',', '.')) * VAL[a[2]] : parseFloat(parts[0].replace(',', '.')) * VAL[b[2]];
       const hi = parseFloat(b[1].replace(',', '.')) * VAL[b[2]];
       if (isNaN(lo)) return null;
       return { min: lo, max: hi, approx, open };
@@ -226,9 +226,10 @@
     }
 
     const ft = document.createElement('div'); ft.className = 'ek-foot';
-    ft.textContent = `Listino aggiornato al ${eco.aggiornato}. Le voci ◆ gioco sono prezzi detti o pagati al tavolo; le altre sono stime sulla stessa scala. «Giornata» = la paga di un bracciante (1 bg); un anno di lavoro ≈ 300 giornate.`;
+    ft.textContent = `Listino aggiornato al ${eco.aggiornato}. Prezzi sulla scala storica del 1300. Le voci ◆ gioco sono nate al tavolo: se lì si era detta un'altra cifra, la trovi nelle note e nel registro. «Giornata» = la paga di un bracciante (1 bg); un anno di lavoro ≈ 300 giornate.`;
     w.appendChild(ft);
   };
 
   window.ecoKaelvaranEquivalenza = equivalenza; // utile per controlli
+  window.ecoKaelvaranParse = parseCosto;        // usato dalla sezione Inventario
 })();

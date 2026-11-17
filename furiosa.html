@@ -228,6 +228,40 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   .sidebar.open{transform:translateX(0);}
   .main{padding:1.25rem 1rem;}
 }
+/* Prep. Sessione — viaggio verso est (17/11/2026) */
+.pv-nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 1.2rem;position:sticky;top:-2rem;z-index:5;background:var(--bg);padding:.6rem 0;border-bottom:1px solid var(--border);}
+.pv-nav a{font-family:var(--font-d);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);text-decoration:none;padding:4px 9px;border:1px solid var(--border);border-radius:3px;}
+.pv-nav a:hover{color:var(--gold);border-color:var(--gold-d);}
+.pv-h{font-family:var(--font-d);font-size:16px;color:var(--gold);letter-spacing:.06em;margin:1.8rem 0 .8rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-b);scroll-margin-top:3.5rem;}
+.pv-h2{font-family:var(--font-d);font-size:12px;color:var(--t1);letter-spacing:.12em;text-transform:uppercase;margin:1.3rem 0 .5rem;}
+.pv-count{font-family:var(--font-b);font-size:13px;color:var(--t3);font-style:italic;letter-spacing:0;margin-left:.5rem;}
+.pv-nota{font-size:13.5px;color:var(--t3);font-style:italic;margin:-.2rem 0 .6rem;}
+.pv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.9rem;}
+.pv-grid .card{margin-bottom:0;}
+.pv-pg{display:flex;gap:.9rem;align-items:flex-start;}
+.pv-pg img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:1px solid var(--gold-d);flex-shrink:0;}
+.pv-ul,.pv-ol{margin:.3rem 0 0 1.1rem;font-size:14px;color:var(--t2);}
+.pv-ul li,.pv-ol li{margin-bottom:.25rem;}
+.pv-kv{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;font-size:14px;}
+.pv-k{color:var(--t1);font-weight:600;}
+.pv-v{color:var(--t2);}
+.pv-ruolo{font-size:13px;color:var(--t3);font-style:italic;margin:-.3rem 0 .5rem;}
+.pv-f{font-size:14px;color:var(--t2);margin-bottom:.35rem;line-height:1.5;}
+.pv-f b,.pv-segreto b{color:var(--t1);font-weight:600;margin-right:4px;}
+.pv-voce{font-size:14.5px;color:var(--amber);font-style:italic;margin:.2rem 0 .5rem;padding-left:.6rem;border-left:2px solid var(--gold-d);}
+.pv-segreto{font-size:13.5px;color:var(--t2);margin-top:.5rem;padding:.4rem .6rem;background:rgba(196,90,90,.08);border:1px solid rgba(196,90,90,.25);border-radius:3px;}
+.pv-prop{font-family:var(--font-b);font-size:10.5px;letter-spacing:.04em;text-transform:none;color:var(--purple);border:1px solid rgba(143,114,212,.4);border-radius:8px;padding:0 6px;font-style:normal;font-weight:400;}
+.pv-filo{font-size:11px;color:var(--green);border:1px solid rgba(90,180,143,.35);border-radius:8px;padding:0 6px;white-space:nowrap;}
+.pv-tab{width:100%;border-collapse:collapse;font-size:13.5px;color:var(--t2);}
+.pv-tab th{text-align:left;padding:.35rem .6rem;border-bottom:1px solid var(--border-b);color:var(--gold);font-weight:600;}
+.pv-tab td{padding:.35rem .6rem;border-bottom:1px solid var(--border);vertical-align:top;}
+.pv-tab td:first-child{color:var(--t1);font-weight:600;white-space:nowrap;}
+.pv-tab a{color:var(--t1);text-decoration:none;border-bottom:1px dotted var(--gold-d);}
+.pv-tr-g td{color:var(--gold)!important;font-family:var(--font-d);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding-top:.8rem!important;}
+.pv-btn{margin-left:auto;font-family:var(--font-d);font-size:10px;letter-spacing:.1em;background:var(--gold-g);color:var(--gold);border:1px solid var(--gold-d);border-radius:3px;padding:3px 10px;cursor:pointer;}
+.pv-tiro{font-size:14.5px;color:var(--t1);min-height:1.2em;margin-bottom:.4rem;}
+.pv-arch{margin-top:2.2rem;}
+.pv-arch summary{cursor:pointer;font-family:var(--font-d);font-size:11px;letter-spacing:.1em;color:var(--t3);text-transform:uppercase;margin-bottom:.8rem;}
 </style>
 </head>
 <body>
@@ -266,6 +300,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
     <div id="section-pv-karl"    class="section"></div>
     <div id="section-sessioni"   class="section"></div>
     <div id="section-economia"   class="section"></div>
+    <div id="section-inventario" class="section"></div>
     <div id="section-lore"       class="section"></div>
     <div id="section-thread"     class="section"></div>
     <div id="section-note"       class="section"></div>
@@ -303,8 +338,11 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
 </div>
 
 <script src="data_furiosa.js"></script>
+<script src="data_prep_viaggio.js"></script>
 <script src="data_economia_kaelvaran.js"></script>
 <script src="economia_kaelvaran.js"></script>
+<script src="data_inventario.js"></script>
+<script src="inventario_furiosa.js"></script>
 <script>
 // ── STATO ──────────────────────────────────────────
 const ADMIN_PW = 'furiosa2025';
@@ -361,6 +399,7 @@ function updateDMUI() {
   buildPrep();
   buildNomi();
   buildEconomia();
+  buildInventario();
 }
 
 // ── MOBILE SIDEBAR ─────────────────────────────────
@@ -777,7 +816,7 @@ function saveNote(id, svId) {
   if (m) { m.style.display = 'block'; setTimeout(() => m.style.display = 'none', 2500); }
 }
 
-// ── PREPARAZIONE SESSIONE (checklist DM) ───────────
+// ── PREPARAZIONE SESSIONE (viaggio verso est, rifatta il 17/11/2026) ──
 function buildPrep() {
   const c = document.getElementById('section-prep');
   if (!isMaster) {
@@ -785,48 +824,126 @@ function buildPrep() {
       <div class="card" style="text-align:center;padding:2rem"><div class="card-body" style="color:var(--t3);font-style:italic">Attiva la modalità DM per accedere a questa sezione.</div></div>`;
     return;
   }
-  const p = FURIOSA_DATA.prepProssimaSessione;
-  const checkedIds = JSON.parse(localStorage.getItem('furiosa_prep_checked') || '[]');
-  let html = `<div class="sec-head"><div class="sec-title">${p.titolo}</div><div class="sec-sub">${p.sottotitolo}</div></div>`;
-  html += `<div class="card"><div class="card-body">${p.nota}</div></div>`;
+  if (typeof FURIOSA_PREP === 'undefined') { c.innerHTML = '<div class="card">Manca data_prep_viaggio.js</div>'; return; }
+  const P = FURIOSA_PREP;
+  const checked = JSON.parse(localStorage.getItem('furiosa_prep_checked') || '[]');
+  const nl = s => String(s || '').replace(/\n/g, '<br>');
+  const prop = s => nl(s).replace(/\(proposta\)/g, '<span class="pv-prop">proposta</span>');
+  const box = (id, inner) => {
+    const on = checked.includes(id);
+    return `<label class="prep-row${on ? ' checked' : ''}"><input type="checkbox" ${on ? 'checked' : ''} onchange="togglePrep('${id}')"><span>${inner}</span></label>`;
+  };
+  const anchors = [['pv-sec-promemoria','Promemoria'],['pv-sec-gruppo','Il gruppo'],['pv-sec-mattina','Mattina del 18'],['pv-sec-carovana','La carovana'],['pv-sec-viaggio','Il viaggio'],['pv-sec-torre','Torre Est'],['pv-sec-villaggio','Il villaggio'],['pv-sec-fili','Fili'],['pv-sec-decidere','Da decidere']];
 
-  function group(title, items) {
-    let g = `<div class="card"><div class="card-title">${title}</div>`;
-    items.forEach(it => {
-      const on = checkedIds.includes(it.id);
-      g += `<label class="prep-row${on ? ' checked' : ''}">
-        <input type="checkbox" ${on ? 'checked' : ''} onchange="togglePrep('${it.id}')">
-        <span>${it.testo}</span>
-      </label>`;
+  let h = `<div class="sec-head"><div class="sec-title">${P.titolo}</div><div class="sec-sub">${P.sottotitolo}</div></div>`;
+  h += `<div class="card"><div class="card-body">${P.apertura}</div></div>`;
+  h += `<nav class="pv-nav">${anchors.map(a => `<a href="#" onclick="document.getElementById('${a[0]}').scrollIntoView({behavior:'smooth'});return false">${a[1]}</a>`).join('')}</nav>`;
+
+  // Promemoria
+  h += `<div id="pv-sec-promemoria" class="pv-h">Promemoria al tavolo</div><div class="card"><div class="pv-kv">`;
+  P.promemoria.forEach(r => { h += `<div class="pv-k">${r[0]}</div><div class="pv-v">${prop(r[1])}</div>`; });
+  h += `</div></div>`;
+
+  // Il gruppo
+  h += `<div id="pv-sec-gruppo" class="pv-h">Il gruppo in viaggio</div><div class="pv-grid">`;
+  P.gruppo.forEach(g => {
+    h += `<div class="card pv-pg">${g.img ? `<img src="${g.img}" alt="" onerror="this.remove()">` : ''}<div><div class="card-title">${g.nome}</div><ul class="pv-ul">${g.righe.map(r => `<li>${prop(r)}</li>`).join('')}</ul></div></div>`;
+  });
+  h += `</div>`;
+
+  // Mattina
+  h += `<div id="pv-sec-mattina" class="pv-h">La mattina del 18, al porto</div><div class="card">`;
+  P.mattina.forEach(s => { h += box(s.id, `<strong>${prop(s.titolo)}</strong> — ${prop(s.testo)}`); });
+  h += `</div>`;
+
+  // Carovana
+  const tot = P.carovana.reduce((n, g) => n + g.persone.reduce((m, p) => m + (p.nome.includes(' e ') ? 2 : 1), 0), 0);
+  h += `<div id="pv-sec-carovana" class="pv-h">La carovana <span class="pv-count">${tot} persone + il gruppo</span></div>`;
+  h += `<div class="card"><div class="card-body">${prop(P.carovanaIntro)}</div></div>`;
+  // elenco rapido
+  h += `<div class="card"><div class="card-title">Chi c'è — colpo d'occhio</div><div style="overflow-x:auto"><table class="pv-tab"><thead><tr><th>Nome</th><th>Ruolo</th><th>In una riga</th></tr></thead><tbody>`;
+  P.carovana.forEach(g => {
+    h += `<tr class="pv-tr-g"><td colspan="3">${g.gruppo}</td></tr>`;
+    g.persone.forEach((p, i) => { h += `<tr><td><a href="#" onclick="document.getElementById('pv-p-${g.gruppo.length}-${i}-${p.nome.length}').scrollIntoView({behavior:'smooth'});return false">${p.nome}</a></td><td>${p.ruolo}</td><td>${p.voce}</td></tr>`; });
+  });
+  h += `</tbody></table></div></div>`;
+  h += `<div class="card"><div class="card-title">Carri e bestie <span class="pv-prop">proposta</span></div><div class="pv-kv">`;
+  P.carri.forEach(r => { h += `<div class="pv-k">${r[0]}</div><div class="pv-v">${prop(r[1])}</div>`; });
+  h += `</div></div>`;
+  // schede
+  P.carovana.forEach(g => {
+    h += `<div class="pv-h2">${g.gruppo}</div>`;
+    if (g.nota) h += `<div class="pv-nota">${prop(g.nota)}</div>`;
+    h += `<div class="pv-grid">`;
+    g.persone.forEach((p, i) => {
+      h += `<div class="card pv-png" id="pv-p-${g.gruppo.length}-${i}-${p.nome.length}">
+        <div class="card-title">${p.nome}${p.p ? ' <span class="pv-prop">proposta</span>' : ''}</div>
+        <div class="pv-ruolo">${p.ruolo}</div>
+        ${p.aspetto ? `<div class="pv-f"><b>Aspetto</b> ${prop(p.aspetto)}</div>` : ''}
+        ${p.carattere ? `<div class="pv-f"><b>Carattere</b> ${prop(p.carattere)}</div>` : ''}
+        ${p.voce ? `<div class="pv-voce">${p.voce}</div>` : ''}
+        ${p.funzione ? `<div class="pv-f"><b>A che serve</b> ${prop(p.funzione)}</div>` : ''}
+        ${p.segreto ? `<div class="pv-segreto"><b>Segreto</b> ${prop(p.segreto)}</div>` : ''}
+      </div>`;
     });
-    g += `</div>`;
-    return g;
-  }
-  html += group('Eventi scatenanti (in sequenza)', p.eventi);
-  function scheda(sc) {
-    let b = `<div class="card"><div class="card-title">${sc.titolo}</div>`;
-    if (sc.intro) b += `<div class="card-body" style="margin-bottom:.8rem">${sc.intro}</div>`;
-    if (sc.tabella) {
-      b += `<div style="overflow-x:auto;margin-bottom:.8rem"><table style="width:100%;border-collapse:collapse;font-size:13.5px;color:var(--t2)"><thead><tr>`;
-      sc.tabella.colonne.forEach(col => b += `<th style="text-align:left;padding:.35rem .6rem;border-bottom:1px solid var(--border-b);color:var(--gold);font-weight:600">${col}</th>`);
-      b += `</tr></thead><tbody>`;
-      sc.tabella.righe.forEach(r => {
-        b += `<tr>` + r.map((v, i) => `<td style="padding:.35rem .6rem;border-bottom:1px solid var(--border);vertical-align:top${i === 0 ? ';color:var(--t1);font-weight:600;white-space:nowrap' : ''}">${v}</td>`).join('') + `</tr>`;
-      });
-      b += `</tbody></table></div>`;
-    }
-    (sc.blocchi || []).forEach(bl => {
-      b += `<div style="margin-top:.6rem"><strong style="color:var(--t1)">${bl.titolo}</strong><div class="card-body">${bl.testo}</div></div>`;
+    h += `</div>`;
+  });
+
+  // Viaggio
+  h += `<div id="pv-sec-viaggio" class="pv-h">Il viaggio, giorno per giorno</div><div class="card">`;
+  P.giorni.forEach(d => { h += box(d.id, `<strong>${d.giorno}</strong> · <em>${d.tappa}</em> — ${prop(d.scena)}${d.filo ? ` <span class="pv-filo">${d.filo}</span>` : ''}`); });
+  h += `</div>`;
+  h += `<div class="card"><div class="card-title">Pozdefer <span class="pv-prop">proposta</span></div><div class="card-body">${prop(P.pozdefer.intro)}</div><ul class="pv-ul">${P.pozdefer.spunti.map(s => `<li>${prop(s)}</li>`).join('')}</ul></div>`;
+  h += `<div class="card"><div class="card-title">Imprevisti di strada (d8) <button class="pv-btn" onclick="pvTira()">Tira</button></div><div id="pv-tiro" class="pv-tiro"></div><ol class="pv-ol">${P.imprevisti.map(s => `<li>${prop(s)}</li>`).join('')}</ol></div>`;
+
+  // Torre
+  const T = P.torre;
+  h += `<div id="pv-sec-torre" class="pv-h">La Torre Est</div>`;
+  h += `<div class="card"><div class="card-body">${prop(T.intro)}</div><div class="card-body" style="margin-top:.6rem"><b>Segnali.</b> ${prop(T.segnali)}</div><div class="card-body" style="margin-top:.6rem"><b>Come la trovano.</b> ${prop(T.stato)}</div></div>`;
+  h += `<div class="card"><div class="card-title">Gli spazi</div><div class="pv-kv">`;
+  T.luoghi.forEach(r => { h += `<div class="pv-k">${r[0]}</div><div class="pv-v">${prop(r[1])}</div>`; });
+  h += `</div></div>`;
+  h += `<div class="card"><div class="card-title">Il presidio — i nomi che contano <span class="pv-prop">caratteri: proposta</span></div><div style="overflow-x:auto"><table class="pv-tab"><thead><tr><th>Nome</th><th>Grado</th><th>Carattere e funzione</th></tr></thead><tbody>`;
+  T.presidio.forEach(r => { h += `<tr><td>${r[0]}</td><td>${prop(r[1])}</td><td>${prop(r[2])}</td></tr>`; });
+  h += `</tbody></table></div></div>`;
+  h += `<div class="card"><div class="card-title">Che cosa succede (25–27)</div>`;
+  T.scene.forEach(s => { h += box(s.id, `<strong>${s.titolo}</strong> — ${prop(s.testo)}`); });
+  h += `</div>`;
+
+  // Villaggio
+  const V = P.villaggio;
+  h += `<div id="pv-sec-villaggio" class="pv-h">${prop(V.nome)}</div>`;
+  h += `<div class="card"><div class="card-body">${prop(V.intro)}</div>`;
+  V.blocchi.forEach(b => { h += `<div style="margin-top:.8rem"><strong style="color:var(--t1)">${prop(b[0])}</strong><div class="card-body">${prop(b[1])}</div></div>`; });
+  h += `</div>`;
+
+  // Fili
+  h += `<div id="pv-sec-fili" class="pv-h">Fili da seminare</div><div class="card">`;
+  P.fili.forEach(f => { h += box(f.id, prop(f.testo)); });
+  h += `</div>`;
+
+  // Da decidere
+  h += `<div id="pv-sec-decidere" class="pv-h">Da decidere</div><div class="card"><ul class="pv-ul">${P.daDecidere.map(s => `<li>${prop(s)}</li>`).join('')}</ul></div>`;
+
+  // Archivio vecchia prep
+  const old = FURIOSA_DATA.prepProssimaSessione;
+  if (old) {
+    h += `<details class="pv-arch"><summary>Archivio — prep. precedente: ${old.titolo} (già giocata)</summary>`;
+    h += `<div class="card"><div class="card-body">${old.nota}</div><ul class="pv-ul">${(old.eventi || []).map(e => `<li>${e.testo}</li>`).join('')}</ul></div>`;
+    [...(old.incontri || []), ...(old.schede || [])].forEach(sc => {
+      h += `<div class="card"><div class="card-title">${sc.titolo}</div>${sc.intro ? `<div class="card-body">${nl(sc.intro)}</div>` : ''}`;
+      (sc.blocchi || []).forEach(bl => { h += `<div style="margin-top:.6rem"><strong style="color:var(--t1)">${bl.titolo}</strong><div class="card-body">${nl(bl.testo)}</div></div>`; });
+      h += `</div>`;
     });
-    b += `</div>`;
-    return b;
+    h += `</details>`;
   }
-  if ((p.incontri || []).length) {
-    html += `<div class="sec-head" style="margin-top:1.2rem"><div class="sec-title" style="font-size:1.2em">Incontri</div></div>`;
-    p.incontri.forEach(sc => { html += scheda(sc); });
-  }
-  (p.schede || []).forEach(sc => { html += scheda(sc); });
-  c.innerHTML = html;
+  c.innerHTML = h;
+}
+
+function pvTira() {
+  const L = FURIOSA_PREP.imprevisti, n = Math.floor(Math.random() * L.length);
+  const el = document.getElementById('pv-tiro');
+  if (el) el.innerHTML = `<b>${n + 1}</b> — ${L[n]}`;
 }
 
 function togglePrep(id) {
@@ -872,6 +989,17 @@ function buildEconomia() {
   renderEconomiaKaelvaran(c, { registro: true, modifiche: isMaster });
 }
 
+function buildInventario() {
+  const c = document.getElementById('section-inventario');
+  if (!c) return;
+  c.innerHTML = `<div class="sec-head"><div class="sec-title">Inventario</div><div class="sec-sub">Cosa porta con sé ciascuno, e quanto vale ai prezzi di Kaelvaran</div></div>`;
+  if (typeof renderInventarioFuriosa !== 'function') {
+    c.appendChild(card('', 'Inventario non trovato: controlla che data_inventario.js e inventario_furiosa.js siano nella stessa cartella di furiosa.html.'));
+    return;
+  }
+  renderInventarioFuriosa(c, { master: isMaster });
+}
+
 // ── BUILD ALL ──────────────────────────────────────
 function buildAllSections() {
   buildPanoramica();
@@ -883,6 +1011,7 @@ function buildAllSections() {
   buildPuntoDiVista('karl');
   buildSessioni();
   buildEconomia();
+  buildInventario();
   buildLore();
   buildThread();
   buildNote();
