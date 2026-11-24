@@ -239,6 +239,9 @@ hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
 .pv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.9rem;}
 .pv-grid .card{margin-bottom:0;}
 .pv-pg{display:flex;gap:.9rem;align-items:flex-start;}
+.pg-ritratto{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin:.4rem 0 .6rem;cursor:zoom-in;border:1px solid rgba(255,255,255,.08);}
+.pv-png-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;margin-bottom:.5rem;cursor:zoom-in;}
+.pv-gruppo-img{width:100%;max-width:960px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin:.3rem 0 .8rem;cursor:zoom-in;display:block;}
 .pv-pg img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:1px solid var(--gold-d);flex-shrink:0;}
 .pv-ul,.pv-ol{margin:.3rem 0 0 1.1rem;font-size:14px;color:var(--t2);}
 .pv-ul li,.pv-ol li{margin-bottom:.25rem;}
@@ -552,6 +555,7 @@ function buildPgCard(p) {
     </div>
     <div class="pg-body">
       ${p.tag ? tagsHTML(p.tag) : ''}
+      ${p.immagine ? `<img class="pg-ritratto" src="${p.immagine}" alt="${p.nome}" loading="lazy" onclick="window.open(this.src)">` : ''}
       <div class="pg-sec-lbl">Descrizione</div>
       <div class="pg-text">${linkify(p.descrizione)}</div>
       ${hasLoreG ? `<div class="pg-sec-lbl">Lore</div><div class="pg-text">${linkify(p.loreGiocatori)}</div>` : ''}
@@ -873,10 +877,12 @@ function buildPrep() {
   // schede
   P.carovana.forEach(g => {
     h += `<div class="pv-h2">${g.gruppo}</div>`;
+    if (g.img) h += `<img class="pv-gruppo-img" src="${g.img}" alt="${g.gruppo}" loading="lazy" onclick="window.open(this.src)" onerror="this.remove()">`;
     if (g.nota) h += `<div class="pv-nota">${prop(g.nota)}</div>`;
     h += `<div class="pv-grid">`;
     g.persone.forEach((p, i) => {
       h += `<div class="card pv-png" id="pv-p-${g.gruppo.length}-${i}-${p.nome.length}">
+        ${p.img ? `<img class="pv-png-img" src="${p.img}" alt="${p.nome}" loading="lazy" onclick="window.open(this.src)" onerror="this.remove()">` : ''}
         <div class="card-title">${p.nome}${p.p ? ' <span class="pv-prop">proposta</span>' : ''}</div>
         <div class="pv-ruolo">${p.ruolo}</div>
         ${p.aspetto ? `<div class="pv-f"><b>Aspetto</b> ${prop(p.aspetto)}</div>` : ''}
