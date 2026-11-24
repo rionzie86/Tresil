@@ -45,7 +45,7 @@ const FURIOSA_INVENTARIO = {
   ],
 
   denaro: [
-    { chi: "gruppo", nome: "Borsa comune (la tiene Karl)", cifra: "1 op + 7 ag + 3 am + 9 ap + 8 bm + 5 bp", verificare: true,
+    { chi: "gruppo", nome: "Borsa comune (la tiene Karl)", cifra: "1 op + 7 ag + 3 am + 7 ap + 9 bg", verificare: true,
       note: "Per ora tutto il denaro del gruppo è qui, monete personali comprese: se lo divideranno nella giocata del 17 novembre 2026. Da verificare con la trascrizione.",
       fonte: "Sessioni 8–12 · Cap 17–20",
       conti: [
@@ -53,6 +53,7 @@ const FURIOSA_INVENTARIO = {
         { cosa: "Due brocchi rivenduti", cifra: "+16 am", fonte: "Cap 17" },
         { cosa: "Spese di Tresil (spada, biblioteca, abiti; lo scudo è stato annullato)", cifra: "−4 am 7 ap", fonte: "Cap 18–20" },
         { cosa: "Acquisti per il viaggio, cavalli e due pozioni compresi", cifra: "−2 op 5 ag 7 am 3 ap 9 bg 1 bm 5 bp", fonte: "17–18 Terzo mese" },
+        { cosa: "Materiale di Nikla (lucerne, olio, stoppini, piatto, piuma, padellina, acquavite, gomma di acacia, boccette), prezzi in parte stimati", cifra: "−11 bg 8 bm 5 bp", fonte: "17–18 Terzo mese (aggiunto il 24/11)" },
         { cosa: "Monete personali di Karl, Rei e Nikla, messe nella borsa", cifra: "non contate", fonte: "decisione del 17/11" }
       ] },
   ],
@@ -312,6 +313,15 @@ const FURIOSA_INVENTARIO = {
     {"chi": "soma", "nome": "Orzo e farina (kg)", "qta": 3, "costo": "35 bp", "peso": 1, "cat": "cibo", "durata": "2–3 mesi all'asciutto", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Mele secche e noci (kg)", "qta": 2, "costo": "1,5 bg", "peso": 1, "cat": "cibo", "durata": "3–6 mesi", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "nikla", "nome": "Miele (½ l)", "qta": 1, "costo": "75 bp", "peso": 0.8, "cat": "cibo", "durata": "non scade", "fonte": "Acquisti del 17–18 · Terzo mese"},
+    {"chi": "nikla", "nome": "Lucerna di terracotta", "qta": 2, "costo": "30 bp", "peso": 0.3, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Olio d'oliva (1 l)", "qta": 2, "costo": "1,5 bg", "peso": 1, "cat": "scrittura", "durata": "mesi, al riparo dal caldo", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Stoppino grosso di cotone", "qta": 4, "costo": "5 bp", "peso": 0.01, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Piatto di stagno", "qta": 1, "costo": "1 bg", "peso": 0.4, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Piuma d'oca", "qta": 1, "costo": "5 bp", "peso": 0.01, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Padellina di ferro con coperchio", "qta": 1, "costo": "3 bg", "peso": 1.2, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Acquavite (½ l)", "qta": 1, "costo": "2,5 bg", "peso": 0.6, "cat": "scrittura", "durata": "non scade, se tappata", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Gomma di acacia (palla media)", "qta": 1, "costo": "1 bg", "peso": 0.15, "cat": "scrittura", "durata": "anni, all'asciutto", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo stimato"},
+    {"chi": "nikla", "nome": "Boccetta di vetro con tappo", "qta": 5, "costo": "1 bm", "peso": 0.1, "cat": "scrittura", "fonte": "Acquisti del 17–18 · Terzo mese", "verificare": true, "note": "prezzo del gioco (Rei ha pagato le boccette un bronzo medio l'una)"},
     {"chi": "zoraya", "nome": "Cavallo da sella comune", "qta": 1, "costo": "7 am", "peso": 0, "cat": "animali", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Sella comune", "qta": 1, "costo": "40 bg", "peso": 10, "cat": "animali", "fonte": "Acquisti del 17–18 · Terzo mese"},
     {"chi": "zoraya", "nome": "Briglia, morso e redini", "qta": 1, "costo": "15 bg", "peso": 1.5, "cat": "animali", "fonte": "Acquisti del 17–18 · Terzo mese"},
